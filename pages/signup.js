@@ -3,6 +3,7 @@ import Router from 'next/router'
 import { useUser } from '../lib/hooks'
 import Form from '../components/registerform'
 
+
 const Signup = () => {
   useUser({ redirectTo: '/', redirectIfFound: true })
 

@@ -21,14 +21,6 @@ export default function AddDetails() {
 
     return (
     <div>   
-        
-           {/* {user && (<p>logod in as {username}</p>)}  */}
-        {/* <form action='./api/addDetails' method='POST'>
-            <input type="text" value={username} name="username" id='username' />
-            <input type="text" name="name" id="name" placeholder='f name' />
-            <input type="text" name="lname" id="lname" placeholder='l name' />
-            <input type="submit" value="submit form"/>  
-        </form> */}
         <form method="POST" action="./api/addDetails" className='w-[50%] mx-auto my-10'>
           <div className='flex justify-between'>
             <div className=''>
@@ -277,7 +269,7 @@ export default function AddDetails() {
                     <div className="relative">
                       <input
                         type="text"
-                        required=""
+                        required="true"
                         name="college"
                         // value=""
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
@@ -566,10 +558,8 @@ export default function AddDetails() {
   const clgid=document.getElementById("clgid").value
   console.log(clgid)
   const res=await fetch(`./api/checkCollege/${clgid}`)
-  // console.log(clgid)
   if(res.status===200){
     setmess("invalid paraphrase")
-    // document.getElementById("error").innerHTML=mess
     setcollegeId("false")
   }
   else{
