@@ -2,7 +2,6 @@ import { createUser } from '../../lib/user'
 import passport from 'passport'
 import nextConnect from 'next-connect'
 import { setLoginSession } from '../../lib/auth'
-// import { checkUser } from '../../lib/user-check'
 import { localStrategy } from '../../lib/password-local'
 
 

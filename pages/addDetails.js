@@ -22,13 +22,7 @@ export default function AddDetails() {
     return (
     <div>   
         
-           {/* {user && (<p>logod in as {username}</p>)}  */}
-        {/* <form action='./api/addDetails' method='POST'>
-            <input type="text" value={username} name="username" id='username' />
-            <input type="text" name="name" id="name" placeholder='f name' />
-            <input type="text" name="lname" id="lname" placeholder='l name' />
-            <input type="submit" value="submit form"/>  
-        </form> */}
+          
         <img className="absolute bottom-0 w-[100%] object-cover"
         src="https://qsf.fs.quoracdn.net/-4-ans_frontend_assets.images.home_page_bg_desktop.png-26-4770753d59b970e1.png"
         alt=""
@@ -560,16 +554,21 @@ export default function AddDetails() {
   console.log("inside college");  
   const clgid=document.getElementById("clgid").value
   console.log(clgid)
+  if(clgid==""){
+    setmess("Invalid Paraphrase")
+  }
+  else{
+
   const res=await fetch(`./api/checkCollege/${clgid}`)
-  // console.log(clgid)
   if(res.status===200){
     setmess("invalid paraphrase")
-    // document.getElementById("error").innerHTML=mess
     setcollegeId("false")
   }
   else{
     setmess("")
     setcollegeId("true")
   }
+}
+
 }
 }
