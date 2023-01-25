@@ -5,7 +5,7 @@ const Form = ({ isLogin, errorMessage, onSubmit }) => (
 
   <form onSubmit={onSubmit}  className="bg-white shadow-md rounded-lg px-12 pt-20 pb-12 mb-4">
 
-   <h1 className="text-center font-bold text-2xl">Sign up to your account</h1>
+   <h1 className="text-center font-bold text-2xl">LOG IN</h1>
             <div className="mb-4 mt-10">
       <label className="block text-gray-700 text-sm mb-2 font-semibold" htmlFor="username">
         Email address
@@ -24,7 +24,7 @@ const Form = ({ isLogin, errorMessage, onSubmit }) => (
     <p>New user? <Link href="/signup">SIGN UP</Link></p>
     <p id="mess"></p>
     <div className='text-center mt-5'>
-      <input type="submit" value="Sing up"  className='bg-orange-600 font-semibold cursor-pointer block w-[100%] text-white h-10 rounded-md hover:bg-orange-700'/>
+      <input type="submit" value="Log in"  className='bg-orange-600 font-semibold cursor-pointer block w-[100%] text-white h-10 rounded-md hover:bg-orange-700'/>
             
     </div>
           

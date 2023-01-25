@@ -99,6 +99,11 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+input{
+  background-color: white;
+  color:black;
+}
+
 a {
   color: inherit;
   text-decoration: none;
