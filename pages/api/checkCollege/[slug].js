@@ -10,7 +10,7 @@ export default async function handler(req, res){
     if(!bool){
         res.status(200).send({ done: true }) 
     }
-    else{
+    else{   
         res.status(500).send({ done: true })
     }
 }

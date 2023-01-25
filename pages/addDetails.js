@@ -557,6 +557,11 @@ export default function AddDetails() {
   console.log("inside college");  
   const clgid=document.getElementById("clgid").value
   console.log(clgid)
+  if(clgid==""){
+    setmess("Invalid Paraphrase")
+  }
+  else{
+
   const res=await fetch(`./api/checkCollege/${clgid}`)
   if(res.status===200){
     setmess("invalid paraphrase")
@@ -566,5 +571,7 @@ export default function AddDetails() {
     setmess("")
     setcollegeId("true")
   }
+}
+
 }
 }
