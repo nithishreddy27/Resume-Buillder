@@ -61,15 +61,6 @@ export default function Home({
         </>
       )}
 
-      <style jsx>{`
-        li {
-          margin-bottom: 0.5rem;
-        }
-        pre {
-          white-space: pre-wrap;
-          word-wrap: break-word;
-        }
-      `}</style>
     </Layout>
     </>
   )
