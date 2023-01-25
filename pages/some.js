@@ -1,6 +1,6 @@
 import React from 'react'
 import { useUser } from '../lib/hooks'
-import Link from "next/Link"
+import Link from "next/link"
 export default function Some() {
   const user = useUser()
   const data=JSON.stringify(user,null,2)
