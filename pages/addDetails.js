@@ -29,14 +29,20 @@ export default function AddDetails() {
             <input type="text" name="lname" id="lname" placeholder='l name' />
             <input type="submit" value="submit form"/>  
         </form> */}
-        <form method="POST" action="./api/addDetails" className='w-[50%] mx-auto my-10'>
+        <img className="absolute bottom-0 w-[100%] object-cover"
+        src="https://qsf.fs.quoracdn.net/-4-ans_frontend_assets.images.home_page_bg_desktop.png-26-4770753d59b970e1.png"
+        alt=""
+      />
+        <div className="mt-4 sm:mx-auto sm:w-full sm:max-w-2xl relative grid h-screen place-items-center">
+        <div className="bg-white pt-1 pb-8 shadow-xl rounded-xl px-10 ">
+        <form method="POST" action="./api/addDetails" className=' mx-auto my-10'>
           <div className='flex justify-between'>
             <div className=''>
-              <label htmlFor="userame">Loged in as:</label>
+              <label htmlFor="userame" className="text-sm font-semibold">Signed in as:</label>
               <input type="text"  value={username} className="mx-2 " id="username" name="username" />
             </div>
             <div>
-              <Link href="/api/logout" className='text-red-600 text-xl mx-2'>Logout</Link>
+              <Link href="/api/logout" className='text-orange-600 text-sm mx-2 font-semibold hover:text-orange-900 hover:underline'>Logout</Link>
             </div>
           </div>
             <fieldset className="mt-4">
@@ -100,7 +106,7 @@ export default function AddDetails() {
                         name="clgid"
                         id="clgid"
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
-                        fdprocessedid="a94bca"
+                        fdprocessedid="a94bca" required
                       />
                       <div>
                         <button
@@ -141,11 +147,11 @@ export default function AddDetails() {
                         name="firstName"
                         id="firstName"
                         autoComplete="given-name"
-                        required=""
+                        required
                         // value=""
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
                         fdprocessedid="yw7fvi"
-                        disabled=""
+                        disabled="" 
                       />
                     </div>
                     <div className="col-span-6 sm:col-span-2 ">
@@ -165,54 +171,29 @@ export default function AddDetails() {
                         name="lastName"
                         id="lastName"
                         autoComplete="family-name"
-                        required=""
+                        required
                         // value=""
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
                         fdprocessedid="14yoqp"
                         disabled=""
                       />
                     </div>
-                    <div className="col-span-6 sm:col-span-2 relative -top-[23px]">
-                      <label
-                        className="flex items-center mb-1 h-full text-sm font-medium text-gray-700 "
-                        id="headlessui-listbox-label-1"
-                      >
-                        Gender
-                        <span className="ml-1 mt-1 text-red-600 font-semibold">
-                          *
-                        </span>
-                      </label>
-                      <div className="relative -top-5 left-0">
-                        <button
-                          className="bg-white relative w-full border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500 sm:text-sm"
-                          id="headlessui-listbox-button-2"
-                          type="button"
-                          aria-haspopup="true"
-                          aria-expanded="false"
-                          aria-labelledby="headlessui-listbox-label-1 headlessui-listbox-button-2"
-                          fdprocessedid="eijr6h"
-                        >
-                          <span className="block truncate text-black">
-                            Male
-                          </span>
-                          <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 20 20"
-                              fill="currentColor"
-                              aria-hidden="true"
-                              className="h-5 w-5 text-gray-400"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                                clipRule="evenodd"
-                              ></path>
-                            </svg>
-                          </span>
-                        </button>
-                      </div>
-                    </div>
+                    <div class="col-span-6 sm:col-span-2 relative -top-[23px]">
+                  <label
+                    class="flex items-center mb-1 h-full text-sm font-medium text-gray-700 "
+                    id="headlessui-listbox-label-1"
+                  >
+                    Gender
+                    <span class="ml-1 mt-1 text-red-600 font-semibold">*</span>
+                  </label>
+                  <div class="relative -top-[23px] left-0">
+                  <select name="gender" className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500">
+                        <option value="male" >male</option>
+                        <option value="female">female</option>
+                        <option value="other">other</option>
+                    </select>
+                  </div>
+                  </div>
                   </div>
                   <div className="grid grid-cols-6 gap-6">
                     <div className="col-span-6 sm:col-span-3 mt-4">
@@ -233,7 +214,7 @@ export default function AddDetails() {
                         id="rollnumber"
                         autoComplete="roll-number"
                         disabled=""
-                        required=""
+                        required
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
                         // value=""
                         fdprocessedid="3p27qy"
@@ -256,7 +237,7 @@ export default function AddDetails() {
                         name="phone"
                         id="phone"
                         autoComplete="tel"
-                        required=""
+                        required
                         disabled=""
                         pattern="[6789][0-9]{9}"
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
@@ -277,7 +258,7 @@ export default function AddDetails() {
                     <div className="relative">
                       <input
                         type="text"
-                        required=""
+                        required
                         name="college"
                         // value=""
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
@@ -302,6 +283,11 @@ export default function AddDetails() {
                   </div>
                 </div>
               )}
+
+
+
+
+
 
               {position == "college" && <div>
                 
@@ -345,7 +331,8 @@ export default function AddDetails() {
                     type="text"
                     name="firstName"
                     id="firstName"
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500" required/>
+                    required
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"/>
                 </div>
                 <div className="col-span-6 sm:col-span-2 ">
                   <div className="flex">
@@ -362,7 +349,7 @@ export default function AddDetails() {
                     name="lastName"
                     id="lastName"
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
-                    required/>
+                    required />
                     </div>
                     <div className="col-span-6 sm:col-span-2 relative -top-[23px]">
                   <label
@@ -373,7 +360,7 @@ export default function AddDetails() {
                     <span className="ml-1 mt-1 text-red-600 font-semibold">*</span>
                   </label>
                   <div className="relative -top-[23px] left-0">
-                  <select name="gender" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500">
+                  <select name="gender" className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500">
                         <option value="male">male</option>
                         <option value="female">female</option>
                         <option value="other">other</option>
@@ -415,8 +402,9 @@ export default function AddDetails() {
                   <input
                     type="tel"
                     name="phone"
+                    required
                     id="phone"
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500" required
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
                   />
                 </div>
               </div>
@@ -452,6 +440,7 @@ export default function AddDetails() {
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
                     id="designation"
                     name="designation"
+                    required
                     type="text"
                   />
                 </div>
@@ -469,6 +458,7 @@ export default function AddDetails() {
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
                     id="website"
                     name="website"
+                    required
                     type="text"
                   />
                 </div>
@@ -487,6 +477,7 @@ export default function AddDetails() {
                     id="email"
                     name="email"
                     type="email"
+                    required
                   />
                 </div>
                 <div className="col-span-6 sm:col-span-3 mt-4">
@@ -502,6 +493,7 @@ export default function AddDetails() {
                   <input
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
                     id="phone"
+                    required
                     name="phone"
                     type="tel"
                   />
@@ -522,6 +514,7 @@ export default function AddDetails() {
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
                     id="email"
                     name="email"
+                    required
                     type="email"
                   />
                 </div>
@@ -559,6 +552,8 @@ export default function AddDetails() {
                 
                 </div>}
             </form>
+            </div>
+            </div>
     </div>
  )
  async function checkCollege(){

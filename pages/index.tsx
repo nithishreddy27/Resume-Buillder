@@ -35,8 +35,11 @@ export default function Home({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Link href="/login" className='bg-red-300 p-4 mx-5'>LOGIN</Link>
-      <Link href="/signup" className='bg-green-300 p-4 mx-5'>SIGN UP</Link>
+      <div className='w-screen h-screen flex justify-center align-middle '>
+
+      <Link href="/login" className='bg-red-300 p-4 mx-5 h-12 my-auto'>LOGIN</Link>
+      <Link href="/signup" className='bg-green-300 p-4 mx-5 h-12 my-auto'>SIGN UP</Link>
+      </div>
     </>
   )
 }
