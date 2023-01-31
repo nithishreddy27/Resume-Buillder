@@ -1,4 +1,4 @@
-import { createUser } from '../../lib/user'
+import { createUser, findUser } from '../../lib/user'
 import passport from 'passport'
 import nextConnect from 'next-connect'
 import { setLoginSession } from '../../lib/auth'
@@ -23,11 +23,22 @@ export default nextConnect()
   .use(passport.initialize())
   .post(async (req, res) => {
     try {
-      await createUser(req.body)
-      const user = await authenticate('local', req, res)
-      const session = { ...user }
-      await setLoginSession(res, session)
-      res.status(200).send({ done: true })
+
+      const dt = await findUser({"username":req.body.username})
+      // const data= res.json()
+      // console.log(dt);
+      // console.log("in signup",dt);
+      if(dt){
+        throw new Error("User already exist")
+      }
+      else{
+
+        await createUser(req.body)
+        const user = await authenticate('local', req, res)
+        const session = { ...user }
+        await setLoginSession(res, session)
+        res.status(200).send({ done: true })
+      }
     } catch (error) {
       console.error(error)
       res.status(401).send(error.message)
