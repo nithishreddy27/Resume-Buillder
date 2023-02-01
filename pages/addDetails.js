@@ -16,8 +16,35 @@ export default function AddDetails() {
 
     const [position, setPosition] = useState("student")
     const [mess, setmess] = useState("")
-  const [collegeId, setcollegeId] = useState("false")
+    const [collegeId, setcollegeId] = useState("false")
+    const [college, setCollege] = useState()
 
+
+    async function checkCollege(){
+      console.log("inside college");  
+      const clgid=document.getElementById("clgid").value
+      console.log(clgid)
+      if(clgid==""){
+        setmess("Invalid Paraphrase")
+      }
+      else{
+    
+      const res=await fetch(`./api/checkCollege/${clgid}`)
+      console.log(res)   
+      if(res.status===200){
+        setmess("invalid paraphrase")
+        setcollegeId("false")
+        // setCollege()
+      }
+      else{
+        const c= await res.collegeName
+        setmess("")
+        setCollege(c)
+        setcollegeId("true")
+      }
+    }
+    
+    }
 
     return (
     <div>   
@@ -254,10 +281,8 @@ export default function AddDetails() {
                         type="text"
                         required
                         name="college"
-                        // value=""
+                        value={college} 
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
-                        fdprocessedid="bpmeh9"
-                        disabled=""
                       />
                     </div>
                   </div>
@@ -416,6 +441,7 @@ export default function AddDetails() {
                     type="text"
                     required
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
+                    value={college}
                   />
                 </div>
               </div>
@@ -550,25 +576,5 @@ export default function AddDetails() {
             </div>
     </div>
  )
- async function checkCollege(){
-  console.log("inside college");  
-  const clgid=document.getElementById("clgid").value
-  console.log(clgid)
-  if(clgid==""){
-    setmess("Invalid Paraphrase")
-  }
-  else{
 
-  const res=await fetch(`./api/checkCollege/${clgid}`)
-  if(res.status===200){
-    setmess("invalid paraphrase")
-    setcollegeId("false")
-  }
-  else{
-    setmess("")
-    setcollegeId("true")
-  }
-}
-
-}
 }

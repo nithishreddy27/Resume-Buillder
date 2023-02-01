@@ -8,9 +8,9 @@ export default async function handler(req, res){
     const bool= await datb.collection("colleges").findOne({name:clgid.slug})
     console.log(bool)
     if(!bool){
-        res.status(200).send({ done: true }) 
+        res.status(200).send({ done: bool }) 
     }
     else{   
-        res.status(500).send({ done: true })
+        res.status(500).send({ done: false })
     }
 }

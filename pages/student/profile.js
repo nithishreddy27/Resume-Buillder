@@ -41,7 +41,7 @@ export default function profile() {
                           </div>
                           <div>
                             <h1 className=''>Registered Email</h1>
-                            <h1>{user.email}</h1>
+                            <h1>{user.username}</h1>
                           </div>
                           <div>
                             <h1 className=''>Mobile Number</h1>
