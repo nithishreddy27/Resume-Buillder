@@ -25,9 +25,6 @@ export default nextConnect()
     try {
 
       const dt = await findUser({"username":req.body.username})
-      // const data= res.json()
-      // console.log(dt);
-      // console.log("in signup",dt);
       if(dt){
         throw new Error("User already exist")
       }
