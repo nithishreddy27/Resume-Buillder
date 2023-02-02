@@ -44,7 +44,9 @@ const Signup = () => {
 
   return (
     <>
+
       <div className="login w-[50%] mx-auto my-10">
+        
         <Form isLogin={false} errorMessage={errorMsg} onSubmit={handleSubmit} />
       </div>
 

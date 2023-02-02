@@ -3,7 +3,6 @@ import { useUser } from '../lib/hooks'
 import Link from "next/link"
 import Router, { useRouter  } from 'next/router';
 
-
 export default function AddDetails() {
     const user = useUser()
     console.log("current user:",user)
@@ -556,7 +555,7 @@ export default function AddDetails() {
               </div>)
               }
               
-                
+
                 </div>}
             </form>
     </div>
