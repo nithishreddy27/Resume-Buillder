@@ -483,7 +483,6 @@ export const editProfile = () => {
                                    <span class="absolute left-0 top-0 pointer-events-none inline-block h-16 w-16 rounded-full overflow-hidden bg-gray-100 hover:bg-gray-800">
                                      <div class="relative h-full w-full object-fit hover:bg-gray-800">
                                      <span style={{boxSizing: 'border-box', display: 'block', overflow: 'hidden', width: 'initial', height: 'initial', background: 'none', opacity: 1, border: 0, margin: 0, padding: 0, position: 'absolute', top: 0, left: 0, bottom: 0, right: 0}}>
-                                        <img alt='' src="https://www.provast.io/_next/image?url=http%3A%2F%2Fres.cloudinary.com%2Fdj7nomqfd%2Fimage%2Fupload%2Fv1647117869%2Fuploads%2Fbphhxvmlcyyu2pntbikm.png&w=2048&q=75"/>
 
                                      </span>
                                      </div>
@@ -501,14 +500,11 @@ export const editProfile = () => {
                                     className="mt font-semibold-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border  border-gray-300 py-2 px-3 rounded-md"/>
                                     </div>
                                   </div>
-
-                            </div>
-
-                     </div>
-                 </div>
-
-              </div>
-        </div>
+                              </div>
+                         </div>
+                      </div>
+                   </div>
+           </div>
       </div>
       <div className="hidden sm:block">
         <div className='py-5'>
