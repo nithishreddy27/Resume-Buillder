@@ -20,145 +20,145 @@ export const editProfile = () => {
                   <form>
                     <div className="grid grid-cols-6 gap-6">
                       <div className="col-span-6 sm:col-span-3">
-                      <label className="text-sm  font-medium text-gray-700">First name</label>
+                      <label className="text-md  text-black">First name</label>
                       <input type="text" 
                              name="fname"
                              id="fname"
                              required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border-2 border-gray-300 py-2 px-3 rounded-md"
+                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
                              />
                       </div>
                       <div className="col-span-6 sm:col-span-3">
-                      <label className="text-sm text-gray-700">Last name</label>
+                      <label className="text-md  text-black  ">Last name</label>
                       <input type="text" 
                              name="lname"
                              id="lname"
                              required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border-2 border-gray-300 rounded-md py-2 px-3"
+                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
                              />
                       </div> 
                       <div className="col-span-6 sm:col-span-3">
-                      <label className="text-sm text-gray-700">College</label>
+                      <label className="text-md  text-black  ">College</label>
                       <input type="text" 
                              name="clg"
                              id="clg"
                              required=""
                              value=""
-                             className="mt-1 bg-gray-100 cursor-not-allowed focus:outline-none focus:shadow-outline focus:border-gray-300	 block w-full shadow-sm sm:text-sm border-2 border-gray-300 rounded-md py-2 px-3"
+                             className="mt-1 bg-gray-100 cursor-not-allowed focus:outline-none focus:shadow-outline focus:border-gray-300 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
                              />
                       </div> 
                       <div className="col-span-6 sm:col-span-3 lg:col-span-3">
-                      <label className="text-sm text-gray-700">Roll Number</label>
+                      <label className="text-md  text-black  ">Roll Number</label>
                       <input type="text" 
                              name="rno"
                              id="rno"
                              required=""
                              value=""
-                             className="mt-1 bg-gray-100 cursor-not-allowed focus:outline-none focus:shadow-outline focus:border-gray-300	 block w-full shadow-sm sm:text-sm border-2 border-gray-300 rounded-md py-2 px-3"
+                             className="mt-1 bg-gray-100 cursor-not-allowed focus:outline-none focus:shadow-outline focus:border-gray-300 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
                              />
                       </div>
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label className="text-sm text-gray-700">Date Of Birth</label>
+                      <label className="text-md  text-black  ">Date Of Birth</label>
                       <input type="date" 
                              name="rno"
                              id="rno"
                              required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-gray-300	 block w-full shadow-sm sm:text-sm border-2 border-gray-300 rounded-md py-2 px-3"
+                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-gray-300	 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
                              />
                       </div>   
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label className="text-sm text-gray-700">Phone Number</label>
+                      <label className="text-md  text-black  ">Phone Number</label>
                       <input type="text" 
                              name="rno"
                              id="rno"
                              required=""
-                             className="mt-1 bg-gray-100 focus:outline-none focus:shadow-outline  focus:border-orange-500	 block w-full shadow-sm sm:text-sm border-2 border-gray-300 rounded-md py-2 px-3"
+                             className="mt-1 bg-gray-100 focus:outline-none focus:shadow-outline  focus:border-orange-500	 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
                              />
                       </div> 
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label className="text-sm text-gray-700">Registered Email Address</label>
+                      <label className="text-md  text-black  ">Registered Email Address</label>
                       <input type="text" 
                              name="email"
                              id="email"
                              required=""
                              value=""
-                             className="mt-1 bg-gray-100 cursor-not-allowed focus:outline-none focus:shadow-outline focus:border-gray-300	 block w-full shadow-sm sm:text-sm border-2 border-gray-300 rounded-md py-2 px-3"
+                             className="mt-1 bg-gray-100 cursor-not-allowed focus:outline-none focus:shadow-outline focus:border-gray-300  block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
                              />
                       </div>
                       <div className="col-span-6 sm:col-span-3">
-                      <label className="text-sm text-gray-700">Father name</label>
+                      <label className="text-md  text-black  ">Father name</label>
                       <input type="text" 
                              name="faname"
                              id="faname"
                              required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border-2 border-gray-300 py-2 px-3 rounded-md"
+                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
                              />
                       </div>
                       <div className="col-span-6 sm:col-span-3">
-                      <label className="text-sm text-gray-700">Mothers name</label>
+                      <label className="text-md  text-black  ">Mothers name</label>
                       <input type="text" 
                              name="mname"
                              id="mname"
                              required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border-2 border-gray-300 py-2 px-3 rounded-md"
+                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
                              />
                       </div>
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label className="text-sm text-gray-700">Father's Email address</label>
+                      <label className="text-md  text-black  ">Father&apos;s Email address</label>
                       <input type="text" 
                              name="femail"
                              id="femail"
                              required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm  font-mediumborder-2 border-gray-300 py-2 px-3 rounded-md"
+                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border font-mediumborder border-gray-300 py-2 px-3 rounded-md"
                              />
                       </div>
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label className="text-sm text-gray-700">Father's Phone Number</label>
+                      <label className="text-md  text-black  ">Father&apos;s Phone Number</label>
                       <input type="text" 
                              name="fpno"
                              id="fpno"
                              required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border-2 border-gray-300 py-2 px-3 rounded-md"
+                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
                              />
                       </div>
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label className="text-sm text-gray-700">Father's Occupation</label>
+                      <label className="text-md  text-black  ">Father&apos;s Occupation</label>
                       <input type="text" 
                              name="focc"
                              id="focc"
                              required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border-2 border-gray-300 py-2 px-3 rounded-md"
+                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
                              />
                       </div>
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label className="text-sm text-gray-700">Mother's Email address</label>
+                      <label className="text-md  text-black  ">Mother&apos;s Email address</label>
                       <input type="text" 
                              name="memail"
                              id="memail"
                              required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border-2 border-gray-300 py-2 px-3 rounded-md"
+                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
                              />
                       </div>
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label className="text-sm text-gray-700">Mother's Phone Number</label>
+                      <label className="text-md  text-black  ">Mother&apos;s Phone Number</label>
                       <input type="text" 
                              name="mpno"
                              id="mpno"
                              required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border-2 border-gray-300 py-2 px-3 rounded-md"
+                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
                              />
                       </div>
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label className="text-sm text-gray-700">Mother's Occupation</label>
+                      <label className="text-md  text-black  ">Mother&apos;s Occupation</label>
                       <input type="text" 
                              name="mocc"
                              id="mocc"
                              required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border-2 border-gray-300 py-2 px-3 rounded-md"
+                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
                              />
                       </div>
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label className="text-sm text-gray-700">Country</label>
+                      <label className="text-md  text-black  ">Country</label>
                       <select
                       name="country"
                       className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
@@ -216,7 +216,7 @@ export const editProfile = () => {
 <option value="Congo">Congo, the Democratic Republic of the</option>
 <option value="Cook Islands">Cook Islands</option>
 <option value="Costa Rica">Costa Rica</option>
-<option value="Cota D'Ivoire">Cote d'Ivoire</option>
+<option value="Cota D&apos;Ivoire">Cote d&apos;Ivoire</option>
 <option value="Croatia">Croatia (Hrvatska)</option>
 <option value="Cuba">Cuba</option>
 <option value="Cyprus">Cyprus</option>
@@ -277,11 +277,11 @@ export const editProfile = () => {
 <option value="Kazakhstan">Kazakhstan</option>
 <option value="Kenya">Kenya</option>
 <option value="Kiribati">Kiribati</option>
-<option value="Democratic People's Republic of Korea">Korea, Democratic People's Republic of</option>
+<option value="Democratic People&apos;s Republic of Korea">Korea, Democratic People&apos;s Republic of</option>
 <option value="Korea">Korea, Republic of</option>
 <option value="Kuwait">Kuwait</option>
 <option value="Kyrgyzstan">Kyrgyzstan</option>
-<option value="Lao">Lao People's Democratic Republic</option>
+<option value="Lao">Lao People&apos;s Democratic Republic</option>
 <option value="Latvia">Latvia</option>
 <option value="Lebanon" >Lebanon</option>
 <option value="Lesotho">Lesotho</option>
@@ -408,21 +408,21 @@ export const editProfile = () => {
 
                       </div>
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label className="text-sm text-gray-700">City</label>
+                      <label className="text-md  text-black  ">City</label>
                       <input type="text" 
                              name="mpno"
                              id="mpno"
                              required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border-2 border-gray-300 py-2 px-3 rounded-md"
+                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
                              />
                       </div>
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label className="text-sm text-gray-700">State / Province</label>
+                      <label className="text-md  text-black  ">State / Province</label>
                       <input type="text" 
                              name="mocc"
                              id="mocc"
                              required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border-2 border-gray-300 py-2 px-3 rounded-md"
+                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border  border-gray-300 py-2 px-3 rounded-md"
                              />
                       </div>
                        
@@ -442,7 +442,7 @@ export const editProfile = () => {
       <div className="mt-10 sm:mt-0">
         <div className="md:grid md:grid-cols-3 md-gap-6">
             <div className="md:col-span-1">
-              <div className='px-4 sm:px-0'>
+              <div className="px-4 sm:px-0">
                 <p className="text-lg mt-2 font-medium tracking-wider">PROFILE</p>
                 <p  className="text-gray-600 mt-1  text-sm">Be cautious while sharing this information because it will be visible to everyone.</p>
                </div>
@@ -453,30 +453,30 @@ export const editProfile = () => {
                     <div className="bg-white px-4 py-5 sm:p-6 space-y-6">
                        <div className="grid grid-cols-3 gap-6">
                            <div className="col-span-3 sm:col-span-6">
-                             <label  className="text-sm text-gray-700">Website</label>
+                             <label  className="text-md  text-black  ">Website</label>
                              <input type="text" 
                              name="mocc"
                              id="mocc"
                              required=""
                              placeholder="https://www.example.com"
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border-2 border-gray-300 py-2 px-3 rounded-md"
+                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border  border-gray-300 py-2 px-3 rounded-md"
                              />
                              </div>
                             </div>
                             <div className="grid grid-cols-3 gap-6">
                            <div className="col-span-3 sm:col-span-6">
-                             <label  className="text-sm text-gray-700">Linkedin URL</label>
+                             <label  className="text-md  text-black  ">Linkedin URL</label>
                              <input type="text" 
                              name="mocc"
                              id="mocc"
                              required=""
                              placeholder="https://www.linkedin.com/in/username/"
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border-2 border-gray-300 py-2 px-3 rounded-md"
+                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border  border-gray-300 py-2 px-3 rounded-md"
                              />
                              </div>
                             </div>
                           <div className="mt-3 sm:colspan-6 ">
-                            <label className=" block mb-1 text-sm text-gray-700">Photo</label>
+                            <label className=" block mb-1 text-md  text-black  ">Photo</label>
                               <div class="flex items-center">
                                 <div class="relative box">
                                  <button class="overflow-hidden">
@@ -498,7 +498,7 @@ export const editProfile = () => {
                                     id="mocc"
                                     required=""
                                     value='http://res.cloudinary.com/dj7nomqfd/image/upload/v1647117869/uploads/bphhxvmlcyyu2pntbikm.png'
-                                    className="mt font-semibold-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border-2 border-gray-300 py-2 px-3 rounded-md"/>
+                                    className="mt font-semibold-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border  border-gray-300 py-2 px-3 rounded-md"/>
                                     </div>
                                   </div>
 
