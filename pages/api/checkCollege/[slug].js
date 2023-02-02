@@ -5,12 +5,12 @@ export default async function handler(req, res){
     const db=await clientPromise
     const datb=db.db("provast")
     console.log("connected",clgid)
-    const bool= await datb.collection("colleges").findOne({name:clgid.slug})
-    console.log(bool)
+    const bool= await datb.collection("details").findOne({"clgid":clgid.slug})
+    console.log("in college",bool)
     if(!bool){
-        res.status(200).send({ done: true }) 
+        res.status(200).send({ done: bool }) 
     }
     else{   
-        res.status(500).send({ done: true })
+        res.status(500).send({ done: bool })
     }
 }

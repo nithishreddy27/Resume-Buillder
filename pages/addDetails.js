@@ -6,7 +6,6 @@ import Router, { useRouter  } from 'next/router';
 
 export default function AddDetails() {
     const user = useUser()
-    console.log("current user:",user)
     const u=JSON.stringify(user,null,2)
     var username=""
     if(user){
@@ -16,8 +15,39 @@ export default function AddDetails() {
 
     const [position, setPosition] = useState("student")
     const [mess, setmess] = useState("")
-  const [collegeId, setcollegeId] = useState("false")
+    const [collegeId, setcollegeId] = useState("false")
+    const [college, setCollege] = useState()
 
+
+    async function checkCollege(){
+      // console.log("inside college");  
+      const clgid=document.getElementById("clgid").value
+      console.log(clgid)
+      if(clgid==""){
+        setmess("Invalid Paraphrase")
+      }
+      else{
+    
+      const res=await fetch(`./api/checkCollege/${clgid}`)
+      const data=await res.json()
+      // console.log("rununing in student",data.done.collegeName) 
+      
+      // const name=await res.collegeName  
+      // console.log("in collgee",name)
+      if(res.status===200){
+        setmess("invalid paraphrase")
+        setcollegeId("false")
+        setCollege("")
+      }
+      else{
+        // const c= await res.collegeName
+        setmess("")
+        setCollege(data.done.collegeName)
+        setcollegeId("true")
+      }
+    }
+    
+    }
 
     return (
     <div>   
@@ -32,8 +62,10 @@ export default function AddDetails() {
         <form method="POST" action="./api/addDetails" className=' mx-auto my-10'>
           <div className='flex justify-between'>
             <div className=''>
-              <label htmlFor="userame" className="text-sm font-semibold">Signed in as:</label>
-              <input type="text"  value={username} className="mx-2 " id="username" name="username" />
+              <label htmlFor="email" className="text-sm font-semibold">Signed in as:</label>
+              <input type="text"  value={username} className="mx-2 " id="email" name="email" onChange={()=>{
+                console.log("dont change me");
+              }}/>
             </div>
             <div>
               <Link href="/api/logout" className='text-orange-600 text-sm mx-2 font-semibold hover:text-orange-900 hover:underline'>Logout</Link>
@@ -172,15 +204,15 @@ export default function AddDetails() {
                         disabled=""
                       />
                     </div>
-                    <div class="col-span-6 sm:col-span-2 relative -top-[23px]">
+                    <div className="col-span-6 sm:col-span-2 relative -top-[23px]">
                   <label
-                    class="flex items-center mb-1 h-full text-sm font-medium text-gray-700 "
+                    className="flex items-center mb-1 h-full text-sm font-medium text-gray-700 "
                     id="headlessui-listbox-label-1"
                   >
                     Gender
-                    <span class="ml-1 mt-1 text-red-600 font-semibold">*</span>
+                    <span className="ml-1 mt-1 text-red-600 font-semibold">*</span>
                   </label>
-                  <div class="relative -top-[23px] left-0">
+                  <div className="relative -top-[23px] left-0">
                   <select name="gender" className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500">
                         <option value="male" >male</option>
                         <option value="female">female</option>
@@ -254,10 +286,8 @@ export default function AddDetails() {
                         type="text"
                         required
                         name="college"
-                        // value=""
+                        value={college} 
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
-                        fdprocessedid="bpmeh9"
-                        disabled=""
                       />
                     </div>
                   </div>
@@ -288,20 +318,13 @@ export default function AddDetails() {
               <div className="col-span-6 sm:col-span-4 mt-4">
                 <div className="flex">
                   <label for="paraphase" className="block text-sm font-medium text-gray-700">
-                    Paraphase
+                    Create Paraphase
                   </label>
                   <span className="ml-1 text-red-600 font-semibold">*</span>
                 </div>
                 <div className="flex items-center">
                   <input type="text" name="clgid" id="clgid" required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"/>
-                  <div>
-                    <button
-                      type="button"
-                      className="ml-3 mt-1 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-orange-700 bg-orange-100 hover:bg-orange-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
-                      onClick={checkCollege}>
-                      Verify 
-                    </button>
-                  </div>
+                  
                 </div>
                 <p className="mt-1 text-xs text-gray-500" id="pharaphase-description">
                   Enter a passphrase that associates with your college placement
@@ -415,7 +438,9 @@ export default function AddDetails() {
                   <input
                     type="text"
                     required
+                    name='collegeName'
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
+                    value={college}
                   />
                 </div>
               </div>
@@ -533,42 +558,14 @@ export default function AddDetails() {
               </div>
 
 
-              {collegeId=="true" && (<div className="mt-4">
+              <div className="mt-4">
                 <button className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 " type="submit"> Submit </button>
-              </div>)
-              }
-              {
-                collegeId=="false" && (<div className="mt-4">
-                <button className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-400  cursor-not-allowed" type="submit"> Submit </button>
-              </div>)
-              }
-              
-                
-                </div>}
+              </div>  
+            </div>}
             </form>
             </div>
             </div>
     </div>
  )
- async function checkCollege(){
-  console.log("inside college");  
-  const clgid=document.getElementById("clgid").value
-  console.log(clgid)
-  if(clgid==""){
-    setmess("Invalid Paraphrase")
-  }
-  else{
 
-  const res=await fetch(`./api/checkCollege/${clgid}`)
-  if(res.status===200){
-    setmess("invalid paraphrase")
-    setcollegeId("false")
-  }
-  else{
-    setmess("")
-    setcollegeId("true")
-  }
-}
-
-}
 }
