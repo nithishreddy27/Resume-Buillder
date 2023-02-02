@@ -60,8 +60,8 @@ export const editProfile = () => {
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                       <label className="text-md  text-black  ">Date Of Birth</label>
                       <input type="date" 
-                             name="rno"
-                             id="rno"
+                             name="dob"
+                             id="dob"
                              required=""
                              className="mt-1 focus:outline-none focus:shadow-outline focus:border-gray-300	 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
                              />
@@ -69,8 +69,8 @@ export const editProfile = () => {
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                       <label className="text-md  text-black  ">Phone Number</label>
                       <input type="text" 
-                             name="rno"
-                             id="rno"
+                             name="phno"
+                             id="phno"
                              required=""
                              className="mt-1 bg-gray-100 focus:outline-none focus:shadow-outline  focus:border-orange-500	 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
                              />
@@ -115,8 +115,8 @@ export const editProfile = () => {
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                       <label className="text-md  text-black  ">Father&apos;s Phone Number</label>
                       <input type="text" 
-                             name="fpno"
-                             id="fpno"
+                             name="fphno"
+                             id="fphno"
                              required=""
                              className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
                              />
@@ -142,8 +142,8 @@ export const editProfile = () => {
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                       <label className="text-md  text-black  ">Mother&apos;s Phone Number</label>
                       <input type="text" 
-                             name="mpno"
-                             id="mpno"
+                             name="mphno"
+                             id="mphno"
                              required=""
                              className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
                              />
@@ -165,7 +165,7 @@ export const editProfile = () => {
                     >
     
     <option value="Afghanistan">Afghanistan</option>
- <option value="Albania">Albania</option>
+   <option value="Albania">Albania</option>
 <option value="Algeria">Algeria</option>
 <option value="American Samoa">American Samoa</option>
 <option value="Andorra">Andorra</option>
@@ -410,8 +410,8 @@ export const editProfile = () => {
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                       <label className="text-md  text-black  ">City</label>
                       <input type="text" 
-                             name="mpno"
-                             id="mpno"
+                             name="city"
+                             id="city"
                              required=""
                              className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
                              />
@@ -419,8 +419,8 @@ export const editProfile = () => {
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                       <label className="text-md  text-black  ">State / Province</label>
                       <input type="text" 
-                             name="mocc"
-                             id="mocc"
+                             name="state"
+                             id="state"
                              required=""
                              className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border  border-gray-300 py-2 px-3 rounded-md"
                              />
@@ -467,8 +467,8 @@ export const editProfile = () => {
                            <div className="col-span-3 sm:col-span-6">
                              <label  className="text-md  text-black  ">Linkedin URL</label>
                              <input type="text" 
-                             name="mocc"
-                             id="mocc"
+                             name="linkedin"
+                             id="linkedin"
                              required=""
                              placeholder="https://www.linkedin.com/in/username/"
                              className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border  border-gray-300 py-2 px-3 rounded-md"
@@ -494,8 +494,8 @@ export const editProfile = () => {
 
                                    </div>
                                    <input 
-                                    name="mocc"
-                                    id="mocc"
+                                    name="url"
+                                    id="url"
                                     required=""
                                     value='http://res.cloudinary.com/dj7nomqfd/image/upload/v1647117869/uploads/bphhxvmlcyyu2pntbikm.png'
                                     className="mt font-semibold-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border  border-gray-300 py-2 px-3 rounded-md"/>
