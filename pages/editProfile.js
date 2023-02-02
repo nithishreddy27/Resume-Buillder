@@ -9,7 +9,7 @@ export const editProfile = () => {
            <div className="md:grid md:grid-cols-3 md:gap-6">
             <div className="md:col-span-1">
               <div>
-                <p className="text-lg mt-2 font-medium tracking-wider">PERSONAL INFORMATION</p>
+                <p className="text-lg mt-2 font-medium tracking-wider">PERSONAL iINFORMATION</p>
                 <p className="text-gray-600 mt-1  text-sm">Use a permanent address where you can receive mail.</p>
               </div>
             </div>
