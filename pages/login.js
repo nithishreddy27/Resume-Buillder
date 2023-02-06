@@ -4,7 +4,7 @@ import { useUser } from '../lib/hooks'
 import Form from '../components/loginForm'
 
 const Login = () => {
-  useUser({ redirectTo: '/some', redirectIfFound: true })
+  useUser({ redirectTo: '/student/profile', redirectIfFound: true })
 
   const [errorMsg, setErrorMsg] = useState('')
 

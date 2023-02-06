@@ -9,7 +9,7 @@ export default function Navbar() {
     <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
       <Link href="/" className="mr-6 hover:text-gray-900">Dashboard</Link>
       <Link href="/" className="mr-6 hover:text-gray-900">Notices</Link>
-      <Link href="/" className="mr-6 hover:text-gray-900">Resumes</Link>
+      <Link href="/student/resume" className="mr-6 hover:text-gray-900">Resumes</Link>
       <Link href="/" className="mr-6 hover:text-gray-900">Test Patterns</Link>
       <Link href="/" className="mr-6 hover:text-gray-900">Assessments</Link>
       <Link href="/api/logout" className='font-bold'>LOGOUT</Link>

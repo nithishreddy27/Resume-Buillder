@@ -5,7 +5,7 @@ import Form from '../components/registerform'
 
 
 const Signup = () => {
-  useUser({ redirectTo: '/', redirectIfFound: true })
+  useUser({ redirectTo: '/student/profile', redirectIfFound: true })
 
   const [errorMsg, setErrorMsg] = useState('')
 
