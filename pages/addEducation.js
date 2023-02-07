@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useUser } from '../lib/hooks'
 
 
-const education = () => {
+const Education = () => {
   const user = useUser()
   return (
     <div className="min-h-screen">

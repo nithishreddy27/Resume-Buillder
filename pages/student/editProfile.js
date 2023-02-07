@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../../components/Navbar";
 import { useUser } from "../../lib/hooks";
 
-export const editProfile = () => {
+export const EditProfile = () => {
   useUser({ redirectTo: '/login', redirectIfFound: false })
 
   return (

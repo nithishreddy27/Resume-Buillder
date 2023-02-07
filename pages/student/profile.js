@@ -3,7 +3,7 @@ import Navbar from "../../components/Navbar";
 import { useUser } from "../../lib/hooks";
 import Link from "next/link";
 
-export default function profile() {
+export default function Profile() {
   const [position, setPosition] = useState("profile");
   const user = useUser();
   return (

@@ -2,7 +2,7 @@ import React,{useContext , useState} from 'react'
 import { useUser } from '../../lib/hooks'
 import ResumeContext from "../context/ResumeContext"
 
-export default function about() {
+export default function About() {
     // useUser({ redirectTo: '/student/profile', redirectIfFound: true })
   useUser({ redirectTo: '/login', redirectIfFound: false })
 
