@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Router from 'next/router'
 import { useUser } from '../lib/hooks'
 import Form from '../components/registerform'
+import Image from 'next/image'
 
 
 const Signup = () => {
@@ -45,7 +46,7 @@ const Signup = () => {
 
   return (
     <>
-      <img className="absolute top-0 bottom-0 h-[100%] w-[100%] object-cover "
+      <Image className="absolute top-0 bottom-0 h-[100%] w-[100%] object-cover "
         src="https://qsf.fs.quoracdn.net/-4-ans_frontend_assets.images.home_page_bg_desktop.png-26-4770753d59b970e1.png"
         alt=""
       />
