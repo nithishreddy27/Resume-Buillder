@@ -61,8 +61,8 @@ export default function AddDetails() {
         <form method="POST" action="./api/addDetails" className=' mx-auto my-10'>
           <div className='flex justify-between'>
             <div className=''>
-              <label htmlFor="email" className="text-sm font-semibold">Signed in as:</label>
-              <input type="text"  value={username} className="mx-2 " id="email" name="email" onChange={()=>{
+              <label htmlFor="username" className="text-sm font-semibold">Signed in as:</label>
+              <input type="text"  value={username} className="mx-2 " id="username" name="username" onChange={()=>{
                 console.log("dont change me");
               }}/>
             </div>
