@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React, { useState } from "react";
+
 import { FiMenu } from "react-icons/fi";
 import { FiMapPin } from "react-icons/fi";
 import { FiDelete } from "react-icons/fi";
@@ -34,7 +35,7 @@ const Home = (props) => {
   const [filter, setFilter] = useState(false);
   const [reso, setReso] = useState(false);
   return (
-    <div className=" bg-white">
+    <div className="h-screen ">
       <div className="border-b border-gray-300 py-2 fixed w-[100%] z-40 bg-slate-50">
         <div className="flex items-center justify-between xl:max-w-7xl xl:mx-auto max-w-full px-[8%] flex-wrap w-full">
           {/* <h1>Provast</h1> */}
