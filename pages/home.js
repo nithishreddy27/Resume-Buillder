@@ -1,8 +1,10 @@
 import Link from "next/link";
 import React, { useState } from "react";
+
 import { FiMenu } from "react-icons/fi";
 import { FiMapPin } from "react-icons/fi";
 import { FiDelete } from "react-icons/fi";
+
 const home = () => {
   const [open, setOpen] = useState(false);
   const [filter, setFilter] = useState(false);
@@ -153,7 +155,7 @@ const home = () => {
                     min="0"
                     max="500000"
                     step="5000"
-                    className="w-full"
+                    className="w-full accent-orange-500"
                   ></input>
                 </div>
               </div>
@@ -168,7 +170,7 @@ const home = () => {
                     min="0"
                     max="500000"
                     step="5000"
-                    className="w-full"
+                    className="w-full accent-orange-500"
                   ></input>
                 </div>
               </div>
@@ -232,9 +234,12 @@ const home = () => {
                 </div>
               </div>
             </div>
-            <div className="m-5">
+            <div className="m-5 flex">
               <h1 className="text-center font-semibold">Resumes</h1>
+              
             </div>
+          
+            
             <div className="mx-auto px-4"></div>
             </div>
           </div>
