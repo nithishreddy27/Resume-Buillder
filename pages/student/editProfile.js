@@ -1,7 +1,10 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
+import { useUser } from "../../lib/hooks";
 
 export const editProfile = () => {
+  useUser({ redirectTo: '/login', redirectIfFound: false })
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -23,7 +26,7 @@ export const editProfile = () => {
                 <div>
                   <div className="sm:rounded-md shadow overflow-hidden rounded-sm">
                     <div className="px-4 py-5 rounded-md bg-white sm:p-6">
-                      <form>
+                      <form action="../api/update" method="POST">
                         <div className="grid grid-cols-6 gap-6">
                           <div className="col-span-6 sm:col-span-3">
                             <label className="text-md  text-black">
@@ -31,8 +34,8 @@ export const editProfile = () => {
                             </label>
                             <input
                               type="text"
-                              name="fname"
-                              id="fname"
+                              name="firstName"
+                              id="firstName"
                               required=""
                               className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
                             />
@@ -43,8 +46,8 @@ export const editProfile = () => {
                             </label>
                             <input
                               type="text"
-                              name="lname"
-                              id="lname"
+                              name="lastName"
+                              id="lastName"
                               required=""
                               className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
                             />
@@ -55,11 +58,11 @@ export const editProfile = () => {
                             </label>
                             <input
                               type="text"
-                              name="clg"
-                              id="clg"
+                              name="college"
+                              id="college"
                               required=""
-                              value=""
-                              className="mt-1 bg-gray-100 cursor-not-allowed focus:outline-none focus:shadow-outline focus:border-gray-300 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
+                              
+                              className="mt-1 bg-gray-100  focus:outline-none focus:shadow-outline focus:border-gray-300 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
                             />
                           </div>
                           <div className="col-span-6 sm:col-span-3 lg:col-span-3">
@@ -68,11 +71,10 @@ export const editProfile = () => {
                             </label>
                             <input
                               type="text"
-                              name="rno"
-                              id="rno"
+                              name="rollnumber"
+                              id="rollnumber"
                               required=""
-                              value=""
-                              className="mt-1 bg-gray-100 cursor-not-allowed focus:outline-none focus:shadow-outline focus:border-gray-300 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
+                              className="mt-1 bg-gray-100  focus:outline-none focus:shadow-outline focus:border-gray-300 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
                             />
                           </div>
                           <div className="col-span-6 sm:col-span-3 lg:col-span-2">
@@ -93,8 +95,8 @@ export const editProfile = () => {
                             </label>
                             <input
                               type="text"
-                              name="phno"
-                              id="phno"
+                              name="phone"
+                              id="phone"
                               required=""
                               className="mt-1 bg-gray-100 focus:outline-none focus:shadow-outline  focus:border-orange-500	 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
                             />
@@ -105,11 +107,10 @@ export const editProfile = () => {
                             </label>
                             <input
                               type="text"
-                              name="email"
-                              id="email"
+                              name="username"
+                              id="username"
                               required=""
-                              value=""
-                              className="mt-1 bg-gray-100 cursor-not-allowed focus:outline-none focus:shadow-outline focus:border-gray-300  block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
+                              className="mt-1 bg-gray-100  focus:outline-none focus:shadow-outline focus:border-gray-300  block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
                             />
                           </div>
                           <div className="col-span-6 sm:col-span-3">
@@ -118,8 +119,8 @@ export const editProfile = () => {
                             </label>
                             <input
                               type="text"
-                              name="faname"
-                              id="faname"
+                              name="fathername"
+                              id="fathername"
                               required=""
                               className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
                             />
@@ -130,8 +131,8 @@ export const editProfile = () => {
                             </label>
                             <input
                               type="text"
-                              name="mname"
-                              id="mname"
+                              name="mothername"
+                              id="mothername"
                               required=""
                               className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
                             />
@@ -142,8 +143,8 @@ export const editProfile = () => {
                             </label>
                             <input
                               type="text"
-                              name="femail"
-                              id="femail"
+                              name="fatheremail"
+                              id="fatheremail"
                               required=""
                               className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border font-mediumborder border-gray-300 py-2 px-3 rounded-md"
                             />
@@ -154,8 +155,8 @@ export const editProfile = () => {
                             </label>
                             <input
                               type="text"
-                              name="fphno"
-                              id="fphno"
+                              name="fatherphone"
+                              id="fatherphone"
                               required=""
                               className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
                             />
@@ -166,8 +167,8 @@ export const editProfile = () => {
                             </label>
                             <input
                               type="text"
-                              name="focc"
-                              id="focc"
+                              name="fatherocc"
+                              id="fatherocc"
                               required=""
                               className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
                             />
@@ -178,8 +179,8 @@ export const editProfile = () => {
                             </label>
                             <input
                               type="text"
-                              name="memail"
-                              id="memail"
+                              name="motheremail"
+                              id="motheremail"
                               required=""
                               className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
                             />
@@ -190,8 +191,8 @@ export const editProfile = () => {
                             </label>
                             <input
                               type="text"
-                              name="mphno"
-                              id="mphno"
+                              name="motherphone"
+                              id="motherphone"
                               required=""
                               className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
                             />
@@ -202,8 +203,8 @@ export const editProfile = () => {
                             </label>
                             <input
                               type="text"
-                              name="mocc"
-                              id="mocc"
+                              name="motherocc"
+                              id="motherocc"
                               required=""
                               className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
                             />
@@ -603,6 +604,12 @@ export const editProfile = () => {
                               className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border  border-gray-300 py-2 px-3 rounded-md"
                             />
                           </div>
+                          <button
+                type="submit"
+                className="bg-orange-600 text-sm ml-3 text-white font-medium  hover:bg-orange-700 py-2 px-4 border border-gray-300 rounded-md shadow-sm"
+              >
+                Save
+              </button>
                         </div>
                       </form>
                     </div>

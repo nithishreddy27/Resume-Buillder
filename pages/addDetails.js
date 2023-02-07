@@ -62,7 +62,7 @@ export default function AddDetails() {
           <div className='flex justify-between'>
             <div className=''>
               <label htmlFor="username" className="text-sm font-semibold">Signed in as:</label>
-              <input type="text"  value={username} className="mx-2 " id="username" name="username" onChange={()=>{
+              <input type="text"  value={username} className="mx-2 border-none " id="username" name="username" onChange={()=>{
                 console.log("dont change me");
               }}/>
             </div>
@@ -159,7 +159,7 @@ export default function AddDetails() {
                       <div className="flex">
                         <label
                           htmlFor="firstName"
-                          className="block text-sm font-medium text-gray-700"
+                          className="block text-sm font-medium  text-gray-700"
                         >
                           First Name
                         </label>
