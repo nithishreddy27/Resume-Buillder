@@ -25,7 +25,7 @@ const Login = () => {
         body: JSON.stringify(body),
       })
       if (res.status === 200) {
-        Router.push('/some')
+        Router.push('/student/profile')
       } else {
         throw new Error(await res.text())
       }
@@ -37,8 +37,14 @@ const Login = () => {
 
   return (
     <>
-      <div className="login w-[50%] mx-auto my-10 ">
+      <img className="absolute top-0 bottom-0 h-[100%] w-[100%] object-cover "
+        src="https://qsf.fs.quoracdn.net/-4-ans_frontend_assets.images.home_page_bg_desktop.png-26-4770753d59b970e1.png"
+        alt=""
+      />
+      <div className="login mx-auto my-10 z-40 relative">
+        <div className="sm:mx-auto sm:w-full sm:max-w-md w-[300px] mx-auto">
         <Form isLogin errorMessage={errorMsg} onSubmit={handleSubmit} />
+        </div>
       </div>
       
     </>

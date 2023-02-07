@@ -3,6 +3,7 @@ import Router from 'next/router'
 import { useUser } from '../lib/hooks'
 import Form from '../components/registerform'
 
+
 const Signup = () => {
   useUser({ redirectTo: '/', redirectIfFound: true })
 
@@ -44,10 +45,14 @@ const Signup = () => {
 
   return (
     <>
-
-      <div className="login w-[50%] mx-auto my-10">
-        
+      <img className="absolute top-0 bottom-0 h-[100%] w-[100%] object-cover "
+        src="https://qsf.fs.quoracdn.net/-4-ans_frontend_assets.images.home_page_bg_desktop.png-26-4770753d59b970e1.png"
+        alt=""
+      />
+      <div className="login mx-auto my-10 z-40 relative ">
+        <div className="className='sm:mx-auto sm:w-full sm:max-w-md w-[300px] mx-auto">
         <Form isLogin={false} errorMessage={errorMsg} onSubmit={handleSubmit} />
+        </div>
       </div>
 
     </>
