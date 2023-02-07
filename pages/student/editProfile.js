@@ -753,4 +753,4 @@ export const EditProfile = () => {
     </div>
   );
 };
-export default editProfile;
+export default EditProfile;

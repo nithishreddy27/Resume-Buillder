@@ -471,7 +471,7 @@ const Home = (props) => {
   );
 };
 
-export default home;
+export default Home;
 
 export const getServerSideProps = async () => {
   const res = await fetch("http://localhost:3000/api/getJobs");

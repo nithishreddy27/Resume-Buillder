@@ -253,4 +253,4 @@ const Education = () => {
   );
 };
 
-export default education;
+export default Education;
