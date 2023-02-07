@@ -1,7 +1,12 @@
 import React,{useContext , useState} from 'react'
+import { useUser } from '../../lib/hooks'
 import ResumeContext from "../context/ResumeContext"
 
 export default function about() {
+    // useUser({ redirectTo: '/student/profile', redirectIfFound: true })
+  useUser({ redirectTo: '/login', redirectIfFound: false })
+
+
     const a= useContext(ResumeContext)
     console.log(a)
     const [name, setname] = useState(a.details.name)

@@ -4,13 +4,30 @@ import React, { useState } from "react";
 import { FiMenu } from "react-icons/fi";
 import { FiMapPin } from "react-icons/fi";
 import { FiDelete } from "react-icons/fi";
+import { useUser } from "../../lib/hooks";
+const home = (props) => {
 
-const home = () => {
+  useUser({ redirectTo: '/login', redirectIfFound: false })
+
+
+
+  function stipendChange(){
+    var value=document.getElementById("stipendValue").value
+    
+    document.getElementById("stipend").innerHTML="Rs."+value
+  }
+
+  function ctcChange(){
+    var value=document.getElementById("ctcValue").value
+    document.getElementById("ctc").innerHTML="Rs."+value
+  }
+
+
   const [open, setOpen] = useState(false);
   const [filter, setFilter] = useState(false);
   const [reso,setReso] = useState(false);
   return (
-    <div className=" bg-white">
+    <div className="h-screen ">
       <div className="border-b border-gray-300 py-2 fixed w-[100%] z-40 bg-slate-50">
         <div className="flex items-center justify-between xl:max-w-7xl xl:mx-auto max-w-full px-[8%] flex-wrap w-full">
           {/* <h1>Provast</h1> */}
@@ -111,7 +128,7 @@ const home = () => {
                   id="active"
                   name="active"
                   type="checkbox"
-                  class="mt-[-5px] bg-red-100 border-red-300 text-red-500 focus:ring-red-200 rounded-sm"
+                  className="mt-[-5px] bg-red-100 border-red-300 text-red-500 focus:ring-red-200 rounded-sm"
                 />
                 <label className="lg:p-1 xl:p-3"> Active</label>
               </div>
@@ -120,7 +137,7 @@ const home = () => {
                   id="active"
                   name="active"
                   type="checkbox"
-                  class="mt-[-5px] bg-red-100 border-red-300 text-red-500 focus:ring-red-200 rounded-sm"
+                  className="mt-[-5px] bg-red-100 border-red-300 text-red-500 focus:ring-red-200 rounded-sm"
                 />
                 <label className="lg:p-1 xl:p-3"> Inactive</label>
               </div>
@@ -129,7 +146,7 @@ const home = () => {
                   id="active"
                   name="active"
                   type="checkbox"
-                  class="mt-[-5px] bg-red-100 border-red-300 text-red-500 focus:ring-red-200 rounded-sm"
+                  className="mt-[-5px] bg-red-100 border-red-300 text-red-500 focus:ring-red-200 rounded-sm"
                 />
                 <label className="lg:p-1 xl:p-3"> Internship</label>
               </div>
@@ -138,7 +155,7 @@ const home = () => {
                   id="active"
                   name="active"
                   type="checkbox"
-                  class="mt-[-5px] bg-red-100 border-red-300 text-red-500 focus:ring-red-200 rounded-sm"
+                  className="mt-[-5px] bg-red-100 border-red-300 text-red-500 focus:ring-red-200 rounded-sm"
                 />
                 <label className="lg:p-1 xl:p-3"> Full Time</label>
               </div>
@@ -147,7 +164,7 @@ const home = () => {
               <div className="sm:w-[50%] sm:px-5 lg:w-full lg:px-0">
                 <div className="flex justify-between font-medium text-gray-700 ">
                   <p className="block font-medium text-gray-700">Stipend</p>
-                  <p>Rs.0</p>
+                  <p id="stipend">Rs.250000</p>
                 </div>
                 <div>
                   <input
@@ -155,14 +172,15 @@ const home = () => {
                     min="0"
                     max="500000"
                     step="5000"
-                    className="w-full accent-orange-500"
-                  ></input>
+                    className="w-full accent-orange-400"
+                    onChange={stipendChange} 
+                    id="stipendValue"></input>
                 </div>
               </div>
               <div className="sm:w-[50%] sm:px-5 lg:px-0 lg:w-full">
                 <div className="flex justify-between font-medium text-gray-700 ">
                   <p className="block font-medium text-gray-700">CTC</p>
-                  <p>Rs.0</p>
+                  <p id="ctc">Rs.250000</p>
                 </div>
                 <div>
                   <input
@@ -170,8 +188,9 @@ const home = () => {
                     min="0"
                     max="500000"
                     step="5000"
-                    className="w-full accent-orange-500"
-                  ></input>
+                    className="w-full"
+                    onChange={ctcChange}
+                    id="ctcValue"></input>
                 </div>
               </div>
             </div>
@@ -179,7 +198,7 @@ const home = () => {
               <div className="mt-1 grid grid-cols-1 gap-2">
                 <div>
                   <label
-                    for="sortby"
+                    htmlFor="sortby"
                     className="block font-medium text-gray-700"
                   >
                     sortby
@@ -199,7 +218,7 @@ const home = () => {
               <div className="mt-1 grid grid-cols-1 gap-2">
                 <div>
                   <label
-                    for="sortorder"
+                    htmlFor="sortorder"
                     className="block font-medium text-gray-700"
                   >
                     sort order
@@ -244,9 +263,8 @@ const home = () => {
             </div>
           </div>
           <div
-            className={` border border-gray-200 rounded-sm mx-2 relative lg:static lg:mt-[105px] top-[160px]  lg:w-[60%]`}
-          >
-            <div className="border border-gray-300 rounded-md mx-2 my-3 p-3 lg:p-8">
+            className={` border border-gray-200 rounded-sm mx-2 relative lg:static lg:mt-[105px] top-[160px]  lg:w-[60%]`}>
+            {/* <div className="border border-gray-300 rounded-md mx-2 my-3 p-3 lg:p-8">
               <div className="flex">
                 <div className="w-[200px] h-[100px] bg-white"></div>
                 <div className="p-2">
@@ -347,7 +365,61 @@ const home = () => {
                 chennai, pune, gurgaon,noida
               </div>
               <div className="px-4">posted a month ago</div>
+            </div> */}
+            {/* <p>{props.company}</p> */}
+            <p>Jobs</p>
+            {/* {
+              props.map((job)=>{
+                <p>{job.company}</p>
+              })
+            } */}
+            {
+              // console.log("in index",props.done)
+              props.done.map((job)=>(
+                <>
+                  <div className="border border-gray-300 rounded-md mx-2 my-3 p-3 lg:p-8">
+              <div className="flex">
+                <div className="w-[200px] h-[100px] bg-white"></div>
+                <div className="p-2">
+                  {job.company}
+                  <div>Rs. CTC: {job.ctc}</div>
+                </div>
+              </div>
+              <div className="flex justify-start">
+                <div className="p-1 mx-2 bg-red-200 text-red-700 rounded-lg">
+                  {job.status}
+                </div>
+                <div className="p-1 mx-2 bg-orange-100 text-orange-800 rounded-lg">
+                  {job.type}
+                </div>
+              </div>
+              <div className="flex">
+                <div className="mx-1 my-auto p-1 border border-orange-500 rounded-lg flex justify-center ">
+                  Eligible:311
+                </div>
+                <div className="mx-1 my-2 p-1 border border-orange-500 rounded-lg ">
+                  Applied:0
+                </div>
+                <div className="mx-1 my-auto  p-1 border flex justify-center  border-orange-500 rounded-lg">
+                  Not interested:311
+                </div>
+              </div>
+
+              <div className="flex">
+                <FiMapPin className="h-6 w-6 inline m-1"></FiMapPin> 
+                {
+                  job.location.map((loc)=>(
+                    <p>{loc}</p>
+                  ))
+                }
+              </div>
+              <div className="px-4">posted a month ago</div>
             </div>
+                </>
+                
+              )
+              )
+            }
           </div>
           <div className={`${reso ? "block" : "hidden"} lg:block lg:w-[20%]`}>
             <div className="border border-gray-200 rounded-sm relative z-50 mt-[180px] lg:top-[150px] lg:static lg:w-[100%] lg:mx-[-5px] lg:mt-[105px]">
@@ -379,3 +451,14 @@ const home = () => {
 };
 
 export default home;
+
+export const getServerSideProps = async () =>{
+  const res=await fetch("http://localhost:3000/api/getJobs")
+  const data = await res.json()
+  // console.log("student",data)
+  return{
+    props:{
+      done:data.done
+    }
+  }
+}

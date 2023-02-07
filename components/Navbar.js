@@ -15,7 +15,7 @@ export default function Navbar() {
           </Link>
         </div>
         <div className="flex justify-between">
-          <Link href="/" className="mr-6 hover:text-gray-900">
+          <Link href="/student" className="mr-6 hover:text-gray-900">
             Dashboard
           </Link>
           <Link href="/" className="mr-6 hover:text-gray-900">
