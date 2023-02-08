@@ -748,7 +748,6 @@ export const EditProfile = () => {
             </div>
           </div>
         </div>
-          
       </div>
     </div>
   );

@@ -2,10 +2,19 @@ import React, { useState } from "react";
 import Navbar from "../../components/Navbar";
 import { useUser } from "../../lib/hooks";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Profile() {
   const [position, setPosition] = useState("profile");
   const user = useUser();
+  const router = useRouter();
+
+
+  function runMe(){
+    console.log("in srun")
+    router.push('/addDetails')
+    
+  }
   return (
     <div className="h-screen w-screen">
       <Navbar />
@@ -24,7 +33,7 @@ export default function Profile() {
       </div>
       <div className=" h-[64%] p-10">
         {console.log("user", user)}
-        {user && (
+        {user && user.firstName && (
           <div>
             <div className="flex justify-around">
               <h1 className="align-middle text-2xl font-bold ">
@@ -103,6 +112,16 @@ export default function Profile() {
             )}
           </div>
         )}
+
+
+        {user && !user.firstName &&(
+          <>
+            {
+              runMe()
+            }
+          </>
+        ) }
+        
       </div>
     </div>
   );
