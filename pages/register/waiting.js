@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function waiting() {
+export default function Waiting() {
   return (
     <div>waiting</div>
   )

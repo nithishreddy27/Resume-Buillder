@@ -4,7 +4,7 @@ import Link from "next/link"
 import Router, { useRouter  } from 'next/router';
 
 
-export default function addStdDetails() {
+export default function AddStdDetails() {
     const user = useUser()
     const u=JSON.stringify(user,null,2)
     var username=""

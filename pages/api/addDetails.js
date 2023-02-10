@@ -15,6 +15,10 @@ export default async function handler(req,res){
         if(req.body.notificationMethod == "college"){
           res.writeHead(302, { Location: '/register/waiting' })
         }
+        if(req.body.notificationMethod == "corporate"){
+          res.writeHead(302, { Location: '/register/waiting' })
+        }
+
         res.end()
     } 
   catch (error) {

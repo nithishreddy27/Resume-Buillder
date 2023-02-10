@@ -4,7 +4,7 @@ import Form from '../../components/registerform'
 import Router, { useRouter } from "next/router"
 
 
-export default function individual() {
+export default function Index() {
   
   useUser({ redirectTo: '/student/profile', redirectIfFound: true })
     const router = useRouter()
