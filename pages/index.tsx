@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { useUser } from '../lib/hooks'
-import clientPromise from '../lib/mongodb'
 import { Inter } from '@next/font/google'
 
 import { InferGetServerSidePropsType } from 'next'
@@ -10,7 +9,6 @@ const inter = Inter({ subsets: ['latin'] })
 
 export async function getServerSideProps(context: any) {
   try {
-    await clientPromise
 
     return {
       props: { isConnected: true },
