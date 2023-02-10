@@ -4,6 +4,7 @@ import { removeTokenCookie } from '../../lib/auth-cookies'
 
 
 export default async function handler(req,res){
+  console.log("education : ",req.body)
     try{
         var data=await addDetails(req.body)
         removeTokenCookie(res)

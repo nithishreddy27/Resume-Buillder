@@ -35,7 +35,7 @@ export default function Home({
       </Head>
       <div className='w-screen h-screen flex justify-center align-middle '>
 
-      <Link href="/login" className='bg-red-300 p-4 mx-5 h-12 my-auto'>LOGIN</Link>
+      <Link href="/accounts" className='bg-red-300 p-4 mx-5 h-12 my-auto'>LOGIN</Link>
       <Link href="/signup" className='bg-green-300 p-4 mx-5 h-12 my-auto'>SIGN UP</Link>
       </div>
     </>

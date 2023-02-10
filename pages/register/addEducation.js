@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 // import {useUser} from 
-import { useUser } from '../lib/hooks'
+import { useUser } from '../../lib/hooks'
 
 
 const Education = () => {
@@ -17,7 +17,7 @@ const Education = () => {
       <div className="min-h-screen flex flex-col justify-center items-center pb-4 sm:px-6 lg:px-8">
       <div className="mt-4 sm:mx-auto sm:w-full sm:max-w-3xl relative grid h-screen place-items-center px-2">
         <div className="bg-white pt-1 pb-8 shadow-xl rounded-xl px-10 ">
-          <form method="POST" action="./api/addEducation">
+          <form method="POST" action="../api/addEducation">
             <div className="flex justify-between my-6 items-center">
               <div>
                 <label htmlFor="userame" className="text-sm font-semibold">

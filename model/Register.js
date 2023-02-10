@@ -21,6 +21,9 @@ const userSchema=new mongoose.Schema({
     salt:{
         type: String
     },
+    notificationMethod:{
+        type: String 
+    },
     paraphase:{
         type: String
         
@@ -83,7 +86,7 @@ const userSchema=new mongoose.Schema({
         type:String
     },
     duration:{
-        type:String
+        type:Array
     },
     
 
