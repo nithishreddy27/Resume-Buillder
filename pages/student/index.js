@@ -1,32 +1,41 @@
 import Link from "next/link";
 import React, { useState } from "react";
+
 import { FiMenu } from "react-icons/fi";
 import { FiMapPin } from "react-icons/fi";
 import { FiDelete } from "react-icons/fi";
 import { useUser } from "../../lib/hooks";
-const home = (props) => {
+const Home = (props) => {
+  useUser({ redirectTo: "/login", redirectIfFound: false });
 
-  useUser({ redirectTo: '/login', redirectIfFound: false })
+  const [active, setActive] = useState("active")
+  const [Internship, setInternship] = useState(false)
+  const [stipend, setstipend] = useState(250000)
+  const [ctc,setctc]=useState(250000)
 
 
-
-  function stipendChange(){
-    var value=document.getElementById("stipendValue").value
-    
-    document.getElementById("stipend").innerHTML="Rs."+value
+  function typeCheck() {
+    console.log("checked");
   }
 
-  function ctcChange(){
-    var value=document.getElementById("ctcValue").value
-    document.getElementById("ctc").innerHTML="Rs."+value
+  function stipendChange() {
+    var value = document.getElementById("stipendValue").value;
+
+    // document.getElementById("stipend").innerHTML = "Rs." + value;
+    setstipend(value)
   }
 
+  function ctcChange() {
+    var value = document.getElementById("ctcValue").value;
+    // document.getElementById("ctc").innerHTML = "Rs." + value;
+    setctc(value) 
+  }
 
   const [open, setOpen] = useState(false);
   const [filter, setFilter] = useState(false);
-  const [reso,setReso] = useState(false);
+  const [reso, setReso] = useState(false);
   return (
-    <div className=" bg-white">
+    <div className="h-screen ">
       <div className="border-b border-gray-300 py-2 fixed w-[100%] z-40 bg-slate-50">
         <div className="flex items-center justify-between xl:max-w-7xl xl:mx-auto max-w-full px-[8%] flex-wrap w-full">
           {/* <h1>Provast</h1> */}
@@ -106,160 +115,175 @@ const home = (props) => {
             >
               filters
             </div>
-            <div className="p-4 w-[50%] text-center"
-              onClick={() => setReso(!reso)}>Resources</div>
+            <div
+              className="p-4 w-[50%] text-center"
+              onClick={() => setReso(!reso)}
+            >
+              Resources
+            </div>
           </div>
         </div>
         <div className={` lg:flex `}>
           <div className={`${filter ? "block" : "hidden"} lg:block lg:w-[20%]`}>
-          <div className="border border-gray-200 rounded-sm relative top-[150px] lg:static lg:w-[100%] lg:mx-[6px] lg:mt-[105px]">
-            <h3 className="text-2xl py-5 text-center lg:text-start lg:py-3 lg:px-5 font-semibold">
-              Filters
-            </h3>
-            <input
-              type="text"
-              placeholder="Search"
-              className="w-[80%] mx-auto flex justify-center lg:mx-5 shadow appearance-none border rounded lg:py-1 lg:px-3 text-gray-700 leading-tight focus:outline-none lg:focus:shadow-outline focus:border-orange-500"
-            ></input>
-            <div className="ml-10 sm:ml-[100px] my-5 lg:my-5 lg:ml-1  grid grid-cols-2 gap-2">
-              <div>
-                <input
-                  id="active"
-                  name="active"
-                  type="checkbox"
-                  className="mt-[-5px] bg-red-100 border-red-300 text-red-500 focus:ring-red-200 rounded-sm"
-                />
-                <label className="lg:p-1 xl:p-3"> Active</label>
-              </div>
-              <div>
-                <input
-                  id="active"
-                  name="active"
-                  type="checkbox"
-                  className="mt-[-5px] bg-red-100 border-red-300 text-red-500 focus:ring-red-200 rounded-sm"
-                />
-                <label className="lg:p-1 xl:p-3"> Inactive</label>
-              </div>
-              <div>
-                <input
-                  id="active"
-                  name="active"
-                  type="checkbox"
-                  className="mt-[-5px] bg-red-100 border-red-300 text-red-500 focus:ring-red-200 rounded-sm"
-                />
-                <label className="lg:p-1 xl:p-3"> Internship</label>
-              </div>
-              <div>
-                <input
-                  id="active"
-                  name="active"
-                  type="checkbox"
-                  className="mt-[-5px] bg-red-100 border-red-300 text-red-500 focus:ring-red-200 rounded-sm"
-                />
-                <label className="lg:p-1 xl:p-3"> Full Time</label>
-              </div>
-            </div>
-            <div className="m-5 sm:flex lg:block">
-              <div className="sm:w-[50%] sm:px-5 lg:w-full lg:px-0">
-                <div className="flex justify-between font-medium text-gray-700 ">
-                  <p className="block font-medium text-gray-700">Stipend</p>
-                  <p id="stipend">Rs.250000</p>
+            <div className="border border-gray-200 rounded-sm relative top-[150px] lg:static lg:w-[100%] lg:mx-[6px] lg:mt-[105px]">
+              <h3 className="text-2xl py-5 text-center lg:text-start lg:py-3 lg:px-5 font-semibold">
+                Filters
+              </h3>
+              <input
+                type="text"
+                placeholder="Search"
+                className="w-[80%] mx-auto flex justify-center lg:mx-5 shadow appearance-none border rounded lg:py-1 lg:px-3 text-gray-700 leading-tight focus:outline-none lg:focus:shadow-outline focus:border-orange-500"
+              ></input>
+              <div className="ml-10 sm:ml-[100px] my-5 lg:my-5 lg:ml-1  grid grid-cols-2 gap-2">
+                <div>
+                  <input
+                    id="active"
+                    name="active"
+                    type="checkbox"
+                    defaultChecked
+                    className="mt-[-5px] bg-red-100 border-red-300 text-red-500 focus:ring-red-200 rounded-sm"
+                    onChange={typeCheck}
+                  />
+                  <label className="lg:p-1 xl:p-3"> Active</label>
                 </div>
                 <div>
                   <input
-                    type="range"
-                    min="0"
-                    max="500000"
-                    step="5000"
-                    className="w-full accent-orange-400"
-                    onChange={stipendChange} 
-                    id="stipendValue"></input>
-                </div>
-              </div>
-              <div className="sm:w-[50%] sm:px-5 lg:px-0 lg:w-full">
-                <div className="flex justify-between font-medium text-gray-700 ">
-                  <p className="block font-medium text-gray-700">CTC</p>
-                  <p id="ctc">Rs.250000</p>
+                    id="active"
+                    name="active"
+                    type="checkbox"
+                    defaultChecked
+                    className="mt-[-5px] bg-red-100 border-red-300 text-red-500 focus:ring-red-200 rounded-sm"
+                    onChange={typeCheck}
+                  />
+                  <label className="lg:p-1 xl:p-3"> Inactive</label>
                 </div>
                 <div>
                   <input
-                    type="range"
-                    min="0"
-                    max="500000"
-                    step="5000"
-                    className="w-full"
-                    onChange={ctcChange}
-                    id="ctcValue"></input>
+                    id="active"
+                    name="active"
+                    type="checkbox"
+                    defaultChecked
+                    className="mt-[-5px] bg-red-100 border-red-300 text-red-500 focus:ring-red-200 rounded-sm"
+                    onChange={typeCheck}
+                  />
+                  <label className="lg:p-1 xl:p-3"> Internship</label>
                 </div>
-              </div>
-            </div>
-            <div className="m-5">
-              <div className="mt-1 grid grid-cols-1 gap-2">
                 <div>
-                  <label
-                    htmlFor="sortby"
-                    className="block font-medium text-gray-700"
-                  >
-                    sortby
-                  </label>
-                  <select
-                    id="sortby"
-                    name="sortby"
-                    className="mt-1 block w-full pl-3 pr-10 py-0 text-base border-gray-300 rounded focus:outline-none focus:ring-orange-500 focus:border-orange-500"
-                  >
-                    <option>Created At</option>
-                    <option>Ending At</option>
-                    <option>Stipend</option>
-                    <option>Alphabetical</option>
-                  </select>
+                  <input
+                    id="active"
+                    name="active"
+                    defaultChecked
+                    type="checkbox"
+                    className="mt-[-5px] bg-red-100 border-red-300 text-red-500 focus:ring-red-200 rounded-sm"
+                    onChange={typeCheck}
+                  />
+                  <label className="lg:p-1 xl:p-3"> Full Time</label>
                 </div>
               </div>
-              <div className="mt-1 grid grid-cols-1 gap-2">
-                <div>
-                  <label
-                    htmlFor="sortorder"
-                    className="block font-medium text-gray-700"
-                  >
-                    sort order
-                  </label>
-                  <select
-                    id="sortby"
-                    name="sortby"
-                    className="mt-1 block w-full pl-3 pr-10 py-0 text-base border-gray-300 rounded focus:outline-none focus:ring-orange-500 focus:border-orange-500"
-                  >
-                    <option>Ascending</option>
-                    <option>Descending</option>
-                  </select>
+              <div className="m-5 sm:flex lg:block">
+                <div className="sm:w-[50%] sm:px-5 lg:w-full lg:px-0">
+                  <div className="flex justify-between font-medium text-gray-700 ">
+                    <p className="block font-medium text-gray-700">Stipend</p>
+                    <p id="stipend">Rs.{stipend}</p>
+                  </div>
+                  <div>
+                    <input
+                      type="range"
+                      min="0"
+                      max="500000"
+                      step="5000"
+                      className="w-full accent-orange-400"
+                      onChange={stipendChange}
+                      id="stipendValue"
+                    ></input>
+                  </div>
+                </div>
+                <div className="sm:w-[50%] sm:px-5 lg:px-0 lg:w-full">
+                  <div className="flex justify-between font-medium text-gray-700 ">
+                    <p className="block font-medium text-gray-700">CTC</p>
+                    <p id="ctc">Rs.{ctc}</p>
+                  </div>
+                  <div>
+                    <input
+                      type="range"
+                      min="0"
+                      max="500000"
+                      step="5000"
+                      className="w-full accent-orange-400"
+                      onChange={ctcChange}
+                      id="ctcValue"
+                    ></input>
+                  </div>
                 </div>
               </div>
-              <button className="mt-3 text-xs text-orange-600 bg-orange-100 px-2 py-1 font-semibold rounded-[3px] tracking-wider hover:bg-orange-200">
-                Clear
-              </button>
-            </div>
-            <div className="m-5">
-              <h1 className="text-center font-semibold">Jobs</h1>
-            </div>
-            <div className="mx-auto px-4">
-              <div className="rounded shadow bg-slate-200 bg-opacity-80 text-center p-5 mb-5">
-                The Dataset is empty for
-                <div>
-                  <span className="text-red-500 font-semibold">Pending </span>
-                  and
-                  <span className="text-orange-400 font-semibold">
-                    {" "}
-                    Applied
-                  </span>
+              <div className="m-5">
+                <div className="mt-1 grid grid-cols-1 gap-2">
+                  <div>
+                    <label
+                      htmlFor="sortby"
+                      className="block font-medium text-gray-700"
+                    >
+                      sortby
+                    </label>
+                    <select
+                      id="sortby"
+                      name="sortby"
+                      className="mt-1 block w-full pl-3 pr-10 py-0 text-base border-gray-300 rounded focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                    >
+                      <option>Created At</option>
+                      <option>Ending At</option>
+                      <option>Stipend</option>
+                      <option>Alphabetical</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="mt-1 grid grid-cols-1 gap-2">
+                  <div>
+                    <label
+                      htmlFor="sortorder"
+                      className="block font-medium text-gray-700"
+                    >
+                      sort order
+                    </label>
+                    <select
+                      id="sortby"
+                      name="sortby"
+                      className="mt-1 block w-full pl-3 pr-10 py-0 text-base border-gray-300 rounded focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                    >
+                      <option>Ascending</option>
+                      <option>Descending</option>
+                    </select>
+                  </div>
+                </div>
+                <button className="mt-3 text-xs text-orange-600 bg-orange-100 px-2 py-1 font-semibold rounded-[3px] tracking-wider hover:bg-orange-200">
+                  Clear
+                </button>
+              </div>
+              <div className="m-5">
+                <h1 className="text-center font-semibold">Jobs</h1>
+              </div>
+              <div className="mx-auto px-4">
+                <div className="rounded shadow bg-slate-200 bg-opacity-80 text-center p-5 mb-5">
+                  The Dataset is empty for
+                  <div>
+                    <span className="text-red-500 font-semibold">Pending </span>
+                    and
+                    <span className="text-orange-400 font-semibold">
+                      {" "}
+                      Applied
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="m-5">
-              <h1 className="text-center font-semibold">Resumes</h1>
-            </div>
-            <div className="mx-auto px-4"></div>
+              <div className="m-5">
+                <h1 className="text-center font-semibold">Resumes</h1>
+              </div>
+              <div className="mx-auto px-4"></div>
             </div>
           </div>
           <div
-            className={` border border-gray-200 rounded-sm mx-2 relative lg:static lg:mt-[105px] top-[160px]  lg:w-[60%]`}>
+            className={` border border-gray-200 rounded-sm mx-2 relative lg:static lg:mt-[105px] top-[160px]  lg:w-[60%]`}
+          >
             {/* <div className="border border-gray-300 rounded-md mx-2 my-3 p-3 lg:p-8">
               <div className="flex">
                 <div className="w-[200px] h-[100px] bg-white"></div>
@@ -362,82 +386,83 @@ const home = (props) => {
               </div>
               <div className="px-4">posted a month ago</div>
             </div> */}
-            {/* <p>{props.company}</p> */}
-            <p>Jobs</p>
-            {/* {
-              props.map((job)=>{
-                <p>{job.company}</p>
-              })
-            } */}
-            {
-              // console.log("in index",props.done)
-              props.done.map((job)=>(
-                <>
-                  <div className="border border-gray-300 rounded-md mx-2 my-3 p-3 lg:p-8">
-              <div className="flex">
-                <div className="w-[200px] h-[100px] bg-white"></div>
-                <div className="p-2">
-                  {job.company}
-                  <div>Rs. CTC: {job.ctc}</div>
-                </div>
-              </div>
-              <div className="flex justify-start">
-                <div className="p-1 mx-2 bg-red-200 text-red-700 rounded-lg">
-                  {job.status}
-                </div>
-                <div className="p-1 mx-2 bg-orange-100 text-orange-800 rounded-lg">
-                  {job.type}
-                </div>
-              </div>
-              <div className="flex">
-                <div className="mx-1 my-auto p-1 border border-orange-500 rounded-lg flex justify-center ">
-                  Eligible:311
-                </div>
-                <div className="mx-1 my-2 p-1 border border-orange-500 rounded-lg ">
-                  Applied:0
-                </div>
-                <div className="mx-1 my-auto  p-1 border flex justify-center  border-orange-500 rounded-lg">
-                  Not interested:311
-                </div>
-              </div>
 
-              <div className="flex">
-                <FiMapPin className="h-6 w-6 inline m-1"></FiMapPin> 
-                {
-                  job.location.map((loc)=>(
-                    <p>{loc}</p>
-                  ))
-                }
+            {props.done.map((job) => (
+              <div key={job._id}>
+                <div className="border border-gray-300 rounded-md mx-2 my-3 p-3 lg:p-8 text-black">
+                  <div className="flex">
+                    <div className="w-[150px] h-[100px] bg-white">
+                      <img src={job.logo} alt="#" />
+                    </div>
+                    <div className="p-2">
+                      {job.company}
+                      <div>Rs. CTC: {job.ctc}</div>
+                    </div>
+                  </div>
+                  <div className="flex justify-start">
+                    <div className="p-1 mx-2 bg-red-200 text-red-700 rounded-lg">
+                      {job.status}
+                    </div>
+                    <div className="p-1 mx-2 bg-orange-100 text-orange-800 rounded-lg">
+                      {job.type}
+                    </div>
+                  </div>
+                  <div className="flex">
+                    <div className="mx-1 my-auto p-1 border border-orange-500 rounded-lg flex justify-center ">
+                      Eligible:311
+                    </div>
+                    <div className="mx-1 my-2 p-1 border border-orange-500 rounded-lg ">
+                      Applied:0
+                    </div>
+                    <div className="mx-1 my-auto  p-1 border flex justify-center  border-orange-500 rounded-lg">
+                      Not interested:311
+                    </div>
+                  </div>
+
+                  <div className="flex">
+                    <FiMapPin className="h-6 w-6 inline m-10"></FiMapPin>
+                    {job.location.map((loc) => (
+                      <p key={loc} className="my-auto">{loc + ","}</p>
+                    ))}
+                  </div>
+                  <div className="px-4">posted a month ago</div>
+                </div>
               </div>
-              <div className="px-4">posted a month ago</div>
-            </div>
-                </>
-                
-              )
-              )
-            }
+            ))}
           </div>
           <div className={`${reso ? "block" : "hidden"} lg:block lg:w-[20%]`}>
             <div className="border border-gray-200 rounded-sm relative z-50 mt-[180px] lg:top-[150px] lg:static lg:w-[100%] lg:mx-[-5px] lg:mt-[105px]">
-                <div className="">
-                    <h1 className="text-2xl py-5 text-center lg:text-start lg:py-3 lg:px-5 font-semibold">Resources</h1>
-                </div>
-                <div className="border border-gray-200 rounded-lg m-2">
+              <div className="">
+                <h1 className="text-2xl py-5 text-center lg:text-start lg:py-3 lg:px-5 font-semibold">
+                  Resources
+                </h1>
+              </div>
+              <div className="border border-gray-200 rounded-lg m-2">
                 <div className="lg:relative lg:h-40">
-                  <img src="https://www.provast.io/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fcrowdicity-us-east-1%2Fimage%2Fupload%2Fw_710%2Ch_500%2Cc_fill%2Fepam-anywhere-logo-240x240-png_ehxcx7&w=2048&q=75" className="absolute"></img>
+                  <img
+                    src="https://www.provast.io/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fcrowdicity-us-east-1%2Fimage%2Fupload%2Fw_710%2Ch_500%2Cc_fill%2Fepam-anywhere-logo-240x240-png_ehxcx7&w=2048&q=75"
+                    className="absolute"
+                  ></img>
                 </div>
                 <div className="lg:px-2 lg:py-1 lg:text-center lg:font-semibold lg:mt-4 xl:mt-8">
-                  <Link href="#" className="hover:underline text-orange-600">Epam Resources for 2023</Link>
+                  <Link href="#" className="hover:underline text-orange-600">
+                    Epam Resources for 2023
+                  </Link>
                 </div>
-                </div>
-                <div className="lg:border lg:border-gray-200 lg:rounded-lg lg:m-2">
+              </div>
+              <div className="lg:border lg:border-gray-200 lg:rounded-lg lg:m-2">
                 <div className="lg:relative lg:h-40">
-                  <img src="https://www.provast.io/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdj7nomqfd%2Fimage%2Fupload%2Fv1651482750%2FAccolite_Digital_Logo_jlrxfj.jpg&w=2048&q=75" className="absolute"></img>
+                  <img
+                    src="https://www.provast.io/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdj7nomqfd%2Fimage%2Fupload%2Fv1651482750%2FAccolite_Digital_Logo_jlrxfj.jpg&w=2048&q=75"
+                    className="absolute"
+                  ></img>
                 </div>
                 <div className="lg:px-2 lg:py-1 lg:text-center lg:font-semibold lg:mt-4 xl:mt-8">
-                  <Link href="#" className="hover:underline text-orange-600">Accolite</Link>
+                  <Link href="#" className="hover:underline text-orange-600">
+                    Accolite
+                  </Link>
                 </div>
-                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -446,15 +471,15 @@ const home = (props) => {
   );
 };
 
-export default home;
+export default Home;
 
-export const getServerSideProps = async () =>{
-  const res=await fetch("http://localhost:3000/api/getJobs")
-  const data = await res.json()
+export const getServerSideProps = async () => {
+  const res = await fetch("http://localhost:3000/api/getJobs");
+  const data = await res.json();
   // console.log("student",data)
-  return{
-    props:{
-      done:data.done
-    }
-  }
-}
+  return {
+    props: {
+      done: data.done,
+    },
+  };
+};
