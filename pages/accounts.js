@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { FiMenu } from 'react-icons/fi'
 import React, { useState } from "react";
 
-const accounts = () => {
+const Accounts = () => {
     const [open, setOpen] = useState(false);
   return (
     
@@ -132,4 +132,4 @@ const accounts = () => {
   )
 }
 
-export default accounts
+export default Accounts
