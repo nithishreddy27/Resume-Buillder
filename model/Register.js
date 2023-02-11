@@ -40,9 +40,9 @@ const userSchema=new mongoose.Schema({
     rollnumber:{
         type: String
     },
-    phone:{
-        type: String
-    },
+    // phone:{
+    //     type: String
+    // },
     college:{
         type: String
     },
@@ -84,11 +84,6 @@ const userSchema=new mongoose.Schema({
     },
     grade:{
         type:String
-    },
-    duration:{
-        type:Array
-    },
-    
-
+    }
 })
 module.exports = mongoose.models.some || mongoose.model('some',userSchema)
