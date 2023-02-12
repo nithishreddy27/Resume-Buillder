@@ -331,6 +331,12 @@ export default function AddStdDetails() {
               </div>
           </div>
         )}
+
+{!user && (
+      <div className="relative z-40 text-4xl  font-bold text-center my-auto h-[100%]">
+       <p className="my-auto"> Please sign in first</p>
+      </div>
+     )}
     </div>
  )
 
