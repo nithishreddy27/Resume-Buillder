@@ -6,7 +6,7 @@ import Router, { useRouter } from "next/router"
 
 export default function Index() {
   
-  useUser({ redirectTo: '/student/profile', redirectIfFound: true })
+  useUser({ redirectTo: '/dashboard', redirectIfFound: true })
     const router = useRouter()
     const query = router.query
 

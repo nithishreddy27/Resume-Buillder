@@ -11,4 +11,5 @@ export default async function hander(req, res){
     // catch(error){
     //     res.status(500).send({done:error})
     // }
+    res.send({"done":true})
 }

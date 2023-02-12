@@ -96,13 +96,13 @@ export default function AddDetails() {
                   
                 <div className="col-span-6 sm:col-span-4 mt-4">
                   <div className="flex">
-                    <label for="paraphase" className="block text-sm font-medium text-gray-700">
+                    <label for="paraphrase" className="block text-sm font-medium text-gray-700">
                       Create Paraphase
                     </label>
                     <span className="ml-1 text-red-600 font-semibold">*</span>
                   </div>
                   <div className="flex items-center">
-                    <input type="text" name="clgid" id="clgid" required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"/>
+                    <input type="text" name="paraphrase" id="paraphrase" required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"/>
                     
                   </div>
                   <p className="mt-1 text-xs text-gray-500" id="pharaphase-description">
@@ -245,7 +245,7 @@ export default function AddDetails() {
                   <div className="col-span-6 sm:col-span-3 mt-4">
                     <div className="flex">
                       <label
-                        for="website"
+                        for="collegewebsite"
                         className="block text-sm font-medium text-gray-700"
                       >
                         College Website
@@ -254,7 +254,7 @@ export default function AddDetails() {
                     </div>
                     <input
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
-                      id="website"
+                      id="collegewebsite"
                       name="collegewebsite"
                       required
                       type="text"
@@ -263,7 +263,7 @@ export default function AddDetails() {
                   <div className="col-span-6 sm:col-span-3 mt-4">
                     <div className="flex">
                       <label
-                        for="email"
+                        for="placementemail"
                         className="block text-sm font-medium text-gray-700"
                       >
                         Placement Email address
@@ -272,7 +272,7 @@ export default function AddDetails() {
                     </div>
                     <input
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
-                      id="email"
+                      id="placementemail"
                       name="placementemail"
                       type="email"
                       required
@@ -281,7 +281,7 @@ export default function AddDetails() {
                   <div className="col-span-6 sm:col-span-3 mt-4">
                     <div className="flex">
                       <label
-                        for="phone"
+                        for="placementphone"
                         className="block text-sm font-medium text-gray-700"
                       >
                         Placement Phone Number
@@ -290,7 +290,7 @@ export default function AddDetails() {
                     </div>
                     <input
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
-                      id="phone"
+                      id="placementphone"
                       required
                       name="placementphone"
                       type="tel"
@@ -301,7 +301,7 @@ export default function AddDetails() {
                   <div className="col-span-6 sm:col-span-3 mt-4">
                     <div className="flex">
                       <label
-                        for="email"
+                        for="principalemail"
                         className="block text-sm font-medium text-gray-700"
                       >
                         Principal Email address
@@ -310,7 +310,7 @@ export default function AddDetails() {
                     </div>
                     <input
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
-                      id="email"
+                      id="principalemail"
                       name="principalemail"
                       required
                       type="email"
@@ -319,7 +319,7 @@ export default function AddDetails() {
                   <div className="col-span-6 sm:col-span-3 mt-4">
                     <div className="flex">
                       <label
-                        for="phone"
+                        for="principalphone"
                         className="block text-sm font-medium text-gray-700"
                       >
                         Principal Phone Number
@@ -328,7 +328,7 @@ export default function AddDetails() {
                     </div>
                     <input
                       type="tel"
-                      name="phone"
+                      name="principalphone"
                       id="principalphone"
                       required
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"

@@ -4,7 +4,7 @@ import { useUser } from '../lib/hooks'
 import Form from '../components/loginForm'
 
 const Login = () => {
-  useUser({ redirectTo: '/student/profile', redirectIfFound: true })
+  useUser({ redirectTo: '/dashboard', redirectIfFound: true })
 
   const [errorMsg, setErrorMsg] = useState('')
 
@@ -25,7 +25,8 @@ const Login = () => {
         body: JSON.stringify(body),
       })
       if (res.status === 200) {
-        Router.push('/student/profile')
+        console.log("status true")
+        Router.push('/dashboard')
       } else {
         throw new Error(await res.text())
       }

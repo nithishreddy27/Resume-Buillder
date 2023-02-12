@@ -30,10 +30,6 @@ export default function AddStdDetails() {
     
       const res=await fetch(`./api/checkCollege/${clgid}`)
       const data=await res.json()
-      // console.log("rununing in student",data.done.collegeName) 
-      
-      // const name=await res.collegeName  
-      // console.log("in collgee",name)
       if(res.status===200){
         setmess("invalid paraphrase")
         setcollegeId("false")
@@ -167,6 +163,30 @@ export default function AddStdDetails() {
                       <div className="col-span-6 sm:col-span-2 ">
                         <div className="flex">
                           <label
+                            htmlFor="middleName"
+                            className="block text-sm font-medium  text-gray-700"
+                          >
+                            Middle Name
+                          </label>
+                          <span className="ml-1 text-red-600 font-semibold">
+                            *
+                          </span>
+                        </div>
+                        <input
+                          type="text"
+                          name="middleName"
+                          id="middleName"
+                          autoComplete="given-name"
+                          required
+                          // value=""
+                          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
+                          fdprocessedid="yw7fvi"
+                          disabled="" 
+                        />
+                      </div>
+                      <div className="col-span-6 sm:col-span-2 ">
+                        <div className="flex">
+                          <label
                             htmlFor="lastName"
                             className="block text-sm font-medium text-gray-700"
                           >
@@ -189,22 +209,34 @@ export default function AddStdDetails() {
                         />
                       </div>
                       <div className="col-span-6 sm:col-span-2 relative -top-[23px]">
-                    <label
-                      className="flex items-center mb-1 h-full text-sm font-medium text-gray-700 "
-                      id="headlessui-listbox-label-1"
-                    >
-                      Gender
-                      <span className="ml-1 mt-1 text-red-600 font-semibold">*</span>
-                    </label>
-                    <div className="relative -top-[23px] left-0">
-                    <select name="gender" className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500">
-                          <option value="male" >male</option>
-                          <option value="female">female</option>
-                          <option value="other">other</option>
-                      </select>
-                    </div>
-                    </div>
-                    </div>
+                        <label
+                          className="flex items-center mb-1 h-full text-sm font-medium text-gray-700 "
+                          id="headlessui-listbox-label-1"
+                        >
+                          Gender
+                          <span className="ml-1 mt-1 text-red-600 font-semibold">*</span>
+                        </label>
+                        <div className="relative -top-[23px] left-0">
+                        <select name="gender" className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500">
+                              <option value="male" >male</option>
+                              <option value="female">female</option>
+                              <option value="other">other</option>
+                          </select>
+                        </div>
+                        </div>
+                        <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                            <label className="text-md  text-black  ">
+                              Date Of Birth
+                            </label>
+                            <input
+                              type="date"
+                              name="dob"
+                              id="dob"
+                              required
+                              className="mt-1 focus:outline-none focus:shadow-outline focus:border-gray-300	 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
+                            />
+                          </div>
+                     </div>
                     <div className="grid grid-cols-6 gap-6">
                       <div className="col-span-6 sm:col-span-3 mt-4">
                         <div className="flex">

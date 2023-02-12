@@ -1,89 +1,147 @@
 import mongoose from "mongoose";
 
-const userSchema=new mongoose.Schema({
-    id:{
-        type:String
+const userSchema = new mongoose.Schema(
+  {
+    email: { type: String, trim: true, unique: true },
+    username: { type: String, trim: true, unique: true },
+    hash: { type: String },
+    salt: { type: String },
+    placed: {
+      type: Boolean,
+      default: false,
     },
-    username:{
-        type:String,
-        required:true,
-        unique:true
+    detailsAvailable: {
+      type: Boolean,
     },
-    password:{
-        type:String,
+    academicsAvailable: {
+      type: Boolean,
     },
-    createdAt:{
-        type:Date
+    profile: {
+      firstName: {
+        type: String,
+        trim: true,
+      },
+      middleName: {
+        type: String,
+        trim: true,
+      },
+      lastName: {
+        type: String,
+        trim: true,
+      },
+      image: {
+        type: String,
+        default:
+          "http://res.cloudinary.com/dj7nomqfd/image/upload/v1647117869/uploads/bphhxvmlcyyu2pntbikm.png",
+      },
+      dob: {
+        type: Date,
+      },
+      gender: {
+        type: String,
+      },
+      verified: {
+        type: Boolean,
+        default: false,
+      },
+      frozen: {
+        type: Boolean,
+        default: false,
+      },
     },
-    hash:{
-        type:String
+    phone: {
+      value: {
+        type: Number,
+      },
+      verified: {
+        type: Boolean,
+        default: false,
+      },
+      frozen: {
+        type: Boolean,
+        default: false,
+      },
     },
-    salt:{
+    approved: {
+      type: Boolean,
+    },
+    category: {
+      type: String,
+    },
+    rollNumber: {
+      value: {
+        type: String,
+        trim: true,
+        uppercase: true,
+      },
+      verified: {
+        type: Boolean,
+        default: false,
+      },
+      frozen: {
+        type: Boolean,
+        default: false,
+      },
+    },
+    notificationMethod: {
+      type: String
+    },
+    college: {
+      name: {
+        type: String,
+      },
+      code: {
+        type: String,
+      },
+      campus: {
         type: String
-    },
-    notificationMethod:{
-        type: String 
-    },
-    paraphase:{
+      },
+      program: {
+        type: String,
+      },
+      specialisation: {
         type: String
-        
+      },
+      
+      // passphrase: {
+      //   type: String,
+      // },
+      paraphrase: {
+        type: String,
+      },
+      website: {
+        type: String,
+      },
+      principal: {
+        email: {
+          type: String,
+        },
+        phone: {
+          type: Number,
+        },
+      },
+      placement: {
+        designation: {
+          type: String,
+        },
+        email: {
+          type: String,
+        },
+        phone: {
+          type: Number,
+        },
+      },
+      verified: {
+        type: Boolean,
+        default: false,
+      },
+      frozen: {
+        type: Boolean,
+        default: false,
+      },
     },
-    firstName:{
-        type: String
-    },
-    lastName:{
-        type: String
-    },
-    gender:{
-        type: String
-    },
-    rollnumber:{
-        type: String
-    },
-    // phone:{
-    //     type: String
-    // },
-    college:{
-        type: String
-    },
-    designation:{
-        type: String
-    },
-    collegewebsite:{
-        type: String
-    },
-    placementemail:{
-        type: String
-    },
-    placementphone:{
-        type: String
-    },
-    principalemail:{
-        type: String
-    },
-    principalphone:{
-        type: String
-    },
-    school:{
-        type:String
-    },
-    degree:{
-        type:String
-    },
-    branch:{
-        type:String
-    },
-    board:{
-        type:String
-    },
-    edtype:{
-        type:String
-    },
-    score:{
-        type:String
-    },
-    grade:{
-        type:String
-    }
-})
-module.exports = mongoose.models.some || mongoose.model('some',userSchema)
+  },
+  { timestamps: true }
+);
+
+export default mongoose.models.users || mongoose.model("users", userSchema);

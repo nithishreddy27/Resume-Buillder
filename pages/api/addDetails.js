@@ -10,7 +10,7 @@ export default async function handler(req,res){
           res.writeHead(302, { Location: '/register/addEducation' })
         }
         if(req.body.notificationMethod == "individual"){
-          res.writeHead(302, { Location: '/student/profile' })
+          res.writeHead(302, { Location: '/dashboard' })
         }
         if(req.body.notificationMethod == "college"){
           res.writeHead(302, { Location: '/register/waiting' })
