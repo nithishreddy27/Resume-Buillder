@@ -3,7 +3,6 @@ import { useUser } from '../../lib/hooks'
 import Link from "next/link"
 import Router, { useRouter  } from 'next/router';
 
-
 export default function AddDetails() {
     const user = useUser()
     const u=JSON.stringify(user,null,2)

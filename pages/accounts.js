@@ -8,7 +8,7 @@ const Accounts = () => {
   return (
     
         
-    <div>
+    <div className="container">
         <div className="border-b border-gray-300 py-2 fixed top-[-8px] w-[100%] z-40 bg-slate-50">
         <div className="flex items-center justify-between xl:max-w-7xl xl:mx-auto max-w-full px-[8%] flex-wrap w-full">
           {/* <h1>Provast</h1> */}
