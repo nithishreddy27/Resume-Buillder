@@ -1,20 +1,14 @@
 import Head from 'next/head'
 // import Header from './header'
-
 const Layout = (props) => (
   <>
     <Head>
       <title>With Cookies</title>
     </Head>
-
-    {/* <Header /> */}
-
-    <main>
+    {/* <Header /> */}                                                             
+    <main>    
       <div className="container">{props.children}</div>
-    </main>
-
-    
+    </main> 
   </>
 )
-
-export default Layout
+export default Layout                          
