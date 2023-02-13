@@ -336,11 +336,12 @@ export default function AddDetails() {
                   </div>
                 </div>
   
-  
+                        
                 <div className="mt-4">
                   <button className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 " type="submit"> Submit </button>
                 </div>  
-              </div>}
+              </div>
+              }
               </form>
               </div>
           </div>

@@ -315,10 +315,8 @@ export default function AddStdDetails() {
                     
                     
                     <div className="mt-4"> 
-                    <div className="mt-4">
-                  <button className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 " type="submit"> Submit </button>
-                </div>     
-                    {/* {collegeId=="true" && (<div className="mt-4">
+                    
+                    {collegeId=="true" && (<div className="mt-4">
                   <button className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 " type="submit"> Submit </button>
                 </div>)
                 }
@@ -326,8 +324,7 @@ export default function AddStdDetails() {
                   collegeId=="false" && (<div className="mt-4">
                   <button className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-400  cursor-not-allowed" type="submit"> Submit </button>
                 </div>)
-                } */}
-                      {/* <input type="submit" value="submit" /> */}
+                }
                     </div>
                   </div>
                 )}
