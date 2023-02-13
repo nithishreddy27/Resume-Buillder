@@ -4,7 +4,7 @@ import {useUser} from "../../lib/hooks"
 import Link from "next/link"
 import { useRouter } from 'next/router';
 
-export default function student() {
+export default function Student() {
 
   const user = useUser()
   const [position, setPosition] = useState("profile");
