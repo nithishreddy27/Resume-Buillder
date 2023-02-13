@@ -1,11 +1,14 @@
-import { useState } from 'react'
-import Router from 'next/router'
-import { useUser } from '../lib/hooks'
-import Form from '../components/registerform'
+import React, {useState} from 'react'
+import { useUser } from '../../lib/hooks'
+import Form from '../../components/registerform'
+import Router, { useRouter } from "next/router"
 
 
-const Signup = () => {
-  useUser({ redirectTo: '/student/profile', redirectIfFound: true })
+export default function Index() {
+  
+  useUser({ redirectTo: '/dashboard', redirectIfFound: true })
+    const router = useRouter()
+    const query = router.query
 
   const [errorMsg, setErrorMsg] = useState('')
 
@@ -17,6 +20,7 @@ const Signup = () => {
     const body = {
       username: e.currentTarget.username.value,
       password: e.currentTarget.password.value,
+      notificationMethod:query.type
     }
 
     if (body.password !== e.currentTarget.rpassword.value) {
@@ -31,7 +35,18 @@ const Signup = () => {
         body: JSON.stringify(body),
       })
       if (res.status === 200) {
-        Router.push('/addDetails')
+        if(query.type== "student"){
+            Router.push('/register/addStdDetails')
+        }
+        if(query.type== "college"){
+            Router.push('/register/addCollegeDetails')
+        }
+        if(query.type== "individual"){
+            Router.push('/register/addIndDetails')
+        }
+        if(query.type== "corporate"){
+            Router.push('/register/addStdDetails')
+        }
       } 
       else {
         console.log("in push")
@@ -58,6 +73,4 @@ const Signup = () => {
     </>
 
   )
-}
-
-export default Signup
+}   

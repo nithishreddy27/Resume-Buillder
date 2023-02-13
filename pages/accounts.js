@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { FiMenu } from 'react-icons/fi'
 import React, { useState } from "react";
 
-const accounts = () => {
+const Accounts = () => {
     const [open, setOpen] = useState(false);
   return (
     
@@ -90,7 +90,7 @@ const accounts = () => {
                 <button className='bg-orange-700 px-3 py-2 rounded-md text-white'>Login</button>
                 </div>
                 <div className='text-center'>Don't have an account?</div>
-                <div className='text-center text-orange-500 hover:underline hover:text-orange-800 mb-3'>Sign up.</div>
+                <Link className=' text-orange-500 hover:underline hover:text-orange-800 mb-3 ' href={{pathname:"/register",query:{type:"student"}}}>Sign up.</Link>
             </div>
             <div className='border shadow-lg rounded-lg m-5 hover:m-[18px]'>
                 <h1 className='font-semibold text-gray-700 text-3xl text-center pt-5'>For <span className='font-bold text-orange-600 text-3xl'>Individuals</span></h1>
@@ -101,7 +101,7 @@ const accounts = () => {
                 <button className='bg-orange-700 px-3 py-2 rounded-md text-white'>Login</button>
                 </div>
                 <div className='text-center'>Don't have an account?</div>
-                <div className='text-center text-orange-500 hover:underline hover:text-orange-800 mb-3'>Sign up.</div>
+                <Link className='text-center text-orange-500 hover:underline hover:text-orange-800 mb-3' href={{pathname:"/register",query:{type:"individual"}}}>Sign up.</Link>
             </div>
             <div className='border shadow-lg rounded-lg m-5 hover:m-[18px]'>
                 <h1 className='font-semibold text-gray-700 text-3xl text-center pt-5'>For <span className='font-bold text-orange-600 text-3xl'>College</span></h1>
@@ -112,10 +112,10 @@ const accounts = () => {
                 <button className='bg-orange-700 px-3 py-2 rounded-md text-white'>Login</button>
                 </div>
                 <div className='text-center'>Don't have an account?</div>
-                <div className='text-center text-orange-500 hover:underline hover:text-orange-800 mb-3'>Sign up.</div>
+                <Link className='text-center text-orange-500 hover:underline hover:text-orange-800 mb-3' href={{pathname:"/register",query:{type:"college"}}}>Sign up.</Link>
             </div>
             <div className='border shadow-lg rounded-lg m-5 hover:m-[18px]'>
-                <h1 className='font-semibold text-gray-700 text-3xl text-center pt-5'>For <span className='font-bold text-orange-600 text-3xl'>Corperates</span></h1>
+                <h1 className='font-semibold text-gray-700 text-3xl text-center pt-5'>For <span className='font-bold text-orange-600 text-3xl'>Corporates</span></h1>
                 <div className='p-5'>
                 We are the market–leading technical interview platform to identify and hire developers with the right skills.
                 </div>
@@ -123,7 +123,7 @@ const accounts = () => {
                 <button className='bg-orange-700 px-3 py-2 rounded-md text-white'>Login</button>
                 </div>
                 <div className='text-center'>Don't have an account?</div>
-                <div className='text-center text-orange-500 hover:underline hover:text-orange-800 mb-3'>Sign up.</div>
+                <Link className='text-center text-orange-500 hover:underline hover:text-orange-800 mb-3' href={{pathname:"/register",query:{type:"corporate"}}}>Sign up.</Link>
             </div>
         </div>
         </div>
@@ -132,4 +132,4 @@ const accounts = () => {
   )
 }
 
-export default accounts
+export default Accounts

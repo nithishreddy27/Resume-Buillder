@@ -1,11 +1,12 @@
-import { addDetails } from "../../lib/user";
+import { addEducation } from "../../lib/user";
 import { removeTokenCookie } from '../../lib/auth-cookies'
 
 
 
 export default async function handler(req,res){
+  console.log("education : ",req.body)
     try{
-        var data=await addDetails(req.body)
+        var data=await addEducation(req.body)
         removeTokenCookie(res)
         res.writeHead(302, { Location: '/login' })
         res.end()
