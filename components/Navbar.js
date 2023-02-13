@@ -21,7 +21,7 @@ export default function Navbar() {
           <Link href="/" className="mr-6 hover:text-gray-900">
             Notices
           </Link>
-          <Link href="/" className="mr-6 hover:text-gray-900">
+          <Link href="/resume" className="mr-6 hover:text-gray-900">
             Resumes
           </Link>
           <Link href="/" className="mr-6 hover:text-gray-900">
