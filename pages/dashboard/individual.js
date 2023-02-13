@@ -33,11 +33,11 @@ export default function Profile() {
       </div>
       <div className=" h-[64%] p-10">
         {console.log("user", user)}
-        {user && user.firstName && (
+        {user && user.profile.firstName && (
           <div>
             <div className="flex justify-around">
               <h1 className="align-middle text-2xl font-bold ">
-                {user.firstName} {user.lastName}
+                {user.profile.firstName} {user.profile.lastName}
               </h1>
               <button className="py-2 px-4 bg-gray-200 rounded-lg border">
                 <Link href="./editProfile">Edit profile</Link>
@@ -66,31 +66,31 @@ export default function Profile() {
               <div className="grid grid-cols-3 gap-4 p-5">
                 <div>
                   <h1 className="">First Name</h1>
-                  <h1 className="font-bold">{user.firstName}</h1>
+                  <h1 className="font-bold">{user.profile.firstName}</h1>
                 </div>
                 <div>
                   <h1 className="">Last Name</h1>
-                  <h1 className="font-bold">{user.lastName}</h1>
+                  <h1 className="font-bold">{user.profile.lastName}</h1>
                 </div>
                 <div>
                   <h1 className="">Registered Email</h1>
-                  <h1 className="font-bold">{user.username}</h1>
+                  <h1 className="font-bold">{user.email}</h1>
                 </div>
                 <div>
                   <h1 className="">Mobile Number</h1>
-                  <h1 className="font-bold">{user.phone}</h1>
+                  <h1 className="font-bold">{user.phone.value}</h1>
                 </div>
                 <div>
                   <h1 className="">College</h1>
-                  <h1 className="font-bold">{user.college}</h1>
+                  <h1 className="font-bold">{user.college.name}</h1>
                 </div>
-                <div>
+                {/* <div>
                   <h1 className="">Roll Number</h1>
-                  <h1 className="font-bold">{user.rollnumber}</h1>
-                </div>
+                  <h1 className="font-bold">{user.rollnumber.value}</h1>
+                </div> */}
                 <div>
                   <h1 className="">Gender</h1>
-                  <h1 className="font-bold">{user.gender}</h1>
+                  <h1 className="font-bold">{user.profile.gender}</h1>
                 </div>
               </div>
             )}
@@ -114,7 +114,7 @@ export default function Profile() {
         )}
 
 
-        {user && !user.firstName &&(
+        {user && !user.profile.firstName &&(
           <>
             {
               runMe()

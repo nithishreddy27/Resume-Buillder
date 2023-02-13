@@ -20,7 +20,8 @@ export default function AddStdDetails() {
 
 
     async function checkCollege(){
-      // console.log("inside college");  
+
+      console.log("inside college");  
       const clgid=document.getElementById("clgid").value
       console.log(clgid)
       if(clgid==""){
@@ -28,18 +29,21 @@ export default function AddStdDetails() {
       }
       else{
     
-      const res=await fetch(`./api/checkCollege/${clgid}`)
+      const res=await fetch(`../api/checkCollege/${clgid}`)
       const data=await res.json()
+      console.log("data is ",data);
       if(res.status===200){
-        setmess("invalid paraphrase")
-        setcollegeId("false")
-        setCollege("")
+        console.log("inside if")
+        setmess("")
+        setcollegeId("true")
+        setCollege(data.name)
       }
       else{
+        console.log("inside else")
         // const c= await res.collegeName
-        setmess("")
-        setCollege(data.done.collegeName)
-        setcollegeId("true")
+        setmess("invalid paraphrase")
+        setCollege("")
+        setcollegeId("false")
       }
     }
     
@@ -302,8 +306,9 @@ export default function AddStdDetails() {
                           type="text"
                           required
                           name="college"
-                          // value={college} 
+                          value={college} 
                           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
+                          onChange={()=>alert("you cant change college name")}
                         />
                       </div>
                     </div>
@@ -332,11 +337,11 @@ export default function AddStdDetails() {
           </div>
         )}
 
-{!user && (
+{/* {!user && (
       <div className="relative z-40 text-4xl  font-bold text-center my-auto h-[100%]">
        <p className="my-auto"> Please sign in first</p>
       </div>
-     )}
+     )} */}
     </div>
  )
 

@@ -20,6 +20,7 @@ export default function Index() {
     const body = {
       username: e.currentTarget.username.value,
       password: e.currentTarget.password.value,
+      notificationMethod:query.type
     }
 
     if (body.password !== e.currentTarget.rpassword.value) {
@@ -46,7 +47,6 @@ export default function Index() {
         if(query.type== "corporate"){
             Router.push('/register/addStdDetails')
         }
-        
       } 
       else {
         console.log("in push")

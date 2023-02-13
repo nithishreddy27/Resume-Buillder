@@ -10,6 +10,9 @@ export default function student() {
   const [position, setPosition] = useState("profile");
   const router = useRouter();
 
+  function runMe(){
+    router.push("/register/addStdDetails")
+  }
   
   return (
     // <div>student  {JSON.stringify(user)}</div>
@@ -111,13 +114,13 @@ export default function student() {
       )}
 
 
-      {/* {user && !user.firstName &&(
+      {user && !user.profile.firstName &&(
         <>
           {
             runMe()
           }
         </>
-      ) } */}
+      ) }
       
     </div>
   </div>

@@ -112,30 +112,36 @@ const userSchema = new mongoose.Schema(
       website: {
         type: String,
       },
+      principal: {
+        email: {
+          type: String,
+        },
+        phone: {
+          type: Number,
+        },
+      },
+      placement: {
+        designation: {
+          type: String,
+        },
+        email: {
+          type: String,
+        },
+        phone: {
+          type: Number,
+        },
+      },
+      verified: {
+        type: Boolean,
+        default: false,
+      },
+      frozen: {
+        type: Boolean,
+        default: false,
+      },
     },
-    principal:{
-      // type:String
-      phone:{
-        type:String
-      },
-      email:{
-        type:String
-      }
-      
-    },
-    placement:{
-      designation:{
-        type:String
-      },
-      phone:{
-        type:String
-      },
-      email:{
-        type:String
-      }
-    }
   },
   { timestamps: true }
 );
 
-export default mongoose.models.students || mongoose.model("students", userSchema);
+export default mongoose.models.teachers || mongoose.model("teachers", userSchema);
