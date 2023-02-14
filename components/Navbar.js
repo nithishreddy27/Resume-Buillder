@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-
 export default function Navbar() {
   return (
     <header className="text-gray-900 body-font bg-white">
@@ -12,7 +11,7 @@ export default function Navbar() {
               src="https://www.provast.io/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdj7nomqfd%2Fimage%2Fupload%2Fv1652909540%2Fpvast_B_fpwhlu.png&w=1920&q=75"
               alt=""
             />
-          </Link>
+          </Link>    
         </div>
         <div className="flex justify-between">
           <Link href="/student" className="mr-6 hover:text-gray-900">
@@ -21,7 +20,7 @@ export default function Navbar() {
           <Link href="/" className="mr-6 hover:text-gray-900">
             Notices
           </Link>
-          <Link href="/" className="mr-6 hover:text-gray-900">
+          <Link href="/resume" className="mr-6 hover:text-gray-900">
             Resumes
           </Link>
           <Link href="/" className="mr-6 hover:text-gray-900">
