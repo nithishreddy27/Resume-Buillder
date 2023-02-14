@@ -4,7 +4,7 @@ export default function AddResume() {
   return (
     <div>
 
-        <form action="../api/Resume/addResume" className=' mx-auto' method='POST'>
+        <form action="../api/Resume/addResume" className=' mx-auto bg-gray-300 p-5' method='POST'>
             <div  className='my-4 mx-10'>
 
             <label htmlFor="ResumeName">Name of the templete</label>

@@ -110,7 +110,7 @@ const resume = () => {
    </div>
     
   
-  </div>
+    </div>
   )
 }
 

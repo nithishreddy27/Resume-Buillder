@@ -6,6 +6,7 @@ export default async function handler(req, res){
     await dbConnect()
     const data= await Resume.create(req.body)
     // console.log("daya",data);
-    res.send({"ok":req.body})
+    // res.send({"ok":req.body})
+    res.redirect("/resume")
 
 }
