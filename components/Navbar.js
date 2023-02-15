@@ -1,15 +1,19 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 export default function Navbar() {
   return (
     <header className="text-gray-900 body-font bg-white">
       <nav className="container md:ml-auto md:mr-auto flex items-center justify-between px-10 py-3 bg-gray-100">
         <div>
           <Link href="/">
-            <img
+            <Image
               className="h-[50px] w-[150px]"
-              src="https://www.provast.io/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdj7nomqfd%2Fimage%2Fupload%2Fv1652909540%2Fpvast_B_fpwhlu.png&w=1920&q=75"
+              src={"https://www.provast.io/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdj7nomqfd%2Fimage%2Fupload%2Fv1652909540%2Fpvast_B_fpwhlu.png&w=1920&q=75"}
               alt=""
+              width={100}
+              height={100}
+
             />
           </Link>    
         </div>
