@@ -126,7 +126,7 @@ const Home = (props) => {
       l.map((data)=>(
 
              <div  key={data._id}>
-              <div className='rounded-md bg-gray-100 h-[355px]  w-63 p-5 m-5 cursor-pointer relative'>
+              <div className='rounded-md bg-gray-100 h-auto  w-63 p-5 m-5 cursor-pointer relative'>
               <div className='opacity-80'>
     <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png"/>
     </div>
@@ -137,45 +137,10 @@ const Home = (props) => {
         <div className=' text-2xl p-3 text-center   font-semibold'>{data.ResumeName} </div> 
 
     </div>
-    <div className='rounded-md bg-gray-100 h-[355px]  w-63  p-5 m-5 cursor-pointer relative'>
-    <div className='opacity-80'>
-    <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png"/>
-    </div>
-        <div className='absolute z-10 top-[43%] right-[43%] flex items-center justify-center h-10 w-10 bg-gray-200  bg-opacity-70 rounded-full p-1'>
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAVJJREFUWEftl+FNAzEMhb9OQDcoTECZoGwAbNANoBMAEwAbsEFhAzYANigbwAStXuVKEbqLz7lWOlXxv1MSv68vTuKOGFiMBsbDUQGdArfAJTA1p7+AD+AFWJW4X+rQHfDkCGqOwEJRAvRsznQREpDAOkcU6BpYJtm/gQdAW6XQ1un7PJlzA7x1JYoCqS4mlvwdEGBTCODKBrTm7BBA+vWflvgPUFH/tgiNrahPbPwicTHLFnEoLeScOztBnbaZfSwA1Z4bESDVxr1lfLRayQlE529zVSBvz6pDfR3SydB9oiO+j9Cd9AroUDRGbssiT0QUtvWU5oB06e0utqigN7/19s4Brb2sPccbtStQ4mp1yCux6lB1yHPAG681dPwOHfJx/WlraXJvWdqke/ZHx4vaD4kIap78OYwK/58vZ9SgKW+4QesrXrQ+0uQXCUQXDQ5oA5cjSCVYiqWCAAAAAElFTkSuQmCC"/>
-        </div>
-        <div className=' text-2xl p-3 text-center   font-semibold'>{data.ResumeName} </div> 
-
-    </div>
-    <div className='rounded-md bg-gray-100 h-[355px]  w-63  p-5 m-5 cursor-pointer relative'>
-      <div className='opacity-80'>
-    <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png"/>
-    </div>
-    <div className=' text-2xl p-3 text-center   font-semibold'>{data.ResumeName} </div> 
+   
+   
+   
     
-        <div className='absolute z-10 top-[43%] right-[43%] flex items-center justify-center h-10 w-10 bg-gray-200  bg-opacity-70 rounded-full p-1'>
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAVJJREFUWEftl+FNAzEMhb9OQDcoTECZoGwAbNANoBMAEwAbsEFhAzYANigbwAStXuVKEbqLz7lWOlXxv1MSv68vTuKOGFiMBsbDUQGdArfAJTA1p7+AD+AFWJW4X+rQHfDkCGqOwEJRAvRsznQREpDAOkcU6BpYJtm/gQdAW6XQ1un7PJlzA7x1JYoCqS4mlvwdEGBTCODKBrTm7BBA+vWflvgPUFH/tgiNrahPbPwicTHLFnEoLeScOztBnbaZfSwA1Z4bESDVxr1lfLRayQlE529zVSBvz6pDfR3SydB9oiO+j9Cd9AroUDRGbssiT0QUtvWU5oB06e0utqigN7/19s4Brb2sPccbtStQ4mp1yCux6lB1yHPAG681dPwOHfJx/WlraXJvWdqke/ZHx4vaD4kIap78OYwK/58vZ9SgKW+4QesrXrQ+0uQXCUQXDQ5oA5cjSCVYiqWCAAAAAElFTkSuQmCC"/>
-        </div>
-
-    </div>
-    <div className='rounded-md bg-gray-100 h-[355px]  w-63  p-5 m-5  cursor-pointer relative'>
-    <div className='opacity-80'>
-    <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png"/>
-    </div>
-        <div className='absolute z-10 top-[43%] right-[43%] flex items-center justify-center h-10 w-10 bg-gray-200  bg-opacity-70 rounded-full p-1'>
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAVJJREFUWEftl+FNAzEMhb9OQDcoTECZoGwAbNANoBMAEwAbsEFhAzYANigbwAStXuVKEbqLz7lWOlXxv1MSv68vTuKOGFiMBsbDUQGdArfAJTA1p7+AD+AFWJW4X+rQHfDkCGqOwEJRAvRsznQREpDAOkcU6BpYJtm/gQdAW6XQ1un7PJlzA7x1JYoCqS4mlvwdEGBTCODKBrTm7BBA+vWflvgPUFH/tgiNrahPbPwicTHLFnEoLeScOztBnbaZfSwA1Z4bESDVxr1lfLRayQlE529zVSBvz6pDfR3SydB9oiO+j9Cd9AroUDRGbssiT0QUtvWU5oB06e0utqigN7/19s4Brb2sPccbtStQ4mp1yCux6lB1yHPAG681dPwOHfJx/WlraXJvWdqke/ZHx4vaD4kIap78OYwK/58vZ9SgKW+4QesrXrQ+0uQXCUQXDQ5oA5cjSCVYiqWCAAAAAElFTkSuQmCC"/>
-        </div>
-        <div className=' text-2xl p-3 text-center   font-semibold'>{data.ResumeName} </div> 
-    </div>
-    <div className='rounded-md bg-gray-100 h-[355px]  w-63  p-5 m-5 cursor-pointer relative'>
-    <div className='opacity-80'>
-    <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png"/>
-    </div>
-        <div className='absolute z-10 top-[43%] right-[43%] flex items-center justify-center h-10 w-10 bg-gray-4  00  bg-opacity-70 rounded-full p-1'>
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAVJJREFUWEftl+FNAzEMhb9OQDcoTECZoGwAbNANoBMAEwAbsEFhAzYANigbwAStXuVKEbqLz7lWOlXxv1MSv68vTuKOGFiMBsbDUQGdArfAJTA1p7+AD+AFWJW4X+rQHfDkCGqOwEJRAvRsznQREpDAOkcU6BpYJtm/gQdAW6XQ1un7PJlzA7x1JYoCqS4mlvwdEGBTCODKBrTm7BBA+vWflvgPUFH/tgiNrahPbPwicTHLFnEoLeScOztBnbaZfSwA1Z4bESDVxr1lfLRayQlE529zVSBvz6pDfR3SydB9oiO+j9Cd9AroUDRGbssiT0QUtvWU5oB06e0utqigN7/19s4Brb2sPccbtStQ4mp1yCux6lB1yHPAG681dPwOHfJx/WlraXJvWdqke/ZHx4vaD4kIap78OYwK/58vZ9SgKW+4QesrXrQ+0uQXCUQXDQ5oA5cjSCVYiqWCAAAAAElFTkSuQmCC"/>
-        </div>
-        <div className=' text-2xl p-3 text-center   font-semibold'>{data.ResumeName} </div> 
-        </div>
 
             
              </div>
