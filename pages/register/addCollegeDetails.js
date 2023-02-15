@@ -2,6 +2,7 @@ import React , {useState} from 'react'
 import { useUser } from '../../lib/hooks'
 import Link from "next/link"
 import Router, { useRouter  } from 'next/router';
+import Image from 'next/image';
 
 export default function AddDetails() {
     const user = useUser()
@@ -47,7 +48,7 @@ export default function AddDetails() {
     <div>   
         
           
-        <img className="absolute bottom-0 w-[100%] object-cover"
+        <Image className="absolute bottom-0 w-[100%] object-cover"
         src="https://qsf.fs.quoracdn.net/-4-ans_frontend_assets.images.home_page_bg_desktop.png-26-4770753d59b970e1.png"
         alt=""
       />
