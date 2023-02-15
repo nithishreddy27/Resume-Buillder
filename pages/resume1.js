@@ -64,7 +64,13 @@ const resume = () => {
    <div className='grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 mt-5 '>
   
     <div className='rounded-md bg-gray-300 h-80 w-64 p-5 m-5 cursor-pointer relative'>
-    image will come here
+
+
+    <div>
+    </div>
+
+    
+    
         <div className='absolute z-10 top-[43%] right-[43%] flex items-center justify-center  w-10 bg-gray-900  bg-opacity-70 rounded-full p-1 h-10'>
             <span className='box-sizing:border-box block '>
             lock

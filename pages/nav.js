@@ -1,7 +1,7 @@
 import { FiMenu} from 'react-icons/fi'
 import React, { useState } from "react";
 import Link from 'next/link';
-const nav = () => {
+const Nav = () => {
     const [open, setOpen] = useState(false);
   return (
     <div>
