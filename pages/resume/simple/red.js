@@ -66,9 +66,118 @@ export default function red() {
     
     }
 
+
+
+    function addInternship(){
+
+      const intern={
+        company:document.getElementById("company").value,
+        designation:document.getElementById("position").value,
+        website:document.getElementById("website").value,
+        from:document.getElementById("startdate").value,
+        to:document.getElementById("enddate").value,
+        summary:{
+          data:document.getElementById("summary").value,
+        }
+      }
+      const arr = []
+    details.work.map((item)=>{
+      arr.push(item)
+    })
+    console.log('intern',intern)
+    arr.push(intern)
+    setdetails({ ...details,work:arr});
+    }
+
+
+    function addEducation(){
+      const education={
+        typeOfDegree:document.getElementById("TypeOfDegree").value,
+        institution:document.getElementById("school").value,
+        fieldOfStudy:document.getElementById("EducationFieldOfStudy").value,
+        startDate:document.getElementById("Educationstartdate").value,
+        endDate:document.getElementById("Educationenddate").value,
+        gpa:document.getElementById("grade").value,
+        summary:{
+          data:document.getElementById("summary").value,
+        }
+      }
+      const arr = []
+    details.education.map((item)=>{
+      arr.push(item)
+    })
+    console.log('intern',education)
+    arr.push(education)
+    setdetails({ ...details,education:arr});
+    }
+
+
+    function addAward(){
+
+      const award={
+        name:document.getElementById("awardTitle").value,
+        awarder:document.getElementById("awarder").value,
+        date:document.getElementById("awardDate").value,
+        summary:{
+          data:document.getElementById("awardSummary").value,
+        }
+      }
+      const arr = []
+    details.awards.map((item)=>{
+      arr.push(item)
+    })
+    console.log('award',award)
+    arr.push(award)
+    setdetails({ ...details,awards:arr});
+    }
+
+    function addSkill(){
+      const skill={
+        name:document.getElementById("skillTitle").value,
+        level:document.getElementById("skillLevel").value,
+      }
+      const arr = []
+    details.skills.map((item)=>{
+      arr.push(item)
+    })
+    console.log('skill',skill)
+    arr.push(skill)
+    setdetails({ ...details,skills:arr});
+    }
+
+
+    function addLanguage(){
+      const language={
+        name:document.getElementById("languageTitle").value,
+        level:document.getElementById("languageLevel").value,
+      }
+      const arr = []
+    details.languages.map((item)=>{
+      arr.push(item)
+    })
+    console.log('skill',language)
+    arr.push(language)
+    setdetails({ ...details,languages:arr});
+    }
+
+
+    function addHobby(){
+      const hobby={
+        name:document.getElementById("hobbyTitle").value,
+      }
+      const arr = []
+    details.hobbies.map((item)=>{
+      arr.push(item)
+    })
+    console.log('hobby',hobby)
+    arr.push(hobby)
+    setdetails({ ...details,hobbies:arr});
+    }
+
+
   return (
     <>
-      <div className="bg-gray-300 flex h-[285mm]">
+      <div className="bg-gray-300 flex h-auto">
         <div className="w-[40%]">
           form elements
           <form action="" className="flex flex-col p-5">
@@ -124,7 +233,135 @@ export default function red() {
             <label htmlFor="social-network">Social Network</label>
 
           </form>
-          {/* <div className="my-10 mx-5">
+          
+
+
+          <div className="flex flex-col w-[75%] p-10">
+            {/* <form  className="flex flex-col w-[75%] p-5" > */}
+                <label htmlFor="network">Network</label>
+                <input type="text" name="social" id="network" />
+                <label htmlFor="url">Url</label>
+                <input type="text" name="social" id="url" />
+                <label htmlFor="network">username</label>
+                <input type="text" name="social" id="username" />
+                {/* <input type="submit" value="submit" className="cursor-pointer" /> */}
+                <button onClick={socialChange}>Submit</button>
+            {/* </form> */}
+          </div>
+
+          <div className="flex flex-col w-[75%] p-10">
+            <h1>Internships</h1>
+            <label htmlFor="company">Company</label>
+                <input type="text" name="internship" id="company" />
+
+                <label htmlFor="position">Position</label>
+                <input type="text" name="internship" id="position" />
+
+                <label htmlFor="fieldOfStudy">Field Of Study</label>
+                <input type="text" name="internship" id="fieldOfStudy" />
+
+                <label htmlFor="startdate">Start Date</label>
+                <input type="date" name="internship" id="startdate" />
+                <label htmlFor="enddate">End Date</label>
+                <input type="date" name="internship" id="enddate" />
+                
+                <label htmlFor="summary">Summary</label>
+                <input type="text" name="internship" id="summary" />
+                {/* <input type="submit" value="submit" className="cursor-pointer" /> */}
+                <button onClick={addInternship}>Submit</button>
+          </div>
+
+          <div className="flex flex-col w-[75%] p-10">
+            <h1>Education</h1>
+            <label htmlFor="TypeOfDegree">TypeOfDegree</label>
+                <input type="text" name="education" id="TypeOfDegree" />
+
+                <label htmlFor="school">School</label>
+                <input type="text" name="education" id="school" />
+
+                <label htmlFor="EductionFieldOfStudy">FieldOfStudy</label>
+                <input type="text" name="education" id="EducationFieldOfStudy" />
+
+
+                <label htmlFor="grade">grade</label>
+                <input type="text" name="education" id="grade" />
+
+
+                
+                <label htmlFor="startdate">Start Date</label>
+                <input type="date" name="education" id="Educationstartdate" />
+
+                <label htmlFor="enddate">End Date</label>
+                <input type="date" name="education" id="Educationenddate" />
+                
+                <label htmlFor="summary">Summary</label>
+                <input type="text" name="education" id="summary" />
+                {/* <input type="submit" value="submit" className="cursor-pointer" /> */}
+                <button onClick={addEducation}>Submit</button>
+          </div>
+
+          <div className="flex flex-col w-[75%] p-10">
+            <h1>Awards</h1>
+            <label htmlFor="awardTitle">Title</label>
+                <input type="text" name="award" id="awardTitle" />
+
+                <label htmlFor="awarder">awarder</label>
+                <input type="text" name="award" id="awarder" />
+
+                <label htmlFor="awarddate">Award Date</label>
+                <input type="date" name="award" id="awardDate" />
+
+                
+                <label htmlFor="awardSummary">Summary</label>
+                <input type="text" name="award" id="awardSummary" />
+                {/* <input type="submit" value="submit" className="cursor-pointer" /> */}
+                <button onClick={addAward}>Submit</button>
+          </div>
+
+          <div className="flex flex-col w-[75%] p-10">
+            <h1>Skils</h1>
+                <label htmlFor="awardTitle">Title</label>
+                <input type="text" name="skill" id="skillTitle" />
+                
+                <label htmlFor="skillLevel">Level</label>
+                <select name="skillValue" className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500" id="skillLevel">
+                          <option value="beginner" >Beginner</option>
+                          <option value="intermediate">Intermediate</option>
+                          <option value="advance">Advance</option>
+                </select>
+                {/* <input type="submit" value="submit" className="cursor-pointer" /> */}
+                <button onClick={addSkill}>Submit</button>
+          </div>
+
+
+          <div className="flex flex-col w-[75%] p-10">
+            <h1>Language</h1>
+                <label htmlFor="languageTitle">Title</label>
+                <input type="text" name="language" id="languageTitle" />
+                
+                <label htmlFor="languagelLevel">Level</label>
+                <select name="language" className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500" id="languageLevel">
+                          <option value="beginner" >Beginner</option>
+                          <option value="intermediate">Intermediate</option>
+                          <option value="advance">Advance</option>
+                </select>
+                {/* <input type="submit" value="submit" className="cursor-pointer" /> */}
+                <button onClick={addLanguage}>Submit</button>
+          </div>
+
+
+          <div className="flex flex-col w-[75%] p-10">
+            <h1>Hobby</h1>
+                <label htmlFor="hobbyTitle">Title</label>
+                <input type="text" name="language" id="hobbyTitle" />
+                
+                
+                {/* <input type="submit" value="submit" className="cursor-pointer" /> */}
+                <button onClick={addHobby}>Submit</button>
+          </div>
+
+     {/* 
+          <div className="my-10 mx-5">
             <form onSubmit={handleSubmit(onFormSubmit)}>
               <button
                 onClick={() => {append({ name: "" })
@@ -184,20 +421,8 @@ export default function red() {
               />
             </form>
           </div> */}
+          
 
-
-          <div className="flex flex-col w-[75%] p-10">
-            {/* <form  className="flex flex-col w-[75%] p-5" > */}
-                <label htmlFor="network">Network</label>
-                <input type="text" name="social" id="network" />
-                <label htmlFor="url">Url</label>
-                <input type="text" name="social" id="url" />
-                <label htmlFor="network">username</label>
-                <input type="text" name="social" id="username" />
-                {/* <input type="submit" value="submit" className="cursor-pointer" /> */}
-                <button onClick={socialChange}>Submit</button>
-            {/* </form> */}
-          </div>
         </div>
 
 
@@ -267,7 +492,7 @@ export default function red() {
             <div className="mt-4">
               <h1 className="text-2xl font-semibold tracking-[2px]">SKILLS</h1>
               <hr className="h-[2px] bg-black my-1" />
-              {resume.skills.map((item) => (
+              {details.skills.map((item) => (
                 <li className="mx-4" key={item.name}>
                   {item.name}
                 </li>
@@ -288,7 +513,7 @@ export default function red() {
                 LANGUAGES
               </h1>
               <hr className="h-[2px] bg-black my-1" />
-              {resume.languages.map((item) => (
+              {details.languages.map((item) => (
                 <p className="my-2" key={item.name}>
                   {item.name}
                 </p>
@@ -296,7 +521,7 @@ export default function red() {
             </div>
             <h1 className="text-2xl font-semibold tracking-[2px]">AWARADS</h1>
             <hr className="h-[2px] bg-black my-1" />
-            {resume.awards.map((item) => (
+            {details.awards.map((item) => (
               <div className="my-2" key={item.name}>
                 <span className="font-semibold text-[15px]">
                   {item.name} ({item.date.slice(0, 4)})
@@ -326,7 +551,7 @@ export default function red() {
               <hr className="h-[2px] bg-black my-1" />
 
               <div className="ml-1 mt-1">
-                {resume.work.map((item) => (
+                {details.work.map((item) => (
                   <div className="flex" key={item.company}>
                     <div className="pt-1">
                       <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
@@ -349,7 +574,7 @@ export default function red() {
               </h1>
               <hr className="h-[2px] bg-black my-1" />
               <div className="ml-1 mt-1">
-                {resume.education.map((item) => (
+                {details.education.map((item) => (
                   <div className="flex" key={item.institution}>
                     <div className="flex">
                       <div className="pt-1">
