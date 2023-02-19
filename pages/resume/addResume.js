@@ -22,6 +22,7 @@ export default function AddResume() {
             <input type="text" name="ResumeDesign" id="ResumeDesign" />
             </div>
             <div className='my-4 mx-10'>
+
             <label htmlFor="ResumeImage">image of the templete</label>
             <input type="text" name="ResumeImage" id="ResumeImage" />
             </div>

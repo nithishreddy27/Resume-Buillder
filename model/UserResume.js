@@ -11,6 +11,21 @@ const userResume = new mongoose.Schema({
         email:{
             type:String
         },
+        role:{
+            type:String
+        },
+        image:{
+            type:String
+        },
+        dob:{
+            type:String
+        },
+        phone:{
+            type:String
+        },
+        objective:{
+            type:String
+        }
     },
     social:[{
         network:{
@@ -18,8 +33,159 @@ const userResume = new mongoose.Schema({
         },
         username:{
             type:String
+        },
+        url:{
+            type:String
+        },
+        enabled:{
+            type:String
+        },
+    }],
+    work:[{
+        company:{
+            type:String
+        },
+        from:{
+            type:String
+        },
+        to:{
+            type:String
+        },
+        designation:{
+            type:String
+        },
+        website:{
+            type:String
+        },
+        summary:{
+            data:{
+                type:String
+            },
+            enable:{
+                type:Boolean
+            }
+        },
+
+    }],
+    education:[{
+        institution:{
+            type:String
+        },
+        fieldOfStudy:{
+            type:String
+        },
+        typeOfDegree:{
+            type:String
+        },
+        startDate:{
+            type:String
+        },
+        endDate:{
+            type:String
+        },
+        gpa:{
+            type:String
+        },
+        summary:{
+            data:{
+                type:String
+            },
+            enable:{
+                type:Boolean
+            }
         }
+    }],
+    projects:[{
+        name:{
+            type:String
+        },
+        from:{
+            type:String
+        },
+        to:{
+            type:String
+        },
+
+        website:{
+            type:String
+        },
+        summary:{
+            data:{
+                type:String
+            },
+            enable:{
+                type:Boolean
+            }
+        }
+    }],
+    awards:[{
+        name:{
+            type:String
+        },
+        awarder:{
+            type:String
+        },
+        todate:{
+            type:String
+        },
+        summary:{
+            data:{
+                type:String
+            },
+            enable:{
+                type:Boolean
+            }
+        }
+    }],
+    certifications: [{
+        title:{
+            type:String
+        },
+        date:{
+            type:String
+        },
+        issuer:{
+            type:String
+        },
+        summary:{
+            data:{
+                type:String
+            },
+            enable:{
+                type:Boolean
+            }
+        }
+    }],
+    skills:[{
+        name:{
+            type:String
+        },
+        level:{
+            type:String
+        },
+        enabled:{
+            type:Boolean
+        },
+    }],
+    languages:[{
+        name:{
+            type:String
+        },
+        level:{
+            type:String
+        },
+        enabled:{
+            type:Boolean
+        },
+    }],
+    hobbies:[{
+        name:{
+            type:String
+        },
+        enabled:{
+            type:Boolean
+        },
     }]
 })
 
-export default mongoose.models.resumes || mongoose.model("resumes", userResume);
+export default mongoose.models.userResumes || mongoose.model("userResumes", userResume);

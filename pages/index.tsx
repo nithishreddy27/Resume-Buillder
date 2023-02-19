@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import { useUser } from '../lib/hooks'
 import { Inter } from '@next/font/google'
-
 import { InferGetServerSidePropsType } from 'next'
 import Link from 'next/link'
 

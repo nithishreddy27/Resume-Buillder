@@ -1,55 +1,44 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { demoResume } from "../../../lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import ResumeContext from "../../../context/ResumeContext";
 import { useFieldArray, useForm } from "react-hook-form";
+import { useRouter } from "next/router";
+import { useUser } from "../../../lib/hooks";
 
-export default function red() {
-  const { register, handleSubmit, control } = useForm({
-    defaultValues: {
-      test: [{}],
-    },
-  });
+export default function Berlin() {
 
-  const { fields, append, remove } = useFieldArray({
-    control,
-    name: "test",
-    roll: "roll",
-  });
+  const user = useUser()
 
-  const onFormSubmit = async (data) => {
-    console.log(data);
-  };
+  
 
+
+  
   const resume = demoResume();
-  const { details, setdetails } = useContext(ResumeContext);
+  
+  
+  const { details, setdetails  } = useContext(ResumeContext);
+  
+  // setdetails({ ...details, personal: { ...details.personal, email:email } });
 
+
+  useEffect(()=>{
+    if(user){
+      console.log("inside")
+    setdetails({ ...details, personal: { ...details.personal, email:user.email, firstName:user.profile.firstName , lastName:user.profile.lastName } });
+    }
+  },[user])
+ 
   function updateForm(event) {
     const n = event.target.name;
     const i = event.target.id;
-    console.log("n", n, "i", i);
     setdetails({ ...details, [n]: { ...details[n], [i]: event.target.value } });
-    console.log("user", details);
-  }
-
-
-  function addFormElement(){
-    console.log("inside me")
-    const arr = details.social
-    // console.log("arr type",typeof(arr))
-    arr.push({network: "LinkedIn",
-    username: "Tim Janseen",
-    url: "https://www.linkedin.com/in/tim-janseen-68b0a2253"})
-    setdetails({ ...details, social:arr});
-    console.log("detaosl",details)
   }
 
 
 
-  // const arr= (details.social)
-  // console.log(arr)
-
+  
 
   async function socialChange(){
     const sn={
@@ -84,7 +73,7 @@ export default function red() {
     details.work.map((item)=>{
       arr.push(item)
     })
-    console.log('intern',intern)
+    // console.log('intern',intern)
     arr.push(intern)
     setdetails({ ...details,work:arr});
     }
@@ -106,7 +95,7 @@ export default function red() {
     details.education.map((item)=>{
       arr.push(item)
     })
-    console.log('intern',education)
+    // console.log('intern',education)
     arr.push(education)
     setdetails({ ...details,education:arr});
     }
@@ -126,7 +115,7 @@ export default function red() {
     details.awards.map((item)=>{
       arr.push(item)
     })
-    console.log('award',award)
+    // console.log('award',award)
     arr.push(award)
     setdetails({ ...details,awards:arr});
     }
@@ -140,7 +129,7 @@ export default function red() {
     details.skills.map((item)=>{
       arr.push(item)
     })
-    console.log('skill',skill)
+    // console.log('skill',skill)
     arr.push(skill)
     setdetails({ ...details,skills:arr});
     }
@@ -155,7 +144,7 @@ export default function red() {
     details.languages.map((item)=>{
       arr.push(item)
     })
-    console.log('skill',language)
+    // console.log('skill',language)
     arr.push(language)
     setdetails({ ...details,languages:arr});
     }
@@ -169,7 +158,7 @@ export default function red() {
     details.hobbies.map((item)=>{
       arr.push(item)
     })
-    console.log('hobby',hobby)
+    // console.log('hobby',hobby)
     arr.push(hobby)
     setdetails({ ...details,hobbies:arr});
     }
@@ -177,7 +166,8 @@ export default function red() {
 
   return (
     <>
-      <div className="bg-gray-300 flex h-auto">
+      {user && (
+        <div className="bg-gray-300 flex h-auto">
         <div className="w-[40%]">
           form elements
           <form action="" className="flex flex-col p-5">
@@ -188,7 +178,7 @@ export default function red() {
               id="firstName"
               className="w-[50%] my-2"
               value={details.personal.firstName}
-              onChange={updateForm}
+              onChange={()=>console.log("no")}
             />
             <label htmlFor="lastName">Last Name</label>
             <input
@@ -197,7 +187,7 @@ export default function red() {
               id="lastName"
               className="w-[50%] my-2"
               value={details.personal.lastName}
-              onChange={updateForm}
+              onChange={()=>console.log("no")}
             />
 
             <label htmlFor="phone">Phone</label>
@@ -217,7 +207,7 @@ export default function red() {
               id="email"
               className="w-[50%] my-2"
               value={details.personal.email}
-              onChange={updateForm}
+              onChange={()=>console.log("no")}
             />
 
             <label htmlFor="email">Objective</label>
@@ -431,174 +421,199 @@ export default function red() {
 
         {/* Resume */}
 
-
-
-        <div className="bg-slate-50 w-[210mm] h-[285mm] overflow-auto drop-shadow-2xl flex flex-row min-w-[210mm]">
-          <div className=" w-[35%] bg-gray-200 p-6">
-            <div className="bg-slate-800 w-36 h-[200px] absolute top-0 left-0">
-              <img
-                src="https://randomuser.me/api/portraits/men/40.jpg"
-                alt=""
-                className="w-36 h-36 mt-7 ml-10 border-8 border-white"
-              />
+        <div className="bg-gray-300 flex align-middle justify-center h-[290mm]">
+      <div className="bg-slate-50 w-[210mm] h-[285mm] m-5 overflow-auto drop-shadow-2xl flex flex-row min-w-[210mm]">
+        <div className="w-[35%] z-10 bg-slate-800 h-[100] p-5">
+          <div className="mt-44">
+            <h1 className="text-2xl  tracking-[2px] text-white">CONTACT</h1>
+            <hr className="h-[2px] bg-black my-2" />
+            <div className="flex">
+              <span>
+                <img
+                  src="https://www.freeiconspng.com/uploads/phone-icon-16.png"
+                  className="w-5 h-5"
+                />
+              </span>
+              <h1 className="mx-4 text-white">{details.personal.phone}</h1>
             </div>
-            <div className="mt-48">
-              <h1 className="text-2xl font-semibold tracking-[2px]">CONTACT</h1>
-              <hr className="h-[2px] bg-black my-1" />
-              {
-                <>
-                  <div className="flex">
-                    <span>
-                      <img
-                        src="https://www.freeiconspng.com/uploads/contact-methods-phone-icon-512x512-pixel-3.png"
-                        className="w-5 h-5"
-                      />
-                    </span>
-                    <h1 className="mx-4">{details.personal.phone}</h1>
-                  </div>
-                  <div className="flex my-1">
-                    <span>
-                      <img
-                        src="https://www.freeiconspng.com/uploads/black-mail-icon-4.png"
-                        className="w-7 h-7"
-                      />
-                    </span>
-                    <h1 className="mx-2">{details.personal.email}</h1>
-                  </div>
-                  {details.social.map((item) => (
-                    <div className="my-3 flex" key={item.network}>
-                      <span>
-                        <img
-                          src={
-                            "https://www." + item.network + ".com/favicon.ico"
-                          }
-                          alt=""
-                          className="w-5 grayscale-[40%]"
-                        />
-                      </span>
-
-                      <Link href={item.url}>
-                        <span className="mx-4">{item.username}</span>
-                      </Link>
-                    </div>
-                  ))}
-                  {
-                    // console.log(details)
-                    console.log("re",details)
-                  }
-                </>
-              }
+            <div className="flex my-1">
+              <span>
+                <img
+                  src="https://www.freeiconspng.com/uploads/icon-email-icon-clip-art-at-clker-com-vector-qafaq-e-mail-icon-trace--0.png"
+                  className="w-7 h-7"
+                />
+              </span>
+              <h1 className="mx-2 text-white">{details.personal.email}</h1>
             </div>
-            <div className="mt-4">
-              <h1 className="text-2xl font-semibold tracking-[2px]">SKILLS</h1>
-              <hr className="h-[2px] bg-black my-1" />
+            {details.social.map((item) => (
+              <div className="my-3 flex">
+                <span>
+                  <img
+                    src={"https://www." + item.network + ".com/favicon.ico"}
+                    alt=""
+                    srcset=""
+                    className="w-5 grayscale-[40%]   "
+                  />
+                </span>
+
+                <Link href={item.url}>
+                  <span className="mx-4 text-white">{item.username}</span>
+                </Link>
+              </div>
+            ))}
+            <h1 className="text-2xl mt-4 tracking-[2px] text-white">SKILLS</h1>
+            <hr className="h-[2px] bg-black my-2" />
+
+            <div>
               {details.skills.map((item) => (
-                <li className="mx-4" key={item.name}>
-                  {item.name}
-                </li>
+                <div className="flex">
+                <p className="mx-1   text-white my-2 w-[70%] text-sm">{item.name}</p>
+                {   
+                    item.level=="Beginner" && 
+                    // <p className="text-white"></p>   
+                    <div className="w-[40%] h-2 relative rounded-md left-0 bg-white   mt-5">
+                        <div className="w-[66%] absolute right-0 bg-black h-2"></div>
+                    </div>
+                }
+                {
+                    item.level == "Intermediate" &&
+                    <div className="w-[40%] h-2 relative rounded-md left-0 bg-white  mt-5">
+                    <div className="w-[33%] absolute right-0 bg-black h-2"></div>
+                </div> 
+
+                }
+                {
+                    item.level == "Expert" &&
+                    <div className="w-[40%] h-2 relative rounded-md  left-0 bg-white  mt-5">
+                    <div className="w-[1%] absolute right-0 bg-black h-2"></div>
+                </div> 
+                    // <p className="text-white">exp</p>  
+
+                    
+
+                }
+                </div>
+                
               ))}
             </div>
 
-            {/* <div className='mt-4'>
-            <h1 className='text-2xl font-semibold tracking-[2px]' >HOBBIES</h1>
-                <hr className="h-[2px] bg-black my-1" />
-                {
-                    resume.hobbies.map(item=>(
-                        <p className='my-2'>{item.name}</p>
-                    ))
-                }
-            </div> */}
-            <div className="mt-4">
-              <h1 className="text-2xl font-semibold tracking-[2px]">
+            <div className="mt-5">
+              <h1 className="text-2xl  text-white  tracking-[2px]">
                 LANGUAGES
               </h1>
-              <hr className="h-[2px] bg-black my-1" />
-              {details.languages.map((item) => (
-                <p className="my-2" key={item.name}>
-                  {item.name}
-                </p>
+              <hr className="h-[2px] my-1" />
+              {resume.languages.map((item) => (
+                <p className="my-2 text-white">{item.name}</p>
               ))}
             </div>
-            <h1 className="text-2xl font-semibold tracking-[2px]">AWARADS</h1>
-            <hr className="h-[2px] bg-black my-1" />
+
+            <h1 className="text-2xl  tracking-[2px] text-white mt-5">
+              AWARADS
+            </h1>
+            <hr className="h-[2px] bg-black mt-1 mb-4 " />
             {details.awards.map((item) => (
-              <div className="my-2" key={item.name}>
-                <span className="font-semibold text-[15px]">
-                  {item.name} ({item.date.slice(0, 4)})
+              <div className="my-2">
+                <span className="font-semibold text-[15px] text-white">
+                  {item.name} 
                 </span>
-                <span className="mx-2 text-[15px]"></span>
-                <p className="mx-4">{item.summary.data.slice(0, 38)}</p>
+
+                <p className="mx-4 text-white opacity-60">
+                  {item.summary.data.slice(0, 38)}
+                </p>
               </div>
             ))}
           </div>
-          <div className=" w-[70%] pt-10 px-5 ">
-            <div>
-              <h1 className="text-5xl font-semibold tracking-wider">
-                {details.personal.firstName}
-              </h1>
-              <h1 className="text-3xl  tracking-[4px] mt-2">
-                {details.personal.lastName}
-              </h1>
-              {/* <h1 className='text-lg  tracking-[4px] mt-2'>{resume.personal.role}</h1> */}
-            </div>
+        </div>
 
-            <div className="mt-12">
-              <h1 className="text-xl font-bold tracking-[1px]">OBJECTIVE</h1>
-              <hr className="h-[2px] bg-black my-1" />
-              <p className="text-sm">{details.personal.objective}</p>
+        <div className="w-[65%] z-10 bg-slate-300 p-5">
+          <div className="mt-48">
+                <div className="flex mb-2">
+                    <h1 className="text-xl font-semibold tracking-[1px]">
+                        OBJECTIVE
+                    </h1>
+                    <hr className=" h-[2px] w-[100%] ml-2 mt-3 bg-black" />
+                </div>
+            <p className="text-sm">{details.personal.objective}</p>
+          </div>
+          <div className="mt-5">
+                <div className="flex">
+                    <h1 className="text-xl font-semibold tracking-[1px]">
+                        EDUCATION
+                    </h1>
+                    <hr className=" h-[2px] w-[100%] ml-2 mt-3 bg-black" />
+                </div>
+                {
+                        details.education.map(item=>(
+                            <div className="mt-4">
+                          <h1 className="font-semibold">{item.institution} <span className="font-medium">({item.startDate.slice(0,4)}-{item.endDate.slice(0,4)})</span> </h1> 
 
-              <h1 className="text-xl font-bold tracking-[1px] mt-5">WORK</h1>
-              <hr className="h-[2px] bg-black my-1" />
+                          <p className="ml-5">{item.typeOfDegree}</p>
+                          <p className="ml-5 my-1">{item.summary.data}</p>
+                          <p className="ml-5">GPA-{item.gpa}</p>
+                            </div>
+                        ))
 
-              <div className="ml-1 mt-1">
-                {details.work.map((item) => (
-                  <div className="flex" key={item.company}>
-                    <div className="pt-1">
-                      <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
-                      <div className="w-1 bg-black h-32 m-1"></div>
-                    </div>
-                    <div className="ml-5 mt-1">
-                      <p className="font-semibold">
-                        {item.from.slice(0, 4)} - {item.to.slice(0, 4)}
-                      </p>
-                      <p className="tracking-[2px] my-1">{item.company}</p>
-                      <p className="font-bold">{item.designation}</p>
-                      <p className="mb-4 text-sm">{item.summary.data}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+                    }
+          </div>
+          <div className="mt-5">
+                <div className="flex mb-2">
+                    <h1 className="text-xl font-semibold tracking-[1px]">
+                        PROJECTS
+                    </h1>
+                    <hr className=" h-[2px] w-[100%] ml-2 mt-3 bg-black" />
+                </div>
+                {/* {
+                    details.projects.map(item=>(
+                        <div className="mt-4">
+                      <Link href={item.website}><h1 className="font-semibold">{item.name} <span className="font-medium">({item.from.slice(0,4)}-{item.to.slice(0,4)})</span> </h1> </Link>
 
-              <h1 className="text-xl font-bold tracking-[1px] mt-3">
-                EDUCACTION
-              </h1>
-              <hr className="h-[2px] bg-black my-1" />
-              <div className="ml-1 mt-1">
-                {details.education.map((item) => (
-                  <div className="flex" key={item.institution}>
-                    <div className="flex">
-                      <div className="pt-1">
-                        <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
-                        <div className="w-1 bg-black h-28 m-1"></div>
-                      </div>
-                      <div className="ml-5 mt-1">
-                        <p className="font-semibold">
-                          {item.startDate.slice(0, 4)} -{" "}
-                          {item.endDate.slice(0, 4)}
-                        </p>
-                        <p className="tracking-[2px]">{item.institution}</p>
-                        <p className="font-bold">{item.fieldOfStudy}</p>
-                        <p className="">{item.typeOfDegree}</p>
-                        <p className="mb-4 font-semibold">GPA-{item.gpa}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+                      <span className="ml-5 text-sm">{item.summary.data}</span>
+                        </div>
+                    ))
+                } */}
+          </div>
+          <div className="mt-2">
+                <div className="flex mb-2">
+                    <h1 className="text-xl font-semibold tracking-[1px]">
+                        CERTIFICATIONS
+                    </h1>
+                    <hr className=" h-[2px] w-[100%] ml-2 mt-3 bg-black" />
+                </div>
+                {details.certifications.map((item) => (
+              <p className="my-2">{item.title}</p>
+            ))}
+          </div>
+          
+          
+        </div>
+
+        <div className="absolute w-[100%] h-28 bg-cyan-800 z-20 top-9 flex">
+          <div>
+            {
+              <>
+                <h1 className="text-3xl mt-7 ml-24 font-semibold tracking-widest text-white ">
+                  {details.personal.firstName.concat(
+                    "  " + details.personal.lastName
+                  )}
+                </h1>
+                <p className="mt-2 ml-36 tracking-widest text-white">
+                  {details.personal.role}
+                </p>
+              </>
+            }
           </div>
         </div>
+        <img
+          src="https://randomuser.me/api/portraits/men/40.jpg"
+          alt=""
+          className=" absolute top-6 right-10 z-30 h-32 rounded-full border-white border-4  "
+        />
       </div>
+    </div> 
+
+        
+      </div>
+      )}
     </>
   );
 }
