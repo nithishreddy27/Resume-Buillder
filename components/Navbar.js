@@ -1,7 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-export default function Navbar() {
+
+export default  function Navbar({email}) {
+  console.log("email in navbar",email)
   return (
     <header className="text-gray-900 body-font bg-white">
       <nav className="container md:ml-auto md:mr-auto flex items-center justify-between px-10 py-3 bg-gray-100">
@@ -17,14 +19,16 @@ export default function Navbar() {
             />
           </Link>    
         </div>
-        <div className="flex justify-between">
+        
+          <>
+          <div className="flex justify-between">
           <Link href="/student" className="mr-6 hover:text-gray-900">
             Dashboard
           </Link>
           <Link href="/" className="mr-6 hover:text-gray-900">
             Notices
           </Link>
-          <Link href="/resume" className="mr-6 hover:text-gray-900">
+          <Link href={`/resume?email=${email}`} className="mr-6 hover:text-gray-900">
             Resumes
           </Link>
           <Link href="/" className="mr-6 hover:text-gray-900">
@@ -39,6 +43,8 @@ export default function Navbar() {
             LOGOUT
           </Link>
         </div>
+          </>
+        
         {/* <select name="gender" className="shadow cursor-pointer appearance-none border rounded w-[15%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500">
                         <option value="male" >Profile</option>
                         <option value="female"><Link href="/api/logout" >LOGOUT</Link></option>

@@ -16,8 +16,15 @@ export default function Student() {
   
   return (
     // <div>student  {JSON.stringify(user)}</div>
-    <div className="h-screen w-screen">
-    <Navbar />
+    <div className="h-screen w-screen"> 
+    {!user && (
+      <Navbar/>
+    )}
+    {user && (
+      
+      // console.log("user.profile.email",user.email)
+      <Navbar email={user.email}/>
+    )}
     <div>
       <img
         className="object-cover h-40 w-full"
