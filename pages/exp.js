@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import ResumeContext from "../context/ResumeContext";
 import { AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai";
+import Nav from "./nav";
 
 import Link from "next/link";
 export default function exp() {
@@ -230,13 +231,29 @@ export default function exp() {
         )}
         {open == "semiopen" && (
           <>
-            <div className="h-screen relative w-[250%] lg:w-[100%] bg-gradient-to-b from-slate-50 to-slate-100 transition-all overflow-y-scroll  scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100 ">
-              <div className="lg:hidden" onClick={toggleResume}>
-                Tog
+            <div className="h-screen relative w-[250%] lg:w-[60%] bg-gradient-to-b from-slate-50 to-slate-100 transition-all overflow-y-scroll  scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100 ">
+              <div>
+                <div className="border-b border-gray-300 py-2 top-[-8px] fixed w-[100%] lg:w-[37.5%] z-40 bg-slate-50">
+                  <div className="flex items-center justify-between xl:max-w-7xl xl:mx-auto max-w-full px-[8%] flex-wrap w-full">
+                    {/* <h1>Provast</h1> */}
+                    <img
+                      src="https://www.provast.io/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdj7nomqfd%2Fimage%2Fupload%2Fv1652909540%2Fpvast_B_fpwhlu.png&w=2048&q=75"
+                      width={220}
+                      height={55}
+                    />
+                    {/* <div>
+                      <button>Preview</button>
+                    </div> */}
+                    <div className="lg:hidden" onClick={toggleResume}>
+                      Tog
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className=" m-5 sm:m-10 md:mx-20 lg:mx-16">
+
+              <div className=" mb-5 mx-5    sm:m-10 md:mx-20 lg:mx-16">
                 <form action="" className="">
-                  <h1 className="font-bold text-xl shadow-md p-2 rounded-md">
+                  <h1 className="font-bold text-xl border-b border-orange-600 py-1 font-sans tracking-wide mt-24">
                     Personal Details:
                   </h1>
                   <div className="sm:grid sm:grid-cols-2 sm:gap-2">
