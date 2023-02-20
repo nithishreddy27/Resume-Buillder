@@ -1,14 +1,4 @@
-import React, { useContext } from 'react'
-import ResumeContext from '../context/ResumeContext';
-import Link from "next/link";
-
-
-export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,addAward,addCertificate,addEducation,addInternship,addLanguage,addSkill,deleteLanguage,deleteAward,deleteCertificate,deleteInternship,deleteSkill,deleteSocialNetwork ,deleteEducation}) {
-  const { details, setdetails  } = useContext(ResumeContext);
-
-  return (
-    <div>
-         <div className="w-[100%]">
+<div className="w-[40%]">
           form elements
           <form action="" className="flex flex-col p-5">
             <label htmlFor="firstName">First Name</label>
@@ -412,6 +402,3 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
           
 
         </div>
-    </div>
-  )
-}
