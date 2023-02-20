@@ -1,4 +1,5 @@
-import React from 'react'
+import React from "react";
+import cloudinary from "../cloudinary";
 
 export default function AddResume() {
   return (
@@ -29,5 +30,5 @@ export default function AddResume() {
 
         </form>
     </div>
-  )
+  );
 }

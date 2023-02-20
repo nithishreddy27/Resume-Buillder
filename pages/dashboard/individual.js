@@ -17,7 +17,12 @@ export default function Profile() {
   }
   return (
     <div className="h-screen w-screen">
-      <Navbar />
+       {!user && (
+      <Navbar/>
+    )}
+    {user && (
+      <Navbar email={user.email}/>
+    )}
       <div>
         <img
           className="object-cover h-40 w-full"

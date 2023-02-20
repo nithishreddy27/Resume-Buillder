@@ -3,6 +3,7 @@ import Navbar from "../../components/Navbar";
 import Link from "next/link";
 import { FiMenu } from "react-icons/fi";
 import { useUser } from "../../lib/hooks";
+import { useRouter } from "next/router";
 const Home = (props) => {
   const arr = props.done;
   const [open, setOpen] = useState(false);
@@ -10,20 +11,11 @@ const Home = (props) => {
   const [type, setType] = useState("free");
   const [design, setDesign] = useState("all");
   const user = useUser();
+  const router = useRouter()
+  // console.log("in index",router.query)
+  const email = router.query.email
   return (
-    // <div>
-    //    <Navbar></Navbar>
-    //   {
-    //     arr.map((data)=>(
-    //       <div key="_id">
-    //         <p>{data.ResumeName}</p>
-    //         <p>{data.ResumeType}</p>
-    //         <p>{data.ResumeDesign}</p>
-    //         <p>{data.ResumeImage}</p>
-    //       </div>
-    //     ))
-    //   }
-    // </div>
+    
     <div>
       <div>
         <div className="border-b border-gray-300 py-2 fixed top-[-8px] w-[100%] z-40 bg-slate-50">
@@ -81,6 +73,7 @@ const Home = (props) => {
           </div>
         </div>
       </div>
+      
       {user && (
         <div className="h-screen absolute top-[80px]">
           <h1 className="mt-10 p-2 font-bold text-gray-900 text-lg text-center sm:text-3xl md:text-4xl">
@@ -166,10 +159,10 @@ const Home = (props) => {
 
               //      </Link>
               l.map((data) => (
-                <Link href={`resume/${data.ResumeDesign}/${data.ResumeName}`} key={data._id}>
+                <Link href={`resume/${data.ResumeDesign}/${data.ResumeName}?email=${email}`} key={data._id}>
                   <div className="rounded-md bg-gray-100 h-auto  w-63 p-5 m-5 cursor-pointer relative">
                     <div className="opacity-80">
-                      <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png" />
+                      <img src={data.ResumeImage} />
                     </div>
                     <div className="absolute z-10 top-[43%] right-[43%] flex items-center justify-center h-10 w-10 bg-gray-200  bg-opacity-70 rounded-full p-1">
                       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAVJJREFUWEftl+FNAzEMhb9OQDcoTECZoGwAbNANoBMAEwAbsEFhAzYANigbwAStXuVKEbqLz7lWOlXxv1MSv68vTuKOGFiMBsbDUQGdArfAJTA1p7+AD+AFWJW4X+rQHfDkCGqOwEJRAvRsznQREpDAOkcU6BpYJtm/gQdAW6XQ1un7PJlzA7x1JYoCqS4mlvwdEGBTCODKBrTm7BBA+vWflvgPUFH/tgiNrahPbPwicTHLFnEoLeScOztBnbaZfSwA1Z4bESDVxr1lfLRayQlE529zVSBvz6pDfR3SydB9oiO+j9Cd9AroUDRGbssiT0QUtvWU5oB06e0utqigN7/19s4Brb2sPccbtStQ4mp1yCux6lB1yHPAG681dPwOHfJx/WlraXJvWdqke/ZHx4vaD4kIap78OYwK/58vZ9SgKW+4QesrXrQ+0uQXCUQXDQ5oA5cjSCVYiqWCAAAAAElFTkSuQmCC" />
