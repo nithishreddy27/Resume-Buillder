@@ -1,4 +1,5 @@
-import React from 'react'
+import React from "react";
+import cloudinary from "../cloudinary";
 
 export default function AddResume() {
   return (
@@ -22,7 +23,6 @@ export default function AddResume() {
             <input type="text" name="ResumeDesign" id="ResumeDesign" />
             </div>
             <div className='my-4 mx-10'>
-
             <label htmlFor="ResumeImage">image of the templete</label>
             <input type="text" name="ResumeImage" id="ResumeImage" />
             </div>
@@ -30,5 +30,5 @@ export default function AddResume() {
 
         </form>
     </div>
-  )
+  );
 }

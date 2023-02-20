@@ -33,7 +33,7 @@ export default function exp() {
             </>
         )} */}
         {open == "closed" && (
-          <div className="h-screen w-[100%] bg-green-300 fixed">
+          <div className="w-screen bg-green-300 fixed">
             <button
               className="h-10 w-10 mx-auto block lg:hidden"
               onClick={toggleResume}
@@ -41,9 +41,9 @@ export default function exp() {
               Click
             </button>
             <div></div>
-            <div className="bg-slate-50 w-[210mm] h-[285mm] min-w-[210mm] overflow-auto drop-shadow-2xl flex flex-row">
+            <div className="bg-slate-50 w-[91vw] h-[126vw] min-w-[210mm] overflow-auto drop-shadow-2xl flex flex-row">
               <div className=" w-[45%] h-[100%] bg-gray-200 p-6">
-                <div className="bg-slate-800 w-[144px] h-[200px] absolute top-0 left-0">
+                <div className="bg-slate-800 w-[130px] h-[200px] absolute top-0 left-0">
                   <img
                     src="https://randomuser.me/api/portraits/men/40.jpg"
                     alt=""
@@ -51,7 +51,7 @@ export default function exp() {
                   />
                 </div>
                 <div className="mt-48">
-                  <h1 className="text-2xl font-semibold tracking-[2px]">
+                  <h1 className="text-2xl w-[66%] font-semibold tracking-[2px]">
                     CONTACT
                   </h1>
                   <hr className="h-[2px] bg-black my-1" />
@@ -112,16 +112,6 @@ export default function exp() {
                     </li>
                   ))}
                 </div>
-
-                {/* <div className='mt-4'>
-            <h1 className='text-2xl font-semibold tracking-[2px]' >HOBBIES</h1>
-                <hr className="h-[2px] bg-black my-1" />
-                {
-                    resume.hobbies.map(item=>(
-                        <p className='my-2'>{item.name}</p>
-                    ))
-                }
-            </div> */}
                 <div className="mt-4">
                   <h1 className="text-2xl font-semibold tracking-[2px]">
                     LANGUAGES
