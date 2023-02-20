@@ -26,7 +26,7 @@ const ResumeState = (props)=>{
         image: "",
         dob: "1985-11-01",
         phone: "9", 
-        objective:" Write Something ",
+        objective:"",
     },
     social: [
         // {
@@ -101,6 +101,18 @@ const ResumeState = (props)=>{
         //   enabled: true,
         // },
       ],
+      certifications: [
+        {
+          // title: "Oracle Java Certifications Associate Professional",
+          // date: "2014-09-18",
+          // issuer: "Udemy",
+          // summary: {
+          //   data: "Completed a course on Java and built a project at the end of the course",
+          //   enabled: true,
+          // },
+          // enabled: true,
+        },
+      ]
   }
 
   

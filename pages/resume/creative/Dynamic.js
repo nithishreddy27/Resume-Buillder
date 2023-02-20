@@ -183,6 +183,40 @@ export default function dynamic() {
       setdetails({ ...details,awards:arr});
     }
 
+
+
+    function addCertificate(){
+
+      const certificate={
+        certificateTitle:document.getElementById("certificateTitle").value,
+        issuer:document.getElementById("issuer").value,
+        certificateDate:document.getElementById("certificateDate").value,
+        summary:{
+          data:document.getElementById("certificateSummary").value,
+        }
+      }
+      console.log("award",certificate)
+      const arr = []
+      details.certifications.map((item)=>{
+        arr.push(item)
+      })
+    // console.log('award',award)
+    arr.push(certificate)
+    setdetails({ ...details,certifications:arr});
+    }
+
+    function deleteCertificate(index){
+      console.log("network",index)
+      const arr = []
+      details.certifications.map((item,i)=>{
+        if(i != index)
+        arr.push(item)
+      })
+      // console.log('intern',intern)
+      // arr.push(intern)
+      setdetails({ ...details,certifications:arr});
+    }
+
     function addSkill(){
       const skill={
         name:document.getElementById("skillTitle").value,
@@ -397,6 +431,8 @@ export default function dynamic() {
                   </div>
                 ))}
               </div>
+
+
           <div className="flex flex-col w-[75%] p-10">
             <h1>Education</h1>
             <label htmlFor="TypeOfDegree">TypeOfDegree</label>
@@ -475,6 +511,41 @@ export default function dynamic() {
                   {item.name} 
                 </span>
                 <button onClick={()=>{deleteAward(index)}}>Delete</button>
+              </div>
+            ))}
+            </>
+           )} 
+          </div>
+
+
+          <div className="flex flex-col w-[75%] p-10">
+            <h1>Certifications</h1>
+            <label htmlFor="certificateTitle">Title</label>
+                <input type="text" name="certificate" id="certificateTitle" />
+
+                <label htmlFor="issuer">Issuer</label>
+                <input type="text" name="certificate" id="issuer" />
+
+                <label htmlFor="certificateDate">Certificate Date</label>
+                <input type="date" name="certificate" id="certificateDate" />
+
+                
+                <label htmlFor="certificateSummary">Summary</label>
+                <input type="text" name="certificate" id="certificateSummary" />
+                {/* <input type="submit" value="submit" className="cursor-pointer" /> */}
+                <button onClick={addCertificate}>Submit</button>
+          </div>
+                  
+
+          <div>
+          {details.certifications.length != 0 && (
+            <>
+            {details.certifications.map((item,index) => (
+              <div className="my-2" key={item.issuer}>
+                <span className="font-semibold text-[15px]">
+                  {item.issuer} 
+                </span>
+                <button onClick={()=>{deleteCertificate(index)}}>Delete</button>
               </div>
             ))}
             </>
@@ -775,10 +846,17 @@ export default function dynamic() {
               {/* <h1 className='text-lg  tracking-[4px] mt-2'>{resume.personal.role}</h1> */}
             </div>
 
+           
+            
             <div className="mt-12">
+            {details.personal.objective.length !=0 && (
+              <>
               <h1 className="text-xl font-bold tracking-[1px]">OBJECTIVE</h1>
               <hr className="h-[2px] bg-black my-1" />
               <p className="text-sm">{details.personal.objective}</p>
+              </>
+            )}
+              
               
 
               {details.work.length != 0 && (
@@ -837,6 +915,35 @@ export default function dynamic() {
               </div>
               </>
              )}
+
+
+
+            {details.certifications.length != 0 && (
+              <>
+               <h1 className="text-xl font-bold tracking-[1px] mt-3">
+                CERTIFICATIONS
+              </h1>
+              <hr className="h-[2px] bg-black my-1" />
+              <div className="ml-1 mt-1">
+                {details.certifications.map((item) => (
+                  <div className="flex" key={item.institution}>
+                    <div className="flex">
+                      <div className="pt-1">
+                        <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
+                        <div className="w-1 bg-black h-10 m-1"></div>
+                      </div>
+                      <div className="ml-5 mt-1"> 
+                        <p className="tracking-[2px]">{item.certificateTitle}</p>
+                        <p className="font-bold">{item.certificateDate}</p>
+                        <p className="">{item.issuer}</p>
+                        <p className="mb-4 font-semibold">{item.summary.data}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              </>
+             )} 
             </div>
           </div>
         </div>
