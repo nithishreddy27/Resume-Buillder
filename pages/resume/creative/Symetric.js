@@ -362,7 +362,7 @@ export default function Symetric() {
                     {details.social.map((item) => (
                       <div className="pr-2" key={item.network}>
                         <span>
-                          <Link href={item.url}>
+                          <Link href={`${item.url}`}>
                             <img
                               src={
                                 "https://www." +
@@ -440,7 +440,9 @@ export default function Symetric() {
                     <h2 className="text-center text-xl font-serif font-medium underline pt-8">
                       C A R E E R O B J E C T I V E
                     </h2>
-                    <p className="pl-10 pr-5 pt-3 pb-3">{details.objective}</p>
+                    <p className="pl-10 pr-5 pt-3 pb-3">
+                      {details.personal.objective}
+                    </p>
                     <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[-7px] bottom-[-6px] bg-white "></div>
                   </div>
                 )}
@@ -456,7 +458,7 @@ export default function Symetric() {
                             {item.designation} in {item.company}
                           </span>
                           <br></br>({item.from} to {item.to})<br />
-                          <Link href={item.website}>{item.website}</Link>
+                          <Link href={`${item.website}`}>{item.website}</Link>
                           <br></br>
                         </p>
                       ))}

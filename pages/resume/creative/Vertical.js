@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
 
-export default function Assymetric() {
+export default function Symetric() {
   const user = useUser();
   const { details, setdetails } = useContext(ResumeContext);
 
@@ -314,183 +314,152 @@ export default function Assymetric() {
 
           {/* Resume */}
 
-          <div className="  bg-white w-[210mm] h-[297mm] drop-shadow-2xl mx-auto m-2">
-            <div className="flex space-x-4 m-4 ">
-              <div className="m-4 w-[120%]">
+          <div className="container w-[210mm] h-[285mm] bg-white min-w-[210mm] ">
+            <div className="w-[205mm] h-40 bg-blue-500 absolute z-0 mt-10">
+              <h1 className="text-white ml-80 mt-8 text-5xl">
+                {details.personal.firstName} {details.personal.lastName}
+              </h1>
+              <h6 className="text-white ml-80 mt-1 ">
+                {details.personal.role}
+              </h6>
+            </div>
+            <div className="grid grid-cols-3">
+              <div className="bg-slate-900 h-auto ml-5 z-10">
                 <img
-                  className="w-[75%] h-[40%] pb-2"
-                  src="https://randomuser.me/api/portraits/women/71.jpg"
-                ></img>
-                <span className="  text-xl  bg-white   rounded-sm  text-black tracking-wide  font-semibold ">
-                  {details.personal.role}
-                </span>
-
-                {details.hobbies.length != 0 && (
-                  <div className="text-sm">
-                    <p className="text-m font-medium ">HOBBIES</p>
-                    {details.hobbies.map((item) => (
-                      <div key={item.name}>
-                        <p>{item.name}</p>
-                        <p>{item.enabled}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                {details.skills.length != 0 && (
-                  <div className="text-sm">
-                    <p className="text-m font-medium ">SKILLS</p>
+                  className="w-40 m-10 rounded-lg"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpl60g6oKVerEKPde2ClN4-6ASK4Ds4KzlM0Y1N-K_bCgOCMBYZ019WUgRLOfNAqyyhnY&usqp=CAU"
+                  alt="ProfilePhoto"
+                />
+                {details.skills.length && (
+                  <div className="border-b-2 border-white m-6 p-3">
+                    <h1 className="font-medium text-lg text-white ">SKILLS</h1>
                     {details.skills.map((item) => (
                       <div key={item.name}>
-                        <span className="text-sm">
-                          {item.name} - {item.level}
-                        </span>
-                        <p>{item.enabled}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-              <div className=" m-7 ">
-                <p className="font-bold text-6xl text p-3 pl-2   pb-1 font-sans tracking-wider text-left">
-                  {details.personal.firstName} {details.personal.lastName}
-                </p>
-                {details.personal.objective.length != 0 && (
-                  <div className=" bg-gray-200 rounded-xl m-3 ml-[10%]">
-                    <p className=" text-black font-bold text-xl p-2 pt-2 pl-4 tracking-wid mt-5 ">
-                      PROFILE
-                    </p>
-
-                    <p className="text-sm text-black p-3 pl-2 pt-2">
-                      {details.personal.objective}
-                    </p>
-                  </div>
-                )}
-              </div>
-            </div>
-            <hr className="border-1"></hr>
-            <div className="flex space-x-4 m-4">
-              <div flex-col>
-                <div className="b-[50%] rounded-md  p-2">
-                  {details.education.length != 0 && (
-                    <>
-                      <p className="font-bold  m-2 ">EDUCATION</p>
-                      {details.education.map((item) => (
-                        <div className="text-sm p-1" key={item.institution}>
-                          <p className="font-semibold">
-                            {item.institution} [{item.startDate} -{" "}
-                            {item.endDate}]
-                          </p>
-                          <p>{item.fieldOfStudy}</p>
-                          <p>{item.typeOfDegree}</p>
-                          <p>{item.gpa}</p>
-                          <p>{item.summary.enabled}</p>
-                          <p>{item.enabled}</p>
-                        </div>
-                      ))}
-                    </>
-                  )}
-                  <div className="pb-3 pt-2">
-                    {details.work.length != 0 && (
-                      <>
-                        <p className="text-black font-bold tracking-wider  p-1 px-2 pt-2 ">
-                          WORK
-                        </p>
-                        {details.work.map((item) => (
-                          <div className="m-2" key={item.company}>
-                            <Link href={`${item.website}`}>
-                              <p className=" font-semibold text-base tracking-wider">
-                                {item.company}
-                              </p>
-                            </Link>
-                            <p>
-                              [ {item.from}] - [{item.to}]
-                            </p>
-                            <p>{item.designation}</p>
-
-                            <p>{item.summary.enabled}</p>
-                          </div>
-                        ))}
-                      </>
-                    )}
-                  </div>
-                  <div className="pt-2">
-                    {details.awards.length != 0 && (
-                      <>
-                        <p className="text-black font-bold tracking-wider  p-1 mx-2 ">
-                          AWARDS:
-                        </p>
-                        {details.awards.map((item) => (
-                          <div className="text-sm pt-4 ml-3" key={item.name}>
-                            <li className="font-semibold">
-                              {item.name} - [{item.date}]
-                            </li>
-                            <p>{item.awarder}</p>
-                            {/* <p>{item.summary.data}</p> */}
-                            <p>{item.summary.enabled}</p>
-                            <p>{item.enabled}</p>
-                          </div>
-                        ))}
-                      </>
-                    )}
-                  </div>
-                </div>
-              </div>
-              <div className="flex-col ">
-                {/* <div className=" pt-1 pb-3 bg-gray-200 rounded-xl p-2 mt-5 mr-5">
-              <p className="text-black font-bold tracking-wider  p-2 px-2 pt-3   ">
-                PROJECTS
-              </p>
-
-              {details.projects.map((item) => (
-                <div className=" text-black ">
-                  <Link href={item.website}>
-                    <p className="font-bold  tracking-wider">{item.name}</p>
-                  </Link>
-                  <p className="">
-                    {item.from}- {item.to}
-                  </p>
-                  <p>{item.summary.data}</p>
-                  <p>{item.summary.enabled}</p>
-                  <p>{item.enabled}</p>
-                  <p className="p-2"> </p>
-                </div>
-              ))}
-            </div> */}
-                {details.certifications.length != 0 && (
-                  <div className=" pt-1 pb-3 bg-gray-200 rounded-xl mt-5 mr-4">
-                    <p className=" text-black font-bold text-xl tracking-wide ml-3 p-1  mt-2 ">
-                      CERTIFICATION
-                    </p>
-
-                    {details.certifications.map((item) => (
-                      <div className="pt-4 text-black mx-3 " key={item.title}>
-                        <p className="font-semibold">{item.title} </p>
-                        <p>[{item.date}]</p>
-                        <p></p>
-                        <p>{item.issuer}</p>
-                        {/* <p>{item.summary.data}</p> */}
-                        <p>{item.summary.enabled}</p>
-                        <p>{item.enabled}</p>
+                        <h1 className="font-normal   text-white">
+                          {item.name}
+                        </h1>
+                        <li className="text-sm ml-4 text-white">
+                          {item.level}
+                        </li>
                       </div>
                     ))}
                   </div>
                 )}
                 {details.social.length != 0 && (
-                  <div className="flex mt-4 m-4 bg-gray-200 rounded-xl">
+                  <div className="border-b-2 border-white m-6 p-3">
+                    <h1 className="font-medium text-lg text-white ">SOCIAL</h1>
                     {details.social.map((item) => (
-                      <div className="mx-3 pb-4  mt-3 " key={item.network}>
-                        <span className="">
-                          <Link href={item.url}>
-                            <img
-                              src={
-                                "https://www." +
-                                item.network +
-                                ".com/favicon.ico"
-                              }
-                              className="w-5 "
-                            />
-                          </Link>
-                        </span>
+                      <div className="ml-4 my-4 flex" key={item.network}>
+                        <img
+                          src={
+                            "https://www." + item.network + ".com/favicon.ico"
+                          }
+                          alt=""
+                          className="w-5 h-5"
+                        />
+                        <Link href={item.url}>
+                          <h1 className="ml-4 text-white">{item.username}</h1>
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
+                )}
+                <div>
+                  {details.awards.length != 0 && (
+                    <div className="border-b-2 border-white m-6 p-3">
+                      <h1 className="font-medium text-lg text-white ">
+                        AWARDS
+                      </h1>
+                      {details.awards.map((item) => (
+                        <div className="m-2" key={item.name}>
+                          <h1 className="text-white">{item.awarder}</h1>
+                          <li className="text-white text-sm ml-4 ">
+                            {item.awarder}
+                          </li>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {details.hobbies.length != 0 && (
+                    <div className="border-b-2 border-white m-6 p-3">
+                      <h1 className="font-medium text-lg text-white ">
+                        HOBBIES
+                      </h1>
+                      {details.hobbies.map((item) => (
+                        <div className="m-2" key={item.name}>
+                          <h1 className="text-white">{item.name}</h1>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div className="col-span-2">
+                <div className="pt-48">
+                  <div className="border-b-4 border-black m-4 p-5">
+                    <h1 className="font-medium text-lg text-gray-600">
+                      ABOUT ME
+                    </h1>
+                    <p className="text-sm font-medium pt-1">
+                      {details.personal.objective}
+                    </p>
+                  </div>
+                </div>
+                {details.work.length != 0 && (
+                  <div className="border-b-4 border-black m-4 p-2">
+                    <h1 className="font-medium text-lg text-gray-600">
+                      WORK EXPERIENCE
+                    </h1>
+                    {details.work.map((item) => (
+                      <div className="p-1" key={item.company}>
+                        <h1 className="font-medium ml-4 text-lg">
+                          {item.company}
+                        </h1>
+                        <h2 className="font-semibold text-xs ml-4">
+                          {item.from} - {item.to}
+                        </h2>
+                        <li className="ml-10 list-disc font-semibold">
+                          {item.designation}
+                        </li>
+                        <li className="ml-10 list-disc font-semibold">
+                          {item.website}
+                        </li>
+                      </div>
+                    ))}
+                  </div>
+                )}
+                {details.education.length != 0 && (
+                  <div className="border-b-4 border-black m-4 p-2">
+                    <h1 className="font-medium text-lg text-gray-600">
+                      EDUCATION
+                    </h1>
+                    {details.education.map((item) => (
+                      <div key={item.institution}>
+                        <h1 className="font-medium ml-6">{item.institution}</h1>
+                        <h6 className="text-xs font-semibold ml-6">
+                          {item.startDate} - {item.endDate}
+                        </h6>
+                        <li className="ml-8 font-semibold">
+                          {item.fieldOfStudy}
+                        </li>
+                      </div>
+                    ))}
+                  </div>
+                )}
+                {details.awards.length != 0 && (
+                  <div className="border-b-4 border-black m-4 p-2">
+                    <h1 className="font-medium text-lg text-gray-600">
+                      AWARDS
+                    </h1>
+                    {details.awards.map((item) => (
+                      <div key={item.name}>
+                        <h1 className="font-medium ml-6">{item.title}</h1>
+                        <h6 className="text-xs font-semibold ml-6">
+                          {item.date}
+                        </h6>
+                        <li className="ml-8 font-semibold">
+                          {item.summary.data}
+                        </li>
                       </div>
                     ))}
                   </div>
