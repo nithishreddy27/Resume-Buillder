@@ -107,6 +107,19 @@ export default async function handler(req,res){
                 //   },
                 //   enabled: true,
                 // },
+            ],
+            projects: [
+              // {
+              //   name: "Gaming AI",
+              //   from: "2017-08-03",
+              //   to: "2018-11-15",
+              //   website: "http://github.com/gameai",
+              //   summary: {
+              //     data: "Worked with IT team to create an AI based gaming application for the modern gamers",
+              //     enabled: true,
+              //   },
+              //   enabled: true,
+              // },
             ]
           }
           res.send({"resume":pro})

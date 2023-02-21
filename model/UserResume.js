@@ -96,7 +96,10 @@ const userResume = new mongoose.Schema({
         }
     }],
     projects:[{
-        name:{
+        title:{
+            type:String
+        },
+        domine:{
             type:String
         },
         from:{
