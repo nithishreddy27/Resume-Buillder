@@ -1,0 +1,20 @@
+<div className='md:m-auto h-[340px] w-[240px]  box my-8 cursor-pointer  relative top-2  lg:-ml-1 '>
+      <div className='flex flex-row-reverse'><span className='bg-orange-600 mr-0 text-right px-3  text-white font-semibold rounded-t'>Public</span></div> 
+       <span className='block relative border-orange-500 border-4 display-block hover:brightness-[60%] '>
+        <img className='filter brightness-[65%]  object-cover w-full h-[300px] hover:brightness-[90%]  ' src="https://www.provast.io/_next/image?url=https%3A%2F%2Fwww.callcentrehelper.com%2Fimages%2Fstories%2F2022%2F01%2Fhands-holding-cvs.gif&w=1200&q=75" />
+       {/* <div className='bg-orange-600 -top-7 z-20  px-4  right-0  rounded-t-md font-semibold t0ext-white'>Public</div> */}
+       </span>
+       <div className="absolute   inset-0 flex items-center justify-center text-3xl font-bold  text-white">
+        <p className='text-center mb-[80px] transition  delay-300 duration-300 px-8  inset-0 hover:-translate-y-8   '>FULL STACK DEVELOPER</p>
+      
+        </div>
+
+        
+
+        {/* <img src="https://img.icons8.com/ios/50/null/external-link-squared.png" alt="" className='' /> */}
+      
+      
+    </div>
+    
+    </div>
+  </div>
