@@ -92,7 +92,6 @@ export default function Dynamic() {
     const education = {
       typeOfDegree: document.getElementById("TypeOfDegree").value,
       institution: document.getElementById("school").value,
-      fieldOfStudy: document.getElementById("EducationFieldOfStudy").value,
       startDate: document.getElementById("Educationstartdate").value,
       endDate: document.getElementById("Educationenddate").value,
       gpa: document.getElementById("grade").value,
@@ -151,9 +150,9 @@ export default function Dynamic() {
 
   function addCertificate() {
     const certificate = {
-      certificateTitle: document.getElementById("certificateTitle").value,
+      title: document.getElementById("certificateTitle").value,
       issuer: document.getElementById("issuer").value,
-      certificateDate: document.getElementById("certificateDate").value,
+      date: document.getElementById("certificateDate").value,
       summary: {
         data: document.getElementById("certificateSummary").value,
       },
@@ -254,10 +253,34 @@ export default function Dynamic() {
   }
 
   function addProjects(){
-
+    const project = {
+      title: document.getElementById("projectTitle").value,
+      domine: document.getElementById("projectDomine").value,
+      from: document.getElementById("projectstartdate").value,
+      to: document.getElementById("projectenddate").value,
+      website: document.getElementById("projectWebsite").value,
+      summary: {
+        data: document.getElementById("projectsummary").value,
+      },
+    };
+    console.log("award", project);
+    const arr = [];
+    details.projects.map((item) => {
+      arr.push(item);
+    });
+    // console.log('award',award)
+    arr.push(project);
+    setdetails({ ...details, projects: arr });
   }
-  function deleteProjects(index){
 
+  function deleteProjects(index){
+    console.log("network", index);
+    const arr = [];
+    details.projects.map((item, i) => {
+      if (i != index) arr.push(item);
+    });
+    
+    setdetails({ ...details, projects: arr });
   }
 
   const [open, setopen] = useState("semiopen");
@@ -575,8 +598,8 @@ export default function Dynamic() {
   deleteEducation={deleteEducation}
   deleteSocialNetwork={deleteSocialNetwork}
   socialChange={socialChange}
-  deleteProjects={deleteProjects}
-  addProjects={deleteProjects}
+  deleteProject={deleteProjects}
+  addProjects={addProjects}
 />
 <div className="lg:hidden text-white border border-white rounded-lg px-2 py-1 hover:border-orange-700 hover:text-orange-700 absolute right-[10%] top-5 " onClick={toggleResume}>
                       PREVIEW
@@ -712,7 +735,7 @@ export default function Dynamic() {
                   {details.awards.map((item) => (
                     <div className="my-2" key={item.name}>
                       <span className="font-semibold text-[15px]">
-                        {item.name} ({item.date})
+                        {item.name} ({item.date}) - <b>{item.awarder}</b>
                       </span>
                       <span className="mx-2 text-[15px]"></span>
                       <p className="mx-4">{item.summary.data.slice(0, 38)}</p>
@@ -755,13 +778,13 @@ export default function Dynamic() {
                         <div className="flex" key={item.company}>
                           <div className="pt-1">
                             <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
-                            <div className="w-1 bg-black h-32 m-1"></div>
+                            <div className="w-1 bg-black h-20 m-1"></div>
                           </div>
                           <div className="ml-5 mt-1">
                             <p className="font-semibold">
                               {item.from.slice(0, 4)} - {item.to.slice(0, 4)}
                             </p>
-                            <p className="tracking-[2px] my-1">
+                            <p className="tracking-[2px]">
                               {item.company}
                             </p>
                             <p className="font-bold">{item.designation}</p>
@@ -785,7 +808,7 @@ export default function Dynamic() {
                           <div className="flex">
                             <div className="pt-1">
                               <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
-                              <div className="w-1 bg-black h-28 m-1"></div>
+                              <div className="w-1 bg-black h-20 m-1"></div>
                             </div>
                             <div className="ml-5 mt-1">
                               <p className="font-semibold">
@@ -820,19 +843,53 @@ export default function Dynamic() {
                           <div className="flex">
                             <div className="pt-1">
                               <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
-                              <div className="w-1 bg-black h-10 m-1"></div>
+                              <div className="w-1 bg-black h-20 m-1"></div>
                             </div>
                             <div className="ml-5 mt-1">
                               <p className="tracking-[2px]">
-                                {item.certificateTitle}
+                                {item.title}
                               </p>
                               <p className="font-bold">
-                                {item.certificateDate}
+                                {item.date}
                               </p>
                               <p className="">{item.issuer}</p>
                               <p className="mb-4 font-semibold">
                                 {item.summary.data}
                               </p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
+
+
+                
+            {details.projects.length != 0 && (
+                  <>
+                    <h1 className="text-xl font-bold tracking-[1px] mt-3">
+                      PROJECTS
+                    </h1>
+                    <hr className="h-[2px] bg-black my-1" />
+                    <div className="ml-1 mt-1">
+                      {details.projects.map((item) => (
+                        <div className="flex" key={item.title}>
+                          <div className="flex">
+                            <div className="pt-1">
+                              <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
+                              <div className="w-1 bg-black h-20 m-1"></div>
+                            </div>
+                            <div className="ml-5 mt-1">
+                              <p className="font-semibold">
+                                {item.from}  to {"  "}
+                                {item.to}
+                              </p>
+                              <p className="tracking-[2px]">
+                                {item.title}
+                              </p>
+                              <p className="font-bold">{item.domine}</p>
+                              <p className="">{item.summary.data}</p>
                             </div>
                           </div>
                         </div>
