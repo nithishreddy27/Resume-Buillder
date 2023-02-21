@@ -373,7 +373,9 @@ export default function Square() {
                   <h2 className="text-center text-xl font-serif font-medium underline pt-6">
                     C A R E E R O B J E C T I V E
                   </h2>
-                  <p className="pl-10 pr-5 pt-5">{details.objective}</p>
+                  <p className="pl-10 pr-5 pt-5">
+                    {details.personal.objective}
+                  </p>
                 </div>
               )}
               {details.work.length != 0 && (
@@ -387,7 +389,7 @@ export default function Square() {
                         {item.designation} in {item.company}
                       </span>
                       <br></br>({item.from} to {item.to})<br />
-                      <Link href={item.website}>{item.website}</Link>
+                      <Link href={`${item.website}`}>{item.website}</Link>
                       <br></br>
                     </p>
                   ))}
