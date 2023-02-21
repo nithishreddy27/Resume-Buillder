@@ -277,6 +277,10 @@ export default function Classic() {
         </div>
 
 
+
+
+
+
         {/* Resume */}
 
 
@@ -300,15 +304,15 @@ export default function Classic() {
               </div>
               <div>
 
-              {details.languages.length != 0 && (
+              {details.social.length != 0 && (
                 <div className=" pb-2 rounded-md flex bg-gray-50 m-14">
-                  {resume.social.map((item) => (
+                  {details.social.map((item) => (
                     <div key={item.network} className="mx-3 mt-2 ">
                       <span>
                         <Link href={item.url}>
                           <img
                             src={
-                              "https://www." + item.network + ".com/favicon.ico"
+                              "https://www."+item.network+".com/favicon.ico"
                             }
                             className="w-5 "
                           />
@@ -322,44 +326,46 @@ export default function Classic() {
             </div>
           </div>
           <div className="flex m-5">
-            <div className="flex w-[60%]">
-              <div className="flex-col">
-                <div className="flex-col bg-gray-50 ">
+            <div className="flex flex-grow w-[100%]">
+              <div className="">
+                <div className=" bg-gray-50 ">
                   <div className=" m-4 ">
-                    <p className="bg-gray-800 text-white p-1 rounded-md mt-3 text-center">
+                    <p className="bg-gray-800 text-white p-1 w-[100%] rounded-md mt-3 text-center">
                       PROFILE
                     </p>
                     <p className="text-sm p-1 pt-4">{details.personal.objective}</p>
                   </div>
                   <div>
-                    {/* <span className=" bg-black text-white pt-1 p-1 rounded-sm">
+                    {/* <span className=" bg-gray-800 text-white pt-1 p-1 rounded-sm">
                   PERSONAL
                 </span> */}
-                    {/* <p className="text-sm from-neutral-700 p-1">
-                  {resume.personal.phone}
-                </p> */}
+                    
 
-                    {/* <div className="text-sm">
-                  <p className="text-m font-medium ">HOBBIES</p>
-                  {resume.hobbies.map((item) => (
-                    <div>
-                      <p>{item.name}</p>
-                      <p>{item.enabled}</p>
+                {details.education.length != 0 && (
+                        <div className="text-sm">
+                      <p className="text-m font-medium ">HOBBIES</p>
+                      {details.hobbies.map((item) => (
+                        <div key={item.name}>
+                          <p>{item.name}</p>
+                          <p>{item.enabled}</p>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div> */}
+                )}
 
-                    {/* <div className="text-sm">
-                  <p className="text-m font-semibold">LANGUAGES</p>
-                  {resume.languages.map((item) => (
-                    <div>
+                 {details.education.length != 0 && (
+                    <div className="text-sm">
+                   <p className="text-m font-semibold">LANGUAGES</p>
+                  {details.languages.map((item) => (
+                    <div key={item.name}>
                       <p>
                         {item.name} : {item.fluency}
                       </p>
                       <p>{item.enabled}</p>
                     </div>
                   ))}
-                </div> */}
+                </div>
+                 )}
         
                 {details.education.length != 0 && (
                     <div className="p-2 ">
@@ -368,7 +374,7 @@ export default function Classic() {
                       </p>
 
                       {details.education.map((item) => (
-                        <div key={items.institution} className="text-base p-2">
+                        <div key={item.institution} className="text-base p-2">
                           <p className="font-semibold">{item.institution}</p>
                           <p>
                             {" "}
@@ -420,20 +426,25 @@ export default function Classic() {
                   </div>
                 </div> */}
               </div>
-              <div></div>
             </div>
-            <div className="flex w-[60%] p-3">
-
-            
-              <div className="bg-gray-50 ">
+            <div className="flex bg-pink-300 min-w-[60%] p-3">
+               <div className="bg-gray-50 "> 
+             
+                <>
+                <h1 className="bg-gray-800 text-white mt-1 p-1 text-center rounded-md ">NETWORK</h1>
+                <div>
+                  <p className=" font-semibold text-md tracking-wider">{details.personal.phone}</p>
+                  <p className=" font-semibold text-md tracking-wider">{details.personal.email}</p>
+                </div>
+                 </>
+              
+              
               {details.work.length != 0 && (
                 <>
-                <p className="bg-gray-800 text-white mt-1 p-1 text-center rounded-md ">
-                  WORK
-                </p>
+                <p className="bg-gray-800 text-white mt-1 p-1 text-center rounded-md ">WORK</p>
                 {details.work.map((item) => (
                   <div key={item.company} className="m-2">
-                    <Link href={item.website}>
+                    <Link href={`{item.website}$`}>
                       <p className=" font-bold text-lg tracking-wider">
                         {item.company}{" "}
                       </p>
@@ -454,7 +465,7 @@ export default function Classic() {
                     <p className="bg-gray-800 rounded-md text-center  text-white p-1 m-1 ">
                       AWARDS
                     </p>
-                    {resume.awards.map((item) => (
+                    {details.awards.map((item) => (
                       <div key={item.name} className="text-sm pt-4">
                         <p className="font-semibold">
                           {item.name} - [{item.date}]

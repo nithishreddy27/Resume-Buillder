@@ -293,19 +293,20 @@ export default function Madrid() {
             {details.personal.firstName} {details.personal.lastName}
           </h1>
           <div>
-            <h1 className="m-1 mt-0 ml-2 text-sm font-medium text-yellow-400">{details.personal.role}</h1>
+            <h1 className="m-1 mt-0 ml-2 text-sm font-medium text-yellow-400">{resume.personal.role}</h1>
           </div>
           <div>
-            <p className="text-xs p-2 pt-0 font-medium">{details.personal.objective}</p>
+            <p className="text-xs p-2 pt-0 font-medium">{resume.personal.objective}</p>
           </div>
         </div>
         </div>
           
+        {details.social.length !=0  && (
          <div>
           <h1 className="font-medium text-2xl ml-5 pt-4 mb-1 p-2">Employement History</h1>
                         {
                             details.work.map(item=>(
-                                <div key={item.company}>
+                                <div>
                                     <h1 className="font-medium text-lg ml-16 ">{item.company}</h1>
                                     <h2 className="font-medium ml-16 text-sm text-yellow-400">{item.from} - {item.to}</h2>
                                     <li className="ml-28 text-lg list-disc">{item.designation}</li>
@@ -316,12 +317,13 @@ export default function Madrid() {
                         }
 
          </div>
+        )}
          <div>
           
             <h1 className="font-medium text-2xl ml-5 pt-2 mb-1 p-2">Certifications</h1>
             {
-              details.certifications.map(item=>(
-                <div key={item.}>
+              resume.certifications.map(item=>(
+                <div>
                   <h1 className="text-sm ml-16 font-medium">{item.title}</h1>
                   <h6 className="text-xs ml-16 font-medium text-yellow-400">{item.date}</h6>
                   <li className="text-sm  font-medium ml-28">{item.summary.data}</li>
@@ -332,7 +334,7 @@ export default function Madrid() {
            <div>
             <h1 className="font-medium text-2xl ml-5 pt-2 mb-1 p-2">Awards</h1>
             {
-                details.awards.map(item=>(
+                resume.awards.map(item=>(
                   <div>
                     <h1 className="font-medium ml-16">{item.name}</h1>
                     <h6 className="text-xs ml-16 font-medium text-yellow-400">{item.date}</h6>
@@ -350,7 +352,7 @@ export default function Madrid() {
             <h1 className="font-bold  text-lg ml-12 pt-4 p-2">
               Social Network
             </h1>
-            {details.social.map((item) => (
+            {resume.social.map((item) => (
               <div className="ml-16 my-4 flex">
                 <img
                   src={"https://www." + item.network + ".com/favicon.ico"}
@@ -365,8 +367,8 @@ export default function Madrid() {
           </div>
           <div class="bg-gray-300 h-[88%]">
             <div className="p-2">
-              <h1 className="font-bold text-lg ml-8 pt-4 p-2">SKILLS</h1>
-              {details.skills.map((item) => (
+              <h1 className="font-bold text-lg ml-8 pt-4 p-2">skills</h1>
+              {resume.skills.map((item) => (
                 <div>
                   <h1 className="font-medium ml-8 p-1">{item.name}</h1>
                   <h1 className="text-sm font-medium ml-9 ">{item.level}</h1>
@@ -375,7 +377,7 @@ export default function Madrid() {
             </div>
             <div className="p-2 px-0">
               <h1 className="font-medium text-xl ml-6 mb-0 p-2">Education</h1>
-              {details.education.map((item) => (
+              {resume.education.map((item) => (
                 <div className="p-1">
                   <h1 className=" ml-6 text-sm font-medium">{item.institution}</h1>
                   <h6 className="text-xs ml-6 font-medium text-yellow-500">
@@ -388,7 +390,7 @@ export default function Madrid() {
             <div className="p-2">
               <h1 className="font-medium text-xl ml-6 mb-0 p-2"> Hobbies</h1>
               {
-                details. hobbies.map((item)=>(
+                resume. hobbies.map((item)=>(
                   <div>
                     <li className="font-normal ml-10 text">{item.name}</li>
                   </div>
@@ -399,7 +401,7 @@ export default function Madrid() {
             <div className="p-2">
               <h1 className=" text-lg font-medium ml-6 mb-0 p-2">Languages</h1>
               {
-                details.languages.map((item)=>(
+                resume.languages.map((item)=>(
                   <div>
                     <li className="font-normal ml-10 tex-sm">{item.name}</li>
                   </div>
@@ -410,7 +412,7 @@ export default function Madrid() {
             <div className="p-2">
               <h1 className=" text-lg font-medium ml-6 ">Projects</h1>
               {
-                details.projects.map((item)=>(
+                resume.projects.map((item)=>(
                   <div className="p-2">
                     <li className="font-medium ml-8 tex-lg">{item.name}</li>
                     <h6 className="text-xs ml-8 font-medium text-yellow-500">{item.from} - {item.to}</h6>
