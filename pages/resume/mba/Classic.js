@@ -294,93 +294,60 @@ export default function Dynamic() {
 
         {/* Small Resume */}
         
-        <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row bg-pink-100 h-[290mm] align-middle justify-center ">
-        <div className="bg-gray-50 w-[210mm] h-[297mm] m-2  mx-auto">
-          <div className="flex-grow space-x-2 border-separate">
-            <div className="flex pt-3 pb-2  bg-black border-solid text-black  ">
-              <img
-                className="w-[20%] h-[30] p-3 pb-5 pl-7  "
-                src="https://randomuser.me/api/portraits/women/71.jpg"
-              ></img>
-
-              <div className="pt-5">
-                <p className=" text-center text-white text-4xl pl-9 tracking-wide font-serif m-4 mt-5 ml-8">
-                  {details.personal.firstName} {details.personal.lastName}
-                </p>
-                <p className="  text-3xl  text-white justify pl-[14%] text tracking-wider font-thin mb-3 ml-11">
-                  {details.personal.role}
-                </p>
-              </div>
-              <div>
-
-              {details.social.length != 0 && (
-                <div className=" pb-2 rounded-md flex bg-gray-50 m-14">
-                  {details.social.map((item) => (
-                    <div key={item.network} className="mx-3 mt-2 ">
-                      <span>
-                        <Link href={item.url}>
-                          <img
-                            src={
-                              "https://www."+item.network+".com/favicon.ico"
-                            }
-                            className="w-5 "
-                          />
-                        </Link>
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              )}
-              </div>
-            </div>
-          </div>
-          <div className="flex m-5">
-            <div className="flex min-w-[100%]">
-              <div className="">
-                <div className=" bg-gray-50 ">
-                  <div className=" m-4 ">
-                    <p className="bg-gray-800 text-white p-1 w-[100%] rounded-md mt-3 text-center">
-                      PROFILE
-                    </p>
-                    <p className="text-sm p-1 pt-4">{details.personal.objective}</p>
+        <div className=" bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row align-middle justify-center ">
+         <div className="bg-gray-50 w-[100%] ">
+              <div className="space-x-2 border-separate">
+                <div className="flex pt-3 pb-2 bg-black border-solid text-black  ">
+                  <img className="w-[20%] h-[30] p-3 pb-5 pl-7" src="https://randomuser.me/api/portraits/women/71.jpg"></img>
+                  {/* personal detail */}
+                  <div className="m-auto">
+                    <p className=" text-center text-white text-4xl tracking-widest font-serif m-4 mt-5 ml-8">
+                      {details.personal.firstName} {details.personal.lastName}</p>
+                    <p className="  text-2xl  text-white font-thin  tracking-wider mb-3 ml-10 ">
+                      {details.personal.role}</p>
                   </div>
-                  <div>
-                    {/* <span className=" bg-gray-800 text-white pt-1 p-1 rounded-sm">
-                  PERSONAL
-                </span> */}
+                </div>
+              </div>
+              <div className="m-3">
+                <div className="flex gap-3 ">
+                  <div className=" min-w-[50%]">
+                    <div className=" m-4 ">
+                       <p className="bg-gray-800 text-white p-1 w-[100%] rounded-md mt-3 text-center">PROFILE</p>
+                       <p className="text-sm p-1 pt-4">{details.personal.objective}</p>
+                    </div>
+                    <div>
+                    {/* <span className=" bg-gray-800 text-white pt-1 p-1 rounded-sm">PERSONAL</span> */}
                     
+                    {/* HOBBIES */}
+                    {details.hobbies.length != 0 && (
+                      <div className="m-3">
+                       <p className="bg-gray-800 text-white p-1 w-[100%] rounded-md mt-3 text-center">HOBBIES</p>
+                       {details.hobbies.map((item) => (
+                          <div key={item.name} className="text-center">
+                           <p>{item.name}</p>
+                           <p>{item.enabled}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
 
-                {details.education.length != 0 && (
-                        <div className="text-sm">
-                      <p className="text-m font-medium ">HOBBIES</p>
-                      {details.hobbies.map((item) => (
-                        <div key={item.name}>
-                          <p>{item.name}</p>
-                          <p>{item.enabled}</p>
-                        </div>
+                    {/* LANGUAGES */}
+                    {details.languages.length != 0 && (
+                    <div className="m-3">
+                      <p className="bg-gray-800 text-white p-1 w-[100%] rounded-md mt-3 text-center">LANGUAGES</p>
+                      {details.languages.map((item) => (
+                       <div key={item.name} className="pt-2 pl-4">
+                         <p className="font-bold text-lg font-serif tracking-wide">{item.name} : {item.fluency}</p>
+                         <p>{item.enabled}</p>
+                       </div>
                       ))}
                     </div>
-                )}
+                    )}
 
-                 {details.education.length != 0 && (
-                    <div className="text-sm">
-                   <p className="text-m font-semibold">LANGUAGES</p>
-                  {details.languages.map((item) => (
-                    <div key={item.name}>
-                      <p>
-                        {item.name} : {item.fluency}
-                      </p>
-                      <p>{item.enabled}</p>
-                    </div>
-                  ))}
-                </div>
-                 )}
-        
-                {details.education.length != 0 && (
+                    {/* EDUCATION */}
+                    {details.education.length != 0 && (
                     <div className="p-2 ">
-                      <p className="bg-gray-800 text-center rounded-md text-white p-1 m-1 ">
-                        EDUCATION
-                      </p>
+                      <p className="bg-gray-800 text-center rounded-md text-white p-1 m-1 ">EDUCATION</p>
 
                       {details.education.map((item) => (
                         <div key={item.institution} className="text-base p-2">
@@ -397,23 +364,19 @@ export default function Dynamic() {
                         </div>
                       ))}
                     </div>
-                )}
+                    )}
 
-                   {details.skills.length != 0 && (
+                    {details.skills.length != 0 && (
                     <div className="p-2">
-                      <p className="bg-gray-800 rounded-md text-center text-white p-1 mx-2 my-1">
-                        SKILLS
-                      </p>
+                      <p className="bg-gray-800 rounded-md text-center text-white p-1 mx-2 my-1">SKILLS</p>
                       {details.skills.map((item) => (
-                        <div key={items.name} className="pt-2">
-                          <span className="text-base font-semibold p-2">
-                            {item.name} - {item.level}
-                          </span>
-                          <p>{item.enabled}</p>
-                        </div>
+                      <div key={items.name} className="pt-2">
+                        <span className="text-base font-semibold p-2">{item.name} - {item.level}</span>
+                        <p>{item.enabled}</p>
+                      </div>
                       ))}
                     </div>
-                   )}
+                    )}
                   </div>
 
                   {/* {details.languages.length != 0 && (
@@ -434,54 +397,45 @@ export default function Dynamic() {
                     ))}
                   </div>
                 </div> */}
-              </div>
-            </div>
-            <div className="flex bg-pink-300 min-w-[60%] p-3">
-               <div className="bg-gray-50 "> 
-             
-                <>
-                <h1 className="bg-gray-800 text-white mt-1 p-1 text-center rounded-md ">NETWORK</h1>
-                <div>
-                  <p className=" font-semibold text-md tracking-wider">{details.personal.phone}</p>
-                  <p className=" font-semibold text-md tracking-wider">{details.personal.email}</p>
+              
                 </div>
-                 </>
-              
-              
-              {details.work.length != 0 && (
+               <div className="  min-w-[50%] ">
+
+             {/* NETWORK */}
+             <div className="m-4">
                 <>
-                <p className="bg-gray-800 text-white mt-1 p-1 text-center rounded-md ">WORK</p>
-                {details.work.map((item) => (
-                  <div key={item.company} className="m-2">
-                    <Link href={`{item.website}$`}>
-                      <p className=" font-bold text-lg tracking-wider">
-                        {item.company}{" "}
-                      </p>
-                    </Link>
-                    <p>
-                      [ {item.from}] - [{item.to}]
-                    </p>
-                    <p>{item.designation}</p>
-                    {/* <p>{item.summary.data}</p> */}
-                    <p>{item.summary.enabled}</p>
+                  <h1 className="bg-gray-800 text-white mt-1 p-1 text-center rounded-md ">NETWORK</h1>
+                  <div>
+                    <p className=" font-semibold text-md tracking-wider">{details.personal.phone}</p>
+                    <p className=" font-semibold text-md tracking-wider">{details.personal.email}</p>
                   </div>
-                ))}
                 </>
-              )}
+               
+               {/* INTERNSHIPS */}
+                {details.work.length != 0 && (
+                <>
+                  <p className="bg-gray-800 text-white mt-1 p-1 text-center rounded-md ">INTERNSHIPS</p>
+                  {details.work.map((item) => (
+                    <div key={item.company} className="m-2">
+                      <Link href={`{item.website}$`}><span className="font-bold text-lg font-serif tracking-wide">{item.company}<span className=" font-bold font-sans text-xs ml-9">[{item.from}] - [{item.to}]</span> </span></Link>
+                      <p className=" font-medium">{item.designation}</p>
+                      <p  className="">{item.summary.data}</p> 
+                      <p className="text-sm">{item.summary.enabled}</p>
+                    </div>
+                  ))}
+                </>
+                )}
+
+                {/* AWARDS */}
                 <div>
                 {details.awards.length != 0 && (
                   <div className="mt-5">
-                    <p className="bg-gray-800 rounded-md text-center  text-white p-1 m-1 ">
-                      AWARDS
-                    </p>
-                    {details.awards.map((item) => (
-                      <div key={item.name} className="text-sm pt-4">
-                        <p className="font-semibold">
-                          {item.name} - [{item.date}]
-                        </p>
-                        <p>{item.awarder}</p>
-
-                        {/* <p>{item.summary.data}</p> */}
+                    <p className="bg-gray-800 rounded-md text-center  text-white p-1 m-1 ">AWARDS</p>
+                    {details.awards.map((item) => 
+                    (<div key={item.name} className=" m-2">
+                        <p className="font-bold font-serif text-lg tracking-wide">{item.name} <span className=" font-bold font-sans text-xs ml-9">[{item.date}]</span></p>
+                        <p className="font-medium">Awarder : {item.awarder}</p>
+                        <p className="text-sm">{item.summary.data}</p>
                         <p>{item.summary.enabled}</p>
                         <p>{item.enabled}</p>
                       </div>
@@ -489,31 +443,26 @@ export default function Dynamic() {
                   </div>
                 )}
 
+                {/* CERTIFICATIONS */}
                 {details.certifications.length != 0 && (
                   <div className="mt-5">
-                    <p className="bg-gray-800 rounded-md mt-2 text-center text-white p-1 m-1 ">
-                      CERTIFICATION
-                    </p>
+                    <p className="bg-gray-800 rounded-md mt-2 text-center text-white p-1 m-1 ">CERTIFICATION</p>
                     {details.certifications.map((item) => (
                       <div key={item.title} className="pt-4">
-                        <p className="font-semibold">
-                          {item.title} [{item.date}]
-                        </p>
-                        <p></p>
+                        <p className="font-semibold">{item.title} <span className=" font-bold font-sans text-xs ml-9">[{item.date}]</span> </p>
                         <p>{item.issuer}</p>
-                     
-                        
                       </div>
                     ))}
                   </div>
                 )}
-                </div>
               </div>
+              
             </div>
-          </div>
-        </div>
-      </div>
-
+          
+              </div>
+           </div>
+         </div>
+       </div>
       </div>
 
 
@@ -564,7 +513,7 @@ export default function Dynamic() {
 
 
               
-       <div className=" w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row bg-pink-100 align-middle justify-center ">
+       <div className=" w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row align-middle justify-center ">
          <div className="bg-gray-50 w-[100%] ">
               <div className="space-x-2 border-separate">
                 <div className="flex pt-3 pb-2 bg-black border-solid text-black  ">
@@ -579,49 +528,45 @@ export default function Dynamic() {
                 </div>
               </div>
               <div className="m-3">
-                <div className="flex gap-3 bg-yellow-50">
-                  <div className="bg-purple-200 min-w-[50%]">
+                <div className="flex gap-3">
+                  <div className=" min-w-[50%]">
                     <div className=" m-4 ">
                        <p className="bg-gray-800 text-white p-1 w-[100%] rounded-md mt-3 text-center">PROFILE</p>
                        <p className="text-sm p-1 pt-4">{details.personal.objective}</p>
                     </div>
-                  <div>
-                    {/* <span className=" bg-gray-800 text-white pt-1 p-1 rounded-sm">
-                  PERSONAL
-                </span> */}
+                    <div>
+                    {/* <span className=" bg-gray-800 text-white pt-1 p-1 rounded-sm">PERSONAL</span> */}
                     
+                    {/* HOBBIES */}
+                    {details.hobbies.length != 0 && (
+                      <div className="m-3">
+                       <p className="bg-gray-800 text-white p-1 w-[100%] rounded-md mt-3 text-center">HOBBIES</p>
+                       {details.hobbies.map((item) => (
+                          <div key={item.name} className="text-center">
+                           <p>{item.name}</p>
+                           <p>{item.enabled}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
 
-                {details.education.length != 0 && (
-                        <div className="text-sm">
-                      <p className="text-m font-medium ">HOBBIES</p>
-                      {details.hobbies.map((item) => (
-                        <div key={item.name}>
-                          <p>{item.name}</p>
-                          <p>{item.enabled}</p>
-                        </div>
+                    {/* LANGUAGES */}
+                    {details.languages.length != 0 && (
+                    <div className="m-3">
+                      <p className="bg-gray-800 text-white p-1 w-[100%] rounded-md mt-3 text-center">LANGUAGES</p>
+                      {details.languages.map((item) => (
+                       <div key={item.name} className="pt-2 pl-4">
+                         <p className="font-bold text-lg font-serif tracking-wide">{item.name} : {item.fluency}</p>
+                         <p>{item.enabled}</p>
+                       </div>
                       ))}
                     </div>
-                )}
+                    )}
 
-                 {details.education.length != 0 && (
-                    <div className="text-sm">
-                   <p className="text-m font-semibold">LANGUAGES</p>
-                  {details.languages.map((item) => (
-                    <div key={item.name}>
-                      <p>
-                        {item.name} : {item.fluency}
-                      </p>
-                      <p>{item.enabled}</p>
-                    </div>
-                  ))}
-                </div>
-                 )}
-        
-                {details.education.length != 0 && (
+                    {/* EDUCATION */}
+                    {details.education.length != 0 && (
                     <div className="p-2 ">
-                      <p className="bg-gray-800 text-center rounded-md text-white p-1 m-1 ">
-                        EDUCATION
-                      </p>
+                      <p className="bg-gray-800 text-center rounded-md text-white p-1 m-1 ">EDUCATION</p>
 
                       {details.education.map((item) => (
                         <div key={item.institution} className="text-base p-2">
@@ -638,23 +583,19 @@ export default function Dynamic() {
                         </div>
                       ))}
                     </div>
-                )}
+                    )}
 
-                   {details.skills.length != 0 && (
+                    {details.skills.length != 0 && (
                     <div className="p-2">
-                      <p className="bg-gray-800 rounded-md text-center text-white p-1 mx-2 my-1">
-                        SKILLS
-                      </p>
+                      <p className="bg-gray-800 rounded-md text-center text-white p-1 mx-2 my-1">SKILLS</p>
                       {details.skills.map((item) => (
-                        <div key={items.name} className="pt-2">
-                          <span className="text-base font-semibold p-2">
-                            {item.name} - {item.level}
-                          </span>
-                          <p>{item.enabled}</p>
-                        </div>
+                      <div key={items.name} className="pt-2">
+                        <span className="text-base font-semibold p-2">{item.name} - {item.level}</span>
+                        <p>{item.enabled}</p>
+                      </div>
                       ))}
                     </div>
-                   )}
+                    )}
                   </div>
 
                   {/* {details.languages.length != 0 && (
@@ -676,8 +617,8 @@ export default function Dynamic() {
                   </div>
                 </div> */}
               
-            </div>
-            <div className=" bg-pink-300 min-w-[50%] ">
+                </div>
+               <div className="  min-w-[50%] ">
 
              {/* NETWORK */}
              <div className="m-4">
@@ -695,10 +636,10 @@ export default function Dynamic() {
                   <p className="bg-gray-800 text-white mt-1 p-1 text-center rounded-md ">INTERNSHIPS</p>
                   {details.work.map((item) => (
                     <div key={item.company} className="m-2">
-                      <Link href={`{item.website}$`}><span className=" font-bold text-lg tracking-wide">{item.company}<span className=" font-bold font-sans text-xs ml-9">[{item.from}] - [{item.to}]</span> </span></Link>
-                      <p className="pl-2">{item.designation}</p>
-                      <p  className="pl-2">{item.summary.data}</p> 
-                      <p>{item.summary.enabled}</p>
+                      <Link href={`{item.website}$`}><span className="font-bold text-lg font-serif tracking-wide">{item.company}<span className=" font-bold font-sans text-xs ml-9">[{item.from}] - [{item.to}]</span> </span></Link>
+                      <p className=" font-medium">{item.designation}</p>
+                      <p  className="">{item.summary.data}</p> 
+                      <p className="text-sm">{item.summary.enabled}</p>
                     </div>
                   ))}
                 </>
@@ -710,10 +651,10 @@ export default function Dynamic() {
                   <div className="mt-5">
                     <p className="bg-gray-800 rounded-md text-center  text-white p-1 m-1 ">AWARDS</p>
                     {details.awards.map((item) => 
-                    (<div key={item.name} className="text-sm pt-4">
-                        <p className="font-semibold">{item.name} - [{item.date}]</p>
-                        <p>{item.awarder}</p>
-                        <p>{item.summary.data}</p>
+                    (<div key={item.name} className=" m-2">
+                        <p className="font-bold font-serif text-lg tracking-wide">{item.name} <span className=" font-bold font-sans text-xs ml-9">[{item.date}]</span></p>
+                        <p className="font-medium">Awarder : {item.awarder}</p>
+                        <p className="text-sm">{item.summary.data}</p>
                         <p>{item.summary.enabled}</p>
                         <p>{item.enabled}</p>
                       </div>
@@ -727,7 +668,7 @@ export default function Dynamic() {
                     <p className="bg-gray-800 rounded-md mt-2 text-center text-white p-1 m-1 ">CERTIFICATION</p>
                     {details.certifications.map((item) => (
                       <div key={item.title} className="pt-4">
-                        <p className="font-semibold">{item.title} [{item.date}]</p>
+                        <p className="font-semibold">{item.title} <span className=" font-bold font-sans text-xs ml-9">[{item.date}]</span> </p>
                         <p>{item.issuer}</p>
                       </div>
                     ))}
@@ -737,23 +678,17 @@ export default function Dynamic() {
               
             </div>
           
-            </div>
+              </div>
+           </div>
          </div>
-        </div>
-      </div>
-
+       </div>
+      </div>   
+     </div>
     </div>
-                
-                </div>
-          </div>
-</>
-
-
-)}
-          
-          
-        </div>
-      )}
-    </>
+   </>
+   )}   
+   </div>
+   )}
+  </>
   );
 }
