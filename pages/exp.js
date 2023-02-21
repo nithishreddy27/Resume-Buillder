@@ -26,6 +26,7 @@ export default function exp() {
   const [harrow, setharrow] = useState(false);
   const [parrow, setparrow] = useState(false);
   const [awarrow, setawarrow] = useState(false);
+  const [carrow, setcarrow] = useState(false);
   const { details, setdetails } = useContext(ResumeContext);
   function toggleResume() {
     if (open == "semiopen") {
@@ -677,15 +678,7 @@ export default function exp() {
                   <div className="mt-5 shadow-md p-2 rounded-md">
                     <div className="flex ">
                       <h1 id="education" className="font-bold text-xl grow">Education</h1>
-                      {/* <div class="flex justify-end grow">
-                        <button class="align-right flex items-center border-2 my-4 right-0 px-6 py-1 border-gray-600 rounded-md hover:text-gray-500 hover:border-white">
-                          <span class="mr-2">
-                            <AiOutlinePlus></AiOutlinePlus>
-                          </span>
-                          Add
-                        </button>
-                      </div> */}
-
+                     
                       <div
                         className="pt-[-15px] mt-[-10px]"
                         onClick={() => {
@@ -820,6 +813,117 @@ export default function exp() {
                         </label>
                         <textarea
                           name="education"
+                          id="summary"
+                          className="block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                        />
+                      </div>
+                      <div className="flex justify-center">
+                        {/* <button onClick={addEducation}>Submit</button> */}
+                        <button className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg">
+                          Submit
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-5 shadow-md p-2 rounded-md">
+                    <div className="flex ">
+                      <h1 id="certifications" className="font-bold text-xl grow">Certifications</h1>
+                     
+                      <div
+                        className="pt-[-15px] mt-[-10px]"
+                        onClick={() => {
+                          setcarrow(!carrow);
+                        }}
+                      >
+                        {carrow == true && (
+                          <div>
+                            <div>
+                              <div class="flex justify-center">
+                                <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                                  <span class="mr-2">
+                                    <AiOutlinePlus></AiOutlinePlus>
+                                  </span>
+                                  Hide
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                        {carrow == false && (
+                          <div>
+                            <div>
+                              <div class="flex justify-center">
+                                <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                                  <span class="mr-2">
+                                    <AiOutlinePlus></AiOutlinePlus>
+                                  </span>
+                                  Add
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className={`${carrow ? "block" : "hidden"}`}>
+                      <div className="mt-5">
+                        <label
+                          htmlFor="TypeOfDegree"
+                          className="font-semibold text-gray-300"
+                        >
+                          Title
+                        </label>
+
+                        <input
+                          type="text"
+                          name="certifications"
+                          id="TypeOfDegree"
+                          className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                        />
+                      </div>
+                      <div className="mt-2">
+                        <label
+                          htmlFor="school"
+                          className="font-semibold text-gray-300"
+                        >
+                          Issuer
+                        </label>
+                        <input
+                          type="text"
+                          name="certifications"
+                          id="school"
+                          className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                        />
+                      </div>
+                      
+                      
+                      <div className="flex gap-3">
+                        <div className="mt-2">
+                          <label
+                            htmlFor="startdate"
+                            className="font-semibold text-gray-300"
+                          >
+                            Start Date
+                          </label>
+                          <input
+                            type="date"
+                            name="certifications"
+                            id="startdate"
+                            className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                          />
+                        </div>
+                        
+                      </div>
+                      <div className="mt-2">
+                        <label
+                          htmlFor="summary"
+                          className="font-semibold text-gray-300"
+                        >
+                          Summary
+                        </label>
+                        <textarea
+                          name="certifications"
                           id="summary"
                           className="block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
                         />
