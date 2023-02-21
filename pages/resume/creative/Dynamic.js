@@ -34,6 +34,9 @@ export default function Dynamic() {
       username : document.getElementById("username").value,
       url: document.getElementById("url").value,
     }
+    document.getElementById("network").innerHTML="one",
+    document.getElementById("username").innerHTML=" ",
+    document.getElementById("url").innerHTML=" "
     const arr = []
     details.social.map((item)=>{
       arr.push(item)
@@ -41,7 +44,8 @@ export default function Dynamic() {
     arr.push(sn)
     setdetails({ ...details,social:arr});
     
-    }
+    console.log("sn",sn)
+  }
     
   function deleteSocialNetwork(index){
     // console.log("network",network)
@@ -74,6 +78,11 @@ export default function Dynamic() {
     // console.log('intern',intern)
     arr.push(intern)
     setdetails({ ...details,work:arr});
+    document.getElementById("company").innerHTML="",
+    document.getElementById("position").innerHTML="",
+    document.getElementById("startdate").innerHTML="",
+    document.getElementById("enddate").innerHTML="",  
+    document.getElementById("summary").innerHTML=""   
     }
 
   function deleteInternship(index){
@@ -107,6 +116,16 @@ export default function Dynamic() {
     // console.log('intern',education)
     arr.push(education)
     setdetails({ ...details,education:arr});
+
+
+
+    document.getElementById("TypeOfDegree").innerHTML="",
+        document.getElementById("school").innerHTML="",
+        document.getElementById("EducationFieldOfStudy").innerHTML="",
+        document.getElementById("Educationstartdate").innerHTML="",
+        document.getElementById("Educationenddate").innerHTML="",
+        document.getElementById("grade").innerHTML="",
+        document.getElementById("summary").innerHTML=""
     }
 
     function deleteEducation(index){
@@ -138,6 +157,13 @@ export default function Dynamic() {
     // console.log('award',award)
     arr.push(award)
     setdetails({ ...details,awards:arr});
+
+
+    document.getElementById("awardTitle").innerHTML="",
+        document.getElementById("awarder").innerHTML="",
+        document.getElementById("awardDate").innerHTML="",
+        document.getElementById("awardSummary").innerHTML=""
+        
     }
 
     function deleteAward(index){
@@ -172,6 +198,13 @@ export default function Dynamic() {
     // console.log('award',award)
     arr.push(certificate)
     setdetails({ ...details,certifications:arr});
+
+
+        document.getElementById("certificateTitle").innerHTML="",
+        document.getElementById("issuer").innerHTML="",
+        document.getElementById("certificateDate").innerHTML="",
+        
+        document.getElementById("certificateSummary").innerHTML=""
     }
 
     function deleteCertificate(index){
@@ -198,6 +231,8 @@ export default function Dynamic() {
     // console.log('skill',skill)
     arr.push(skill)
     setdetails({ ...details,skills:arr});
+
+    document.getElementById("skillTitle").innerHTML=""
     }
     
     function deleteSkill(index){
@@ -225,6 +260,9 @@ export default function Dynamic() {
     // console.log('skill',language)
     arr.push(language)
     setdetails({ ...details,languages:arr});
+
+    document.getElementById("languageTitle").innerHTML=""
+    
     }
 
     function deleteLanguage(index){
@@ -251,6 +289,7 @@ export default function Dynamic() {
     // console.log('hobby',hobby)
     arr.push(hobby)
     setdetails({ ...details,hobbies:arr});
+    document.getElementById("hobbyTitle").innerHTML=""
     }
 
     function deleteHobby(index){
@@ -315,7 +354,7 @@ export default function Dynamic() {
                   </div>
 
 
-                  
+
                   {details.social.length !=0  && (
                     <>
                     {details.social.map((item) => (
@@ -489,7 +528,7 @@ export default function Dynamic() {
 
 
 
-            {details.certifications.length != 0 && (
+            {/* {details.certifications.length != 0 && (
               <>
                <h1 className="text-xl font-bold tracking-[1px] mt-3">
                 CERTIFICATIONS
@@ -514,7 +553,7 @@ export default function Dynamic() {
                 ))}
               </div>
               </>
-             )} 
+             )}  */}
             </div>
           </div>
         </div>
