@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
 
-export default function Berlin() {
+export default function Elegant() {
   const user = useUser();
   const { details, setdetails } = useContext(ResumeContext);
 
@@ -314,197 +314,145 @@ export default function Berlin() {
 
           {/* Resume */}
 
-          <div className="container w-[210mm] h-[296mm] bg-white p-10 min-w-[210mm]">
-            <div className="h-auto pb-10 border-b-4">
-              <div>
-                <h1 className="text-4xl font-sans font-semibold">
+          <div className="container w-[210mm] h-[296mm] bg-white min-w-[210mm]">
+            <div className="absolute mt-10 z-10 w-[210mm] flex bg-gradient-to-r from-gray-300 to-slate-50">
+              <img
+                className="rounded-full ml-10 border-[12px] border-cyan-800 w-48"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpl60g6oKVerEKPde2ClN4-6ASK4Ds4KzlM0Y1N-K_bCgOCMBYZ019WUgRLOfNAqyyhnY&usqp=CAU"
+                alt="ProfilePhoto"
+              />
+              <div className="m-14">
+                <h1 className="text-4xl font-semibold">
                   {details.personal.firstName} {details.personal.lastName}
                 </h1>
-                <h1 className="text-sm text-gray-500 font-semibold mt-4">
-                  {details.personal.role}
-                </h1>
+                <h1>{details.personal.role}</h1>
               </div>
             </div>
-            <div className="grid grid-cols-3 mt-10">
-              <div className="border-r-4 pr-10">
-                <div>
-                  <h1 className="text-2xl font-semibold">DETAILS</h1>
-                  <hr className="w-[15%] h-1 bg-black"></hr>
-                  <h1 className="text-sm font-semibold pt-3">
-                    DOB
-                    <span className="text-sm text-gray-500">
-                      {" : "}
-                      {details.personal.dob}
-                    </span>
-                  </h1>
-                  <h1 className="text-sm font-semibold pt-3">
-                    PHONE
-                    <span className="text-sm text-gray-500">
-                      {" : "}
-                      {details.personal.phone}
-                    </span>
-                  </h1>
-                  <h1 className="text-sm font-semibold pt-3">
-                    EMAIL
-                    <span className="text-sm text-gray-500">
-                      {" : "}
-                      {details.personal.email}
-                    </span>
-                  </h1>
-                  {details.social.map((item) => (
-                    <div
-                      className="text-sm font-semibold pt-3"
-                      key={item.network}
-                    >
-                      <a href="{item.url}">{item.network}</a>
+            <div className="grid grid-cols-3 z-0 h-[297mm]">
+              <div className="bg-cyan-800 text-white">
+                <div className="mt-64 mx-6">
+                  <div>
+                    <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white">
+                      CONTACTS
+                    </h1>
+                    <h1 className="text-white">{details.personal.email}</h1>
+                    <h1 className="text-white">{details.personal.phone}</h1>
+                    <h1 className="text-white">{details.personal.dob}</h1>
+                  </div>
+                  {details.social.length != 0 && (
+                    <div>
+                      <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white">
+                        SOCIAL
+                      </h1>
+                      {details.social.map((item) => (
+                        <div key={item.network}>
+                          <h1 className="text-white">
+                            <a href="{item.url}">{item.network}</a>
+                          </h1>
+                        </div>
+                      ))}
                     </div>
-                  ))}
+                  )}
+                  {details.education.length != 0 && (
+                    <div>
+                      <h1 className="border-2 text-white border-white  mt-5 mb-3 flex justify-center align-middle py-2">
+                        EDUCATION
+                      </h1>
+                      {details.education.map((item) => (
+                        <div className="py-1 my-2" key={item.institution}>
+                          <h1 className="text-xs text-white">
+                            {item.endDate.slice(0, 4)}
+                          </h1>
+                          <h1 className="text-lg text-white">
+                            {item.institution}
+                          </h1>
+                          <h1 className="text-xs text-white">
+                            {item.fieldOfStudy}
+                          </h1>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {details.skills.length != 0 && (
+                    <div>
+                      <h1 className="border-2 border-white text-white mt-5 mb-3 flex justify-center align-middle py-2">
+                        SKILLS
+                      </h1>
+                      {details.skills.map((item) => (
+                        <div key={item.name}>
+                          <h1 className="relative text-white">
+                            {item.name}
+                            <span className="text-xs absolute right-0 py-1 text-white">
+                              {item.level}
+                            </span>
+                          </h1>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {details.hobbies.length != 0 && (
+                    <div>
+                      <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white">
+                        HOBBIES
+                      </h1>
+                      {details.hobbies.map((item) => (
+                        <div key={item.name}>
+                          <h1 className="text-white">{item.name}</h1>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
-                {details.education.length != 0 && (
-                  <div>
-                    <h1 className="text-2xl font-semibold pt-5">EDUCATION</h1>
-                    <hr className="w-[15%] h-1 bg-black"></hr>
-                    {details.education.map((item) => (
-                      <div className="my-5" key={item.institution}>
-                        <span className="text-sm font-bold">
-                          {item.institution}
-                        </span>
-                        <p className="text-xs py-1 font-semibold text-gray-500">
-                          {item.fieldOfStudy}{" "}
-                          <span className="text-xs font-semibold text-gray-500">
-                            ({item.startDate} to {item.endDate})
-                          </span>
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                {details.skills.length != 0 && (
-                  <div className="">
-                    <h1 className="text-2xl font-semibold pt-2">SKILLS</h1>
-                    <hr className="w-[15%] h-1 bg-black"></hr>
-                    {details.skills.map((item) => (
-                      <div key={item.name}>
-                        <h1 className="text-sm text-gray-800 pt-2">
-                          {item.name}
-                        </h1>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                {details.awards.length != 0 && (
-                  <div className="">
-                    <h1 className="text-2xl font-semibold pt-2">AWARDS</h1>
-                    <hr className="w-[15%] h-1 bg-black"></hr>
-                    {details.awards.map((item) => (
-                      <div key={item.name}>
-                        <h1 className="text-sm text-gray-800 pt-2">
-                          {item.name}
-                        </h1>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                {details.hobbies.length != 0 && (
-                  <div>
-                    <h1 className="text-2xl font-semibold pt-5">HOBBIES</h1>
-                    <hr className="w-[15%] h-1 bg-black"></hr>
-                    {details.hobbies.map((item) => (
-                      <div key={item.name}>
-                        <h1 className="text-sm text-gray-800 pt-2">
-                          {item.name}
-                        </h1>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                {details.languages.length != 0 && (
-                  <div>
-                    <h1 className="text-2xl font-semibold pt-5">LANGUAGES</h1>
-                    <hr className="w-[15%] h-1 bg-black"></hr>
-                    {details.languages.map((item) => (
-                      <div key={item.name}>
-                        <h1 className="text-sm text-gray-800 pt-2">
-                          {item.name}
-                        </h1>
-                      </div>
-                    ))}
-                  </div>
-                )}
               </div>
-              <div className="col-span-2 pl-10">
-                {details.personal.objective.length != 0 && (
-                  <div>
-                    <h1 className="text-2xl font-semibold">PROFILE</h1>
-                    <hr className="w-[8%] h-1 bg-black"></hr>
-                    <p className="text-sm text-gray-500 py-5">
-                      {details.personal.objective}
-                    </p>
-                  </div>
-                )}
-                {details.work.length != 0 && (
-                  <div>
-                    <h1 className="text-2xl font-semibold pt-5 border-t-2">
-                      EMPLOYMENT HISTORY
-                    </h1>
-                    <hr className="w-[8%] h-1 bg-black"></hr>
-                    {details.work.map((item) => (
-                      <div className="my-5" key={item.company}>
-                        <span className="text-sm font-bold mt-10">
-                          {item.company}
-                          {" - "}
-                          <span className="text-sm font-bold mt-10">
-                            {item.designation}
-                          </span>
-                        </span>
-                        <p className="text-xs py-1 font-semibold text-gray-500">
-                          ({item.from} to {item.to})
-                        </p>
-                        <p class="text-sm text-gray-500">{item.summary.data}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                {/* <div>
-              <h1 className="text-2xl font-semibold pt-5 border-t-2">
-                PROJECTS
-              </h1>
-              <hr className="w-[8%] h-1 bg-black"></hr>
-              {details.projects.map((item) => (
-                <div className="my-5">
-                  <span className="text-sm font-bold mt-10">
-                    <a href="{item.website}">{item.name}</a>
-                  </span>
-                  <p className="text-xs py-1 font-semibold text-gray-500">
-                    ({item.from} to {item.to})
-                  </p>
-                  <p class="text-sm text-gray-500">{item.summary.data}</p>
-                </div>
-              ))}
-            </div> */}
-                {details.certifications.length != 0 && (
-                  <div>
-                    <h1 className="text-2xl font-semibold pt-5 border-t-2">
-                      CERTIFICATIONS
-                    </h1>
-                    <hr className="w-[8%] h-1 bg-black"></hr>
-                    {details.certifications.map((item) => (
-                      <div className="my-5" key={item.title}>
-                        <span className="text-sm font-bold mt-10">
-                          {item.title}
-                          {" - "}
-                          <span className="text-sm font-bold mt-10">
+              <div className="col-span-2 text-black">
+                <div className="mt-64 mx-6">
+                  {details.personal.objective.length != 0 && (
+                    <div>
+                      <h1 className="text-xl border-b-2 border-black mb-3">
+                        PROFILE
+                      </h1>
+                      <p className="text-sm">{details.personal.objective}</p>
+                    </div>
+                  )}
+                  {details.work.length != 0 && (
+                    <div>
+                      <h1 className="text-xl border-b-2 border-black mb-3 mt-5">
+                        WORK EXPERIENCE
+                      </h1>
+                      {details.work.map((item) => (
+                        <div className="py-1" key={item.company}>
+                          <h1 className="font-semibold relative">
+                            {item.company}
+                            <span className="absolute right-0 text-xs">
+                              {item.from} - {item.to}
+                            </span>
+                          </h1>
+                          <p className="text-sm">{item.designation}</p>
+                          <p class="">{item.summary.data}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {details.certifications.length != 0 && (
+                    <div>
+                      <h1 className="text-xl border-b-2 border-black mb-3 mt-5">
+                        CERTIFICATIONS
+                      </h1>
+                      {details.certifications.map((item) => (
+                        <div className="py-1" key={item.title}>
+                          <h1 className="font-semibold relative">
                             {item.issuer}
-                          </span>
-                        </span>
-                        <p className="text-xs py-1 font-semibold text-gray-500">
-                          ({item.date})
-                        </p>
-                        <p class="text-sm text-gray-500">{item.summary.data}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
+                            <span className="absolute right-0 text-xs">
+                              {item.date}
+                            </span>
+                          </h1>
+                          <p className="text-sm">{item.designation}</p>
+                          {/* <p class="">{item.summary.data}</p> */}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
