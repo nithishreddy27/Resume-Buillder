@@ -13,7 +13,7 @@ export const editProfile = () => {
               </div>
             </div>
             <div className="md:col-span-2 mt-6 md:mt-0">
-              <div>
+              <div> 
                 <div className="sm:rounded-md shadow overflow-hidden rounded-sm">
                   <div className="px-4 py-5 rounded-md bg-white sm:p-6">
                   <form>

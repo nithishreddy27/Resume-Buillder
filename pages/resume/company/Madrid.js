@@ -475,6 +475,8 @@ export default function Dynamic() {
                   </>
                 )}
 
+                {/* EDUCATION */}
+
                 {details.education.length != 0 && (
                   <>
                     <h1 className="text-xl font-bold tracking-[1px] mt-3">
@@ -616,9 +618,9 @@ export default function Dynamic() {
                     details.work.map(item=>(
                     <div key={item.company}>
                         <h1 className="font-medium  text-lg ml-16 ">{item.company}</h1>
-                        <h2 className="font-medium ml-16 text-sm text-yellow-400">{item.from} - {item.to}</h2>
+                        <h2 className="font-medium ml-16 text-sm text-gray-800">[{item.from}] - [{item.to}]</h2>
                         <li className="ml-28 text-lg list-disc">{item.designation}</li>
-                        <li className="ml-28  list-disc ">{item. website}</li>
+                        <li className="ml-28  list-disc ">{item.summary.data}</li>
                         {/* <p class="text-sm font-medium ml-14">{item.summary.data}</p> */}
                     </div>
                   ))
@@ -634,7 +636,7 @@ export default function Dynamic() {
                 details.certifications.map(item=>(
                   <div key={item.title}>
                     <h1 className="text-sm ml-16 font-medium">{item.title}</h1>
-                    <h6 className="text-xs ml-16 font-medium text-yellow-400">{item.date}</h6>
+                    <h6 className="text-xs ml-16 font-medium  text-gray-800">{item.date}</h6>
                     <li className="text-sm  font-medium ml-28">{item.summary.data}</li>
                   </div>
                 ))
@@ -645,12 +647,12 @@ export default function Dynamic() {
             {/* AWARDS */}
             {details.awards.length != 0 && (
             <div>
-              <h1 className="ont-medium tracking-wide mt-3 bg-blue-100 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2">Awards</h1>
+              <h1 className="F  ont-medium tracking-wide mt-3 bg-blue-100 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2">AWARDS</h1>
               {
                 details.awards.map(item=>(
                 <div key={item.name}>
                   <h1 className="font-medium ml-16">{item.name}</h1>
-                  <h6 className="text-xs ml-16 font-medium text-yellow-400">{item.date}</h6>
+                  <h6 className="text-xs ml-16 font-medium text-gray-800">[{item.date}]</h6>
                   <li className="ml-28 font-medium text-sm">{item.summary.data}</li>
                 </div>
                 ))
@@ -658,12 +660,13 @@ export default function Dynamic() {
             </div>
             )}
           
-            
+            {/*  NETWORK  */}
           </div>
-          <div className="m-1 col-span-3">
-            <div className=" h-[54%]">
-              <h1 className=" ont-medium tracking-wide mt-3 mr-60 font-serif text-xl   ml-5 pt-4 mb-1 p-2">NETWORK</h1>
-              
+          <div className=" col-span-3">
+            <div className=" h-[29%] ">
+              <h1 className=" font-medium tracking-wider mt-3 mr-60 font-serif text-xl   ml-5 pt-4 mb-1 p-2">NETWORK</h1>
+               <p className="pl-6">{details.personal.phone}</p>
+               <p className="pl-6 mr-2">{details.personal.email}</p> 
               {details.social.map((item) => (
                 <div key={item.network} className="ml-16 my-4 flex">
                   <img src={"https://www." + item.network + ".com/favicon.ico"} alt="" className="w-8 h-8 border-4 ml-0 mr-0 rounded-full border-yellow-400 "/>
@@ -671,9 +674,11 @@ export default function Dynamic() {
                 </div>
               ))}
             </div>
+
+            {/* SKILLS */}
             <div class="bg-gray-300 h-[88%]">
               <div className="p-2">
-                <h1 className="font-bold text-lg ml-8 pt-4 p-2">skills</h1>
+                <h1 className="font-medium text-xl ml-6 mb-0 p-2 tracking-wide">SKILLS</h1>
                 {details.skills.map((item) => (
                   <div key={item.name}>
                     <h1 className="font-medium ml-8 p-1">{item.name}</h1>
@@ -681,8 +686,10 @@ export default function Dynamic() {
                   </div>
                 ))}
               </div>
+
+              {/* EDUCATION */}
               <div className="p-2 px-0">
-                <h1 className="font-medium text-xl ml-6 mb-0 p-2">Education</h1>
+                <h1 className="font-medium text-xl ml-6 mb-0 p-2">EDUCATION</h1>
                 {details.education.map((item) => (
                   <div key={item.institution} className="p-1">
                     <h1 className=" ml-6 text-sm font-medium">{item.institution}</h1>
@@ -693,8 +700,10 @@ export default function Dynamic() {
                   </div>
                 ))}
               </div>
+
+              {/* HOBBIE */}
               <div className="p-2">
-                <h1 className="font-medium text-xl ml-6 mb-0 p-2"> Hobbies</h1>
+                <h1 className="font-medium text-xl ml-6 mb-0 p-2">HOBBIES</h1>
                 {
                   details. hobbies.map((item)=>(
                     <div key={item.name}>
@@ -704,8 +713,10 @@ export default function Dynamic() {
                   ))
                 }
               </div>
+
+              {/* LANGUAGES */}
               <div className="p-2">
-                <h1 className=" text-lg font-medium ml-6 mb-0 p-2">Languages</h1>
+                <h1 className="font-medium text-xl ml-6 mb-0 p-2">LANGUAGES</h1>
                 {
                   details.languages.map((item)=>(
                     <div key={item.name}>
