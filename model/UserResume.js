@@ -99,7 +99,7 @@ const userResume = new mongoose.Schema({
         title:{
             type:String
         },
-        domine:{
+        domain:{
             type:String
         },
         from:{
