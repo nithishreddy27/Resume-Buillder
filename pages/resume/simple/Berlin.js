@@ -26,236 +26,6 @@ export default function Berlin() {
     }
   }, [user]);
 
-  function updateForm(event) {
-    const n = event.target.name;
-    const i = event.target.id;
-    setdetails({ ...details, [n]: { ...details[n], [i]: event.target.value } });
-  }
-
-  async function socialChange() {
-    const sn = {
-      network: document.getElementById("network").value,
-      username: document.getElementById("username").value,
-      url: document.getElementById("url").value,
-    };
-    const arr = [];
-    details.social.map((item) => {
-      arr.push(item);
-    });
-    arr.push(sn);
-    setdetails({ ...details, social: arr });
-  }
-
-  function deleteSocialNetwork(index) {
-    // console.log("network",network)
-    const arr = [];
-    details.social.map((item, i) => {
-      if (i != index) {
-        arr.push(item);
-      }
-    });
-    setdetails({ ...details, social: arr });
-  }
-
-  function addInternship() {
-    const intern = {
-      company: document.getElementById("company").value,
-      designation: document.getElementById("position").value,
-      // website:document.getElementById("website").value,
-      from: document.getElementById("startdate").value,
-      to: document.getElementById("enddate").value,
-      summary: {
-        data: document.getElementById("summary").value,
-      },
-    };
-    const arr = [];
-    details.work.map((item) => {
-      arr.push(item);
-    });
-    // console.log('intern',intern)
-    arr.push(intern);
-    setdetails({ ...details, work: arr });
-  }
-
-  function deleteInternship(index) {
-    console.log("network", index);
-    const arr = [];
-    details.work.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, work: arr });
-  }
-
-  function addEducation() {
-    const education = {
-      typeOfDegree: document.getElementById("TypeOfDegree").value,
-      institution: document.getElementById("school").value,
-      fieldOfStudy: document.getElementById("EducationFieldOfStudy").value,
-      startDate: document.getElementById("Educationstartdate").value,
-      endDate: document.getElementById("Educationenddate").value,
-      gpa: document.getElementById("grade").value,
-      summary: {
-        data: document.getElementById("summary").value,
-      },
-    };
-    const arr = [];
-    details.education.map((item) => {
-      arr.push(item);
-    });
-    // console.log('intern',education)
-    arr.push(education);
-    setdetails({ ...details, education: arr });
-  }
-
-  function deleteEducation(index) {
-    console.log("network", index);
-    const arr = [];
-    details.education.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-
-    setdetails({ ...details, education: arr });
-  }
-
-  function addAward() {
-    const award = {
-      name: document.getElementById("awardTitle").value,
-      awarder: document.getElementById("awarder").value,
-      date: document.getElementById("awardDate").value,
-      summary: {
-        data: document.getElementById("awardSummary").value,
-      },
-    };
-    console.log("award", award);
-    const arr = [];
-    details.awards.map((item) => {
-      arr.push(item);
-    });
-    // console.log('award',award)
-    arr.push(award);
-    setdetails({ ...details, awards: arr });
-  }
-
-  function deleteAward(index) {
-    console.log("network", index);
-    const arr = [];
-    details.awards.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, awards: arr });
-  }
-
-  function addCertificate() {
-    const certificate = {
-      certificateTitle: document.getElementById("certificateTitle").value,
-      issuer: document.getElementById("issuer").value,
-      certificateDate: document.getElementById("certificateDate").value,
-      summary: {
-        data: document.getElementById("certificateSummary").value,
-      },
-    };
-    console.log("award", certificate);
-    const arr = [];
-    details.certifications.map((item) => {
-      arr.push(item);
-    });
-    // console.log('award',award)
-    arr.push(certificate);
-    setdetails({ ...details, certifications: arr });
-  }
-
-  function deleteCertificate(index) {
-    console.log("network", index);
-    const arr = [];
-    details.certifications.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, certifications: arr });
-  }
-
-  function addSkill() {
-    const skill = {
-      name: document.getElementById("skillTitle").value,
-      level: document.getElementById("skillLevel").value,
-    };
-    const arr = [];
-    details.skills.map((item) => {
-      arr.push(item);
-    });
-    // console.log('skill',skill)
-    arr.push(skill);
-    setdetails({ ...details, skills: arr });
-  }
-
-  function deleteSkill(index) {
-    console.log("network", index);
-    const arr = [];
-    details.skills.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, skills: arr });
-  }
-
-  function addLanguage() {
-    const language = {
-      name: document.getElementById("languageTitle").value,
-      level: document.getElementById("languageLevel").value,
-    };
-    const arr = [];
-    details.languages.map((item) => {
-      arr.push(item);
-    });
-    // console.log('skill',language)
-    arr.push(language);
-    setdetails({ ...details, languages: arr });
-  }
-
-  function deleteLanguage(index) {
-    console.log("network", index);
-    const arr = [];
-    details.languages.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, languages: arr });
-  }
-
-  function addHobby() {
-    const hobby = {
-      name: document.getElementById("hobbyTitle").value,
-    };
-    const arr = [];
-    details.hobbies.map((item) => {
-      arr.push(item);
-    });
-    // console.log('hobby',hobby)
-    arr.push(hobby);
-    setdetails({ ...details, hobbies: arr });
-  }
-
-  function deleteHobby(index) {
-    console.log("network", index);
-    const arr = [];
-    details.hobbies.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, hobbies: arr });
-  }
-
-  function addProjects() {}
-  function deleteProjects(index) {}
-
   const [open, setopen] = useState("semiopen");
 
   function toggleResume() {
@@ -288,7 +58,7 @@ export default function Berlin() {
                           {details.personal.firstName}{" "}
                           {details.personal.lastName}
                         </h1>
-                        <h1 className="text-sm text-gray-500 font-semibold mt-4">
+                        <h1 className="text-sm text-gray-700 font-semibold mt-4">
                           {details.personal.role}
                         </h1>
                       </div>
@@ -300,21 +70,21 @@ export default function Berlin() {
                           <hr className="w-[15%] h-1 bg-black"></hr>
                           <h1 className="text-sm font-semibold pt-3">
                             DOB
-                            <span className="text-sm text-gray-500">
+                            <span className="text-sm text-gray-700">
                               {" : "}
                               {details.personal.dob}
                             </span>
                           </h1>
                           <h1 className="text-sm font-semibold pt-3">
                             PHONE
-                            <span className="text-sm text-gray-500">
+                            <span className="text-sm text-gray-700">
                               {" : "}
                               {details.personal.phone}
                             </span>
                           </h1>
                           <h1 className="text-sm font-semibold pt-3">
                             EMAIL
-                            <span className="text-sm text-gray-500">
+                            <span className="text-sm text-gray-700">
                               {" : "}
                               {details.personal.email}
                             </span>
@@ -339,9 +109,9 @@ export default function Berlin() {
                                 <span className="text-sm font-bold">
                                   {item.institution}
                                 </span>
-                                <p className="text-xs py-1 font-semibold text-gray-500">
+                                <p className="text-xs py-1 font-semibold text-gray-700">
                                   {item.fieldOfStudy}{" "}
-                                  <span className="text-xs font-semibold text-gray-500">
+                                  <span className="text-xs font-semibold text-gray-700">
                                     ({item.startDate} to {item.endDate})
                                   </span>
                                 </p>
@@ -412,17 +182,17 @@ export default function Berlin() {
                       </div>
                       <div className="col-span-2 px-10">
                         {details.personal.objective.length != 0 && (
-                          <div>
+                          <div className="border-b-2">
                             <h1 className="text-2xl font-semibold">PROFILE</h1>
                             <hr className="w-[8%] h-1 bg-black"></hr>
-                            <p className="text-sm text-gray-500 py-5">
+                            <p className="text-sm text-gray-700 py-5">
                               {details.personal.objective}
                             </p>
                           </div>
                         )}
                         {details.work.length != 0 && (
-                          <div>
-                            <h1 className="text-2xl font-semibold pt-5 border-t-2">
+                          <div className="border-b-2">
+                            <h1 className="text-2xl font-semibold pt-5">
                               EMPLOYMENT HISTORY
                             </h1>
                             <hr className="w-[8%] h-1 bg-black"></hr>
@@ -435,40 +205,40 @@ export default function Berlin() {
                                     {item.designation}
                                   </span>
                                 </span>
-                                <p className="text-xs py-1 font-semibold text-gray-500">
+                                <p className="text-xs py-1 font-semibold text-gray-700">
                                   ({item.from} to {item.to})
                                 </p>
-                                <p class="text-sm text-gray-500">
+                                <p class="text-sm text-gray-700">
                                   {item.summary.data}
                                 </p>
                               </div>
                             ))}
                           </div>
                         )}
-                        {/* {details.projects.length != 0 && (
-                            <div>
-                              <h1 className="text-2xl font-semibold pt-5 border-t-2">
-                                PROJECTS
-                              </h1>
-                              <hr className="w-[8%] h-1 bg-black"></hr>
-                              {details.projects.map((item) => (
-                                <div className="my-5" key={item.name}>
-                                  <span className="text-sm font-bold mt-10">
-                                    <a href="{item.website}">{item.name}</a>
-                                  </span>
-                                  <p className="text-xs py-1 font-semibold text-gray-500">
-                                    ({item.from} to {item.to})
-                                  </p>
-                                  <p class="text-sm text-gray-500">
-                                    {item.summary.data}
-                                  </p>
-                                </div>
-                              ))}
-                            </div>
-                          )} */}
+                        {details.projects.length != 0 && (
+                          <div className="border-b-2">
+                            <h1 className="text-2xl font-semibold pt-5">
+                              PROJECTS
+                            </h1>
+                            <hr className="w-[8%] h-1 bg-black"></hr>
+                            {details.projects.map((item) => (
+                              <div className="my-5" key={item.name}>
+                                <span className="text-sm font-bold mt-10">
+                                  <a href="{item.website}">{item.name}</a>
+                                </span>
+                                <p className="text-xs py-1 font-semibold text-gray-700">
+                                  ({item.from} to {item.to})
+                                </p>
+                                <p class="text-sm text-gray-700">
+                                  {item.summary.data}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        )}
                         {details.certifications.length != 0 && (
                           <div>
-                            <h1 className="text-2xl font-semibold pt-5 border-t-2">
+                            <h1 className="text-2xl font-semibold pt-5">
                               CERTIFICATIONS
                             </h1>
                             <hr className="w-[8%] h-1 bg-black"></hr>
@@ -481,10 +251,10 @@ export default function Berlin() {
                                     {item.issuer}
                                   </span>
                                 </span>
-                                <p className="text-xs py-1 font-semibold text-gray-500">
+                                <p className="text-xs py-1 font-semibold text-gray-700">
                                   ({item.date})
                                 </p>
-                                <p class="text-sm text-gray-500">
+                                <p class="text-sm text-gray-700">
                                   {item.summary.data}
                                 </p>
                               </div>
@@ -501,27 +271,8 @@ export default function Berlin() {
 
           {open == "semiopen" && (
             <>
-              <SideBar
-                deleteHobby={deleteHobby}
-                addHobby={addHobby}
-                updateForm={updateForm}
-                deleteAward={deleteAward}
-                addAward={addAward}
-                deleteCertificate={deleteCertificate}
-                addCertificate={addCertificate}
-                addSkill={addSkill}
-                addInternship={addInternship}
-                addLanguage={addLanguage}
-                deleteLanguage={deleteLanguage}
-                deleteSkill={deleteSkill}
-                deleteInternship={deleteInternship}
-                addEducation={addEducation}
-                deleteEducation={deleteEducation}
-                deleteSocialNetwork={deleteSocialNetwork}
-                socialChange={socialChange}
-                deleteProjects={deleteProjects}
-                addProjects={deleteProjects}
-              />
+              <SideBar />
+
               <div
                 className="lg:hidden text-white border border-white rounded-lg px-2 py-1 hover:border-orange-700 hover:text-orange-700 absolute right-[10%] top-5 "
                 onClick={toggleResume}
@@ -541,7 +292,7 @@ export default function Berlin() {
                             {details.personal.firstName}{" "}
                             {details.personal.lastName}
                           </h1>
-                          <h1 className="text-sm text-gray-500 font-semibold mt-4">
+                          <h1 className="text-sm text-gray-700 font-semibold mt-4">
                             {details.personal.role}
                           </h1>
                         </div>
@@ -553,21 +304,21 @@ export default function Berlin() {
                             <hr className="w-[15%] h-1 bg-black"></hr>
                             <h1 className="text-sm font-semibold pt-3">
                               DOB
-                              <span className="text-sm text-gray-500">
+                              <span className="text-sm text-gray-700">
                                 {" : "}
                                 {details.personal.dob}
                               </span>
                             </h1>
                             <h1 className="text-sm font-semibold pt-3">
                               PHONE
-                              <span className="text-sm text-gray-500">
+                              <span className="text-sm text-gray-700">
                                 {" : "}
                                 {details.personal.phone}
                               </span>
                             </h1>
                             <h1 className="text-sm font-semibold pt-3">
                               EMAIL
-                              <span className="text-sm text-gray-500">
+                              <span className="text-sm text-gray-700">
                                 {" : "}
                                 {details.personal.email}
                               </span>
@@ -592,9 +343,9 @@ export default function Berlin() {
                                   <span className="text-sm font-bold">
                                     {item.institution}
                                   </span>
-                                  <p className="text-xs py-1 font-semibold text-gray-500">
+                                  <p className="text-xs py-1 font-semibold text-gray-700">
                                     {item.fieldOfStudy}{" "}
-                                    <span className="text-xs font-semibold text-gray-500">
+                                    <span className="text-xs font-semibold text-gray-700">
                                       ({item.startDate} to {item.endDate})
                                     </span>
                                   </p>
@@ -665,19 +416,19 @@ export default function Berlin() {
                         </div>
                         <div className="col-span-2 px-10">
                           {details.personal.objective.length != 0 && (
-                            <div>
+                            <div className="border-b-2">
                               <h1 className="text-2xl font-semibold">
                                 PROFILE
                               </h1>
                               <hr className="w-[8%] h-1 bg-black"></hr>
-                              <p className="text-sm text-gray-500 py-5">
+                              <p className="text-sm text-gray-700 py-5">
                                 {details.personal.objective}
                               </p>
                             </div>
                           )}
                           {details.work.length != 0 && (
-                            <div>
-                              <h1 className="text-2xl font-semibold pt-5 border-t-2">
+                            <div className="border-b-2">
+                              <h1 className="text-2xl font-semibold pt-5">
                                 EMPLOYMENT HISTORY
                               </h1>
                               <hr className="w-[8%] h-1 bg-black"></hr>
@@ -690,19 +441,19 @@ export default function Berlin() {
                                       {item.designation}
                                     </span>
                                   </span>
-                                  <p className="text-xs py-1 font-semibold text-gray-500">
+                                  <p className="text-xs py-1 font-semibold text-gray-700">
                                     ({item.from} to {item.to})
                                   </p>
-                                  <p class="text-sm text-gray-500">
+                                  <p class="text-sm text-gray-700">
                                     {item.summary.data}
                                   </p>
                                 </div>
                               ))}
                             </div>
                           )}
-                          {/* {details.projects.length != 0 && (
-                            <div>
-                              <h1 className="text-2xl font-semibold pt-5 border-t-2">
+                          {details.projects.length != 0 && (
+                            <div className="border-b-2">
+                              <h1 className="text-2xl font-semibold pt-5">
                                 PROJECTS
                               </h1>
                               <hr className="w-[8%] h-1 bg-black"></hr>
@@ -711,19 +462,19 @@ export default function Berlin() {
                                   <span className="text-sm font-bold mt-10">
                                     <a href="{item.website}">{item.name}</a>
                                   </span>
-                                  <p className="text-xs py-1 font-semibold text-gray-500">
+                                  <p className="text-xs py-1 font-semibold text-gray-700">
                                     ({item.from} to {item.to})
                                   </p>
-                                  <p class="text-sm text-gray-500">
+                                  <p class="text-sm text-gray-700">
                                     {item.summary.data}
                                   </p>
                                 </div>
                               ))}
                             </div>
-                          )} */}
+                          )}
                           {details.certifications.length != 0 && (
                             <div>
-                              <h1 className="text-2xl font-semibold pt-5 border-t-2">
+                              <h1 className="text-2xl font-semibold pt-5">
                                 CERTIFICATIONS
                               </h1>
                               <hr className="w-[8%] h-1 bg-black"></hr>
@@ -736,10 +487,10 @@ export default function Berlin() {
                                       {item.issuer}
                                     </span>
                                   </span>
-                                  <p className="text-xs py-1 font-semibold text-gray-500">
+                                  <p className="text-xs py-1 font-semibold text-gray-700">
                                     ({item.date})
                                   </p>
-                                  <p class="text-sm text-gray-500">
+                                  <p class="text-sm text-gray-700">
                                     {item.summary.data}
                                   </p>
                                 </div>
