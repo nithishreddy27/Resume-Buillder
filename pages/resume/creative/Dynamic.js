@@ -26,236 +26,6 @@ export default function Dynamic() {
     }
   }, [user]);
 
-  function updateForm(event) {
-    const n = event.target.name;
-    const i = event.target.id;
-    setdetails({ ...details, [n]: { ...details[n], [i]: event.target.value } });
-  }
-
-  async function socialChange() {
-    const sn = {
-      network: document.getElementById("network").value,
-      username: document.getElementById("username").value,
-      url: document.getElementById("url").value,
-    };
-    const arr = [];
-    details.social.map((item) => {
-      arr.push(item);
-    });
-    arr.push(sn);
-    setdetails({ ...details, social: arr });
-  }
-
-  function deleteSocialNetwork(index) {
-    // console.log("network",network)
-    const arr = [];
-    details.social.map((item, i) => {
-      if (i != index) {
-        arr.push(item);
-      }
-    });
-    setdetails({ ...details, social: arr });
-  }
-
-  function addInternship() {
-    const intern = {
-      company: document.getElementById("company").value,
-      designation: document.getElementById("position").value,
-      // website:document.getElementById("website").value,
-      from: document.getElementById("startdate").value,
-      to: document.getElementById("enddate").value,
-      summary: {
-        data: document.getElementById("summary").value,
-      },
-    };
-    const arr = [];
-    details.work.map((item) => {
-      arr.push(item);
-    });
-    // console.log('intern',intern)
-    arr.push(intern);
-    setdetails({ ...details, work: arr });
-  }
-
-  function deleteInternship(index) {
-    console.log("network", index);
-    const arr = [];
-    details.work.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, work: arr });
-  }
-
-  function addEducation() {
-    const education = {
-      typeOfDegree: document.getElementById("TypeOfDegree").value,
-      institution: document.getElementById("school").value,
-      fieldOfStudy: document.getElementById("EducationFieldOfStudy").value,
-      startDate: document.getElementById("Educationstartdate").value,
-      endDate: document.getElementById("Educationenddate").value,
-      gpa: document.getElementById("grade").value,
-      summary: {
-        data: document.getElementById("summary").value,
-      },
-    };
-    const arr = [];
-    details.education.map((item) => {
-      arr.push(item);
-    });
-    // console.log('intern',education)
-    arr.push(education);
-    setdetails({ ...details, education: arr });
-  }
-
-  function deleteEducation(index) {
-    console.log("network", index);
-    const arr = [];
-    details.education.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-
-    setdetails({ ...details, education: arr });
-  }
-
-  function addAward() {
-    const award = {
-      name: document.getElementById("awardTitle").value,
-      awarder: document.getElementById("awarder").value,
-      date: document.getElementById("awardDate").value,
-      summary: {
-        data: document.getElementById("awardSummary").value,
-      },
-    };
-    console.log("award", award);
-    const arr = [];
-    details.awards.map((item) => {
-      arr.push(item);
-    });
-    // console.log('award',award)
-    arr.push(award);
-    setdetails({ ...details, awards: arr });
-  }
-
-  function deleteAward(index) {
-    console.log("network", index);
-    const arr = [];
-    details.awards.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, awards: arr });
-  }
-
-  function addCertificate() {
-    const certificate = {
-      certificateTitle: document.getElementById("certificateTitle").value,
-      issuer: document.getElementById("issuer").value,
-      certificateDate: document.getElementById("certificateDate").value,
-      summary: {
-        data: document.getElementById("certificateSummary").value,
-      },
-    };
-    console.log("award", certificate);
-    const arr = [];
-    details.certifications.map((item) => {
-      arr.push(item);
-    });
-    // console.log('award',award)
-    arr.push(certificate);
-    setdetails({ ...details, certifications: arr });
-  }
-
-  function deleteCertificate(index) {
-    console.log("network", index);
-    const arr = [];
-    details.certifications.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, certifications: arr });
-  }
-
-  function addSkill() {
-    const skill = {
-      name: document.getElementById("skillTitle").value,
-      level: document.getElementById("skillLevel").value,
-    };
-    const arr = [];
-    details.skills.map((item) => {
-      arr.push(item);
-    });
-    // console.log('skill',skill)
-    arr.push(skill);
-    setdetails({ ...details, skills: arr });
-  }
-
-  function deleteSkill(index) {
-    console.log("network", index);
-    const arr = [];
-    details.skills.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, skills: arr });
-  }
-
-  function addLanguage() {
-    const language = {
-      name: document.getElementById("languageTitle").value,
-      level: document.getElementById("languageLevel").value,
-    };
-    const arr = [];
-    details.languages.map((item) => {
-      arr.push(item);
-    });
-    // console.log('skill',language)
-    arr.push(language);
-    setdetails({ ...details, languages: arr });
-  }
-
-  function deleteLanguage(index) {
-    console.log("network", index);
-    const arr = [];
-    details.languages.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, languages: arr });
-  }
-
-  function addHobby() {
-    const hobby = {
-      name: document.getElementById("hobbyTitle").value,
-    };
-    const arr = [];
-    details.hobbies.map((item) => {
-      arr.push(item);
-    });
-    // console.log('hobby',hobby)
-    arr.push(hobby);
-    setdetails({ ...details, hobbies: arr });
-  }
-
-  function deleteHobby(index) {
-    console.log("network", index);
-    const arr = [];
-    details.hobbies.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, hobbies: arr });
-  }
-
-  function addProjects() {}
-  function deleteProjects(index) {}
-
   const [open, setopen] = useState("semiopen");
 
   function toggleResume() {
@@ -448,7 +218,7 @@ export default function Dynamic() {
                               <div className="flex" key={item.company}>
                                 <div className="pt-1">
                                   <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
-                                  <div className="w-1 bg-black h-32 m-1"></div>
+                                  <div className="w-1 bg-black h-24 m-1"></div>
                                 </div>
                                 <div className="ml-5 mt-1">
                                   <p className="font-semibold">
@@ -470,6 +240,41 @@ export default function Dynamic() {
                           </div>
                         </>
                       )}
+                      {details.projects.length != 0 && (
+                          <>
+                            <h1 className="text-xl font-bold tracking-[1px] mt-5">
+                              PROJECTS
+                            </h1>
+                            <hr className="h-[2px] bg-black my-1" />
+
+                            <div className="ml-1 mt-1">
+                              {details.projects.map((item) => (
+                                <div className="flex" key={item.name}>
+                                  <div className="pt-1">
+                                    <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
+                                    <div className="w-1 bg-black h-24 m-1"></div>
+                                  </div>
+                                  <div className="ml-5 mt-1">
+                                    <p className="font-semibold">
+                                      {item.from}  to {" "}
+                                      {item.to}
+                                    </p>
+                                    <p className="tracking-[2px] my-1">
+                                      {item.name}
+                                    </p>
+                                    <p className="tracking-[2px] my-1">
+                                      {item.domain}
+                                    </p>
+                                  
+                                    <p className="mb-4 text-sm">
+                                      {item.summary.data}
+                                    </p>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </>
+                        )}
 
                       {details.education.length != 0 && (
                         <>
@@ -549,27 +354,8 @@ export default function Dynamic() {
 
           {open == "semiopen" && (
             <>
-              <SideBar
-                deleteHobby={deleteHobby}
-                addHobby={addHobby}
-                updateForm={updateForm}
-                deleteAward={deleteAward}
-                addAward={addAward}
-                deleteCertificate={deleteCertificate}
-                addCertificate={addCertificate}
-                addSkill={addSkill}
-                addInternship={addInternship}
-                addLanguage={addLanguage}
-                deleteLanguage={deleteLanguage}
-                deleteSkill={deleteSkill}
-                deleteInternship={deleteInternship}
-                addEducation={addEducation}
-                deleteEducation={deleteEducation}
-                deleteSocialNetwork={deleteSocialNetwork}
-                socialChange={socialChange}
-                deleteProjects={deleteProjects}
-                addProjects={deleteProjects}
-              />
+              <SideBar/>
+                
               <div
                 className="lg:hidden text-white border border-white rounded-lg px-2 py-1 hover:border-orange-700 hover:text-orange-700 absolute right-[10%] top-5 "
                 onClick={toggleResume}
@@ -579,6 +365,9 @@ export default function Dynamic() {
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
                 <div className="flex justify-center ">
+
+
+                  
                   {/* large resume */}
 
                   <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row">
@@ -749,7 +538,7 @@ export default function Dynamic() {
                                 <div className="flex" key={item.company}>
                                   <div className="pt-1">
                                     <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
-                                    <div className="w-1 bg-black h-32 m-1"></div>
+                                    <div className="w-1 bg-black h-24 m-1"></div>
                                   </div>
                                   <div className="ml-5 mt-1">
                                     <p className="font-semibold">
@@ -771,6 +560,46 @@ export default function Dynamic() {
                             </div>
                           </>
                         )}
+
+
+                {details.projects.length != 0 && (
+                          <>
+                            <h1 className="text-xl font-bold tracking-[1px] mt-5">
+                              PROJECTS
+                            </h1>
+                            <hr className="h-[2px] bg-black my-1" />
+
+                            <div className="ml-1 mt-1">
+                              {details.projects.map((item) => (
+                                <div className="flex" key={item.name}>
+                                  <div className="pt-1">
+                                    <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
+                                    <div className="w-1 bg-black h-24 m-1"></div>
+                                  </div>
+                                  <div className="ml-5 mt-1">
+                                    <p className="font-semibold">
+                                      {item.from}  to {" "}
+                                      {item.to}
+                                    </p>
+                                    <p className="tracking-[2px] my-1">
+                                      {item.name}
+                                    </p>
+                                    <p className="tracking-[2px] my-1">
+                                      {item.domain}
+                                    </p>
+                                  
+                                    <p className="mb-4 text-sm">
+                                      {item.summary.data}
+                                    </p>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </>
+                        )}
+
+
+
 
                         {details.education.length != 0 && (
                           <>
@@ -821,14 +650,14 @@ export default function Dynamic() {
                                   <div className="flex">
                                     <div className="pt-1">
                                       <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
-                                      <div className="w-1 bg-black h-10 m-1"></div>
+                                      <div className="w-1 bg-black h-20 m-1"></div>
                                     </div>
                                     <div className="ml-5 mt-1">
                                       <p className="tracking-[2px]">
-                                        {item.certificateTitle}
+                                        {item.title}
                                       </p>
                                       <p className="font-bold">
-                                        {item.certificateDate}
+                                        {item.date}
                                       </p>
                                       <p className="">{item.issuer}</p>
                                       <p className="mb-4 font-semibold">
@@ -844,6 +673,9 @@ export default function Dynamic() {
                       </div>
                     </div>
                   </div>
+
+
+                  
                 </div>
               </div>
             </>

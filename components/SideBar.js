@@ -16,27 +16,7 @@ import { RxHobbyKnife } from "react-icons/rx";
 import { AiFillDelete } from "react-icons/ai";
 
 import Link from "next/link";
-export default function SideBar({
-  deleteHobby,
-  addHobby,
-  updateForm,
-  socialChange,
-  addAward,
-  addCertificate,
-  addEducation,
-  addInternship,
-  addLanguage,
-  addSkill,
-  deleteLanguage,
-  deleteAward,
-  deleteCertificate,
-  deleteInternship,
-  deleteSkill,
-  deleteSocialNetwork,
-  deleteEducation,
-  addProjects,
-  deleteProject,
-}) {
+export default function SideBar() {
   const [open, setopen] = useState("semiopen");
   const [arrow, setarrow] = useState(false);
   const [iarrow, setiarrow] = useState(false);
@@ -49,6 +29,271 @@ export default function SideBar({
   const [carrow, setcarrow] = useState(false);
   const { details, setdetails } = useContext(ResumeContext);
 
+
+
+  function updateForm(event) {
+    const n = event.target.name;
+    const i = event.target.id;
+    setdetails({ ...details, [n]: { ...details[n], [i]: event.target.value } });
+  }
+
+  async function socialChange() {
+    const sn = {
+      network: document.getElementById("network").value,
+      username: document.getElementById("username").value,
+      url: document.getElementById("url").value,
+    };
+    const arr = [];
+    details.social.map((item) => {
+      arr.push(item);
+    });
+    arr.push(sn);
+    setdetails({ ...details, social: arr });
+  }
+
+  function deleteSocialNetwork(index) {
+    // console.log("network",network)
+    const arr = [];
+    details.social.map((item, i) => {
+      if (i != index) {
+        arr.push(item);
+      }
+    });
+    setdetails({ ...details, social: arr });
+  }
+
+  function addInternship() {
+    const intern = {
+      company: document.getElementById("company").value,
+      designation: document.getElementById("position").value,
+      // website:document.getElementById("website").value,
+      from: document.getElementById("startdate").value,
+      to: document.getElementById("enddate").value,
+      summary: {
+        data: document.getElementById("summary").value,
+      },
+    };
+    const arr = [];
+    details.work.map((item) => {
+      arr.push(item);
+    });
+    // console.log('intern',intern)
+    arr.push(intern);
+    setdetails({ ...details, work: arr });
+  }
+
+  function deleteInternship(index) {
+    console.log("network", index);
+    const arr = [];
+    details.work.map((item, i) => {
+      if (i != index) arr.push(item);
+    });
+    // console.log('intern',intern)
+    // arr.push(intern)
+    setdetails({ ...details, work: arr });
+  }
+
+  function addEducation() {
+    const education = {
+      typeOfDegree: document.getElementById("TypeOfDegree").value,
+      institution: document.getElementById("school").value,
+      fieldOfStudy: document.getElementById("EducationFieldOfStudy").value,
+      startDate: document.getElementById("Educationstartdate").value,
+      endDate: document.getElementById("Educationenddate").value,
+      gpa: document.getElementById("grade").value,
+      summary: {
+        data: document.getElementById("summary").value,
+      },
+    };
+    const arr = [];
+    details.education.map((item) => {
+      arr.push(item);
+    });
+    // console.log('intern',education)
+    arr.push(education);
+    setdetails({ ...details, education: arr });
+  }
+
+  function deleteEducation(index) {
+    console.log("network", index);
+    const arr = [];
+    details.education.map((item, i) => {
+      if (i != index) arr.push(item);
+    });
+
+    setdetails({ ...details, education: arr });
+  }
+
+  function addAward() {
+    const award = {
+      name: document.getElementById("awardTitle").value,
+      awarder: document.getElementById("awarder").value,
+      date: document.getElementById("awardDate").value,
+      summary: {
+        data: document.getElementById("awardSummary").value,
+      },
+    };
+    console.log("award", award);
+    const arr = [];
+    details.awards.map((item) => {
+      arr.push(item);
+    });
+    // console.log('award',award)
+    arr.push(award);
+    setdetails({ ...details, awards: arr });
+  }
+
+  function deleteAward(index) {
+    console.log("network", index);
+    const arr = [];
+    details.awards.map((item, i) => {
+      if (i != index) arr.push(item);
+    });
+    // console.log('intern',intern)
+    // arr.push(intern)
+    setdetails({ ...details, awards: arr });
+  }
+
+  function addCertificate() {
+    const certificate = {
+      title: document.getElementById("certificateTitle").value,
+      issuer: document.getElementById("issuer").value,
+      date: document.getElementById("certificateDate").value,
+      summary: {
+        data: document.getElementById("certificateSummary").value,
+      },
+    };
+    console.log("award", certificate);
+    const arr = [];
+    details.certifications.map((item) => {
+      arr.push(item);
+    });
+    // console.log('award',award)
+    arr.push(certificate);
+    setdetails({ ...details, certifications: arr });
+  }
+
+  function deleteCertificate(index) {
+    console.log("network", index);
+    const arr = [];
+    details.certifications.map((item, i) => {
+      if (i != index) arr.push(item);
+    });
+    // console.log('intern',intern)
+    // arr.push(intern)
+    setdetails({ ...details, certifications: arr });
+  }
+
+  function addSkill() {
+    const skill = {
+      name: document.getElementById("skillTitle").value,
+      level: document.getElementById("skillLevel").value,
+    };
+    const arr = [];
+    details.skills.map((item) => {
+      arr.push(item);
+    });
+    // console.log('skill',skill)
+    arr.push(skill);
+    setdetails({ ...details, skills: arr });
+  }
+
+  function deleteSkill(index) {
+    console.log("network", index);
+    const arr = [];
+    details.skills.map((item, i) => {
+      if (i != index) arr.push(item);
+    });
+    // console.log('intern',intern)
+    // arr.push(intern)
+    setdetails({ ...details, skills: arr });
+  }
+
+  function addLanguage() {
+    const language = {
+      name: document.getElementById("languageTitle").value,
+      level: document.getElementById("languageLevel").value,
+    };
+    const arr = [];
+    details.languages.map((item) => {
+      arr.push(item);
+    });
+    // console.log('skill',language)
+    arr.push(language);
+    setdetails({ ...details, languages: arr });
+  }
+
+  function deleteLanguage(index) {
+    console.log("network", index);
+    const arr = [];
+    details.languages.map((item, i) => {
+      if (i != index) arr.push(item);
+    });
+    // console.log('intern',intern)
+    // arr.push(intern)
+    setdetails({ ...details, languages: arr });
+  }
+
+  function addHobby() {
+    const hobby = {
+      name: document.getElementById("hobbyTitle").value,
+    };
+    const arr = [];
+    details.hobbies.map((item) => {
+      arr.push(item);
+    });
+    // console.log('hobby',hobby)
+    arr.push(hobby);
+    setdetails({ ...details, hobbies: arr });
+  }
+
+  function deleteHobby(index) {
+    console.log("network", index);
+    const arr = [];
+    details.hobbies.map((item, i) => {
+      if (i != index) arr.push(item);
+    });
+    // console.log('intern',intern)
+    // arr.push(intern)
+    setdetails({ ...details, hobbies: arr });
+  }
+
+  function addProjects() {
+
+    const project = {
+      name: document.getElementById("projectTitle").value,
+      domain: document.getElementById("projectDomain").value,
+      website: document.getElementById("projectWebsite").value,
+      from: document.getElementById("projectstartdate").value,
+      to: document.getElementById("projectenddate").value,
+      summary: {
+        data: document.getElementById("projectsummary").value,
+      },
+    };
+    // console.log("award", certificate);
+    const arr = [];
+    details.projects.map((item) => {
+      arr.push(item);
+    });
+    // console.log('award',award)
+    arr.push(project);
+    setdetails({ ...details, projects: arr });
+
+
+
+
+  }
+  function deleteProjects(index) {
+
+    console.log("network", index);
+    const arr = [];
+    details.projects.map((item, i) => {
+      if (i != index) arr.push(item);
+    });
+    // console.log('intern',intern)
+    // arr.push(intern)
+    setdetails({ ...details, projects: arr });
+  }
   return (
     <>
       {/* sidebar */}
@@ -649,7 +894,7 @@ export default function SideBar({
                 </div>
                 <div className="mt-2">
                   <label
-                    htmlFor="fieldOfStudy"
+                    htmlFor="EducationFieldOfStudy"
                     className="font-semibold text-gray-300"
                   >
                     Field Of Study
@@ -657,7 +902,7 @@ export default function SideBar({
                   <input
                     type="text"
                     name="education"
-                    id="fieldOfStudy"
+                    id="EducationFieldOfStudy"
                     className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
                   />
                 </div>
@@ -797,31 +1042,7 @@ export default function SideBar({
                   )}
                 </div>
               </div>
-              <div>
-                {details.education.length != 0 && (
-                  <>
-                    <div className="ml-1 mt-1">
-                      {details.education.map((item, index) => (
-                        <div className="border border-white my-3 p-3" key={item.institution}>
-                          <div className="flex">
-                            <p className="font-semibold grow">{item.institution}</p>
-                            <p className="font-bold">{item.fieldOfStudy}</p>
-
-                            <button
-                            className="mr-2"
-                              onClick={() => {
-                                deleteEducation(index);
-                              }}
-                            >
-                              <AiFillDelete></AiFillDelete>
-                            </button>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </>
-                )}
-              </div>
+              
               <div className={`${carrow ? "block" : "hidden"}`}>
                 <div className="mt-5">
                   <label
@@ -891,7 +1112,7 @@ export default function SideBar({
                     Submit
                   </button>
                 </div>
-                {/* <div className="ml-1 mt-1">
+                <div className="ml-1 mt-1">
                   {details.certifications.map((item, index) => (
                     <div className="flex" key={item.institution}>
                       <div className="flex">
@@ -906,7 +1127,7 @@ export default function SideBar({
                       </div>
                     </div>
                   ))}
-                </div> */}
+                </div>
               </div>
             </div>
 
@@ -951,14 +1172,14 @@ export default function SideBar({
                 <>
                   <div className="ml-1 mt-1">
                     {details.projects.map((item, index) => (
-                      <div className="my-3 p-3 border border-white" key={item.title}>
+                      <div className="my-3 p-3 border border-white" key={item.name}>
                         <div className="flex">
                           
-                            <p className="grow font-semibold">{item.title}</p>
+                            <p className="grow font-semibold">{item.name}</p>
                             <button
                               className="mr-3"
                               onClick={() => {
-                                deleteProject(index);
+                                deleteProjects(index);
                               }}
                             >
                               <AiFillDelete></AiFillDelete>
@@ -986,7 +1207,7 @@ export default function SideBar({
 
                 <div className="mt-2">
                   <label
-                    htmlFor="projectDomine"
+                    htmlFor="projectDomain"
                     className="font-semibold text-gray-300"
                   >
                     Field Of Study
@@ -994,7 +1215,7 @@ export default function SideBar({
                   <input
                     type="text"
                     name="project"
-                    id="projectDomine"
+                    id="projectDomain"
                     className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
                   />
                 </div>
