@@ -15,7 +15,7 @@ import {GiSkills} from "react-icons/gi"
 import {RxHobbyKnife} from "react-icons/rx"
 
 import Link from "next/link";
-export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,addAward,addCertificate,addEducation,addInternship,addLanguage,addSkill,deleteLanguage,deleteAward,deleteCertificate,deleteInternship,deleteSkill,deleteSocialNetwork ,deleteEducation,addProjects}){
+export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,addAward,addCertificate,addEducation,addInternship,addLanguage,addSkill,deleteLanguage,deleteAward,deleteCertificate,deleteInternship,deleteSkill,deleteSocialNetwork ,deleteEducation,addProjects ,deleteProject}){
 
 
 
@@ -332,12 +332,39 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
                         />
                       </div>
                       <div className="flex justify-center">
-                        {/* <button onClick={socialChange}>Submit</button> */}
+                       
                         <button  onClick={socialChange} className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg">
                           Submit
                         </button>
                       </div>
+                          <div>
+                          {details.social.length !=0  && (
+            <>
+                    {details.social.map((item,index) => (
+                    <div className="my-3 flex" key={item.network}>
+                      <span>
+                        <img
+                          src={
+                            "https://www." + item.network + ".com/favicon.ico"
+                          }
+                          alt=""
+                          className="w-5 grayscale-[40%]"
+                        />
+                      </span>
+
+                      <Link href={item.url}>
+                        <span className="mx-4">{item.username}</span>
+                      </Link>
+
+                      <button onClick={()=>deleteSocialNetwork(index)}>Delete</button>
                     </div>
+                  ))}
+              </>
+                  )}
+                          </div>
+                    </div>
+
+
                   </div>
 
                   <div className="mt-5 shadow-md p-2 rounded-md">
@@ -452,8 +479,26 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
                           Submit
                         </button>
                       </div>
+                      <div className="ml-1 mt-1">
+                   {details.work.map((item,index) => (
+                  <div className="flex" key={item.company}>
+                    
+                    <div className="ml-5 mt-1">
+                      
+                      <p className="tracking-[2px] my-1">{item.company}</p>
+                    
+                    </div>
+                    <button onClick={()=>{deleteInternship(index)}}>Delete</button>
+                  </div>
+                ))}
+               </div>
                     </div>
                   </div>
+
+
+
+                  {/* Education  */}
+
                   <div className="mt-5 shadow-md p-2 rounded-md">
                     <div className="flex ">
                       <h1 id="education" className="font-bold text-xl grow">Education</h1>
@@ -564,7 +609,7 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
                           <input
                             type="date"
                             name="education"
-                            id="startdate"
+                            id="Educationstartdate"
                             className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
                           />
                         </div>
@@ -578,7 +623,7 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
                           <input
                             type="date"
                             name="education"
-                            id="enddate"
+                            id="Educationenddate"
                             className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
                           />
                         </div>
@@ -597,13 +642,39 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
                         />
                       </div>
                       <div className="flex justify-center">
-                        {/* <button onClick={addEducation}>Submit</button> */}
+                        
                         <button onClick={addEducation} className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg">
                           Submit
                         </button>
                       </div>
                     </div>
+                    <div>
+          {details.education.length != 0 && (
+              <>
+              
+              <div className="ml-1 mt-1">
+                {details.education.map((item,index) => (
+                  <div className="flex" key={item.institution}>
+                    <div className="flex justify-around p-10">
+                        <p className="tracking-[2px]">{item.institution}</p>
+                        <p className="font-bold">{item.fieldOfStudy}</p>
+                        
+                        <button onClick={()=>{deleteEducation(index)}}>Delete</button>
+                    
+                    </div>
                   </div>
+                ))}
+              </div>
+              </>
+             )}
+          </div>
+                  </div>
+
+
+                  {/* Certifications  */}
+
+
+
                   <div className="mt-5 shadow-md p-2 rounded-md">
                     <div className="flex ">
                       <h1 id="certifications" className="font-bold text-xl grow">Certifications</h1>
@@ -648,7 +719,7 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
                     <div className={`${carrow ? "block" : "hidden"}`}>
                       <div className="mt-5">
                         <label
-                          htmlFor="TypeOfDegree"
+                          htmlFor="certificateTitle"
                           className="font-semibold text-gray-300"
                         >
                           Title
@@ -657,13 +728,13 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
                         <input
                           type="text"
                           name="certifications"
-                          id="TypeOfDegree"
+                          id="certificateTitle"
                           className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
                         />
                       </div>
                       <div className="mt-2">
                         <label
-                          htmlFor="school"
+                          htmlFor="issuer"
                           className="font-semibold text-gray-300"
                         >
                           Issuer
@@ -671,7 +742,7 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
                         <input
                           type="text"
                           name="certifications"
-                          id="school"
+                          id="issuer"
                           className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
                         />
                       </div>
@@ -680,7 +751,7 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
                       <div className="flex gap-3">
                         <div className="mt-2">
                           <label
-                            htmlFor="startdate"
+                            htmlFor="certificateDate"
                             className="font-semibold text-gray-300"
                           >
                             Start Date
@@ -688,7 +759,7 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
                           <input
                             type="date"
                             name="certifications"
-                            id="startdate"
+                            id="certificateDate"
                             className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
                           />
                         </div>
@@ -696,25 +767,43 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
                       </div>
                       <div className="mt-2">
                         <label
-                          htmlFor="summary"
+                          htmlFor="certificateSummary"
                           className="font-semibold text-gray-300"
                         >
                           Summary
                         </label>
                         <textarea
                           name="certifications"
-                          id="summary"
+                          id="certificateSummary"
                           className="block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
                         />
                       </div>
                       <div className="flex justify-center">
                         {/* <button onClick={addEducation}>Submit</button> */}
-                        <button onClick={addEducation} className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg">
+                        <button onClick={addCertificate} className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg">
                           Submit
                         </button>
                       </div>
+                      <div className="ml-1 mt-1">
+                      {details.certifications.map((item,index) => (
+                        <div className="flex" key={item.institution}>
+                          <div className="flex">
+                           
+                              <p className="tracking-[2px]">
+                                {item.title}
+                              </p>
+                                <button onClick={()=>{deleteCertificate(index)}}>Delete</button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                     </div>
                   </div>
+
+
+
+                          {/* Projects  */}
+
                   <div className="mt-5 shadow-md p-2 rounded-md">
                     <div className="flex">
                       <h1 className="font-bold text-xl grow">Projects</h1>
@@ -752,72 +841,86 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
                     </div>
                     <div className={`${parrow ? "block" : "hidden"}`}>
                       <div className="mt-5 text-gray-300">
-                        <label htmlFor="company" className="font-semibold">
-                          Company
+                        <label htmlFor="projectTitle" className="font-semibold">
+                          Title
                         </label>
 
                         <input
                           type="text"
-                          name="internship"
-                          id="company"
+                          name="project"
+                          id="projectTitle"
                           className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
                         />
                       </div>
                       
                       <div className="mt-2">
                         <label
-                          htmlFor="fieldOfStudy"
+                          htmlFor="projectDomine"
                           className="font-semibold text-gray-300"
                         >
                           Field Of Study
                         </label>
                         <input
                           type="text"
-                          name="internship"
-                          id="fieldOfStudy"
+                          name="project"
+                          id="projectDomine"
+                          className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                        />
+                      </div>
+                      <div className="mt-2">
+                        <label
+                          htmlFor="projectWebsite"
+                          className="font-semibold text-gray-300"
+                        >
+                          GIT / Website Link  
+                        </label>
+                        <input
+                          type="text"
+                          name="project"
+                          id="projectWebsite"
                           className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
                         />
                       </div>
                       <div className="flex gap-3">
                         <div className="mt-2">
                           <label
-                            htmlFor="startdate"
+                            htmlFor="projectstartdate"
                             className="font-semibold text-gray-300"
                           >
                             Start Date
                           </label>
                           <input
                             type="date"
-                            name="internship"
-                            id="startdate"
+                            name="project"
+                            id="projectstartdate"
                             className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
                           />
                         </div>
                         <div className="mt-2">
                           <label
-                            htmlFor="enddate"
+                            htmlFor="projectenddate"
                             className="font-semibold text-gray-300"
                           >
                             End Date
                           </label>
                           <input
                             type="date"
-                            name="internship"
-                            id="enddate"
+                            name="project"
+                            id="projectenddate"
                             className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
                           />
                         </div>
                       </div>
                       <div className="mt-2">
                         <label
-                          htmlFor="summary"
+                          htmlFor="projectsummary"
                           className="font-semibold text-gray-300"
                         >
                           Summary
                         </label>
                         <textarea
-                          name="internship"
-                          id="summary"
+                          name="project"
+                          id="projectsummary"
                           className="block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
                         />
                       </div>
@@ -828,7 +931,33 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
                         </button>
                       </div>
                     </div>
+                    {details.projects.length != 0 && (
+                  <>
+                  
+                    <div className="ml-1 mt-1">
+                      {details.projects.map((item,index) => (
+                        <div className="flex" key={item.title}>
+                          <div className="flex">
+                            <div className="ml-5 mt-1 flex justify-between">
+                             
+                              <p className="tracking-[2px]">
+                                {item.title}
+                              </p>
+                                <button onClick={()=>{deleteProject(index)}}>Delete</button>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
                   </div>
+
+
+                          {/* awards  */}
+
+
+
                   <div className="mt-5 shadow-md p-2 rounded-md">
                     <div className="flex">
                       <h1 className="font-bold text-xl grow">Awards</h1>
@@ -866,44 +995,44 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
                     </div>
                     <div className={`${awarrow ? "block" : "hidden"}`}>
                       <div className="mt-5 text-gray-300">
-                        <label htmlFor="company" className="font-semibold">
-                          Company
+                        <label htmlFor="awardTitle" className="font-semibold">
+                          Title
                         </label>
 
                         <input
                           type="text"
-                          name="internship"
-                          id="company"
+                          name="award"
+                          id="awardTitle"
                           className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
                         />
                       </div>
                       
                       <div className="mt-2">
                         <label
-                          htmlFor="fieldOfStudy"
+                          htmlFor="awarder"
                           className="font-semibold text-gray-300"
                         >
-                          Field Of Study
+                          Awarder
                         </label>
                         <input
                           type="text"
-                          name="internship"
-                          id="fieldOfStudy"
+                          name="award"
+                          id="awarder"
                           className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
                         />
                       </div>
                       <div className="flex gap-3">
                         <div className="mt-2">
                           <label
-                            htmlFor="startdate"
+                            htmlFor="awardDate"
                             className="font-semibold text-gray-300"
                           >
-                            Start Date
+                            Date
                           </label>
                           <input
                             type="date"
-                            name="internship"
-                            id="startdate"
+                            name="award"
+                            id="awardDate"
                             className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
                           />
                         </div>
@@ -911,14 +1040,14 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
                       </div>
                       <div className="mt-2">
                         <label
-                          htmlFor="summary"
+                          htmlFor="awardSummary"
                           className="font-semibold text-gray-300"
                         >
                           Summary
                         </label>
                         <textarea
-                          name="internship"
-                          id="summary"
+                          name="award"
+                          id="awardSummary"
                           className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
                         />
                       </div>
@@ -928,11 +1057,26 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
                           Submit
                         </button>
                       </div>
+
+                      <div>
+                      {details.awards.map((item,index) => (
+                    <div className="my-2" key={item.name}>
+                      <span className="font-semibold text-[15px]">
+                        {item.name} 
+                      </span>
+                      <button onClick={()=>{deleteAward(index)}}>Delete</button>
+                    </div>
+                  ))}
+                      </div>
                     </div>
                   </div>
+
+
+                        {/* skills */}
+
                   <div className="mt-5 shadow-md p-2 rounded-md">
                     <div className="flex">
-                      <h1 id="skills" className="font-bold text-xl grow">Skills:</h1>
+                      <h1 id="skills" className="font-bold text-xl grow">Skills</h1>
                       <div
                         className="pt-[-15px] mt-[-10px]"
                         onClick={() => {
@@ -964,8 +1108,11 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
                           </div>
                         )}
                       </div>
+
+                      
                     </div>
                     <div className={`${skarrow ? "block" : "hidden"}`}>
+
                       <div className="sm:grid sm:grid-cols-2 sm:gap-2">
                         <div className="mt-5">
                           <label
@@ -1002,13 +1149,35 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
                         </div>
                       </div>
                       <div className="flex justify-center">
-                        {/* <button onClick={socialChange}>Submit</button> */}
                         <button onClick={addSkill} className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg">
                           Submit
                         </button>
                       </div>
+                      <div>
+        {details.skills.length !=0  && (
+              <div className="mt-4">
+             
+              {details.skills.map((item,index) => (
+                <>
+                <li className="mx-4" key={item.name}>
+                  {item.name}
+                </li>
+                <button onClick={()=>{deleteSkill(index)}}>Delete</button>
+                </>
+              ))}
+            </div>
+            )}
+        </div>
+                     
                     </div>
+                    
                   </div>
+
+
+
+                  {/* Languages  */}
+
+
                   <div className="mt-5 shadow-md p-2 rounded-md">
                     <div className="flex">
                       <h1 className="font-bold text-xl grow" id="languages">Language</h1>
@@ -1072,7 +1241,7 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
                           <select
                             name="language"
                             className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
-                            id="skillLevel"
+                            id="languageLevel"
                           >
                             <option value="beginner">Beginner</option>
                             <option value="intermediate">Intermediate</option>
@@ -1086,8 +1255,28 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
                           Submit
                         </button>
                       </div>
+                      <div>
+          {details.languages.length != 0 && (
+                <div className="mt-4">
+               
+                {details.languages.map((item,index) => (
+                  <>
+                  <p className="my-2" key={item.name}>
+                    {item.name}
+                  </p>
+                  <button onClick={()=>{deleteLanguage(index)}}>Delete</button>
+                  </>
+                ))}
+              </div>
+           )} 
+          </div>
                     </div>
                   </div>
+
+
+                  {/* hobbies  */}
+
+                  
                   <div className="mt-5 shadow-md p-2 rounded-md">
                     <div className="flex">
                       <h1 className="font-bold text-xl grow" id="hobbies">Hobby</h1>
@@ -1146,6 +1335,22 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
                           Submit
                         </button>
                       </div>
+                      <div>
+          {details.hobbies.length != 0 && (
+                <div className="mt-4">
+               
+                {details.hobbies.map((item,index) => (
+                  <>
+                  <p className="my-2" key={item.name}>
+                    {item.name}
+                  </p>
+                  <button onClick={()=>{deleteHobby(index)}}>Delete</button>
+                  </>
+
+                ))}
+              </div>
+           )} 
+          </div>
                     </div>
                   </div>
                 </div>
