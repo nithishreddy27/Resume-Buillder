@@ -663,6 +663,7 @@ export default function Dynamic() {
           <div className="m-1 col-span-3">
             <div className=" h-[54%]">
               <h1 className=" ont-medium tracking-wide mt-3 mr-60 font-serif text-xl   ml-5 pt-4 mb-1 p-2">NETWORK</h1>
+              
               {details.social.map((item) => (
                 <div key={item.network} className="ml-16 my-4 flex">
                   <img src={"https://www." + item.network + ".com/favicon.ico"} alt="" className="w-8 h-8 border-4 ml-0 mr-0 rounded-full border-yellow-400 "/>
