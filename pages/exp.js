@@ -27,6 +27,7 @@ export default function exp() {
   const [parrow, setparrow] = useState(false);
   const [awarrow, setawarrow] = useState(false);
   const [carrow, setcarrow] = useState(false);
+  
   const { details, setdetails } = useContext(ResumeContext);
   function toggleResume() {
     if (open == "semiopen") {
@@ -130,15 +131,7 @@ export default function exp() {
                     ))}
                   </div>
 
-                  {/* <div className='mt-4'>
-            <h1 className='text-2xl font-semibold tracking-[2px]' >HOBBIES</h1>
-                <hr className="h-[2px] bg-black my-1" />
-                {
-                    resume.hobbies.map(item=>(
-                        <p className='my-2'>{item.name}</p>
-                    ))
-                }
-            </div> */}
+                 
                   <div className="mt-4">
                     <h1 className="text-2xl font-semibold tracking-[2px]">
                       LANGUAGES
@@ -241,6 +234,7 @@ export default function exp() {
                   </div>
                 </div>
               </div>
+              
             </div>
           </div>
         )}

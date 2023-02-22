@@ -304,12 +304,12 @@ export default function Dynamic() {
 
 
   {open == "closed" && (
-    <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-gray-400 to-gray-600">
+    <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-slate-700 to-slate-800">
       <button
-        className="h-10 w-10 mx-auto block lg:hidden"
+        className=" mx-auto block lg:hidden text-white border border-white p-3 mt-5"
         onClick={toggleResume}
       >
-        DETAILS
+        GO BACK TO DETAILS
       </button>
       <div className="flex justify-center ">
 
