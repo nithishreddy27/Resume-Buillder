@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { demoResume } from "../../../lib/data";
 import Image from "next/image";
 import Link from "next/link";
@@ -38,17 +38,12 @@ export default function Berlin() {
       username: document.getElementById("username").value,
       url: document.getElementById("url").value,
     };
-    (document.getElementById("network").innerHTML = "one"),
-      (document.getElementById("username").innerHTML = " "),
-      (document.getElementById("url").innerHTML = " ");
     const arr = [];
     details.social.map((item) => {
       arr.push(item);
     });
     arr.push(sn);
     setdetails({ ...details, social: arr });
-
-    console.log("sn", sn);
   }
 
   function deleteSocialNetwork(index) {
@@ -80,11 +75,6 @@ export default function Berlin() {
     // console.log('intern',intern)
     arr.push(intern);
     setdetails({ ...details, work: arr });
-    (document.getElementById("company").innerHTML = ""),
-      (document.getElementById("position").innerHTML = ""),
-      (document.getElementById("startdate").innerHTML = ""),
-      (document.getElementById("enddate").innerHTML = ""),
-      (document.getElementById("summary").innerHTML = "");
   }
 
   function deleteInternship(index) {
@@ -117,14 +107,6 @@ export default function Berlin() {
     // console.log('intern',education)
     arr.push(education);
     setdetails({ ...details, education: arr });
-
-    (document.getElementById("TypeOfDegree").innerHTML = ""),
-      (document.getElementById("school").innerHTML = ""),
-      (document.getElementById("EducationFieldOfStudy").innerHTML = ""),
-      (document.getElementById("Educationstartdate").innerHTML = ""),
-      (document.getElementById("Educationenddate").innerHTML = ""),
-      (document.getElementById("grade").innerHTML = ""),
-      (document.getElementById("summary").innerHTML = "");
   }
 
   function deleteEducation(index) {
@@ -154,11 +136,6 @@ export default function Berlin() {
     // console.log('award',award)
     arr.push(award);
     setdetails({ ...details, awards: arr });
-
-    (document.getElementById("awardTitle").innerHTML = ""),
-      (document.getElementById("awarder").innerHTML = ""),
-      (document.getElementById("awardDate").innerHTML = ""),
-      (document.getElementById("awardSummary").innerHTML = "");
   }
 
   function deleteAward(index) {
@@ -189,11 +166,6 @@ export default function Berlin() {
     // console.log('award',award)
     arr.push(certificate);
     setdetails({ ...details, certifications: arr });
-
-    (document.getElementById("certificateTitle").innerHTML = ""),
-      (document.getElementById("issuer").innerHTML = ""),
-      (document.getElementById("certificateDate").innerHTML = ""),
-      (document.getElementById("certificateSummary").innerHTML = "");
   }
 
   function deleteCertificate(index) {
@@ -219,8 +191,6 @@ export default function Berlin() {
     // console.log('skill',skill)
     arr.push(skill);
     setdetails({ ...details, skills: arr });
-
-    document.getElementById("skillTitle").innerHTML = "";
   }
 
   function deleteSkill(index) {
@@ -246,8 +216,6 @@ export default function Berlin() {
     // console.log('skill',language)
     arr.push(language);
     setdetails({ ...details, languages: arr });
-
-    document.getElementById("languageTitle").innerHTML = "";
   }
 
   function deleteLanguage(index) {
@@ -272,7 +240,6 @@ export default function Berlin() {
     // console.log('hobby',hobby)
     arr.push(hobby);
     setdetails({ ...details, hobbies: arr });
-    document.getElementById("hobbyTitle").innerHTML = "";
   }
 
   function deleteHobby(index) {
@@ -286,228 +253,507 @@ export default function Berlin() {
     setdetails({ ...details, hobbies: arr });
   }
 
+  function addProjects() {}
+  function deleteProjects(index) {}
+
+  const [open, setopen] = useState("semiopen");
+
+  function toggleResume() {
+    if (open == "semiopen") {
+      setopen("closed");
+    } else {
+      setopen("semiopen");
+    }
+  }
+
   return (
     <>
       {details && user && (
-        <div className="bg-gray-300 flex h-auto">
-          <div className="w-[40%]">
-            <SideBar
-              deleteHobby={deleteHobby}
-              addHobby={addHobby}
-              updateForm={updateForm}
-              deleteAward={deleteAward}
-              addAward={addAward}
-              deleteCertificate={deleteCertificate}
-              addCertificate={addCertificate}
-              addSkill={addSkill}
-              addInternship={addInternship}
-              addLanguage={addLanguage}
-              deleteLanguage={deleteLanguage}
-              deleteSkill={deleteSkill}
-              deleteInternship={deleteInternship}
-              addEducation={addEducation}
-              deleteEducation={deleteEducation}
-              deleteSocialNetwork={deleteSocialNetwork}
-              socialChange={socialChange}
-            />
-          </div>
-
-          {/* Resume */}
-
-          <div className="container w-[210mm] h-[296mm] bg-white p-10 min-w-[210mm]">
-            <div className="h-auto pb-10 border-b-4">
-              <div>
-                <h1 className="text-4xl font-sans font-semibold">
-                  {details.personal.firstName} {details.personal.lastName}
-                </h1>
-                <h1 className="text-sm text-gray-500 font-semibold mt-4">
-                  {details.personal.role}
-                </h1>
-              </div>
-            </div>
-            <div className="grid grid-cols-3 mt-10">
-              <div className="border-r-4 pr-10">
-                <div>
-                  <h1 className="text-2xl font-semibold">DETAILS</h1>
-                  <hr className="w-[15%] h-1 bg-black"></hr>
-                  <h1 className="text-sm font-semibold pt-3">
-                    DOB
-                    <span className="text-sm text-gray-500">
-                      {" : "}
-                      {details.personal.dob}
-                    </span>
-                  </h1>
-                  <h1 className="text-sm font-semibold pt-3">
-                    PHONE
-                    <span className="text-sm text-gray-500">
-                      {" : "}
-                      {details.personal.phone}
-                    </span>
-                  </h1>
-                  <h1 className="text-sm font-semibold pt-3">
-                    EMAIL
-                    <span className="text-sm text-gray-500">
-                      {" : "}
-                      {details.personal.email}
-                    </span>
-                  </h1>
-                  {details.social.map((item) => (
-                    <div
-                      className="text-sm font-semibold pt-3"
-                      key={item.network}
-                    >
-                      <a href="{item.url}">{item.network}</a>
+        <div className="flex">
+          {open == "closed" && (
+            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-gray-400 to-gray-600">
+              <button
+                className="h-10 w-10 mx-auto block lg:hidden"
+                onClick={toggleResume}
+              >
+                DETAILS
+              </button>
+              <div className="flex justify-center ">
+                {/* Small Resume */}
+                <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row">
+                  <div>
+                    <div className="h-auto p-10 border-b-4">
+                      <div>
+                        <h1 className="text-4xl font-sans font-semibold">
+                          {details.personal.firstName}{" "}
+                          {details.personal.lastName}
+                        </h1>
+                        <h1 className="text-sm text-gray-500 font-semibold mt-4">
+                          {details.personal.role}
+                        </h1>
+                      </div>
                     </div>
-                  ))}
+                    <div className="grid grid-cols-3 mt-10">
+                      <div className="border-r-4 px-10">
+                        <div>
+                          <h1 className="text-2xl font-semibold">DETAILS</h1>
+                          <hr className="w-[15%] h-1 bg-black"></hr>
+                          <h1 className="text-sm font-semibold pt-3">
+                            DOB
+                            <span className="text-sm text-gray-500">
+                              {" : "}
+                              {details.personal.dob}
+                            </span>
+                          </h1>
+                          <h1 className="text-sm font-semibold pt-3">
+                            PHONE
+                            <span className="text-sm text-gray-500">
+                              {" : "}
+                              {details.personal.phone}
+                            </span>
+                          </h1>
+                          <h1 className="text-sm font-semibold pt-3">
+                            EMAIL
+                            <span className="text-sm text-gray-500">
+                              {" : "}
+                              {details.personal.email}
+                            </span>
+                          </h1>
+                          {details.social.map((item) => (
+                            <div
+                              className="text-sm font-semibold pt-3"
+                              key={item.network}
+                            >
+                              <a href="{item.url}">{item.network}</a>
+                            </div>
+                          ))}
+                        </div>
+                        {details.education.length != 0 && (
+                          <div>
+                            <h1 className="text-2xl font-semibold pt-5">
+                              EDUCATION
+                            </h1>
+                            <hr className="w-[15%] h-1 bg-black"></hr>
+                            {details.education.map((item) => (
+                              <div className="my-5" key={item.institution}>
+                                <span className="text-sm font-bold">
+                                  {item.institution}
+                                </span>
+                                <p className="text-xs py-1 font-semibold text-gray-500">
+                                  {item.fieldOfStudy}{" "}
+                                  <span className="text-xs font-semibold text-gray-500">
+                                    ({item.startDate} to {item.endDate})
+                                  </span>
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                        {details.skills.length != 0 && (
+                          <div className="">
+                            <h1 className="text-2xl font-semibold pt-2">
+                              SKILLS
+                            </h1>
+                            <hr className="w-[15%] h-1 bg-black"></hr>
+                            {details.skills.map((item) => (
+                              <div key={item.name}>
+                                <h1 className="text-sm text-gray-800 pt-2">
+                                  {item.name}
+                                </h1>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                        {details.awards.length != 0 && (
+                          <div className="">
+                            <h1 className="text-2xl font-semibold pt-2">
+                              AWARDS
+                            </h1>
+                            <hr className="w-[15%] h-1 bg-black"></hr>
+                            {details.awards.map((item) => (
+                              <div key={item.name}>
+                                <h1 className="text-sm text-gray-800 pt-2">
+                                  {item.name}
+                                </h1>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                        {details.hobbies.length != 0 && (
+                          <div>
+                            <h1 className="text-2xl font-semibold pt-5">
+                              HOBBIES
+                            </h1>
+                            <hr className="w-[15%] h-1 bg-black"></hr>
+                            {details.hobbies.map((item) => (
+                              <div key={item.name}>
+                                <h1 className="text-sm text-gray-800 pt-2">
+                                  {item.name}
+                                </h1>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                        {details.languages.length != 0 && (
+                          <div>
+                            <h1 className="text-2xl font-semibold pt-5">
+                              LANGUAGES
+                            </h1>
+                            <hr className="w-[15%] h-1 bg-black"></hr>
+                            {details.languages.map((item) => (
+                              <div key={item.name}>
+                                <h1 className="text-sm text-gray-800 pt-2">
+                                  {item.name}
+                                </h1>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                      <div className="col-span-2 px-10">
+                        {details.personal.objective.length != 0 && (
+                          <div>
+                            <h1 className="text-2xl font-semibold">PROFILE</h1>
+                            <hr className="w-[8%] h-1 bg-black"></hr>
+                            <p className="text-sm text-gray-500 py-5">
+                              {details.personal.objective}
+                            </p>
+                          </div>
+                        )}
+                        {details.work.length != 0 && (
+                          <div>
+                            <h1 className="text-2xl font-semibold pt-5 border-t-2">
+                              EMPLOYMENT HISTORY
+                            </h1>
+                            <hr className="w-[8%] h-1 bg-black"></hr>
+                            {details.work.map((item) => (
+                              <div className="my-5" key={item.company}>
+                                <span className="text-sm font-bold mt-10">
+                                  {item.company}
+                                  {" - "}
+                                  <span className="text-sm font-bold mt-10">
+                                    {item.designation}
+                                  </span>
+                                </span>
+                                <p className="text-xs py-1 font-semibold text-gray-500">
+                                  ({item.from} to {item.to})
+                                </p>
+                                <p class="text-sm text-gray-500">
+                                  {item.summary.data}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                        {/* {details.projects.length != 0 && (
+                            <div>
+                              <h1 className="text-2xl font-semibold pt-5 border-t-2">
+                                PROJECTS
+                              </h1>
+                              <hr className="w-[8%] h-1 bg-black"></hr>
+                              {details.projects.map((item) => (
+                                <div className="my-5" key={item.name}>
+                                  <span className="text-sm font-bold mt-10">
+                                    <a href="{item.website}">{item.name}</a>
+                                  </span>
+                                  <p className="text-xs py-1 font-semibold text-gray-500">
+                                    ({item.from} to {item.to})
+                                  </p>
+                                  <p class="text-sm text-gray-500">
+                                    {item.summary.data}
+                                  </p>
+                                </div>
+                              ))}
+                            </div>
+                          )} */}
+                        {details.certifications.length != 0 && (
+                          <div>
+                            <h1 className="text-2xl font-semibold pt-5 border-t-2">
+                              CERTIFICATIONS
+                            </h1>
+                            <hr className="w-[8%] h-1 bg-black"></hr>
+                            {details.certifications.map((item) => (
+                              <div className="my-5" key={item.title}>
+                                <span className="text-sm font-bold mt-10">
+                                  {item.title}
+                                  {" - "}
+                                  <span className="text-sm font-bold mt-10">
+                                    {item.issuer}
+                                  </span>
+                                </span>
+                                <p className="text-xs py-1 font-semibold text-gray-500">
+                                  ({item.date})
+                                </p>
+                                <p class="text-sm text-gray-500">
+                                  {item.summary.data}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                {details.education.length != 0 && (
-                  <div>
-                    <h1 className="text-2xl font-semibold pt-5">EDUCATION</h1>
-                    <hr className="w-[15%] h-1 bg-black"></hr>
-                    {details.education.map((item) => (
-                      <div className="my-5" key={item.institution}>
-                        <span className="text-sm font-bold">
-                          {item.institution}
-                        </span>
-                        <p className="text-xs py-1 font-semibold text-gray-500">
-                          {item.fieldOfStudy}{" "}
-                          <span className="text-xs font-semibold text-gray-500">
-                            ({item.startDate} to {item.endDate})
-                          </span>
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                {details.skills.length != 0 && (
-                  <div className="">
-                    <h1 className="text-2xl font-semibold pt-2">SKILLS</h1>
-                    <hr className="w-[15%] h-1 bg-black"></hr>
-                    {details.skills.map((item) => (
-                      <div key={item.name}>
-                        <h1 className="text-sm text-gray-800 pt-2">
-                          {item.name}
-                        </h1>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                {details.awards.length != 0 && (
-                  <div className="">
-                    <h1 className="text-2xl font-semibold pt-2">AWARDS</h1>
-                    <hr className="w-[15%] h-1 bg-black"></hr>
-                    {details.awards.map((item) => (
-                      <div key={item.name}>
-                        <h1 className="text-sm text-gray-800 pt-2">
-                          {item.name}
-                        </h1>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                {details.hobbies.length != 0 && (
-                  <div>
-                    <h1 className="text-2xl font-semibold pt-5">HOBBIES</h1>
-                    <hr className="w-[15%] h-1 bg-black"></hr>
-                    {details.hobbies.map((item) => (
-                      <div key={item.name}>
-                        <h1 className="text-sm text-gray-800 pt-2">
-                          {item.name}
-                        </h1>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                {details.languages.length != 0 && (
-                  <div>
-                    <h1 className="text-2xl font-semibold pt-5">LANGUAGES</h1>
-                    <hr className="w-[15%] h-1 bg-black"></hr>
-                    {details.languages.map((item) => (
-                      <div key={item.name}>
-                        <h1 className="text-sm text-gray-800 pt-2">
-                          {item.name}
-                        </h1>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-              <div className="col-span-2 pl-10">
-                {details.personal.objective.length != 0 && (
-                  <div>
-                    <h1 className="text-2xl font-semibold">PROFILE</h1>
-                    <hr className="w-[8%] h-1 bg-black"></hr>
-                    <p className="text-sm text-gray-500 py-5">
-                      {details.personal.objective}
-                    </p>
-                  </div>
-                )}
-                {details.work.length != 0 && (
-                  <div>
-                    <h1 className="text-2xl font-semibold pt-5 border-t-2">
-                      EMPLOYMENT HISTORY
-                    </h1>
-                    <hr className="w-[8%] h-1 bg-black"></hr>
-                    {details.work.map((item) => (
-                      <div className="my-5" key={item.company}>
-                        <span className="text-sm font-bold mt-10">
-                          {item.company}
-                          {" - "}
-                          <span className="text-sm font-bold mt-10">
-                            {item.designation}
-                          </span>
-                        </span>
-                        <p className="text-xs py-1 font-semibold text-gray-500">
-                          ({item.from} to {item.to})
-                        </p>
-                        <p class="text-sm text-gray-500">{item.summary.data}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                {/* <div>
-              <h1 className="text-2xl font-semibold pt-5 border-t-2">
-                PROJECTS
-              </h1>
-              <hr className="w-[8%] h-1 bg-black"></hr>
-              {details.projects.map((item) => (
-                <div className="my-5">
-                  <span className="text-sm font-bold mt-10">
-                    <a href="{item.website}">{item.name}</a>
-                  </span>
-                  <p className="text-xs py-1 font-semibold text-gray-500">
-                    ({item.from} to {item.to})
-                  </p>
-                  <p class="text-sm text-gray-500">{item.summary.data}</p>
-                </div>
-              ))}
-            </div> */}
-                {details.certifications.length != 0 && (
-                  <div>
-                    <h1 className="text-2xl font-semibold pt-5 border-t-2">
-                      CERTIFICATIONS
-                    </h1>
-                    <hr className="w-[8%] h-1 bg-black"></hr>
-                    {details.certifications.map((item) => (
-                      <div className="my-5" key={item.title}>
-                        <span className="text-sm font-bold mt-10">
-                          {item.title}
-                          {" - "}
-                          <span className="text-sm font-bold mt-10">
-                            {item.issuer}
-                          </span>
-                        </span>
-                        <p className="text-xs py-1 font-semibold text-gray-500">
-                          ({item.date})
-                        </p>
-                        <p class="text-sm text-gray-500">{item.summary.data}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
               </div>
             </div>
-          </div>
+          )}
+
+          {open == "semiopen" && (
+            <>
+              <SideBar
+                deleteHobby={deleteHobby}
+                addHobby={addHobby}
+                updateForm={updateForm}
+                deleteAward={deleteAward}
+                addAward={addAward}
+                deleteCertificate={deleteCertificate}
+                addCertificate={addCertificate}
+                addSkill={addSkill}
+                addInternship={addInternship}
+                addLanguage={addLanguage}
+                deleteLanguage={deleteLanguage}
+                deleteSkill={deleteSkill}
+                deleteInternship={deleteInternship}
+                addEducation={addEducation}
+                deleteEducation={deleteEducation}
+                deleteSocialNetwork={deleteSocialNetwork}
+                socialChange={socialChange}
+                deleteProjects={deleteProjects}
+                addProjects={deleteProjects}
+              />
+              <div
+                className="lg:hidden text-white border border-white rounded-lg px-2 py-1 hover:border-orange-700 hover:text-orange-700 absolute right-[10%] top-5 "
+                onClick={toggleResume}
+              >
+                PREVIEW
+              </div>
+
+              <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
+                <div className="flex justify-center ">
+                  {/* large resume */}
+
+                  <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row">
+                    <div>
+                      <div className="h-auto p-10 border-b-4">
+                        <div>
+                          <h1 className="text-4xl font-sans font-semibold">
+                            {details.personal.firstName}{" "}
+                            {details.personal.lastName}
+                          </h1>
+                          <h1 className="text-sm text-gray-500 font-semibold mt-4">
+                            {details.personal.role}
+                          </h1>
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-3 mt-10">
+                        <div className="border-r-4 px-10">
+                          <div>
+                            <h1 className="text-2xl font-semibold">DETAILS</h1>
+                            <hr className="w-[15%] h-1 bg-black"></hr>
+                            <h1 className="text-sm font-semibold pt-3">
+                              DOB
+                              <span className="text-sm text-gray-500">
+                                {" : "}
+                                {details.personal.dob}
+                              </span>
+                            </h1>
+                            <h1 className="text-sm font-semibold pt-3">
+                              PHONE
+                              <span className="text-sm text-gray-500">
+                                {" : "}
+                                {details.personal.phone}
+                              </span>
+                            </h1>
+                            <h1 className="text-sm font-semibold pt-3">
+                              EMAIL
+                              <span className="text-sm text-gray-500">
+                                {" : "}
+                                {details.personal.email}
+                              </span>
+                            </h1>
+                            {details.social.map((item) => (
+                              <div
+                                className="text-sm font-semibold pt-3"
+                                key={item.network}
+                              >
+                                <a href="{item.url}">{item.network}</a>
+                              </div>
+                            ))}
+                          </div>
+                          {details.education.length != 0 && (
+                            <div>
+                              <h1 className="text-2xl font-semibold pt-5">
+                                EDUCATION
+                              </h1>
+                              <hr className="w-[15%] h-1 bg-black"></hr>
+                              {details.education.map((item) => (
+                                <div className="my-5" key={item.institution}>
+                                  <span className="text-sm font-bold">
+                                    {item.institution}
+                                  </span>
+                                  <p className="text-xs py-1 font-semibold text-gray-500">
+                                    {item.fieldOfStudy}{" "}
+                                    <span className="text-xs font-semibold text-gray-500">
+                                      ({item.startDate} to {item.endDate})
+                                    </span>
+                                  </p>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                          {details.skills.length != 0 && (
+                            <div className="">
+                              <h1 className="text-2xl font-semibold pt-2">
+                                SKILLS
+                              </h1>
+                              <hr className="w-[15%] h-1 bg-black"></hr>
+                              {details.skills.map((item) => (
+                                <div key={item.name}>
+                                  <h1 className="text-sm text-gray-800 pt-2">
+                                    {item.name}
+                                  </h1>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                          {details.awards.length != 0 && (
+                            <div className="">
+                              <h1 className="text-2xl font-semibold pt-2">
+                                AWARDS
+                              </h1>
+                              <hr className="w-[15%] h-1 bg-black"></hr>
+                              {details.awards.map((item) => (
+                                <div key={item.name}>
+                                  <h1 className="text-sm text-gray-800 pt-2">
+                                    {item.name}
+                                  </h1>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                          {details.hobbies.length != 0 && (
+                            <div>
+                              <h1 className="text-2xl font-semibold pt-5">
+                                HOBBIES
+                              </h1>
+                              <hr className="w-[15%] h-1 bg-black"></hr>
+                              {details.hobbies.map((item) => (
+                                <div key={item.name}>
+                                  <h1 className="text-sm text-gray-800 pt-2">
+                                    {item.name}
+                                  </h1>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                          {details.languages.length != 0 && (
+                            <div>
+                              <h1 className="text-2xl font-semibold pt-5">
+                                LANGUAGES
+                              </h1>
+                              <hr className="w-[15%] h-1 bg-black"></hr>
+                              {details.languages.map((item) => (
+                                <div key={item.name}>
+                                  <h1 className="text-sm text-gray-800 pt-2">
+                                    {item.name}
+                                  </h1>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                        <div className="col-span-2 px-10">
+                          {details.personal.objective.length != 0 && (
+                            <div>
+                              <h1 className="text-2xl font-semibold">
+                                PROFILE
+                              </h1>
+                              <hr className="w-[8%] h-1 bg-black"></hr>
+                              <p className="text-sm text-gray-500 py-5">
+                                {details.personal.objective}
+                              </p>
+                            </div>
+                          )}
+                          {details.work.length != 0 && (
+                            <div>
+                              <h1 className="text-2xl font-semibold pt-5 border-t-2">
+                                EMPLOYMENT HISTORY
+                              </h1>
+                              <hr className="w-[8%] h-1 bg-black"></hr>
+                              {details.work.map((item) => (
+                                <div className="my-5" key={item.company}>
+                                  <span className="text-sm font-bold mt-10">
+                                    {item.company}
+                                    {" - "}
+                                    <span className="text-sm font-bold mt-10">
+                                      {item.designation}
+                                    </span>
+                                  </span>
+                                  <p className="text-xs py-1 font-semibold text-gray-500">
+                                    ({item.from} to {item.to})
+                                  </p>
+                                  <p class="text-sm text-gray-500">
+                                    {item.summary.data}
+                                  </p>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                          {/* {details.projects.length != 0 && (
+                            <div>
+                              <h1 className="text-2xl font-semibold pt-5 border-t-2">
+                                PROJECTS
+                              </h1>
+                              <hr className="w-[8%] h-1 bg-black"></hr>
+                              {details.projects.map((item) => (
+                                <div className="my-5" key={item.name}>
+                                  <span className="text-sm font-bold mt-10">
+                                    <a href="{item.website}">{item.name}</a>
+                                  </span>
+                                  <p className="text-xs py-1 font-semibold text-gray-500">
+                                    ({item.from} to {item.to})
+                                  </p>
+                                  <p class="text-sm text-gray-500">
+                                    {item.summary.data}
+                                  </p>
+                                </div>
+                              ))}
+                            </div>
+                          )} */}
+                          {details.certifications.length != 0 && (
+                            <div>
+                              <h1 className="text-2xl font-semibold pt-5 border-t-2">
+                                CERTIFICATIONS
+                              </h1>
+                              <hr className="w-[8%] h-1 bg-black"></hr>
+                              {details.certifications.map((item) => (
+                                <div className="my-5" key={item.title}>
+                                  <span className="text-sm font-bold mt-10">
+                                    {item.title}
+                                    {" - "}
+                                    <span className="text-sm font-bold mt-10">
+                                      {item.issuer}
+                                    </span>
+                                  </span>
+                                  <p className="text-xs py-1 font-semibold text-gray-500">
+                                    ({item.date})
+                                  </p>
+                                  <p class="text-sm text-gray-500">
+                                    {item.summary.data}
+                                  </p>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       )}
     </>

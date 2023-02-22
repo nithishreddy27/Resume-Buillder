@@ -27,6 +27,7 @@ export default function exp() {
   const [parrow, setparrow] = useState(false);
   const [awarrow, setawarrow] = useState(false);
   const [carrow, setcarrow] = useState(false);
+  
   const { details, setdetails } = useContext(ResumeContext);
   function toggleResume() {
     if (open == "semiopen") {
@@ -130,15 +131,7 @@ export default function exp() {
                     ))}
                   </div>
 
-                  {/* <div className='mt-4'>
-            <h1 className='text-2xl font-semibold tracking-[2px]' >HOBBIES</h1>
-                <hr className="h-[2px] bg-black my-1" />
-                {
-                    resume.hobbies.map(item=>(
-                        <p className='my-2'>{item.name}</p>
-                    ))
-                }
-            </div> */}
+                 
                   <div className="mt-4">
                     <h1 className="text-2xl font-semibold tracking-[2px]">
                       LANGUAGES
@@ -241,13 +234,14 @@ export default function exp() {
                   </div>
                 </div>
               </div>
+              
             </div>
           </div>
         )}
         {open == "semiopen" && (
           <>
-            <div className="h-screen bg-fixed relative w-[250%] lg:w-[60%] text-white border-r border-gray-300 bg-gradient-to-b from-slate-800 to-slate-700 z-0 transition-all overflow-y-scroll  scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100 ">
-              <div>
+            <div className="h-screen bg-fixed scrollbar scrollbar-thumb-gray-300 scrollbar-track-gray-100 relative w-[250%] lg:w-[60%] text-white border-r border-gray-300 bg-gradient-to-b from-slate-800 to-slate-700 z-0 transition-all overflow-y-scroll ">
+              <div className="">
                 <div className="border-b border-r border-gray-300 py-2 top-[-5px] fixed lg:static w-[100%] lg:w-[100%] z-40 bg-slate-800">
                   <div className="flex items-center justify-between xl:max-w-7xl xl:mx-auto max-w-full px-[8%] flex-wrap w-full">
                     {/* <h1>Provast</h1> */}
@@ -1373,7 +1367,7 @@ export default function exp() {
               </div>
             </div>
             <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
-              hiiiiiiiiiiiiii
+              
               <div className="flex justify-center ">
                 <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row">
                   <div className=" w-[45%] h-[100%] bg-gray-200 p-6">

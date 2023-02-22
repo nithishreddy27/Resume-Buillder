@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { demoResume } from "../../../lib/data";
 import Image from "next/image";
 import Link from "next/link";
@@ -253,243 +253,523 @@ export default function Blue() {
     setdetails({ ...details, hobbies: arr });
   }
 
+  function addProjects() {}
+  function deleteProjects(index) {}
+
+  const [open, setopen] = useState("semiopen");
+
+  function toggleResume() {
+    if (open == "semiopen") {
+      setopen("closed");
+    } else {
+      setopen("semiopen");
+    }
+  }
+
   return (
     <>
       {details && user && (
-        <div className="bg-gray-300 flex h-auto">
-          <div className="w-[40%]">
-            <SideBar
-              deleteHobby={deleteHobby}
-              addHobby={addHobby}
-              updateForm={updateForm}
-              deleteAward={deleteAward}
-              addAward={addAward}
-              deleteCertificate={deleteCertificate}
-              addCertificate={addCertificate}
-              addSkill={addSkill}
-              addInternship={addInternship}
-              addLanguage={addLanguage}
-              deleteLanguage={deleteLanguage}
-              deleteSkill={deleteSkill}
-              deleteInternship={deleteInternship}
-              addEducation={addEducation}
-              deleteEducation={deleteEducation}
-              deleteSocialNetwork={deleteSocialNetwork}
-              socialChange={socialChange}
-            />
-          </div>
-
-          {/* Resume */}
-
-          <div className="bg-slate-50 w-[210mm] h-[292mm]  overflow-auto drop-shadow-2xl flex flex-row min-w-[210mm]">
-            <div className="h-[95%] w-[35%] bg-sky-200 absolute left-10 rounded-b-full p-5 z-10 ">
-              <img
-                src="https://randomuser.me/api/portraits/men/40.jpg"
-                alt=""
-                className="rounded-full h-40 mb-5 mx-auto"
-              />
-              <>
-                <div className="flex">
-                  <span>
+        <div className="flex">
+          {open == "closed" && (
+            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-gray-400 to-gray-600">
+              <button
+                className="h-10 w-10 mx-auto block lg:hidden"
+                onClick={toggleResume}
+              >
+                DETAILS
+              </button>
+              <div className="flex justify-center ">
+                {/* Small Resume */}
+                <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row">
+                  <div className="h-[95%] w-[35%] bg-sky-200 absolute left-10 rounded-b-full p-5 z-10 ">
                     <img
-                      src="https://www.freeiconspng.com/uploads/contact-methods-phone-icon-512x512-pixel-3.png"
-                      className="w-5 h-5"
+                      src="https://randomuser.me/api/portraits/men/40.jpg"
+                      alt=""
+                      className="rounded-full h-40 mb-5 mx-auto"
                     />
-                  </span>
-                  <h1 className="mx-4">{details.personal.phone}</h1>
-                </div>
-                <div className="flex my-1">
-                  <span>
-                    <img
-                      src="https://www.freeiconspng.com/uploads/black-mail-icon-4.png"
-                      className="w-7 h-7"
-                    />
-                  </span>
-                  <h1 className="mx-2">{details.personal.email}</h1>
-                </div>
-                {details.social.map((item) => (
-                  <div className="my-3 flex" key={item.network}>
-                    <span>
-                      <img
-                        src={"https://www." + item.network + ".com/favicon.ico"}
-                        alt=""
-                        srcset=""
-                        className="w-5 grayscale-[40%]"
-                      />
-                    </span>
-
-                    <Link href={item.url}>
-                      <span className="mx-4">{item.username}</span>
-                    </Link>
-                  </div>
-                ))}
-              </>
-              {details.skills.length != 0 && (
-                <>
-                  <h1 className="text-2xl font-semibold tracking-[2px] mt-5">
-                    SKILLS
-                  </h1>
-
-                  <div className="my-2">
-                    {details.skills.map((item) => (
-                      <div className="flex" key={item.name}>
-                        <h1 className="">{item.name}</h1>
-                        <p className="absolute right-5">{item.level}</p>
-                      </div>
-                    ))}
-                  </div>
-                </>
-              )}
-              {details.languages.length != 0 && (
-                <>
-                  <h1 className="text-2xl font-semibold tracking-[2px] mt-5">
-                    LANGUAGES
-                  </h1>
-                  <div className="my-2">
-                    {details.languages.map((item) => (
-                      <div className="flex" key={item.name}>
-                        <h1 className="">{item.name}</h1>
-                      </div>
-                    ))}
-                  </div>
-                </>
-              )}
-              {details.hobbies.length != 0 && (
-                <>
-                  <h1 className="text-2xl font-semibold tracking-[2px] mt-5">
-                    HOBBIES
-                  </h1>
-                  <div className="my-2">
-                    {details.hobbies.map((item) => (
-                      <div className="flex" key={item.name}>
-                        <h1 className="">{item.name}</h1>
-                      </div>
-                    ))}
-                  </div>
-                </>
-              )}
-              {details.awards.length != 0 && (
-                <>
-                  <h1 className="text-2xl font-semibold tracking-[2px] mt-5">
-                    AWARDS
-                  </h1>
-                  <div className="my-2">
-                    {details.awards.map((item) => (
-                      <div className="flex" key={item.name}>
-                        <span className=" text-[15px] my-1">
-                          {item.name} <span className="">({item.date})</span>
+                    <>
+                      <div className="flex">
+                        <span>
+                          <img
+                            src="https://www.freeiconspng.com/uploads/contact-methods-phone-icon-512x512-pixel-3.png"
+                            className="w-5 h-5"
+                          />
                         </span>
+                        <h1 className="mx-4">{details.personal.phone}</h1>
                       </div>
-                    ))}
-                  </div>
-                </>
-              )}
-              {/* <div className="mt-4">
+                      <div className="flex my-1">
+                        <span>
+                          <img
+                            src="https://www.freeiconspng.com/uploads/black-mail-icon-4.png"
+                            className="w-7 h-7"
+                          />
+                        </span>
+                        <h1 className="mx-2">{details.personal.email}</h1>
+                      </div>
+                      {details.social.map((item) => (
+                        <div className="my-3 flex" key={item.network}>
+                          <span>
+                            <img
+                              src={
+                                "https://www." +
+                                item.network +
+                                ".com/favicon.ico"
+                              }
+                              alt=""
+                              srcset=""
+                              className="w-5 grayscale-[40%]"
+                            />
+                          </span>
+
+                          <Link href={item.url}>
+                            <span className="mx-4">{item.username}</span>
+                          </Link>
+                        </div>
+                      ))}
+                    </>
+                    {details.skills.length != 0 && (
+                      <>
+                        <h1 className="text-2xl font-semibold tracking-[2px] mt-5">
+                          SKILLS
+                        </h1>
+
+                        <div className="my-2">
+                          {details.skills.map((item) => (
+                            <div className="flex" key={item.name}>
+                              <h1 className="">{item.name}</h1>
+                              <p className="absolute right-5">{item.level}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </>
+                    )}
+                    {details.languages.length != 0 && (
+                      <>
+                        <h1 className="text-2xl font-semibold tracking-[2px] mt-5">
+                          LANGUAGES
+                        </h1>
+                        <div className="my-2">
+                          {details.languages.map((item) => (
+                            <div className="flex" key={item.name}>
+                              <h1 className="">{item.name}</h1>
+                            </div>
+                          ))}
+                        </div>
+                      </>
+                    )}
+                    {details.hobbies.length != 0 && (
+                      <>
+                        <h1 className="text-2xl font-semibold tracking-[2px] mt-5">
+                          HOBBIES
+                        </h1>
+                        <div className="my-2">
+                          {details.hobbies.map((item) => (
+                            <div className="flex" key={item.name}>
+                              <h1 className="">{item.name}</h1>
+                            </div>
+                          ))}
+                        </div>
+                      </>
+                    )}
+                    {details.awards.length != 0 && (
+                      <>
+                        <h1 className="text-2xl font-semibold tracking-[2px] mt-5">
+                          AWARDS
+                        </h1>
+                        <div className="my-2">
+                          {details.awards.map((item) => (
+                            <div className="flex" key={item.name}>
+                              <span className=" text-[15px] my-1">
+                                {item.name}{" "}
+                                <span className="">({item.date})</span>
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </>
+                    )}
+                    {/* <div className="mt-4">
             <h1 className="text-2xl font-semibold tracking-[2px]">HOBBIES</h1>
             {details.hobbies.map((item) => (
               <p className="my-2">{item.name}</p>
             ))}
           </div> */}
-              {details.certifications.length != 0 && (
-                <>
-                  <div className="mt-4">
-                    <h1 className="text-2xl font-semibold tracking-[2px]">
-                      CERTIFICATIONS
-                    </h1>
-                    {details.certifications.map((item) => (
-                      <p className="my-2" key={item.name}>
-                        {item.title}
-                      </p>
-                    ))}
+                    {details.certifications.length != 0 && (
+                      <>
+                        <div className="mt-4">
+                          <h1 className="text-2xl font-semibold tracking-[2px]">
+                            CERTIFICATIONS
+                          </h1>
+                          {details.certifications.map((item) => (
+                            <p className="my-2" key={item.name}>
+                              {item.title}
+                            </p>
+                          ))}
+                        </div>
+                      </>
+                    )}
                   </div>
-                </>
-              )}
-            </div>
-            <div className="w-[100%] h-36 bg-sky-100 top-10 relative z-1 rounded-l-full  p-10">
-              <h1 className="text-3xl ml-[50%] font-bold tracking-widest">
-                {details.personal.firstName}{" "}
-                <span>{details.personal.lastName}</span>
-              </h1>
-              <h1 className="ml-[58%] my-2 tracking-widest">
-                {details.personal.role}
-              </h1>
-              <div className="absolute mt-10  left-[330px] w-[57%] h-[100%]">
-                {details.personal.objective != 0 && (
-                  <>
-                    <h1 className="text-xl font-bold tracking-[1px]">
-                      OBJECTIVE
+                  <div className="w-[100%] h-36 bg-sky-100 top-10 relative z-1 rounded-l-full  p-10">
+                    <h1 className="text-3xl ml-[50%] font-bold tracking-widest">
+                      {details.personal.firstName}{" "}
+                      <span>{details.personal.lastName}</span>
                     </h1>
-                    <p>{details.personal.objective}</p>
-                  </>
-                )}
-                {details.education.length != 0 && (
-                  <>
-                    <h1 className="text-xl font-bold tracking-[1px]">
-                      EDUCATION
+                    <h1 className="ml-[58%] my-2 tracking-widest">
+                      {details.personal.role}
                     </h1>
-                    {details.education.map((item) => (
-                      <div className="mt-4" key={item.institution}>
-                        <h1 className="font-semibold">
-                          {item.institution}{" "}
-                          <span className="font-medium">
-                            ({item.startDate.slice(0, 4)}-
-                            {item.endDate.slice(0, 4)})
-                          </span>{" "}
-                        </h1>
+                    <div className="absolute mt-10  left-[330px] w-[57%] h-[100%]">
+                      {details.personal.objective != 0 && (
+                        <>
+                          <h1 className="text-xl font-bold tracking-[1px]">
+                            OBJECTIVE
+                          </h1>
+                          <p>{details.personal.objective}</p>
+                        </>
+                      )}
+                      {details.education.length != 0 && (
+                        <>
+                          <h1 className="text-xl font-bold tracking-[1px]">
+                            EDUCATION
+                          </h1>
+                          {details.education.map((item) => (
+                            <div className="mt-4" key={item.institution}>
+                              <h1 className="font-semibold">
+                                {item.institution}{" "}
+                                <span className="font-medium">
+                                  ({item.startDate.slice(0, 4)}-
+                                  {item.endDate.slice(0, 4)})
+                                </span>{" "}
+                              </h1>
 
-                        <p className="ml-5">{item.typeOfDegree}</p>
-                        <p className="ml-5 my-1">{item.summary.data}</p>
-                        <p className="ml-5">GPA-{item.gpa}</p>
-                      </div>
-                    ))}
-                  </>
-                )}
+                              <p className="ml-5">{item.typeOfDegree}</p>
+                              <p className="ml-5 my-1">{item.summary.data}</p>
+                              <p className="ml-5">GPA-{item.gpa}</p>
+                            </div>
+                          ))}
+                        </>
+                      )}
 
-                {details.work.length != 0 && (
-                  <>
-                    <h1 className="text-xl font-bold tracking-[1px] mt-4">
-                      WORK
-                    </h1>
-                    {details.work.map((item) => (
-                      <div className="mt-4" key={item.company}>
-                        <h1 className="font-semibold">
-                          {item.company}{" "}
-                          <span className="font-medium">
-                            ({item.from.slice(0, 4)}-{item.to.slice(0, 4)})
-                          </span>{" "}
-                        </h1>
+                      {details.work.length != 0 && (
+                        <>
+                          <h1 className="text-xl font-bold tracking-[1px] mt-4">
+                            WORK
+                          </h1>
+                          {details.work.map((item) => (
+                            <div className="mt-4" key={item.company}>
+                              <h1 className="font-semibold">
+                                {item.company}{" "}
+                                <span className="font-medium">
+                                  ({item.from.slice(0, 4)}-{item.to.slice(0, 4)}
+                                  )
+                                </span>{" "}
+                              </h1>
 
-                        <span className="ml-5 tracking-wider font-semibold">
-                          {item.designation}
-                        </span>
-                        <span className="ml-5 text-sm">
-                          {item.summary.data}
-                        </span>
-                      </div>
-                    ))}
-                  </>
-                )}
-                {/* <h1 className="text-xl font-bold tracking-[1px] mt-4">
-                  PROJECTS
-                </h1>
-                {details.projects.map((item) => (
-                  <div className="mt-4" key={item.name}>
-                    <Link href={item.website}>
-                      <h1 className="font-semibold">
-                        {item.name}{" "}
-                        <span className="font-medium">
-                          ({item.from.slice(0, 4)}-{item.to.slice(0, 4)})
-                        </span>{" "}
-                      </h1>{" "}
-                    </Link>
+                              <span className="ml-5 tracking-wider font-semibold">
+                                {item.designation}
+                              </span>
+                              <span className="ml-5 text-sm">
+                                {item.summary.data}
+                              </span>
+                            </div>
+                          ))}
+                        </>
+                      )}
+                      {details.projects.length != 0 && (
+                        <div>
+                          <h1 className="text-xl font-bold tracking-[1px] mt-4">
+                            PROJECTS
+                          </h1>
+                          {details.projects.map((item) => (
+                            <div className="mt-4" key={item.name}>
+                              <Link href={item.website}>
+                                <h1 className="font-semibold">
+                                  {item.name}{" "}
+                                  <span className="font-medium">
+                                    ({item.from.slice(0, 4)}-
+                                    {item.to.slice(0, 4)})
+                                  </span>{" "}
+                                </h1>{" "}
+                              </Link>
 
-                    <span className="ml-5 tracking-wider font-semibold">{item.designation}</span>
-                    <span className="ml-5 text-sm">{item.summary.data}</span>
+                              <span className="ml-5 tracking-wider font-semibold">
+                                {item.designation}
+                              </span>
+                              <span className="ml-5 text-sm">
+                                {item.summary.data}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                ))} */}
+                </div>
               </div>
             </div>
-          </div>
+          )}
+
+          {open == "semiopen" && (
+            <>
+              <SideBar
+                deleteHobby={deleteHobby}
+                addHobby={addHobby}
+                updateForm={updateForm}
+                deleteAward={deleteAward}
+                addAward={addAward}
+                deleteCertificate={deleteCertificate}
+                addCertificate={addCertificate}
+                addSkill={addSkill}
+                addInternship={addInternship}
+                addLanguage={addLanguage}
+                deleteLanguage={deleteLanguage}
+                deleteSkill={deleteSkill}
+                deleteInternship={deleteInternship}
+                addEducation={addEducation}
+                deleteEducation={deleteEducation}
+                deleteSocialNetwork={deleteSocialNetwork}
+                socialChange={socialChange}
+                deleteProjects={deleteProjects}
+                addProjects={deleteProjects}
+              />
+              <div
+                className="lg:hidden text-white border border-white rounded-lg px-2 py-1 hover:border-orange-700 hover:text-orange-700 absolute right-[10%] top-5 "
+                onClick={toggleResume}
+              >
+                PREVIEW
+              </div>
+
+              <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
+                <div className="flex justify-center ">
+                  {/* large resume */}
+
+                  <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row">
+                    <div className="h-[95%] w-[35%] bg-sky-200 absolute left-10 rounded-b-full p-5 z-10 ">
+                      <img
+                        src="https://randomuser.me/api/portraits/men/40.jpg"
+                        alt=""
+                        className="rounded-full h-40 mb-5 mx-auto"
+                      />
+                      <>
+                        <div className="flex">
+                          <span>
+                            <img
+                              src="https://www.freeiconspng.com/uploads/contact-methods-phone-icon-512x512-pixel-3.png"
+                              className="w-5 h-5"
+                            />
+                          </span>
+                          <h1 className="mx-4">{details.personal.phone}</h1>
+                        </div>
+                        <div className="flex my-1">
+                          <span>
+                            <img
+                              src="https://www.freeiconspng.com/uploads/black-mail-icon-4.png"
+                              className="w-7 h-7"
+                            />
+                          </span>
+                          <h1 className="mx-2">{details.personal.email}</h1>
+                        </div>
+                        {details.social.map((item) => (
+                          <div className="my-3 flex" key={item.network}>
+                            <span>
+                              <img
+                                src={
+                                  "https://www." +
+                                  item.network +
+                                  ".com/favicon.ico"
+                                }
+                                alt=""
+                                srcset=""
+                                className="w-5 grayscale-[40%]"
+                              />
+                            </span>
+
+                            <Link href={item.url}>
+                              <span className="mx-4">{item.username}</span>
+                            </Link>
+                          </div>
+                        ))}
+                      </>
+                      {details.skills.length != 0 && (
+                        <>
+                          <h1 className="text-2xl font-semibold tracking-[2px] mt-5">
+                            SKILLS
+                          </h1>
+
+                          <div className="my-2">
+                            {details.skills.map((item) => (
+                              <div className="flex" key={item.name}>
+                                <h1 className="">{item.name}</h1>
+                                <p className="absolute right-5">{item.level}</p>
+                              </div>
+                            ))}
+                          </div>
+                        </>
+                      )}
+                      {details.languages.length != 0 && (
+                        <>
+                          <h1 className="text-2xl font-semibold tracking-[2px] mt-5">
+                            LANGUAGES
+                          </h1>
+                          <div className="my-2">
+                            {details.languages.map((item) => (
+                              <div className="flex" key={item.name}>
+                                <h1 className="">{item.name}</h1>
+                              </div>
+                            ))}
+                          </div>
+                        </>
+                      )}
+                      {details.hobbies.length != 0 && (
+                        <>
+                          <h1 className="text-2xl font-semibold tracking-[2px] mt-5">
+                            HOBBIES
+                          </h1>
+                          <div className="my-2">
+                            {details.hobbies.map((item) => (
+                              <div className="flex" key={item.name}>
+                                <h1 className="">{item.name}</h1>
+                              </div>
+                            ))}
+                          </div>
+                        </>
+                      )}
+                      {details.awards.length != 0 && (
+                        <>
+                          <h1 className="text-2xl font-semibold tracking-[2px] mt-5">
+                            AWARDS
+                          </h1>
+                          <div className="my-2">
+                            {details.awards.map((item) => (
+                              <div className="flex" key={item.name}>
+                                <span className=" text-[15px] my-1">
+                                  {item.name}{" "}
+                                  <span className="">({item.date})</span>
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </>
+                      )}
+                      {/* <div className="mt-4">
+            <h1 className="text-2xl font-semibold tracking-[2px]">HOBBIES</h1>
+            {details.hobbies.map((item) => (
+              <p className="my-2">{item.name}</p>
+            ))}
+          </div> */}
+                      {details.certifications.length != 0 && (
+                        <>
+                          <div className="mt-4">
+                            <h1 className="text-2xl font-semibold tracking-[2px]">
+                              CERTIFICATIONS
+                            </h1>
+                            {details.certifications.map((item) => (
+                              <p className="my-2" key={item.name}>
+                                {item.title}
+                              </p>
+                            ))}
+                          </div>
+                        </>
+                      )}
+                    </div>
+                    <div className="w-[100%] h-36 bg-sky-100 top-10 relative z-1 rounded-l-full  p-10">
+                      <h1 className="text-3xl ml-[50%] font-bold tracking-widest">
+                        {details.personal.firstName}{" "}
+                        <span>{details.personal.lastName}</span>
+                      </h1>
+                      <h1 className="ml-[58%] my-2 tracking-widest">
+                        {details.personal.role}
+                      </h1>
+                      <div className="absolute mt-10  left-[330px] w-[57%] h-[100%]">
+                        {details.personal.objective != 0 && (
+                          <>
+                            <h1 className="text-xl font-bold tracking-[1px]">
+                              OBJECTIVE
+                            </h1>
+                            <p>{details.personal.objective}</p>
+                          </>
+                        )}
+                        {details.education.length != 0 && (
+                          <>
+                            <h1 className="text-xl font-bold tracking-[1px]">
+                              EDUCATION
+                            </h1>
+                            {details.education.map((item) => (
+                              <div className="mt-4" key={item.institution}>
+                                <h1 className="font-semibold">
+                                  {item.institution}{" "}
+                                  <span className="font-medium">
+                                    ({item.startDate.slice(0, 4)}-
+                                    {item.endDate.slice(0, 4)})
+                                  </span>{" "}
+                                </h1>
+
+                                <p className="ml-5">{item.typeOfDegree}</p>
+                                <p className="ml-5 my-1">{item.summary.data}</p>
+                                <p className="ml-5">GPA-{item.gpa}</p>
+                              </div>
+                            ))}
+                          </>
+                        )}
+
+                        {details.work.length != 0 && (
+                          <>
+                            <h1 className="text-xl font-bold tracking-[1px] mt-4">
+                              WORK
+                            </h1>
+                            {details.work.map((item) => (
+                              <div className="mt-4" key={item.company}>
+                                <h1 className="font-semibold">
+                                  {item.company}{" "}
+                                  <span className="font-medium">
+                                    ({item.from.slice(0, 4)}-
+                                    {item.to.slice(0, 4)})
+                                  </span>{" "}
+                                </h1>
+
+                                <span className="ml-5 tracking-wider font-semibold">
+                                  {item.designation}
+                                </span>
+                                <span className="ml-5 text-sm">
+                                  {item.summary.data}
+                                </span>
+                              </div>
+                            ))}
+                          </>
+                        )}
+                        {details.projects.length != 0 && (
+                          <div>
+                            <h1 className="text-xl font-bold tracking-[1px] mt-4">
+                              PROJECTS
+                            </h1>
+                            {details.projects.map((item) => (
+                              <div className="mt-4" key={item.name}>
+                                <Link href={item.website}>
+                                  <h1 className="font-semibold">
+                                    {item.name}{" "}
+                                    <span className="font-medium">
+                                      ({item.from.slice(0, 4)}-
+                                      {item.to.slice(0, 4)})
+                                    </span>{" "}
+                                  </h1>{" "}
+                                </Link>
+
+                                <span className="ml-5 tracking-wider font-semibold">
+                                  {item.designation}
+                                </span>
+                                <span className="ml-5 text-sm">
+                                  {item.summary.data}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       )}
     </>

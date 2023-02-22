@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { demoResume } from "../../../lib/data";
 import Image from "next/image";
 import Link from "next/link";
@@ -38,17 +38,12 @@ export default function Elegant() {
       username: document.getElementById("username").value,
       url: document.getElementById("url").value,
     };
-    (document.getElementById("network").innerHTML = "one"),
-      (document.getElementById("username").innerHTML = " "),
-      (document.getElementById("url").innerHTML = " ");
     const arr = [];
     details.social.map((item) => {
       arr.push(item);
     });
     arr.push(sn);
     setdetails({ ...details, social: arr });
-
-    console.log("sn", sn);
   }
 
   function deleteSocialNetwork(index) {
@@ -80,11 +75,6 @@ export default function Elegant() {
     // console.log('intern',intern)
     arr.push(intern);
     setdetails({ ...details, work: arr });
-    (document.getElementById("company").innerHTML = ""),
-      (document.getElementById("position").innerHTML = ""),
-      (document.getElementById("startdate").innerHTML = ""),
-      (document.getElementById("enddate").innerHTML = ""),
-      (document.getElementById("summary").innerHTML = "");
   }
 
   function deleteInternship(index) {
@@ -117,14 +107,6 @@ export default function Elegant() {
     // console.log('intern',education)
     arr.push(education);
     setdetails({ ...details, education: arr });
-
-    (document.getElementById("TypeOfDegree").innerHTML = ""),
-      (document.getElementById("school").innerHTML = ""),
-      (document.getElementById("EducationFieldOfStudy").innerHTML = ""),
-      (document.getElementById("Educationstartdate").innerHTML = ""),
-      (document.getElementById("Educationenddate").innerHTML = ""),
-      (document.getElementById("grade").innerHTML = ""),
-      (document.getElementById("summary").innerHTML = "");
   }
 
   function deleteEducation(index) {
@@ -154,11 +136,6 @@ export default function Elegant() {
     // console.log('award',award)
     arr.push(award);
     setdetails({ ...details, awards: arr });
-
-    (document.getElementById("awardTitle").innerHTML = ""),
-      (document.getElementById("awarder").innerHTML = ""),
-      (document.getElementById("awardDate").innerHTML = ""),
-      (document.getElementById("awardSummary").innerHTML = "");
   }
 
   function deleteAward(index) {
@@ -189,11 +166,6 @@ export default function Elegant() {
     // console.log('award',award)
     arr.push(certificate);
     setdetails({ ...details, certifications: arr });
-
-    (document.getElementById("certificateTitle").innerHTML = ""),
-      (document.getElementById("issuer").innerHTML = ""),
-      (document.getElementById("certificateDate").innerHTML = ""),
-      (document.getElementById("certificateSummary").innerHTML = "");
   }
 
   function deleteCertificate(index) {
@@ -219,8 +191,6 @@ export default function Elegant() {
     // console.log('skill',skill)
     arr.push(skill);
     setdetails({ ...details, skills: arr });
-
-    document.getElementById("skillTitle").innerHTML = "";
   }
 
   function deleteSkill(index) {
@@ -246,8 +216,6 @@ export default function Elegant() {
     // console.log('skill',language)
     arr.push(language);
     setdetails({ ...details, languages: arr });
-
-    document.getElementById("languageTitle").innerHTML = "";
   }
 
   function deleteLanguage(index) {
@@ -272,7 +240,6 @@ export default function Elegant() {
     // console.log('hobby',hobby)
     arr.push(hobby);
     setdetails({ ...details, hobbies: arr });
-    document.getElementById("hobbyTitle").innerHTML = "";
   }
 
   function deleteHobby(index) {
@@ -286,176 +253,396 @@ export default function Elegant() {
     setdetails({ ...details, hobbies: arr });
   }
 
+  function addProjects() {}
+  function deleteProjects(index) {}
+
+  const [open, setopen] = useState("semiopen");
+
+  function toggleResume() {
+    if (open == "semiopen") {
+      setopen("closed");
+    } else {
+      setopen("semiopen");
+    }
+  }
+
   return (
     <>
       {details && user && (
-        <div className="bg-gray-300 flex h-auto">
-          <div className="w-[40%]">
-            <SideBar
-              deleteHobby={deleteHobby}
-              addHobby={addHobby}
-              updateForm={updateForm}
-              deleteAward={deleteAward}
-              addAward={addAward}
-              deleteCertificate={deleteCertificate}
-              addCertificate={addCertificate}
-              addSkill={addSkill}
-              addInternship={addInternship}
-              addLanguage={addLanguage}
-              deleteLanguage={deleteLanguage}
-              deleteSkill={deleteSkill}
-              deleteInternship={deleteInternship}
-              addEducation={addEducation}
-              deleteEducation={deleteEducation}
-              deleteSocialNetwork={deleteSocialNetwork}
-              socialChange={socialChange}
-            />
-          </div>
-
-          {/* Resume */}
-
-          <div className="container w-[210mm] h-[296mm] bg-white min-w-[210mm]">
-            <div className="absolute mt-10 z-10 w-[210mm] flex bg-gradient-to-r from-gray-300 to-slate-50">
-              <img
-                className="rounded-full ml-10 border-[12px] border-cyan-800 w-48"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpl60g6oKVerEKPde2ClN4-6ASK4Ds4KzlM0Y1N-K_bCgOCMBYZ019WUgRLOfNAqyyhnY&usqp=CAU"
-                alt="ProfilePhoto"
-              />
-              <div className="m-14">
-                <h1 className="text-4xl font-semibold">
-                  {details.personal.firstName} {details.personal.lastName}
-                </h1>
-                <h1>{details.personal.role}</h1>
-              </div>
-            </div>
-            <div className="grid grid-cols-3 z-0 h-[297mm]">
-              <div className="bg-cyan-800 text-white">
-                <div className="mt-64 mx-6">
-                  <div>
-                    <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white">
-                      CONTACTS
-                    </h1>
-                    <h1 className="text-white">{details.personal.email}</h1>
-                    <h1 className="text-white">{details.personal.phone}</h1>
-                    <h1 className="text-white">{details.personal.dob}</h1>
+        <div className="flex">
+          {open == "closed" && (
+            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-gray-400 to-gray-600">
+              <button
+                className="h-10 w-10 mx-auto block lg:hidden"
+                onClick={toggleResume}
+              >
+                DETAILS
+              </button>
+              <div className="flex justify-center ">
+                {/* Small Resume */}
+                <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row">
+                  <div className="absolute mt-10 z-10 w-[210mm] flex bg-gradient-to-r from-gray-300 to-slate-50">
+                    <img
+                      className="rounded-full ml-10 border-[12px] border-cyan-800 w-48"
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpl60g6oKVerEKPde2ClN4-6ASK4Ds4KzlM0Y1N-K_bCgOCMBYZ019WUgRLOfNAqyyhnY&usqp=CAU"
+                      alt="ProfilePhoto"
+                    />
+                    <div className="m-14">
+                      <h1 className="text-4xl font-semibold">
+                        {details.personal.firstName} {details.personal.lastName}
+                      </h1>
+                      <h1>{details.personal.role}</h1>
+                    </div>
                   </div>
-                  {details.social.length != 0 && (
-                    <div>
-                      <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white">
-                        SOCIAL
-                      </h1>
-                      {details.social.map((item) => (
-                        <div key={item.network}>
+                  <div className="grid grid-cols-3 z-0 h-[297mm]">
+                    <div className="bg-cyan-800 text-white">
+                      <div className="mt-64 mx-6">
+                        <div>
+                          <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white">
+                            CONTACTS
+                          </h1>
                           <h1 className="text-white">
-                            <a href="{item.url}">{item.network}</a>
+                            {details.personal.email}
                           </h1>
+                          <h1 className="text-white">
+                            {details.personal.phone}
+                          </h1>
+                          <h1 className="text-white">{details.personal.dob}</h1>
                         </div>
-                      ))}
+                        {details.social.length != 0 && (
+                          <div>
+                            <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white">
+                              SOCIAL
+                            </h1>
+                            {details.social.map((item) => (
+                              <div key={item.network}>
+                                <h1 className="text-white">
+                                  <a href="{item.url}">{item.network}</a>
+                                </h1>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                        {details.skills.length != 0 && (
+                          <div>
+                            <h1 className="border-2 border-white text-white mt-5 mb-3 flex justify-center align-middle py-2">
+                              SKILLS
+                            </h1>
+                            {details.skills.map((item) => (
+                              <div key={item.name}>
+                                <h1 className="relative text-white">
+                                  {item.name}
+                                  <span className="text-xs absolute right-0 py-1 text-white">
+                                    {item.level}
+                                  </span>
+                                </h1>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                        {details.hobbies.length != 0 && (
+                          <div>
+                            <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white">
+                              HOBBIES
+                            </h1>
+                            {details.hobbies.map((item) => (
+                              <div key={item.name}>
+                                <h1 className="text-white">{item.name}</h1>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                        {details.languages.length != 0 && (
+                          <div>
+                            <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white">
+                              LANGUAGES
+                            </h1>
+                            {details.languages.map((item) => (
+                              <div key={item.name}>
+                                <h1 className="text-white">{item.name}</h1>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  )}
-                  {details.education.length != 0 && (
-                    <div>
-                      <h1 className="border-2 text-white border-white  mt-5 mb-3 flex justify-center align-middle py-2">
-                        EDUCATION
-                      </h1>
-                      {details.education.map((item) => (
-                        <div className="py-1 my-2" key={item.institution}>
-                          <h1 className="text-xs text-white">
-                            {item.endDate.slice(0, 4)}
-                          </h1>
-                          <h1 className="text-lg text-white">
-                            {item.institution}
-                          </h1>
-                          <h1 className="text-xs text-white">
-                            {item.fieldOfStudy}
-                          </h1>
-                        </div>
-                      ))}
+                    <div className="col-span-2 text-black">
+                      <div className="mt-64 mx-6">
+                        {details.personal.objective.length != 0 && (
+                          <div>
+                            <h1 className="text-xl border-b-2 border-black mb-3">
+                              PROFILE
+                            </h1>
+                            <p className="text-sm">
+                              {details.personal.objective}
+                            </p>
+                          </div>
+                        )}
+                        {details.education.length != 0 && (
+                          <div>
+                            <h1 className="text-xl border-b-2 border-black mb-3 mt-5">
+                              EDUCATION
+                            </h1>
+                            {details.education.map((item) => (
+                              <div className="py-1" key={item.institution}>
+                                <h1 className="font-semibold relative">
+                                  {item.institution}
+                                  <span className="absolute right-0 text-xs">
+                                    {item.startDate} - {item.endDate}
+                                  </span>
+                                </h1>
+                                <p className="text-sm">{item.fieldOfStudy}</p>
+                                <p class="">{item.summary.data}</p>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                        {details.work.length != 0 && (
+                          <div>
+                            <h1 className="text-xl border-b-2 border-black mb-3 mt-5">
+                              WORK EXPERIENCE
+                            </h1>
+                            {details.work.map((item) => (
+                              <div className="py-1" key={item.company}>
+                                <h1 className="font-semibold relative">
+                                  {item.company}
+                                  <span className="absolute right-0 text-xs">
+                                    {item.from} - {item.to}
+                                  </span>
+                                </h1>
+                                <p className="text-sm">{item.designation}</p>
+                                <p class="">{item.summary.data}</p>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                        {details.certifications.length != 0 && (
+                          <div>
+                            <h1 className="text-xl border-b-2 border-black mb-3 mt-5">
+                              CERTIFICATIONS
+                            </h1>
+                            {details.certifications.map((item) => (
+                              <div className="py-1" key={item.title}>
+                                <h1 className="font-semibold relative">
+                                  {item.issuer}
+                                  <span className="absolute right-0 text-xs">
+                                    {item.date}
+                                  </span>
+                                </h1>
+                                <p className="text-sm">{item.designation}</p>
+                                {/* <p class="">{item.summary.data}</p> */}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  )}
-                  {details.skills.length != 0 && (
-                    <div>
-                      <h1 className="border-2 border-white text-white mt-5 mb-3 flex justify-center align-middle py-2">
-                        SKILLS
-                      </h1>
-                      {details.skills.map((item) => (
-                        <div key={item.name}>
-                          <h1 className="relative text-white">
-                            {item.name}
-                            <span className="text-xs absolute right-0 py-1 text-white">
-                              {item.level}
-                            </span>
-                          </h1>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                  {details.hobbies.length != 0 && (
-                    <div>
-                      <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white">
-                        HOBBIES
-                      </h1>
-                      {details.hobbies.map((item) => (
-                        <div key={item.name}>
-                          <h1 className="text-white">{item.name}</h1>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-              <div className="col-span-2 text-black">
-                <div className="mt-64 mx-6">
-                  {details.personal.objective.length != 0 && (
-                    <div>
-                      <h1 className="text-xl border-b-2 border-black mb-3">
-                        PROFILE
-                      </h1>
-                      <p className="text-sm">{details.personal.objective}</p>
-                    </div>
-                  )}
-                  {details.work.length != 0 && (
-                    <div>
-                      <h1 className="text-xl border-b-2 border-black mb-3 mt-5">
-                        WORK EXPERIENCE
-                      </h1>
-                      {details.work.map((item) => (
-                        <div className="py-1" key={item.company}>
-                          <h1 className="font-semibold relative">
-                            {item.company}
-                            <span className="absolute right-0 text-xs">
-                              {item.from} - {item.to}
-                            </span>
-                          </h1>
-                          <p className="text-sm">{item.designation}</p>
-                          <p class="">{item.summary.data}</p>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                  {details.certifications.length != 0 && (
-                    <div>
-                      <h1 className="text-xl border-b-2 border-black mb-3 mt-5">
-                        CERTIFICATIONS
-                      </h1>
-                      {details.certifications.map((item) => (
-                        <div className="py-1" key={item.title}>
-                          <h1 className="font-semibold relative">
-                            {item.issuer}
-                            <span className="absolute right-0 text-xs">
-                              {item.date}
-                            </span>
-                          </h1>
-                          <p className="text-sm">{item.designation}</p>
-                          {/* <p class="">{item.summary.data}</p> */}
-                        </div>
-                      ))}
-                    </div>
-                  )}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          )}
+
+          {open == "semiopen" && (
+            <>
+              <SideBar
+                deleteHobby={deleteHobby}
+                addHobby={addHobby}
+                updateForm={updateForm}
+                deleteAward={deleteAward}
+                addAward={addAward}
+                deleteCertificate={deleteCertificate}
+                addCertificate={addCertificate}
+                addSkill={addSkill}
+                addInternship={addInternship}
+                addLanguage={addLanguage}
+                deleteLanguage={deleteLanguage}
+                deleteSkill={deleteSkill}
+                deleteInternship={deleteInternship}
+                addEducation={addEducation}
+                deleteEducation={deleteEducation}
+                deleteSocialNetwork={deleteSocialNetwork}
+                socialChange={socialChange}
+                deleteProjects={deleteProjects}
+                addProjects={deleteProjects}
+              />
+              <div
+                className="lg:hidden text-white border border-white rounded-lg px-2 py-1 hover:border-orange-700 hover:text-orange-700 absolute right-[10%] top-5 "
+                onClick={toggleResume}
+              >
+                PREVIEW
+              </div>
+
+              <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
+                <div className="flex justify-center ">
+                  {/* large resume */}
+
+                  <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row">
+                    <div className="absolute mt-10 z-10 w-[210mm] flex bg-gradient-to-r from-gray-300 to-slate-50">
+                      <img
+                        className="rounded-full ml-10 border-[12px] border-cyan-800 w-48"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpl60g6oKVerEKPde2ClN4-6ASK4Ds4KzlM0Y1N-K_bCgOCMBYZ019WUgRLOfNAqyyhnY&usqp=CAU"
+                        alt="ProfilePhoto"
+                      />
+                      <div className="m-14">
+                        <h1 className="text-4xl font-semibold">
+                          {details.personal.firstName}{" "}
+                          {details.personal.lastName}
+                        </h1>
+                        <h1>{details.personal.role}</h1>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-3 z-0 h-[297mm]">
+                      <div className="bg-cyan-800 text-white">
+                        <div className="mt-64 mx-6">
+                          <div>
+                            <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white">
+                              CONTACTS
+                            </h1>
+                            <h1 className="text-white">
+                              {details.personal.email}
+                            </h1>
+                            <h1 className="text-white">
+                              {details.personal.phone}
+                            </h1>
+                            <h1 className="text-white">
+                              {details.personal.dob}
+                            </h1>
+                          </div>
+                          {details.social.length != 0 && (
+                            <div>
+                              <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white">
+                                SOCIAL
+                              </h1>
+                              {details.social.map((item) => (
+                                <div key={item.network}>
+                                  <h1 className="text-white">
+                                    <a href="{item.url}">{item.network}</a>
+                                  </h1>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                          {details.skills.length != 0 && (
+                            <div>
+                              <h1 className="border-2 border-white text-white mt-5 mb-3 flex justify-center align-middle py-2">
+                                SKILLS
+                              </h1>
+                              {details.skills.map((item) => (
+                                <div key={item.name}>
+                                  <h1 className="relative text-white">
+                                    {item.name}
+                                    <span className="text-xs absolute right-0 py-1 text-white">
+                                      {item.level}
+                                    </span>
+                                  </h1>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                          {details.hobbies.length != 0 && (
+                            <div>
+                              <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white">
+                                HOBBIES
+                              </h1>
+                              {details.hobbies.map((item) => (
+                                <div key={item.name}>
+                                  <h1 className="text-white">{item.name}</h1>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                          {details.languages.length != 0 && (
+                            <div>
+                              <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white">
+                                LANGUAGES
+                              </h1>
+                              {details.languages.map((item) => (
+                                <div key={item.name}>
+                                  <h1 className="text-white">{item.name}</h1>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      <div className="col-span-2 text-black">
+                        <div className="mt-64 mx-6">
+                          {details.personal.objective.length != 0 && (
+                            <div>
+                              <h1 className="text-xl border-b-2 border-black mb-3">
+                                PROFILE
+                              </h1>
+                              <p className="text-sm">
+                                {details.personal.objective}
+                              </p>
+                            </div>
+                          )}
+                          {details.education.length != 0 && (
+                            <div>
+                              <h1 className="text-xl border-b-2 border-black mb-3 mt-5">
+                                EDUCATION
+                              </h1>
+                              {details.education.map((item) => (
+                                <div className="py-1" key={item.institution}>
+                                  <h1 className="font-semibold relative">
+                                    {item.institution}
+                                    <span className="absolute right-0 text-xs">
+                                      {item.startDate} - {item.endDate}
+                                    </span>
+                                  </h1>
+                                  <p className="text-sm">{item.fieldOfStudy}</p>
+                                  <p class="">{item.summary.data}</p>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                          {details.work.length != 0 && (
+                            <div>
+                              <h1 className="text-xl border-b-2 border-black mb-3 mt-5">
+                                WORK EXPERIENCE
+                              </h1>
+                              {details.work.map((item) => (
+                                <div className="py-1" key={item.company}>
+                                  <h1 className="font-semibold relative">
+                                    {item.company}
+                                    <span className="absolute right-0 text-xs">
+                                      {item.from} - {item.to}
+                                    </span>
+                                  </h1>
+                                  <p className="text-sm">{item.designation}</p>
+                                  <p class="">{item.summary.data}</p>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                          {details.certifications.length != 0 && (
+                            <div>
+                              <h1 className="text-xl border-b-2 border-black mb-3 mt-5">
+                                CERTIFICATIONS
+                              </h1>
+                              {details.certifications.map((item) => (
+                                <div className="py-1" key={item.title}>
+                                  <h1 className="font-semibold relative">
+                                    {item.issuer}
+                                    <span className="absolute right-0 text-xs">
+                                      {item.date}
+                                    </span>
+                                  </h1>
+                                  <p className="text-sm">{item.designation}</p>
+                                  {/* <p class="">{item.summary.data}</p> */}
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       )}
     </>

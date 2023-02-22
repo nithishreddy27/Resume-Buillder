@@ -4,21 +4,39 @@ import {
   AiOutlineCaretDown,
   AiOutlineCaretUp,
   AiOutlinePlus,
-  AiFillProject
+  AiFillProject,
 } from "react-icons/ai";
-import {CgProfile} from "react-icons/cg"
-import {MdSocialDistance,MdOutlineSpeakerNotes} from "react-icons/md"
-import {FaLanguage,FaAward} from "react-icons/fa"
-import {SiGooglescholar} from "react-icons/si"
+import { CgProfile } from "react-icons/cg";
+import { MdSocialDistance, MdOutlineSpeakerNotes } from "react-icons/md";
+import { FaLanguage, FaAward } from "react-icons/fa";
+import { SiGooglescholar } from "react-icons/si";
 // import {GrProjects} from "react-icons/gr"
-import {GiSkills} from "react-icons/gi"
-import {RxHobbyKnife} from "react-icons/rx"
+import { GiSkills } from "react-icons/gi";
+import { RxHobbyKnife } from "react-icons/rx";
+import { AiFillDelete } from "react-icons/ai";
 
 import Link from "next/link";
-export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,addAward,addCertificate,addEducation,addInternship,addLanguage,addSkill,deleteLanguage,deleteAward,deleteCertificate,deleteInternship,deleteSkill,deleteSocialNetwork ,deleteEducation,addProjects ,deleteProject}){
-
-
-
+export default function SideBar({
+  deleteHobby,
+  addHobby,
+  updateForm,
+  socialChange,
+  addAward,
+  addCertificate,
+  addEducation,
+  addInternship,
+  addLanguage,
+  addSkill,
+  deleteLanguage,
+  deleteAward,
+  deleteCertificate,
+  deleteInternship,
+  deleteSkill,
+  deleteSocialNetwork,
+  deleteEducation,
+  addProjects,
+  deleteProject,
+}) {
   const [open, setopen] = useState("semiopen");
   const [arrow, setarrow] = useState(false);
   const [iarrow, setiarrow] = useState(false);
@@ -31,1347 +49,1530 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
   const [carrow, setcarrow] = useState(false);
   const { details, setdetails } = useContext(ResumeContext);
 
-
   return (
-    
-        
-       
-          <>
-          {/* sidebar */}
+    <>
+      {/* sidebar */}
 
-
-            <div className="h-screen bg-fixed relative w-[250%] lg:w-[60%] text-white border-r border-gray-300 bg-gradient-to-b from-slate-800 to-slate-700 z-0 transition-all overflow-y-scroll  scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100 ">
-              <div>
-                <div className="border-b border-r border-gray-300 py-2 top-[-5px] fixed lg:static w-[100%] lg:w-[100%] z-40 bg-slate-800">
-                  <div className="flex items-center justify-between xl:max-w-7xl xl:mx-auto max-w-full px-[8%] flex-wrap w-full">
-                    {/* <h1>Provast</h1> */}
-                    <img
-                      src="https://www.provast.io/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdj7nomqfd%2Fimage%2Fupload%2Fv1652909540%2Fpvast_W_uoqbkv.png&w=1920&q=75"
-                      width={220}
-                      height={55}
-                    />
-                    {/* <div>
+      <div className="h-screen bg-fixed relative w-[250%] lg:w-[60%] text-white border-r border-gray-300 bg-gradient-to-b from-slate-800 to-slate-700 z-0 transition-all overflow-y-scroll  scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100 ">
+        <div>
+          <div className="border-b border-r border-gray-300 py-2 top-[-5px] fixed lg:sticky w-[100%] lg:w-[100%] z-40 bg-slate-800">
+            <div className="flex items-center justify-between xl:max-w-7xl xl:mx-auto max-w-full px-[8%] flex-wrap w-full">
+              {/* <h1>Provast</h1> */}
+              <img
+                src="https://www.provast.io/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdj7nomqfd%2Fimage%2Fupload%2Fv1652909540%2Fpvast_W_uoqbkv.png&w=1920&q=75"
+                width={220}
+                height={55}
+              />
+              {/* <div>
                       <button>Preview</button>
                     </div> */}
-                    
+            </div>
+          </div>
+        </div>
+        <div className="block lg:flex">
+          <div className=" fixed lg:flex flex-col hidden   min-h-screen ml-3 mt-[80px] z-0">
+            <div class="group  flex items-center relative justify-center">
+              <a
+                href="#personaldetails"
+                id="1"
+                class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
+              >
+                <CgProfile></CgProfile>
+                <span class="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                  profile
+                </span>
+              </a>
+            </div>
+            <div class="group flex items-center relative justify-center">
+              <a
+                href="#socialnetworks"
+                id="1"
+                class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
+              >
+                <MdSocialDistance></MdSocialDistance>
+                <span class="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                  social
+                </span>
+              </a>
+            </div>
+            <div class="group flex items-center relative justify-center">
+              <a
+                href="#obj"
+                id="1"
+                class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
+              >
+                <MdOutlineSpeakerNotes></MdOutlineSpeakerNotes>
+                <span class="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                  objective
+                </span>
+              </a>
+            </div>
+            <div class="group flex items-center relative justify-center">
+              <a
+                href="#education"
+                id="1"
+                class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
+              >
+                <SiGooglescholar></SiGooglescholar>
+                <span class="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                  education
+                </span>
+              </a>
+            </div>
+            <div class="group flex items-center relative justify-center">
+              <a
+                href="#projects"
+                id="1"
+                class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
+              >
+                <AiFillProject></AiFillProject>
+                <span class="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                  projects
+                </span>
+              </a>
+            </div>
+            <div class="group flex items-center relative justify-center">
+              <a
+                href="#awards"
+                id="1"
+                class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
+              >
+                <FaAward></FaAward>
+                <span class="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                  awards
+                </span>
+              </a>
+            </div>
+            <div class="group flex items-center relative justify-center">
+              <a
+                href="#skills"
+                id="1"
+                class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
+              >
+                <GiSkills></GiSkills>
+                <span class="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                  skills
+                </span>
+              </a>
+            </div>
+            <div class="group flex items-center relative justify-center">
+              <a
+                href="#hobbies"
+                id="1"
+                class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
+              >
+                <RxHobbyKnife></RxHobbyKnife>
+                <span class="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                  hobbies
+                </span>
+              </a>
+            </div>
+            <div class="group flex items-center relative justify-center">
+              <a
+                href="#languages"
+                id="1"
+                class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
+              >
+                <FaLanguage></FaLanguage>
+                <span class="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                  languages
+                </span>
+              </a>
+            </div>
+          </div>
+          <div className=" mb-5 mx-5    sm:m-10 md:mx-20 lg:mx-16 ">
+            <form action="" className="">
+              <h1
+                id="personaldetails"
+                className="font-bold text-xl border-b border-gray-300 py-1 font-sans tracking-wide mt-24 lg:mt-0"
+              >
+                Personal Details:
+              </h1>
+              <div className="sm:grid sm:grid-cols-2 sm:gap-2 text-gray-400">
+                <div className="mt-5">
+                  <label htmlFor="firstName" className="font-semibold">
+                    First Name
+                  </label>
+                  <div className="my-2">
+                    <input
+                      type="text"
+                      name="personal"
+                      id="firstName"
+                      className="shadow appearance-none border bg-slate-100 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                      value={details.personal.firstName}
+                      onChange={() => {
+                        console.log("no");
+                      }}
+                    />
+                  </div>
+                </div>
+                <div className="mt-2 sm:mt-5">
+                  <label htmlFor="lastName" className="font-semibold">
+                    Last Name
+                  </label>
+                  <div className="my-2">
+                    <input
+                      type="text"
+                      name="personal"
+                      id="lastName"
+                      className="shadow appearance-none border bg-slate-100 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                      value={details.personal.lastName}
+                      onChange={() => {
+                        console.log("no");
+                      }}
+                    />
+                  </div>
+                </div>
+                <div className="mt-2">
+                  <label htmlFor="phone" className="font-semibold">
+                    Phone
+                  </label>
+                  <div className="my-2">
+                    <input
+                      type="text"
+                      name="personal"
+                      id="phone"
+                      className="shadow appearance-none border bg-slate-100 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                      value={details.personal.phone}
+                      onChange={updateForm}
+                    />
+                  </div>
+                </div>
+                <div className="mt-2">
+                  <label htmlFor="email" className="font-semibold">
+                    Email
+                  </label>
+                  <div className="my-2">
+                    <input
+                      type="text"
+                      name="personal"
+                      id="email"
+                      className="shadow appearance-none border bg-slate-100 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                      value={details.personal.email}
+                      onChange={updateForm}
+                    />
                   </div>
                 </div>
               </div>
-              <div className="block lg:flex">
-                <div className=" fixed lg:flex flex-col hidden   min-h-screen ml-3 mt-[80px] z-0">
-                  <div class=" flex items-center relative justify-center">
-                    <a
-                      href="#personaldetails"
-                      id="1"
-                      class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
-                    >
-                      <CgProfile></CgProfile>
-                      <span class="hidden hover:inline-block capitalize text-xs font-bold tracking-wide">
-                        profile
-                      </span>
-                    </a>
-                  </div>
-                  <div class=" flex items-center relative justify-center">
-                    <a
-                      href="#socialnetworks"
-                      id="1"
-                      class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
-                    >
-                      <MdSocialDistance></MdSocialDistance>
-                      <span class="hidden hover:inline-block capitalize text-xs font-bold tracking-wide">
-                        profile
-                      </span>
-                    </a>
-                  </div>
-                  <div class=" flex items-center relative justify-center">
-                    <a
-                      href="#obj"
-                      id="1"
-                      class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
-                    >
-                      <MdOutlineSpeakerNotes></MdOutlineSpeakerNotes>
-                      <span class="hidden hover:inline-block capitalize text-xs font-bold tracking-wide">
-                        profile
-                      </span>
-                    </a>
-                  </div>
-                  <div class=" flex items-center relative justify-center">
-                    <a
-                      href="#education"
-                      id="1"
-                      class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
-                    >
-                      <SiGooglescholar></SiGooglescholar>
-                      <span class="hidden hover:inline-block capitalize text-xs font-bold tracking-wide">
-                        profile
-                      </span>
-                    </a>
-                  </div>
-                  <div class=" flex items-center relative justify-center">
-                    <a
-                      href="#projects"
-                      id="1"
-                      class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
-                    >
-                      <AiFillProject></AiFillProject>
-                      <span class="hidden hover:inline-block capitalize text-xs font-bold tracking-wide">
-                        profile
-                      </span>
-                    </a>
-                  </div>
-                  <div class=" flex items-center relative justify-center">
-                    <a
-                      href="#awards"
-                      id="1"
-                      class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
-                    >
-                      <FaAward></FaAward>
-                      <span class="hidden hover:inline-block capitalize text-xs font-bold tracking-wide">
-                        profile
-                      </span>
-                    </a>
-                  </div>
-                  <div class=" flex items-center relative justify-center">
-                    <a
-                      href="#skills"
-                      id="1"
-                      class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
-                    >
-                      <GiSkills></GiSkills>
-                      <span class="hidden hover:inline-block capitalize text-xs font-bold tracking-wide">
-                        profile
-                      </span>
-                    </a>
-                  </div>
-                  <div class=" flex items-center relative justify-center">
-                    <a
-                      href="#hobbies"
-                      id="1"
-                      class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
-                    >
-                      <RxHobbyKnife></RxHobbyKnife>
-                      <span class="hidden hover:inline-block capitalize text-xs font-bold tracking-wide">
-                        profile
-                      </span>
-                    </a>
-                  </div>
-                  <div class=" flex items-center relative justify-center">
-                    <a
-                      href="#languages"
-                      id="1"
-                      class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
-                    >
-                      <FaLanguage></FaLanguage>
-                      <span class="hidden hover:inline-block capitalize text-xs font-bold tracking-wide">
-                        profile
-                      </span>
-                    </a>
-                  </div>
+              <div className="mt-2">
+                <label
+                  id="obj"
+                  htmlFor="objective"
+                  className="font-semibold text-gray-400"
+                >
+                  Objective
+                </label>
+                <div className="my-2">
+                  <textarea
+                    name="personal"
+                    id="objective"
+                    className="shadow appearance-none border bg-slate-100 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                    value={details.personal.objective}
+                    onChange={updateForm}
+                  />
                 </div>
-                <div className=" mb-5 mx-5    sm:m-10 md:mx-20 lg:mx-16 ">
-                  <form action="" className="">
-                    <h1 id="personaldetails" className="font-bold text-xl border-b border-gray-300 py-1 font-sans tracking-wide mt-24 lg:mt-0">
-                      Personal Details:
-                    </h1>
-                    <div className="sm:grid sm:grid-cols-2 sm:gap-2 text-gray-400">
-                      <div className="mt-5">
-                        <label htmlFor="firstName" className="font-semibold">
-                          First Name
-                        </label>
-                        <div className="my-2">
-                          <input
-                            type="text"
-                            name="personal"
-                            id="firstName"
-                            className="shadow appearance-none border bg-slate-100 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                              value={details.personal.firstName}
-                              onChange={()=>{console.log("no");}}
-                          />
-                        </div>
-                      </div>
-                      <div className="mt-2 sm:mt-5">
-                        <label htmlFor="lastName" className="font-semibold">
-                          Last Name
-                        </label>
-                        <div className="my-2">
-                          <input
-                            type="text"
-                            name="personal"
-                            id="lastName"
-                            className="shadow appearance-none border bg-slate-100 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                              value={details.personal.lastName}
-                              onChange={()=>{console.log("no");}}
-                          />
-                        </div>
-                      </div>
-                      <div className="mt-2">
-                        <label htmlFor="phone" className="font-semibold">
-                          Phone
-                        </label>
-                        <div className="my-2">
-                          <input
-                            type="text"
-                            name="personal"
-                            id="phone"
-                            className="shadow appearance-none border bg-slate-100 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                              value={details.personal.phone}
-                              onChange={updateForm}
-                          />
-                        </div>
-                      </div>
-                      <div className="mt-2">
-                        <label htmlFor="email" className="font-semibold">
-                          Email
-                        </label>
-                        <div className="my-2">
-                          <input
-                            type="text"
-                            name="personal"
-                            id="email"
-                            className="shadow appearance-none border bg-slate-100 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                              value={details.personal.email}
-                              onChange={updateForm}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mt-2">
-                      <label
-                        id="obj"
-                        htmlFor="objective"
-                        className="font-semibold text-gray-400"
-                      >
-                        Objective
-                      </label>
-                      <div className="my-2">
-                        <textarea
-                          name="personal"
-                          id="objective"
-                          className="shadow appearance-none border bg-slate-100 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                            value={details.personal.objective}
-                            onChange={updateForm}
-                        />
-                      </div>
-                    </div>
-                  </form>
+              </div>
+            </form>
 
-                  <div className="mt-5 shadow-md p-2 rounded-md" id="socialnetworks">
-                    <div className="flex flex-row">
-                      <h1  className="font-bold text-xl grow">
-                        Social Networks:
-                      </h1>
-                      <div
-                        className="pt-[-15px] mt-[-10px]"
-                        onClick={() => {
-                          setarrow(!arrow);
-                        }}
-                      >
-                        {arrow == true && (
-                          <div className="">
-                            <div class="flex justify-center">
-                              <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                                <span class="mr-2">
-                                  <AiOutlinePlus></AiOutlinePlus>
-                                </span>
-                                Hide
-                              </button>
-                            </div>
-                          </div>
-                        )}
-                        {arrow == false && (
-                          <div class="flex justify-end grow">
-                            <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                              <span class="mr-2">
-                                <AiOutlinePlus></AiOutlinePlus>
-                              </span>
-                              Add
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                    <div className={`${arrow ? "block" : "hidden"}`}>
-                      <div className="mt-5 text-gray-400">
-                        <label htmlFor="network" className="font-semibold">
-                          Network
-                        </label>
-
-                        <input
-                          type="text"
-                          name="social"
-                          id="network"
-                          className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                        />
-                      </div>
-                      <div className="mt-2">
-                        <label
-                          htmlFor="url"
-                          className="font-semibold text-gray-400"
-                        >
-                          Url
-                        </label>
-                        <input
-                          type="text"
-                          name="social"
-                          id="url"
-                          className="block shadow appearance-none bg-slate-100 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                        />
-                      </div>
-                      <div className="mt-2">
-                        <label
-                          htmlFor="network"
-                          className="font-semibold text-gray-400"
-                        >
-                          Username
-                        </label>
-                        <input
-                          type="text"
-                          name="social"
-                          id="username"
-                          className="block shadow appearance-none border bg-slate-100 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                        />
-                      </div>
-                      <div className="flex justify-center">
-                       
-                        <button  onClick={socialChange} className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg">
-                          Submit
+            <div className="mt-5 shadow-md p-2 rounded-md" id="socialnetworks">
+              <div className="flex flex-row">
+                <h1 className="font-bold text-xl grow">Social Networks:</h1>
+                <div
+                  className="pt-[-15px] mt-[-10px]"
+                  onClick={() => {
+                    setarrow(!arrow);
+                  }}
+                >
+                  {arrow == true && (
+                    <div className="">
+                      <div class="flex justify-center">
+                        <button class="align-right flex transition ease-in-out duration-0 hover:duration-150 items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span class="mr-2">
+                            <AiOutlinePlus></AiOutlinePlus>
+                          </span>
+                          Hide
                         </button>
                       </div>
-                          <div>
-                          {details.social.length !=0  && (
-            <>
-                    {details.social.map((item,index) => (
-                    <div className="my-3 flex" key={item.network}>
-                      <span>
-                        <img
-                          src={
-                            "https://www." + item.network + ".com/favicon.ico"
-                          }
-                          alt=""
-                          className="w-5 grayscale-[40%]"
-                        />
-                      </span>
+                    </div>
+                  )}
+                  {arrow == false && (
+                    <div class="flex justify-end grow">
+                      <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                        <span class="mr-2">
+                          <AiOutlinePlus></AiOutlinePlus>
+                        </span>
+                        Add
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div>
+                {details.social.length != 0 && (
+                  <>
+                    {details.social.map((item, index) => (
+                      <div
+                        className="my-3 border border-white p-3 "
+                        key={item.network}
+                      >
+                        <div className="flex">
+                        <span>
+                          <img
+                            src={
+                              "https://www." + item.network + ".com/favicon.ico"
+                            }
+                            alt=""
+                            className="w-5 grayscale-[40%]"
+                          />
+                        </span>
+                        <span className="px-2 mt-[-3px] font-semibold grow">{item.network}</span>
+                        <button onClick={() => deleteSocialNetwork(index)}>
+                          <AiFillDelete></AiFillDelete>
+                        </button>
+                        </div>
+                        <div className="block text-sm font-thin">
+                          <Link href={item.url}>
+                            <span className=" mt-[-4px]">
+                              {item.username}
+                            </span>
+                          </Link>
+                        </div>
+                      </div>
+                    ))}
+                  </>
+                )}
+              </div>
+              <div className={`${arrow ? "block" : "hidden"}`}>
+                <div className="mt-5 text-gray-400">
+                  <label htmlFor="network" className="font-semibold">
+                    Network
+                  </label>
 
-                      <Link href={item.url}>
-                        <span className="mx-4">{item.username}</span>
-                      </Link>
+                  <input
+                    type="text"
+                    name="social"
+                    id="network"
+                    className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                  />
+                </div>
+                <div className="mt-2">
+                  <label htmlFor="url" className="font-semibold text-gray-400">
+                    Url
+                  </label>
+                  <input
+                    type="text"
+                    name="social"
+                    id="url"
+                    className="block shadow appearance-none bg-slate-100 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                  />
+                </div>
+                <div className="mt-2">
+                  <label
+                    htmlFor="network"
+                    className="font-semibold text-gray-400"
+                  >
+                    Username
+                  </label>
+                  <input
+                    type="text"
+                    name="social"
+                    id="username"
+                    className="block shadow appearance-none border bg-slate-100 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                  />
+                </div>
+                <div className="flex justify-center">
+                  <button
+                    onClick={socialChange}
+                    className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg"
+                  >
+                    Submit
+                  </button>
+                </div>
+                
+              </div>
+            </div>
 
-                      <button onClick={()=>deleteSocialNetwork(index)}>Delete</button>
+            <div className="mt-5 shadow-md p-2 rounded-md">
+              <div className="flex">
+                <h1 className="font-bold text-xl grow">Internships</h1>
+                <div
+                  className="pt-[-15px] mt-[-10px]"
+                  onClick={() => {
+                    setiarrow(!iarrow);
+                  }}
+                >
+                  {iarrow == true && (
+                    <div>
+                      <div class="flex justify-center">
+                        <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span class="mr-2">
+                            <AiOutlinePlus></AiOutlinePlus>
+                          </span>
+                          Hide
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                  {iarrow == false && (
+                    <div>
+                      <div class="flex justify-center">
+                        <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span class="mr-2">
+                            <AiOutlinePlus></AiOutlinePlus>
+                          </span>
+                          Add
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div className="ml-1 mt-1">
+                  {details.work.map((item, index) => (
+                    <div className=" border border-white py-3 " key={item.company}>
+                      <div className="flex">
+                      <div className="ml-2 grow">
+                        <p className="font-semibold ">{item.company}</p>
+                      </div>
+                      
+                      <button className="mr-5"
+                        onClick={() => {
+                          deleteInternship(index);
+                        }}
+                      >
+                        <AiFillDelete></AiFillDelete>
+                      </button>
+                      </div>
+                      <div className="">
+                        </div>
+
                     </div>
                   ))}
-              </>
-                  )}
-                          </div>
-                    </div>
+                </div>
+              <div className={`${iarrow ? "block" : "hidden"}`}>
+                <div className="mt-5 text-gray-300">
+                  <label htmlFor="company" className="font-semibold">
+                    Company
+                  </label>
 
+                  <input
+                    type="text"
+                    name="internship"
+                    id="company"
+                    className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                  />
+                </div>
+                <div className="mt-2">
+                  <label
+                    htmlFor="position"
+                    className="font-semibold text-gray-300"
+                  >
+                    Position
+                  </label>
+                  <input
+                    type="text"
+                    name="internship"
+                    id="position"
+                    className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                  />
+                </div>
 
+                <div className="flex gap-3">
+                  <div className="mt-2">
+                    <label
+                      htmlFor="startdate"
+                      className="font-semibold text-gray-300"
+                    >
+                      Start Date
+                    </label>
+                    <input
+                      type="date"
+                      name="internship"
+                      id="startdate"
+                      className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                    />
                   </div>
-
-                  <div className="mt-5 shadow-md p-2 rounded-md">
-                    <div className="flex">
-                      <h1 className="font-bold text-xl grow">Internships</h1>
-                      <div
-                        className="pt-[-15px] mt-[-10px]"
+                  <div className="mt-2">
+                    <label
+                      htmlFor="enddate"
+                      className="font-semibold text-gray-300"
+                    >
+                      End Date
+                    </label>
+                    <input
+                      type="date"
+                      name="internship"
+                      id="enddate"
+                      className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                    />
+                  </div>
+                </div>
+                <div className="mt-2">
+                  <label
+                    htmlFor="summary"
+                    className="font-semibold text-gray-300"
+                  >
+                    Summary
+                  </label>
+                  <textarea
+                    name="internship"
+                    id="summary"
+                    className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                  />
+                </div>
+                <div className="flex justify-center">
+                  {/* <button>Submit</button> */}
+                  <button
+                    onClick={addInternship}
+                    className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg"
+                  >
+                    Submit
+                  </button>
+                </div>
+                {/* <div className="ml-1 mt-1">
+                  {details.work.map((item, index) => (
+                    <div className="flex" key={item.company}>
+                      <div className="ml-5 mt-1">
+                        <p className="tracking-[2px] my-1">{item.company}</p>
+                      </div>
+                      <button
                         onClick={() => {
-                          setiarrow(!iarrow);
+                          deleteInternship(index);
                         }}
                       >
-                        {iarrow == true && (
-                          <div>
-                            <div class="flex justify-center">
-                              <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                                <span class="mr-2">
-                                  <AiOutlinePlus></AiOutlinePlus>
-                                </span>
-                                Hide
-                              </button>
-                            </div>
-                          </div>
-                        )}
-                        {iarrow == false && (
-                          <div>
-                            <div class="flex justify-center">
-                              <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                                <span class="mr-2">
-                                  <AiOutlinePlus></AiOutlinePlus>
-                                </span>
-                                Add
-                              </button>
-                            </div>
-                          </div>
-                        )}
-                      </div>
+                        Delete
+                      </button>
                     </div>
-                    <div className={`${iarrow ? "block" : "hidden"}`}>
-                      <div className="mt-5 text-gray-300">
-                        <label htmlFor="company" className="font-semibold">
-                          Company
-                        </label>
-
-                        <input
-                          type="text"
-                          name="internship"
-                          id="company"
-                          className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                        />
-                      </div>
-                      <div className="mt-2">
-                        <label
-                          htmlFor="position"
-                          className="font-semibold text-gray-300"
-                        >
-                          Position
-                        </label>
-                        <input
-                          type="text"
-                          name="internship"
-                          id="position"
-                          className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                        />
-                      </div>
-                    
-                      <div className="flex gap-3">
-                        <div className="mt-2">
-                          <label
-                            htmlFor="startdate"
-                            className="font-semibold text-gray-300"
-                          >
-                            Start Date
-                          </label>
-                          <input
-                            type="date"
-                            name="internship"
-                            id="startdate"
-                            className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                          />
-                        </div>
-                        <div className="mt-2">
-                          <label
-                            htmlFor="enddate"
-                            className="font-semibold text-gray-300"
-                          >
-                            End Date
-                          </label>
-                          <input
-                            type="date"
-                            name="internship"
-                            id="enddate"
-                            className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                          />
-                        </div>
-                      </div>
-                      <div className="mt-2">
-                        <label
-                          htmlFor="summary"
-                          className="font-semibold text-gray-300"
-                        >
-                          Summary
-                        </label>
-                        <textarea
-                          name="internship"
-                          id="summary"
-                          className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                        />
-                      </div>
-                      <div className="flex justify-center">
-                        {/* <button>Submit</button> */}
-                        <button  onClick={addInternship} className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg">
-                          Submit
-                        </button>
-                      </div>
-                      <div className="ml-1 mt-1">
-                   {details.work.map((item,index) => (
-                  <div className="flex" key={item.company}>
-                    
-                    <div className="ml-5 mt-1">
-                      
-                      <p className="tracking-[2px] my-1">{item.company}</p>
-                    
-                    </div>
-                    <button onClick={()=>{deleteInternship(index)}}>Delete</button>
-                  </div>
-                ))}
-               </div>
-                    </div>
-                  </div>
-
-
-
-                  {/* Education  */}
-
-                  <div className="mt-5 shadow-md p-2 rounded-md">
-                    <div className="flex ">
-                      <h1 id="education" className="font-bold text-xl grow">Education</h1>
-                     
-                      <div
-                        className="pt-[-15px] mt-[-10px]"
-                        onClick={() => {
-                          setearrow(!earrow);
-                        }}
-                      >
-                        {earrow == true && (
-                          <div>
-                            <div>
-                              <div class="flex justify-center">
-                                <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                                  <span class="mr-2">
-                                    <AiOutlinePlus></AiOutlinePlus>
-                                  </span>
-                                  Hide
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                        {earrow == false && (
-                          <div>
-                            <div>
-                              <div class="flex justify-center">
-                                <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                                  <span class="mr-2">
-                                    <AiOutlinePlus></AiOutlinePlus>
-                                  </span>
-                                  Add
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className={`${earrow ? "block" : "hidden"}`}>
-                      <div className="mt-5">
-                        <label
-                          htmlFor="TypeOfDegree"
-                          className="font-semibold text-gray-300"
-                        >
-                          Type Of Degree
-                        </label>
-
-                        <input
-                          type="text"
-                          name="education"
-                          id="TypeOfDegree"
-                          className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                        />
-                      </div>
-                      <div className="mt-2">
-                        <label
-                          htmlFor="school"
-                          className="font-semibold text-gray-300"
-                        >
-                          School
-                        </label>
-                        <input
-                          type="text"
-                          name="education"
-                          id="school"
-                          className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                        />
-                      </div>
-                      <div className="mt-2">
-                        <label
-                          htmlFor="fieldOfStudy"
-                          className="font-semibold text-gray-300"
-                        >
-                          Field Of Study
-                        </label>
-                        <input
-                          type="text"
-                          name="education"
-                          id="fieldOfStudy"
-                          className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                        />
-                      </div>
-                      <div className="mt-2">
-                        <label
-                          htmlFor="grade"
-                          className="font-semibold text-gray-300"
-                        >
-                          Grade
-                        </label>
-                        <input
-                          type="text"
-                          name="education"
-                          id="grade"
-                          className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                        />
-                      </div>
-                      <div className="flex gap-3">
-                        <div className="mt-2">
-                          <label
-                            htmlFor="startdate"
-                            className="font-semibold text-gray-300"
-                          >
-                            Start Date
-                          </label>
-                          <input
-                            type="date"
-                            name="education"
-                            id="Educationstartdate"
-                            className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                          />
-                        </div>
-                        <div className="mt-2">
-                          <label
-                            htmlFor="enddate"
-                            className="font-semibold text-gray-300"
-                          >
-                            End Date
-                          </label>
-                          <input
-                            type="date"
-                            name="education"
-                            id="Educationenddate"
-                            className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                          />
-                        </div>
-                      </div>
-                      <div className="mt-2">
-                        <label
-                          htmlFor="summary"
-                          className="font-semibold text-gray-300"
-                        >
-                          Summary
-                        </label>
-                        <textarea
-                          name="education"
-                          id="summary"
-                          className="block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                        />
-                      </div>
-                      <div className="flex justify-center">
-                        
-                        <button onClick={addEducation} className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg">
-                          Submit
-                        </button>
-                      </div>
-                    </div>
-                    <div>
-          {details.education.length != 0 && (
-              <>
-              
-              <div className="ml-1 mt-1">
-                {details.education.map((item,index) => (
-                  <div className="flex" key={item.institution}>
-                    <div className="flex justify-around p-10">
-                        <p className="tracking-[2px]">{item.institution}</p>
-                        <p className="font-bold">{item.fieldOfStudy}</p>
-                        
-                        <button onClick={()=>{deleteEducation(index)}}>Delete</button>
-                    
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div> */}
               </div>
-              </>
-             )}
-          </div>
-                  </div>
+            </div>
 
+            {/* Education  */}
 
-                  {/* Certifications  */}
+            <div className="mt-5 shadow-md p-2 rounded-md">
+              <div className="flex ">
+                <h1 id="education" className="font-bold text-xl grow">
+                  Education
+                </h1>
 
-
-
-                  <div className="mt-5 shadow-md p-2 rounded-md">
-                    <div className="flex ">
-                      <h1 id="certifications" className="font-bold text-xl grow">Certifications</h1>
-                     
-                      <div
-                        className="pt-[-15px] mt-[-10px]"
-                        onClick={() => {
-                          setcarrow(!carrow);
-                        }}
-                      >
-                        {carrow == true && (
-                          <div>
-                            <div>
-                              <div class="flex justify-center">
-                                <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                                  <span class="mr-2">
-                                    <AiOutlinePlus></AiOutlinePlus>
-                                  </span>
-                                  Hide
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                        {carrow == false && (
-                          <div>
-                            <div>
-                              <div class="flex justify-center">
-                                <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                                  <span class="mr-2">
-                                    <AiOutlinePlus></AiOutlinePlus>
-                                  </span>
-                                  Add
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className={`${carrow ? "block" : "hidden"}`}>
-                      <div className="mt-5">
-                        <label
-                          htmlFor="certificateTitle"
-                          className="font-semibold text-gray-300"
-                        >
-                          Title
-                        </label>
-
-                        <input
-                          type="text"
-                          name="certifications"
-                          id="certificateTitle"
-                          className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                        />
-                      </div>
-                      <div className="mt-2">
-                        <label
-                          htmlFor="issuer"
-                          className="font-semibold text-gray-300"
-                        >
-                          Issuer
-                        </label>
-                        <input
-                          type="text"
-                          name="certifications"
-                          id="issuer"
-                          className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                        />
-                      </div>
-                      
-                      
-                      <div className="flex gap-3">
-                        <div className="mt-2">
-                          <label
-                            htmlFor="certificateDate"
-                            className="font-semibold text-gray-300"
-                          >
-                            Start Date
-                          </label>
-                          <input
-                            type="date"
-                            name="certifications"
-                            id="certificateDate"
-                            className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                          />
-                        </div>
-                        
-                      </div>
-                      <div className="mt-2">
-                        <label
-                          htmlFor="certificateSummary"
-                          className="font-semibold text-gray-300"
-                        >
-                          Summary
-                        </label>
-                        <textarea
-                          name="certifications"
-                          id="certificateSummary"
-                          className="block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                        />
-                      </div>
-                      <div className="flex justify-center">
-                        {/* <button onClick={addEducation}>Submit</button> */}
-                        <button onClick={addCertificate} className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg">
-                          Submit
-                        </button>
-                      </div>
-                      <div className="ml-1 mt-1">
-                      {details.certifications.map((item,index) => (
-                        <div className="flex" key={item.institution}>
-                          <div className="flex">
-                           
-                              <p className="tracking-[2px]">
-                                {item.title}
-                              </p>
-                                <button onClick={()=>{deleteCertificate(index)}}>Delete</button>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                    </div>
-                  </div>
-
-
-
-                          {/* Projects  */}
-
-                  <div className="mt-5 shadow-md p-2 rounded-md">
-                    <div className="flex">
-                      <h1 className="font-bold text-xl grow">Projects</h1>
-                      <div
-                        className="pt-[-15px] mt-[-10px]"
-                        onClick={() => {
-                          setparrow(!parrow);
-                        }}
-                      >
-                        {parrow == true && (
-                          <div>
-                            <div class="flex justify-center">
-                              <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                                <span class="mr-2">
-                                  <AiOutlinePlus></AiOutlinePlus>
-                                </span>
-                                Hide
-                              </button>
-                            </div>
-                          </div>
-                        )}
-                        {parrow == false && (
-                          <div>
-                            <div class="flex justify-center">
-                              <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                                <span class="mr-2">
-                                  <AiOutlinePlus></AiOutlinePlus>
-                                </span>
-                                Add
-                              </button>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                    <div className={`${parrow ? "block" : "hidden"}`}>
-                      <div className="mt-5 text-gray-300">
-                        <label htmlFor="projectTitle" className="font-semibold">
-                          Title
-                        </label>
-
-                        <input
-                          type="text"
-                          name="project"
-                          id="projectTitle"
-                          className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                        />
-                      </div>
-                      
-                      <div className="mt-2">
-                        <label
-                          htmlFor="projectDomine"
-                          className="font-semibold text-gray-300"
-                        >
-                          Field Of Study
-                        </label>
-                        <input
-                          type="text"
-                          name="project"
-                          id="projectDomine"
-                          className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                        />
-                      </div>
-                      <div className="mt-2">
-                        <label
-                          htmlFor="projectWebsite"
-                          className="font-semibold text-gray-300"
-                        >
-                          GIT / Website Link  
-                        </label>
-                        <input
-                          type="text"
-                          name="project"
-                          id="projectWebsite"
-                          className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                        />
-                      </div>
-                      <div className="flex gap-3">
-                        <div className="mt-2">
-                          <label
-                            htmlFor="projectstartdate"
-                            className="font-semibold text-gray-300"
-                          >
-                            Start Date
-                          </label>
-                          <input
-                            type="date"
-                            name="project"
-                            id="projectstartdate"
-                            className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                          />
-                        </div>
-                        <div className="mt-2">
-                          <label
-                            htmlFor="projectenddate"
-                            className="font-semibold text-gray-300"
-                          >
-                            End Date
-                          </label>
-                          <input
-                            type="date"
-                            name="project"
-                            id="projectenddate"
-                            className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                          />
+                <div
+                  className="pt-[-15px] mt-[-10px]"
+                  onClick={() => {
+                    setearrow(!earrow);
+                  }}
+                >
+                  {earrow == true && (
+                    <div>
+                      <div>
+                        <div class="flex justify-center">
+                          <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                            <span class="mr-2">
+                              <AiOutlinePlus></AiOutlinePlus>
+                            </span>
+                            Hide
+                          </button>
                         </div>
                       </div>
-                      <div className="mt-2">
-                        <label
-                          htmlFor="projectsummary"
-                          className="font-semibold text-gray-300"
-                        >
-                          Summary
-                        </label>
-                        <textarea
-                          name="project"
-                          id="projectsummary"
-                          className="block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                        />
-                      </div>
-                      <div className="flex justify-center">
-                        {/* <button onClick={addInternship}>Submit</button> */}
-                        <button onClick={addProjects} className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg">
-                          Submit
-                        </button>
+                    </div>
+                  )}
+                  {earrow == false && (
+                    <div>
+                      <div>
+                        <div class="flex justify-center">
+                          <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                            <span class="mr-2">
+                              <AiOutlinePlus></AiOutlinePlus>
+                            </span>
+                            Add
+                          </button>
+                        </div>
                       </div>
                     </div>
-                    {details.projects.length != 0 && (
+                  )}
+                </div>
+              </div>
+              <div>
+                {details.education.length != 0 && (
                   <>
-                  
                     <div className="ml-1 mt-1">
-                      {details.projects.map((item,index) => (
-                        <div className="flex" key={item.title}>
+                      {details.education.map((item, index) => (
+                        <div className="my-3 border border-white p-3" key={item.institution}>
                           <div className="flex">
-                            <div className="ml-5 mt-1 flex justify-between">
-                             
-                              <p className="tracking-[2px]">
-                                {item.title}
-                              </p>
-                                <button onClick={()=>{deleteProject(index)}}>Delete</button>
-                            </div>
+                            <p className="grow font-semibold">{item.institution}</p>
+                            <p className="font-bold">{item.fieldOfStudy}</p>
+
+                            <button
+                            className="mr-2"
+                              onClick={() => {
+                                deleteEducation(index);
+                              }}
+                            >
+                              <AiFillDelete></AiFillDelete>
+                            </button>
                           </div>
                         </div>
                       ))}
                     </div>
                   </>
                 )}
-                  </div>
-
-
-                          {/* awards  */}
-
-
-
-                  <div className="mt-5 shadow-md p-2 rounded-md">
-                    <div className="flex">
-                      <h1 className="font-bold text-xl grow">Awards</h1>
-                      <div
-                        className="pt-[-15px] mt-[-10px]"
-                        onClick={() => {
-                          setawarrow(!awarrow);
-                        }}
-                      >
-                        {awarrow == true && (
-                          <div>
-                            <div class="flex justify-center">
-                              <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                                <span class="mr-2">
-                                  <AiOutlinePlus></AiOutlinePlus>
-                                </span>
-                                Hide
-                              </button>
-                            </div>
-                          </div>
-                        )}
-                        {awarrow == false && (
-                          <div>
-                            <div class="flex justify-center">
-                              <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                                <span class="mr-2">
-                                  <AiOutlinePlus></AiOutlinePlus>
-                                </span>
-                                Add
-                              </button>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                    <div className={`${awarrow ? "block" : "hidden"}`}>
-                      <div className="mt-5 text-gray-300">
-                        <label htmlFor="awardTitle" className="font-semibold">
-                          Title
-                        </label>
-
-                        <input
-                          type="text"
-                          name="award"
-                          id="awardTitle"
-                          className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                        />
-                      </div>
-                      
-                      <div className="mt-2">
-                        <label
-                          htmlFor="awarder"
-                          className="font-semibold text-gray-300"
-                        >
-                          Awarder
-                        </label>
-                        <input
-                          type="text"
-                          name="award"
-                          id="awarder"
-                          className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                        />
-                      </div>
-                      <div className="flex gap-3">
-                        <div className="mt-2">
-                          <label
-                            htmlFor="awardDate"
-                            className="font-semibold text-gray-300"
-                          >
-                            Date
-                          </label>
-                          <input
-                            type="date"
-                            name="award"
-                            id="awardDate"
-                            className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                          />
-                        </div>
-                        
-                      </div>
-                      <div className="mt-2">
-                        <label
-                          htmlFor="awardSummary"
-                          className="font-semibold text-gray-300"
-                        >
-                          Summary
-                        </label>
-                        <textarea
-                          name="award"
-                          id="awardSummary"
-                          className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                        />
-                      </div>
-                      <div className="flex justify-center">
-                        {/* <button onClick={addInternship}>Submit</button> */}
-                        <button onClick={addAward} className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg">
-                          Submit
-                        </button>
-                      </div>
-
-                      <div>
-                      {details.awards.map((item,index) => (
-                    <div className="my-2" key={item.name}>
-                      <span className="font-semibold text-[15px]">
-                        {item.name} 
-                      </span>
-                      <button onClick={()=>{deleteAward(index)}}>Delete</button>
-                    </div>
-                  ))}
-                      </div>
-                    </div>
-                  </div>
-
-
-                        {/* skills */}
-
-                  <div className="mt-5 shadow-md p-2 rounded-md">
-                    <div className="flex">
-                      <h1 id="skills" className="font-bold text-xl grow">Skills</h1>
-                      <div
-                        className="pt-[-15px] mt-[-10px]"
-                        onClick={() => {
-                          setskarrow(!skarrow);
-                        }}
-                      >
-                        {skarrow == true && (
-                          <div>
-                            <div class="flex justify-center">
-                              <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                                <span class="mr-2">
-                                  <AiOutlinePlus></AiOutlinePlus>
-                                </span>
-                                Hide
-                              </button>
-                            </div>
-                          </div>
-                        )}
-                        {skarrow == false && (
-                          <div>
-                            <div class="flex justify-center">
-                              <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                                <span class="mr-2">
-                                  <AiOutlinePlus></AiOutlinePlus>
-                                </span>
-                                Add
-                              </button>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-
-                      
-                    </div>
-                    <div className={`${skarrow ? "block" : "hidden"}`}>
-
-                      <div className="sm:grid sm:grid-cols-2 sm:gap-2">
-                        <div className="mt-5">
-                          <label
-                            htmlFor="awardTitle"
-                            className="font-semibold text-gray-300"
-                          >
-                            Title
-                          </label>
-
-                          <input
-                            type="text"
-                            name="skill"
-                            id="skillTitle"
-                            className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                          />
-                        </div>
-
-                        <div className="mt-2 sm:mt-5">
-                          <label
-                            htmlFor="skillLevel"
-                            className="font-semibold text-gray-300"
-                          >
-                            Level
-                          </label>
-                          <select
-                            name="skillValue"
-                            className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
-                            id="skillLevel"
-                          >
-                            <option value="beginner">Beginner</option>
-                            <option value="intermediate">Intermediate</option>
-                            <option value="advance">Advance</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div className="flex justify-center">
-                        <button onClick={addSkill} className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg">
-                          Submit
-                        </button>
-                      </div>
-                      <div>
-        {details.skills.length !=0  && (
-              <div className="mt-4">
-             
-              {details.skills.map((item,index) => (
-                <>
-                <li className="mx-4" key={item.name}>
-                  {item.name}
-                </li>
-                <button onClick={()=>{deleteSkill(index)}}>Delete</button>
-                </>
-              ))}
-            </div>
-            )}
-        </div>
-                     
-                    </div>
-                    
-                  </div>
-
-
-
-                  {/* Languages  */}
-
-
-                  <div className="mt-5 shadow-md p-2 rounded-md">
-                    <div className="flex">
-                      <h1 className="font-bold text-xl grow" id="languages">Language</h1>
-                      <div
-                        className="pt-[-15px] mt-[-10px]"
-                        onClick={() => {
-                          setlarrow(!larrow);
-                        }}
-                      >
-                        {larrow == true && (
-                          <div>
-                            <div class="flex justify-center">
-                              <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                                <span class="mr-2">
-                                  <AiOutlinePlus></AiOutlinePlus>
-                                </span>
-                                Hide
-                              </button>
-                            </div>
-                          </div>
-                        )}
-                        {larrow == false && (
-                          <div>
-                            <div class="flex justify-center">
-                              <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                                <span class="mr-2">
-                                  <AiOutlinePlus></AiOutlinePlus>
-                                </span>
-                                Add
-                              </button>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                    <div className={`${larrow ? "block" : "hidden"}`}>
-                      <div className="sm:grid sm:grid-cols-2 gap-2">
-                        <div className="mt-5">
-                          <label
-                            htmlFor="languageTitle"
-                            className="font-semibold text-gray-300"
-                          >
-                            Title
-                          </label>
-
-                          <input
-                            type="text"
-                            name="language"
-                            id="languageTitle"
-                            className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                          />
-                        </div>
-
-                        <div className="mt-2 sm:mt-5">
-                          <label
-                            htmlFor="languageLevel"
-                            className="font-semibold"
-                          >
-                            Level
-                          </label>
-                          <select
-                            name="language"
-                            className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
-                            id="languageLevel"
-                          >
-                            <option value="beginner">Beginner</option>
-                            <option value="intermediate">Intermediate</option>
-                            <option value="advance">Advance</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div className="flex justify-center">
-                        {/* <button onClick={addLanguage}>Submit</button> */}
-                        <button onClick={addLanguage} className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg">
-                          Submit
-                        </button>
-                      </div>
-                      <div>
-          {details.languages.length != 0 && (
-                <div className="mt-4">
-               
-                {details.languages.map((item,index) => (
-                  <>
-                  <p className="my-2" key={item.name}>
-                    {item.name}
-                  </p>
-                  <button onClick={()=>{deleteLanguage(index)}}>Delete</button>
-                  </>
-                ))}
               </div>
-           )} 
-          </div>
-                    </div>
+              <div className={`${earrow ? "block" : "hidden"}`}>
+                <div className="mt-5">
+                  <label
+                    htmlFor="TypeOfDegree"
+                    className="font-semibold text-gray-300"
+                  >
+                    Type Of Degree
+                  </label>
+
+                  <input
+                    type="text"
+                    name="education"
+                    id="TypeOfDegree"
+                    className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                  />
+                </div>
+                <div className="mt-2">
+                  <label
+                    htmlFor="school"
+                    className="font-semibold text-gray-300"
+                  >
+                    School
+                  </label>
+                  <input
+                    type="text"
+                    name="education"
+                    id="school"
+                    className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                  />
+                </div>
+                <div className="mt-2">
+                  <label
+                    htmlFor="fieldOfStudy"
+                    className="font-semibold text-gray-300"
+                  >
+                    Field Of Study
+                  </label>
+                  <input
+                    type="text"
+                    name="education"
+                    id="fieldOfStudy"
+                    className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                  />
+                </div>
+                <div className="mt-2">
+                  <label
+                    htmlFor="grade"
+                    className="font-semibold text-gray-300"
+                  >
+                    Grade
+                  </label>
+                  <input
+                    type="text"
+                    name="education"
+                    id="grade"
+                    className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                  />
+                </div>
+                <div className="flex gap-3">
+                  <div className="mt-2">
+                    <label
+                      htmlFor="startdate"
+                      className="font-semibold text-gray-300"
+                    >
+                      Start Date
+                    </label>
+                    <input
+                      type="date"
+                      name="education"
+                      id="Educationstartdate"
+                      className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                    />
                   </div>
-
-
-                  {/* hobbies  */}
-
-                  
-                  <div className="mt-5 shadow-md p-2 rounded-md">
-                    <div className="flex">
-                      <h1 className="font-bold text-xl grow" id="hobbies">Hobby</h1>
-                      <div
-                        className="pt-[-15px] mt-[-10px]"
-                        onClick={() => {
-                          setharrow(!harrow);
-                        }}
-                      >
-                        {harrow == true && (
-                          <div>
-                            <div class="flex justify-center">
-                              <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                                <span class="mr-2">
-                                  <AiOutlinePlus></AiOutlinePlus>
-                                </span>
-                                Hide
-                              </button>
-                            </div>
-                          </div>
-                        )}
-                        {harrow == false && (
-                          <div>
-                            <div class="flex justify-center">
-                              <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                                <span class="mr-2">
-                                  <AiOutlinePlus></AiOutlinePlus>
-                                </span>
-                                Add
-                              </button>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                    <div className={`${harrow ? "block" : "hidden"}`}>
-                      <div className="mt-5">
-                        <label
-                          htmlFor="hobbyTitle"
-                          className="font-semibold text-gray-300"
-                        >
-                          Title
-                        </label>
-
-                        <input
-                          type="text"
-                          name="language"
-                          id="hobbyTitle"
-                          className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                        />
-                      </div>
-
-                      <div className="flex justify-center">
-                        {/* <button onClick={addHobby}>Submit</button> */}
-                        <button onClick={addHobby} className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg">
-                          Submit
-                        </button>
-                      </div>
-                      <div>
-          {details.hobbies.length != 0 && (
-                <div className="mt-4">
-               
-                {details.hobbies.map((item,index) => (
-                  <>
-                  <p className="my-2" key={item.name}>
-                    {item.name}
-                  </p>
-                  <button onClick={()=>{deleteHobby(index)}}>Delete</button>
-                  </>
-
-                ))}
-              </div>
-           )} 
-          </div>
-                    </div>
+                  <div className="mt-2">
+                    <label
+                      htmlFor="enddate"
+                      className="font-semibold text-gray-300"
+                    >
+                      End Date
+                    </label>
+                    <input
+                      type="date"
+                      name="education"
+                      id="Educationenddate"
+                      className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                    />
                   </div>
                 </div>
+                <div className="mt-2">
+                  <label
+                    htmlFor="summary"
+                    className="font-semibold text-gray-300"
+                  >
+                    Summary
+                  </label>
+                  <textarea
+                    name="education"
+                    id="summary"
+                    className="block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                  />
+                </div>
+                <div className="flex justify-center">
+                  <button
+                    onClick={addEducation}
+                    className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+              {/* <div>
+                {details.education.length != 0 && (
+                  <>
+                    <div className="ml-1 mt-1">
+                      {details.education.map((item, index) => (
+                        <div className="flex" key={item.institution}>
+                          <div className="flex justify-around p-10">
+                            <p className="tracking-[2px]">{item.institution}</p>
+                            <p className="font-bold">{item.fieldOfStudy}</p>
+
+                            <button
+                              onClick={() => {
+                                deleteEducation(index);
+                              }}
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div> */}
+            </div>
+
+            {/* Certifications  */}
+
+            <div className="mt-5 shadow-md p-2 rounded-md">
+              <div className="flex ">
+                <h1 id="certifications" className="font-bold text-xl grow">
+                  Certifications
+                </h1>
+
+                <div
+                  className="pt-[-15px] mt-[-10px]"
+                  onClick={() => {
+                    setcarrow(!carrow);
+                  }}
+                >
+                  {carrow == true && (
+                    <div>
+                      <div>
+                        <div class="flex justify-center">
+                          <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                            <span class="mr-2">
+                              <AiOutlinePlus></AiOutlinePlus>
+                            </span>
+                            Hide
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {carrow == false && (
+                    <div>
+                      <div>
+                        <div class="flex justify-center">
+                          <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                            <span class="mr-2">
+                              <AiOutlinePlus></AiOutlinePlus>
+                            </span>
+                            Add
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div>
+                {details.education.length != 0 && (
+                  <>
+                    <div className="ml-1 mt-1">
+                      {details.education.map((item, index) => (
+                        <div className="border border-white my-3 p-3" key={item.institution}>
+                          <div className="flex">
+                            <p className="font-semibold grow">{item.institution}</p>
+                            <p className="font-bold">{item.fieldOfStudy}</p>
+
+                            <button
+                            className="mr-2"
+                              onClick={() => {
+                                deleteEducation(index);
+                              }}
+                            >
+                              <AiFillDelete></AiFillDelete>
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+              <div className={`${carrow ? "block" : "hidden"}`}>
+                <div className="mt-5">
+                  <label
+                    htmlFor="certificateTitle"
+                    className="font-semibold text-gray-300"
+                  >
+                    Title
+                  </label>
+
+                  <input
+                    type="text"
+                    name="certifications"
+                    id="certificateTitle"
+                    className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                  />
+                </div>
+                <div className="mt-2">
+                  <label
+                    htmlFor="issuer"
+                    className="font-semibold text-gray-300"
+                  >
+                    Issuer
+                  </label>
+                  <input
+                    type="text"
+                    name="certifications"
+                    id="issuer"
+                    className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                  />
+                </div>
+
+                <div className="flex gap-3">
+                  <div className="mt-2">
+                    <label
+                      htmlFor="certificateDate"
+                      className="font-semibold text-gray-300"
+                    >
+                      Start Date
+                    </label>
+                    <input
+                      type="date"
+                      name="certifications"
+                      id="certificateDate"
+                      className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                    />
+                  </div>
+                </div>
+                <div className="mt-2">
+                  <label
+                    htmlFor="certificateSummary"
+                    className="font-semibold text-gray-300"
+                  >
+                    Summary
+                  </label>
+                  <textarea
+                    name="certifications"
+                    id="certificateSummary"
+                    className="block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                  />
+                </div>
+                <div className="flex justify-center">
+                  {/* <button onClick={addEducation}>Submit</button> */}
+                  <button
+                    onClick={addCertificate}
+                    className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg"
+                  >
+                    Submit
+                  </button>
+                </div>
+                {/* <div className="ml-1 mt-1">
+                  {details.certifications.map((item, index) => (
+                    <div className="flex" key={item.institution}>
+                      <div className="flex">
+                        <p className="tracking-[2px]">{item.title}</p>
+                        <button
+                          onClick={() => {
+                            deleteCertificate(index);
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div> */}
               </div>
             </div>
 
-            </>
-                        
+            {/* Projects  */}
+
+            <div className="mt-5 shadow-md p-2 rounded-md">
+              <div className="flex">
+                <h1 className="font-bold text-xl grow" id="projects">Projects</h1>
+                <div
+                  className="pt-[-15px] mt-[-10px]"
+                  onClick={() => {
+                    setparrow(!parrow);
+                  }}
+                >
+                  {parrow == true && (
+                    <div>
+                      <div class="flex justify-center">
+                        <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span class="mr-2">
+                            <AiOutlinePlus></AiOutlinePlus>
+                          </span>
+                          Hide
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                  {parrow == false && (
+                    <div>
+                      <div class="flex justify-center">
+                        <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span class="mr-2">
+                            <AiOutlinePlus></AiOutlinePlus>
+                          </span>
+                          Add
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+              {details.projects.length != 0 && (
+                <>
+                  <div className="ml-1 mt-1">
+                    {details.projects.map((item, index) => (
+                      <div className="my-3 p-3 border border-white" key={item.title}>
+                        <div className="flex">
+                          
+                            <p className="grow font-semibold">{item.title}</p>
+                            <button
+                              className="mr-3"
+                              onClick={() => {
+                                deleteProject(index);
+                              }}
+                            >
+                              <AiFillDelete></AiFillDelete>
+                            </button>
+                          
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
+              <div className={`${parrow ? "block" : "hidden"}`}>
+                <div className="mt-5 text-gray-300">
+                  <label htmlFor="projectTitle" className="font-semibold">
+                    Title
+                  </label>
+
+                  <input
+                    type="text"
+                    name="project"
+                    id="projectTitle"
+                    className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                  />
+                </div>
+
+                <div className="mt-2">
+                  <label
+                    htmlFor="projectDomine"
+                    className="font-semibold text-gray-300"
+                  >
+                    Field Of Study
+                  </label>
+                  <input
+                    type="text"
+                    name="project"
+                    id="projectDomine"
+                    className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                  />
+                </div>
+                <div className="mt-2">
+                  <label
+                    htmlFor="projectWebsite"
+                    className="font-semibold text-gray-300"
+                  >
+                    GIT / Website Link
+                  </label>
+                  <input
+                    type="text"
+                    name="project"
+                    id="projectWebsite"
+                    className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                  />
+                </div>
+                <div className="flex gap-3">
+                  <div className="mt-2">
+                    <label
+                      htmlFor="projectstartdate"
+                      className="font-semibold text-gray-300"
+                    >
+                      Start Date
+                    </label>
+                    <input
+                      type="date"
+                      name="project"
+                      id="projectstartdate"
+                      className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                    />
+                  </div>
+                  <div className="mt-2">
+                    <label
+                      htmlFor="projectenddate"
+                      className="font-semibold text-gray-300"
+                    >
+                      End Date
+                    </label>
+                    <input
+                      type="date"
+                      name="project"
+                      id="projectenddate"
+                      className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                    />
+                  </div>
+                </div>
+                <div className="mt-2">
+                  <label
+                    htmlFor="projectsummary"
+                    className="font-semibold text-gray-300"
+                  >
+                    Summary
+                  </label>
+                  <textarea
+                    name="project"
+                    id="projectsummary"
+                    className="block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                  />
+                </div>
+                <div className="flex justify-center">
+                  {/* <button onClick={addInternship}>Submit</button> */}
+                  <button
+                    onClick={addProjects}
+                    className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+              
+            </div>
+
+            {/* awards  */}
+
+            <div className="mt-5 shadow-md p-2 rounded-md">
+              <div className="flex">
+                <h1 className="font-bold text-xl grow" id="awards">Awards</h1>
+                <div
+                  className="pt-[-15px] mt-[-10px]"
+                  onClick={() => {
+                    setawarrow(!awarrow);
+                  }}
+                >
+                  {awarrow == true && (
+                    <div>
+                      <div class="flex justify-center">
+                        <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span class="mr-2">
+                            <AiOutlinePlus></AiOutlinePlus>
+                          </span>
+                          Hide
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                  {awarrow == false && (
+                    <div>
+                      <div class="flex justify-center">
+                        <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span class="mr-2">
+                            <AiOutlinePlus></AiOutlinePlus>
+                          </span>
+                          Add
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div>
+                  {details.awards.map((item, index) => (
+                    <div className="my-2 p-3 border border-white" key={item.name}>
+                      <div className="flex">
+                      <span className="font-semibold grow">
+                        {item.name}
+                      </span>
+                      <button
+                        className="mr-2"
+                        onClick={() => {
+                          deleteAward(index);
+                        }}
+                      >
+                        <AiFillDelete></AiFillDelete>
+                      </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              <div className={`${awarrow ? "block" : "hidden"}`}>
+                <div className="mt-5 text-gray-300">
+                  <label htmlFor="awardTitle" className="font-semibold">
+                    Title
+                  </label>
+
+                  <input
+                    type="text"
+                    name="award"
+                    id="awardTitle"
+                    className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                  />
+                </div>
+
+                <div className="mt-2">
+                  <label
+                    htmlFor="awarder"
+                    className="font-semibold text-gray-300"
+                  >
+                    Awarder
+                  </label>
+                  <input
+                    type="text"
+                    name="award"
+                    id="awarder"
+                    className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                  />
+                </div>
+                <div className="flex gap-3">
+                  <div className="mt-2">
+                    <label
+                      htmlFor="awardDate"
+                      className="font-semibold text-gray-300"
+                    >
+                      Date
+                    </label>
+                    <input
+                      type="date"
+                      name="award"
+                      id="awardDate"
+                      className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                    />
+                  </div>
+                </div>
+                <div className="mt-2">
+                  <label
+                    htmlFor="awardSummary"
+                    className="font-semibold text-gray-300"
+                  >
+                    Summary
+                  </label>
+                  <textarea
+                    name="award"
+                    id="awardSummary"
+                    className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                  />
+                </div>
+                <div className="flex justify-center">
+                  {/* <button onClick={addInternship}>Submit</button> */}
+                  <button
+                    onClick={addAward}
+                    className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg"
+                  >
+                    Submit
+                  </button>
+                </div>
+
+                {/* <div>
+                  {details.awards.map((item, index) => (
+                    <div className="my-2" key={item.name}>
+                      <span className="font-semibold text-[15px]">
+                        {item.name}
+                      </span>
+                      <button
+                        onClick={() => {
+                          deleteAward(index);
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  ))}
+                </div> */}
+              </div>
+            </div>
+
+            {/* skills */}
+
+            <div className="mt-5 shadow-md p-2 rounded-md">
+              <div className="flex">
+                <h1 id="skills" className="font-bold text-xl grow">
+                  Skills
+                </h1>
+                <div
+                  className="pt-[-15px] mt-[-10px]"
+                  onClick={() => {
+                    setskarrow(!skarrow);
+                  }}
+                >
+                  {skarrow == true && (
+                    <div>
+                      <div class="flex justify-center">
+                        <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span class="mr-2">
+                            <AiOutlinePlus></AiOutlinePlus>
+                          </span>
+                          Hide
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                  {skarrow == false && (
+                    <div>
+                      <div class="flex justify-center">
+                        <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span class="mr-2">
+                            <AiOutlinePlus></AiOutlinePlus>
+                          </span>
+                          Add
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div className="border border-white my-2 mx-2">
+                  {details.skills.length != 0 && (
+                    <div className="mt-1 ml-1">
+                      {details.skills.map((item, index) => (
+                        <>
+                          <div className=" my-1 px-2 flex">
+                          <li className="grow py-2" key={item.name}>
+                            {item.name}
+                          </li>
+                          <button
+                            className="mr-2"
+                            onClick={() => {
+                              deleteSkill(index);
+                            }}
+                          >
+                            <AiFillDelete></AiFillDelete>
+                          </button>
+                          </div>
+                        </>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              <div className={`${skarrow ? "block" : "hidden"}`}>
+                <div className="sm:grid sm:grid-cols-2 sm:gap-2">
+                  <div className="mt-5">
+                    <label
+                      htmlFor="awardTitle"
+                      className="font-semibold text-gray-300"
+                    >
+                      Title
+                    </label>
+
+                    <input
+                      type="text"
+                      name="skill"
+                      id="skillTitle"
+                      className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                    />
+                  </div>
+
+                  <div className="mt-2 sm:mt-5">
+                    <label
+                      htmlFor="skillLevel"
+                      className="font-semibold text-gray-300"
+                    >
+                      Level
+                    </label>
+                    <select
+                      name="skillValue"
+                      className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
+                      id="skillLevel"
+                    >
+                      <option value="beginner">Beginner</option>
+                      <option value="intermediate">Intermediate</option>
+                      <option value="advance">Advance</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="flex justify-center">
+                  <button
+                    onClick={addSkill}
+                    className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg"
+                  >
+                    Submit
+                  </button>
+                </div>
+                
+              </div>
+            </div>
+
+            {/* Languages  */}
+
+            <div className="mt-5 shadow-md p-2 rounded-md">
+              <div className="flex">
+                <h1 className="font-bold text-xl grow" id="languages">
+                  Language
+                </h1>
+                <div
+                  className="pt-[-15px] mt-[-10px]"
+                  onClick={() => {
+                    setlarrow(!larrow);
+                  }}
+                >
+                  {larrow == true && (
+                    <div>
+                      <div class="flex justify-center">
+                        <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span class="mr-2">
+                            <AiOutlinePlus></AiOutlinePlus>
+                          </span>
+                          Hide
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                  {larrow == false && (
+                    <div>
+                      <div class="flex justify-center">
+                        <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span class="mr-2">
+                            <AiOutlinePlus></AiOutlinePlus>
+                          </span>
+                          Add
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div className="my-2 border border-white">
+                  {details.languages.length != 0 && (
+                    <div className="ml-1  p-2">
+                      {details.languages.map((item, index) => (
+                        <>
+                          <div className="flex">
+                          <li className="my-2 font-semibold grow" key={item.name}>
+                            {item.name}
+                          </li>
+                          <button
+                            className="mr-2"
+                            onClick={() => {
+                              deleteLanguage(index);
+                            }}
+                          >
+                            <AiFillDelete></AiFillDelete>
+                          </button>
+                          </div>
+                        </>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              <div className={`${larrow ? "block" : "hidden"}`}>
+                <div className="sm:grid sm:grid-cols-2 gap-2">
+                  <div className="mt-5">
+                    <label
+                      htmlFor="languageTitle"
+                      className="font-semibold text-gray-300"
+                    >
+                      Title
+                    </label>
+
+                    <input
+                      type="text"
+                      name="language"
+                      id="languageTitle"
+                      className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                    />
+                  </div>
+
+                  <div className="mt-2 sm:mt-5">
+                    <label htmlFor="languageLevel" className="font-semibold">
+                      Level
+                    </label>
+                    <select
+                      name="language"
+                      className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
+                      id="languageLevel"
+                    >
+                      <option value="beginner">Beginner</option>
+                      <option value="intermediate">Intermediate</option>
+                      <option value="advance">Advance</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="flex justify-center">
+                  {/* <button onClick={addLanguage}>Submit</button> */}
+                  <button
+                    onClick={addLanguage}
+                    className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg"
+                  >
+                    Submit
+                  </button>
+                </div>
+                {/* <div>
+                  {details.languages.length != 0 && (
+                    <div className="mt-4">
+                      {details.languages.map((item, index) => (
+                        <>
+                          <p className="my-2" key={item.name}>
+                            {item.name}
+                          </p>
+                          <button
+                            onClick={() => {
+                              deleteLanguage(index);
+                            }}
+                          >
+                            Delete
+                          </button>
+                        </>
+                      ))}
+                    </div>
+                  )}
+                </div> */}
+              </div>
+            </div>
+
+            {/* hobbies  */}
+
+            <div className="mt-5 shadow-md p-2 rounded-md">
+              <div className="flex">
+                <h1 className="font-bold text-xl grow" id="hobbies">
+                  Hobby
+                </h1>
+                <div
+                  className="pt-[-15px] mt-[-10px]"
+                  onClick={() => {
+                    setharrow(!harrow);
+                  }}
+                >
+                  {harrow == true && (
+                    <div>
+                      <div class="flex justify-center">
+                        <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span class="mr-2">
+                            <AiOutlinePlus></AiOutlinePlus>
+                          </span>
+                          Hide
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                  {harrow == false && (
+                    <div>
+                      <div class="flex justify-center">
+                        <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span class="mr-2">
+                            <AiOutlinePlus></AiOutlinePlus>
+                          </span>
+                          Add
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div className="my-2 border border-white">
+                  {details.hobbies.length != 0 && (
+                    <div className="">
+                      {details.hobbies.map((item, index) => (
+                        <>
+                          <div className="flex p-3">
+                          <li className="grow" key={item.name}>
+                            {item.name}
+                          </li>
+                          <button
+                            className="mr-2"
+                            onClick={() => {
+                              deleteHobby(index);
+                            }}
+                          >
+                            <AiFillDelete></AiFillDelete>
+                          </button>
+                          </div>
+                        </>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              <div className={`${harrow ? "block" : "hidden"}`}>
+                <div className="mt-5">
+                  <label
+                    htmlFor="hobbyTitle"
+                    className="font-semibold text-gray-300"
+                  >
+                    Title
+                  </label>
+
+                  <input
+                    type="text"
+                    name="language"
+                    id="hobbyTitle"
+                    className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                  />
+                </div>
+
+                <div className="flex justify-center">
+                  {/* <button onClick={addHobby}>Submit</button> */}
+                  <button
+                    onClick={addHobby}
+                    className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg"
+                  >
+                    Submit
+                  </button>
+                </div>
+                {/* <div>
+                  {details.hobbies.length != 0 && (
+                    <div className="mt-4">
+                      {details.hobbies.map((item, index) => (
+                        <>
+                          <p className="my-2" key={item.name}>
+                            {item.name}
+                          </p>
+                          <button
+                            onClick={() => {
+                              deleteHobby(index);
+                            }}
+                          >
+                            Delete
+                          </button>
+                        </>
+                      ))}
+                    </div>
+                  )}
+                </div> */}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
-
 
 // <div>
 //       <div className="flex">
 //         {/* {open == "open" && (
 //             <>
 //              <div className='h-screen w-[50%] bg-purple-300'>
-            
+
 //              </div>
 //             <div className='h-screen w-[50%] bg-green-300'>
-                
+
 //             </div>
 //             </>
 //         )} */}
@@ -1763,7 +1964,6 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 //                   )}
 //                 </div>
 
-
 //                 <div className="mt-5 shadow-md p-2 rounded-md">
 //                   <div className="flex gap-[76px]">
 //                     <h1 className="font-bold text-xl">Internships</h1>
@@ -1863,11 +2063,11 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 //                     <div className="ml-1 mt-1">
 //                    {details.work.map((item,index) => (
 //                   <div className="flex" key={item.company}>
-                    
+
 //                     <div className="ml-5 mt-1">
-                      
+
 //                       <p className="tracking-[2px] my-1">{item.company}</p>
-                    
+
 //                     </div>
 //                     <button onClick={()=>{deleteInternship(index)}}>Delete</button>
 //                   </div>
@@ -1876,7 +2076,6 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 //                   </div>
 
 //                   {/* education */}
-
 
 //                 </div>
 //                 <div className="mt-5 shadow-md p-2 rounded-md">
@@ -1979,16 +2178,16 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 //                     <div>
 //           {details.education.length != 0 && (
 //               <>
-              
+
 //               <div className="ml-1 mt-1">
 //                 {details.education.map((item,index) => (
 //                   <div className="flex" key={item.institution}>
 //                     <div className="flex justify-around p-10">
 //                         <p className="tracking-[2px]">{item.institution}</p>
 //                         <p className="font-bold">{item.fieldOfStudy}</p>
-                        
+
 //                         <button onClick={()=>{deleteEducation(index)}}>Delete</button>
-                    
+
 //                     </div>
 //                   </div>
 //                 ))}
@@ -2086,11 +2285,7 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 //                   </div>
 //                 </div>
 
-
-
-
 //       {/* skills */}
-
 
 //                 <div className="mt-5 shadow-md p-2 rounded-md">
 //                   <div className="flex gap-[125px]">
@@ -2153,7 +2348,7 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 //                   <div>
 //         {details.skills.length !=0  && (
 //               <div className="mt-4">
-             
+
 //               {details.skills.map((item,index) => (
 //                 <>
 //                 <li className="mx-4" key={item.name}>
@@ -2167,9 +2362,7 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 //         </div>
 //                 </div>
 
-
 //                 {/* language */}
-
 
 //                 <div className="mt-5 shadow-md p-2 rounded-md">
 //                   <div className="flex gap-[89px]">
@@ -2238,7 +2431,7 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 //                   <div>
 //           {details.languages.length != 0 && (
 //                 <div className="mt-4">
-               
+
 //                 {details.languages.map((item,index) => (
 //                   <>
 //                   <p className="my-2" key={item.name}>
@@ -2248,11 +2441,9 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 //                   </>
 //                 ))}
 //               </div>
-//            )} 
+//            )}
 //           </div>
 //                 </div>
-
-
 
 //                 {/* hobby */}
 
@@ -2302,7 +2493,7 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 //                 <div>
 //           {details.hobbies.length != 0 && (
 //                 <div className="mt-4">
-               
+
 //                 {details.hobbies.map((item,index) => (
 //                   <>
 //                   <p className="my-2" key={item.name}>
@@ -2313,23 +2504,18 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 
 //                 ))}
 //               </div>
-//            )} 
+//            )}
 //           </div>
 //               </div>
 //             </div>
 
-
-
 //             {/* resume */}
 
-            
-            
 //           </>
 //         )}
 //       </div>
-         
-//     </div>
 
+//     </div>
 
 // <div className="w-[100%]">
 //           form elements
@@ -2357,7 +2543,7 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 //             <input
 //               type="text"
 //               name="personal"
-//               id="phone"  
+//               id="phone"
 //               className="w-[50%] my-2"
 //               value={details.personal.phone}
 //               onChange={updateForm}
@@ -2386,8 +2572,6 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 //             <label htmlFor="social-network">Social Network</label>
 
 //           </form>
-          
-
 
 //           <div className="flex flex-col w-[75%] p-10">
 //             {/* <form  className="flex flex-col w-[75%] p-5" > */}
@@ -2443,7 +2627,7 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 //                 <input type="date" name="internship" id="startdate" />
 //                 <label htmlFor="enddate">End Date</label>
 //                 <input type="date" name="internship" id="enddate" />
-                
+
 //                 <label htmlFor="summary">Summary</label>
 //                 <input type="text" name="internship" id="summary" />
 //                 {/* <input type="submit" value="submit" className="cursor-pointer" /> */}
@@ -2452,17 +2636,16 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 //           <div className="ml-1 mt-1">
 //                 {details.work.map((item,index) => (
 //                   <div className="flex" key={item.company}>
-                    
+
 //                     <div className="ml-5 mt-1">
-                      
+
 //                       <p className="tracking-[2px] my-1">{item.company}</p>
-                    
+
 //                     </div>
 //                     <button onClick={()=>{deleteInternship(index)}}>Delete</button>
 //                   </div>
 //                 ))}
 //               </div>
-
 
 //           <div className="flex flex-col w-[75%] p-10">
 //             <h1>Education</h1>
@@ -2475,18 +2658,15 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 //                 <label htmlFor="EductionFieldOfStudy">FieldOfStudy</label>
 //                 <input type="text" name="education" id="EducationFieldOfStudy" />
 
-
 //                 <label htmlFor="grade">grade</label>
 //                 <input type="text" name="education" id="grade" />
 
-
-                
 //                 <label htmlFor="startdate">Start Date</label>
 //                 <input type="date" name="education" id="Educationstartdate" />
 
 //                 <label htmlFor="enddate">End Date</label>
 //                 <input type="date" name="education" id="Educationenddate" />
-                
+
 //                 <label htmlFor="summary">Summary</label>
 //                 <input type="text" name="education" id="summary" />
 //                 {/* <input type="submit" value="submit" className="cursor-pointer" /> */}
@@ -2496,16 +2676,16 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 //           <div>
 //           {details.education.length != 0 && (
 //               <>
-              
+
 //               <div className="ml-1 mt-1">
 //                 {details.education.map((item,index) => (
 //                   <div className="flex" key={item.institution}>
 //                     <div className="flex justify-around p-10">
 //                         <p className="tracking-[2px]">{item.institution}</p>
 //                         <p className="font-bold">{item.fieldOfStudy}</p>
-                        
+
 //                         <button onClick={()=>{deleteEducation(index)}}>Delete</button>
-                    
+
 //                     </div>
 //                   </div>
 //                 ))}
@@ -2525,13 +2705,11 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 //                 <label htmlFor="awarddate">Award Date</label>
 //                 <input type="date" name="award" id="awardDate" />
 
-                
 //                 <label htmlFor="awardSummary">Summary</label>
 //                 <input type="text" name="award" id="awardSummary" />
 //                 {/* <input type="submit" value="submit" className="cursor-pointer" /> */}
 //                 <button onClick={addAward}>Submit</button>
 //           </div>
-
 
 //           <div>
 //           {details.awards.length != 0 && (
@@ -2539,15 +2717,14 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 //             {details.awards.map((item,index) => (
 //               <div className="my-2" key={item.name}>
 //                 <span className="font-semibold text-[15px]">
-//                   {item.name} 
+//                   {item.name}
 //                 </span>
 //                 <button onClick={()=>{deleteAward(index)}}>Delete</button>
 //               </div>
 //             ))}
 //             </>
-//            )} 
+//            )}
 //           </div>
-
 
 //           <div className="flex flex-col w-[75%] p-10">
 //             <h1>Certifications</h1>
@@ -2560,13 +2737,11 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 //                 <label htmlFor="certificateDate">Certificate Date</label>
 //                 <input type="date" name="certificate" id="certificateDate" />
 
-                
 //                 <label htmlFor="certificateSummary">Summary</label>
 //                 <input type="text" name="certificate" id="certificateSummary" />
 //                 {/* <input type="submit" value="submit" className="cursor-pointer" /> */}
 //                 <button onClick={addCertificate}>Submit</button>
 //           </div>
-                  
 
 //           <div>
 //           {details.certifications.length != 0 && (
@@ -2574,33 +2749,33 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 //             {details.certifications.map((item,index) => (
 //               <div className="my-2" key={item.issuer}>
 //                 <span className="font-semibold text-[15px]">
-//                   {item.issuer} 
+//                   {item.issuer}
 //                 </span>
 //                 <button onClick={()=>{deleteCertificate(index)}}>Delete</button>
 //               </div>
 //             ))}
 //             </>
-//            )} 
+//            )}
 //           </div>
 
 //           <div className="flex flex-col w-[75%] p-10">
 //             <h1>Skils</h1>
 //                 <label htmlFor="awardTitle">Title</label>
 //                 <input type="text" name="skill" id="skillTitle" />
-                
+
 //                 <label htmlFor="skillLevel">Level</label>
 //                 <select name="skillValue" className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500" id="skillLevel">
 //                           <option value="beginner" >Beginner</option>
 //                           <option value="intermediate">Intermediate</option>
 //                           <option value="advance">Advance</option>
 //                 </select>
-                
+
 //                 <button onClick={addSkill}>Submit</button>
 //           </div>
 //         <div>
 //         {details.skills.length !=0  && (
 //               <div className="mt-4">
-             
+
 //               {details.skills.map((item,index) => (
 //                 <>
 //                 <li className="mx-4" key={item.name}>
@@ -2613,12 +2788,11 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 //             )}
 //         </div>
 
-
 //           <div className="flex flex-col w-[75%] p-10">
 //             <h1>Language</h1>
 //                 <label htmlFor="languageTitle">Title</label>
 //                 <input type="text" name="language" id="languageTitle" />
-                
+
 //                 <label htmlFor="languagelLevel">Level</label>
 //                 <select name="language" className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500" id="languageLevel">
 //                           <option value="beginner" >Beginner</option>
@@ -2631,7 +2805,7 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 //           <div>
 //           {details.languages.length != 0 && (
 //                 <div className="mt-4">
-               
+
 //                 {details.languages.map((item,index) => (
 //                   <>
 //                   <p className="my-2" key={item.name}>
@@ -2641,23 +2815,21 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 //                   </>
 //                 ))}
 //               </div>
-//            )} 
+//            )}
 //           </div>
-
 
 //           <div className="flex flex-col w-[75%] p-10">
 //             <h1>Hobby</h1>
 //                 <label htmlFor="hobbyTitle">Title</label>
 //                 <input type="text" name="language" id="hobbyTitle" />
-                
-                
+
 //                 {/* <input type="submit" value="submit" className="cursor-pointer" /> */}
 //                 <button onClick={addHobby}>Submit</button>
 //           </div>
 //           <div>
 //           {details.hobbies.length != 0 && (
 //                 <div className="mt-4">
-               
+
 //                 {details.hobbies.map((item,index) => (
 //                   <>
 //                   <p className="my-2" key={item.name}>
@@ -2668,10 +2840,10 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 
 //                 ))}
 //               </div>
-//            )} 
+//            )}
 //           </div>
 
-//      {/* 
+//      {/*
 //           <div className="my-10 mx-5">
 //             <form onSubmit={handleSubmit(onFormSubmit)}>
 //               <button
@@ -2732,6 +2904,5 @@ export default function SideBar({deleteHobby ,addHobby ,updateForm,socialChange,
 //               />
 //             </form>
 //           </div> */}
-          
 
 //         </div>
