@@ -28,8 +28,7 @@ export default function SideBar() {
   const [awarrow, setawarrow] = useState(false);
   const [carrow, setcarrow] = useState(false);
   const { details, setdetails } = useContext(ResumeContext);
-
-
+  const [editSocial, seteditSocial] = useState(false)
 
   function updateForm(event) {
     const n = event.target.name;
@@ -48,6 +47,39 @@ export default function SideBar() {
       arr.push(item);
     });
     arr.push(sn);
+    setdetails({ ...details, social: arr });
+
+    document.getElementById("network").value="",
+    document.getElementById("username").value="",
+    document.getElementById("url").value=""
+  }
+
+  function updateSocialNetwork(index){
+    seteditSocial(true)
+    var network = details.social[index]
+    console.log(network)
+    document.getElementById("network").value=network.network,
+    document.getElementById("username").value=network.username,
+    document.getElementById("url").value=network.url
+  }
+
+  function editSocialNetwrok(index){
+    seteditSocial(false)
+    const sn = {
+      network: document.getElementById("network").value,
+      username: document.getElementById("username").value,
+      url: document.getElementById("url").value,
+    };
+    var arr = [];
+    details.social.map((item,ind) => {
+      if(ind == index){
+        arr.push(sn)
+      }
+      else{
+        arr.push(item);
+      }
+    });
+    console.log(arr);
     setdetails({ ...details, social: arr });
 
     document.getElementById("network").value="",
@@ -613,9 +645,12 @@ export default function SideBar() {
                           />
                         </span>
                         <span className="px-2 mt-[-3px] font-semibold grow">{item.network}</span>
-                        <button onClick={() => deleteSocialNetwork(index)}>
+                          <button onClick={() => deleteSocialNetwork(index)}>
                           <AiFillDelete></AiFillDelete>
                         </button>
+                        <button onClick={()=>updateSocialNetwork(index)}>Update</button>
+                        
+                        
                         </div>
                         <div className="block text-sm font-thin">
                           <Link href={item.url}>
@@ -668,12 +703,25 @@ export default function SideBar() {
                   />
                 </div>
                 <div className="flex justify-center">
-                  <button
+                {editSocial && (
+
+                    <button
                     onClick={socialChange}
                     className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg"
                   >
-                    Submit
+                    Update
                   </button>
+                        )}
+                        {!editSocial && (
+
+              <button
+              onClick={editSocialNetwrok}
+              className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg"
+              >
+              Submit
+              </button>
+                        )}
+                  
                 </div>
                 
               </div>
