@@ -26,236 +26,6 @@ export default function Symetric() {
     }
   }, [user]);
 
-  function updateForm(event) {
-    const n = event.target.name;
-    const i = event.target.id;
-    setdetails({ ...details, [n]: { ...details[n], [i]: event.target.value } });
-  }
-
-  async function socialChange() {
-    const sn = {
-      network: document.getElementById("network").value,
-      username: document.getElementById("username").value,
-      url: document.getElementById("url").value,
-    };
-    const arr = [];
-    details.social.map((item) => {
-      arr.push(item);
-    });
-    arr.push(sn);
-    setdetails({ ...details, social: arr });
-  }
-
-  function deleteSocialNetwork(index) {
-    // console.log("network",network)
-    const arr = [];
-    details.social.map((item, i) => {
-      if (i != index) {
-        arr.push(item);
-      }
-    });
-    setdetails({ ...details, social: arr });
-  }
-
-  function addInternship() {
-    const intern = {
-      company: document.getElementById("company").value,
-      designation: document.getElementById("position").value,
-      // website:document.getElementById("website").value,
-      from: document.getElementById("startdate").value,
-      to: document.getElementById("enddate").value,
-      summary: {
-        data: document.getElementById("summary").value,
-      },
-    };
-    const arr = [];
-    details.work.map((item) => {
-      arr.push(item);
-    });
-    // console.log('intern',intern)
-    arr.push(intern);
-    setdetails({ ...details, work: arr });
-  }
-
-  function deleteInternship(index) {
-    console.log("network", index);
-    const arr = [];
-    details.work.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, work: arr });
-  }
-
-  function addEducation() {
-    const education = {
-      typeOfDegree: document.getElementById("TypeOfDegree").value,
-      institution: document.getElementById("school").value,
-      fieldOfStudy: document.getElementById("EducationFieldOfStudy").value,
-      startDate: document.getElementById("Educationstartdate").value,
-      endDate: document.getElementById("Educationenddate").value,
-      gpa: document.getElementById("grade").value,
-      summary: {
-        data: document.getElementById("summary").value,
-      },
-    };
-    const arr = [];
-    details.education.map((item) => {
-      arr.push(item);
-    });
-    // console.log('intern',education)
-    arr.push(education);
-    setdetails({ ...details, education: arr });
-  }
-
-  function deleteEducation(index) {
-    console.log("network", index);
-    const arr = [];
-    details.education.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-
-    setdetails({ ...details, education: arr });
-  }
-
-  function addAward() {
-    const award = {
-      name: document.getElementById("awardTitle").value,
-      awarder: document.getElementById("awarder").value,
-      date: document.getElementById("awardDate").value,
-      summary: {
-        data: document.getElementById("awardSummary").value,
-      },
-    };
-    console.log("award", award);
-    const arr = [];
-    details.awards.map((item) => {
-      arr.push(item);
-    });
-    // console.log('award',award)
-    arr.push(award);
-    setdetails({ ...details, awards: arr });
-  }
-
-  function deleteAward(index) {
-    console.log("network", index);
-    const arr = [];
-    details.awards.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, awards: arr });
-  }
-
-  function addCertificate() {
-    const certificate = {
-      certificateTitle: document.getElementById("certificateTitle").value,
-      issuer: document.getElementById("issuer").value,
-      certificateDate: document.getElementById("certificateDate").value,
-      summary: {
-        data: document.getElementById("certificateSummary").value,
-      },
-    };
-    console.log("award", certificate);
-    const arr = [];
-    details.certifications.map((item) => {
-      arr.push(item);
-    });
-    // console.log('award',award)
-    arr.push(certificate);
-    setdetails({ ...details, certifications: arr });
-  }
-
-  function deleteCertificate(index) {
-    console.log("network", index);
-    const arr = [];
-    details.certifications.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, certifications: arr });
-  }
-
-  function addSkill() {
-    const skill = {
-      name: document.getElementById("skillTitle").value,
-      level: document.getElementById("skillLevel").value,
-    };
-    const arr = [];
-    details.skills.map((item) => {
-      arr.push(item);
-    });
-    // console.log('skill',skill)
-    arr.push(skill);
-    setdetails({ ...details, skills: arr });
-  }
-
-  function deleteSkill(index) {
-    console.log("network", index);
-    const arr = [];
-    details.skills.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, skills: arr });
-  }
-
-  function addLanguage() {
-    const language = {
-      name: document.getElementById("languageTitle").value,
-      level: document.getElementById("languageLevel").value,
-    };
-    const arr = [];
-    details.languages.map((item) => {
-      arr.push(item);
-    });
-    // console.log('skill',language)
-    arr.push(language);
-    setdetails({ ...details, languages: arr });
-  }
-
-  function deleteLanguage(index) {
-    console.log("network", index);
-    const arr = [];
-    details.languages.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, languages: arr });
-  }
-
-  function addHobby() {
-    const hobby = {
-      name: document.getElementById("hobbyTitle").value,
-    };
-    const arr = [];
-    details.hobbies.map((item) => {
-      arr.push(item);
-    });
-    // console.log('hobby',hobby)
-    arr.push(hobby);
-    setdetails({ ...details, hobbies: arr });
-  }
-
-  function deleteHobby(index) {
-    console.log("network", index);
-    const arr = [];
-    details.hobbies.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, hobbies: arr });
-  }
-
-  function addProjects() {}
-  function deleteProjects(index) {}
-
   const [open, setopen] = useState("semiopen");
 
   function toggleResume() {
@@ -421,7 +191,7 @@ export default function Symetric() {
                           </div>
                         )}
                         {details.languages.length != 0 && (
-                          <div className="skills border-b-2 border-r-2 border-gray-500 mx-6">
+                          <div className="border-r-2 border-gray-500 mx-6">
                             <div className="pl-10 pb-5">
                               <h2 className="text-center text-xl font-serif font-medium underline pt-3 pb-2">
                                 L A N G U A G E S
@@ -472,40 +242,62 @@ export default function Symetric() {
                             <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[-7px] bottom-[-6px] bg-white "></div>
                           </div>
                         )}
-                        {/* <div className="projects border-b-2 border-gray-500 ml-[-24px] mr-5">
-                  <h2 className="text-center text-xl font-serif font-medium underline pt-3">
-                    P R O J E C T S
-                  </h2>
-                  <div className="pb-3">
-                    {details.projects.map((item) => (
-                      <p className="pl-10 pr-5 pt-3">
-                        <span className="font-medium text-lg pr-3">
-                          {item.name}
-                        </span>{" "}
-                        ({item.from} to {item.to})<br />
-                        <Link href={item.website}>{item.website}</Link>
-                        <br></br>
-                      </p>
-                    ))}
-                  </div> */}
-                        {/* <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[-7px] bottom-[-6px] bg-white "></div> */}
+                        {details.projects.length != 0 && (
+                          <div className="projects border-b-2 border-gray-500 ml-[-24px] mr-5">
+                            <h2 className="text-center text-xl font-serif font-medium underline pt-3">
+                              P R O J E C T S
+                            </h2>
+                            <div className="pb-3">
+                              {details.projects.map((item) => (
+                                <p className="pl-10 pr-5 pt-3" key={item.name}>
+                                  <span className="font-medium text-lg pr-3">
+                                    {item.name}
+                                  </span>{" "}
+                                  ({item.from} to {item.to})<br />
+                                  <Link href={item.website}>
+                                    {item.website}
+                                  </Link>
+                                  <br></br>
+                                </p>
+                              ))}
+                            </div>
+                            <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[-7px] bottom-[-6px] bg-white "></div>
+                          </div>
+                        )}
+                        {details.certifications.length != 0 && (
+                          <div className="border-gray-500 border-b-2 ml-[-24px] mr-5">
+                            <h2 className="text-center text-xl font-serif font-medium underline pt-3">
+                              C E R T I F I C A T I O N S
+                            </h2>
+                            {details.certifications.map((item) => (
+                              <p className="pl-10 pr-5 pt-1" key={item.title}>
+                                <i className="bx bxs-award pr-1"></i>
+                                <span className="font-medium">
+                                  {item.title}
+                                </span>{" "}
+                                from {item.issuer}
+                              </p>
+                            ))}
+                            <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[-7px] bottom-[-6px] bg-white "></div>
+                          </div>
+                        )}
+                        {details.awards.length != 0 && (
+                          <div className="awards border-gray-500 ml-[-24px] mr-5">
+                            <h2 className="text-center text-xl font-serif font-medium underline pt-3">
+                              A W A R D S
+                            </h2>
+                            {details.awards.map((item) => (
+                              <p className="pl-10 pr-5 pt-1" key={item.name}>
+                                <i className="bx bxs-award pr-1"></i>
+                                <span className="font-medium">
+                                  {item.name}
+                                </span>{" "}
+                                from {item.awarder}
+                              </p>
+                            ))}
+                          </div>
+                        )}
                       </div>
-                      {details.awards.length != 0 && (
-                        <div className="awards border-gray-500 ml-[-24px] mr-5">
-                          <h2 className="text-center text-xl font-serif font-medium underline pt-3">
-                            A W A R D S
-                          </h2>
-                          {details.awards.map((item) => (
-                            <p className="pl-10 pr-5 pt-1" key={item.name}>
-                              <i className="bx bxs-award pr-1"></i>
-                              <span className="font-medium">
-                                {item.name}
-                              </span>{" "}
-                              from {item.awarder}
-                            </p>
-                          ))}
-                        </div>
-                      )}
                     </div>
                   </div>
                 </div>
@@ -515,27 +307,8 @@ export default function Symetric() {
 
           {open == "semiopen" && (
             <>
-              <SideBar
-                deleteHobby={deleteHobby}
-                addHobby={addHobby}
-                updateForm={updateForm}
-                deleteAward={deleteAward}
-                addAward={addAward}
-                deleteCertificate={deleteCertificate}
-                addCertificate={addCertificate}
-                addSkill={addSkill}
-                addInternship={addInternship}
-                addLanguage={addLanguage}
-                deleteLanguage={deleteLanguage}
-                deleteSkill={deleteSkill}
-                deleteInternship={deleteInternship}
-                addEducation={addEducation}
-                deleteEducation={deleteEducation}
-                deleteSocialNetwork={deleteSocialNetwork}
-                socialChange={socialChange}
-                deleteProjects={deleteProjects}
-                addProjects={deleteProjects}
-              />
+              <SideBar />
+
               <div
                 className="lg:hidden text-white border border-white rounded-lg px-2 py-1 hover:border-orange-700 hover:text-orange-700 absolute right-[10%] top-5 "
                 onClick={toggleResume}
@@ -691,7 +464,7 @@ export default function Symetric() {
                             </div>
                           )}
                           {details.languages.length != 0 && (
-                            <div className="skills border-b-2 border-r-2 border-gray-500 mx-6">
+                            <div className="border-r-2 border-gray-500 mx-6">
                               <div className="pl-10 pb-5">
                                 <h2 className="text-center text-xl font-serif font-medium underline pt-3 pb-2">
                                   L A N G U A G E S
@@ -742,40 +515,65 @@ export default function Symetric() {
                               <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[-7px] bottom-[-6px] bg-white "></div>
                             </div>
                           )}
-                          {/* <div className="projects border-b-2 border-gray-500 ml-[-24px] mr-5">
-                  <h2 className="text-center text-xl font-serif font-medium underline pt-3">
-                    P R O J E C T S
-                  </h2>
-                  <div className="pb-3">
-                    {details.projects.map((item) => (
-                      <p className="pl-10 pr-5 pt-3">
-                        <span className="font-medium text-lg pr-3">
-                          {item.name}
-                        </span>{" "}
-                        ({item.from} to {item.to})<br />
-                        <Link href={item.website}>{item.website}</Link>
-                        <br></br>
-                      </p>
-                    ))}
-                  </div> */}
-                          {/* <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[-7px] bottom-[-6px] bg-white "></div> */}
+                          {details.projects.length != 0 && (
+                            <div className="projects border-b-2 border-gray-500 ml-[-24px] mr-5">
+                              <h2 className="text-center text-xl font-serif font-medium underline pt-3">
+                                P R O J E C T S
+                              </h2>
+                              <div className="pb-3">
+                                {details.projects.map((item) => (
+                                  <p
+                                    className="pl-10 pr-5 pt-3"
+                                    key={item.name}
+                                  >
+                                    <span className="font-medium text-lg pr-3">
+                                      {item.name}
+                                    </span>{" "}
+                                    ({item.from} to {item.to})<br />
+                                    <Link href={item.website}>
+                                      {item.website}
+                                    </Link>
+                                    <br></br>
+                                  </p>
+                                ))}
+                              </div>
+                              <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[-7px] bottom-[-6px] bg-white "></div>
+                            </div>
+                          )}
+                          {details.certifications.length != 0 && (
+                            <div className="border-gray-500 border-b-2 ml-[-24px] mr-5">
+                              <h2 className="text-center text-xl font-serif font-medium underline pt-3">
+                                C E R T I F I C A T I O N S
+                              </h2>
+                              {details.certifications.map((item) => (
+                                <p className="pl-10 pr-5 pt-1" key={item.title}>
+                                  <i className="bx bxs-award pr-1"></i>
+                                  <span className="font-medium">
+                                    {item.title}
+                                  </span>{" "}
+                                  from {item.issuer}
+                                </p>
+                              ))}
+                              <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[-7px] bottom-[-6px] bg-white "></div>
+                            </div>
+                          )}
+                          {details.awards.length != 0 && (
+                            <div className="awards border-gray-500 ml-[-24px] mr-5">
+                              <h2 className="text-center text-xl font-serif font-medium underline pt-3">
+                                A W A R D S
+                              </h2>
+                              {details.awards.map((item) => (
+                                <p className="pl-10 pr-5 pt-1" key={item.name}>
+                                  <i className="bx bxs-award pr-1"></i>
+                                  <span className="font-medium">
+                                    {item.name}
+                                  </span>{" "}
+                                  from {item.awarder}
+                                </p>
+                              ))}
+                            </div>
+                          )}
                         </div>
-                        {details.awards.length != 0 && (
-                          <div className="awards border-gray-500 ml-[-24px] mr-5">
-                            <h2 className="text-center text-xl font-serif font-medium underline pt-3">
-                              A W A R D S
-                            </h2>
-                            {details.awards.map((item) => (
-                              <p className="pl-10 pr-5 pt-1" key={item.name}>
-                                <i className="bx bxs-award pr-1"></i>
-                                <span className="font-medium">
-                                  {item.name}
-                                </span>{" "}
-                                from {item.awarder}
-                              </p>
-                            ))}
-                          </div>
-                        )}
                       </div>
                     </div>
                   </div>

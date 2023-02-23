@@ -1,14 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState ,useContext ,useEffect} from 'react'
 import Navbar from '../../components/Navbar';
 import {useUser} from "../../lib/hooks"
 import Link from "next/link"
 import { useRouter } from 'next/router';
+import ResumeContext from "../../context/ResumeContext";
+
 
 export default function Student() {
 
   const user = useUser()
   const [position, setPosition] = useState("profile");
   const router = useRouter();
+
+
+ 
 
   function runMe(){
     router.push("/register/addStdDetails")
@@ -23,7 +28,7 @@ export default function Student() {
     {user && (
       
       // console.log("user.profile.email",user.email)
-      <Navbar email={user.email}/>
+      <Navbar/>
     )}
     <div>
       <img
@@ -81,7 +86,7 @@ export default function Student() {
               </div>
               <div>
                 <h1 className="">Registered Email</h1>
-                <h1 className="font-bold">{user.username}</h1>
+                <h1 className="font-bold">{user.email}</h1>
               </div>
               <div>
                 <h1 className="">Mobile Number</h1>

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import Link from "next/link";
 import { FiMenu } from "react-icons/fi";
 import { useUser } from "../../lib/hooks";
 import { useRouter } from "next/router";
+
 const Home = (props) => {
   const arr = props.done;
   const [open, setOpen] = useState(false);
@@ -11,66 +12,17 @@ const Home = (props) => {
   const [type, setType] = useState("free");
   const [design, setDesign] = useState("all");
   const user = useUser();
-  const router = useRouter()
   // console.log("in index",router.query)
-  const email = router.query.email
+
+
+
   return (
     
     <div>
       <div>
         <div className="border-b border-gray-300 py-2 fixed top-[-8px] w-[100%] z-40 bg-slate-50">
-          <div className="flex items-center justify-between xl:max-w-7xl xl:mx-auto max-w-full px-[8%] flex-wrap w-full">
-            {/* <h1>Provast</h1> */}
-            <img
-              src="https://www.provast.io/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdj7nomqfd%2Fimage%2Fupload%2Fv1652909540%2Fpvast_B_fpwhlu.png&w=2048&q=75"
-              width={220}
-              height={55}
-            />
-            <FiMenu
-              className="lg:hidden block h-6 w-6 cursor-pointer"
-              onClick={() => setOpen(!open)}
-            />
-            <nav
-              className={`${
-                open ? "block" : "hidden"
-              } w-full lg:flex lg:items-center lg:w-auto`}
-            >
-              <ul className="text-base text-gray-600 lg:flex lg:justify-between">
-                <li>
-                  <Link
-                    href="#"
-                    className="lg:pl-8 py-3 block hover:text-orange-700 font-semibold"
-                  >
-                    Login
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="lg:pl-8 py-3 block hover:text-orange-700 font-semibold"
-                  >
-                    Sign up
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="lg:pl-8 py-3 block hover:text-orange-700 font-semibold"
-                  >
-                    About us
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="lg:pl-8 py-3 block hover:text-orange-700 font-semibold"
-                  >
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-          </div>
+            <Navbar/>
+          
         </div>
       </div>
       
@@ -107,7 +59,7 @@ const Home = (props) => {
           <div className="hidden md:block">
             <nav className="my-10 flex">
               <a
-                className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 w-1/4 px-1 text-center border-b-2 font-medium text-lg cursor-pointer focus:bg-orange-500"
+                className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:border-gray-300 active:border-gray-300 w-1/4 px-1 text-center border-b-2 font-medium text-lg cursor-pointer"
                 onClick={() => setDesign("all")}
               >
                 all templates
@@ -159,7 +111,7 @@ const Home = (props) => {
 
               //      </Link>
               l.map((data) => (
-                <Link href={`resume/${data.ResumeDesign}/${data.ResumeName}?email=${email}`} key={data._id}>
+                <Link href={`resume/${data.ResumeDesign}/${data.ResumeName}`} key={data._id}>
                   <div className="rounded-md bg-gray-100 h-auto  w-63 p-5 m-5 cursor-pointer relative">
                     <div className="opacity-80">
                       <img src={data.ResumeImage} />

@@ -163,8 +163,8 @@ export const editProfile = () => {
                       className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
                     >
     
-    <option value="Afghanistan">Afghanistan</option>
-   <option value="Albania">Albania</option>
+<option value="Afghanistan">Afghanistan</option>
+<option value="Albania">Albania</option>
 <option value="Algeria">Algeria</option>
 <option value="American Samoa">American Samoa</option>
 <option value="Andorra">Andorra</option>
