@@ -4,7 +4,6 @@ import Link from "next/link";
 import { FiMenu } from "react-icons/fi";
 import { useUser } from "../../lib/hooks";
 import { useRouter } from "next/router";
-import ResumeContext from "../../context/ResumeContext";
 
 const Home = (props) => {
   const arr = props.done;
@@ -13,16 +12,9 @@ const Home = (props) => {
   const [type, setType] = useState("free");
   const [design, setDesign] = useState("all");
   const user = useUser();
-  const router = useRouter()
   // console.log("in index",router.query)
-  const email = router.query.email
-
-  const { setemail } = useContext(ResumeContext);
 
 
-  useEffect(()=>{
-    setemail(email)
-  },[email])
 
   return (
     

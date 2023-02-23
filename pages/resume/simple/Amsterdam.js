@@ -7,10 +7,33 @@ import { useFieldArray, useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+
+
+
+
 
 export default function Amsterdam() {
   const user = useUser();
   const { details, setdetails } = useContext(ResumeContext);
+
+
+
+ function printDocument() {
+    console.log("inside")
+    const input = document.getElementById('largeResume');
+    html2canvas(input)
+      .then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF();
+        pdf.addImage(imgData, 'JPEG', 0, 0);
+        // pdf.output('dataurlnewwindow');
+        pdf.save("download.pdf");
+      })
+    ;
+  }
+
 
   useEffect(() => {
     if (user) {
@@ -26,236 +49,7 @@ export default function Amsterdam() {
     }
   }, [user]);
 
-  function updateForm(event) {
-    const n = event.target.name;
-    const i = event.target.id;
-    setdetails({ ...details, [n]: { ...details[n], [i]: event.target.value } });
-  }
-
-  async function socialChange() {
-    const sn = {
-      network: document.getElementById("network").value,
-      username: document.getElementById("username").value,
-      url: document.getElementById("url").value,
-    };
-    const arr = [];
-    details.social.map((item) => {
-      arr.push(item);
-    });
-    arr.push(sn);
-    setdetails({ ...details, social: arr });
-  }
-
-  function deleteSocialNetwork(index) {
-    // console.log("network",network)
-    const arr = [];
-    details.social.map((item, i) => {
-      if (i != index) {
-        arr.push(item);
-      }
-    });
-    setdetails({ ...details, social: arr });
-  }
-
-  function addInternship() {
-    const intern = {
-      company: document.getElementById("company").value,
-      designation: document.getElementById("position").value,
-      // website:document.getElementById("website").value,
-      from: document.getElementById("startdate").value,
-      to: document.getElementById("enddate").value,
-      summary: {
-        data: document.getElementById("summary").value,
-      },
-    };
-    const arr = [];
-    details.work.map((item) => {
-      arr.push(item);
-    });
-    // console.log('intern',intern)
-    arr.push(intern);
-    setdetails({ ...details, work: arr });
-  }
-
-  function deleteInternship(index) {
-    console.log("network", index);
-    const arr = [];
-    details.work.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, work: arr });
-  }
-
-  function addEducation() {
-    const education = {
-      typeOfDegree: document.getElementById("TypeOfDegree").value,
-      institution: document.getElementById("school").value,
-      fieldOfStudy: document.getElementById("EducationFieldOfStudy").value,
-      startDate: document.getElementById("Educationstartdate").value,
-      endDate: document.getElementById("Educationenddate").value,
-      gpa: document.getElementById("grade").value,
-      summary: {
-        data: document.getElementById("summary").value,
-      },
-    };
-    const arr = [];
-    details.education.map((item) => {
-      arr.push(item);
-    });
-    // console.log('intern',education)
-    arr.push(education);
-    setdetails({ ...details, education: arr });
-  }
-
-  function deleteEducation(index) {
-    console.log("network", index);
-    const arr = [];
-    details.education.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-
-    setdetails({ ...details, education: arr });
-  }
-
-  function addAward() {
-    const award = {
-      name: document.getElementById("awardTitle").value,
-      awarder: document.getElementById("awarder").value,
-      date: document.getElementById("awardDate").value,
-      summary: {
-        data: document.getElementById("awardSummary").value,
-      },
-    };
-    console.log("award", award);
-    const arr = [];
-    details.awards.map((item) => {
-      arr.push(item);
-    });
-    // console.log('award',award)
-    arr.push(award);
-    setdetails({ ...details, awards: arr });
-  }
-
-  function deleteAward(index) {
-    console.log("network", index);
-    const arr = [];
-    details.awards.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, awards: arr });
-  }
-
-  function addCertificate() {
-    const certificate = {
-      certificateTitle: document.getElementById("certificateTitle").value,
-      issuer: document.getElementById("issuer").value,
-      certificateDate: document.getElementById("certificateDate").value,
-      summary: {
-        data: document.getElementById("certificateSummary").value,
-      },
-    };
-    console.log("award", certificate);
-    const arr = [];
-    details.certifications.map((item) => {
-      arr.push(item);
-    });
-    // console.log('award',award)
-    arr.push(certificate);
-    setdetails({ ...details, certifications: arr });
-  }
-
-  function deleteCertificate(index) {
-    console.log("network", index);
-    const arr = [];
-    details.certifications.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, certifications: arr });
-  }
-
-  function addSkill() {
-    const skill = {
-      name: document.getElementById("skillTitle").value,
-      level: document.getElementById("skillLevel").value,
-    };
-    const arr = [];
-    details.skills.map((item) => {
-      arr.push(item);
-    });
-    // console.log('skill',skill)
-    arr.push(skill);
-    setdetails({ ...details, skills: arr });
-  }
-
-  function deleteSkill(index) {
-    console.log("network", index);
-    const arr = [];
-    details.skills.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, skills: arr });
-  }
-
-  function addLanguage() {
-    const language = {
-      name: document.getElementById("languageTitle").value,
-      level: document.getElementById("languageLevel").value,
-    };
-    const arr = [];
-    details.languages.map((item) => {
-      arr.push(item);
-    });
-    // console.log('skill',language)
-    arr.push(language);
-    setdetails({ ...details, languages: arr });
-  }
-
-  function deleteLanguage(index) {
-    console.log("network", index);
-    const arr = [];
-    details.languages.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, languages: arr });
-  }
-
-  function addHobby() {
-    const hobby = {
-      name: document.getElementById("hobbyTitle").value,
-    };
-    const arr = [];
-    details.hobbies.map((item) => {
-      arr.push(item);
-    });
-    // console.log('hobby',hobby)
-    arr.push(hobby);
-    setdetails({ ...details, hobbies: arr });
-  }
-
-  function deleteHobby(index) {
-    console.log("network", index);
-    const arr = [];
-    details.hobbies.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, hobbies: arr });
-  }
-
-  function addProjects() {}
-  function deleteProjects(index) {}
-
+ 
   const [open, setopen] = useState("semiopen");
 
   function toggleResume() {
@@ -278,9 +72,13 @@ export default function Amsterdam() {
               >
                 DETAILS
               </button>
-              <div className="flex justify-center ">
+              <div className="flex justify-center" >
+              <div className="mb5">
+                <button onClick={printDocument} className="cursor-pointer">Print</button>
+              </div>
                 {/* Small Resume */}
-                <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row">
+
+                <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row" >
                   <div className="absolute left-44 top-5 border-[3px] border-gray-500 h-40 w-96 bg-white text-center">
                     <h1 className="mt-8 font-extrabold text-2xl tracking-[3px]">
                       {details.personal.firstName} {details.personal.lastName}
@@ -523,27 +321,7 @@ export default function Amsterdam() {
 
           {open == "semiopen" && (
             <>
-              <SideBar
-                deleteHobby={deleteHobby}
-                addHobby={addHobby}
-                updateForm={updateForm}
-                deleteAward={deleteAward}
-                addAward={addAward}
-                deleteCertificate={deleteCertificate}
-                addCertificate={addCertificate}
-                addSkill={addSkill}
-                addInternship={addInternship}
-                addLanguage={addLanguage}
-                deleteLanguage={deleteLanguage}
-                deleteSkill={deleteSkill}
-                deleteInternship={deleteInternship}
-                addEducation={addEducation}
-                deleteEducation={deleteEducation}
-                deleteSocialNetwork={deleteSocialNetwork}
-                socialChange={socialChange}
-                deleteProjects={deleteProjects}
-                addProjects={deleteProjects}
-              />
+              <SideBar/>
               <div
                 className="lg:hidden text-white border border-white rounded-lg px-2 py-1 hover:border-orange-700 hover:text-orange-700 absolute right-[10%] top-5 "
                 onClick={toggleResume}
@@ -553,9 +331,13 @@ export default function Amsterdam() {
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
                 <div className="flex justify-center ">
+
+                <div className="mb5">
+                <button onClick={printDocument} className="cursor-pointer text-white ">Print</button>
+              </div>
                   {/* large resume */}
 
-                  <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row">
+                  <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row" id="largeResume">
                     <div className="absolute left-44 top-5 border-[3px] border-gray-500 h-40 w-96 bg-white text-center">
                       <h1 className="mt-8 font-extrabold text-2xl tracking-[3px]">
                         {details.personal.firstName} {details.personal.lastName}
@@ -802,6 +584,7 @@ export default function Amsterdam() {
           )}
         </div>
       )}
+     
     </>
   );
 }

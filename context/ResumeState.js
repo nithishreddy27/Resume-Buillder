@@ -119,27 +119,33 @@ const ResumeState = (props) => {
 
   const [details, setdetails] = useState(pro);
   // var email;
-  const [email, setemail] = useState()
+  const user = useUser()
   // console.log("in res",check)
   // email = router.query.email;
+ 
   useEffect(() => {
-    console.log("inside ue", email);
+    // console.log("inside ue", email);
+    if(user){
+      const e= user.email
+    console.log("email",e)
+
     fetch("http://localhost:3000/api/Resume/getResume", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: router.query.email }),
+      body: JSON.stringify({email:e}),
     })
       .then((data) => {
-        console.log("in data", data);
+        // console.log("in data", data);
         return data.json();
       })
       .then((resume) => {
-        console.log("in get data", resume.resume);
+        // console.log("in get data", resume.resume);
         if (resume.resume) {
           setdetails(resume.resume);
         }
       });
-  }, [email]);
+    }
+  }, [user]);
 
   useEffect(() => {
     // console.log("details",details.personal)
@@ -151,7 +157,7 @@ const ResumeState = (props) => {
   }, [details]);
 
   return (
-    <ResumeContext.Provider value={{ details, setdetails ,setemail }}>
+    <ResumeContext.Provider value={{ details, setdetails }}>
       {props.children}
     </ResumeContext.Provider>
   );

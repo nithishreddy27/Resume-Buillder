@@ -11,14 +11,9 @@ export default function Student() {
   const user = useUser()
   const [position, setPosition] = useState("profile");
   const router = useRouter();
-  const { setemail } = useContext(ResumeContext);
 
 
-  useEffect(()=>{
-    if(user){
-      setemail(user.email)
-    }
-  },[user])
+ 
 
   function runMe(){
     router.push("/register/addStdDetails")

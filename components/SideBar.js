@@ -358,110 +358,110 @@ export default function SideBar() {
         </div>
         <div className="block lg:flex">
           <div className=" fixed lg:flex flex-col hidden   min-h-screen ml-3 mt-[80px] z-0">
-            <div class="group  flex items-center relative justify-center">
+            <div className="group  flex items-center relative justify-center">
               <a
                 href="#personaldetails"
                 id="1"
-                class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
+                className="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
               >
                 <CgProfile></CgProfile>
-                <span class="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
                   profile
                 </span>
               </a>
             </div>
-            <div class="group flex items-center relative justify-center">
+            <div className="group flex items-center relative justify-center">
               <a
                 href="#socialnetworks"
                 id="1"
-                class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
+                className="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
               >
                 <MdSocialDistance></MdSocialDistance>
-                <span class="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
                   social
                 </span>
               </a>
             </div>
-            <div class="group flex items-center relative justify-center">
+            <div className="group flex items-center relative justify-center">
               <a
                 href="#obj"
                 id="1"
-                class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
+                className="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
               >
                 <MdOutlineSpeakerNotes></MdOutlineSpeakerNotes>
-                <span class="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
                   objective
                 </span>
               </a>
             </div>
-            <div class="group flex items-center relative justify-center">
+            <div className="group flex items-center relative justify-center">
               <a
                 href="#education"
                 id="1"
-                class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
+                className="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
               >
                 <SiGooglescholar></SiGooglescholar>
-                <span class="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
                   education
                 </span>
               </a>
             </div>
-            <div class="group flex items-center relative justify-center">
+            <div className="group flex items-center relative justify-center">
               <a
                 href="#projects"
                 id="1"
-                class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
+                className="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
               >
                 <AiFillProject></AiFillProject>
-                <span class="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
                   projects
                 </span>
               </a>
             </div>
-            <div class="group flex items-center relative justify-center">
+            <div className="group flex items-center relative justify-center">
               <a
                 href="#awards"
                 id="1"
-                class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
+                className="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
               >
                 <FaAward></FaAward>
-                <span class="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
                   awards
                 </span>
               </a>
             </div>
-            <div class="group flex items-center relative justify-center">
+            <div className="group flex items-center relative justify-center">
               <a
                 href="#skills"
                 id="1"
-                class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
+                className="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
               >
                 <GiSkills></GiSkills>
-                <span class="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
                   skills
                 </span>
               </a>
             </div>
-            <div class="group flex items-center relative justify-center">
+            <div className="group flex items-center relative justify-center">
               <a
                 href="#hobbies"
                 id="1"
-                class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
+                className="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
               >
                 <RxHobbyKnife></RxHobbyKnife>
-                <span class="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
                   hobbies
                 </span>
               </a>
             </div>
-            <div class="group flex items-center relative justify-center">
+            <div className="group flex items-center relative justify-center">
               <a
                 href="#languages"
                 id="1"
-                class="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
+                className="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 my-5 mx-2"
               >
                 <FaLanguage></FaLanguage>
-                <span class="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
                   languages
                 </span>
               </a>
@@ -536,7 +536,7 @@ export default function SideBar() {
                       id="email"
                       className="shadow appearance-none border bg-slate-100 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
                       value={details.personal.email}
-                      onChange={updateForm}
+                      onChange={()=>console.log("noo")}
                     />
                   </div>
                 </div>
@@ -572,9 +572,9 @@ export default function SideBar() {
                 >
                   {arrow == true && (
                     <div className="">
-                      <div class="flex justify-center">
-                        <button class="align-right flex transition ease-in-out duration-0 hover:duration-150 items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                          <span class="mr-2">
+                      <div className="flex justify-center">
+                        <button className="align-right flex transition ease-in-out duration-0 hover:duration-150 items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span className="mr-2">
                             <AiOutlinePlus></AiOutlinePlus>
                           </span>
                           Hide
@@ -583,9 +583,9 @@ export default function SideBar() {
                     </div>
                   )}
                   {arrow == false && (
-                    <div class="flex justify-end grow">
-                      <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                        <span class="mr-2">
+                    <div className="flex justify-end grow">
+                      <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                        <span className="mr-2">
                           <AiOutlinePlus></AiOutlinePlus>
                         </span>
                         Add
@@ -690,9 +690,9 @@ export default function SideBar() {
                 >
                   {iarrow == true && (
                     <div>
-                      <div class="flex justify-center">
-                        <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                          <span class="mr-2">
+                      <div className="flex justify-center">
+                        <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span className="mr-2">
                             <AiOutlinePlus></AiOutlinePlus>
                           </span>
                           Hide
@@ -702,9 +702,9 @@ export default function SideBar() {
                   )}
                   {iarrow == false && (
                     <div>
-                      <div class="flex justify-center">
-                        <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                          <span class="mr-2">
+                      <div className="flex justify-center">
+                        <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span className="mr-2">
                             <AiOutlinePlus></AiOutlinePlus>
                           </span>
                           Add
@@ -852,9 +852,9 @@ export default function SideBar() {
                   {earrow == true && (
                     <div>
                       <div>
-                        <div class="flex justify-center">
-                          <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                            <span class="mr-2">
+                        <div className="flex justify-center">
+                          <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                            <span className="mr-2">
                               <AiOutlinePlus></AiOutlinePlus>
                             </span>
                             Hide
@@ -866,9 +866,9 @@ export default function SideBar() {
                   {earrow == false && (
                     <div>
                       <div>
-                        <div class="flex justify-center">
-                          <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                            <span class="mr-2">
+                        <div className="flex justify-center">
+                          <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                            <span className="mr-2">
                               <AiOutlinePlus></AiOutlinePlus>
                             </span>
                             Add
@@ -1057,9 +1057,9 @@ export default function SideBar() {
                   {carrow == true && (
                     <div>
                       <div>
-                        <div class="flex justify-center">
-                          <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                            <span class="mr-2">
+                        <div className="flex justify-center">
+                          <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                            <span className="mr-2">
                               <AiOutlinePlus></AiOutlinePlus>
                             </span>
                             Hide
@@ -1071,9 +1071,9 @@ export default function SideBar() {
                   {carrow == false && (
                     <div>
                       <div>
-                        <div class="flex justify-center">
-                          <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                            <span class="mr-2">
+                        <div className="flex justify-center">
+                          <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                            <span className="mr-2">
                               <AiOutlinePlus></AiOutlinePlus>
                             </span>
                             Add
@@ -1186,9 +1186,9 @@ export default function SideBar() {
                 >
                   {parrow == true && (
                     <div>
-                      <div class="flex justify-center">
-                        <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                          <span class="mr-2">
+                      <div className="flex justify-center">
+                        <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span className="mr-2">
                             <AiOutlinePlus></AiOutlinePlus>
                           </span>
                           Hide
@@ -1198,9 +1198,9 @@ export default function SideBar() {
                   )}
                   {parrow == false && (
                     <div>
-                      <div class="flex justify-center">
-                        <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                          <span class="mr-2">
+                      <div className="flex justify-center">
+                        <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span className="mr-2">
                             <AiOutlinePlus></AiOutlinePlus>
                           </span>
                           Add
@@ -1344,9 +1344,9 @@ export default function SideBar() {
                 >
                   {awarrow == true && (
                     <div>
-                      <div class="flex justify-center">
-                        <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                          <span class="mr-2">
+                      <div className="flex justify-center">
+                        <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span className="mr-2">
                             <AiOutlinePlus></AiOutlinePlus>
                           </span>
                           Hide
@@ -1356,9 +1356,9 @@ export default function SideBar() {
                   )}
                   {awarrow == false && (
                     <div>
-                      <div class="flex justify-center">
-                        <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                          <span class="mr-2">
+                      <div className="flex justify-center">
+                        <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span className="mr-2">
                             <AiOutlinePlus></AiOutlinePlus>
                           </span>
                           Add
@@ -1488,9 +1488,9 @@ export default function SideBar() {
                 >
                   {skarrow == true && (
                     <div>
-                      <div class="flex justify-center">
-                        <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                          <span class="mr-2">
+                      <div className="flex justify-center">
+                        <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span className="mr-2">
                             <AiOutlinePlus></AiOutlinePlus>
                           </span>
                           Hide
@@ -1500,9 +1500,9 @@ export default function SideBar() {
                   )}
                   {skarrow == false && (
                     <div>
-                      <div class="flex justify-center">
-                        <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                          <span class="mr-2">
+                      <div className="flex justify-center">
+                        <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span className="mr-2">
                             <AiOutlinePlus></AiOutlinePlus>
                           </span>
                           Add
@@ -1600,9 +1600,9 @@ export default function SideBar() {
                 >
                   {larrow == true && (
                     <div>
-                      <div class="flex justify-center">
-                        <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                          <span class="mr-2">
+                      <div className="flex justify-center">
+                        <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span className="mr-2">
                             <AiOutlinePlus></AiOutlinePlus>
                           </span>
                           Hide
@@ -1612,9 +1612,9 @@ export default function SideBar() {
                   )}
                   {larrow == false && (
                     <div>
-                      <div class="flex justify-center">
-                        <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                          <span class="mr-2">
+                      <div className="flex justify-center">
+                        <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span className="mr-2">
                             <AiOutlinePlus></AiOutlinePlus>
                           </span>
                           Add
@@ -1727,9 +1727,9 @@ export default function SideBar() {
                 >
                   {harrow == true && (
                     <div>
-                      <div class="flex justify-center">
-                        <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                          <span class="mr-2">
+                      <div className="flex justify-center">
+                        <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span className="mr-2">
                             <AiOutlinePlus></AiOutlinePlus>
                           </span>
                           Hide
@@ -1739,9 +1739,9 @@ export default function SideBar() {
                   )}
                   {harrow == false && (
                     <div>
-                      <div class="flex justify-center">
-                        <button class="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                          <span class="mr-2">
+                      <div className="flex justify-center">
+                        <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
+                          <span className="mr-2">
                             <AiOutlinePlus></AiOutlinePlus>
                           </span>
                           Add
