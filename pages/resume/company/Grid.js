@@ -11,8 +11,12 @@ import SideBar from "../../../components/SideBar";
 <<<<<<< HEAD
 export default function Grid() {
 =======
+<<<<<<< HEAD
+export default function Grid() {
+=======
 export default function Dynamic() {
 >>>>>>> 62ea9c4eb54bd1315c6f00398de46c76585ed8c0
+>>>>>>> 57cf2a1f795f2b65d6f4a7a4ae15151153ada462
   const user = useUser();
   const { details, setdetails } = useContext(ResumeContext);
 
