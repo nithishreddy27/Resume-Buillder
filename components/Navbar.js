@@ -2,7 +2,7 @@ import { FiMenu} from 'react-icons/fi'
 import React, { useState } from "react";
 import Link from 'next/link';
 import { useUser } from '../lib/hooks';
-const Navbar = ({email}) => {
+const Navbar = () => {
     const [open, setOpen] = useState(false);
     const user = useUser()
   return (
@@ -35,7 +35,7 @@ const Navbar = ({email}) => {
                 </Link>
               </li>
               <li>
-              <Link href={`/resume?email=${email}`} className="lg:pl-8 py-3 block hover:text-orange-700 font-semibold">
+              <Link href={`/resume`} className="lg:pl-8 py-3 block hover:text-orange-700 font-semibold">
             Resumes
           </Link>
               </li>

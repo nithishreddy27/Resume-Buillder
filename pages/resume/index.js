@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import Link from "next/link";
 import { FiMenu } from "react-icons/fi";
 import { useUser } from "../../lib/hooks";
 import { useRouter } from "next/router";
+import ResumeContext from "../../context/ResumeContext";
+
 const Home = (props) => {
   const arr = props.done;
   const [open, setOpen] = useState(false);
@@ -14,6 +16,14 @@ const Home = (props) => {
   const router = useRouter()
   // console.log("in index",router.query)
   const email = router.query.email
+
+  const { setemail } = useContext(ResumeContext);
+
+
+  useEffect(()=>{
+    setemail(email)
+  },[email])
+
   return (
     
     <div>
@@ -109,7 +119,7 @@ const Home = (props) => {
 
               //      </Link>
               l.map((data) => (
-                <Link href={`resume/${data.ResumeDesign}/${data.ResumeName}?email=${email}`} key={data._id}>
+                <Link href={`resume/${data.ResumeDesign}/${data.ResumeName}`} key={data._id}>
                   <div className="rounded-md bg-gray-100 h-auto  w-63 p-5 m-5 cursor-pointer relative">
                     <div className="opacity-80">
                       <img src={data.ResumeImage} />

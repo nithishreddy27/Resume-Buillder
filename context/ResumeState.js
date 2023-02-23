@@ -118,8 +118,10 @@ const ResumeState = (props) => {
   };
 
   const [details, setdetails] = useState(pro);
-  var email;
-  email = router.query.email;
+  // var email;
+  const [email, setemail] = useState()
+  // console.log("in res",check)
+  // email = router.query.email;
   useEffect(() => {
     console.log("inside ue", email);
     fetch("http://localhost:3000/api/Resume/getResume", {
@@ -149,7 +151,7 @@ const ResumeState = (props) => {
   }, [details]);
 
   return (
-    <ResumeContext.Provider value={{ details, setdetails }}>
+    <ResumeContext.Provider value={{ details, setdetails ,setemail }}>
       {props.children}
     </ResumeContext.Provider>
   );
