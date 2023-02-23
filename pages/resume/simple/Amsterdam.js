@@ -23,15 +23,18 @@ export default function Amsterdam() {
  function printDocument() {
     console.log("inside")
     const input = document.getElementById('largeResume');
+   
+
     html2canvas(input)
       .then((canvas) => {
         const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF();
-        pdf.addImage(imgData, 'JPEG', 0, 0);
+        const pdf = new jsPDF("p", "mm", "a4");
+        var width = pdf.internal.pageSize.getWidth();
+        var height = pdf.internal.pageSize.getHeight();
+        pdf.addImage(imgData, 'JPEG',0,0,width,height);
         // pdf.output('dataurlnewwindow');
         pdf.save("download.pdf");
-      })
-    ;
+      });
   }
 
 
@@ -77,6 +80,9 @@ export default function Amsterdam() {
                 <button onClick={printDocument} className="cursor-pointer">Print</button>
               </div>
                 {/* Small Resume */}
+                <div className="mb5">
+                <button onClick={printDocument} className="cursor-pointer text-white ">Print</button>
+              </div>
 
                 <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row" >
                   <div className="absolute left-44 top-5 border-[3px] border-gray-500 h-40 w-96 bg-white text-center">
