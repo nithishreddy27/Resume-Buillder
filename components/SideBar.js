@@ -49,6 +49,10 @@ export default function SideBar() {
     });
     arr.push(sn);
     setdetails({ ...details, social: arr });
+
+    document.getElementById("network").value="",
+    document.getElementById("username").value="",
+    document.getElementById("url").value=""
   }
 
   function deleteSocialNetwork(index) {
@@ -80,6 +84,13 @@ export default function SideBar() {
     // console.log('intern',intern)
     arr.push(intern);
     setdetails({ ...details, work: arr });
+
+    document.getElementById("company").value="",
+    document.getElementById("position").value="",
+    // website:document.getElementById("website").value,
+    document.getElementById("startdate").value="",
+    document.getElementById("enddate").value="",
+    document.getElementById("summary").value=""
   }
 
   function deleteInternship(index) {
@@ -112,10 +123,18 @@ export default function SideBar() {
     // console.log('intern',education)
     arr.push(education);
     setdetails({ ...details, education: arr });
+
+
+    document.getElementById("TypeOfDegree").value="",
+    document.getElementById("school").value="",
+    document.getElementById("EducationFieldOfStudy").value="",
+    document.getElementById("Educationstartdate").value="",
+    document.getElementById("Educationenddate").value="",
+    document.getElementById("grade").value="",
+    document.getElementById("summary").value=""
   }
 
   function deleteEducation(index) {
-    console.log("network", index);
     const arr = [];
     details.education.map((item, i) => {
       if (i != index) arr.push(item);
@@ -141,10 +160,14 @@ export default function SideBar() {
     // console.log('award',award)
     arr.push(award);
     setdetails({ ...details, awards: arr });
+
+    document.getElementById("awardTitle").value="",
+      document.getElementById("awarder").value="",
+      document.getElementById("awardDate").value="",
+         document.getElementById("awardSummary").value=""
   }
 
   function deleteAward(index) {
-    console.log("network", index);
     const arr = [];
     details.awards.map((item, i) => {
       if (i != index) arr.push(item);
@@ -171,6 +194,11 @@ export default function SideBar() {
     // console.log('award',award)
     arr.push(certificate);
     setdetails({ ...details, certifications: arr });
+
+    document.getElementById("certificateTitle").value="",
+      document.getElementById("issuer").value="",
+       document.getElementById("certificateDate").value="",
+        document.getElementById("certificateSummary").value=""
   }
 
   function deleteCertificate(index) {
@@ -196,6 +224,10 @@ export default function SideBar() {
     // console.log('skill',skill)
     arr.push(skill);
     setdetails({ ...details, skills: arr });
+
+
+    document.getElementById("skillTitle").value="",
+    document.getElementById("skillLevel").value=""
   }
 
   function deleteSkill(index) {
@@ -221,6 +253,9 @@ export default function SideBar() {
     // console.log('skill',language)
     arr.push(language);
     setdetails({ ...details, languages: arr });
+    document.getElementById("languageTitle").value="",
+    document.getElementById("languageLevel").value=""
+  
   }
 
   function deleteLanguage(index) {
@@ -245,6 +280,8 @@ export default function SideBar() {
     // console.log('hobby',hobby)
     arr.push(hobby);
     setdetails({ ...details, hobbies: arr });
+
+    document.getElementById("hobbyTitle").value=""
   }
 
   function deleteHobby(index) {
@@ -279,7 +316,12 @@ export default function SideBar() {
     arr.push(project);
     setdetails({ ...details, projects: arr });
 
-
+    document.getElementById("projectTitle").value="",
+     document.getElementById("projectDomain").value="",
+     document.getElementById("projectWebsite").value="",
+    document.getElementById("projectstartdate").value="",
+     document.getElementById("projectenddate").value="",
+      document.getElementById("projectsummary").value=""
 
 
   }
