@@ -26,236 +26,6 @@ export default function Square() {
     }
   }, [user]);
 
-  function updateForm(event) {
-    const n = event.target.name;
-    const i = event.target.id;
-    setdetails({ ...details, [n]: { ...details[n], [i]: event.target.value } });
-  }
-
-  async function socialChange() {
-    const sn = {
-      network: document.getElementById("network").value,
-      username: document.getElementById("username").value,
-      url: document.getElementById("url").value,
-    };
-    const arr = [];
-    details.social.map((item) => {
-      arr.push(item);
-    });
-    arr.push(sn);
-    setdetails({ ...details, social: arr });
-  }
-
-  function deleteSocialNetwork(index) {
-    // console.log("network",network)
-    const arr = [];
-    details.social.map((item, i) => {
-      if (i != index) {
-        arr.push(item);
-      }
-    });
-    setdetails({ ...details, social: arr });
-  }
-
-  function addInternship() {
-    const intern = {
-      company: document.getElementById("company").value,
-      designation: document.getElementById("position").value,
-      // website:document.getElementById("website").value,
-      from: document.getElementById("startdate").value,
-      to: document.getElementById("enddate").value,
-      summary: {
-        data: document.getElementById("summary").value,
-      },
-    };
-    const arr = [];
-    details.work.map((item) => {
-      arr.push(item);
-    });
-    // console.log('intern',intern)
-    arr.push(intern);
-    setdetails({ ...details, work: arr });
-  }
-
-  function deleteInternship(index) {
-    console.log("network", index);
-    const arr = [];
-    details.work.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, work: arr });
-  }
-
-  function addEducation() {
-    const education = {
-      typeOfDegree: document.getElementById("TypeOfDegree").value,
-      institution: document.getElementById("school").value,
-      fieldOfStudy: document.getElementById("EducationFieldOfStudy").value,
-      startDate: document.getElementById("Educationstartdate").value,
-      endDate: document.getElementById("Educationenddate").value,
-      gpa: document.getElementById("grade").value,
-      summary: {
-        data: document.getElementById("summary").value,
-      },
-    };
-    const arr = [];
-    details.education.map((item) => {
-      arr.push(item);
-    });
-    // console.log('intern',education)
-    arr.push(education);
-    setdetails({ ...details, education: arr });
-  }
-
-  function deleteEducation(index) {
-    console.log("network", index);
-    const arr = [];
-    details.education.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-
-    setdetails({ ...details, education: arr });
-  }
-
-  function addAward() {
-    const award = {
-      name: document.getElementById("awardTitle").value,
-      awarder: document.getElementById("awarder").value,
-      date: document.getElementById("awardDate").value,
-      summary: {
-        data: document.getElementById("awardSummary").value,
-      },
-    };
-    console.log("award", award);
-    const arr = [];
-    details.awards.map((item) => {
-      arr.push(item);
-    });
-    // console.log('award',award)
-    arr.push(award);
-    setdetails({ ...details, awards: arr });
-  }
-
-  function deleteAward(index) {
-    console.log("network", index);
-    const arr = [];
-    details.awards.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, awards: arr });
-  }
-
-  function addCertificate() {
-    const certificate = {
-      certificateTitle: document.getElementById("certificateTitle").value,
-      issuer: document.getElementById("issuer").value,
-      certificateDate: document.getElementById("certificateDate").value,
-      summary: {
-        data: document.getElementById("certificateSummary").value,
-      },
-    };
-    console.log("award", certificate);
-    const arr = [];
-    details.certifications.map((item) => {
-      arr.push(item);
-    });
-    // console.log('award',award)
-    arr.push(certificate);
-    setdetails({ ...details, certifications: arr });
-  }
-
-  function deleteCertificate(index) {
-    console.log("network", index);
-    const arr = [];
-    details.certifications.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, certifications: arr });
-  }
-
-  function addSkill() {
-    const skill = {
-      name: document.getElementById("skillTitle").value,
-      level: document.getElementById("skillLevel").value,
-    };
-    const arr = [];
-    details.skills.map((item) => {
-      arr.push(item);
-    });
-    // console.log('skill',skill)
-    arr.push(skill);
-    setdetails({ ...details, skills: arr });
-  }
-
-  function deleteSkill(index) {
-    console.log("network", index);
-    const arr = [];
-    details.skills.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, skills: arr });
-  }
-
-  function addLanguage() {
-    const language = {
-      name: document.getElementById("languageTitle").value,
-      level: document.getElementById("languageLevel").value,
-    };
-    const arr = [];
-    details.languages.map((item) => {
-      arr.push(item);
-    });
-    // console.log('skill',language)
-    arr.push(language);
-    setdetails({ ...details, languages: arr });
-  }
-
-  function deleteLanguage(index) {
-    console.log("network", index);
-    const arr = [];
-    details.languages.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, languages: arr });
-  }
-
-  function addHobby() {
-    const hobby = {
-      name: document.getElementById("hobbyTitle").value,
-    };
-    const arr = [];
-    details.hobbies.map((item) => {
-      arr.push(item);
-    });
-    // console.log('hobby',hobby)
-    arr.push(hobby);
-    setdetails({ ...details, hobbies: arr });
-  }
-
-  function deleteHobby(index) {
-    console.log("network", index);
-    const arr = [];
-    details.hobbies.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, hobbies: arr });
-  }
-
-  function addProjects() {}
-  function deleteProjects(index) {}
-
   const [open, setopen] = useState("semiopen");
 
   function toggleResume() {
@@ -362,13 +132,41 @@ export default function Square() {
                         ))}
                       </div>
                     )}
-                    {details.skills != 0 && (
+                    {details.skills.length != 0 && (
                       <div className="skills">
                         <div className="pl-10">
                           <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5">
                             S K I L L S
                           </h2>
                           {details.skills.map((item) => (
+                            <span className="pr-2" key={item.name}>
+                              {item.name}{" "}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    {details.hobbies.length != 0 && (
+                      <div className="skills">
+                        <div className="pl-10">
+                          <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5">
+                            H O B B I E S
+                          </h2>
+                          {details.hobbies.map((item) => (
+                            <span className="pr-2" key={item.name}>
+                              {item.name}{" "}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    {details.languages.length != 0 && (
+                      <div className="skills">
+                        <div className="pl-10">
+                          <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5">
+                            L A N G U A G E S
+                          </h2>
+                          {details.languages.map((item) => (
                             <span className="pr-2" key={item.name}>
                               {item.name}{" "}
                             </span>
@@ -415,21 +213,39 @@ export default function Square() {
                         ))}
                       </div>
                     )}
-                    {/* <div className="projects">
-                <h2 className="text-center text-xl font-serif font-medium underline pt-5">
-                  P R O J E C T S
-                </h2>
-                {details.projects.map((item) => (
-                  <p className="pl-10 pr-5 pt-5">
-                    <span className="font-medium text-lg pr-3">
-                      {item.name}
-                    </span>{" "}
-                    ({item.from} to {item.to})<br />
-                    <Link href={item.website}>{item.website}</Link>
-                    <br></br>
-                  </p>
-                ))}
-              </div> */}
+                    {details.projects.length != 0 && (
+                      <div className="projects">
+                        <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                          P R O J E C T S
+                        </h2>
+                        {details.projects.map((item) => (
+                          <p className="pl-10 pr-5 pt-5" key={item.name}>
+                            <span className="font-medium text-lg pr-3">
+                              {item.name}
+                            </span>{" "}
+                            ({item.from} to {item.to})<br />
+                            <Link href={item.website}>{item.website}</Link>
+                            <br></br>
+                          </p>
+                        ))}
+                      </div>
+                    )}
+                    {details.certifications.length != 0 && (
+                      <div className="awards">
+                        <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                          C E R T I F I C A T I O N S
+                        </h2>
+                        {details.certifications.map((item) => (
+                          <p className="pl-10 pr-5 pt-3" key={item.title}>
+                            <i className="bx bxs-award pr-1"></i>
+                            <span className="font-medium">
+                              {item.title}
+                            </span>{" "}
+                            from {item.issuer}
+                          </p>
+                        ))}
+                      </div>
+                    )}
                     {details.awards.length != 0 && (
                       <div className="awards">
                         <h2 className="text-center text-xl font-serif font-medium underline pt-5">
@@ -454,27 +270,8 @@ export default function Square() {
 
           {open == "semiopen" && (
             <>
-              <SideBar
-                deleteHobby={deleteHobby}
-                addHobby={addHobby}
-                updateForm={updateForm}
-                deleteAward={deleteAward}
-                addAward={addAward}
-                deleteCertificate={deleteCertificate}
-                addCertificate={addCertificate}
-                addSkill={addSkill}
-                addInternship={addInternship}
-                addLanguage={addLanguage}
-                deleteLanguage={deleteLanguage}
-                deleteSkill={deleteSkill}
-                deleteInternship={deleteInternship}
-                addEducation={addEducation}
-                deleteEducation={deleteEducation}
-                deleteSocialNetwork={deleteSocialNetwork}
-                socialChange={socialChange}
-                deleteProjects={deleteProjects}
-                addProjects={deleteProjects}
-              />
+              <SideBar />
+
               <div
                 className="lg:hidden text-white border border-white rounded-lg px-2 py-1 hover:border-orange-700 hover:text-orange-700 absolute right-[10%] top-5 "
                 onClick={toggleResume}
@@ -485,7 +282,8 @@ export default function Square() {
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
                 <div className="flex justify-center ">
                   {/* large resume */}
-                  <div className="w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row">
+
+                  <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row">
                     <div className="w-[40%] bg-slate-300">
                       <div className="photo">
                         <div className="px-20 pt-10 pb-5">
@@ -570,13 +368,41 @@ export default function Square() {
                           ))}
                         </div>
                       )}
-                      {details.skills != 0 && (
+                      {details.skills.length != 0 && (
                         <div className="skills">
                           <div className="pl-10">
                             <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5">
                               S K I L L S
                             </h2>
                             {details.skills.map((item) => (
+                              <span className="pr-2" key={item.name}>
+                                {item.name}{" "}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      {details.hobbies.length != 0 && (
+                        <div className="skills">
+                          <div className="pl-10">
+                            <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5">
+                              H O B B I E S
+                            </h2>
+                            {details.hobbies.map((item) => (
+                              <span className="pr-2" key={item.name}>
+                                {item.name}{" "}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      {details.languages.length != 0 && (
+                        <div className="skills">
+                          <div className="pl-10">
+                            <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5">
+                              L A N G U A G E S
+                            </h2>
+                            {details.languages.map((item) => (
                               <span className="pr-2" key={item.name}>
                                 {item.name}{" "}
                               </span>
@@ -625,21 +451,39 @@ export default function Square() {
                           ))}
                         </div>
                       )}
-                      {/* <div className="projects">
-                <h2 className="text-center text-xl font-serif font-medium underline pt-5">
-                  P R O J E C T S
-                </h2>
-                {details.projects.map((item) => (
-                  <p className="pl-10 pr-5 pt-5">
-                    <span className="font-medium text-lg pr-3">
-                      {item.name}
-                    </span>{" "}
-                    ({item.from} to {item.to})<br />
-                    <Link href={item.website}>{item.website}</Link>
-                    <br></br>
-                  </p>
-                ))}
-              </div> */}
+                      {details.projects.length != 0 && (
+                        <div className="projects">
+                          <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                            P R O J E C T S
+                          </h2>
+                          {details.projects.map((item) => (
+                            <p className="pl-10 pr-5 pt-5" key={item.name}>
+                              <span className="font-medium text-lg pr-3">
+                                {item.name}
+                              </span>{" "}
+                              ({item.from} to {item.to})<br />
+                              <Link href={item.website}>{item.website}</Link>
+                              <br></br>
+                            </p>
+                          ))}
+                        </div>
+                      )}
+                      {details.certifications.length != 0 && (
+                        <div className="awards">
+                          <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                            C E R T I F I C A T I O N S
+                          </h2>
+                          {details.certifications.map((item) => (
+                            <p className="pl-10 pr-5 pt-3" key={item.title}>
+                              <i className="bx bxs-award pr-1"></i>
+                              <span className="font-medium">
+                                {item.title}
+                              </span>{" "}
+                              from {item.issuer}
+                            </p>
+                          ))}
+                        </div>
+                      )}
                       {details.awards.length != 0 && (
                         <div className="awards">
                           <h2 className="text-center text-xl font-serif font-medium underline pt-5">
@@ -659,7 +503,6 @@ export default function Square() {
                     </div>
                   </div>
                 </div>
-                ;
               </div>
             </>
           )}
