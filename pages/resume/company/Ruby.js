@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
 
-export default function Dynamic() {
+export default function Ruby() {
   const user = useUser();
   const { details, setdetails } = useContext(ResumeContext);
 
