@@ -1512,11 +1512,12 @@ export default function SideBar() {
                   )}
                 </div>
               </div>
-              <div className="border border-white my-2 mx-2">
+              <div className="">
                   {details.skills.length != 0 && (
                     <div className="mt-1 ml-1">
                       {details.skills.map((item, index) => (
                         <>
+                          <div className="border border-white my-2 mx-2">
                           <div className=" my-1 px-2 flex">
                           <li className="grow py-2" key={item.name}>
                             {item.name}
@@ -1529,6 +1530,7 @@ export default function SideBar() {
                           >
                             <AiFillDelete></AiFillDelete>
                           </button>
+                          </div>
                           </div>
                         </>
                       ))}
@@ -1622,9 +1624,9 @@ export default function SideBar() {
                   )}
                 </div>
               </div>
-              <div className="my-2 border border-white">
+              <div className="">
                   {details.languages.length != 0 && (
-                    <div className="ml-1  p-2">
+                    <div className="ml-1  p-2 my-2 border border-white">
                       {details.languages.map((item, index) => (
                         <>
                           <div className="flex">
@@ -1749,12 +1751,12 @@ export default function SideBar() {
                   )}
                 </div>
               </div>
-              <div className="my-2 border border-white">
+              <div className="">
                   {details.hobbies.length != 0 && (
-                    <div className="">
+                    <div className="my-2 border border-white">
                       {details.hobbies.map((item, index) => (
                         <>
-                          <div className="flex p-3">
+                          <div className="flex p-3 ">
                           <li className="grow" key={item.name}>
                             {item.name}
                           </li>
