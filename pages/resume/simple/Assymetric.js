@@ -77,11 +77,11 @@ export default function Dynamic() {
 
                   
                   <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row align-middle justify-center ">
-      <div className="  bg-white w-[210mm] h-[297mm] drop-shadow-2xl mx-auto m-2">
-        <div className="flex space-x-4 m-4 ">
-          <div className="m-4 w-[120%]">
+      <div className="  bg-white w-[205mm]">
+        <div className="flex m-2 ">
+          <div className="m-2 ">
             <img
-              className="w-[75%] h-[40%] pb-2"
+              className="w-[35mm] h-[30mm] pb-2"
               src="https://randomuser.me/api/portraits/women/71.jpg"
             ></img>
             <span className="  text-xl  bg-white   rounded-sm  text-black tracking-wide  font-semibold ">
@@ -119,7 +119,7 @@ export default function Dynamic() {
               </p>
 
               <p className="text-sm text-black p-3 pl-2 pt-2">
-                {resume.objective}
+                {details.objective}
               </p>
             </div>
           </div>
@@ -129,7 +129,7 @@ export default function Dynamic() {
           <div flex-col>
             <div className="b-[50%] rounded-md  p-2">
               <p className="font-bold  m-2 ">EDUCATION</p>
-              {resume.education.map((item) => (
+              {details.education.map((item) => (
                 <div className="text-sm p-1">
                   <p className="font-semibold">
                     {item.institution} [{item.startDate} - {item.endDate}]
@@ -145,7 +145,7 @@ export default function Dynamic() {
                 <p className="text-black font-bold tracking-wider  p-1 px-2 pt-2 ">
                   WORK
                 </p>
-                {resume.work.map((item) => (
+                {details.work.map((item) => (
                   <div className="m-2">
                     <Link href={item.website}>
                       <p className=" font-semibold text-base tracking-wider">
@@ -165,7 +165,7 @@ export default function Dynamic() {
                 <p className="text-black font-bold tracking-wider  p-1 mx-2 ">
                   AWARDS:
                 </p>
-                {resume.awards.map((item) => (
+                {details.awards.map((item) => (
                   <div className="text-sm pt-4 ml-3">
                     <li className="font-semibold">
                       {item.name} - [{item.date}]
@@ -185,7 +185,7 @@ export default function Dynamic() {
                 PROJECTS
               </p>
 
-              {resume.projects.map((item) => (
+              {details.projects.map((item) => (
                 <div className=" text-black ">
                   <Link href={item.website}>
                     <p className="font-bold  tracking-wider">{item.name}</p>
@@ -205,7 +205,7 @@ export default function Dynamic() {
                 CERTIFICATION
               </p>
 
-              {resume.certifications.map((item) => (
+              {details.certifications.map((item) => (
                 <div className="pt-4 text-black mx-3 ">
                   <p className="font-semibold">{item.title} </p>
                   <p>[{item.date}]</p>
@@ -218,7 +218,7 @@ export default function Dynamic() {
               ))}
             </div>
             <div className="flex mt-4 m-4 bg-gray-200 rounded-xl">
-              {resume.social.map((item) => (
+              {details.social.map((item) => (
                 <div className="mx-3 pb-4  mt-3 ">
                   <span className="">
                     <Link href={item.url}>
