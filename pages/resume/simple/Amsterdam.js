@@ -7,49 +7,16 @@ import { useFieldArray, useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
-
-
-
-
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 export default function Amsterdam() {
   const user = useUser();
-  const { details, setdetails } = useContext(ResumeContext);
-  const [open, setopen] = useState("semiopen");
+  const { details, setdetails, setdemo, demo, color, setcolor } =
+    useContext(ResumeContext);
+  const [change, setchange] = useState(false);
 
-
-
- function printDocument() {
-    console.log("inside")
-    // var input = document.getElementById('smallResume');
-    var input
-    if(open == "closed"){
-      input = document.getElementById('smallResume');
-      
-    }
-    else{
-      input = document.getElementById('largeResume');
-      console.log("om");
-      
-    }
-    console.log(input);
-    html2canvas(input)
-    .then((canvas) => {
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF("p", "mm", "a4");
-      var width = pdf.internal.pageSize.getWidth();
-      var height = pdf.internal.pageSize.getHeight();
-      pdf.addImage(imgData, 'JPEG',0,0,width,height);
-      pdf.save("download.pdf");
-      // pdf.output('dataurlnewwindow');
-    });  
-     
-    
-  }
-
-
+  //to add email fname and lname
   useEffect(() => {
     if (user) {
       setdetails({
@@ -62,10 +29,39 @@ export default function Amsterdam() {
         },
       });
     }
-  }, [user]);
+  }, [user, change]);
 
- 
+  useEffect(() => {
+    setchange(!change);
+  }, [demo]);
 
+  const [open, setopen] = useState("semiopen");
+
+  //PDF document
+
+  function printDocument() {
+    console.log("inside");
+    // var input = document.getElementById('smallResume');
+    var input;
+    if (open == "closed") {
+      input = document.getElementById("smallResume");
+    } else {
+      input = document.getElementById("largeResume");
+      console.log("om");
+    }
+    console.log(input);
+    html2canvas(input).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("p", "mm", "a4");
+      var width = pdf.internal.pageSize.getWidth();
+      var height = pdf.internal.pageSize.getHeight();
+      pdf.addImage(imgData, "JPEG", 0, 0, width, height);
+      pdf.save("download.pdf");
+      // pdf.output('dataurlnewwindow');
+    });
+  }
+
+  //responsiveness
   function toggleResume() {
     if (open == "semiopen") {
       setopen("closed");
@@ -86,14 +82,34 @@ export default function Amsterdam() {
               >
                 DETAILS
               </button>
-              <div className="flex justify-center" >
-              
-                {/* Small Resume */}
-                <div assName="mb5">
-                <button onClick={printDocument} className="cursor-pointer text-white ">Print</button>
-              </div>
+              <div className="flex justify-center ">
+                <div>
+                  <button
+                    onClick={printDocument}
+                    className="cursor-pointer text-white mx-5"
+                  >
+                    Print
+                  </button>
 
-                <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row"  id="smallResume">
+                  <button onClick={() => setdemo(!demo)}>LOAD</button>
+                </div>
+
+                <div>
+                  <input type="text" name="color" id="color" />
+                  <button
+                    onClick={() =>
+                      setcolor(document.getElementById("color").value)
+                    }
+                  >
+                    color
+                  </button>
+                </div>
+
+                {/* Small Resume */}
+                <div
+                  className={`bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row`}
+                  id="smallResume"
+                >
                   <div className="absolute left-44 top-5 border-[3px] border-gray-500 h-40 w-96 bg-white text-center">
                     <h1 className="mt-8 font-extrabold text-2xl tracking-[3px]">
                       {details.personal.firstName} {details.personal.lastName}
@@ -336,7 +352,8 @@ export default function Amsterdam() {
 
           {open == "semiopen" && (
             <>
-              <SideBar/>
+              <SideBar />
+
               <div
                 className="lg:hidden text-white border border-white rounded-lg px-2 py-1 hover:border-orange-700 hover:text-orange-700 absolute right-[10%] top-5 "
                 onClick={toggleResume}
@@ -346,13 +363,38 @@ export default function Amsterdam() {
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
                 <div className="flex justify-center ">
+                  <div>
+                    <button
+                      onClick={printDocument}
+                      className="cursor-pointer text-white mx-5"
+                    >
+                      Print
+                    </button>
 
-                <div className="mb5">
-                <button onClick={printDocument} className="cursor-pointer text-white ">Print</button>
-              </div>
+                    <button
+                      className="text-white"
+                      onClick={() => setdemo(!demo)}
+                    >
+                      LOAD
+                    </button>
+                  </div>
+                  <div>
+                    <input type="text" name="color" id="color" />
+                    <button
+                      onClick={() =>
+                        setcolor(document.getElementById("color").value)
+                      }
+                    >
+                      color
+                    </button>
+                  </div>
+
                   {/* large resume */}
 
-                  <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row" id="largeResume">
+                  <div
+                    className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row"
+                    id="largeResume"
+                  >
                     <div className="absolute left-44 top-5 border-[3px] border-gray-500 h-40 w-96 bg-white text-center">
                       <h1 className="mt-8 font-extrabold text-2xl tracking-[3px]">
                         {details.personal.firstName} {details.personal.lastName}
@@ -599,7 +641,6 @@ export default function Amsterdam() {
           )}
         </div>
       )}
-     
     </>
   );
 }
