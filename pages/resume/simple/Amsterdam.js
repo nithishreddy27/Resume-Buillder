@@ -17,24 +17,36 @@ import jsPDF from 'jspdf';
 export default function Amsterdam() {
   const user = useUser();
   const { details, setdetails } = useContext(ResumeContext);
+  const [open, setopen] = useState("semiopen");
 
 
 
  function printDocument() {
     console.log("inside")
-    const input = document.getElementById('largeResume');
-   
-
+    // var input = document.getElementById('smallResume');
+    var input
+    if(open == "closed"){
+      input = document.getElementById('smallResume');
+      
+    }
+    else{
+      input = document.getElementById('largeResume');
+      console.log("om");
+      
+    }
+    console.log(input);
     html2canvas(input)
-      .then((canvas) => {
-        const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF("p", "mm", "a4");
-        var width = pdf.internal.pageSize.getWidth();
-        var height = pdf.internal.pageSize.getHeight();
-        pdf.addImage(imgData, 'JPEG',0,0,width,height);
-        // pdf.output('dataurlnewwindow');
-        pdf.save("download.pdf");
-      });
+    .then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF("p", "mm", "a4");
+      var width = pdf.internal.pageSize.getWidth();
+      var height = pdf.internal.pageSize.getHeight();
+      pdf.addImage(imgData, 'JPEG',0,0,width,height);
+      pdf.save("download.pdf");
+      // pdf.output('dataurlnewwindow');
+    });  
+     
+    
   }
 
 
@@ -53,7 +65,6 @@ export default function Amsterdam() {
   }, [user]);
 
  
-  const [open, setopen] = useState("semiopen");
 
   function toggleResume() {
     if (open == "semiopen") {
@@ -76,15 +87,13 @@ export default function Amsterdam() {
                 DETAILS
               </button>
               <div className="flex justify-center" >
-              <div className="mb5">
-                <button onClick={printDocument} className="cursor-pointer">Print</button>
-              </div>
+              
                 {/* Small Resume */}
-                <div className="mb5">
+                <div assName="mb5">
                 <button onClick={printDocument} className="cursor-pointer text-white ">Print</button>
               </div>
 
-                <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row" >
+                <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row"  id="smallResume">
                   <div className="absolute left-44 top-5 border-[3px] border-gray-500 h-40 w-96 bg-white text-center">
                     <h1 className="mt-8 font-extrabold text-2xl tracking-[3px]">
                       {details.personal.firstName} {details.personal.lastName}
