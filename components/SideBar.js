@@ -54,38 +54,42 @@ export default function SideBar() {
     document.getElementById("url").value=""
   }
 
-  function updateSocialNetwork(index){
-    seteditSocial(true)
-    var network = details.social[index]
-    console.log(network)
-    document.getElementById("network").value=network.network,
-    document.getElementById("username").value=network.username,
-    document.getElementById("url").value=network.url
-  }
+  // function updateSocialNetwork(index){
+  //   seteditSocial(true)
+  //   var network = details.social[index]
+  //   console.log(network)
+  //   document.getElementById("network").value=network.network,
+  //   document.getElementById("username").value=network.username,
+  //   document.getElementById("url").value=network.url
+  // }
 
-  function editSocialNetwrok(index){
-    seteditSocial(false)
-    const sn = {
-      network: document.getElementById("network").value,
-      username: document.getElementById("username").value,
-      url: document.getElementById("url").value,
-    };
-    var arr = [];
-    details.social.map((item,ind) => {
-      if(ind == index){
-        arr.push(sn)
-      }
-      else{
-        arr.push(item);
-      }
-    });
-    console.log(arr);
-    setdetails({ ...details, social: arr });
+  // function editSocialNetwrok(i){
+  //   seteditSocial(false)
+  //   const sn = {
+  //     network: document.getElementById("network").value,
+  //     username: document.getElementById("username").value,
+  //     url: document.getElementById("url").value,
+  //   };
+  //   var arr = [];
+  //   console.log("sn",sn)
+  //   console.log("i",i)
+  //   details.social.map((item,index) => {
+      
+  //     if(index == i){
+  //       console.log("index",index)
+  //       arr.push(sn)
+  //     }
+  //     else{
+  //       arr.push(item);
+  //     }
+  //   });
+  //   console.log(arr);
+  //   setdetails({ ...details, social: arr });
 
-    document.getElementById("network").value="",
-    document.getElementById("username").value="",
-    document.getElementById("url").value=""
-  }
+  //   document.getElementById("network").value="",
+  //   document.getElementById("username").value="",
+  //   document.getElementById("url").value=""
+  // }
 
   function deleteSocialNetwork(index) {
     // console.log("network",network)
@@ -648,7 +652,7 @@ export default function SideBar() {
                           <button onClick={() => deleteSocialNetwork(index)}>
                           <AiFillDelete></AiFillDelete>
                         </button>
-                        <button onClick={()=>updateSocialNetwork(index)}>Update</button>
+                        {/* <button onClick={()=>updateSocialNetwork(index)}>Update</button> */}
                         
                         
                         </div>
@@ -703,7 +707,7 @@ export default function SideBar() {
                   />
                 </div>
                 <div className="flex justify-center">
-                {editSocial && (
+                {/* {editSocial && ( */}
 
                     <button
                     onClick={socialChange}
@@ -711,8 +715,8 @@ export default function SideBar() {
                   >
                     Update
                   </button>
-                        )}
-                        {!editSocial && (
+                        {/*  )} */}
+                        {/* {!editSocial && (
 
               <button
               onClick={editSocialNetwrok}
@@ -720,7 +724,7 @@ export default function SideBar() {
               >
               Submit
               </button>
-                        )}
+                        )} */}
                   
                 </div>
                 
