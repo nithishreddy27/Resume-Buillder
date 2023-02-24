@@ -110,7 +110,7 @@ export default function Dynamic() {
                   className={`bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row`}
                   id="smallResume"
                 >
-                  <div className={`w-[35%] p-6`}>
+                  <div className={`w-[35%]  bg-${color}-200 p-6`}>
                     <div
                       className={`bg-${color}-800 w-36 h-[200px] absolute top-0 left-0`}
                     >
@@ -243,7 +243,7 @@ export default function Dynamic() {
                       </>
                     )}
                   </div>
-                  <div className={`w-[70%] bg-${color}-200 pt-10 px-5`}>
+                  <div className={`w-[70%] pt-10 px-5`}>
                     <div>
                       <h1 className="text-5xl font-semibold tracking-wider">
                         {details.personal.firstName}
@@ -456,7 +456,7 @@ export default function Dynamic() {
                     className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row"
                     id="largeResume"
                   >
-                    <div className=" w-[35%] bg-gray-200 p-6">
+                    <div className={`w-[35%] bg-${color}-200 p-6`}>
                       <div
                         className={`bg-${color}-800 w-36 h-[200px] absolute top-0 left-0`}
                       >
@@ -589,7 +589,7 @@ export default function Dynamic() {
                         </>
                       )}
                     </div>
-                    <div className={` w-[70%] bg-${color}-200 pt-10 px-5`}>
+                    <div className={` w-[70%] pt-10 px-5`}>
                       <div>
                         <h1 className="text-5xl font-semibold tracking-wider">
                           {details.personal.firstName}

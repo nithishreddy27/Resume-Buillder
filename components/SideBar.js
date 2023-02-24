@@ -28,7 +28,7 @@ export default function SideBar() {
   const [awarrow, setawarrow] = useState(false);
   const [carrow, setcarrow] = useState(false);
   const { details, setdetails } = useContext(ResumeContext);
-  const [editSocial, seteditSocial] = useState(false)
+  const [editSocial, seteditSocial] = useState(false);
 
   function updateForm(event) {
     const n = event.target.name;
@@ -49,9 +49,9 @@ export default function SideBar() {
     arr.push(sn);
     setdetails({ ...details, social: arr });
 
-    document.getElementById("network").value="",
-    document.getElementById("username").value="",
-    document.getElementById("url").value=""
+    (document.getElementById("network").value = ""),
+      (document.getElementById("username").value = ""),
+      (document.getElementById("url").value = "");
   }
 
   // function updateSocialNetwork(index){
@@ -74,7 +74,7 @@ export default function SideBar() {
   //   console.log("sn",sn)
   //   console.log("i",i)
   //   details.social.map((item,index) => {
-      
+
   //     if(index == i){
   //       console.log("index",index)
   //       arr.push(sn)
@@ -121,12 +121,12 @@ export default function SideBar() {
     arr.push(intern);
     setdetails({ ...details, work: arr });
 
-    document.getElementById("company").value="",
-    document.getElementById("position").value="",
-    // website:document.getElementById("website").value,
-    document.getElementById("startdate").value="",
-    document.getElementById("enddate").value="",
-    document.getElementById("summary").value=""
+    (document.getElementById("company").value = ""),
+      (document.getElementById("position").value = ""),
+      // website:document.getElementById("website").value,
+      (document.getElementById("startdate").value = ""),
+      (document.getElementById("enddate").value = ""),
+      (document.getElementById("summary").value = "");
   }
 
   function deleteInternship(index) {
@@ -160,14 +160,13 @@ export default function SideBar() {
     arr.push(education);
     setdetails({ ...details, education: arr });
 
-
-    document.getElementById("TypeOfDegree").value="",
-    document.getElementById("school").value="",
-    document.getElementById("EducationFieldOfStudy").value="",
-    document.getElementById("Educationstartdate").value="",
-    document.getElementById("Educationenddate").value="",
-    document.getElementById("grade").value="",
-    document.getElementById("summary").value=""
+    (document.getElementById("TypeOfDegree").value = ""),
+      (document.getElementById("school").value = ""),
+      (document.getElementById("EducationFieldOfStudy").value = ""),
+      (document.getElementById("Educationstartdate").value = ""),
+      (document.getElementById("Educationenddate").value = ""),
+      (document.getElementById("grade").value = ""),
+      (document.getElementById("summary").value = "");
   }
 
   function deleteEducation(index) {
@@ -197,10 +196,10 @@ export default function SideBar() {
     arr.push(award);
     setdetails({ ...details, awards: arr });
 
-    document.getElementById("awardTitle").value="",
-      document.getElementById("awarder").value="",
-      document.getElementById("awardDate").value="",
-         document.getElementById("awardSummary").value=""
+    (document.getElementById("awardTitle").value = ""),
+      (document.getElementById("awarder").value = ""),
+      (document.getElementById("awardDate").value = ""),
+      (document.getElementById("awardSummary").value = "");
   }
 
   function deleteAward(index) {
@@ -231,10 +230,10 @@ export default function SideBar() {
     arr.push(certificate);
     setdetails({ ...details, certifications: arr });
 
-    document.getElementById("certificateTitle").value="",
-      document.getElementById("issuer").value="",
-       document.getElementById("certificateDate").value="",
-        document.getElementById("certificateSummary").value=""
+    (document.getElementById("certificateTitle").value = ""),
+      (document.getElementById("issuer").value = ""),
+      (document.getElementById("certificateDate").value = ""),
+      (document.getElementById("certificateSummary").value = "");
   }
 
   function deleteCertificate(index) {
@@ -261,9 +260,8 @@ export default function SideBar() {
     arr.push(skill);
     setdetails({ ...details, skills: arr });
 
-
-    document.getElementById("skillTitle").value="",
-    document.getElementById("skillLevel").value=""
+    (document.getElementById("skillTitle").value = ""),
+      (document.getElementById("skillLevel").value = "");
   }
 
   function deleteSkill(index) {
@@ -289,9 +287,8 @@ export default function SideBar() {
     // console.log('skill',language)
     arr.push(language);
     setdetails({ ...details, languages: arr });
-    document.getElementById("languageTitle").value="",
-    document.getElementById("languageLevel").value=""
-  
+    (document.getElementById("languageTitle").value = ""),
+      (document.getElementById("languageLevel").value = "");
   }
 
   function deleteLanguage(index) {
@@ -317,7 +314,7 @@ export default function SideBar() {
     arr.push(hobby);
     setdetails({ ...details, hobbies: arr });
 
-    document.getElementById("hobbyTitle").value=""
+    document.getElementById("hobbyTitle").value = "";
   }
 
   function deleteHobby(index) {
@@ -332,7 +329,6 @@ export default function SideBar() {
   }
 
   function addProjects() {
-
     const project = {
       name: document.getElementById("projectTitle").value,
       domain: document.getElementById("projectDomain").value,
@@ -352,17 +348,14 @@ export default function SideBar() {
     arr.push(project);
     setdetails({ ...details, projects: arr });
 
-    document.getElementById("projectTitle").value="",
-     document.getElementById("projectDomain").value="",
-     document.getElementById("projectWebsite").value="",
-    document.getElementById("projectstartdate").value="",
-     document.getElementById("projectenddate").value="",
-      document.getElementById("projectsummary").value=""
-
-
+    (document.getElementById("projectTitle").value = ""),
+      (document.getElementById("projectDomain").value = ""),
+      (document.getElementById("projectWebsite").value = ""),
+      (document.getElementById("projectstartdate").value = ""),
+      (document.getElementById("projectenddate").value = ""),
+      (document.getElementById("projectsummary").value = "");
   }
   function deleteProjects(index) {
-
     console.log("network", index);
     const arr = [];
     details.projects.map((item, i) => {
@@ -572,7 +565,7 @@ export default function SideBar() {
                       id="email"
                       className="shadow appearance-none border bg-slate-100 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
                       value={details.personal.email}
-                      onChange={()=>console.log("noo")}
+                      onChange={() => console.log("noo")}
                     />
                   </div>
                 </div>
@@ -639,28 +632,28 @@ export default function SideBar() {
                         key={item.network}
                       >
                         <div className="flex">
-                        <span>
-                          <img
-                            src={
-                              "https://www." + item.network + ".com/favicon.ico"
-                            }
-                            alt=""
-                            className="w-5 grayscale-[40%]"
-                          />
-                        </span>
-                        <span className="px-2 mt-[-3px] font-semibold grow">{item.network}</span>
+                          <span>
+                            <img
+                              src={
+                                "https://www." +
+                                item.network +
+                                ".com/favicon.ico"
+                              }
+                              alt=""
+                              className="w-5 grayscale-[40%]"
+                            />
+                          </span>
+                          <span className="px-2 mt-[-3px] font-semibold grow">
+                            {item.network}
+                          </span>
                           <button onClick={() => deleteSocialNetwork(index)}>
-                          <AiFillDelete></AiFillDelete>
-                        </button>
-                        {/* <button onClick={()=>updateSocialNetwork(index)}>Update</button> */}
-                        
-                        
+                            <AiFillDelete></AiFillDelete>
+                          </button>
+                          {/* <button onClick={()=>updateSocialNetwork(index)}>Update</button> */}
                         </div>
                         <div className="block text-sm font-thin">
                           <Link href={item.url}>
-                            <span className=" mt-[-4px]">
-                              {item.username}
-                            </span>
+                            <span className=" mt-[-4px]">{item.username}</span>
                           </Link>
                         </div>
                       </div>
@@ -707,16 +700,16 @@ export default function SideBar() {
                   />
                 </div>
                 <div className="flex justify-center">
-                {/* {editSocial && ( */}
+                  {/* {editSocial && ( */}
 
-                    <button
+                  <button
                     onClick={socialChange}
                     className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg"
                   >
                     Update
                   </button>
-                        {/*  )} */}
-                        {/* {!editSocial && (
+                  {/*  )} */}
+                  {/* {!editSocial && (
 
               <button
               onClick={editSocialNetwrok}
@@ -725,9 +718,7 @@ export default function SideBar() {
               Submit
               </button>
                         )} */}
-                  
                 </div>
-                
               </div>
             </div>
 
@@ -767,27 +758,26 @@ export default function SideBar() {
                 </div>
               </div>
               <div className="ml-1 mt-1">
-                  {details.work.map((item, index) => (
-                    <div className=" border border-white py-3 " key={item.company}>
-                      <div className="flex">
+                {details.work.map((item, index) => (
+                  <div className="  " key={item.company}>
+                    <div className="flex border border-white py-3 my-3">
                       <div className="ml-2 grow">
                         <p className="font-semibold ">{item.company}</p>
                       </div>
-                      
-                      <button className="mr-5"
+
+                      <button
+                        className="mr-5"
                         onClick={() => {
                           deleteInternship(index);
                         }}
                       >
                         <AiFillDelete></AiFillDelete>
                       </button>
-                      </div>
-                      <div className="">
-                        </div>
-
                     </div>
-                  ))}
-                </div>
+                    <div className=""></div>
+                  </div>
+                ))}
+              </div>
               <div className={`${iarrow ? "block" : "hidden"}`}>
                 <div className="mt-5 text-gray-300">
                   <label htmlFor="company" className="font-semibold">
@@ -936,13 +926,18 @@ export default function SideBar() {
                   <>
                     <div className="ml-1 mt-1">
                       {details.education.map((item, index) => (
-                        <div className="my-3 border border-white p-3" key={item.institution}>
+                        <div
+                          className="my-3 border border-white p-3"
+                          key={item.institution}
+                        >
                           <div className="flex">
-                            <p className="grow font-semibold">{item.institution}</p>
+                            <p className="grow font-semibold">
+                              {item.institution}
+                            </p>
                             <p className="font-bold">{item.fieldOfStudy}</p>
 
                             <button
-                            className="mr-2"
+                              className="mr-2"
                               onClick={() => {
                                 deleteEducation(index);
                               }}
@@ -1136,7 +1131,7 @@ export default function SideBar() {
                   )}
                 </div>
               </div>
-              
+
               <div className={`${carrow ? "block" : "hidden"}`}>
                 <div className="mt-5">
                   <label
@@ -1229,7 +1224,9 @@ export default function SideBar() {
 
             <div className="mt-5 shadow-md p-2 rounded-md">
               <div className="flex">
-                <h1 className="font-bold text-xl grow" id="projects">Projects</h1>
+                <h1 className="font-bold text-xl grow" id="projects">
+                  Projects
+                </h1>
                 <div
                   className="pt-[-15px] mt-[-10px]"
                   onClick={() => {
@@ -1266,19 +1263,20 @@ export default function SideBar() {
                 <>
                   <div className="ml-1 mt-1">
                     {details.projects.map((item, index) => (
-                      <div className="my-3 p-3 border border-white" key={item.name}>
+                      <div
+                        className="my-3 p-3 border border-white"
+                        key={item.name}
+                      >
                         <div className="flex">
-                          
-                            <p className="grow font-semibold">{item.name}</p>
-                            <button
-                              className="mr-3"
-                              onClick={() => {
-                                deleteProjects(index);
-                              }}
-                            >
-                              <AiFillDelete></AiFillDelete>
-                            </button>
-                          
+                          <p className="grow font-semibold">{item.name}</p>
+                          <button
+                            className="mr-3"
+                            onClick={() => {
+                              deleteProjects(index);
+                            }}
+                          >
+                            <AiFillDelete></AiFillDelete>
+                          </button>
                         </div>
                       </div>
                     ))}
@@ -1380,14 +1378,15 @@ export default function SideBar() {
                   </button>
                 </div>
               </div>
-              
             </div>
 
             {/* awards  */}
 
             <div className="mt-5 shadow-md p-2 rounded-md">
               <div className="flex">
-                <h1 className="font-bold text-xl grow" id="awards">Awards</h1>
+                <h1 className="font-bold text-xl grow" id="awards">
+                  Awards
+                </h1>
                 <div
                   className="pt-[-15px] mt-[-10px]"
                   onClick={() => {
@@ -1421,12 +1420,10 @@ export default function SideBar() {
                 </div>
               </div>
               <div>
-                  {details.awards.map((item, index) => (
-                    <div className="my-2 p-3 border border-white" key={item.name}>
-                      <div className="flex">
-                      <span className="font-semibold grow">
-                        {item.name}
-                      </span>
+                {details.awards.map((item, index) => (
+                  <div className="my-2 p-3 border border-white" key={item.name}>
+                    <div className="flex">
+                      <span className="font-semibold grow">{item.name}</span>
                       <button
                         className="mr-2"
                         onClick={() => {
@@ -1435,10 +1432,10 @@ export default function SideBar() {
                       >
                         <AiFillDelete></AiFillDelete>
                       </button>
-                      </div>
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
+              </div>
               <div className={`${awarrow ? "block" : "hidden"}`}>
                 <div className="mt-5 text-gray-300">
                   <label htmlFor="awardTitle" className="font-semibold">
@@ -1565,30 +1562,30 @@ export default function SideBar() {
                 </div>
               </div>
               <div className="">
-                  {details.skills.length != 0 && (
-                    <div className="mt-1 ml-1">
-                      {details.skills.map((item, index) => (
-                        <>
-                          <div className="border border-white my-2 mx-2">
+                {details.skills.length != 0 && (
+                  <div className="mt-1 ml-1">
+                    {details.skills.map((item, index) => (
+                      <>
+                        <div className="border border-white my-2 mx-2">
                           <div className=" my-1 px-2 flex">
-                          <li className="grow py-2" key={item.name}>
-                            {item.name}
-                          </li>
-                          <button
-                            className="mr-2"
-                            onClick={() => {
-                              deleteSkill(index);
-                            }}
-                          >
-                            <AiFillDelete></AiFillDelete>
-                          </button>
+                            <li className="grow py-2" key={item.name}>
+                              {item.name}
+                            </li>
+                            <button
+                              className="mr-2"
+                              onClick={() => {
+                                deleteSkill(index);
+                              }}
+                            >
+                              <AiFillDelete></AiFillDelete>
+                            </button>
                           </div>
-                          </div>
-                        </>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                        </div>
+                      </>
+                    ))}
+                  </div>
+                )}
+              </div>
               <div className={`${skarrow ? "block" : "hidden"}`}>
                 <div className="sm:grid sm:grid-cols-2 sm:gap-2">
                   <div className="mt-5">
@@ -1633,7 +1630,6 @@ export default function SideBar() {
                     Submit
                   </button>
                 </div>
-                
               </div>
             </div>
 
@@ -1677,12 +1673,15 @@ export default function SideBar() {
                 </div>
               </div>
               <div className="">
-                  {details.languages.length != 0 && (
-                    <div className="ml-1  p-2 my-2 border border-white">
-                      {details.languages.map((item, index) => (
-                        <>
-                          <div className="flex">
-                          <li className="my-2 font-semibold grow" key={item.name}>
+                {details.languages.length != 0 && (
+                  <div className="ml-1  p-2 my-2 border border-white">
+                    {details.languages.map((item, index) => (
+                      <>
+                        <div className="flex">
+                          <li
+                            className="my-2 font-semibold grow"
+                            key={item.name}
+                          >
                             {item.name}
                           </li>
                           <button
@@ -1693,12 +1692,12 @@ export default function SideBar() {
                           >
                             <AiFillDelete></AiFillDelete>
                           </button>
-                          </div>
-                        </>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                        </div>
+                      </>
+                    ))}
+                  </div>
+                )}
+              </div>
               <div className={`${larrow ? "block" : "hidden"}`}>
                 <div className="sm:grid sm:grid-cols-2 gap-2">
                   <div className="mt-5">
@@ -1804,11 +1803,11 @@ export default function SideBar() {
                 </div>
               </div>
               <div className="">
-                  {details.hobbies.length != 0 && (
-                    <div className="my-2 border border-white">
-                      {details.hobbies.map((item, index) => (
-                        <>
-                          <div className="flex p-3 ">
+                {details.hobbies.length != 0 && (
+                  <div className="my-2 border border-white">
+                    {details.hobbies.map((item, index) => (
+                      <>
+                        <div className="flex p-3 ">
                           <li className="grow" key={item.name}>
                             {item.name}
                           </li>
@@ -1820,12 +1819,12 @@ export default function SideBar() {
                           >
                             <AiFillDelete></AiFillDelete>
                           </button>
-                          </div>
-                        </>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                        </div>
+                      </>
+                    ))}
+                  </div>
+                )}
+              </div>
               <div className={`${harrow ? "block" : "hidden"}`}>
                 <div className="mt-5">
                   <label
@@ -1880,4 +1879,3 @@ export default function SideBar() {
     </>
   );
 }
-
