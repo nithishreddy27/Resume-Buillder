@@ -338,33 +338,46 @@ export default function Dublin() {
               </div>
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
-                <div className="flex justify-center ">
-                  <div>
+                <div className="flex">
+                  <div className="m-5 flex grow">
+                    <div className="flex gap-1 mt-1">
+                      <div
+                        className="w-8 h-8 border-[2px] border-white bg-red-500 rounded-full"
+                        onClick={() => {
+                          setcolor("red");
+                        }}
+                      ></div>
+                      <div
+                        className="w-8 h-8 border-[2px] border-white bg-emerald-700 rounded-full"
+                        onClick={() => {
+                          setcolor("emerald");
+                        }}
+                      ></div>
+                      <div
+                        className="w-8 h-8 border-[2px] border-white bg-orange-700 rounded-full"
+                        onClick={() => {
+                          setcolor("orange");
+                        }}
+                      ></div>
+                    </div>
+                  </div>
+                  <div className="m-5">
                     <button
                       onClick={printDocument}
-                      className="cursor-pointer text-white mx-5"
+                      className="cursor-pointer text-white mx-5 border border-white p-2 rounded"
                     >
-                      Print
+                      PRINT
                     </button>
 
                     <button
-                      className="text-white"
+                      className="text-white border border-white p-2 rounded"
                       onClick={() => setdemo(!demo)}
                     >
                       LOAD
                     </button>
                   </div>
-                  <div>
-                    <input type="text" name="color" id="color" />
-                    <button
-                      onClick={() =>
-                        setcolor(document.getElementById("color").value)
-                      }
-                    >
-                      color
-                    </button>
-                  </div>
-
+                </div>
+                <div className="flex justify-center ">
                   {/* large resume */}
 
                   <div
