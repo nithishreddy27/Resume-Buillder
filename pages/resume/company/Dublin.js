@@ -519,7 +519,7 @@ export default function Dublin() {
                       </div>
                     </div>
                     <div
-                      className={`second bg-${color}-100 w-[125mm] h-[297mm]`}
+                      className={`second bg-${color}-200 w-[125mm] h-[297mm]`}
                     >
                       <div className="name">
                         <div className="text-3xl mx-20 mt-10 font-semibold border-b-[1px] border-gray-600 font-serif">
