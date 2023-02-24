@@ -424,15 +424,12 @@ export default function Dynamic() {
               </div>
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
-                <div className="flex">
-                  <div className="m-5 grow">
-                    <input
-                      type="text"
-                      name="color"
-                      className="rounded-md p-2"
-                      placeholder="give any color"
-                      id="color"
-                    />
+              <div className="flex">
+                    <div className="m-5 flex grow">
+                    <div className="flex mt-1">
+                        <div className="w-8 h-8 border-[3px] border-white bg-red-500 mx-1"></div>
+                        <div className="w-8 h-8 border-[3px] border-white bg-gray-500"></div>
+                    </div>
                     <button
                       className="border border-white text-white
                       p-2 rounded-md ml-2"
