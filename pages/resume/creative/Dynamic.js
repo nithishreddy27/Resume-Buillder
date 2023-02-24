@@ -424,9 +424,15 @@ export default function Dynamic() {
               </div>
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
-              <div className="flex">
-                    <div className="m-5 grow">
-                    <input type="text" name="color" className="rounded-md p-2" placeholder="give any color" id="color" />
+                <div className="flex">
+                  <div className="m-5 grow">
+                    <input
+                      type="text"
+                      name="color"
+                      className="rounded-md p-2"
+                      placeholder="give any color"
+                      id="color"
+                    />
                     <button
                       className="border border-white text-white
                       p-2 rounded-md ml-2"
@@ -436,8 +442,8 @@ export default function Dynamic() {
                     >
                       COLOR
                     </button>
-                    </div>
-                    <div className="m-5">
+                  </div>
+                  <div className="m-5">
                     <button
                       onClick={printDocument}
                       className="cursor-pointer text-white mx-5 border border-white p-2 rounded"
@@ -451,16 +457,14 @@ export default function Dynamic() {
                     >
                       LOAD
                     </button>
-                    </div>
+                  </div>
                 </div>
-                  
+
                 <div className="flex justify-center ">
                   {/* large resume */}
-                  
-                  
 
                   <div
-                    className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-170px] xl:scale-[0.9] xl:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row"
+                    className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-170px] xl:scale-[0.9] xl:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row"
                     id="largeResume"
                   >
                     <div className={`w-[35%] bg-${color}-200 p-6`}>
