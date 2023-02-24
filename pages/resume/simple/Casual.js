@@ -50,7 +50,7 @@ export default function Casual() {
       console.log("om");
     }
     console.log(input);
-    html2canvas(input).then((canvas) => {
+    html2canvas(input, { useCORS: true }).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("p", "mm", "a4");
       var width = pdf.internal.pageSize.getWidth();

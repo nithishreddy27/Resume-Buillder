@@ -50,7 +50,7 @@ export default function Chrono() {
       console.log("om");
     }
     console.log(input);
-    html2canvas(input).then((canvas) => {
+    html2canvas(input, { useCORS: true }).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("p", "mm", "a4");
       var width = pdf.internal.pageSize.getWidth();
@@ -344,7 +344,7 @@ export default function Chrono() {
               </div>
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
-              <div className="flex">
+                <div className="flex">
                   <div className="m-5 flex grow">
                     <div className="flex mt-1">
                       <div
@@ -378,8 +378,6 @@ export default function Chrono() {
                   </div>
                 </div>
                 <div className="flex justify-center ">
-                  
-                 
                   {/* large resume */}
 
                   <div

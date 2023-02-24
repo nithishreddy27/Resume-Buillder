@@ -50,7 +50,7 @@ export default function Elegant() {
       console.log("om");
     }
     console.log(input);
-    html2canvas(input).then((canvas) => {
+    html2canvas(input, { useCORS: true }).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("p", "mm", "a4");
       var width = pdf.internal.pageSize.getWidth();
@@ -116,8 +116,6 @@ export default function Elegant() {
                 </div>
               </div>
               <div className="flex justify-center ">
-                
-
                 {/* Small Resume */}
                 <div
                   className={`bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] max-h-[285mm] h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row`}

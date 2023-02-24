@@ -50,7 +50,7 @@ export default function Blue() {
       console.log("om");
     }
     console.log(input);
-    html2canvas(input).then((canvas) => {
+    html2canvas(input, { useCORS: true }).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("p", "mm", "a4");
       var width = pdf.internal.pageSize.getWidth();
@@ -76,7 +76,7 @@ export default function Blue() {
         <div className="flex">
           {open == "closed" && (
             <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-gray-400 to-gray-600">
-             <div className="flex border border-white">
+              <div className="flex border border-white">
                 <div className="m-3 flex grow">
                   <div className="flex mt-1">
                     <div
@@ -116,8 +116,7 @@ export default function Blue() {
                 </div>
               </div>
               <div className="flex justify-center ">
-                
-                 {/* Small Resume */}
+                {/* Small Resume */}
                 <div
                   className={`bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] max-h[285mm] h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row`}
                   id="smallResume"
@@ -361,7 +360,7 @@ export default function Blue() {
               </div>
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
-              <div className="flex">
+                <div className="flex">
                   <div className="m-5 flex grow">
                     <div className="flex mt-1">
                       <div
@@ -395,15 +394,15 @@ export default function Blue() {
                   </div>
                 </div>
                 <div className="flex justify-center ">
-                  
-                 
                   {/* large resume */}
 
                   <div
                     className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row"
                     id="largeResume"
                   >
-                    <div className={`h-[95%] w-[35%] bg-${color}-200 absolute left-10 rounded-b-full p-5 z-10`}>
+                    <div
+                      className={`h-[95%] w-[35%] bg-${color}-200 absolute left-10 rounded-b-full p-5 z-10`}
+                    >
                       <img
                         src="https://randomuser.me/api/portraits/men/40.jpg"
                         alt=""
@@ -531,7 +530,9 @@ export default function Blue() {
                         </>
                       )}
                     </div>
-                    <div className={`w-[100%] h-36 bg-${color}-100 top-10 relative z-1 rounded-l-full  p-10`}>
+                    <div
+                      className={`w-[100%] h-36 bg-${color}-100 top-10 relative z-1 rounded-l-full  p-10`}
+                    >
                       <h1 className="text-3xl ml-[50%] font-bold tracking-widest">
                         {details.personal.firstName}{" "}
                         <span>{details.personal.lastName}</span>
