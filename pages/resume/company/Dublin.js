@@ -7,11 +7,16 @@ import { useFieldArray, useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 export default function Dublin() {
   const user = useUser();
-  const { details, setdetails } = useContext(ResumeContext);
+  const { details, setdetails, setdemo, demo, color, setcolor } =
+    useContext(ResumeContext);
+  const [change, setchange] = useState(false);
 
+  //to add email fname and lname
   useEffect(() => {
     if (user) {
       setdetails({
@@ -24,10 +29,39 @@ export default function Dublin() {
         },
       });
     }
-  }, [user]);
+  }, [user, change]);
+
+  useEffect(() => {
+    setchange(!change);
+  }, [demo]);
 
   const [open, setopen] = useState("semiopen");
 
+  //PDF document
+
+  function printDocument() {
+    console.log("inside");
+    // var input = document.getElementById('smallResume');
+    var input;
+    if (open == "closed") {
+      input = document.getElementById("smallResume");
+    } else {
+      input = document.getElementById("largeResume");
+      console.log("om");
+    }
+    console.log(input);
+    html2canvas(input).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("p", "mm", "a4");
+      var width = pdf.internal.pageSize.getWidth();
+      var height = pdf.internal.pageSize.getHeight();
+      pdf.addImage(imgData, "JPEG", 0, 0, width, height);
+      pdf.save("download.pdf");
+      // pdf.output('dataurlnewwindow');
+    });
+  }
+
+  //responsiveness
   function toggleResume() {
     if (open == "semiopen") {
       setopen("closed");
@@ -49,8 +83,33 @@ export default function Dublin() {
                 DETAILS
               </button>
               <div className="flex justify-center ">
+                <div>
+                  <button
+                    onClick={printDocument}
+                    className="cursor-pointer text-white mx-5"
+                  >
+                    Print
+                  </button>
+
+                  <button onClick={() => setdemo(!demo)}>LOAD</button>
+                </div>
+
+                <div>
+                  <input type="text" name="color" id="color" />
+                  <button
+                    onClick={() =>
+                      setcolor(document.getElementById("color").value)
+                    }
+                  >
+                    color
+                  </button>
+                </div>
+
                 {/* Small Resume */}
-                <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row">
+                <div
+                  className={`bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row`}
+                  id="smallResume"
+                >
                   <div className="first w-[85mm] h-[297mm] bg-emerald-700">
                     <div className="photobg bg-slate-300 w-[200px] h-[200px] relative top-16 left-16"></div>
                     <div className="photo">
@@ -279,11 +338,53 @@ export default function Dublin() {
               </div>
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
+                <div className="flex">
+                  <div className="m-5 flex grow">
+                    <div className="flex gap-1 mt-1">
+                      <div
+                        className="w-8 h-8 border-[2px] border-white bg-red-500 rounded-full"
+                        onClick={() => {
+                          setcolor("red");
+                        }}
+                      ></div>
+                      <div
+                        className="w-8 h-8 border-[2px] border-white bg-emerald-700 rounded-full"
+                        onClick={() => {
+                          setcolor("emerald");
+                        }}
+                      ></div>
+                      <div
+                        className="w-8 h-8 border-[2px] border-white bg-orange-700 rounded-full"
+                        onClick={() => {
+                          setcolor("orange");
+                        }}
+                      ></div>
+                    </div>
+                  </div>
+                  <div className="m-5">
+                    <button
+                      onClick={printDocument}
+                      className="cursor-pointer text-white mx-5 border border-white p-2 rounded"
+                    >
+                      PRINT
+                    </button>
+
+                    <button
+                      className="text-white border border-white p-2 rounded"
+                      onClick={() => setdemo(!demo)}
+                    >
+                      LOAD
+                    </button>
+                  </div>
+                </div>
                 <div className="flex justify-center ">
                   {/* large resume */}
 
-                  <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row">
-                    <div className="first w-[85mm] h-[297mm] bg-emerald-700">
+                  <div
+                    className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row"
+                    id="largeResume"
+                  >
+                    <div className={`first w-[85mm] h-[297mm] bg-${color}-700`}>
                       <div className="photobg bg-slate-300 w-[200px] h-[200px] relative top-16 left-16"></div>
                       <div className="photo">
                         <img
@@ -430,7 +531,9 @@ export default function Dublin() {
                         )}
                       </div>
                     </div>
-                    <div className="second bg-emerald-100 w-[125mm] h-[297mm]">
+                    <div
+                      className={`second bg-${color}-200 w-[125mm] h-[297mm]`}
+                    >
                       <div className="name">
                         <div className="text-3xl mx-20 mt-10 font-semibold border-b-[1px] border-gray-600 font-serif">
                           <h1>{details.personal.firstName}</h1>

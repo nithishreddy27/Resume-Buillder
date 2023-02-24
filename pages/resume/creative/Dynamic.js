@@ -7,15 +7,14 @@ import { useFieldArray, useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
-
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 export default function Dynamic() {
   const user = useUser();
-  const { details, setdetails , setdemo ,demo} = useContext(ResumeContext);
-  const [change, setchange] = useState(false)
-
+  const { details, setdetails, setdemo, demo, color, setcolor } =
+    useContext(ResumeContext);
+  const [change, setchange] = useState(false);
 
   //to add email fname and lname
   useEffect(() => {
@@ -30,49 +29,37 @@ export default function Dynamic() {
         },
       });
     }
-  }, [user , change]);
+  }, [user, change]);
 
-  
-  useEffect(()=>{
-    setchange(!change)
-  },[demo])
+  useEffect(() => {
+    setchange(!change);
+  }, [demo]);
 
-  
-  
   const [open, setopen] = useState("semiopen");
 
-
-//PDF document
+  //PDF document
 
   function printDocument() {
-    console.log("inside")
+    console.log("inside");
     // var input = document.getElementById('smallResume');
-    var input
-    if(open == "closed"){
-      input = document.getElementById('smallResume');
-      
-    }
-    else{
-      input = document.getElementById('largeResume');
+    var input;
+    if (open == "closed") {
+      input = document.getElementById("smallResume");
+    } else {
+      input = document.getElementById("largeResume");
       console.log("om");
-      
     }
     console.log(input);
-    html2canvas(input)
-    .then((canvas) => {
-      const imgData = canvas.toDataURL('image/png');
+    html2canvas(input).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("p", "mm", "a4");
       var width = pdf.internal.pageSize.getWidth();
       var height = pdf.internal.pageSize.getHeight();
-      pdf.addImage(imgData, 'JPEG',0,0,width,height);
+      pdf.addImage(imgData, "JPEG", 0, 0, width, height);
       pdf.save("download.pdf");
       // pdf.output('dataurlnewwindow');
-    });  
-     
-    
+    });
   }
-
-  
 
   //responsiveness
   function toggleResume() {
@@ -88,25 +75,57 @@ export default function Dynamic() {
       {details && user && (
         <div className="flex">
           {open == "closed" && (
-            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-gray-400 to-gray-600">
-              <button
-                className="h-10 w-10 mx-auto block lg:hidden"
+            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-slate-700 to-slate-800">
+              
+              <div className="flex border border-white">
+                  <div className="m-3 flex grow">
+                    <div className="flex mt-1">
+                      <div
+                        className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
+                        onClick={() => {
+                          setcolor("red");
+                        }}
+                      ></div>
+                      <div
+                        className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
+                        onClick={() => {
+                          setcolor("gray");
+                        }}
+                      ></div>
+                    </div>
+                  </div>
+                  <div className="m-3 flex">
+                    <button
+                      onClick={printDocument}
+                      className="cursor-pointer text-white border border-white p-1 mx-1 rounded"
+                    >
+                      PRINT
+                    </button>
+
+                    <button
+                      className="text-white border border-white p-1 mx-1 rounded"
+                      onClick={() => setdemo(!demo)}
+                    >
+                      LOAD
+                    </button>
+                    <button
+                className=" block lg:hidden border border-white text-white p-1 mx-1 rounded-md"
                 onClick={toggleResume}
               >
                 DETAILS
               </button>
-              <div className="flex justify-center ">
-
-                <div>
-                <button onClick={printDocument} className="cursor-pointer text-white mx-5">Print</button>
-
-                  <button onClick={()=>setdemo(!demo)}>LOAD</button>
+                  </div>
                 </div>
-
+              <div className="flex justify-center ">
                 {/* Small Resume */}
-                <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row" id="smallResume">
-                  <div className=" w-[35%] bg-gray-200 p-6">
-                    <div className="bg-slate-800 w-36 h-[200px] absolute top-0 left-0">
+                <div
+                  className={`bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-300px] h-[297mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row`}
+                  id="smallResume"
+                >
+                  <div className={`w-[35%]  bg-${color}-200 p-6`}>
+                    <div
+                      className={`bg-${color}-800 w-36 h-[200px] absolute top-0 left-0`}
+                    >
                       <img
                         src="https://randomuser.me/api/portraits/men/40.jpg"
                         alt=""
@@ -236,7 +255,7 @@ export default function Dynamic() {
                       </>
                     )}
                   </div>
-                  <div className=" w-[70%] pt-10 px-5 ">
+                  <div className={`w-[70%] pt-10 px-5`}>
                     <div>
                       <h1 className="text-5xl font-semibold tracking-wider">
                         {details.personal.firstName}
@@ -295,40 +314,39 @@ export default function Dynamic() {
                         </>
                       )}
                       {details.projects.length != 0 && (
-                          <>
-                            <h1 className="text-xl font-bold tracking-[1px] mt-5">
-                              PROJECTS
-                            </h1>
-                            <hr className="h-[2px] bg-black my-1" />
+                        <>
+                          <h1 className="text-xl font-bold tracking-[1px] mt-5">
+                            PROJECTS
+                          </h1>
+                          <hr className="h-[2px] bg-black my-1" />
 
-                            <div className="ml-1 mt-1">
-                              {details.projects.map((item) => (
-                                <div className="flex" key={item.name}>
-                                  <div className="pt-1">
-                                    <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
-                                    <div className="w-1 bg-black h-24 m-1"></div>
-                                  </div>
-                                  <div className="ml-5 mt-1">
-                                    <p className="font-semibold">
-                                      {item.from}  to {" "}
-                                      {item.to}
-                                    </p>
-                                    <p className="tracking-[2px] my-1">
-                                      {item.name}
-                                    </p>
-                                    <p className="tracking-[2px] my-1">
-                                      {item.domain}
-                                    </p>
-                                  
-                                    <p className="mb-4 text-sm">
-                                      {item.summary.data}
-                                    </p>
-                                  </div>
+                          <div className="ml-1 mt-1">
+                            {details.projects.map((item) => (
+                              <div className="flex" key={item.name}>
+                                <div className="pt-1">
+                                  <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
+                                  <div className="w-1 bg-black h-24 m-1"></div>
                                 </div>
-                              ))}
-                            </div>
-                          </>
-                        )}
+                                <div className="ml-5 mt-1">
+                                  <p className="font-semibold">
+                                    {item.from} to {item.to}
+                                  </p>
+                                  <p className="tracking-[2px] my-1">
+                                    {item.name}
+                                  </p>
+                                  <p className="tracking-[2px] my-1">
+                                    {item.domain}
+                                  </p>
+
+                                  <p className="mb-4 text-sm">
+                                    {item.summary.data}
+                                  </p>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </>
+                      )}
 
                       {details.education.length != 0 && (
                         <>
@@ -408,8 +426,8 @@ export default function Dynamic() {
 
           {open == "semiopen" && (
             <>
-              <SideBar/>
-                
+              <SideBar />
+
               <div
                 className="lg:hidden text-white border border-white rounded-lg px-2 py-1 hover:border-orange-700 hover:text-orange-700 absolute right-[10%] top-5 "
                 onClick={toggleResume}
@@ -418,21 +436,51 @@ export default function Dynamic() {
               </div>
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
-                <div className="flex justify-center ">
+                <div className="flex">
+                  <div className="m-5 flex grow">
+                    <div className="flex mt-1">
+                      <div
+                        className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
+                        onClick={() => {
+                          setcolor("red");
+                        }}
+                      ></div>
+                      <div
+                        className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
+                        onClick={() => {
+                          setcolor("gray");
+                        }}
+                      ></div>
+                    </div>
+                  </div>
+                  <div className="m-5">
+                    <button
+                      onClick={printDocument}
+                      className="cursor-pointer text-white mx-5 border border-white p-2 rounded"
+                    >
+                      PRINT
+                    </button>
 
-
-                  
-                  {/* large resume */}
-                  <div>
-                <button onClick={printDocument} className="cursor-pointer text-white mx-5">Print</button>
-
-                  <button className="text-white" onClick={()=>setdemo(!demo)}>LOAD</button>
+                    <button
+                      className="text-white border border-white p-2 rounded"
+                      onClick={() => setdemo(!demo)}
+                    >
+                      LOAD
+                    </button>
+                  </div>
                 </div>
 
+                <div className="flex justify-center ">
+                  {/* large resume */}
 
-                  <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row" id="largeResume">
-                    <div className=" w-[35%] bg-gray-200 p-6">
-                      <div className="bg-slate-800 w-36 h-[200px] absolute top-0 left-0">
+                  <div
+                    className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-100px] xl:scale-[0.9] xl:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[297mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row"
+                    id="largeResume"
+                  >
+                    <div className={`w-[35%] bg-${color}-200 p-6`}>
+                      <div
+                        className={`bg-${color}-800 w-36 h-[200px] absolute top-0 left-0`}
+                      >
                         <img
                           src="https://randomuser.me/api/portraits/men/40.jpg"
                           alt=""
@@ -562,7 +610,7 @@ export default function Dynamic() {
                         </>
                       )}
                     </div>
-                    <div className=" w-[70%] pt-10 px-5 ">
+                    <div className={` w-[70%] pt-10 px-5`}>
                       <div>
                         <h1 className="text-5xl font-semibold tracking-wider">
                           {details.personal.firstName}
@@ -621,8 +669,7 @@ export default function Dynamic() {
                           </>
                         )}
 
-
-                {details.projects.length != 0 && (
+                        {details.projects.length != 0 && (
                           <>
                             <h1 className="text-xl font-bold tracking-[1px] mt-5">
                               PROJECTS
@@ -638,8 +685,7 @@ export default function Dynamic() {
                                   </div>
                                   <div className="ml-5 mt-1">
                                     <p className="font-semibold">
-                                      {item.from}  to {" "}
-                                      {item.to}
+                                      {item.from} to {item.to}
                                     </p>
                                     <p className="tracking-[2px] my-1">
                                       {item.name}
@@ -647,7 +693,7 @@ export default function Dynamic() {
                                     <p className="tracking-[2px] my-1">
                                       {item.domain}
                                     </p>
-                                  
+
                                     <p className="mb-4 text-sm">
                                       {item.summary.data}
                                     </p>
@@ -657,9 +703,6 @@ export default function Dynamic() {
                             </div>
                           </>
                         )}
-
-
-
 
                         {details.education.length != 0 && (
                           <>
@@ -716,9 +759,7 @@ export default function Dynamic() {
                                       <p className="tracking-[2px]">
                                         {item.title}
                                       </p>
-                                      <p className="font-bold">
-                                        {item.date}
-                                      </p>
+                                      <p className="font-bold">{item.date}</p>
                                       <p className="">{item.issuer}</p>
                                       <p className="mb-4 font-semibold">
                                         {item.summary.data}
@@ -733,9 +774,6 @@ export default function Dynamic() {
                       </div>
                     </div>
                   </div>
-
-
-                  
                 </div>
               </div>
             </>
