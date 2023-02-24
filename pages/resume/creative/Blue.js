@@ -76,38 +76,50 @@ export default function Blue() {
         <div className="flex">
           {open == "closed" && (
             <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-gray-400 to-gray-600">
-              <button
-                className="h-10 w-10 mx-auto block lg:hidden"
-                onClick={toggleResume}
-              >
-                DETAILS
-              </button>
-              <div className="flex justify-center ">
-                <div>
+             <div className="flex border border-white">
+                <div className="m-3 flex grow">
+                  <div className="flex mt-1">
+                    <div
+                      className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
+                      onClick={() => {
+                        setcolor("red");
+                      }}
+                    ></div>
+                    <div
+                      className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
+                      onClick={() => {
+                        setcolor("gray");
+                      }}
+                    ></div>
+                  </div>
+                </div>
+                <div className="m-3 flex">
                   <button
                     onClick={printDocument}
-                    className="cursor-pointer text-white mx-5"
+                    className="cursor-pointer text-white border border-white p-1 mx-1 rounded"
                   >
-                    Print
+                    PRINT
                   </button>
 
-                  <button onClick={() => setdemo(!demo)}>LOAD</button>
-                </div>
-
-                <div>
-                  <input type="text" name="color" id="color" />
                   <button
-                    onClick={() =>
-                      setcolor(document.getElementById("color").value)
-                    }
+                    className="text-white border border-white p-1 mx-1 rounded"
+                    onClick={() => setdemo(!demo)}
                   >
-                    color
+                    LOAD
+                  </button>
+                  <button
+                    className=" block lg:hidden border border-white text-white p-1 mx-1 rounded-md"
+                    onClick={toggleResume}
+                  >
+                    DETAILS
                   </button>
                 </div>
-
-                {/* Small Resume */}
+              </div>
+              <div className="flex justify-center ">
+                
+                 {/* Small Resume */}
                 <div
-                  className={`bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row`}
+                  className={`bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] max-h[285mm] h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row`}
                   id="smallResume"
                 >
                   <div className="h-[95%] w-[35%] bg-sky-200 absolute left-10 rounded-b-full p-5 z-10 ">
@@ -349,37 +361,46 @@ export default function Blue() {
               </div>
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
-                <div className="flex justify-center ">
-                  <div>
+              <div className="flex">
+                  <div className="m-5 flex grow">
+                    <div className="flex mt-1">
+                      <div
+                        className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
+                        onClick={() => {
+                          setcolor("red");
+                        }}
+                      ></div>
+                      <div
+                        className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
+                        onClick={() => {
+                          setcolor("gray");
+                        }}
+                      ></div>
+                    </div>
+                  </div>
+                  <div className="m-5">
                     <button
                       onClick={printDocument}
-                      className="cursor-pointer text-white mx-5"
+                      className="cursor-pointer text-white mx-5 border border-white p-2 rounded"
                     >
-                      Print
+                      PRINT
                     </button>
 
                     <button
-                      className="text-white"
+                      className="text-white border border-white p-2 rounded"
                       onClick={() => setdemo(!demo)}
                     >
                       LOAD
                     </button>
                   </div>
-                  <div>
-                    <input type="text" name="color" id="color" />
-                    <button
-                      onClick={() =>
-                        setcolor(document.getElementById("color").value)
-                      }
-                    >
-                      color
-                    </button>
-                  </div>
-
+                </div>
+                <div className="flex justify-center ">
+                  
+                 
                   {/* large resume */}
 
                   <div
-                    className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row"
+                    className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row"
                     id="largeResume"
                   >
                     <div className={`h-[95%] w-[35%] bg-${color}-200 absolute left-10 rounded-b-full p-5 z-10`}>
