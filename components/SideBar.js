@@ -931,11 +931,12 @@ export default function SideBar() {
                           key={item.institution}
                         >
                           <div className="flex">
+                            <div className="flex-col grow">
                             <p className="grow font-semibold">
                               {item.institution}
                             </p>
-                            <p className="font-bold">{item.fieldOfStudy}</p>
-
+                            <p className="font-thin">{item.fieldOfStudy}</p>
+                            </div>
                             <button
                               className="mr-2"
                               onClick={() => {
@@ -1131,7 +1132,23 @@ export default function SideBar() {
                   )}
                 </div>
               </div>
-
+              <div className="ml-1 mt-1">
+                  {details.certifications.map((item, index) => (
+                    <div className="flex border border-white p-3 my-2" key={item.institution}>
+                      <div className="flex">
+                        <p className="grow-[0.5] font-semibold">{item.title}</p>
+                        <button
+                          className=""
+                          onClick={() => {
+                            deleteCertificate(index);
+                          }}
+                        >
+                          <AiFillDelete></AiFillDelete>
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               <div className={`${carrow ? "block" : "hidden"}`}>
                 <div className="mt-5">
                   <label
@@ -1201,22 +1218,7 @@ export default function SideBar() {
                     Submit
                   </button>
                 </div>
-                <div className="ml-1 mt-1">
-                  {details.certifications.map((item, index) => (
-                    <div className="flex" key={item.institution}>
-                      <div className="flex">
-                        <p className="tracking-[2px]">{item.title}</p>
-                        <button
-                          onClick={() => {
-                            deleteCertificate(index);
-                          }}
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                
               </div>
             </div>
 
