@@ -159,12 +159,17 @@ export default function SocailMedia() {
                     </span>
                     <button
                       className="text-xl mr-2 text-gray-300"
+                      onClick={() => deleteSocialNetwork(index)}
+                    >
+                    <button
+                      className="text-xl mr-2 text-gray-300"
                       onClick={() => {
                         updateSocialNetwork(index);
                         setarrow(!arrow);
                       }}
                     >
                       <FaEdit></FaEdit>
+                    </button>
                     </button>
                     <button
                       className="text-xl mr-2 text-gray-300"
