@@ -2,9 +2,29 @@ import { FiMenu} from 'react-icons/fi'
 import React, { useState } from "react";
 import Link from 'next/link';
 import { useUser } from '../lib/hooks';
+import { useRouter } from 'next/router';
 const Navbar = () => {
     const [open, setOpen] = useState(false);
     const user = useUser()
+    const router = useRouter()
+
+
+    function runMe(){
+      console.log(user.profile.firstName)
+      if(user.notificationMethod== "student"){
+        router.push('/register/addStdDetails')
+    }
+    if(user.notificationMethod== "college"){
+        router.push('/register/addCollegeDetails')
+    }
+    if(user.notificationMethod== "individual"){
+        router.push('/register/addIndDetails')
+    }
+    if(user.notificationMethod== "corporate"){
+        router.push('/register/addStdDetails')
+    }
+
+    }
   return (
     <div>
         <div className="border-b border-gray-300 py-2 fixed top-[-8px] w-[100%] z-40 bg-slate-50">
@@ -20,6 +40,9 @@ const Navbar = () => {
             onClick={() => setOpen(!open)}
           />
           {user && (
+            <>
+            {
+
             <nav
             className={`${
               open ? "block" : "hidden"
@@ -59,6 +82,16 @@ const Navbar = () => {
               
             </ul>
           </nav>
+            }
+            {user.profile.firstName == null && (
+                <>
+                {
+                  runMe()
+                }
+                </>
+            )}
+          </>
+
           )}
           {!user && (
             <nav
