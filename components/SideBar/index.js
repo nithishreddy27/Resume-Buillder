@@ -21,6 +21,7 @@ import Internship from "./Internship";
 import Education from "./Education";
 import Certifications from "./Certifications";
 import Projects from "./Projects";
+import Awards from "./Awards";
 export default function SideBar() {
   const [open, setopen] = useState("semiopen");
   const [arrow, setarrow] = useState(false);
@@ -34,87 +35,10 @@ export default function SideBar() {
   const { details, setdetails } = useContext(ResumeContext);
   const [editSocial, seteditSocial] = useState(false);
 
-
-
   function updateForm(event) {
     const n = event.target.name;
     const i = event.target.id;
     setdetails({ ...details, [n]: { ...details[n], [i]: event.target.value } });
-  }
-
-  
-
-
-
-
-
-  function addAward() {
-    const award = {
-      name: document.getElementById("awardTitle").value,
-      awarder: document.getElementById("awarder").value,
-      date: document.getElementById("awardDate").value,
-      summary: {
-        data: document.getElementById("awardSummary").value,
-      },
-    };
-    console.log("award", award);
-    const arr = [];
-    details.awards.map((item) => {
-      arr.push(item);
-    });
-    // console.log('award',award)
-    arr.push(award);
-    setdetails({ ...details, awards: arr });
-
-    (document.getElementById("awardTitle").value = ""),
-      (document.getElementById("awarder").value = ""),
-      (document.getElementById("awardDate").value = ""),
-      (document.getElementById("awardSummary").value = "");
-  }
-
-  function deleteAward(index) {
-    const arr = [];
-    details.awards.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, awards: arr });
-  }
-
-  function addCertificate() {
-    const certificate = {
-      title: document.getElementById("certificateTitle").value,
-      issuer: document.getElementById("issuer").value,
-      date: document.getElementById("certificateDate").value,
-      summary: {
-        data: document.getElementById("certificateSummary").value,
-      },
-    };
-    console.log("award", certificate);
-    const arr = [];
-    details.certifications.map((item) => {
-      arr.push(item);
-    });
-    // console.log('award',award)
-    arr.push(certificate);
-    setdetails({ ...details, certifications: arr });
-
-    (document.getElementById("certificateTitle").value = ""),
-      (document.getElementById("issuer").value = ""),
-      (document.getElementById("certificateDate").value = ""),
-      (document.getElementById("certificateSummary").value = "");
-  }
-
-  function deleteCertificate(index) {
-    console.log("network", index);
-    const arr = [];
-    details.certifications.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, certifications: arr });
   }
 
   function addSkill() {
@@ -198,7 +122,6 @@ export default function SideBar() {
     setdetails({ ...details, hobbies: arr });
   }
 
-  
   return (
     <>
       {/* sidebar */}
@@ -424,168 +347,25 @@ export default function SideBar() {
               </div>
             </form>
 
-           <SocailMedia/>
+            <SocailMedia />
 
-
-
-
-            <Internship/>
-
-
+            <Internship />
 
             {/* Education  */}
 
-            <Education/>
+            <Education />
 
             {/* Certifications  */}
 
-            <Certifications/>
+            <Certifications />
 
             {/* Projects  */}
 
-           <Projects/>
+            <Projects />
 
             {/* awards  */}
 
-            <div className="mt-5 shadow-md p-2 rounded-md">
-              <div className="flex">
-                <h1 className="font-bold text-xl grow" id="awards">
-                  Awards
-                </h1>
-                <div
-                  className="pt-[-15px] mt-[-10px]"
-                  onClick={() => {
-                    setawarrow(!awarrow);
-                  }}
-                >
-                  {awarrow == true && (
-                    <div>
-                      <div className="flex justify-center">
-                        <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                          <span className="mr-2">
-                            <AiOutlinePlus></AiOutlinePlus>
-                          </span>
-                          Hide
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                  {awarrow == false && (
-                    <div>
-                      <div className="flex justify-center">
-                        <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                          <span className="mr-2">
-                            <AiOutlinePlus></AiOutlinePlus>
-                          </span>
-                          Add
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-              <div>
-                {details.awards.map((item, index) => (
-                  <div className="my-2 p-3 border border-white" key={item.name}>
-                    <div className="flex">
-                      <span className="font-semibold grow">{item.name}</span>
-                      <button
-                        className="mr-2"
-                        onClick={() => {
-                          deleteAward(index);
-                        }}
-                      >
-                        <AiFillDelete></AiFillDelete>
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className={`${awarrow ? "block" : "hidden"}`}>
-                <div className="mt-5 text-gray-300">
-                  <label htmlFor="awardTitle" className="font-semibold">
-                    Title
-                  </label>
-
-                  <input
-                    type="text"
-                    name="award"
-                    id="awardTitle"
-                    className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                  />
-                </div>
-
-                <div className="mt-2">
-                  <label
-                    htmlFor="awarder"
-                    className="font-semibold text-gray-300"
-                  >
-                    Awarder
-                  </label>
-                  <input
-                    type="text"
-                    name="award"
-                    id="awarder"
-                    className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                  />
-                </div>
-                <div className="flex gap-3">
-                  <div className="mt-2">
-                    <label
-                      htmlFor="awardDate"
-                      className="font-semibold text-gray-300"
-                    >
-                      Date
-                    </label>
-                    <input
-                      type="date"
-                      name="award"
-                      id="awardDate"
-                      className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                    />
-                  </div>
-                </div>
-                <div className="mt-2">
-                  <label
-                    htmlFor="awardSummary"
-                    className="font-semibold text-gray-300"
-                  >
-                    Summary
-                  </label>
-                  <textarea
-                    name="award"
-                    id="awardSummary"
-                    className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                  />
-                </div>
-                <div className="flex justify-center">
-                  {/* <button onClick={addInternship}>Submit</button> */}
-                  <button
-                    onClick={addAward}
-                    className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg"
-                  >
-                    Submit
-                  </button>
-                </div>
-
-                {/* <div>
-                  {details.awards.map((item, index) => (
-                    <div className="my-2" key={item.name}>
-                      <span className="font-semibold text-[15px]">
-                        {item.name}
-                      </span>
-                      <button
-                        onClick={() => {
-                          deleteAward(index);
-                        }}
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  ))}
-                </div> */}
-              </div>
-            </div>
+            <Awards />
 
             {/* skills */}
 

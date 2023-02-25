@@ -231,7 +231,7 @@ export default function Internship() {
             {/* <div className="flex justify-center"> */}
             {/* <button>Submit</button> */}
             <button
-              onClick={addInternship}
+              type="submit"
               className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg"
             >
               Submit

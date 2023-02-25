@@ -21,7 +21,6 @@ export default function Projects() {
   const { details, setdetails } = useContext(ResumeContext);
   const [projects, setprojects] = useState({
     name: "",
-    domain: "",
     website: "",
     from: "",
     to: "",
@@ -39,7 +38,6 @@ export default function Projects() {
 
     setprojects({
       name: "",
-      domain: "",
       website: "",
       from: "",
       to: "",
@@ -49,9 +47,10 @@ export default function Projects() {
   function deleteProjects(index) {
     const arr = [];
     details.projects.map((item, i) => {
-      if (i != index) arr.push(item);
+      if (i != index) {
+        arr.push(item);
+      }
     });
-
     setdetails({ ...details, projects: arr });
   }
   function updateProjects(index) {
@@ -59,7 +58,6 @@ export default function Projects() {
       if (i == index) {
         setprojects({
           name: item.name,
-          domain: item.domain,
           website: item.website,
           from: item.from,
           to: item.to,
@@ -143,26 +141,9 @@ export default function Projects() {
               name="project"
               id="projectTitle"
               className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-              value={projects.title}
+              value={projects.name}
               onChange={(e) => {
-                setprojects({ ...projects, title: e.target.value });
-              }}
-            />
-
-            <label
-              htmlFor="projectDomain"
-              className="font-semibold text-gray-300"
-            >
-              Field Of Study
-            </label>
-            <input
-              type="text"
-              name="project"
-              id="projectDomain"
-              className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-              value={projects.domain}
-              onChange={(e) => {
-                setprojects({ ...projects, domain: e.target.value });
+                setprojects({ ...projects, name: e.target.value });
               }}
             />
             <label
@@ -232,7 +213,7 @@ export default function Projects() {
               }}
             />
             {/* <button onClick={addInternship}>Submit</button> */}
-            <button className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg">
+            <button type="submit" className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg">
               Submit
             </button>
           </form>
