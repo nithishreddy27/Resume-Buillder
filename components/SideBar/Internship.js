@@ -135,7 +135,7 @@ export default function Internship() {
                   }}
                 >
                   <button onClick={() => {updateInternship(index)
-                     setiarrow(!iarrow)}}>
+                     setiarrow(true)}}>
                     <FaEdit></FaEdit>
                   </button>
                   

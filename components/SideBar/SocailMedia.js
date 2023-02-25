@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from "react";
-
 import {
   AiOutlineCaretDown,
   AiOutlineCaretUp,
@@ -162,10 +161,10 @@ export default function SocailMedia() {
                       onClick={() => deleteSocialNetwork(index)}
                     >
                     <button
-                      className="text-xl mr-2 text-gray-300"
+                      className="text-xl text-gray-300"
                       onClick={() => {
                         updateSocialNetwork(index);
-                        setarrow(!arrow);
+                        setarrow(true);
                       }}
                     >
                       <FaEdit></FaEdit>
