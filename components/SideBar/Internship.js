@@ -136,6 +136,7 @@ export default function Internship() {
                   <button onClick={() => updateInternship(index)}>
                     Update
                   </button>
+
                   <AiFillDelete></AiFillDelete>
                 </button>
               </div>
