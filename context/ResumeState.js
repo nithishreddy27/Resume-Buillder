@@ -2,11 +2,11 @@ import ResumeContext from "./ResumeContext";
 import { useEffect, useState } from "react";
 import { useUser } from "@/lib/hooks";
 import { useRouter } from "next/router";
+import Navbar from "@/components/Navbar";
 
 const ResumeState = (props) => {
   const router = useRouter();
 
-  
   var pro = {
     personal: {
       firstName: "FNAME",

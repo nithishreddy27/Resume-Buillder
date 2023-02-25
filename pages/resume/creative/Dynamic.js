@@ -9,7 +9,9 @@ import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-
+import ReactDOM from 'react-dom';
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/lib/css/styles.css";
 
 export default function Dynamic() {
   const user = useUser();
@@ -57,7 +59,6 @@ export default function Dynamic() {
       console.log("om");
       
     }
-    console.log(input);
     html2canvas(input)
     .then((canvas) => {
       const imgData = canvas.toDataURL('image/png');
@@ -68,11 +69,16 @@ export default function Dynamic() {
       pdf.save("download.pdf");
       // pdf.output('dataurlnewwindow');
     });  
-     
-    
   }
 
-  
+  // document.getElementById("smallResume")
+ 
+
+  useEffect(()=>{
+  // document.getElementById("largeResume").style.color = "red"
+
+  },[0])
+
 
   //responsiveness
   function toggleResume() {
@@ -83,10 +89,24 @@ export default function Dynamic() {
     }
   }
 
+  const [color, setColor] = useColor("hex", "#121212");
+  useEffect(()=>{
+    console.log("color:",color);
+    // settextColor()
+  },[color])
+  
+
+
   return (
     <>
       {details && user && (
-        <div className="flex">
+        <div className="flex p-10">
+          {/* <div >
+        <ColorPicker width={456} height={228} 
+                   color={color} 
+                   onChange={setColor} hideHSV dark />;
+        
+    </div>   */}
           {open == "closed" && (
             <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-gray-400 to-gray-600">
               <button
@@ -104,7 +124,7 @@ export default function Dynamic() {
                 </div>
 
                 {/* Small Resume */}
-                <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row" id="smallResume">
+                <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row" id="smallResume" style={{color:color.hex}}>
                   <div className=" w-[35%] bg-gray-200 p-6">
                     <div className="bg-slate-800 w-36 h-[200px] absolute top-0 left-0">
                       <img
@@ -430,7 +450,7 @@ export default function Dynamic() {
                 </div>
 
 
-                  <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row" id="largeResume">
+                  <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row" id="largeResume" style={{color:color.hex}}>
                     <div className=" w-[35%] bg-gray-200 p-6">
                       <div className="bg-slate-800 w-36 h-[200px] absolute top-0 left-0">
                         <img
