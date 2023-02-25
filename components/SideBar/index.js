@@ -10,6 +10,7 @@ import { CgProfile } from "react-icons/cg";
 import { MdSocialDistance, MdOutlineSpeakerNotes } from "react-icons/md";
 import { FaLanguage, FaAward } from "react-icons/fa";
 import { SiGooglescholar } from "react-icons/si";
+import {FaEdit} from "react-icons/fa"
 // import {GrProjects} from "react-icons/gr"
 import { GiSkills } from "react-icons/gi";
 import { RxHobbyKnife } from "react-icons/rx";
@@ -32,6 +33,7 @@ export default function SideBar() {
   const [parrow, setparrow] = useState(false);
   const [awarrow, setawarrow] = useState(false);
   const [carrow, setcarrow] = useState(false);
+  
   const { details, setdetails } = useContext(ResumeContext);
   const [editSocial, seteditSocial] = useState(false);
 
