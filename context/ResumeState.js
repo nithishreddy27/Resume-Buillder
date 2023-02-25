@@ -113,14 +113,12 @@ const ResumeState = (props) => {
       //   },
       //   enabled: true,
       // },
-    ]
+    ],
   };
-
-
 
   var completeResume = {
     personal: {
-      firstName:"FNAME",
+      firstName: "FNAME",
       lastName: "LANME",
       email: "example@gmail.com",
       role: "WEB DEVELPOER",
@@ -130,7 +128,7 @@ const ResumeState = (props) => {
       objective: `- Organized customer information and account data for business planning and customer service purposes.\n - Created excel spreadsheets to track customer data and perform intense reconciliation process.\n - Received 97% positive customer survey results.
       - Speed on calls was 10% above team average.  
        *Key Achievement:* Designed and executed an automatized system for following up with customers, increasing customer retention by 22%.
-      `, 
+      `,
     },
     social: [
       {
@@ -152,7 +150,7 @@ const ResumeState = (props) => {
         enabled: true,
       },
     ],
-    
+
     work: [
       {
         company: "Kell Tech",
@@ -329,51 +327,46 @@ const ResumeState = (props) => {
         enabled: true,
       },
     ],
-  }
+  };
 
-
-
-  const [demo, setdemo] = useState(false)
+  const [demo, setdemo] = useState(false);
 
   const [details, setdetails] = useState(pro);
+  const [color, setcolor] = useState("slate");
 
-
-  const user = useUser()
- 
-
-  useEffect(()=>{
-    if(demo == true){
-      setdetails(completeResume)
-    }
-    else{
-      setdetails(pro)
-      console.log("pro",pro);
-    }
-  },[demo])
-
+  const user = useUser();
 
   useEffect(() => {
-    if(user){
-    const e= user.email
-    console.log("email",e)
-    console.log("demo",demo);
-    fetch("http://localhost:3000/api/Resume/getResume", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({email:e}),
-    })
-      .then((data) => {
-        // console.log("in data", data);
-        return data.json();
+    if (demo == true) {
+      setdetails(completeResume);
+    } else {
+      setdetails(pro);
+      console.log("pro", pro);
+    }
+  }, [demo]);
+
+  useEffect(() => {
+    if (user) {
+      const e = user.email;
+      console.log("email", e);
+      console.log("demo", demo);
+      fetch("http://localhost:3000/api/Resume/getResume", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: e }),
       })
-      .then((resume) => {
-        // console.log("in get data", resume.resume);
-        if (resume.resume) {
-          setdetails(resume.resume);
-        }
-      });
-      
-      if(demo == false){
+        .then((data) => {
+          // console.log("in data", data);
+          return data.json();
+        })
+        .then((resume) => {
+          // console.log("in get data", resume.resume);
+          if (resume.resume) {
+            setdetails(resume.resume);
+          }
+        });
+
+      if (demo == false) {
         setdetails({
           ...details,
           personal: {
@@ -382,7 +375,7 @@ const ResumeState = (props) => {
             firstName: user.profile.firstName,
             lastName: user.profile.lastName,
           },
-        });   
+        });
       }
     }
   }, [user]);
@@ -397,7 +390,9 @@ const ResumeState = (props) => {
   }, [details]);
 
   return (
-    <ResumeContext.Provider value={{ details, setdetails , setdemo ,demo }}>
+    <ResumeContext.Provider
+      value={{ details, setdetails, setdemo, demo }}
+    >
       {props.children}
     </ResumeContext.Provider>
   );
