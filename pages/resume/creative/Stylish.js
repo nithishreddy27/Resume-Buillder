@@ -260,7 +260,6 @@ export default function Stylish() {
                   <div key={item.title} className="pt-4 text-white ml-4 ">
                     
                     <p className="font-semibold text-lg  text-white">{item.title}<span className=" right-5 absolute text-sm text-white">[{item.date}]</span></p>
-                    <p></p>
                     <p className=" text-white m-1">{item.issuer}</p>
                     <p className="text-sm m-1">{item.summary.data}</p>
                     <p>{item.summary.enabled}</p>
