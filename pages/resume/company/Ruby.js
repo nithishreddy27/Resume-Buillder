@@ -653,6 +653,6 @@ export default function Ruby() {
           )}
         </div>
       )}
-    </>
-  );
+    </>
+  );
 }

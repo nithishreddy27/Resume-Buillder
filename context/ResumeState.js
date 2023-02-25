@@ -2,6 +2,7 @@ import ResumeContext from "./ResumeContext";
 import { useEffect, useState } from "react";
 import { useUser } from "@/lib/hooks";
 import { useRouter } from "next/router";
+import Navbar from "@/components/Navbar";
 
 const ResumeState = (props) => {
   const router = useRouter();
@@ -390,7 +391,7 @@ const ResumeState = (props) => {
 
   return (
     <ResumeContext.Provider
-      value={{ details, setdetails, setdemo, demo, setcolor, color }}
+      value={{ details, setdetails, setdemo, demo }}
     >
       {props.children}
     </ResumeContext.Provider>

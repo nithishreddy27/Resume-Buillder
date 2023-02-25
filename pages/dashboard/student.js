@@ -73,8 +73,10 @@ export default function Student() {
               Education
             </h1>
           </div>
-
-          {position == "profile" && (
+          { position == "profile" && user.profile.firstName == null &&(
+            runMe()
+          )}
+          {position == "profile" && user.profile.firstName != null && user.college.name != null && (
             <div className="grid grid-cols-3 gap-4 p-5">
               <div>
                 <h1 className="">First Name</h1>
@@ -106,6 +108,7 @@ export default function Student() {
               </div>
             </div>
           )}
+          
           {position == "education" && (
             <div>
               <h1>Current / Ongoing Course</h1>
