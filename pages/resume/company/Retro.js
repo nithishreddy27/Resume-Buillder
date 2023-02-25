@@ -10,7 +10,7 @@ import SideBar from "../../../components/SideBar";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
-export default function Dynamic() {
+export default function Retro() {
   const user = useUser();
   const { details, setdetails, setdemo, demo, color, setcolor } =
     useContext(ResumeContext);
@@ -75,42 +75,55 @@ export default function Dynamic() {
       {details && user && (
         <div className="flex">
           {open == "closed" && (
-            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-gray-400 to-gray-600">
-              <button
-                className="h-10 w-10 mx-auto block lg:hidden"
-                onClick={toggleResume}
-              >
-                DETAILS
-              </button>
-              <div className="flex justify-center ">
-                <div>
+            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-slate-700 to-slate-800">
+              <div className="flex border border-white">
+                <div className="m-3 flex grow">
+                  <div className="flex mt-1">
+                    <div
+                      className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
+                      onClick={() => {
+                        setcolor("red");
+                      }}
+                    ></div>
+                    <div
+                      className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
+                      onClick={() => {
+                        setcolor("gray");
+                      }}
+                    ></div>
+                  </div>
+                </div>
+                <div className="m-3 flex">
                   <button
                     onClick={printDocument}
-                    className="cursor-pointer text-white mx-5"
+                    className="cursor-pointer text-white border border-white p-1 mx-1 rounded"
                   >
-                    Print
+                    PRINT
                   </button>
 
-                  <button onClick={() => setdemo(!demo)}>LOAD</button>
-                </div>
-
-                <div>
-                  <input type="text" name="color" id="color" />
                   <button
-                    onClick={() =>
-                      setcolor(document.getElementById("color").value)
-                    }
+                    className="text-white border border-white p-1 mx-1 rounded"
+                    onClick={() => setdemo(!demo)}
                   >
-                    color
+                    LOAD
+                  </button>
+                  <button
+                    className=" block lg:hidden border border-white text-white p-1 mx-1 rounded-md"
+                    onClick={toggleResume}
+                  >
+                    DETAILS
                   </button>
                 </div>
-
+              </div>
+              <div className="flex justify-center ">
                 {/* Small Resume */}
                 <div
-                  className={`bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row`}
+                  className={`bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-300px] max-h-[297mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row`}
                   id="smallResume"
                 >
-                  <div className="flex " >
+                   <div className=" w-[210mm] ">
+                 
+                 <div className="flex " >
           <img className="h-[38mm] p-1   m-2" src="https://randomuser.me/api/portraits/women/71.jpg"></img>
         
       {/* {details.social.length != 0 && (
@@ -146,7 +159,211 @@ export default function Dynamic() {
           {details.personal.firstName} {details.personal.lastName}
         </span>
       </div>
+    
 
+  <div className=" flex">
+    <div className=" h-[222mm] bg-gradient-to-t from-gray-300 w-[40%]">
+    <div className="">
+    <div className="flex  text-lg m-4">
+      <div className="font-col">
+      {details.skills.length != 0 && (
+        <div className="p-2 ">
+          <p className="text-black text-lg font-bold tracking-wider pb-3">
+            SKILLS
+          </p>
+          {details.skills.map((item) => (
+            <div key={item.name} className="ml-2">
+              <span className="text-lg  ">
+                <li>
+                  {item.name} - {item.level}
+                </li>
+              </span>
+              <p>{item.enabled}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+       {details.languages.length != 0 && (
+         <div className="text-lg pb-2">
+          <p className="text-black font-bold tracking-wider  p-1 px-3 py-1">
+            LANGUAGES
+          </p>
+          {details.languages.map((item) => (
+            <div key={item.name} className="ml-4">
+              <li className="">
+                {item.name} : {item.fluency}
+              </li>
+              <p>{item.enabled}</p>
+            </div>
+          ))}
+        </div>
+       )}
+
+
+      {details.awards.length != 0 && (
+        <div className="pt-2 pb-2  ">
+          <p className="text-black font-bold tracking-wider  p-1 mx-2 ">
+            AWARDS
+          </p>
+          {details.awards.map((item) => (
+            <div key={item.name} className="text-lg  ml-3">
+              <li className="font-semibold">{item.awarder}</li>
+              <p className="text-sm"> [{item.date}] </p>
+              <p>{item.name}</p>
+              <p className="text-sm pr-3">{item.summary.data}</p>
+              <p className="text-sm">{item.summary.enabled}</p>
+              <p>{item.enabled}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+       {details.hobbies.length != 0 && (
+         <div className="text-lg pb-2">
+          <p className="text-black font-bold tracking-wider  p-1 px-3 py-1">
+            HOBBIES
+          </p>
+          {details.hobbies.map((item) => (
+            <div key={item.name}>
+              <li className="pl-6">
+                {item.name}
+              </li>
+              <p>{item.enabled}</p>
+            </div>
+          ))}
+        </div>
+       )}
+
+      {details.projects.length != 0 && (
+        <div className=" pt-1 pb-3 ">
+          <p className="text-black font-bold tracking-wider  p-1 px-2 pt-3   ">
+          PROJECTS
+          </p>
+          
+          {details.projects.map((item) => (
+            <div key={item.name} className="pl-1">
+            <div className=" ml-2 text-black ">
+              <p className="tracking-wide font-semibold">{item.name}</p>
+            <p className="text-sm">
+            [{item.from}] - [{item.to}]
+            </p>
+
+            <Link href={item.website}>
+            <p className=" ml-1 text-sm">
+            {item.website}
+            </p>
+            </Link>
+            <p className="pr-2 text-sm  ">{item.summary.data}</p>
+            <p>{item.summary.enabled}</p>
+              <p>{item.enabled}</p>
+              <p className="p-2"> </p>
+              </div>
+              </div>
+              ))}
+            </div>
+            
+         )}
+         
+            </div>
+           </div>
+           </div>
+      </div>
+      <div className="w-[70%]">
+      {details.education.length != 0 && (  
+        <div className="pl-2 ">
+          <p className=" text-black font-bold text-xl tracking-wide  p-3  mt-3 ">
+            EDUCATION
+          </p>
+          <hr></hr>
+          {details.education.map((item) => (
+            <div key={item.institution} className="text-base p-2 text-black ">
+              <p className="font-semibold text-black ">
+                {item.institution} 
+                <span className="absolute right-3">[{item.startDate} - {item.endDate}]</span>
+              </p>
+              <p>{item.fieldOfStudy}</p>
+              <p>{item.typeOfDegree}</p>
+              <p>{item.gpa}</p>
+              <p>{item.summary.enabled}</p>
+              <p>{item.enabled}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+
+      {details.work.length != 0 && (  
+        <div className="pl-2 ">
+          <p className=" text-black font-bold text-xl tracking-wide  p-3  mt-3 ">
+            INTERNSHIP
+          </p>
+          <hr></hr>
+          {details.work.map((item) => (
+            <div key={item.company} className="text-base p-2 text-black ">
+              <p className="font-semibold text-black ">
+                {item.company} 
+                {/* <span className="absolute right-0">[{item.startDate} - {item.endDate}]</span> */}
+              </p>
+              <p>{item.designation}</p>
+              <p>{item.summary.data}</p>
+              {/* <p>{item.gpa}</p> */}
+              <p>{item.summary.enabled}</p>
+              <p>{item.enabled}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+
+
+      {details.certifications.length != 0 && (
+        <div>
+          <p className=" text-black font-bold text-xl tracking-wide ml-3 p-1  mt-1 ">
+            CERTIFICATION
+          </p>
+          <hr className="m-2"></hr>
+          {details.certifications.map((item) => (
+            <div key={item.title} className="pt-4 text-black mx-3 ">
+              <p className="font-semibold ">
+                {item.title} <span className="right-0 absolute pr-4">[{item.date}]</span>
+              </p>
+              
+              <p>{item.issuer}</p>
+              <p>{item.summary.data}</p>
+              <p>{item.summary.enabled}</p>
+              <p>{item.enabled}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* 
+        <div className=" pt-1 pb-3 bg-gray-200">
+          <p className="text-black font-bold tracking-wider  p-1 px-2 pt-3   ">
+          PROJECTS
+          </p>
+          
+          {resume.projects.map((item) => (
+            <div className=" ml-2 text-black ">
+            <p className="">
+            [{item.from}] - [{item.to}]
+            </p>
+            <Link href={item.website}>
+            <p className="font-semibold ml-1 tracking-wider">
+            {item.name}
+            </p>
+            </Link>
+            
+            <p>{item.summary.enabled}</p>
+              <p>{item.enabled}</p>
+              <p className="p-2"> </p>
+              </div>
+              ))}
+            </div> */}
+      </div>
+    </div>
+    </div>
                 </div>
               </div>
             </div>
@@ -164,23 +381,24 @@ export default function Dynamic() {
               </div>
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
-              <div className="flex">
-                    <div className="m-5 flex grow">
+                <div className="flex">
+                  <div className="m-5 flex grow">
                     <div className="flex mt-1">
-                        <div className="w-8 h-8 border-[3px] border-white bg-red-500 mx-1"></div>
-                        <div className="w-8 h-8 border-[3px] border-white bg-gray-500"></div>
+                      <div
+                        className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
+                        onClick={() => {
+                          setcolor("red");
+                        }}
+                      ></div>
+                      <div
+                        className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
+                        onClick={() => {
+                          setcolor("gray");
+                        }}
+                      ></div>
                     </div>
-                    <button
-                      className="border border-white text-white
-                      p-2 rounded-md ml-2"
-                      onClick={() =>
-                        setcolor(document.getElementById("color").value)
-                      }
-                    >
-                      COLOR
-                    </button>
-                    </div>
-                    <div className="m-5">
+                  </div>
+                  <div className="m-5">
                     <button
                       onClick={printDocument}
                       className="cursor-pointer text-white mx-5 border border-white p-2 rounded"
@@ -194,19 +412,18 @@ export default function Dynamic() {
                     >
                       LOAD
                     </button>
-                    </div>
+                  </div>
                 </div>
-                  
+
                 <div className="flex justify-center ">
                   {/* large resume */}
-                  
-                  
 
                   <div
-                    className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-170px] xl:scale-[0.9] xl:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row"
+                    className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-100px] xl:scale-[0.9] xl:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[297mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row"
                     id="largeResume"
                   >
-                    <div className="flex " >
+                    <div className=" w-[100%] ">
+                   <div className="flex " >
           <img className="h-[38mm] p-1   m-2" src="https://randomuser.me/api/portraits/women/71.jpg"></img>
         
       {/* {details.social.length != 0 && (
@@ -242,6 +459,210 @@ export default function Dynamic() {
           {details.personal.firstName} {details.personal.lastName}
         </span>
       </div>
+
+  <div className=" flex">
+    <div className=" h-[222mm] bg-gradient-to-t from-gray-300 w-[40%]">
+    <div className="">
+    <div className="flex  text-lg m-4">
+      <div className="font-col">
+      {details.skills.length != 0 && (
+        <div className="p-2 ">
+          <p className="text-black text-lg font-bold tracking-wider pb-3">
+            SKILLS
+          </p>
+          {details.skills.map((item) => (
+            <div key={item.name} className="ml-2">
+              <span className="text-lg  ">
+                <li>
+                  {item.name} - {item.level}
+                </li>
+              </span>
+              <p>{item.enabled}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+       {details.languages.length != 0 && (
+         <div className="text-lg pb-2">
+          <p className="text-black font-bold tracking-wider  p-1 px-3 py-1">
+            LANGUAGES
+          </p>
+          {details.languages.map((item) => (
+            <div key={item.name} className="ml-4">
+              <li className="">
+                {item.name} : {item.fluency}
+              </li>
+              <p>{item.enabled}</p>
+            </div>
+          ))}
+        </div>
+       )}
+
+
+      {details.awards.length != 0 && (
+        <div className="pt-2 pb-2  ">
+          <p className="text-black font-bold tracking-wider  p-1 mx-2 ">
+            AWARDS
+          </p>
+          {details.awards.map((item) => (
+            <div key={item.name} className="text-lg  ml-3">
+              <li className="font-semibold">{item.awarder}</li>
+              <p className="text-sm"> [{item.date}] </p>
+              <p>{item.name}</p>
+              <p className="text-sm pr-3">{item.summary.data}</p>
+              <p className="text-sm">{item.summary.enabled}</p>
+              <p>{item.enabled}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+       {details.hobbies.length != 0 && (
+         <div className="text-lg pb-2">
+          <p className="text-black font-bold tracking-wider  p-1 px-3 py-1">
+            HOBBIES
+          </p>
+          {details.hobbies.map((item) => (
+            <div key={item.name}>
+              <li className="pl-6">
+                {item.name}
+              </li>
+              <p>{item.enabled}</p>
+            </div>
+          ))}
+        </div>
+       )}
+
+      {details.projects.length != 0 && (
+        <div className=" pt-1 pb-3 ">
+          <p className="text-black font-bold tracking-wider  p-1 px-2 pt-3   ">
+          PROJECTS
+          </p>
+          
+          {details.projects.map((item) => (
+            <div key={item.name} className="pl-1">
+            <div className=" ml-2 text-black ">
+              <p className="tracking-wide font-semibold">{item.name}</p>
+            <p className="text-sm">
+            [{item.from}] - [{item.to}]
+            </p>
+
+            <Link href={item.website}>
+            <p className=" ml-1 text-sm">
+            {item.website}
+            </p>
+            </Link>
+            <p className="pr-2 text-sm  ">{item.summary.data}</p>
+            <p>{item.summary.enabled}</p>
+              <p>{item.enabled}</p>
+              <p className="p-2"> </p>
+              </div>
+              </div>
+              ))}
+            </div>
+            
+         )}
+         
+            </div>
+           </div>
+           </div>
+      </div>
+      <div className="w-[70%]">
+      {details.education.length != 0 && (  
+        <div className="pl-2 ">
+          <p className=" text-black font-bold text-xl tracking-wide  p-3  mt-3 ">
+            EDUCATION
+          </p>
+          <hr></hr>
+          {details.education.map((item) => (
+            <div key={item.institution} className="text-base p-2 text-black ">
+              <p className="font-semibold text-black ">
+                {item.institution} 
+                <span className="absolute right-3">[{item.startDate} - {item.endDate}]</span>
+              </p>
+              <p>{item.fieldOfStudy}</p>
+              <p>{item.typeOfDegree}</p>
+              <p>{item.gpa}</p>
+              <p>{item.summary.enabled}</p>
+              <p>{item.enabled}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+
+      {details.work.length != 0 && (  
+        <div className="pl-2 ">
+          <p className=" text-black font-bold text-xl tracking-wide  p-3  mt-3 ">
+            INTERNSHIP
+          </p>
+          <hr></hr>
+          {details.work.map((item) => (
+            <div key={item.company} className="text-base p-2 text-black ">
+              <p className="font-semibold text-black ">
+                {item.company} 
+                {/* <span className="absolute right-0">[{item.startDate} - {item.endDate}]</span> */}
+              </p>
+              <p>{item.designation}</p>
+              <p>{item.summary.data}</p>
+              {/* <p>{item.gpa}</p> */}
+              <p>{item.summary.enabled}</p>
+              <p>{item.enabled}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+
+
+      {details.certifications.length != 0 && (
+        <div>
+          <p className=" text-black font-bold text-xl tracking-wide ml-3 p-1  mt-1 ">
+            CERTIFICATION
+          </p>
+          <hr className="m-2"></hr>
+          {details.certifications.map((item) => (
+            <div key={item.title} className="pt-4 text-black mx-3 ">
+              <p className="font-semibold ">
+                {item.title} <span className="right-0 absolute pr-4">[{item.date}]</span>
+              </p>
+              
+              <p>{item.issuer}</p>
+              <p>{item.summary.data}</p>
+              <p>{item.summary.enabled}</p>
+              <p>{item.enabled}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* 
+        <div className=" pt-1 pb-3 bg-gray-200">
+          <p className="text-black font-bold tracking-wider  p-1 px-2 pt-3   ">
+          PROJECTS
+          </p>
+          
+          {resume.projects.map((item) => (
+            <div className=" ml-2 text-black ">
+            <p className="">
+            [{item.from}] - [{item.to}]
+            </p>
+            <Link href={item.website}>
+            <p className="font-semibold ml-1 tracking-wider">
+            {item.name}
+            </p>
+            </Link>
+            
+            <p>{item.summary.enabled}</p>
+              <p>{item.enabled}</p>
+              <p className="p-2"> </p>
+              </div>
+              ))}
+            </div> */}
+      </div>
+    </div>
+    </div>
 
                   </div>
                 </div>
