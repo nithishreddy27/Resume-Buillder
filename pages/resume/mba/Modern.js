@@ -50,18 +50,7 @@ export default function Dynamic() {
       console.log("om");
     }
     console.log(input);
-    html2canvas(
-      input,
-      { useCORS: true },
-      {
-        onclone: (document) => {
-          const images = document.getElementsByTagName("img");
-          for (let i = 0; i < images.length; i++) {
-            images[i].src = images[i].src;
-          }
-        },
-      }
-    ).then((canvas) => {
+    html2canvas(input, { useCORS: true }).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("p", "mm", "a4");
       var width = pdf.internal.pageSize.getWidth();
@@ -712,7 +701,8 @@ export default function Dynamic() {
                       </div>
                     </div>
                     <img
-                      src="https://randomuser.me/api/portraits/men/40.jpg"
+                      // src="https://randomuser.me/api/portraits/men/40.jpg"
+                      src="https://res.cloudinary.com/dhqhq0szn/image/upload/v1676532396/my-uploads/kejobl0bix99ynkl8snb.jpg"
                       alt=""
                       className=" absolute top-6 right-10 z-30 h-32 rounded-full border-white border-4  "
                     />

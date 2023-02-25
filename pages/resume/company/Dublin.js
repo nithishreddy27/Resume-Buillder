@@ -50,7 +50,15 @@ export default function Dublin() {
       console.log("om");
     }
     console.log(input);
-    html2canvas(input, { useCORS: true }).then((canvas) => {
+    html2canvas(input, { useCORS: true },
+      {
+        onclone: (document) => {
+          const images = document.getElementsByTagName("img");
+          for (let i = 0; i < images.length; i++) {
+            images[i].src = images[i].src;
+          }
+        },
+      }).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("p", "mm", "a4");
       var width = pdf.internal.pageSize.getWidth();

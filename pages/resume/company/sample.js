@@ -7,16 +7,11 @@ import { useFieldArray, useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
 
-export default function Symetric() {
+export default function Assymetric() {
   const user = useUser();
-  const { details, setdetails, setdemo, demo, color, setcolor } =
-    useContext(ResumeContext);
-  const [change, setchange] = useState(false);
+  const { details, setdetails } = useContext(ResumeContext);
 
-  //to add email fname and lname
   useEffect(() => {
     if (user) {
       setdetails({
@@ -29,39 +24,10 @@ export default function Symetric() {
         },
       });
     }
-  }, [user, change]);
-
-  useEffect(() => {
-    setchange(!change);
-  }, [demo]);
+  }, [user]);
 
   const [open, setopen] = useState("semiopen");
 
-  //PDF document
-
-  function printDocument() {
-    console.log("inside");
-    // var input = document.getElementById('smallResume');
-    var input;
-    if (open == "closed") {
-      input = document.getElementById("smallResume");
-    } else {
-      input = document.getElementById("largeResume");
-      console.log("om");
-    }
-    console.log(input);
-    html2canvas(input).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "mm", "a4");
-      var width = pdf.internal.pageSize.getWidth();
-      var height = pdf.internal.pageSize.getHeight();
-      pdf.addImage(imgData, "JPEG", 0, 0, width, height);
-      pdf.save("download.pdf");
-      // pdf.output('dataurlnewwindow');
-    });
-  }
-
-  //responsiveness
   function toggleResume() {
     if (open == "semiopen") {
       setopen("closed");
@@ -83,289 +49,192 @@ export default function Symetric() {
                 DETAILS
               </button>
               <div className="flex justify-center ">
-                <div>
-                  <button
-                    onClick={printDocument}
-                    className="cursor-pointer text-white mx-5"
-                  >
-                    Print
-                  </button>
-
-                  <button onClick={() => setdemo(!demo)}>LOAD</button>
-                </div>
-
-                <div>
-                  <input type="text" name="color" id="color" />
-                  <button
-                    onClick={() =>
-                      setcolor(document.getElementById("color").value)
-                    }
-                  >
-                    color
-                  </button>
-                </div>
-
                 {/* Small Resume */}
-                <div
-                  className={`bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row`}
-                  id="smallResume"
-                >
-                  <div className="first w-[210mm] h-[45mm] bg-zinc-300 flex">
-                      <div className="name font-serif">
-                        <h1 className="text-4xl font-semibold px-10 pt-10">
-                          {details.personal.firstName}
-                          <span className="font-normal pl-2">
-                            {" "}
-                            {details.personal.lastName}
-                          </span>
-                        </h1>
-                        <h2 className="text-xl px-10 pt-5 font-sans font-medium">
-                          {details.personal.role}
-                        </h2>
-                      </div>
-                      <div className="photo">
-                        <div className="pl-[80px] pt-16 ml-20">
-                          <img
-                            src="https://th.bing.com/th/id/R.3f1e3fb67a36a4f0e88e267a39fc5fe4?rik=SWNFXn5k1gxRFA&riu=http%3a%2f%2fthispix.com%2fwp-content%2fuploads%2f2015%2f06%2fpassport-026.jpg&ehk=MqDfVA9i8hE5HdOOiYBteZYzQTs1TxhQivfpM8mk9EA%3d&risl=&pid=ImgRaw&r=0"
-                            className="w-[130px] h-[130px] rounded-full"
-                          ></img>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="second flex">
-                      <div className="side1 w-[85mm]">
-                        <div className="contact  border-b-2 border-r-2 border-gray-500 mx-6 mt-5">
-                          <div className="dob pl-10 pt-1">
-                            <i className="bx bxs-calendar pr-4 text-lg"></i>
-                            <span className="text-base relative bottom-[3px]">
-                              {details.personal.dob}
-                            </span>
-                          </div>
-                          <div className="phone pl-10 pt-1">
-                            <i className="bx bxs-phone pr-4 text-lg"></i>
-                            <span className="text-base relative bottom-1">
-                              {details.personal.phone}
-                            </span>
-                          </div>
-                          <div className="mail pl-10 pt-1">
-                            <i className="bx bxs-envelope pr-4 text-lg"></i>
-                            <span className="text-base relative bottom-1">
-                              {details.personal.email}
-                            </span>
-                          </div>
-                          <div className="social pl-10 pt-1 flex">
-                            {details.social.map((item) => (
-                              <div className="pr-2" key={item.network}>
-                                <span>
-                                  <Link href={`${item.url}`}>
-                                    <img
-                                      src={
-                                        "https://www." +
-                                        item.network +
-                                        ".com/favicon.ico"
-                                      }
-                                      className="w-5 grayscale-[40%]"
-                                    ></img>
-                                  </Link>
-                                </span>
-                              </div>
-                            ))}
-                          </div>
-                          <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[266px] bottom-[-5px] bg-white "></div>
-                        </div>
-                        {details.education.length != 0 && (
-                          <div className="education border-b-2 border-r-2 border-gray-500 mx-6">
-                            <div className="pb-2">
-                              <h2 className="text-center text-xl font-serif font-medium underline pt-5">
-                                E D U C A T I O N
-                              </h2>
-                              {details.education.map((item) => (
-                                <p
-                                  className="pl-10 pr-5 pt-2"
-                                  key={item.institution}
-                                >
-                                  <span className="font-medium">
-                                    {item.institution}
-                                  </span>{" "}
-                                  in{" "}
-                                  <span className="font-medium">
-                                    {item.fieldOfStudy}
-                                    <br />({item.startDate} to {item.endDate})
-                                  </span>
-                                  <br />
-                                  <i class="bx bxs-graduation"></i>{" "}
-                                  {item.typeOfDegree} in {item.fieldOfStudy} (
-                                  {item.gpa})
-                                </p>
-                              ))}
-                            </div>
-                            <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[266px] bottom-[-5px] bg-white "></div>
-                          </div>
-                        )}
-                        {details.certifications.length != 0 && (
-                          <div className="certifications border-r-2 border-b-2 border-gray-500 mx-6">
-                            <div className="pb-2">
-                              <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-3">
-                                C E R T I F I C A T I O N S
-                              </h2>
-                              {details.certifications.map((item) => (
-                                <p className="pl-10 pr-2 pb-1" key={item.title}>
-                                  <i className="bx bxs-square text-xs pr-3"></i>
-                                  {item.title} from {item.issuer}
-                                </p>
-                              ))}
-                            </div>
-                            <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[266px] bottom-[-5px] bg-white "></div>
-                          </div>
-                        )}
-                        {details.skills.length != 0 && (
-                          <div className="skills border-b-2 border-r-2 border-gray-500 mx-6">
-                            <div className="pl-10 pb-5">
-                              <h2 className="text-center text-xl font-serif font-medium underline pt-3 pb-2">
-                                S K I L L S
-                              </h2>
-                              {details.skills.map((item) => (
-                                <span className="pr-2" key={item.name}>
-                                  {item.name}{" "}
-                                </span>
-                              ))}
-                            </div>
-                            <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[266px] bottom-[-5px] bg-white "></div>
-                          </div>
-                        )}
-                        {details.hobbies.length != 0 && (
-                          <div className="skills border-b-2 border-r-2 border-gray-500 mx-6">
-                            <div className="pl-10 pb-5">
-                              <h2 className="text-center text-xl font-serif font-medium underline pt-3 pb-2">
-                                H O B B I E S
-                              </h2>
-                              {details.hobbies.map((item) => (
-                                <span className="pr-2" key={item.name}>
-                                  {item.name}{" "}
-                                </span>
-                              ))}
-                            </div>
-                            <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[266px] bottom-[-5px] bg-white "></div>
-                          </div>
-                        )}
-                        {details.languages.length != 0 && (
-                          <div className="border-r-2 border-gray-500 mx-6">
-                            <div className="pl-10 pb-5">
-                              <h2 className="text-center text-xl font-serif font-medium underline pt-3 pb-2">
-                                L A N G U A G E S
-                              </h2>
-                              {details.languages.map((item) => (
-                                <span className="pr-2" key={item.name}>
-                                  {item.name}{" "}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                      <div className="side2 w-[125mm]">
-                        {details.personal.objective.length != 0 && (
-                          <div className="career-objective border-b-2 border-gray-500 ml-[-24px] mr-5">
-                            <h2 className="text-center text-xl font-serif font-medium underline pt-8">
-                              C A R E E R O B J E C T I V E
-                            </h2>
-                            <p className="pl-10 pr-5 pt-3 pb-3">
-                              {details.personal.objective}
-                            </p>
-                            <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[-7px] bottom-[-6px] bg-white "></div>
-                          </div>
-                        )}
-                        {details.work.length != 0 && (
-                          <div className="experience border-b-2 border-gray-500 ml-[-24px] mr-5">
-                            <h2 className="text-center text-xl font-serif font-medium underline pt-3">
-                              E X P E R I E N C E
-                            </h2>
-                            <div className="pb-5">
-                              {details.work.map((item) => (
-                                <p
-                                  className="pl-10 pr-5 pt-2"
-                                  key={item.company}
-                                >
-                                  <span class="font-medium text-lg pr-3">
-                                    {item.designation} in {item.company}
-                                  </span>
-                                  <br></br>({item.from} to {item.to})<br />
-                                  <Link href={`${item.website}`}>
-                                    {item.website}
-                                  </Link>
-                                  <br></br>
-                                </p>
-                              ))}
-                            </div>
-                            <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[-7px] bottom-[-6px] bg-white "></div>
-                          </div>
-                        )}
-                        {details.projects.length != 0 && (
-                          <div className="projects border-b-2 border-gray-500 ml-[-24px] mr-5">
-                            <h2 className="text-center text-xl font-serif font-medium underline pt-3">
-                              P R O J E C T S
-                            </h2>
-                            <div className="pb-3">
-                              {details.projects.map((item) => (
-                                <p className="pl-10 pr-5 pt-3" key={item.name}>
-                                  <span className="font-medium text-lg pr-3">
-                                    {item.name}
-                                  </span>{" "}
-                                  ({item.from} to {item.to})<br />
-                                  <Link href={item.website}>
-                                    {item.website}
-                                  </Link>
-                                  <br></br>
-                                </p>
-                              ))}
-                            </div>
-                            <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[-7px] bottom-[-6px] bg-white "></div>
-                          </div>
-                        )}
-                        {details.certifications.length != 0 && (
-                          <div className="border-gray-500 border-b-2 ml-[-24px] mr-5">
-                            <h2 className="text-center text-xl font-serif font-medium underline pt-3">
-                              C E R T I F I C A T I O N S
-                            </h2>
-                            {details.certifications.map((item) => (
-                              <p className="pl-10 pr-5 pt-1" key={item.title}>
-                                <i className="bx bxs-award pr-1"></i>
-                                <span className="font-medium">
-                                  {item.title}
-                                </span>{" "}
-                                from {item.issuer}
-                              </p>
-                            ))}
-                            <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[-7px] bottom-[-6px] bg-white "></div>
-                          </div>
-                        )}
-                        {details.awards.length != 0 && (
-                          <div className="awards border-gray-500 ml-[-24px] mr-5">
-                            <h2 className="text-center text-xl font-serif font-medium underline pt-3">
-                              A W A R D S
-                            </h2>
-                            {details.awards.map((item) => (
-                              <p className="pl-10 pr-5 pt-1" key={item.name}>
-                                <i className="bx bxs-award pr-1"></i>
-                                <span className="font-medium">
-                                  {item.name}
-                                </span>{" "}
-                                from {item.awarder}
-                              </p>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    </div>
+               
+                <div className={`bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-300px] h-[297mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row`}>
+      <div className="  bg-white w-[205mm]">
+        <div className="flex m-2 ">
+          <div className="m-2 ">
+            <img
+              className="w-[35mm] h-[30mm] pb-2"
+              src="https://randomuser.me/api/portraits/women/71.jpg"
+            ></img>
+            <span className="  text-xl  bg-white   rounded-sm  text-black tracking-wide  font-semibold ">
+              {details.personal.role}
+            </span>
+            
+            {details.hobbies.length != 0 && (
+            <div className="text-sm">
+              <p className="text-m font-medium ">HOBBIES</p>
+              {details.hobbies.map((item) => (
+                <div key={item.name}>
+                  <p>{item.name}</p>
+                  <p>{item.enabled}</p>
                 </div>
+              ))}
+            </div>
+            )}
+
+           {details.skills.length != 0 && (
+            <div className="text-sm">
+              <p className="text-m font-medium ">SKILLS</p>
+              {details.skills.map((item) => (
+                <div key={item.name}>
+                  <span className="text-sm">
+                    {item.name} - {item.level}
+                  </span>
+                  <p>{item.enabled}</p>
+                </div>
+              ))}
+            </div>
+           )}
+          </div>
+          <div className=" m-7 ">
+            <p className="font-bold text-6xl text p-3 pl-2   pb-1 font-sans tracking-wider text-left">
+              {details.personal.firstName} {details.personal.lastName}
+            </p>
+            <div className=" bg-gray-200 rounded-xl m-3 ml-[10%]">
+              
+            {details.personal.objective.length != 0 && (
+              <>
+              <p className=" text-black font-bold text-xl p-2 pt-2 pl-4 tracking-wid mt-5 ">
+                PROFILE
+              </p>          
+              <p className="text-sm text-black p-3 pl-2 pt-2">
+                {details.personal.objective}
+              </p>
+              </>
+            )}
+            </div>
+          </div>
+        </div>
+        <hr className="border-1"></hr>
+        <div className="flex space-x-4 m-4">
+          <div flex-col>
+          {details.education.length != 0 && (
+            <div className="b-[50%] rounded-md  p-2">
+              <p className="font-bold  m-2 ">EDUCATION</p>
+              {details.education.map((item) => (
+                <div key={item.institution} className="text-sm p-1">
+                  <p className="font-semibold">
+                    {item.institution} [{item.startDate} - {item.endDate}]
+                  </p>
+                  <p>{item.fieldOfStudy}</p>
+                  <p>{item.typeOfDegree}</p>
+                  <p>{item.gpa}</p>
+                  <p>{item.summary.enabled}</p>
+                  <p>{item.enabled}</p>
+                </div>
+              ))}
+              <div className="pb-3 pt-2">
+                <p className="text-black font-bold tracking-wider  p-1 px-2 pt-2 ">
+                  WORK
+                </p>
+                {details.work.map((item) => (
+                  <div key={item.company} className="m-2">
+                    <Link href={item.website}>
+                      <p className=" font-semibold text-base tracking-wider">
+                        {item.company}
+                      </p>
+                    </Link>
+                    <p>
+                      [ {item.from}] - [{item.to}]
+                    </p>
+                    <p>{item.designation}</p>
+
+                    <p>{item.summary.enabled}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="pt-2">
+                <p className="text-black font-bold tracking-wider  p-1 mx-2 ">
+                  AWARDS:
+                </p>
+                {details.awards.map((item) => (
+                  <div key={item.name} className="text-sm pt-4 ml-3">
+                    <li className="font-semibold">
+                      {item.name} - [{item.date}]
+                    </li>
+                    <p>{item.awarder}</p>
+                    {/* <p>{item.summary.data}</p> */}
+                    <p>{item.summary.enabled}</p>
+                    <p>{item.enabled}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          </div>
+          <div className="flex-col ">
+          {details.projects.length != 0 && (
+            <div className=" pt-1 pb-3 bg-gray-200 rounded-xl p-2 mt-5 mr-5">
+              <p className="text-black font-bold tracking-wider  p-2 px-2 pt-3   ">
+                PROJECTS
+              </p>
+
+              {details.projects.map((item) => (
+                <div key={item.name} className=" text-black ">
+                  <Link href={item.website}>
+                    <p className="font-bold  tracking-wider">{item.name}</p>
+                  </Link>
+                  <p className="">
+                    {item.from}- {item.to}
+                  </p>
+                  {/* <p>{item.summary.data}</p> */}
+                  <p>{item.summary.enabled}</p>
+                  <p>{item.enabled}</p>
+                  <p className="p-2"> </p>
+                </div>
+              ))}
+            </div>
+          )}
+
+           {details.certifications.length != 0 && (
+            <div className=" pt-1 pb-3 bg-gray-200 rounded-xl mt-5 mr-4">
+              <p className=" text-black font-bold text-xl tracking-wide ml-3 p-1  mt-2 ">
+                CERTIFICATION
+              </p>
+
+              {details.certifications.map((item) => (
+                <div key={item.title} className="pt-4 text-black mx-3 ">
+                  <p className="font-semibold">{item.title} </p>
+                  <p>[{item.date}]</p>
+                  <p></p>
+                  <p>{item.issuer}</p>
+                  {/* <p>{item.summary.data}</p> */}
+                  <p>{item.summary.enabled}</p>
+                  <p>{item.enabled}</p>
+                </div>
+              ))}
+            </div>
+           )}
+            <div className="flex mt-4 m-4 bg-gray-200 rounded-xl">
+              {details.social.map((item) => (
+                <div key={item.network} className="mx-3 pb-4  mt-3 ">
+                  <span className="">
+                    <Link href={item.url}>
+                      <img
+                        src={"https://www." + item.network + ".com/favicon.ico"}
+                        className="w-5 "
+                      />
+                    </Link>
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+               
               </div>
             </div>
           )}
 
           {open == "semiopen" && (
             <>
-              <SideBar />
-
+              <SideBar/>
+                
               <div
                 className="lg:hidden text-white border border-white rounded-lg px-2 py-1 hover:border-orange-700 hover:text-orange-700 absolute right-[10%] top-5 "
                 onClick={toggleResume}
@@ -375,294 +244,189 @@ export default function Symetric() {
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
                 <div className="flex justify-center ">
-                  <div>
-                    <button
-                      onClick={printDocument}
-                      className="cursor-pointer text-white mx-5"
-                    >
-                      Print
-                    </button>
 
-                    <button
-                      className="text-white"
-                      onClick={() => setdemo(!demo)}
-                    >
-                      LOAD
-                    </button>
-                  </div>
-                  <div>
-                    <input type="text" name="color" id="color" />
-                    <button
-                      onClick={() =>
-                        setcolor(document.getElementById("color").value)
-                      }
-                    >
-                      color
-                    </button>
-                  </div>
 
+                  
                   {/* large resume */}
 
-                  <div
-                    className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row"
-                    id="largeResume"
-                  >
-                  <div>
-                      <div className="first w-[210mm] h-[45mm] bg-zinc-300 flex">
-                        <div className="name font-serif">
-                          <h1 className="text-4xl font-semibold px-10 pt-10">
-                            {details.personal.firstName}
-                            <span className="font-normal pl-2">
-                              {" "}
-                              {details.personal.lastName}
-                            </span>
-                          </h1>
-                          <h2 className="text-xl px-10 pt-5 font-sans font-medium">
-                            {details.personal.role}
-                          </h2>
-                        </div>
-                        <div className="photo">
-                          <div className="pl-[80px] pt-16 ml-20">
-                            <img
-                              src="https://th.bing.com/th/id/R.3f1e3fb67a36a4f0e88e267a39fc5fe4?rik=SWNFXn5k1gxRFA&riu=http%3a%2f%2fthispix.com%2fwp-content%2fuploads%2f2015%2f06%2fpassport-026.jpg&ehk=MqDfVA9i8hE5HdOOiYBteZYzQTs1TxhQivfpM8mk9EA%3d&risl=&pid=ImgRaw&r=0"
-                              className="w-[130px] h-[130px] rounded-full"
-                            ></img>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="second flex">
-                        <div className="side1 w-[85mm]">
-                          <div className="contact  border-b-2 border-r-2 border-gray-500 mx-6 mt-5">
-                            <div className="dob pl-10 pt-1">
-                              <i className="bx bxs-calendar pr-4 text-lg"></i>
-                              <span className="text-base relative bottom-[3px]">
-                                {details.personal.dob}
-                              </span>
-                            </div>
-                            <div className="phone pl-10 pt-1">
-                              <i className="bx bxs-phone pr-4 text-lg"></i>
-                              <span className="text-base relative bottom-1">
-                                {details.personal.phone}
-                              </span>
-                            </div>
-                            <div className="mail pl-10 pt-1">
-                              <i className="bx bxs-envelope pr-4 text-lg"></i>
-                              <span className="text-base relative bottom-1">
-                                {details.personal.email}
-                              </span>
-                            </div>
-                            <div className="social pl-10 pt-1 flex">
-                              {details.social.map((item) => (
-                                <div className="pr-2" key={item.network}>
-                                  <span>
-                                    <Link href={`${item.url}`}>
-                                      <img
-                                        src={
-                                          "https://www." +
-                                          item.network +
-                                          ".com/favicon.ico"
-                                        }
-                                        className="w-5 grayscale-[40%]"
-                                      ></img>
-                                    </Link>
-                                  </span>
-                                </div>
-                              ))}
-                            </div>
-                            <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[266px] bottom-[-5px] bg-white "></div>
-                          </div>
-                          {details.education.length != 0 && (
-                            <div className="education border-b-2 border-r-2 border-gray-500 mx-6">
-                              <div className="pb-2">
-                                <h2 className="text-center text-xl font-serif font-medium underline pt-5">
-                                  E D U C A T I O N
-                                </h2>
-                                {details.education.map((item) => (
-                                  <p
-                                    className="pl-10 pr-5 pt-2"
-                                    key={item.institution}
-                                  >
-                                    <span className="font-medium">
-                                      {item.institution}
-                                    </span>{" "}
-                                    in{" "}
-                                    <span className="font-medium">
-                                      {item.fieldOfStudy}
-                                      <br />({item.startDate} to {item.endDate})
-                                    </span>
-                                    <br />
-                                    <i class="bx bxs-graduation"></i>{" "}
-                                    {item.typeOfDegree} in {item.fieldOfStudy} (
-                                    {item.gpa})
-                                  </p>
-                                ))}
-                              </div>
-                              <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[266px] bottom-[-5px] bg-white "></div>
-                            </div>
-                          )}
-                          {details.certifications.length != 0 && (
-                            <div className="certifications border-r-2 border-b-2 border-gray-500 mx-6">
-                              <div className="pb-2">
-                                <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-3">
-                                  C E R T I F I C A T I O N S
-                                </h2>
-                                {details.certifications.map((item) => (
-                                  <p
-                                    className="pl-10 pr-2 pb-1"
-                                    key={item.title}
-                                  >
-                                    <i className="bx bxs-square text-xs pr-3"></i>
-                                    {item.title} from {item.issuer}
-                                  </p>
-                                ))}
-                              </div>
-                              <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[266px] bottom-[-5px] bg-white "></div>
-                            </div>
-                          )}
-                          {details.skills.length != 0 && (
-                            <div className="skills border-b-2 border-r-2 border-gray-500 mx-6">
-                              <div className="pl-10 pb-5">
-                                <h2 className="text-center text-xl font-serif font-medium underline pt-3 pb-2">
-                                  S K I L L S
-                                </h2>
-                                {details.skills.map((item) => (
-                                  <span className="pr-2" key={item.name}>
-                                    {item.name}{" "}
-                                  </span>
-                                ))}
-                              </div>
-                              <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[266px] bottom-[-5px] bg-white "></div>
-                            </div>
-                          )}
-                          {details.hobbies.length != 0 && (
-                            <div className="skills border-b-2 border-r-2 border-gray-500 mx-6">
-                              <div className="pl-10 pb-5">
-                                <h2 className="text-center text-xl font-serif font-medium underline pt-3 pb-2">
-                                  H O B B I E S
-                                </h2>
-                                {details.hobbies.map((item) => (
-                                  <span className="pr-2" key={item.name}>
-                                    {item.name}{" "}
-                                  </span>
-                                ))}
-                              </div>
-                              <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[266px] bottom-[-5px] bg-white "></div>
-                            </div>
-                          )}
-                          {details.languages.length != 0 && (
-                            <div className="border-r-2 border-gray-500 mx-6">
-                              <div className="pl-10 pb-5">
-                                <h2 className="text-center text-xl font-serif font-medium underline pt-3 pb-2">
-                                  L A N G U A G E S
-                                </h2>
-                                {details.languages.map((item) => (
-                                  <span className="pr-2" key={item.name}>
-                                    {item.name}{" "}
-                                  </span>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                        <div className="side2 w-[125mm]">
-                          {details.personal.objective.length != 0 && (
-                            <div className="career-objective border-b-2 border-gray-500 ml-[-24px] mr-5">
-                              <h2 className="text-center text-xl font-serif font-medium underline pt-8">
-                                C A R E E R O B J E C T I V E
-                              </h2>
-                              <p className="pl-10 pr-5 pt-3 pb-3">
-                                {details.personal.objective}
-                              </p>
-                              <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[-7px] bottom-[-6px] bg-white "></div>
-                            </div>
-                          )}
-                          {details.work.length != 0 && (
-                            <div className="experience border-b-2 border-gray-500 ml-[-24px] mr-5">
-                              <h2 className="text-center text-xl font-serif font-medium underline pt-3">
-                                E X P E R I E N C E
-                              </h2>
-                              <div className="pb-5">
-                                {details.work.map((item) => (
-                                  <p
-                                    className="pl-10 pr-5 pt-2"
-                                    key={item.company}
-                                  >
-                                    <span class="font-medium text-lg pr-3">
-                                      {item.designation} in {item.company}
-                                    </span>
-                                    <br></br>({item.from} to {item.to})<br />
-                                    <Link href={`${item.website}`}>
-                                      {item.website}
-                                    </Link>
-                                    <br></br>
-                                  </p>
-                                ))}
-                              </div>
-                              <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[-7px] bottom-[-6px] bg-white "></div>
-                            </div>
-                          )}
-                          {details.projects.length != 0 && (
-                            <div className="projects border-b-2 border-gray-500 ml-[-24px] mr-5">
-                              <h2 className="text-center text-xl font-serif font-medium underline pt-3">
-                                P R O J E C T S
-                              </h2>
-                              <div className="pb-3">
-                                {details.projects.map((item) => (
-                                  <p
-                                    className="pl-10 pr-5 pt-3"
-                                    key={item.name}
-                                  >
-                                    <span className="font-medium text-lg pr-3">
-                                      {item.name}
-                                    </span>{" "}
-                                    ({item.from} to {item.to})<br />
-                                    <Link href={item.website}>
-                                      {item.website}
-                                    </Link>
-                                    <br></br>
-                                  </p>
-                                ))}
-                              </div>
-                              <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[-7px] bottom-[-6px] bg-white "></div>
-                            </div>
-                          )}
-                          {details.certifications.length != 0 && (
-                            <div className="border-gray-500 border-b-2 ml-[-24px] mr-5">
-                              <h2 className="text-center text-xl font-serif font-medium underline pt-3">
-                                C E R T I F I C A T I O N S
-                              </h2>
-                              {details.certifications.map((item) => (
-                                <p className="pl-10 pr-5 pt-1" key={item.title}>
-                                  <i className="bx bxs-award pr-1"></i>
-                                  <span className="font-medium">
-                                    {item.title}
-                                  </span>{" "}
-                                  from {item.issuer}
-                                </p>
-                              ))}
-                              <div className="w-3 h-3 rounded-full border-2 border-gray-500 relative left-[-7px] bottom-[-6px] bg-white "></div>
-                            </div>
-                          )}
-                          {details.awards.length != 0 && (
-                            <div className="awards border-gray-500 ml-[-24px] mr-5">
-                              <h2 className="text-center text-xl font-serif font-medium underline pt-3">
-                                A W A R D S
-                              </h2>
-                              {details.awards.map((item) => (
-                                <p className="pl-10 pr-5 pt-1" key={item.name}>
-                                  <i className="bx bxs-award pr-1"></i>
-                                  <span className="font-medium">
-                                    {item.name}
-                                  </span>{" "}
-                                  from {item.awarder}
-                                </p>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
+                  
+                  <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row align-middle justify-center ">
+      <div className="  bg-white w-[205mm]">
+        <div className="flex m-2 ">
+          <div className="m-2 ">
+            <img
+              className="w-[35mm] h-[30mm] pb-2"
+              src="https://randomuser.me/api/portraits/women/71.jpg"
+            ></img>
+            <span className="  text-xl  bg-white   rounded-sm  text-black tracking-wide  font-semibold ">
+              {details.personal.role}
+            </span>
+            
+            {details.hobbies.length != 0 && (
+            <div className="text-sm">
+              <p className="text-m font-medium ">HOBBIES</p>
+              {details.hobbies.map((item) => (
+                <div key={item.name}>
+                  <p>{item.name}</p>
+                  <p>{item.enabled}</p>
+                </div>
+              ))}
+            </div>
+            )}
+
+           {details.skills.length != 0 && (
+            <div className="text-sm">
+              <p className="text-m font-medium ">SKILLS</p>
+              {details.skills.map((item) => (
+                <div key={item.name}>
+                  <span className="text-sm">
+                    {item.name} - {item.level}
+                  </span>
+                  <p>{item.enabled}</p>
+                </div>
+              ))}
+            </div>
+           )}
+          </div>
+          <div className=" m-7 ">
+            <p className="font-bold text-6xl text p-3 pl-2   pb-1 font-sans tracking-wider text-left">
+              {details.personal.firstName} {details.personal.lastName}
+            </p>
+            <div className=" bg-gray-200 rounded-xl m-3 ml-[10%]">
+              
+            {details.personal.objective.length != 0 && (
+              <>
+              <p className=" text-black font-bold text-xl p-2 pt-2 pl-4 tracking-wid mt-5 ">
+                PROFILE
+              </p>          
+              <p className="text-sm text-black p-3 pl-2 pt-2">
+                {details.personal.objective}
+              </p>
+              </>
+            )}
+            </div>
+          </div>
+        </div>
+        <hr className="border-1"></hr>
+        <div className="flex space-x-4 m-4">
+          <div flex-col>
+          {details.education.length != 0 && (
+            <div className="b-[50%] rounded-md  p-2">
+              <p className="font-bold  m-2 ">EDUCATION</p>
+              {details.education.map((item) => (
+                <div key={item.institution} className="text-sm p-1">
+                  <p className="font-semibold">
+                    {item.institution} [{item.startDate} - {item.endDate}]
+                  </p>
+                  <p>{item.fieldOfStudy}</p>
+                  <p>{item.typeOfDegree}</p>
+                  <p>{item.gpa}</p>
+                  <p>{item.summary.enabled}</p>
+                  <p>{item.enabled}</p>
+                </div>
+              ))}
+              <div className="pb-3 pt-2">
+                <p className="text-black font-bold tracking-wider  p-1 px-2 pt-2 ">
+                  WORK
+                </p>
+                {details.work.map((item) => (
+                  <div key={item.company} className="m-2">
+                    <Link href={item.website}>
+                      <p className=" font-semibold text-base tracking-wider">
+                        {item.company}
+                      </p>
+                    </Link>
+                    <p>
+                      [ {item.from}] - [{item.to}]
+                    </p>
+                    <p>{item.designation}</p>
+
+                    <p>{item.summary.enabled}</p>
                   </div>
+                ))}
+              </div>
+              <div className="pt-2">
+                <p className="text-black font-bold tracking-wider  p-1 mx-2 ">
+                  AWARDS:
+                </p>
+                {details.awards.map((item) => (
+                  <div key={item.name} className="text-sm pt-4 ml-3">
+                    <li className="font-semibold">
+                      {item.name} - [{item.date}]
+                    </li>
+                    <p>{item.awarder}</p>
+                    {/* <p>{item.summary.data}</p> */}
+                    <p>{item.summary.enabled}</p>
+                    <p>{item.enabled}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          </div>
+          <div className="flex-col ">
+          {details.projects.length != 0 && (
+            <div className=" pt-1 pb-3 bg-gray-200 rounded-xl p-2 mt-5 mr-5">
+              <p className="text-black font-bold tracking-wider  p-2 px-2 pt-3   ">
+                PROJECTS
+              </p>
+
+              {details.projects.map((item) => (
+                <div key={item.name} className=" text-black ">
+                  <Link href={item.website}>
+                    <p className="font-bold  tracking-wider">{item.name}</p>
+                  </Link>
+                  <p className="">
+                    {item.from}- {item.to}
+                  </p>
+                  {/* <p>{item.summary.data}</p> */}
+                  <p>{item.summary.enabled}</p>
+                  <p>{item.enabled}</p>
+                  <p className="p-2"> </p>
+                </div>
+              ))}
+            </div>
+          )}
+
+           {details.certifications.length != 0 && (
+            <div className=" pt-1 pb-3 bg-gray-200 rounded-xl mt-5 mr-4">
+              <p className=" text-black font-bold text-xl tracking-wide ml-3 p-1  mt-2 ">
+                CERTIFICATION
+              </p>
+
+              {details.certifications.map((item) => (
+                <div key={item.title} className="pt-4 text-black mx-3 ">
+                  <p className="font-semibold">{item.title} </p>
+                  <p>[{item.date}]</p>
+                  <p></p>
+                  <p>{item.issuer}</p>
+                  {/* <p>{item.summary.data}</p> */}
+                  <p>{item.summary.enabled}</p>
+                  <p>{item.enabled}</p>
+                </div>
+              ))}
+            </div>
+           )}
+            <div className="flex mt-4 m-4 bg-gray-200 rounded-xl">
+              {details.social.map((item) => (
+                <div key={item.network} className="mx-3 pb-4  mt-3 ">
+                  <span className="">
+                    <Link href={item.url}>
+                      <img
+                        src={"https://www." + item.network + ".com/favicon.ico"}
+                        className="w-5 "
+                      />
+                    </Link>
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+                  
                 </div>
               </div>
             </>

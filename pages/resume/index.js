@@ -22,7 +22,6 @@ const Home = (props) => {
       <div>
         <div className="border-b border-gray-300 py-2 fixed top-[-8px] w-[100%] z-40 bg-slate-50">
             <Navbar/>
-          
         </div>
       </div>
       
