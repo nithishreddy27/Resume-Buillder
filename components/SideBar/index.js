@@ -10,7 +10,7 @@ import { CgProfile } from "react-icons/cg";
 import { MdSocialDistance, MdOutlineSpeakerNotes } from "react-icons/md";
 import { FaLanguage, FaAward } from "react-icons/fa";
 import { SiGooglescholar } from "react-icons/si";
-import {FaEdit} from "react-icons/fa"
+import { FaEdit } from "react-icons/fa";
 // import {GrProjects} from "react-icons/gr"
 import { GiSkills } from "react-icons/gi";
 import { RxHobbyKnife } from "react-icons/rx";
@@ -23,6 +23,9 @@ import Education from "./Education";
 import Certifications from "./Certifications";
 import Projects from "./Projects";
 import Awards from "./Awards";
+import Skills from "./Skills";
+import Languages from "./Languages";
+import Hobbies from "./Hobbies";
 export default function SideBar() {
   const [open, setopen] = useState("semiopen");
   const [arrow, setarrow] = useState(false);
@@ -33,7 +36,7 @@ export default function SideBar() {
   const [parrow, setparrow] = useState(false);
   const [awarrow, setawarrow] = useState(false);
   const [carrow, setcarrow] = useState(false);
-  
+
   const { details, setdetails } = useContext(ResumeContext);
   const [editSocial, seteditSocial] = useState(false);
 
@@ -43,60 +46,7 @@ export default function SideBar() {
     setdetails({ ...details, [n]: { ...details[n], [i]: event.target.value } });
   }
 
-  function addSkill() {
-    const skill = {
-      name: document.getElementById("skillTitle").value,
-      level: document.getElementById("skillLevel").value,
-    };
-    const arr = [];
-    details.skills.map((item) => {
-      arr.push(item);
-    });
-    // console.log('skill',skill)
-    arr.push(skill);
-    setdetails({ ...details, skills: arr });
-
-    (document.getElementById("skillTitle").value = ""),
-      (document.getElementById("skillLevel").value = "");
-  }
-
-  function deleteSkill(index) {
-    console.log("network", index);
-    const arr = [];
-    details.skills.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, skills: arr });
-  }
-
-  function addLanguage() {
-    const language = {
-      name: document.getElementById("languageTitle").value,
-      level: document.getElementById("languageLevel").value,
-    };
-    const arr = [];
-    details.languages.map((item) => {
-      arr.push(item);
-    });
-    // console.log('skill',language)
-    arr.push(language);
-    setdetails({ ...details, languages: arr });
-    (document.getElementById("languageTitle").value = ""),
-      (document.getElementById("languageLevel").value = "");
-  }
-
-  function deleteLanguage(index) {
-    console.log("network", index);
-    const arr = [];
-    details.languages.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, languages: arr });
-  }
+  
 
   function addHobby() {
     const hobby = {
@@ -371,355 +321,14 @@ export default function SideBar() {
 
             {/* skills */}
 
-            <div className="mt-5 shadow-md p-2 rounded-md">
-              <div className="flex">
-                <h1 id="skills" className="font-bold text-xl grow">
-                  Skills
-                </h1>
-                <div
-                  className="pt-[-15px] mt-[-10px]"
-                  onClick={() => {
-                    setskarrow(!skarrow);
-                  }}
-                >
-                  {skarrow == true && (
-                    <div>
-                      <div className="flex justify-center">
-                        <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                          <span className="mr-2">
-                            <AiOutlinePlus></AiOutlinePlus>
-                          </span>
-                          Hide
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                  {skarrow == false && (
-                    <div>
-                      <div className="flex justify-center">
-                        <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                          <span className="mr-2">
-                            <AiOutlinePlus></AiOutlinePlus>
-                          </span>
-                          Add
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-              <div className="">
-                {details.skills.length != 0 && (
-                  <div className="mt-1 ml-1">
-                    {details.skills.map((item, index) => (
-                      <>
-                        <div className="border border-white my-2 mx-2">
-                          <div className=" my-1 px-2 flex">
-                            <li className="grow py-2" key={item.name}>
-                              {item.name}
-                            </li>
-                            <button
-                              className="mr-2"
-                              onClick={() => {
-                                deleteSkill(index);
-                              }}
-                            >
-                              <AiFillDelete></AiFillDelete>
-                            </button>
-                          </div>
-                        </div>
-                      </>
-                    ))}
-                  </div>
-                )}
-              </div>
-              <div className={`${skarrow ? "block" : "hidden"}`}>
-                <div className="sm:grid sm:grid-cols-2 sm:gap-2">
-                  <div className="mt-5">
-                    <label
-                      htmlFor="awardTitle"
-                      className="font-semibold text-gray-300"
-                    >
-                      Title
-                    </label>
-
-                    <input
-                      type="text"
-                      name="skill"
-                      id="skillTitle"
-                      className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                    />
-                  </div>
-
-                  <div className="mt-2 sm:mt-5">
-                    <label
-                      htmlFor="skillLevel"
-                      className="font-semibold text-gray-300"
-                    >
-                      Level
-                    </label>
-                    <select
-                      name="skillValue"
-                      className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
-                      id="skillLevel"
-                    >
-                      <option value="beginner">Beginner</option>
-                      <option value="intermediate">Intermediate</option>
-                      <option value="advance">Advance</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="flex justify-center">
-                  <button
-                    onClick={addSkill}
-                    className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg"
-                  >
-                    Submit
-                  </button>
-                </div>
-              </div>
-            </div>
+            <Skills />
 
             {/* Languages  */}
 
-            <div className="mt-5 shadow-md p-2 rounded-md">
-              <div className="flex">
-                <h1 className="font-bold text-xl grow" id="languages">
-                  Language
-                </h1>
-                <div
-                  className="pt-[-15px] mt-[-10px]"
-                  onClick={() => {
-                    setlarrow(!larrow);
-                  }}
-                >
-                  {larrow == true && (
-                    <div>
-                      <div className="flex justify-center">
-                        <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                          <span className="mr-2">
-                            <AiOutlinePlus></AiOutlinePlus>
-                          </span>
-                          Hide
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                  {larrow == false && (
-                    <div>
-                      <div className="flex justify-center">
-                        <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                          <span className="mr-2">
-                            <AiOutlinePlus></AiOutlinePlus>
-                          </span>
-                          Add
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-              <div className="">
-                {details.languages.length != 0 && (
-                  <div className="ml-1  p-2 my-2 border border-white">
-                    {details.languages.map((item, index) => (
-                      <>
-                        <div className="flex">
-                          <li
-                            className="my-2 font-semibold grow"
-                            key={item.name}
-                          >
-                            {item.name}
-                          </li>
-                          <button
-                            className="mr-2"
-                            onClick={() => {
-                              deleteLanguage(index);
-                            }}
-                          >
-                            <AiFillDelete></AiFillDelete>
-                          </button>
-                        </div>
-                      </>
-                    ))}
-                  </div>
-                )}
-              </div>
-              <div className={`${larrow ? "block" : "hidden"}`}>
-                <div className="sm:grid sm:grid-cols-2 gap-2">
-                  <div className="mt-5">
-                    <label
-                      htmlFor="languageTitle"
-                      className="font-semibold text-gray-300"
-                    >
-                      Title
-                    </label>
-
-                    <input
-                      type="text"
-                      name="language"
-                      id="languageTitle"
-                      className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                    />
-                  </div>
-
-                  <div className="mt-2 sm:mt-5">
-                    <label htmlFor="languageLevel" className="font-semibold">
-                      Level
-                    </label>
-                    <select
-                      name="language"
-                      className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
-                      id="languageLevel"
-                    >
-                      <option value="beginner">Beginner</option>
-                      <option value="intermediate">Intermediate</option>
-                      <option value="advance">Advance</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="flex justify-center">
-                  {/* <button onClick={addLanguage}>Submit</button> */}
-                  <button
-                    onClick={addLanguage}
-                    className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg"
-                  >
-                    Submit
-                  </button>
-                </div>
-                {/* <div>
-                  {details.languages.length != 0 && (
-                    <div className="mt-4">
-                      {details.languages.map((item, index) => (
-                        <>
-                          <p className="my-2" key={item.name}>
-                            {item.name}
-                          </p>
-                          <button
-                            onClick={() => {
-                              deleteLanguage(index);
-                            }}
-                          >
-                            Delete
-                          </button>
-                        </>
-                      ))}
-                    </div>
-                  )}
-                </div> */}
-              </div>
-            </div>
-
+            <Languages />
             {/* hobbies  */}
 
-            <div className="mt-5 shadow-md p-2 rounded-md">
-              <div className="flex">
-                <h1 className="font-bold text-xl grow" id="hobbies">
-                  Hobby
-                </h1>
-                <div
-                  className="pt-[-15px] mt-[-10px]"
-                  onClick={() => {
-                    setharrow(!harrow);
-                  }}
-                >
-                  {harrow == true && (
-                    <div>
-                      <div className="flex justify-center">
-                        <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                          <span className="mr-2">
-                            <AiOutlinePlus></AiOutlinePlus>
-                          </span>
-                          Hide
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                  {harrow == false && (
-                    <div>
-                      <div className="flex justify-center">
-                        <button className="align-right flex items-center border-2 my-2 mr-2 right-0 px-3 py-1 border-gray-600 rounded-md hover:border-orange-500 hover:text-orange-600">
-                          <span className="mr-2">
-                            <AiOutlinePlus></AiOutlinePlus>
-                          </span>
-                          Add
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-              <div className="">
-                {details.hobbies.length != 0 && (
-                  <div className="my-2 border border-white">
-                    {details.hobbies.map((item, index) => (
-                      <>
-                        <div className="flex p-3 ">
-                          <li className="grow" key={item.name}>
-                            {item.name}
-                          </li>
-                          <button
-                            className="mr-2"
-                            onClick={() => {
-                              deleteHobby(index);
-                            }}
-                          >
-                            <AiFillDelete></AiFillDelete>
-                          </button>
-                        </div>
-                      </>
-                    ))}
-                  </div>
-                )}
-              </div>
-              <div className={`${harrow ? "block" : "hidden"}`}>
-                <div className="mt-5">
-                  <label
-                    htmlFor="hobbyTitle"
-                    className="font-semibold text-gray-300"
-                  >
-                    Title
-                  </label>
-
-                  <input
-                    type="text"
-                    name="language"
-                    id="hobbyTitle"
-                    className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-                  />
-                </div>
-
-                <div className="flex justify-center">
-                  {/* <button onClick={addHobby}>Submit</button> */}
-                  <button
-                    onClick={addHobby}
-                    className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg"
-                  >
-                    Submit
-                  </button>
-                </div>
-                {/* <div>
-                  {details.hobbies.length != 0 && (
-                    <div className="mt-4">
-                      {details.hobbies.map((item, index) => (
-                        <>
-                          <p className="my-2" key={item.name}>
-                            {item.name}
-                          </p>
-                          <button
-                            onClick={() => {
-                              deleteHobby(index);
-                            }}
-                          >
-                            Delete
-                          </button>
-                        </>
-                      ))}
-                    </div>
-                  )}
-                </div> */}
-              </div>
-            </div>
+            <Hobbies/>
           </div>
         </div>
       </div>
