@@ -8,7 +8,7 @@ import {
 } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { MdSocialDistance, MdOutlineSpeakerNotes } from "react-icons/md";
-import { FaLanguage, FaAward } from "react-icons/fa";
+import { FaLanguage, FaAward, FaEdit } from "react-icons/fa";
 import { SiGooglescholar } from "react-icons/si";
 // import {GrProjects} from "react-icons/gr"
 import { GiSkills } from "react-icons/gi";
@@ -129,21 +129,37 @@ export default function Education() {
                     key={item.typeOfDegree}
                   >
                     <div className="flex">
-                      <p className="grow font-semibold">{item.institution}</p>
-                      <p className="font-bold">{item.fieldOfStudy}</p>
-
+                      <div className="flex-col grow">
+                      <p className=" font-semibold">{item.institution}</p>
+                      <p className="font-thin">{item.fieldOfStudy}</p>
+                      </div>
                       <button
-                        className="mr-2"
+                        className="mr-2 text-xl"
                         onClick={() => {
                           deleteEducation(index);
+                          setearrow(true)
                         }}
                       >
                         <button onClick={() => updateEducation(index)}>
-                          Update
+                          <FaEdit></FaEdit>
                         </button>
 
+                        
+                      </button>
+                      <button className="text-xl"
+                       onClick={() => {
+                          deleteEducation(index);
+                        }}>
                         <AiFillDelete></AiFillDelete>
                       </button>
+                      <div className="mt-[13px] ml-2">
+                      <input
+                        class="mt-[0.3rem] mr-2 h-3.5 w-8 appearance-none rounded-[0.4375rem] bg-gray-300 outline-none before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:bg-gray-200 after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-orange-500 checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s]"
+                        type="checkbox"
+                        role="switch"
+                        id="flexSwitchCheckDefault"
+                      />
+                    </div>
                     </div>
                   </div>
                 ))}
