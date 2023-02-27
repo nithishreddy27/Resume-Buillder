@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ToggleSwitch from '../components/ToggleSwitch';
 
-const tooltip = () => {
+const Tooltip = () => {
   const [enabled, setEnabled] = useState(false);
 
   const handleToggle = () => {
@@ -15,4 +15,4 @@ const tooltip = () => {
   );
 };
 
-export default tooltip;
+export default Tooltip;

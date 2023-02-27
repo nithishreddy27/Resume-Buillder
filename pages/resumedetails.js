@@ -1,6 +1,6 @@
 import React,{ useState } from "react";
 
-const resumedetails = () => {
+const Resumedetails = () => {
     const [resume, setResume] = useState(false);
   return (
     <div className="flex">
@@ -1099,4 +1099,4 @@ const resumedetails = () => {
   );
 };
 
-export default resumedetails;
+export default Resumedetails;

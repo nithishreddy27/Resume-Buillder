@@ -2,7 +2,7 @@ import { FiMenu } from "react-icons/fi";
 import React, { useState } from "react";
 import Link from "next/link";
 
-const pricing = () => {
+const Pricing = () => {
   const [open, setOpen] = useState(false);
   return (
     <div>
@@ -1293,4 +1293,4 @@ const pricing = () => {
   );
 };
 
-export default pricing;
+export default Pricing;
