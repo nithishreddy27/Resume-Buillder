@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react';
+import ToggleSwitch from '../components/ToggleSwitch';
 
 const tooltip = () => {
-  return (
-    <div>tooltip
-       <div class="h-32 scrollbar scrollbar-thumb-gray-900 w-[400px] scrollbar-track-gray-100">
-    <div class="h-64">hiiiiiiiiiiiiiiiiii</div>
-</div>
-    </div>
-  )
-}
+  const [enabled, setEnabled] = useState(false);
 
-export default tooltip
+  const handleToggle = () => {
+    setEnabled(!enabled);
+  };
+
+  return (
+    <div>
+      <ToggleSwitch enabled={enabled} onChange={handleToggle} />
+    </div>
+  );
+};
+
+export default tooltip;
