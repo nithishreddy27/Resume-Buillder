@@ -9,13 +9,14 @@ import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/lib/css/styles.css";
 export default function Amsterdam() {
   const user = useUser();
-  const { details, setdetails, setdemo, demo, color, setcolor } =
+  const { details, setdetails, setdemo, demo } =
     useContext(ResumeContext);
   const [change, setchange] = useState(false);
-
+  const [colorpalette, setcolorpalette] = useState(false);
   //to add email fname and lname
   useEffect(() => {
     if (user) {
@@ -61,6 +62,11 @@ export default function Amsterdam() {
     });
   }
 
+  // document.getElementById("smallResume")
+
+  useEffect(() => {
+    // document.getElementById("largeResume").style.color = "red"
+  }, [0]);
   //responsiveness
   function toggleResume() {
     if (open == "semiopen") {
@@ -69,31 +75,42 @@ export default function Amsterdam() {
       setopen("semiopen");
     }
   }
+  const [color, setColor] = useColor("hex", "#121212");
+  useEffect(() => {
+    console.log("color:", color);
+    // settextColor()
+  }, [color]);
 
   return (
     <>
       {details && user && (
         <div className="flex">
           {open == "closed" && (
-            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-gray-400 to-gray-600">
+            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-slate-700 to-slate-800">
               <div className="flex border border-white">
                 <div className="m-3 flex grow">
-                  <div className="flex mt-1">
-                    <div
-                      className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
-                      onClick={() => {
-                        setcolor("red");
-                      }}
-                    ></div>
-                    <div
-                      className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
-                      onClick={() => {
-                        setcolor("gray");
-                      }}
-                    ></div>
-                  </div>
+                  <div className="flex mt-1"></div>
                 </div>
                 <div className="m-3 flex">
+                <button
+                    className="text-white border border-white p-2 rounded-md"
+                    onClick={() => {
+                      setcolorpalette(!colorpalette);
+                    }}
+                  >
+                    COLOR
+                  </button>
+                  <div className={`${colorpalette ? "block" : "hidden"} mt-[50px] ml-[-50px] lg:ml-[50px] absolute z-40`}>
+                    <ColorPicker
+                      width={300}
+                      height={100}
+                      color={color}
+                      onChange={setColor}
+                      hideHSV
+                      dark
+                    />
+                    ;
+                  </div>
                   <button
                     onClick={printDocument}
                     className="cursor-pointer text-white border border-white p-1 mx-1 rounded"
@@ -154,7 +171,7 @@ export default function Amsterdam() {
                   <div className="w-[40%] h-[285mm] bg-gray-200">
                     <div className="mt-56 mx-10 flex flex-col">
                       <div>
-                        <h4 className="font-bold tracking-[4px]">CONTACTS</h4>
+                        <h4 className="font-bold tracking-[4px] heading">CONTACTS</h4>
                         <hr className="w-[100%] h-1 bg-black my-2" />
                         <p className="font-semibold my-2 ">
                           {details.personal.email}
@@ -165,7 +182,7 @@ export default function Amsterdam() {
                       </div>
                       {details.education.length != 0 && (
                         <>
-                          <h4 className="font-bold tracking-[4px] mt-4">
+                          <h4 className="font-bold tracking-[4px] mt-4 heading">
                             EDUCATION
                           </h4>
                           <hr className="w-[100%] h-1 bg-black my-2" />
@@ -198,7 +215,7 @@ export default function Amsterdam() {
                     <div className="mx-10 flex flex-col mt-4">
                       {details.skills.length != 0 && (
                         <>
-                          <h4 className="font-bold tracking-[4px]">SKILLS</h4>
+                          <h4 className="font-bold tracking-[4px] heading">SKILLS</h4>
                           <hr className="w-[100%] h-1 bg-black my-2" />
                           {details.skills.map((item) => (
                             <>
@@ -221,7 +238,7 @@ export default function Amsterdam() {
                     <div className="mx-10 flex flex-col mt-4">
                       {details.awards.length != 0 && (
                         <>
-                          <h4 className="font-bold tracking-[4px]">AWARDS</h4>
+                          <h4 className="font-bold tracking-[4px] heading">AWARDS</h4>
                           <hr className="w-[100%] h-1 bg-black my-2" />
                           {details.awards.map((item) => (
                             <>
@@ -240,7 +257,7 @@ export default function Amsterdam() {
                     <div className="mx-10 flex flex-col mt-4">
                       {details.hobbies.length != 0 && (
                         <>
-                          <h4 className="font-bold tracking-[4px]">HOBBIES</h4>
+                          <h4 className="font-bold tracking-[4px] heading">HOBBIES</h4>
                           <hr className="w-[100%] h-1 bg-black my-2" />
                           {details.hobbies.map((item) => (
                             <>
@@ -255,7 +272,7 @@ export default function Amsterdam() {
                     <div className="mx-10 flex flex-col mt-4">
                       {details.languages.length != 0 && (
                         <>
-                          <h4 className="font-bold tracking-[4px]">
+                          <h4 className="font-bold tracking-[4px] heading">
                             LANGUAGES
                           </h4>
                           <hr className="w-[100%] h-1 bg-black my-2" />
@@ -276,7 +293,7 @@ export default function Amsterdam() {
                   <div className="w-[60%] mt-52 mx-10">
                     {details.personal.objective.length != 0 && (
                       <>
-                        <h2 className="font-bold tracking-[4px]">OBJECTIVE</h2>
+                        <h2 className="font-bold tracking-[4px] heading">OBJECTIVE</h2>
                         <hr className="w-[100%] h-1 bg-black my-1" />
                         <p className="my-4">{details.personal.objective}</p>
                       </>
@@ -284,7 +301,7 @@ export default function Amsterdam() {
 
                     {details.projects.length != 0 && (
                       <>
-                        <h2 className="font-bold tracking-[4px]">PROJECTS</h2>
+                        <h2 className="font-bold tracking-[4px] heading">PROJECTS</h2>
                         <hr className="w-[100%] h-1 bg-black my-1" />
 
                         {details.projects.map((item) => (
@@ -307,7 +324,7 @@ export default function Amsterdam() {
 
                     {details.work.length != 0 && (
                       <>
-                        <h2 className="font-bold tracking-[4px]">WORK</h2>
+                        <h2 className="font-bold tracking-[4px] heading">WORK</h2>
                         <hr className="w-[100%] h-1 bg-black my-1" />
                         {details.work.map((item) => (
                           <>
@@ -331,7 +348,7 @@ export default function Amsterdam() {
                     )}
                     {details.certifications.length != 0 && (
                       <>
-                        <h2 className="font-bold tracking-[4px]">
+                        <h2 className="font-bold tracking-[4px] heading">
                           CERTIFICATIONS
                         </h2>
                         <hr className="w-[100%] h-1 bg-black my-1" />
@@ -357,6 +374,13 @@ export default function Amsterdam() {
                     )}
                   </div>
                 </div>
+                <style jsx>
+                  {
+                    `.heading{
+                      color:${color.hex};
+                    }`
+                  }
+                </style>
               </div>
             </div>
           )}
@@ -374,21 +398,26 @@ export default function Amsterdam() {
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
                 <div className="flex">
-                  <div className="m-5 flex grow">
-                    <div className="flex mt-1">
-                      <div
-                        className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
-                        onClick={() => {
-                          setcolor("red");
-                        }}
-                      ></div>
-                      <div
-                        className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
-                        onClick={() => {
-                          setcolor("gray");
-                        }}
-                      ></div>
-                    </div>
+                  <div className="m-5 grow">
+                  <button
+                    className="text-white border border-white p-2 rounded-md"
+                    onClick={() => {
+                      setcolorpalette(!colorpalette);
+                    }}
+                  >
+                    COLOR
+                  </button>
+                  <div className={`${colorpalette ? "block" : "hidden"} ml-[50px] absolute z-40`}>
+                    <ColorPicker
+                      width={300}
+                      height={100}
+                      color={color}
+                      onChange={setColor}
+                      hideHSV
+                      dark
+                    />
+                    ;
+                  </div>
                   </div>
                   <div className="m-5">
                     <button
@@ -446,7 +475,7 @@ export default function Amsterdam() {
                     <div className="w-[40%] h-[285mm] bg-gray-200">
                       <div className="mt-56 mx-10 flex flex-col">
                         <div>
-                          <h4 className="font-bold tracking-[4px]">CONTACTS</h4>
+                          <h4 className="font-bold tracking-[4px] heading">CONTACTS</h4>
                           <hr className="w-[100%] h-1 bg-black my-2" />
                           <p className="font-semibold my-2 ">
                             {details.personal.email}
@@ -457,7 +486,7 @@ export default function Amsterdam() {
                         </div>
                         {details.education.length != 0 && (
                           <>
-                            <h4 className="font-bold tracking-[4px] mt-4">
+                            <h4 className="font-bold tracking-[4px] mt-4 heading">
                               EDUCATION
                             </h4>
                             <hr className="w-[100%] h-1 bg-black my-2" />
@@ -490,7 +519,7 @@ export default function Amsterdam() {
                       <div className="mx-10 flex flex-col mt-4">
                         {details.skills.length != 0 && (
                           <>
-                            <h4 className="font-bold tracking-[4px]">SKILLS</h4>
+                            <h4 className="font-bold tracking-[4px] heading">SKILLS</h4>
                             <hr className="w-[100%] h-1 bg-black my-2" />
                             {details.skills.map((item) => (
                               <>
@@ -513,7 +542,7 @@ export default function Amsterdam() {
                       <div className="mx-10 flex flex-col mt-4">
                         {details.awards.length != 0 && (
                           <>
-                            <h4 className="font-bold tracking-[4px]">AWARDS</h4>
+                            <h4 className="font-bold tracking-[4px] heading">AWARDS</h4>
                             <hr className="w-[100%] h-1 bg-black my-2" />
                             {details.awards.map((item) => (
                               <>
@@ -532,7 +561,7 @@ export default function Amsterdam() {
                       <div className="mx-10 flex flex-col mt-4">
                         {details.hobbies.length != 0 && (
                           <>
-                            <h4 className="font-bold tracking-[4px]">
+                            <h4 className="font-bold tracking-[4px] heading">
                               HOBBIES
                             </h4>
                             <hr className="w-[100%] h-1 bg-black my-2" />
@@ -549,7 +578,7 @@ export default function Amsterdam() {
                       <div className="mx-10 flex flex-col mt-4">
                         {details.languages.length != 0 && (
                           <>
-                            <h4 className="font-bold tracking-[4px]">
+                            <h4 className="font-bold tracking-[4px] heading">
                               LANGUAGES
                             </h4>
                             <hr className="w-[100%] h-1 bg-black my-2" />
@@ -570,7 +599,7 @@ export default function Amsterdam() {
                     <div className="w-[60%] mt-52 mx-10">
                       {details.personal.objective.length != 0 && (
                         <>
-                          <h2 className="font-bold tracking-[4px]">
+                          <h2 className="font-bold tracking-[4px] heading">
                             OBJECTIVE
                           </h2>
                           <hr className="w-[100%] h-1 bg-black my-1" />
@@ -580,7 +609,7 @@ export default function Amsterdam() {
 
                       {details.projects.length != 0 && (
                         <>
-                          <h2 className="font-bold tracking-[4px]">PROJECTS</h2>
+                          <h2 className="font-bold tracking-[4px] heading">PROJECTS</h2>
                           <hr className="w-[100%] h-1 bg-black my-1" />
 
                           {details.projects.map((item) => (
@@ -603,7 +632,7 @@ export default function Amsterdam() {
 
                       {details.work.length != 0 && (
                         <>
-                          <h2 className="font-bold tracking-[4px]">WORK</h2>
+                          <h2 className="font-bold tracking-[4px] heading">WORK</h2>
                           <hr className="w-[100%] h-1 bg-black my-1" />
                           {details.work.map((item) => (
                             <>
@@ -627,7 +656,7 @@ export default function Amsterdam() {
                       )}
                       {details.certifications.length != 0 && (
                         <>
-                          <h2 className="font-bold tracking-[4px]">
+                          <h2 className="font-bold tracking-[4px] heading">
                             CERTIFICATIONS
                           </h2>
                           <hr className="w-[100%] h-1 bg-black my-1" />
@@ -653,6 +682,13 @@ export default function Amsterdam() {
                       )}
                     </div>
                   </div>
+                  <style jsx>
+                    {
+                      `.heading{
+                        color:${color.hex};
+                      }`
+                    }
+                  </style>
                 </div>
               </div>
             </>

@@ -9,13 +9,14 @@ import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/lib/css/styles.css";
 export default function Blue() {
   const user = useUser();
-  const { details, setdetails, setdemo, demo, color, setcolor } =
+  const { details, setdetails, setdemo, demo} =
     useContext(ResumeContext);
   const [change, setchange] = useState(false);
-
+  const [colorpalette, setcolorpalette] = useState(false);
   //to add email fname and lname
   useEffect(() => {
     if (user) {
@@ -60,6 +61,9 @@ export default function Blue() {
       // pdf.output('dataurlnewwindow');
     });
   }
+  useEffect(() => {
+    // document.getElementById("largeResume").style.color = "red"
+  }, [0]);
 
   //responsiveness
   function toggleResume() {
@@ -69,31 +73,43 @@ export default function Blue() {
       setopen("semiopen");
     }
   }
-
+  const [color, setColor] = useColor("hex", "#121212");
+  useEffect(() => {
+    console.log("color:", color);
+    // settextColor()
+  }, [color]);
   return (
     <>
       {details && user && (
         <div className="flex">
           {open == "closed" && (
-            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-gray-400 to-gray-600">
+            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-slate-700 to-slate-800">
               <div className="flex border border-white">
                 <div className="m-3 flex grow">
                   <div className="flex mt-1">
-                    <div
-                      className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
-                      onClick={() => {
-                        setcolor("red");
-                      }}
-                    ></div>
-                    <div
-                      className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
-                      onClick={() => {
-                        setcolor("gray");
-                      }}
-                    ></div>
+                    
                   </div>
                 </div>
                 <div className="m-3 flex">
+                <button
+                    className="text-white border border-white p-2 rounded-md"
+                    onClick={() => {
+                      setcolorpalette(!colorpalette);
+                    }}
+                  >
+                    COLOR
+                  </button>
+                  <div className={`${colorpalette ? "block" : "hidden"} mt-[50px] ml-[-50px] lg:ml-[50px] absolute z-40`}>
+                    <ColorPicker
+                      width={300}
+                      height={100}
+                      color={color}
+                      onChange={setColor}
+                      hideHSV
+                      dark
+                    />
+                    ;
+                  </div>
                   <button
                     onClick={printDocument}
                     className="cursor-pointer text-white border border-white p-1 mx-1 rounded"
@@ -169,7 +185,7 @@ export default function Blue() {
                     </>
                     {details.skills.length != 0 && (
                       <>
-                        <h1 className="text-2xl font-semibold tracking-[2px] mt-5">
+                        <h1 className="text-2xl font-semibold tracking-[2px] mt-5 heading">
                           SKILLS
                         </h1>
 
@@ -185,7 +201,7 @@ export default function Blue() {
                     )}
                     {details.languages.length != 0 && (
                       <>
-                        <h1 className="text-2xl font-semibold tracking-[2px] mt-5">
+                        <h1 className="text-2xl font-semibold tracking-[2px] mt-5 heading">
                           LANGUAGES
                         </h1>
                         <div className="my-2">
@@ -199,7 +215,7 @@ export default function Blue() {
                     )}
                     {details.hobbies.length != 0 && (
                       <>
-                        <h1 className="text-2xl font-semibold tracking-[2px] mt-5">
+                        <h1 className="text-2xl font-semibold tracking-[2px] mt-5 heading">
                           HOBBIES
                         </h1>
                         <div className="my-2">
@@ -213,7 +229,7 @@ export default function Blue() {
                     )}
                     {details.awards.length != 0 && (
                       <>
-                        <h1 className="text-2xl font-semibold tracking-[2px] mt-5">
+                        <h1 className="text-2xl font-semibold tracking-[2px] mt-5 heading">
                           AWARDS
                         </h1>
                         <div className="my-2">
@@ -237,7 +253,7 @@ export default function Blue() {
                     {details.certifications.length != 0 && (
                       <>
                         <div className="mt-4">
-                          <h1 className="text-2xl font-semibold tracking-[2px]">
+                          <h1 className="text-2xl font-semibold tracking-[2px] heading">
                             CERTIFICATIONS
                           </h1>
                           {details.certifications.map((item) => (
@@ -260,7 +276,7 @@ export default function Blue() {
                     <div className="absolute mt-10  left-[330px] w-[57%] h-[100%]">
                       {details.personal.objective != 0 && (
                         <>
-                          <h1 className="text-xl font-bold tracking-[1px]">
+                          <h1 className="text-xl font-bold tracking-[1px] heading">
                             OBJECTIVE
                           </h1>
                           <p>{details.personal.objective}</p>
@@ -268,7 +284,7 @@ export default function Blue() {
                       )}
                       {details.education.length != 0 && (
                         <>
-                          <h1 className="text-xl font-bold tracking-[1px]">
+                          <h1 className="text-xl font-bold tracking-[1px] heading">
                             EDUCATION
                           </h1>
                           {details.education.map((item) => (
@@ -291,7 +307,7 @@ export default function Blue() {
 
                       {details.work.length != 0 && (
                         <>
-                          <h1 className="text-xl font-bold tracking-[1px] mt-4">
+                          <h1 className="text-xl font-bold tracking-[1px] mt-4 heading">
                             WORK
                           </h1>
                           {details.work.map((item) => (
@@ -316,7 +332,7 @@ export default function Blue() {
                       )}
                       {details.projects.length != 0 && (
                         <div>
-                          <h1 className="text-xl font-bold tracking-[1px] mt-4">
+                          <h1 className="text-xl font-bold tracking-[1px] mt-4 heading">
                             PROJECTS
                           </h1>
                           {details.projects.map((item) => (
@@ -344,6 +360,12 @@ export default function Blue() {
                     </div>
                   </div>
                 </div>
+                <style jsx>
+                  {`
+                  .heading{
+                    color:${color.hex};
+                  }`}
+                </style>
               </div>
             </div>
           )}
@@ -361,21 +383,26 @@ export default function Blue() {
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
                 <div className="flex">
-                  <div className="m-5 flex grow">
-                    <div className="flex mt-1">
-                      <div
-                        className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
-                        onClick={() => {
-                          setcolor("red");
-                        }}
-                      ></div>
-                      <div
-                        className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
-                        onClick={() => {
-                          setcolor("gray");
-                        }}
-                      ></div>
-                    </div>
+                  <div className="m-5 grow">
+                  <button
+                    className="text-white border border-white p-2 rounded-md"
+                    onClick={() => {
+                      setcolorpalette(!colorpalette);
+                    }}
+                  >
+                    COLOR
+                  </button>
+                  <div className={`${colorpalette ? "block" : "hidden"} ml-[50px] absolute z-40`}>
+                    <ColorPicker
+                      width={300}
+                      height={100}
+                      color={color}
+                      onChange={setColor}
+                      hideHSV
+                      dark
+                    />
+                    ;
+                  </div>
                   </div>
                   <div className="m-5">
                     <button
@@ -401,7 +428,7 @@ export default function Blue() {
                     id="largeResume"
                   >
                     <div
-                      className={`h-[95%] w-[35%] bg-${color}-200 absolute left-10 rounded-b-full p-5 z-10`}
+                      className={`h-[95%] w-[35%] bg-sky-200 absolute left-10 rounded-b-full p-5 z-10`}
                     >
                       <img
                         src="https://randomuser.me/api/portraits/men/40.jpg"
@@ -450,7 +477,7 @@ export default function Blue() {
                       </>
                       {details.skills.length != 0 && (
                         <>
-                          <h1 className="text-2xl font-semibold tracking-[2px] mt-5">
+                          <h1 className="text-2xl font-semibold tracking-[2px] mt-5 heading">
                             SKILLS
                           </h1>
 
@@ -466,7 +493,7 @@ export default function Blue() {
                       )}
                       {details.languages.length != 0 && (
                         <>
-                          <h1 className="text-2xl font-semibold tracking-[2px] mt-5">
+                          <h1 className="text-2xl font-semibold tracking-[2px] mt-5 heading">
                             LANGUAGES
                           </h1>
                           <div className="my-2">
@@ -480,7 +507,7 @@ export default function Blue() {
                       )}
                       {details.hobbies.length != 0 && (
                         <>
-                          <h1 className="text-2xl font-semibold tracking-[2px] mt-5">
+                          <h1 className="text-2xl font-semibold tracking-[2px] mt-5 heading">
                             HOBBIES
                           </h1>
                           <div className="my-2">
@@ -494,7 +521,7 @@ export default function Blue() {
                       )}
                       {details.awards.length != 0 && (
                         <>
-                          <h1 className="text-2xl font-semibold tracking-[2px] mt-5">
+                          <h1 className="text-2xl font-semibold tracking-[2px] mt-5 heading">
                             AWARDS
                           </h1>
                           <div className="my-2">
@@ -518,7 +545,7 @@ export default function Blue() {
                       {details.certifications.length != 0 && (
                         <>
                           <div className="mt-4">
-                            <h1 className="text-2xl font-semibold tracking-[2px]">
+                            <h1 className="text-2xl font-semibold tracking-[2px] heading">
                               CERTIFICATIONS
                             </h1>
                             {details.certifications.map((item) => (
@@ -531,7 +558,7 @@ export default function Blue() {
                       )}
                     </div>
                     <div
-                      className={`w-[100%] h-36 bg-${color}-100 top-10 relative z-1 rounded-l-full  p-10`}
+                      className={`w-[100%] h-36 bg-sky-100 top-10 relative z-1 rounded-l-full  p-10`}
                     >
                       <h1 className="text-3xl ml-[50%] font-bold tracking-widest">
                         {details.personal.firstName}{" "}
@@ -543,7 +570,7 @@ export default function Blue() {
                       <div className="absolute mt-10  left-[330px] w-[57%] h-[100%]">
                         {details.personal.objective != 0 && (
                           <>
-                            <h1 className="text-xl font-bold tracking-[1px]">
+                            <h1 className="text-xl font-bold tracking-[1px] heading">
                               OBJECTIVE
                             </h1>
                             <p>{details.personal.objective}</p>
@@ -551,7 +578,7 @@ export default function Blue() {
                         )}
                         {details.education.length != 0 && (
                           <>
-                            <h1 className="text-xl font-bold tracking-[1px]">
+                            <h1 className="text-xl font-bold tracking-[1px] heading">
                               EDUCATION
                             </h1>
                             {details.education.map((item) => (
@@ -574,7 +601,7 @@ export default function Blue() {
 
                         {details.work.length != 0 && (
                           <>
-                            <h1 className="text-xl font-bold tracking-[1px] mt-4">
+                            <h1 className="text-xl font-bold tracking-[1px] mt-4 heading">
                               WORK
                             </h1>
                             {details.work.map((item) => (
@@ -599,7 +626,7 @@ export default function Blue() {
                         )}
                         {details.projects.length != 0 && (
                           <div>
-                            <h1 className="text-xl font-bold tracking-[1px] mt-4">
+                            <h1 className="text-xl font-bold tracking-[1px] mt-4 heading">
                               PROJECTS
                             </h1>
                             {details.projects.map((item) => (
@@ -627,6 +654,12 @@ export default function Blue() {
                       </div>
                     </div>
                   </div>
+                  <style jsx>
+                    {`
+                    .heading{
+                      color:${color.hex};
+                    }`}
+                  </style>
                 </div>
               </div>
             </>
