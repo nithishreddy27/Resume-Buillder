@@ -1,5 +1,5 @@
 import React from 'react'
-export const EditProfile = () => {
+const EditProfile = () => {
   return (
     <div className="min-h-screen">
         <div class="bg-white min-h-screen flex flex-col justify-center items-center">
