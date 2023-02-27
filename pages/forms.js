@@ -2,7 +2,7 @@ import React from 'react'
 import { useFieldArray, useForm } from "react-hook-form";
 
 
-export default function forms() {
+export default function Forms() {
     const { register, handleSubmit, control } = useForm({
         defaultValues: {
           test: [{}],

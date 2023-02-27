@@ -5,31 +5,31 @@ import dynamic from 'next/dynamic';
 
 export default function Slug() {
 
-  const router = useRouter()
-  const name = router.query.slug
-  console.log("name outside",name);
-  var GoodbyeDynamic;
-  useEffect(()=>{
-    if(name){
-      console.log("name",name);
-       GoodbyeDynamic = dynamic(() => import(`../creative/Dynamic`), {
-        loading: () => 'Loading...'});
-    }
-  },[name])
+  // const router = useRouter()
+  // const name = router.query.slug
+  // console.log("name outside",name);
+  // var GoodbyeDynamic;
+  // useEffect(()=>{
+  //   if(name){
+  //     console.log("name",name);
+  //      GoodbyeDynamic = dynamic(() => import(`../creative/Dynamic`), {
+  //       loading: () => 'Loading...'});
+  //   }
+  // },[name])
 
   
 
-  return (
-    <div>
+  // return (
+  //   <div>
 
-      {name && (
-        <>
-          name:{name}
-          <GoodbyeDynamic/>
-        </>
-      )}
-    </div>
-  )
+  //     {name && (
+  //       <>
+  //         name:{name}
+  //         <GoodbyeDynamic/>
+  //       </>
+  //     )}
+  //   </div>
+  // )
 }
 
 
