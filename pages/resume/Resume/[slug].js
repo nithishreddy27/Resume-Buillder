@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import dynamic from 'next/dynamic';
 
-export default function slug() {
+export default function Slug() {
 
   const router = useRouter()
   const name = router.query.slug

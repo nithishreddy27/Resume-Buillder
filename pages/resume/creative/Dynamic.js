@@ -710,6 +710,8 @@ export default function Dynamic() {
                           </>
                         )}
 
+
+
                         {details.projects.length != 0 && (
                           <>
                             <h1 className="text-xl font-bold tracking-[1px] mt-5 heading">
@@ -744,6 +746,8 @@ export default function Dynamic() {
                             </div>
                           </>
                         )}
+
+
 
                         {details.education.length != 0 && (
                           <>

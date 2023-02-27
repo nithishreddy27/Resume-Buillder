@@ -6,7 +6,7 @@ import Image from "next/image";
 
 
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
-const landing = () => {
+const Landing = () => {
   const [open, setOpen] = useState(false);
   return (
     <div>
@@ -533,4 +533,4 @@ const landing = () => {
   );
 };
 
-export default landing;
+export default Landing;
