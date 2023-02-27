@@ -97,11 +97,11 @@ export default function Hobbies() {
         </div>
         <div className="">
           {details.hobbies.length != 0 && (
-            <div className="my-2 border border-white">
+            <div className="ml-1  p-2 my-2 border border-white">
               {details.hobbies.map((item, index) => (
                 <>
-                  <div className="flex p-3 ">
-                    <li className="grow" key={item.name}>
+                  <div className="flex">
+                    <li className="my-2 font-semibold grow" key={item.name}>
                       {item.name}
                     </li>
                     <button

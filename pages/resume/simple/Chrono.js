@@ -118,11 +118,11 @@ export default function Chrono() {
               <div className="flex justify-center ">
                 {/* Small Resume */}
                 <div
-                  className={`bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row`}
+                  className={`bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row`}
                   id="smallResume"
                 >
                   <div className="grid grid-cols-5">
-                    <div className="col-span-2 border-2 border-solid border-black h-[255mm] ml-5 mt-20">
+                    <div className="col-span-2 border-2 border-solid border-black w-[80mm] h-[255mm] ml-5 mt-20">
                       <img
                         className=" pt-4 w-52 absolute top-0 ml-10 border-2  border-gray-600 z-10"
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpl60g6oKVerEKPde2ClN4-6ASK4Ds4KzlM0Y1N-K_bCgOCMBYZ019WUgRLOfNAqyyhnY&usqp=CAU"
@@ -381,11 +381,11 @@ export default function Chrono() {
                   {/* large resume */}
 
                   <div
-                    className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row"
+                    className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row"
                     id="largeResume"
                   >
                     <div className="grid grid-cols-5">
-                      <div className="col-span-2 border-2 border-solid border-black h-[255mm] ml-5 mt-20">
+                      <div className="col-span-2 border-2 border-solid border-black w-[80mm] h-[255mm] ml-5 mt-20">
                         <img
                           className=" pt-4 w-52 absolute top-0 ml-10 border-2  border-gray-600 z-10"
                           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpl60g6oKVerEKPde2ClN4-6ASK4Ds4KzlM0Y1N-K_bCgOCMBYZ019WUgRLOfNAqyyhnY&usqp=CAU"

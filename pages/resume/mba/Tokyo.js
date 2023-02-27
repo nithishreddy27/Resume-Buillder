@@ -122,7 +122,7 @@ export default function Tokyo() {
                   id="smallResume"
                 >
                   <div>
-                    <div className="flex bg-red-700">
+                    <div className="flex bg-red-700 w-[210mm]">
                       <img
                         className="rounded-full p-10 w-48"
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpl60g6oKVerEKPde2ClN4-6ASK4Ds4KzlM0Y1N-K_bCgOCMBYZ019WUgRLOfNAqyyhnY&usqp=CAU"
@@ -393,8 +393,8 @@ export default function Tokyo() {
                     className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-100px] xl:scale-[0.9] xl:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[297mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row"
                     id="largeResume"
                   >
-                     <div>
-                      <div className="flex bg-red-700">
+                    <div>
+                      <div className="flex bg-red-700 w-[210mm]">
                         <img
                           className="rounded-full p-10 w-48"
                           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpl60g6oKVerEKPde2ClN4-6ASK4Ds4KzlM0Y1N-K_bCgOCMBYZ019WUgRLOfNAqyyhnY&usqp=CAU"
