@@ -137,7 +137,9 @@ export default function Blue() {
                   className={`bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] max-h[285mm] h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row`}
                   id="smallResume"
                 >
-                  <div className="h-[95%] w-[35%] bg-sky-200 absolute left-10 rounded-b-full p-5 z-10 ">
+                  <div
+                    className={`h-[95%] w-[35%] bg-sky-200 absolute left-10 rounded-b-full p-5 z-10`}
+                  >
                     <img
                       src="https://randomuser.me/api/portraits/men/40.jpg"
                       alt=""
@@ -265,7 +267,9 @@ export default function Blue() {
                       </>
                     )}
                   </div>
-                  <div className="w-[100%] h-36 bg-sky-100 top-10 relative z-1 rounded-l-full  p-10">
+                  <div
+                    className={`w-[100%] h-36 bg-sky-100 top-10 relative z-1 rounded-l-full  p-10`}
+                  >
                     <h1 className="text-3xl ml-[50%] font-bold tracking-widest">
                       {details.personal.firstName}{" "}
                       <span>{details.personal.lastName}</span>
