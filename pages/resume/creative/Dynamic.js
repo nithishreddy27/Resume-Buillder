@@ -149,11 +149,7 @@ export default function Dynamic() {
               <div className="flex justify-center ">
                 {/* Small Resume */}
                 <div
-<<<<<<< HEAD
-                  className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-300px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row"
-=======
                   className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-300px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row"
->>>>>>> 829c670bb243867d8189db567323560cce45796e
                   id="smallResume"
                   // style={{ color: color.hex }}
                 >
