@@ -1,17 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
 import {
-  AiOutlineCaretDown,
-  AiOutlineCaretUp,
+
   AiOutlinePlus,
-  AiFillProject,
+
 } from "react-icons/ai";
-import { CgProfile } from "react-icons/cg";
-import { MdSocialDistance, MdOutlineSpeakerNotes } from "react-icons/md";
-import { FaLanguage, FaAward } from "react-icons/fa";
-import { SiGooglescholar } from "react-icons/si";
-// import {GrProjects} from "react-icons/gr"
-import { GiSkills } from "react-icons/gi";
-import { RxHobbyKnife } from "react-icons/rx";
+
 import { FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 import ResumeContext from "../../context/ResumeContext";
@@ -20,14 +13,14 @@ import Link from "next/link";
 export default function SocailMedia() {
   const [arrow, setarrow] = useState(false);
   const { details, setdetails } = useContext(ResumeContext);
-  const [social, setsocial] = useState({ network: "", url: "", username: "" });
+  const [social, setsocial] = useState({ network: "", url: "", username: "" , enabled:true});
 
-  useEffect(() => {
-    console.log(social);
-  }, [social]);
+
+
+
 
   async function socialChange(event) {
-    console.log("event");
+     console.log("event");
     event.preventDefault();
     const arr = [];
 
@@ -47,8 +40,7 @@ export default function SocailMedia() {
     console.log("social", social);
     // const arr = social
     setdetails({ ...details, social: arr });
-
-    setsocial({ network: "", url: "", username: "" });
+    setsocial({ network: "", url: "", username: "",enabled:true });
   }
 
   function deleteSocialNetwork(index) {
@@ -69,38 +61,49 @@ export default function SocailMedia() {
           network: item.network,
           url: item.url,
           username: item.username,
+          enabled:true
         });
       }
     });
   }
 
-  //   function editSocialNetwrok(i){
-  //     seteditSocial(false)
-  //     const sn = {
-  //       network: document.getElementById("network").value,
-  //       username: document.getElementById("username").value,
-  //       url: document.getElementById("url").value,
-  //     };
-  //     var arr = [];
-  //     console.log("sn",sn)
-  //     console.log("i",i)
-  //     details.social.map((item,index) => {
 
-  //       if(index == i){
-  //         console.log("index",index)
-  //         arr.push(sn)
-  //       }
-  //       else{
-  //         arr.push(item);
-  //       }
-  //     });
-  //     console.log(arr);
-  //     setdetails({ ...details, social: arr });
 
-  //     document.getElementById("network").value="",
-  //     document.getElementById("username").value="",
-  //     document.getElementById("url").value=""
-  //   }
+
+  //to toggle the social media
+
+  function toggleSocial(index){
+   
+    
+    setsocial(details.social[index])
+    const arr=[]
+    if(details.social[index].enabled == true){
+      details.social.map((item,ind) => {
+       if(index == ind){
+          item.enabled = false
+          arr.push(item)
+       }
+       else{
+        arr.push(item)
+       }
+      });
+      setdetails({ ...details, social: arr });
+    }
+    else{
+      details.social.map((item,ind) => {
+        if(index == ind){
+          item.enabled = true
+           arr.push(item)
+        }
+        else{
+         arr.push(item)
+        }
+       });
+       setdetails({ ...details, social: arr });
+    }
+    setsocial({ network: "", url: "", username: "",enabled:true });
+  }
+
 
   return (
     <div>
@@ -141,7 +144,9 @@ export default function SocailMedia() {
           {details.social.length != 0 && (
             <>
               {details.social.map((item, index) => (
-                <div
+                <>
+                
+                  <div
                   className="my-3 border border-white p-3 "
                   key={item.network}
                 >
@@ -182,6 +187,11 @@ export default function SocailMedia() {
                         type="checkbox"
                         role="switch"
                         id="flexSwitchCheckDefault"
+                        checked={item.enabled}
+                        defaultChecked
+                        onChange={()=>{
+                          toggleSocial(index)
+                        }}
                       />
                     </div>
                   </div>
@@ -191,6 +201,7 @@ export default function SocailMedia() {
                     </Link>
                   </div>
                 </div>
+                </>
               ))}
             </>
           )}
