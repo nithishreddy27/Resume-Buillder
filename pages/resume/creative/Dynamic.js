@@ -149,9 +149,9 @@ export default function Dynamic() {
               <div className="flex justify-center ">
                 {/* Small Resume */}
                 <div
-                  className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-450px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row"
+                  className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-300px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row"
                   id="smallResume"
-                  style={{ color: color.hex }}
+                  // style={{ color: color.hex }}
                 >
                   <div className=" w-[35%] bg-gray-200 p-6">
                     <div className="bg-slate-800 w-36 h-[200px] absolute top-0 left-0">
@@ -162,7 +162,7 @@ export default function Dynamic() {
                       />
                     </div>
                     <div className="mt-48">
-                      <h1 className="text-2xl font-semibold tracking-[2px]">
+                      <h1 className="text-2xl font-semibold tracking-[2px] heading">
                         CONTACT
                       </h1>
                       <hr className="h-[2px] bg-black my-1" />
@@ -221,7 +221,7 @@ export default function Dynamic() {
                     </div>
                     {details.skills.length != 0 && (
                       <div className="mt-4">
-                        <h1 className="text-2xl font-semibold tracking-[2px]">
+                        <h1 className="text-2xl font-semibold tracking-[2px] heading">
                           SKILLS
                         </h1>
                         <hr className="h-[2px] bg-black my-1" />
@@ -234,17 +234,17 @@ export default function Dynamic() {
                     )}
 
                     {/* <div className='mt-4'>
-            <h1 className='text-2xl font-semibold tracking-[2px]' >HOBBIES</h1>
+                  <h1 className='text-2xl font-semibold tracking-[2px]' >HOBBIES</h1>
                 <hr className="h-[2px] bg-black my-1" />
                 {
                     resume.hobbies.map(item=>(
                         <p className='my-2'>{item.name}</p>
                     ))
                 }
-            </div> */}
+                  </div> */}
                     {details.languages.length != 0 && (
                       <div className="mt-4">
-                        <h1 className="text-2xl font-semibold tracking-[2px]">
+                        <h1 className="text-2xl font-semibold tracking-[2px] heading">
                           LANGUAGES
                         </h1>
                         <hr className="h-[2px] bg-black my-1" />
@@ -257,7 +257,7 @@ export default function Dynamic() {
                     )}
                     {details.hobbies.length != 0 && (
                       <div className="mt-4">
-                        <h1 className="text-2xl font-semibold tracking-[2px]">
+                        <h1 className="text-2xl font-semibold tracking-[2px] heading">
                           HOBBIES
                         </h1>
                         <hr className="h-[2px] bg-black my-1" />
@@ -270,7 +270,7 @@ export default function Dynamic() {
                     )}
                     {details.awards.length != 0 && (
                       <>
-                        <h1 className="text-2xl font-semibold tracking-[2px]">
+                        <h1 className="text-2xl font-semibold tracking-[2px] heading">
                           AWARADS
                         </h1>
                         <hr className="h-[2px] bg-black my-1" />
@@ -302,7 +302,7 @@ export default function Dynamic() {
                     <div className="mt-12">
                       {details.personal.objective.length != 0 && (
                         <>
-                          <h1 className="text-xl font-bold tracking-[1px]">
+                          <h1 className="text-xl font-bold tracking-[1px] heading">
                             OBJECTIVE
                           </h1>
                           <hr className="h-[2px] bg-black my-1" />
@@ -314,7 +314,7 @@ export default function Dynamic() {
 
                       {details.work.length != 0 && (
                         <>
-                          <h1 className="text-xl font-bold tracking-[1px] mt-5">
+                          <h1 className="text-xl font-bold tracking-[1px] mt-5 heading">
                             WORK
                           </h1>
                           <hr className="h-[2px] bg-black my-1" />
@@ -348,7 +348,7 @@ export default function Dynamic() {
                       )}
                       {details.projects.length != 0 && (
                         <>
-                          <h1 className="text-xl font-bold tracking-[1px] mt-5">
+                          <h1 className="text-xl font-bold tracking-[1px] mt-5 heading">
                             PROJECTS
                           </h1>
                           <hr className="h-[2px] bg-black my-1" />
@@ -383,7 +383,7 @@ export default function Dynamic() {
 
                       {details.education.length != 0 && (
                         <>
-                          <h1 className="text-xl font-bold tracking-[1px] mt-3">
+                          <h1 className="text-xl font-bold tracking-[1px] mt-3 heading">
                             EDUCACTION
                           </h1>
                           <hr className="h-[2px] bg-black my-1" />
@@ -420,7 +420,7 @@ export default function Dynamic() {
 
                       {details.certifications.length != 0 && (
                         <>
-                          <h1 className="text-xl font-bold tracking-[1px] mt-3">
+                          <h1 className="text-xl font-bold tracking-[1px] mt-3 heading">
                             CERTIFICATIONS
                           </h1>
                           <hr className="h-[2px] bg-black my-1" />
@@ -453,6 +453,12 @@ export default function Dynamic() {
                     </div>
                   </div>
                 </div>
+                <style jsx>
+                  {`
+                  .heading{
+                    color:${color.hex};
+                  }`}
+                </style>
               </div>
             </div>
           )}
@@ -516,7 +522,7 @@ export default function Dynamic() {
                     className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row"
                     
                     id="largeResume"
-                    style={{ color: color.hex }}
+                    // style={{ color: color.hex }}
                   >
                     <div className=" w-[35%] bg-gray-200 p-6">
                       <div className="bg-slate-800 w-36 h-[200px] absolute top-0 left-0">
@@ -527,7 +533,7 @@ export default function Dynamic() {
                         />
                       </div>
                       <div className="mt-48">
-                        <h1 className="text-2xl font-semibold tracking-[2px]">
+                        <h1 className="text-2xl font-semibold tracking-[2px] heading">
                           CONTACT
                         </h1>
                         <hr className="h-[2px] bg-black my-1" />
@@ -586,7 +592,7 @@ export default function Dynamic() {
                       </div>
                       {details.skills.length != 0 && (
                         <div className="mt-4">
-                          <h1 className="text-2xl font-semibold tracking-[2px]">
+                          <h1 className="text-2xl font-semibold tracking-[2px] heading">
                             SKILLS
                           </h1>
                           <hr className="h-[2px] bg-black my-1" />
@@ -598,18 +604,10 @@ export default function Dynamic() {
                         </div>
                       )}
 
-                      {/* <div className='mt-4'>
-            <h1 className='text-2xl font-semibold tracking-[2px]' >HOBBIES</h1>
-                <hr className="h-[2px] bg-black my-1" />
-                {
-                    resume.hobbies.map(item=>(
-                        <p className='my-2'>{item.name}</p>
-                    ))
-                }
-            </div> */}
+                      
                       {details.languages.length != 0 && (
                         <div className="mt-4">
-                          <h1 className="text-2xl font-semibold tracking-[2px]">
+                          <h1 className="text-2xl font-semibold tracking-[2px] heading">
                             LANGUAGES
                           </h1>
                           <hr className="h-[2px] bg-black my-1" />
@@ -622,7 +620,7 @@ export default function Dynamic() {
                       )}
                       {details.hobbies.length != 0 && (
                         <div className="mt-4">
-                          <h1 className="text-2xl font-semibold tracking-[2px]">
+                          <h1 className="text-2xl font-semibold tracking-[2px] heading">
                             HOBBIES
                           </h1>
                           <hr className="h-[2px] bg-black my-1" />
@@ -635,7 +633,7 @@ export default function Dynamic() {
                       )}
                       {details.awards.length != 0 && (
                         <>
-                          <h1 className="text-2xl font-semibold tracking-[2px]">
+                          <h1 className="text-2xl font-semibold tracking-[2px] heading">
                             AWARADS
                           </h1>
                           <hr className="h-[2px] bg-black my-1" />
@@ -667,7 +665,7 @@ export default function Dynamic() {
                       <div className="mt-12">
                         {details.personal.objective.length != 0 && (
                           <>
-                            <h1 className="text-xl font-bold tracking-[1px]">
+                            <h1 className="text-xl font-bold tracking-[1px] heading">
                               OBJECTIVE
                             </h1>
                             <hr className="h-[2px] bg-black my-1" />
@@ -679,7 +677,7 @@ export default function Dynamic() {
 
                         {details.work.length != 0 && (
                           <>
-                            <h1 className="text-xl font-bold tracking-[1px] mt-5">
+                            <h1 className="text-xl font-bold tracking-[1px] mt-5 heading">
                               WORK
                             </h1>
                             <hr className="h-[2px] bg-black my-1" />
@@ -714,7 +712,7 @@ export default function Dynamic() {
 
                         {details.projects.length != 0 && (
                           <>
-                            <h1 className="text-xl font-bold tracking-[1px] mt-5">
+                            <h1 className="text-xl font-bold tracking-[1px] mt-5 heading">
                               PROJECTS
                             </h1>
                             <hr className="h-[2px] bg-black my-1" />
@@ -749,7 +747,7 @@ export default function Dynamic() {
 
                         {details.education.length != 0 && (
                           <>
-                            <h1 className="text-xl font-bold tracking-[1px] mt-3">
+                            <h1 className="text-xl font-bold tracking-[1px] mt-3 heading">
                               EDUCACTION
                             </h1>
                             <hr className="h-[2px] bg-black my-1" />
@@ -786,7 +784,7 @@ export default function Dynamic() {
 
                         {details.certifications.length != 0 && (
                           <>
-                            <h1 className="text-xl font-bold tracking-[1px] mt-3">
+                            <h1 className="text-xl font-bold tracking-[1px] mt-3 heading">
                               CERTIFICATIONS
                             </h1>
                             <hr className="h-[2px] bg-black my-1" />
@@ -816,6 +814,13 @@ export default function Dynamic() {
                         )}
                       </div>
                     </div>
+                    <style jsx>
+                      {
+                        `.heading{
+                          color:${color.hex};
+                        }`
+                      }
+                    </style>
                   </div>
                 </div>
               </div>
