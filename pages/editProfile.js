@@ -1,168 +1,169 @@
 import React from 'react'
-const EditProfile = () => {
+
+export default function EditProfile() {
   return (
-    <div className="min-h-screen">
-        <div class="bg-white min-h-screen flex flex-col justify-center items-center">
-      <div className=" bg-gray-100 p-5 w-11/12  mx-auto my-24  rounded-xl px-10 ">
-        <div className="mt-10 sm:mt-0">
-           <div className="md:grid md:grid-cols-3 md:gap-6">
-            <div className="md:col-span-1">
-              <div>
-                <p className="text-lg mt-2 font-medium tracking-wider">PERSONAL INFORMATION</p>
-                <p className="text-gray-600 mt-1  text-sm">Use a permanent address where you can receive mail.</p>
-              </div>
-            </div>
-            <div className="md:col-span-2 mt-6 md:mt-0">
-              <div> 
-                <div className="sm:rounded-md shadow overflow-hidden rounded-sm">
-                  <div className="px-4 py-5 rounded-md bg-white sm:p-6">
-                  <form>
-                    <div className="grid grid-cols-6 gap-6">
-                      <div className="col-span-6 sm:col-span-3">
-                      <label className="text-md  text-black">First name</label>
-                      <input type="text" 
-                             name="fname"
-                             id="fname"
-                             required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
-                             />
-                      </div>
-                      <div className="col-span-6 sm:col-span-3">
-                      <label className="text-md  text-black  ">Last name</label>
-                      <input type="text" 
-                             name="lname"
-                             id="lname"
-                             required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
-                             />
-                      </div> 
-                      <div className="col-span-6 sm:col-span-3">
-                      <label className="text-md  text-black  ">College</label>
-                      <input type="text" 
-                             name="clg"
-                             id="clg"
-                             required=""
-                             value=""
-                             className="mt-1 bg-gray-100 cursor-not-allowed focus:outline-none focus:shadow-outline focus:border-gray-300 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
-                             />
-                      </div> 
-                      <div className="col-span-6 sm:col-span-3 lg:col-span-3">
-                      <label className="text-md  text-black  ">Roll Number</label>
-                      <input type="text" 
-                             name="rno"
-                             id="rno"
-                             required=""
-                             value=""
-                             className="mt-1 bg-gray-100 cursor-not-allowed focus:outline-none focus:shadow-outline focus:border-gray-300 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
-                             />
-                      </div>
-                      <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label className="text-md  text-black  ">Date Of Birth</label>
-                      <input type="date" 
-                             name="dob"
-                             id="dob"
-                             required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-gray-300	 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
-                             />
-                      </div>   
-                      <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label className="text-md  text-black  ">Phone Number</label>
-                      <input type="text" 
-                             name="phno"
-                             id="phno"
-                             required=""
-                             className="mt-1 bg-gray-100 focus:outline-none focus:shadow-outline  focus:border-orange-500	 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
-                             />
-                      </div> 
-                      <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label className="text-md  text-black  ">Registered Email Address</label>
-                      <input type="text" 
-                             name="email"
-                             id="email"
-                             required=""
-                             value=""
-                             className="mt-1 bg-gray-100 cursor-not-allowed focus:outline-none focus:shadow-outline focus:border-gray-300  block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
-                             />
-                      </div>
-                      <div className="col-span-6 sm:col-span-3">
-                      <label className="text-md  text-black  ">Father name</label>
-                      <input type="text" 
-                             name="faname"
-                             id="faname"
-                             required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
-                             />
-                      </div>
-                      <div className="col-span-6 sm:col-span-3">
-                      <label className="text-md  text-black  ">Mothers name</label>
-                      <input type="text" 
-                             name="mname"
-                             id="mname"
-                             required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
-                             />
-                      </div>
-                      <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label className="text-md  text-black  ">Father&apos;s Email address</label>
-                      <input type="text" 
-                             name="femail"
-                             id="femail"
-                             required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border font-mediumborder border-gray-300 py-2 px-3 rounded-md"
-                             />
-                      </div>
-                      <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label className="text-md  text-black  ">Father&apos;s Phone Number</label>
-                      <input type="text" 
-                             name="fphno"
-                             id="fphno"
-                             required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
-                             />
-                      </div>
-                      <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label className="text-md  text-black  ">Father&apos;s Occupation</label>
-                      <input type="text" 
-                             name="focc"
-                             id="focc"
-                             required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
-                             />
-                      </div>
-                      <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label className="text-md  text-black  ">Mother&apos;s Email address</label>
-                      <input type="text" 
-                             name="memail"
-                             id="memail"
-                             required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
-                             />
-                      </div>
-                      <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label className="text-md  text-black  ">Mother&apos;s Phone Number</label>
-                      <input type="text" 
-                             name="mphno"
-                             id="mphno"
-                             required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
-                             />
-                      </div>
-                      <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label className="text-md  text-black  ">Mother&apos;s Occupation</label>
-                      <input type="text" 
-                             name="mocc"
-                             id="mocc"
-                             required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
-                             />
-                      </div>
-                      <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label className="text-md  text-black  ">Country</label>
-                      <select
-                      name="country"
-                      className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
-                    >
-    
+    <div> <div className="min-h-screen">
+    <div class="bg-white min-h-screen flex flex-col justify-center items-center">
+  <div className=" bg-gray-100 p-5 w-11/12  mx-auto my-24  rounded-xl px-10 ">
+    <div className="mt-10 sm:mt-0">
+       <div className="md:grid md:grid-cols-3 md:gap-6">
+        <div className="md:col-span-1">
+          <div>
+            <p className="text-lg mt-2 font-medium tracking-wider">PERSONAL INFORMATION</p>
+            <p className="text-gray-600 mt-1  text-sm">Use a permanent address where you can receive mail.</p>
+          </div>
+        </div>
+        <div className="md:col-span-2 mt-6 md:mt-0">
+          <div> 
+            <div className="sm:rounded-md shadow overflow-hidden rounded-sm">
+              <div className="px-4 py-5 rounded-md bg-white sm:p-6">
+              <form>
+                <div className="grid grid-cols-6 gap-6">
+                  <div className="col-span-6 sm:col-span-3">
+                  <label className="text-md  text-black">First name</label>
+                  <input type="text" 
+                         name="fname"
+                         id="fname"
+                         required=""
+                         className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
+                         />
+                  </div>
+                  <div className="col-span-6 sm:col-span-3">
+                  <label className="text-md  text-black  ">Last name</label>
+                  <input type="text" 
+                         name="lname"
+                         id="lname"
+                         required=""
+                         className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
+                         />
+                  </div> 
+                  <div className="col-span-6 sm:col-span-3">
+                  <label className="text-md  text-black  ">College</label>
+                  <input type="text" 
+                         name="clg"
+                         id="clg"
+                         required=""
+                         value=""
+                         className="mt-1 bg-gray-100 cursor-not-allowed focus:outline-none focus:shadow-outline focus:border-gray-300 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
+                         />
+                  </div> 
+                  <div className="col-span-6 sm:col-span-3 lg:col-span-3">
+                  <label className="text-md  text-black  ">Roll Number</label>
+                  <input type="text" 
+                         name="rno"
+                         id="rno"
+                         required=""
+                         value=""
+                         className="mt-1 bg-gray-100 cursor-not-allowed focus:outline-none focus:shadow-outline focus:border-gray-300 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
+                         />
+                  </div>
+                  <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                  <label className="text-md  text-black  ">Date Of Birth</label>
+                  <input type="date" 
+                         name="dob"
+                         id="dob"
+                         required=""
+                         className="mt-1 focus:outline-none focus:shadow-outline focus:border-gray-300	 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
+                         />
+                  </div>   
+                  <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                  <label className="text-md  text-black  ">Phone Number</label>
+                  <input type="text" 
+                         name="phno"
+                         id="phno"
+                         required=""
+                         className="mt-1 bg-gray-100 focus:outline-none focus:shadow-outline  focus:border-orange-500	 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
+                         />
+                  </div> 
+                  <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                  <label className="text-md  text-black  ">Registered Email Address</label>
+                  <input type="text" 
+                         name="email"
+                         id="email"
+                         required=""
+                         value=""
+                         className="mt-1 bg-gray-100 cursor-not-allowed focus:outline-none focus:shadow-outline focus:border-gray-300  block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md py-2 px-3"
+                         />
+                  </div>
+                  <div className="col-span-6 sm:col-span-3">
+                  <label className="text-md  text-black  ">Father name</label>
+                  <input type="text" 
+                         name="faname"
+                         id="faname"
+                         required=""
+                         className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
+                         />
+                  </div>
+                  <div className="col-span-6 sm:col-span-3">
+                  <label className="text-md  text-black  ">Mothers name</label>
+                  <input type="text" 
+                         name="mname"
+                         id="mname"
+                         required=""
+                         className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
+                         />
+                  </div>
+                  <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                  <label className="text-md  text-black  ">Father&apos;s Email address</label>
+                  <input type="text" 
+                         name="femail"
+                         id="femail"
+                         required=""
+                         className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border font-mediumborder border-gray-300 py-2 px-3 rounded-md"
+                         />
+                  </div>
+                  <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                  <label className="text-md  text-black  ">Father&apos;s Phone Number</label>
+                  <input type="text" 
+                         name="fphno"
+                         id="fphno"
+                         required=""
+                         className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
+                         />
+                  </div>
+                  <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                  <label className="text-md  text-black  ">Father&apos;s Occupation</label>
+                  <input type="text" 
+                         name="focc"
+                         id="focc"
+                         required=""
+                         className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
+                         />
+                  </div>
+                  <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                  <label className="text-md  text-black  ">Mother&apos;s Email address</label>
+                  <input type="text" 
+                         name="memail"
+                         id="memail"
+                         required=""
+                         className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
+                         />
+                  </div>
+                  <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                  <label className="text-md  text-black  ">Mother&apos;s Phone Number</label>
+                  <input type="text" 
+                         name="mphno"
+                         id="mphno"
+                         required=""
+                         className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
+                         />
+                  </div>
+                  <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                  <label className="text-md  text-black  ">Mother&apos;s Occupation</label>
+                  <input type="text" 
+                         name="mocc"
+                         id="mocc"
+                         required=""
+                         className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
+                         />
+                  </div>
+                  <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                  <label className="text-md  text-black  ">Country</label>
+                  <select
+                  name="country"
+                  className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
+                >
+
 <option value="Afghanistan">Afghanistan</option>
 <option value="Albania">Albania</option>
 <option value="Algeria">Algeria</option>
@@ -403,119 +404,118 @@ const EditProfile = () => {
 <option value="Zambia">Zambia</option>
 <option value="Zimbabwe">Zimbabwe</option>
 </select>
-                      </div>
-                      <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label className="text-md  text-black  ">City</label>
-                      <input type="text" 
-                             name="city"
-                             id="city"
-                             required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
-                             />
-                      </div>
-                      <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label className="text-md  text-black  ">State / Province</label>
-                      <input type="text" 
-                             name="state"
-                             id="state"
-                             required=""
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border  border-gray-300 py-2 px-3 rounded-md"
-                             />
-                      </div>
-                       
-                    </div>
-                    </form>
                   </div>
+                  <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                  <label className="text-md  text-black  ">City</label>
+                  <input type="text" 
+                         name="city"
+                         id="city"
+                         required=""
+                         className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border border-gray-300 py-2 px-3 rounded-md"
+                         />
+                  </div>
+                  <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                  <label className="text-md  text-black  ">State / Province</label>
+                  <input type="text" 
+                         name="state"
+                         id="state"
+                         required=""
+                         className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border  border-gray-300 py-2 px-3 rounded-md"
+                         />
+                  </div>
+                   
                 </div>
+                </form>
               </div>
             </div>
+          </div>
         </div>
-      </div>
-      <div className="hidden sm:block">
-        <div className="py-5">
-          <div className="border-t border-gray-200"></div>
-        </div>
-      </div>
-      <div className="mt-10 sm:mt-0">
-        <div className="md:grid md:grid-cols-3 md-gap-6">
-            <div className="md:col-span-1">
-              <div className="px-4 sm:px-0">
-                <p className="text-lg mt-2 font-medium tracking-wider">PROFILE</p>
-                <p  className="text-gray-600 mt-1  text-sm">Be cautious while sharing this information because it will be visible to everyone.</p>
-               </div>
-            </div>
-            <div className="md:col-span-2 mt-5 md:mt-0">
-                <div>
-                  <div className="shadow sm:rounded-md sm:overflow-hidden">
-                    <div className="bg-white px-4 py-5 sm:p-6 space-y-6">
-                       <div className="grid grid-cols-3 gap-6">
-                           <div className="col-span-3 sm:col-span-6">
-                             <label  className="text-md  text-black  ">Website</label>
-                             <input type="text" 
-                             name="mocc"
-                             id="mocc"
-                             required=""
-                             placeholder="https://www.example.com"
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border  border-gray-300 py-2 px-3 rounded-md"
-                             />
-                             </div>
-                            </div>
-                            <div className="grid grid-cols-3 gap-6">
-                           <div className="col-span-3 sm:col-span-6">
-                             <label  className="text-md  text-black  ">Linkedin URL</label>
-                             <input type="text" 
-                             name="linkedin"
-                             id="linkedin"
-                             required=""
-                             placeholder="https://www.linkedin.com/in/username/"
-                             className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border  border-gray-300 py-2 px-3 rounded-md"
-                             />
-                             </div>
-                            </div>
-                          <div className="mt-3 sm:colspan-6 ">
-                            <label className=" block mb-1 text-md  text-black  ">Photo</label>
-                              <div class="flex items-center">
-                                <div class="relative box">
-                                 <button class="overflow-hidden">
-                                   <span class="absolute left-0 top-0 pointer-events-none inline-block h-16 w-16 rounded-full overflow-hidden bg-gray-100 hover:bg-gray-800">
-                                     <div class="relative h-full w-full object-fit hover:bg-gray-800">
-                                     <span style={{boxSizing: 'border-box', display: 'block', overflow: 'hidden', width: 'initial', height: 'initial', background: 'none', opacity: 1, border: 0, margin: 0, padding: 0, position: 'absolute', top: 0, left: 0, bottom: 0, right: 0}}>
-                                        
-                                     </span>
-                                     </div>
-                                     </span>
-                                 </button>
-                                 <input type="file" className=" w-16 h-16 left-0 rounded-full -top-0 opacity-1 border-0 hover:bg-gray-800 outline-none mr-7 cursor-pointer"/>
-                                    
-                                   </div>
-                                   <input 
-                                    name="url"
-                                    id="url"
-                                    required=""
-                                    value='http://res.cloudinary.com/dj7nomqfd/image/upload/v1647117869/uploads/bphhxvmlcyyu2pntbikm.png'
-                                    className="mt font-semibold-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border  border-gray-300 py-2 px-3 rounded-md"/>
-                                    </div>
-                                  </div>
-                                  </div>
-                         </div>
-                      </div>
-                   </div>
+    </div>
+  </div>
+  <div className="hidden sm:block">
+    <div className="py-5">
+      <div className="border-t border-gray-200"></div>
+    </div>
+  </div>
+  <div className="mt-10 sm:mt-0">
+    <div className="md:grid md:grid-cols-3 md-gap-6">
+        <div className="md:col-span-1">
+          <div className="px-4 sm:px-0">
+            <p className="text-lg mt-2 font-medium tracking-wider">PROFILE</p>
+            <p  className="text-gray-600 mt-1  text-sm">Be cautious while sharing this information because it will be visible to everyone.</p>
            </div>
-      </div>
-      <div className="hidden sm:block">
-        <div className='py-5'>
-          <div className='borter-t border-gray-200'></div>
         </div>
-      </div>
-      <div className="pt-5">
-        <div className='flex justify-end'>
-          <button type='button' className=' bg-white text-sm font-medium text-gray-700 hover:bg-gray-300 py-2 px-4 border border-gray-300 rounded-md shadow-sm'>Cancel</button>
-          <button type="submit"  className='bg-orange-600 text-sm ml-3 text-white font-medium  hover:bg-orange-700 py-2 px-4 border border-gray-300 rounded-md shadow-sm'>Save</button>
-        </div>
-      </div>
+        <div className="md:col-span-2 mt-5 md:mt-0">
+            <div>
+              <div className="shadow sm:rounded-md sm:overflow-hidden">
+                <div className="bg-white px-4 py-5 sm:p-6 space-y-6">
+                   <div className="grid grid-cols-3 gap-6">
+                       <div className="col-span-3 sm:col-span-6">
+                         <label  className="text-md  text-black  ">Website</label>
+                         <input type="text" 
+                         name="mocc"
+                         id="mocc"
+                         required=""
+                         placeholder="https://www.example.com"
+                         className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border  border-gray-300 py-2 px-3 rounded-md"
+                         />
+                         </div>
+                        </div>
+                        <div className="grid grid-cols-3 gap-6">
+                       <div className="col-span-3 sm:col-span-6">
+                         <label  className="text-md  text-black  ">Linkedin URL</label>
+                         <input type="text" 
+                         name="linkedin"
+                         id="linkedin"
+                         required=""
+                         placeholder="https://www.linkedin.com/in/username/"
+                         className="mt-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border  border-gray-300 py-2 px-3 rounded-md"
+                         />
+                         </div>
+                        </div>
+                      <div className="mt-3 sm:colspan-6 ">
+                        <label className=" block mb-1 text-md  text-black  ">Photo</label>
+                          <div class="flex items-center">
+                            <div class="relative box">
+                             <button class="overflow-hidden">
+                               <span class="absolute left-0 top-0 pointer-events-none inline-block h-16 w-16 rounded-full overflow-hidden bg-gray-100 hover:bg-gray-800">
+                                 <div class="relative h-full w-full object-fit hover:bg-gray-800">
+                                 <span style={{boxSizing: 'border-box', display: 'block', overflow: 'hidden', width: 'initial', height: 'initial', background: 'none', opacity: 1, border: 0, margin: 0, padding: 0, position: 'absolute', top: 0, left: 0, bottom: 0, right: 0}}>
+                                    
+                                 </span>
+                                 </div>
+                                 </span>
+                             </button>
+                             <input type="file" className=" w-16 h-16 left-0 rounded-full -top-0 opacity-1 border-0 hover:bg-gray-800 outline-none mr-7 cursor-pointer"/>
+                                
+                               </div>
+                               <input 
+                                name="url"
+                                id="url"
+                                required=""
+                                value='http://res.cloudinary.com/dj7nomqfd/image/upload/v1647117869/uploads/bphhxvmlcyyu2pntbikm.png'
+                                className="mt font-semibold-1 focus:outline-none focus:shadow-outline focus:border-orange-500 block w-full shadow-sm sm:text-sm border  border-gray-300 py-2 px-3 rounded-md"/>
+                                </div>
+                              </div>
+                              </div>
+                     </div>
+                  </div>
+               </div>
+       </div>
+  </div>
+  <div className="hidden sm:block">
+    <div className='py-5'>
+      <div className='borter-t border-gray-200'></div>
+    </div>
+  </div>
+  <div className="pt-5">
+    <div className='flex justify-end'>
+      <button type='button' className=' bg-white text-sm font-medium text-gray-700 hover:bg-gray-300 py-2 px-4 border border-gray-300 rounded-md shadow-sm'>Cancel</button>
+      <button type="submit"  className='bg-orange-600 text-sm ml-3 text-white font-medium  hover:bg-orange-700 py-2 px-4 border border-gray-300 rounded-md shadow-sm'>Save</button>
     </div>
   </div>
 </div>
-  );
-};
-export default EditProfile;
+</div>
+</div></div>
+  )
+}
