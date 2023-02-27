@@ -123,7 +123,7 @@ export default function Casual() {
                 >
                   <div className="grid grid-cols-3">
                     <div>
-                      <div className="col-span-1 bg-gray-300 h-[285mm] w-[95%]">
+                      <div className="col-span-1 bg-gray-300 w-[68mm] h-[285mm]">
                         <div>
                           <img
                             className="rounded-full w-[119px] ml-10 pt-3"
@@ -374,7 +374,7 @@ export default function Casual() {
                   >
                     <div className="grid grid-cols-3">
                       <div>
-                        <div className="col-span-1 bg-gray-300 h-[285mm] w-[95%]">
+                        <div className="col-span-1 bg-gray-300 w-[68mm] h-[285mm]">
                           <div>
                             <img
                               className="rounded-full w-[119px] ml-10 pt-3"
