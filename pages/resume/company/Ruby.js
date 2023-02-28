@@ -167,7 +167,7 @@ export default function Ruby() {
                               </h1>
                               <div>
                                 <i className="bx bxs-user"></i>
-                                <span class="text-sm font-semibold ">
+                                <span class="text-sm font-semibold heading">
                                   {details.personal.firstName}{" "}
                                   {details.personal.lastName}
                                 </span>
@@ -277,7 +277,7 @@ export default function Ruby() {
                           </div>
                         </div>
                         <div className="col-span-2 p-6">
-                          <h1 className="text-red-700 text-4xl font-">
+                          <h1 className="text-red-700 text-4xl heading ">
                             {details.personal.firstName}{" "}
                             {details.personal.lastName}
                           </h1>
@@ -473,7 +473,7 @@ export default function Ruby() {
                                 </h1>
                                 <div>
                                   <i className="bx bxs-user"></i>
-                                  <span class="text-sm font-semibold ">
+                                  <span className="text-sm font-semibold heading">
                                     {details.personal.firstName}{" "}
                                     {details.personal.lastName}
                                   </span>
@@ -583,7 +583,7 @@ export default function Ruby() {
                             </div>
                           </div>
                           <div className="col-span-2 p-6">
-                            <h1 className="text-red-700 text-4xl font-">
+                            <h1 className="text-red-700 text-4xl heading">
                               {details.personal.firstName}{" "}
                               {details.personal.lastName}
                             </h1>
@@ -608,7 +608,7 @@ export default function Ruby() {
                                   <div key={item.company} className="py-1">
                                     <h1 className="text-sm font-bold relative">
                                       {item.company}
-                                      <span className="text-sm text-red-700 absolute right-0">
+                                      <span className="text-sm text-red-700 absolute right-0 heading">
                                         {item.from} - {item.to}
                                       </span>
                                     </h1>
@@ -630,7 +630,7 @@ export default function Ruby() {
                                   <div className="py-1" key={item.institution}>
                                     <h1 className="text-sm font-bold relative">
                                       {item.institution}
-                                      <span className="text-sm text-red-700 absolute right-0">
+                                      <span className="text-sm text-red-700 absolute right-0 heading">
                                         {item.startDate} - {item.endDate}
                                       </span>
                                     </h1>
@@ -652,7 +652,7 @@ export default function Ruby() {
                                   <div className="py-1" key={item}>
                                     <h1 className="text-sm font-bold relative">
                                       {item.name}
-                                      <span className="text-sm text-red-700 absolute right-0">
+                                      <span className="text-sm text-red-700 absolute right-0 heading">
                                         {item.from} - {item.to}
                                       </span>
                                     </h1>
@@ -674,7 +674,7 @@ export default function Ruby() {
                                   <div className="py-1" key={item.title}>
                                     <h1 className="text-sm font-bold relative">
                                       {item.title}
-                                      <span className="text-sm text-red-700 absolute right-0">
+                                      <span className="text-sm text-red-700 absolute right-0 heading">
                                         {item.date}
                                       </span>
                                     </h1>

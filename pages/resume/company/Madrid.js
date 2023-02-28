@@ -235,7 +235,7 @@ export default function Madrid() {
   </div>
   <div className=" border-l-purple-900 col-span-4 ">
     <div className=" ">
-    <p className="pl-6 ml-3 mr-2 mt-7 font-normal tracking-widest text-lg"><span  className="font-serif font-semibold">DOB : </span> {details.personal.dob}</p>
+    <p className="pl-6 ml-3 mr-2 mt-7 font-normal tracking-widest text-lg"><span  className="font-serif font-semibold heading">DOB : </span> {details.personal.dob}</p>
       {/*  NETWORK  */}
       <h1 className=" font-bold tracking-widest  bg-purple-50 mr-5 rounded-r-xl font-serif text-xl mt-2 ml-6  mb-0 p-2 heading">NETWORK</h1>
        <div className="pl-5">
@@ -388,8 +388,8 @@ export default function Madrid() {
         <img className="rounded-lg w-[130px] h-36  border-4 border-black  ml-4 mt-6 mr-1 " src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpl60g6oKVerEKPde2ClN4-6ASK4Ds4KzlM0Y1N-K_bCgOCMBYZ019WUgRLOfNAqyyhnY&usqp=CAU" alt="ProfilePhoto"/>
         <div>
           <div className="text-3xl font-bold p-2 mt-5 ml-4 tracking-widest">
-          <h>{details.personal.firstName} {details.personal.lastName}</h></div>
-          <h1 className="m-1 mt-0 ml-6  text-xl font-bold font-serif  tracking-widest text-indigo-900">{details.personal.role}</h1>
+          <h className="heading">{details.personal.firstName} {details.personal.lastName}</h></div>
+          <h1 className="m-1 mt-0 ml-6  text-xl font-bold font-serif  tracking-widest text-indigo-900 heading">{details.personal.role}</h1>
           <p className="text-sm p-2 pt-0 font-medium mb ">{details.personal.objective}</p>
         </div>
       </div>  
@@ -400,7 +400,7 @@ export default function Madrid() {
 
       {/* EDUCATION */}
       <div className="p-2 px-0">
-        <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2">EDUCATION</h1>
+        <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">EDUCATION</h1>
         {details.education.map((item) => (
           <div key={item.institution} className="p-1">
             <h1 className=" ml-6 text-sm font-medium">{item.institution}</h1>
@@ -466,7 +466,7 @@ export default function Madrid() {
   </div>
   <div className=" border-l-purple-900 col-span-4 ">
     <div className=" ">
-    <p className="pl-6 ml-3 mr-2 mt-7 font-normal tracking-widest text-lg"><span  className="font-serif font-semibold">DOB : </span> {details.personal.dob}</p>
+    <p className="pl-6 ml-3 mr-2 mt-7 font-normal tracking-widest text-lg"><span  className="font-serif font-semibold heading">DOB : </span> {details.personal.dob}</p>
       {/*  NETWORK  */}
       <h1 className=" font-bold tracking-widest  bg-purple-50 mr-5 rounded-r-xl font-serif text-xl mt-2 ml-6  mb-0 p-2 heading">NETWORK</h1>
        <div className="pl-5">
