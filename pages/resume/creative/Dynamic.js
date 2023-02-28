@@ -12,7 +12,6 @@ import jsPDF from "jspdf";
 import ReactDOM from "react-dom";
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
-
 export default function Dynamic() {
   const user = useUser();
   const { details, setdetails, setdemo, demo } = useContext(ResumeContext);

@@ -9,14 +9,12 @@ import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import ReactDOM from "react-dom";
-import { ColorPicker, useColor } from "react-color-palette";
-import "react-color-palette/lib/css/styles.css";
+
 export default function Ruby() {
   const user = useUser();
-  const { details, setdetails, setdemo, demo } = useContext(ResumeContext);
+  const { details, setdetails, setdemo, demo, color, setcolor } =
+    useContext(ResumeContext);
   const [change, setchange] = useState(false);
-  const [colorpalette, setcolorpalette] = useState(false);
 
   //to add email fname and lname
   useEffect(() => {
@@ -51,7 +49,8 @@ export default function Ruby() {
       input = document.getElementById("largeResume");
       console.log("om");
     }
-    html2canvas(input).then((canvas) => {
+    console.log(input);
+    html2canvas(input, { useCORS: true }).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("p", "mm", "a4");
       var width = pdf.internal.pageSize.getWidth();
@@ -62,12 +61,6 @@ export default function Ruby() {
     });
   }
 
-  // document.getElementById("smallResume")
-
-  useEffect(() => {
-    // document.getElementById("largeResume").style.color = "red"
-  }, [0]);
-
   //responsiveness
   function toggleResume() {
     if (open == "semiopen") {
@@ -77,53 +70,30 @@ export default function Ruby() {
     }
   }
 
-  const [color, setColor] = useColor("hex", "#121212");
-  useEffect(() => {
-    console.log("color:", color);
-    // settextColor()
-  }, [color]);
-
   return (
     <>
       {details && user && (
         <div className="flex">
-          {/* <div>
-            <ColorPicker
-              width={456}
-              height={228}
-              color={color}
-              onChange={setColor}
-              hideHSV
-              dark
-            />
-            ;
-          </div> */}
           {open == "closed" && (
-            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-slate-700 to-slate-800">
+            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-gray-400 to-gray-600">
               <div className="flex border border-white">
                 <div className="m-3 flex grow">
-                  <div className="flex mt-1"></div>
+                  <div className="flex mt-1">
+                    <div
+                      className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
+                      onClick={() => {
+                        setcolor("red");
+                      }}
+                    ></div>
+                    <div
+                      className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
+                      onClick={() => {
+                        setcolor("gray");
+                      }}
+                    ></div>
+                  </div>
                 </div>
                 <div className="m-3 flex">
-                <button
-                    className="text-white border border-white p-2 rounded-md"
-                    onClick={() => {
-                      setcolorpalette(!colorpalette);
-                    }}
-                  >
-                    COLOR
-                  </button>
-                  <div className={`${colorpalette ? "block" : "hidden"} mt-[50px] ml-[-50px] lg:ml-[50px] absolute z-40`}>
-                    <ColorPicker
-                      width={300}
-                      height={100}
-                      color={color}
-                      onChange={setColor}
-                      hideHSV
-                      dark
-                    />
-                    ;
-                  </div>
                   <button
                     onClick={printDocument}
                     className="cursor-pointer text-white border border-white p-1 mx-1 rounded"
@@ -148,11 +118,10 @@ export default function Ruby() {
               <div className="flex justify-center ">
                 {/* Small Resume */}
                 <div
-                  className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-300px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row"
+                  className={`bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row`}
                   id="smallResume"
-                  // style={{ color: color.hex }}
                 >
-                 <div className="flex align-middle justify-center bg-zinc-400">
+                  <div className="flex align-middle justify-center bg-zinc-400">
                     <div className="container bg-white">
                       <div className="grid grid-cols-3">
                         <div className={`bg-${color}-700 `}>
@@ -162,7 +131,7 @@ export default function Ruby() {
                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpl60g6oKVerEKPde2ClN4-6ASK4Ds4KzlM0Y1N-K_bCgOCMBYZ019WUgRLOfNAqyyhnY&usqp=CAU"
                                 alt="ProfilePhoto"
                               />
-                              <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
+                              <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1">
                                 Personal Details
                               </h1>
                               <div>
@@ -193,7 +162,7 @@ export default function Ruby() {
 
                               {details.social.length != 0 && (
                                 <div>
-                                  <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
+                                  <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1">
                                     Social
                                   </h1>
                                   {details.social.map((item) => (
@@ -210,7 +179,7 @@ export default function Ruby() {
 
                             {details.skills.length != 0 && (
                               <div>
-                                <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
+                                <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1">
                                   Skills
                                 </h1>
                                 {details.skills.map((item) => (
@@ -225,7 +194,7 @@ export default function Ruby() {
 
                             {details.awards.length != 0 && (
                               <div>
-                                <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
+                                <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1">
                                   Awards
                                 </h1>
                                 {details.awards.map((item) => (
@@ -247,7 +216,7 @@ export default function Ruby() {
 
                             {details.hobbies.length != 0 && (
                               <div>
-                                <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 ">
+                                <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1">
                                   Hobbies
                                 </h1>
                                 {details.hobbies.map((item) => (
@@ -262,7 +231,7 @@ export default function Ruby() {
 
                             {details.languages.length != 0 && (
                               <div>
-                                <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                                <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1">
                                   Languages
                                 </h1>
                                 {details.languages.map((item) => (
@@ -284,7 +253,7 @@ export default function Ruby() {
 
                           {details.personal.objective.length != 0 && (
                             <div>
-                              <h1 className="text-red-700 text-xl font-semibold mt-4 heading">
+                              <h1 className="text-red-700 text-xl font-semibold mt-4">
                                 Profile
                               </h1>
                               <p className="text-sm">
@@ -295,14 +264,14 @@ export default function Ruby() {
 
                           {details.work.length != 0 && (
                             <div>
-                              <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                              <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1">
                                 Work
                               </h1>
                               {details.work.map((item) => (
                                 <div key={item.company} className="py-1">
                                   <h1 className="text-sm font-bold relative">
                                     {item.company}
-                                    <span className="text-sm text-red-700 absolute right-0 heading">
+                                    <span className="text-sm text-red-700 absolute right-0">
                                       {item.from} - {item.to}
                                     </span>
                                   </h1>
@@ -317,14 +286,14 @@ export default function Ruby() {
 
                           {details.education.length != 0 && (
                             <div>
-                              <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                              <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1">
                                 Education
                               </h1>
                               {details.education.map((item) => (
                                 <div className="py-1" key={item.institution}>
                                   <h1 className="text-sm font-bold relative">
                                     {item.institution}
-                                    <span className="text-sm text-red-700 absolute right-0 heading">
+                                    <span className="text-sm text-red-700 absolute right-0">
                                       {item.startDate} - {item.endDate}
                                     </span>
                                   </h1>
@@ -339,14 +308,14 @@ export default function Ruby() {
 
                           {details.projects.length != 0 && (
                             <div>
-                              <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                              <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1">
                                 Projects
                               </h1>
                               {details.projects.map((item) => (
                                 <div className="py-1" key={item}>
                                   <h1 className="text-sm font-bold relative">
                                     {item.name}
-                                    <span className="text-sm text-red-700 absolute right-0 heading">
+                                    <span className="text-sm text-red-700 absolute right-0">
                                       {item.from} - {item.to}
                                     </span>
                                   </h1>
@@ -361,14 +330,14 @@ export default function Ruby() {
 
                           {details.certifications.length != 0 && (
                             <div>
-                              <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                              <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1">
                                 Certifications
                               </h1>
                               {details.certifications.map((item) => (
                                 <div className="py-1" key={item.title}>
                                   <h1 className="text-sm font-bold relative">
                                     {item.title}
-                                    <span className="text-sm text-red-700 absolute right-0 heading">
+                                    <span className="text-sm text-red-700 absolute right-0">
                                       {item.date}
                                     </span>
                                   </h1>
@@ -387,12 +356,6 @@ export default function Ruby() {
                     </div>
                   </div>
                 </div>
-                <style jsx>
-                  {`
-                  .heading{
-                    color:${color.hex};
-                  }`}
-                </style>
               </div>
             </div>
           )}
@@ -410,26 +373,21 @@ export default function Ruby() {
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
                 <div className="flex">
-                  <div className="m-5 grow">
-                  <button
-                    className="text-white border border-white p-2 rounded-md"
-                    onClick={() => {
-                      setcolorpalette(!colorpalette);
-                    }}
-                  >
-                    COLOR
-                  </button>
-                  <div className={`${colorpalette ? "block" : "hidden"} ml-[50px] absolute z-40`}>
-                    <ColorPicker
-                      width={300}
-                      height={100}
-                      color={color}
-                      onChange={setColor}
-                      hideHSV
-                      dark
-                    />
-                    ;
-                  </div>
+                  <div className="m-5 flex grow">
+                    <div className="flex mt-1">
+                      <div
+                        className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
+                        onClick={() => {
+                          setcolor("red");
+                        }}
+                      ></div>
+                      <div
+                        className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
+                        onClick={() => {
+                          setcolor("gray");
+                        }}
+                      ></div>
+                    </div>
                   </div>
                   <div className="m-5">
                     <button
@@ -446,19 +404,15 @@ export default function Ruby() {
                       LOAD
                     </button>
                   </div>
-                  
                 </div>
-
                 <div className="flex justify-center ">
                   {/* large resume */}
 
                   <div
                     className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row"
-                    
                     id="largeResume"
-                    // style={{ color: color.hex }}
                   >
-                   <div className="flex align-middle justify-center bg-zinc-400">
+                    <div className="flex align-middle justify-center bg-zinc-400">
                       <div className="container bg-white">
                         <div className="grid grid-cols-3">
                           <div className={`bg-${color}-700 `}>
@@ -468,7 +422,7 @@ export default function Ruby() {
                                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpl60g6oKVerEKPde2ClN4-6ASK4Ds4KzlM0Y1N-K_bCgOCMBYZ019WUgRLOfNAqyyhnY&usqp=CAU"
                                   alt="ProfilePhoto"
                                 />
-                                <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
+                                <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1">
                                   Personal Details
                                 </h1>
                                 <div>
@@ -499,7 +453,7 @@ export default function Ruby() {
 
                                 {details.social.length != 0 && (
                                   <div>
-                                    <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
+                                    <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1">
                                       Social
                                     </h1>
                                     {details.social.map((item) => (
@@ -516,7 +470,7 @@ export default function Ruby() {
 
                               {details.skills.length != 0 && (
                                 <div>
-                                  <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
+                                  <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1">
                                     Skills
                                   </h1>
                                   {details.skills.map((item) => (
@@ -531,7 +485,7 @@ export default function Ruby() {
 
                               {details.awards.length != 0 && (
                                 <div>
-                                  <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
+                                  <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1">
                                     Awards
                                   </h1>
                                   {details.awards.map((item) => (
@@ -553,7 +507,7 @@ export default function Ruby() {
 
                               {details.hobbies.length != 0 && (
                                 <div>
-                                  <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                                  <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1">
                                     Hobbies
                                   </h1>
                                   {details.hobbies.map((item) => (
@@ -568,7 +522,7 @@ export default function Ruby() {
 
                               {details.languages.length != 0 && (
                                 <div>
-                                  <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                                  <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1">
                                     Languages
                                   </h1>
                                   {details.languages.map((item) => (
@@ -590,7 +544,7 @@ export default function Ruby() {
 
                             {details.personal.objective.length != 0 && (
                               <div>
-                                <h1 className="text-red-700 text-xl font-semibold mt-4 heading">
+                                <h1 className="text-red-700 text-xl font-semibold mt-4">
                                   Profile
                                 </h1>
                                 <p className="text-sm">
@@ -601,7 +555,7 @@ export default function Ruby() {
 
                             {details.work.length != 0 && (
                               <div>
-                                <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                                <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1">
                                   Work
                                 </h1>
                                 {details.work.map((item) => (
@@ -623,7 +577,7 @@ export default function Ruby() {
 
                             {details.education.length != 0 && (
                               <div>
-                                <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                                <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1">
                                   Education
                                 </h1>
                                 {details.education.map((item) => (
@@ -645,7 +599,7 @@ export default function Ruby() {
 
                             {details.projects.length != 0 && (
                               <div>
-                                <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                                <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1">
                                   Projects
                                 </h1>
                                 {details.projects.map((item) => (
@@ -667,7 +621,7 @@ export default function Ruby() {
 
                             {details.certifications.length != 0 && (
                               <div>
-                                <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                                <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1">
                                   Certifications
                                 </h1>
                                 {details.certifications.map((item) => (
@@ -692,13 +646,6 @@ export default function Ruby() {
                         </div>
                       </div>
                     </div>
-                    <style jsx>
-                      {
-                        `.heading{
-                          color:${color.hex};
-                        }`
-                      }
-                    </style>
                   </div>
                 </div>
               </div>
@@ -706,6 +653,6 @@ export default function Ruby() {
           )}
         </div>
       )}
-    </>
-  );
+    </>
+  );
 }
