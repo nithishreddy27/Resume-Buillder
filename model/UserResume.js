@@ -38,7 +38,7 @@ const userResume = new mongoose.Schema({
             type:String
         },
         enabled:{
-            type:String
+            type:Boolean
         },
     }],
     work:[{

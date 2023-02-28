@@ -9,12 +9,16 @@ import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/lib/css/styles.css";
 
 
 export default function Classic() {
   const user = useUser();
   const { details, setdetails , setdemo ,demo} = useContext(ResumeContext);
   const [change, setchange] = useState(false)
+  const [colorpalette, setcolorpalette] = useState(false);
+
 
 
   //to add email fname and lname
@@ -31,7 +35,6 @@ export default function Classic() {
       });
     }
   }, [user , change]);
-
   
   useEffect(()=>{
     setchange(!change)
@@ -67,10 +70,13 @@ export default function Classic() {
       pdf.addImage(imgData, 'JPEG',0,0,width,height);
       pdf.save("download.pdf");
       // pdf.output('dataurlnewwindow');
-    });  
-     
+    });     
     
   }
+  useEffect(() => {
+    // document.getElementById("largeResume").style.color = "red"
+  }, [0]);
+
 
   
 
@@ -82,6 +88,11 @@ export default function Classic() {
       setopen("semiopen");
     }
   }
+  const [color, setColor] = useColor("hex", "#121212");
+  useEffect(() => {
+    console.log("color:", color);
+    // settextColor()
+  }, [color]);
 
   return (
     <>

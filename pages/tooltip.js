@@ -1,18 +1,25 @@
-import React, { useState } from 'react';
-import ToggleSwitch from '../components/ToggleSwitch';
+// import React, { useState } from 'react';
+// import ToggleSwitch from '../components/ToggleSwitch';
 
-const tooltip = () => {
-  const [enabled, setEnabled] = useState(false);
+// const Tooltip = () => {
+//   const [enabled, setEnabled] = useState(false);
 
-  const handleToggle = () => {
-    setEnabled(!enabled);
-  };
+//   const handleToggle = () => {
+//     setEnabled(!enabled);
+//   };
 
+//   return (
+//     <div>
+//       <ToggleSwitch enabled={enabled} onChange={handleToggle} />
+//     </div>
+//   );
+// };
+
+// export default Tooltip;
+import React from 'react'
+
+export default function Tooltip() {
   return (
-    <div>
-      <ToggleSwitch enabled={enabled} onChange={handleToggle} />
-    </div>
-  );
-};
-
-export default tooltip;
+    <div>tooltip</div>
+  )
+}
