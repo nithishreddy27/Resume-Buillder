@@ -9,13 +9,15 @@ import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/lib/css/styles.css";
 
 export default function Square() {
   const user = useUser();
-  const { details, setdetails, setdemo, demo, color, setcolor } =
+  const { details, setdetails, setdemo, demo} =
     useContext(ResumeContext);
   const [change, setchange] = useState(false);
-
+  const [colorpalette, setcolorpalette] = useState(false);
   //to add email fname and lname
   useEffect(() => {
     if (user) {
@@ -61,6 +63,10 @@ export default function Square() {
     });
   }
 
+   useEffect(() => {
+    // document.getElementById("largeResume").style.color = "red"
+  }, [0]);
+
   //responsiveness
   function toggleResume() {
     if (open == "semiopen") {
@@ -70,6 +76,11 @@ export default function Square() {
     }
   }
 
+  const [color, setColor] = useColor("hex", "#121212");
+  useEffect(() => {
+    console.log("color:", color);
+    // settextColor()
+  }, [color]);
   return (
     <>
       {details && user && (
@@ -79,21 +90,29 @@ export default function Square() {
               <div className="flex border border-white">
                 <div className="m-3 flex grow">
                   <div className="flex mt-1">
-                    <div
-                      className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
-                      onClick={() => {
-                        setcolor("red");
-                      }}
-                    ></div>
-                    <div
-                      className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
-                      onClick={() => {
-                        setcolor("gray");
-                      }}
-                    ></div>
+                    
                   </div>
                 </div>
                 <div className="m-3 flex">
+                  <button
+                    className="text-white border border-white p-2 rounded-md"
+                    onClick={() => {
+                      setcolorpalette(!colorpalette);
+                    }}
+                  >
+                    COLOR
+                  </button>
+                  <div className={`${colorpalette ? "block" : "hidden"} mt-[50px] ml-[-50px] lg:ml-[50px] absolute z-40`}>
+                    <ColorPicker
+                      width={300}
+                      height={100}
+                      color={color}
+                      onChange={setColor}
+                      hideHSV
+                      dark
+                    />
+                    ;
+                  </div>
                   <button
                     onClick={printDocument}
                     className="cursor-pointer text-white border border-white p-1 mx-1 rounded"
@@ -170,7 +189,7 @@ export default function Square() {
                     </div>
                     {details.education.length != 0 && (
                       <div className="education">
-                        <h2 className="text-center text-xl font-serif font-medium underline">
+                        <h2 className="text-center text-xl font-serif font-medium underline heading">
                           E D U C A T I O N
                         </h2>
                         {details.education.map((item) => (
@@ -191,7 +210,7 @@ export default function Square() {
                     )}
                     {details.certifications.length != 0 && (
                       <div className="certifications">
-                        <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                        <h2 className="text-center text-xl font-serif font-medium underline pt-5 heading">
                           C E R T I F I C A T I O N S
                         </h2>
                         {details.certifications.map((item) => (
@@ -205,7 +224,7 @@ export default function Square() {
                     {details.skills.length != 0 && (
                       <div className="skills">
                         <div className="pl-10">
-                          <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5">
+                          <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5 heading">
                             S K I L L S
                           </h2>
                           {details.skills.map((item) => (
@@ -219,7 +238,7 @@ export default function Square() {
                     {details.hobbies.length != 0 && (
                       <div className="skills">
                         <div className="pl-10">
-                          <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5">
+                          <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5 heading">
                             H O B B I E S
                           </h2>
                           {details.hobbies.map((item) => (
@@ -233,7 +252,7 @@ export default function Square() {
                     {details.languages.length != 0 && (
                       <div className="skills">
                         <div className="pl-10">
-                          <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5">
+                          <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5 heading">
                             L A N G U A G E S
                           </h2>
                           {details.languages.map((item) => (
@@ -257,7 +276,7 @@ export default function Square() {
                     </div>
                     {details.personal.objective.length != 0 && (
                       <div className="career-objective">
-                        <h2 className="text-center text-xl font-serif font-medium underline pt-6">
+                        <h2 className="text-center text-xl font-serif font-medium underline pt-6 heading">
                           C A R E E R O B J E C T I V E
                         </h2>
                         <p className="pl-10 pr-5 pt-5">
@@ -267,7 +286,7 @@ export default function Square() {
                     )}
                     {details.work.length != 0 && (
                       <div className="experience">
-                        <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                        <h2 className="text-center text-xl font-serif font-medium underline pt-5 heading">
                           E X P E R I E N C E
                         </h2>
                         {details.work.map((item) => (
@@ -285,7 +304,7 @@ export default function Square() {
                     )}
                     {details.projects.length != 0 && (
                       <div className="projects">
-                        <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                        <h2 className="text-center text-xl font-serif font-medium underline pt-5 heading">
                           P R O J E C T S
                         </h2>
                         {details.projects.map((item) => (
@@ -302,7 +321,7 @@ export default function Square() {
                     )}
                     {details.certifications.length != 0 && (
                       <div className="awards">
-                        <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                        <h2 className="text-center text-xl font-serif font-medium underline pt-5 heading">
                           C E R T I F I C A T I O N S
                         </h2>
                         {details.certifications.map((item) => (
@@ -318,7 +337,7 @@ export default function Square() {
                     )}
                     {details.awards.length != 0 && (
                       <div className="awards">
-                        <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                        <h2 className="text-center text-xl font-serif font-medium underline pt-5 heading">
                           A W A R D S
                         </h2>
                         {details.awards.map((item) => (
@@ -334,6 +353,12 @@ export default function Square() {
                     )}
                   </div>
                 </div>
+                <style jsx>
+                  {`
+                  .heading{
+                    color:${color.hex}
+                  }`}
+                </style>
               </div>
             </div>
           )}
@@ -351,21 +376,26 @@ export default function Square() {
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
                 <div className="flex">
-                  <div className="m-5 flex grow">
-                    <div className="flex mt-1">
-                      <div
-                        className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
-                        onClick={() => {
-                          setcolor("red");
-                        }}
-                      ></div>
-                      <div
-                        className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
-                        onClick={() => {
-                          setcolor("gray");
-                        }}
-                      ></div>
-                    </div>
+                  <div className="m-5 grow">
+                    <button
+                    className="text-white border border-white p-2 rounded-md"
+                    onClick={() => {
+                      setcolorpalette(!colorpalette);
+                    }}
+                  >
+                    COLOR
+                  </button>
+                  <div className={`${colorpalette ? "block" : "hidden"} ml-[50px] absolute z-40`}>
+                    <ColorPicker
+                      width={300}
+                      height={100}
+                      color={color}
+                      onChange={setColor}
+                      hideHSV
+                      dark
+                    />
+                    ;
+                  </div>
                   </div>
                   <div className="m-5">
                     <button
@@ -440,7 +470,7 @@ export default function Square() {
                       </div>
                       {details.education.length != 0 && (
                         <div className="education">
-                          <h2 className="text-center text-xl font-serif font-medium underline">
+                          <h2 className="text-center text-xl font-serif font-medium underline heading">
                             E D U C A T I O N
                           </h2>
                           {details.education.map((item) => (
@@ -464,7 +494,7 @@ export default function Square() {
                       )}
                       {details.certifications.length != 0 && (
                         <div className="certifications">
-                          <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                          <h2 className="text-center text-xl font-serif font-medium underline pt-5 heading">
                             C E R T I F I C A T I O N S
                           </h2>
                           {details.certifications.map((item) => (
@@ -478,7 +508,7 @@ export default function Square() {
                       {details.skills.length != 0 && (
                         <div className="skills">
                           <div className="pl-10">
-                            <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5">
+                            <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5 heading">
                               S K I L L S
                             </h2>
                             {details.skills.map((item) => (
@@ -492,7 +522,7 @@ export default function Square() {
                       {details.hobbies.length != 0 && (
                         <div className="skills">
                           <div className="pl-10">
-                            <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5">
+                            <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5 heading">
                               H O B B I E S
                             </h2>
                             {details.hobbies.map((item) => (
@@ -506,7 +536,7 @@ export default function Square() {
                       {details.languages.length != 0 && (
                         <div className="skills">
                           <div className="pl-10">
-                            <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5">
+                            <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5 heading">
                               L A N G U A G E S
                             </h2>
                             {details.languages.map((item) => (
@@ -530,7 +560,7 @@ export default function Square() {
                       </div>
                       {details.personal.objective.length != 0 && (
                         <div className="career-objective">
-                          <h2 className="text-center text-xl font-serif font-medium underline pt-6">
+                          <h2 className="text-center text-xl font-serif font-medium underline pt-6 heading">
                             C A R E E R O B J E C T I V E
                           </h2>
                           <p className="pl-10 pr-5 pt-5">
@@ -540,7 +570,7 @@ export default function Square() {
                       )}
                       {details.work.length != 0 && (
                         <div className="experience">
-                          <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                          <h2 className="text-center text-xl font-serif font-medium underline pt-5 heading">
                             E X P E R I E N C E
                           </h2>
                           {details.work.map((item) => (
@@ -560,7 +590,7 @@ export default function Square() {
                       )}
                       {details.projects.length != 0 && (
                         <div className="projects">
-                          <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                          <h2 className="text-center text-xl font-serif font-medium underline pt-5 heading">
                             P R O J E C T S
                           </h2>
                           {details.projects.map((item) => (
@@ -577,7 +607,7 @@ export default function Square() {
                       )}
                       {details.certifications.length != 0 && (
                         <div className="awards">
-                          <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                          <h2 className="text-center text-xl font-serif font-medium underline pt-5 heading">
                             C E R T I F I C A T I O N S
                           </h2>
                           {details.certifications.map((item) => (
@@ -593,7 +623,7 @@ export default function Square() {
                       )}
                       {details.awards.length != 0 && (
                         <div className="awards">
-                          <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                          <h2 className="text-center text-xl font-serif font-medium underline pt-5 heading">
                             A W A R D S
                           </h2>
                           {details.awards.map((item) => (
@@ -609,6 +639,12 @@ export default function Square() {
                       )}
                     </div>
                   </div>
+                  <style jsx>
+                    {`
+                    .heading{
+                      color:${color.hex}
+                    }`}
+                  </style>
                 </div>
               </div>
             </>

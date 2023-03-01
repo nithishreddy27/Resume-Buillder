@@ -9,12 +9,14 @@ import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/lib/css/styles.css";
 export default function Chrono() {
   const user = useUser();
-  const { details, setdetails, setdemo, demo, color, setcolor } =
+  const { details, setdetails, setdemo, demo} =
     useContext(ResumeContext);
   const [change, setchange] = useState(false);
+  const [colorpalette, setcolorpalette] = useState(false);
 
   //to add email fname and lname
   useEffect(() => {
@@ -60,7 +62,9 @@ export default function Chrono() {
       // pdf.output('dataurlnewwindow');
     });
   }
-
+  useEffect(() => {
+    // document.getElementById("largeResume").style.color = "red"
+  }, [0]);
   //responsiveness
   function toggleResume() {
     if (open == "semiopen") {
@@ -70,30 +74,44 @@ export default function Chrono() {
     }
   }
 
+  const [color, setColor] = useColor("hex", "#121212");
+  useEffect(() => {
+    console.log("color:", color);
+    // settextColor()
+  }, [color]);
+
   return (
     <>
       {details && user && (
         <div className="flex">
           {open == "closed" && (
-            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-gray-400 to-gray-600">
+            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-slate-700 to-slate-800">
               <div className="flex border border-white">
                 <div className="m-3 flex grow">
                   <div className="flex mt-1">
-                    <div
-                      className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
-                      onClick={() => {
-                        setcolor("red");
-                      }}
-                    ></div>
-                    <div
-                      className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
-                      onClick={() => {
-                        setcolor("gray");
-                      }}
-                    ></div>
+                    
                   </div>
                 </div>
                 <div className="m-3 flex">
+                <button
+                    className="text-white border border-white p-2 rounded-md"
+                    onClick={() => {
+                      setcolorpalette(!colorpalette);
+                    }}
+                  >
+                    COLOR
+                  </button>
+                  <div className={`${colorpalette ? "block" : "hidden"} mt-[50px] ml-[-50px] lg:ml-[50px] absolute z-40`}>
+                    <ColorPicker
+                      width={300}
+                      height={100}
+                      color={color}
+                      onChange={setColor}
+                      hideHSV
+                      dark
+                    />
+                    ;
+                  </div>
                   <button
                     onClick={printDocument}
                     className="cursor-pointer text-white border border-white p-1 mx-1 rounded"
@@ -141,7 +159,7 @@ export default function Chrono() {
                         </h6>
                       </div>
                       <div>
-                        <h1 className="font-bold text-lg ml-16 pt-4 p-1">
+                        <h1 className="font-bold text-lg ml-16 pt-4 p-1 heading">
                           contact
                         </h1>
                         <li className="font-normal ml-20">
@@ -156,7 +174,7 @@ export default function Chrono() {
                       </div>
                       {details.skills.length != 0 && (
                         <div>
-                          <h1 className="font-bold text-lg ml-16 pt-4">
+                          <h1 className="font-bold text-lg ml-16 pt-4 heading">
                             skills
                           </h1>
                           {details.skills.map((item) => (
@@ -173,7 +191,7 @@ export default function Chrono() {
                       )}
                       {details.social.length != 0 && (
                         <div>
-                          <h1 className="font-bold  text-lg ml-16 pt-4">
+                          <h1 className="font-bold  text-lg ml-16 pt-4 heading">
                             Social Network
                           </h1>
                           {details.social.map((item) => (
@@ -196,7 +214,7 @@ export default function Chrono() {
                       )}
                       {details.hobbies.length != 0 && (
                         <div>
-                          <h1 className="font-bold  text-lg ml-16 pt-2">
+                          <h1 className="font-bold  text-lg ml-16 pt-2 heading">
                             Hobbies
                           </h1>
                           {details.hobbies.map((item) => (
@@ -208,7 +226,7 @@ export default function Chrono() {
                       )}
                       {details.languages.length != 0 && (
                         <div>
-                          <h1 className="font-bold  text-lg ml-16 pt-2">
+                          <h1 className="font-bold  text-lg ml-16 pt-2 heading">
                             Languages
                           </h1>
                           {details.hobbies.map((item) => (
@@ -223,7 +241,7 @@ export default function Chrono() {
                     <div className="col-span-3">
                       {details.personal.objective.length != 0 && (
                         <div>
-                          <h1 className="font-medium text-xl ml-8 mt-20">
+                          <h1 className="font-medium text-xl ml-8 mt-20 heading">
                             About
                           </h1>
                           <p className="ml-1 p-4 pt-1">
@@ -233,7 +251,7 @@ export default function Chrono() {
                       )}
                       {details.education.length != 0 && (
                         <div className="p-2 px-0">
-                          <h1 className="font-medium text-xl ml-8 ">
+                          <h1 className="font-medium text-xl ml-8 heading">
                             Education
                           </h1>
                           {details.education.map((item) => (
@@ -253,7 +271,7 @@ export default function Chrono() {
                       )}
                       {details.work.length != 0 && (
                         <div className="p-2 px-0">
-                          <h1 className="font-medium text-xl ml-8 pt-2 ">
+                          <h1 className="font-medium text-xl ml-8 pt-2 heading">
                             Work Experience
                           </h1>
                           {details.work.map((item) => (
@@ -273,7 +291,7 @@ export default function Chrono() {
                       )}
                       {details.projects.length != 0 && (
                         <div className="p-2 px-0">
-                          <h1 className="font-medium text-xl ml-8 pt-2 ">
+                          <h1 className="font-medium text-xl ml-8 pt-2 heading">
                             Projects
                           </h1>
                           {details.projects.map((item) => (
@@ -293,7 +311,7 @@ export default function Chrono() {
                       )}
                       {details.certifications.length != 0 && (
                         <div>
-                          <h1 className="font-medium text-xl ml-8 pt-2 ">
+                          <h1 className="font-medium text-xl ml-8 pt-2 heading">
                             Certifications
                           </h1>
                           {details.certifications.map((item) => (
@@ -310,7 +328,7 @@ export default function Chrono() {
                       )}
                       {details.awards.length != 0 && (
                         <div>
-                          <h1 className="font-medium text-xl ml-8 pt-2 ">
+                          <h1 className="font-medium text-xl ml-8 pt-2 heading">
                             Awards
                           </h1>
                           {details.awards.map((item) => (
@@ -328,6 +346,14 @@ export default function Chrono() {
                     </div>
                   </div>
                 </div>
+                <style jsx>
+                  {
+                    `
+                    .heading{
+                      color:${color.hex}
+                    }`
+                  }
+                </style>
               </div>
             </div>
           )}
@@ -345,21 +371,26 @@ export default function Chrono() {
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
                 <div className="flex">
-                  <div className="m-5 flex grow">
-                    <div className="flex mt-1">
-                      <div
-                        className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
-                        onClick={() => {
-                          setcolor("red");
-                        }}
-                      ></div>
-                      <div
-                        className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
-                        onClick={() => {
-                          setcolor("gray");
-                        }}
-                      ></div>
-                    </div>
+                  <div className="m-5 grow">
+                  <button
+                    className="text-white border border-white p-2 rounded-md"
+                    onClick={() => {
+                      setcolorpalette(!colorpalette);
+                    }}
+                  >
+                    COLOR
+                  </button>
+                  <div className={`${colorpalette ? "block" : "hidden"} ml-[50px] absolute z-40`}>
+                    <ColorPicker
+                      width={300}
+                      height={100}
+                      color={color}
+                      onChange={setColor}
+                      hideHSV
+                      dark
+                    />
+                    ;
+                  </div>
                   </div>
                   <div className="m-5">
                     <button
@@ -404,7 +435,7 @@ export default function Chrono() {
                           </h6>
                         </div>
                         <div>
-                          <h1 className="font-bold text-lg ml-16 pt-4 p-1">
+                          <h1 className="font-bold text-lg ml-16 pt-4 p-1 heading">
                             contact
                           </h1>
                           <li className="font-normal ml-20">
@@ -419,7 +450,7 @@ export default function Chrono() {
                         </div>
                         {details.skills.length != 0 && (
                           <div>
-                            <h1 className="font-bold text-lg ml-16 pt-4">
+                            <h1 className="font-bold text-lg ml-16 pt-4 heading">
                               skills
                             </h1>
                             {details.skills.map((item) => (
@@ -436,7 +467,7 @@ export default function Chrono() {
                         )}
                         {details.social.length != 0 && (
                           <div>
-                            <h1 className="font-bold  text-lg ml-16 pt-4">
+                            <h1 className="font-bold  text-lg ml-16 pt-4 heading">
                               Social Network
                             </h1>
                             {details.social.map((item) => (
@@ -462,7 +493,7 @@ export default function Chrono() {
                         )}
                         {details.hobbies.length != 0 && (
                           <div>
-                            <h1 className="font-bold  text-lg ml-16 pt-2">
+                            <h1 className="font-bold  text-lg ml-16 pt-2 heading">
                               Hobbies
                             </h1>
                             {details.hobbies.map((item) => (
@@ -476,7 +507,7 @@ export default function Chrono() {
                         )}
                         {details.languages.length != 0 && (
                           <div>
-                            <h1 className="font-bold  text-lg ml-16 pt-2">
+                            <h1 className="font-bold  text-lg ml-16 pt-2 heading">
                               Languages
                             </h1>
                             {details.hobbies.map((item) => (
@@ -493,7 +524,7 @@ export default function Chrono() {
                       <div className="col-span-3">
                         {details.personal.objective.length != 0 && (
                           <div>
-                            <h1 className="font-medium text-xl ml-8 mt-20">
+                            <h1 className="font-medium text-xl ml-8 mt-20 heading">
                               About
                             </h1>
                             <p className="ml-1 p-4 pt-1">
@@ -503,7 +534,7 @@ export default function Chrono() {
                         )}
                         {details.education.length != 0 && (
                           <div className="p-2 px-0">
-                            <h1 className="font-medium text-xl ml-8 ">
+                            <h1 className="font-medium text-xl ml-8 heading">
                               Education
                             </h1>
                             {details.education.map((item) => (
@@ -523,7 +554,7 @@ export default function Chrono() {
                         )}
                         {details.work.length != 0 && (
                           <div className="p-2 px-0">
-                            <h1 className="font-medium text-xl ml-8 pt-2 ">
+                            <h1 className="font-medium text-xl ml-8 pt-2 heading">
                               Work Experience
                             </h1>
                             {details.work.map((item) => (
@@ -543,7 +574,7 @@ export default function Chrono() {
                         )}
                         {details.projects.length != 0 && (
                           <div className="p-2 px-0">
-                            <h1 className="font-medium text-xl ml-8 pt-2 ">
+                            <h1 className="font-medium text-xl ml-8 pt-2 heading">
                               Projects
                             </h1>
                             {details.projects.map((item) => (
@@ -563,7 +594,7 @@ export default function Chrono() {
                         )}
                         {details.certifications.length != 0 && (
                           <div>
-                            <h1 className="font-medium text-xl ml-8 pt-2 ">
+                            <h1 className="font-medium text-xl ml-8 pt-2 heading">
                               Certifications
                             </h1>
                             {details.certifications.map((item) => (
@@ -580,7 +611,7 @@ export default function Chrono() {
                         )}
                         {details.awards.length != 0 && (
                           <div>
-                            <h1 className="font-medium text-xl ml-8 pt-2 ">
+                            <h1 className="font-medium text-xl ml-8 pt-2 heading">
                               Awards
                             </h1>
                             {details.awards.map((item) => (
@@ -598,6 +629,12 @@ export default function Chrono() {
                       </div>
                     </div>
                   </div>
+                  <style jsx>
+                    {`
+                    .heading{
+                      color:${color.hex}
+                    }`}
+                  </style>
                 </div>
               </div>
             </>

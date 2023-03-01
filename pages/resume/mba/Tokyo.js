@@ -9,12 +9,15 @@ import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/lib/css/styles.css";
 
 export default function Tokyo() {
   const user = useUser();
-  const { details, setdetails, setdemo, demo, color, setcolor } =
+  const { details, setdetails, setdemo, demo } =
     useContext(ResumeContext);
   const [change, setchange] = useState(false);
+  const [colorpalette, setcolorpalette] = useState(false);
 
   //to add email fname and lname
   useEffect(() => {
@@ -60,7 +63,9 @@ export default function Tokyo() {
       // pdf.output('dataurlnewwindow');
     });
   }
-
+  useEffect(() => {
+    // document.getElementById("largeResume").style.color = "red"
+  }, [0]);
   //responsiveness
   function toggleResume() {
     if (open == "semiopen") {
@@ -69,6 +74,11 @@ export default function Tokyo() {
       setopen("semiopen");
     }
   }
+  const [color, setColor] = useColor("hex", "#121212");
+  useEffect(() => {
+    console.log("color:", color);
+    // settextColor()
+  }, [color]);
 
   return (
     <>
@@ -78,22 +88,28 @@ export default function Tokyo() {
             <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-slate-700 to-slate-800">
               <div className="flex border border-white">
                 <div className="m-3 flex grow">
-                  <div className="flex mt-1">
-                    <div
-                      className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
-                      onClick={() => {
-                        setcolor("red");
-                      }}
-                    ></div>
-                    <div
-                      className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
-                      onClick={() => {
-                        setcolor("gray");
-                      }}
-                    ></div>
-                  </div>
+                  
                 </div>
                 <div className="m-3 flex">
+                <button
+                    className="text-white border border-white p-2 rounded-md"
+                    onClick={() => {
+                      setcolorpalette(!colorpalette);
+                    }}
+                  >
+                    COLOR
+                  </button>
+                  <div className={`${colorpalette ? "block" : "hidden"} mt-[50px] ml-[-50px] lg:ml-[50px] absolute z-40`}>
+                    <ColorPicker
+                      width={300}
+                      height={100}
+                      color={color}
+                      onChange={setColor}
+                      hideHSV
+                      dark
+                    />
+                    ;
+                  </div>
                   <button
                     onClick={printDocument}
                     className="cursor-pointer text-white border border-white p-1 mx-1 rounded"
@@ -151,7 +167,7 @@ export default function Tokyo() {
                       <div className="col-span-2 h-[230mm] border-r-2 p-8">
                         {details.personal.objective.length != 0 && (
                           <div>
-                            <h1 className="text-lg font-bold">Profile</h1>
+                            <h1 className="text-lg font-bold heading">Profile</h1>
                             <p className="text-sm font-semibold ml-3">
                               {details.personal.objective}
                             </p>
@@ -159,7 +175,7 @@ export default function Tokyo() {
                         )}
                         {details.work.length != 0 && (
                           <div>
-                            <h1 className="text-lg font-bold mt-4 mb-1">
+                            <h1 className="text-lg font-bold mt-4 mb-1 heading">
                               Employment History
                             </h1>
                             {details.work.map((item) => (
@@ -183,7 +199,7 @@ export default function Tokyo() {
                         )}
                         {details.education.length != 0 && (
                           <div>
-                            <h1 className="text-lg font-bold mt-4 mb-1">
+                            <h1 className="text-lg font-bold mt-4 mb-1 heading">
                               Education
                             </h1>
                             {details.education.map((item) => (
@@ -207,7 +223,7 @@ export default function Tokyo() {
                         )}
                         {details.projects.length != 0 && (
                           <div>
-                            <h1 className="text-lg font-bold mt-4 mb-1">
+                            <h1 className="text-lg font-bold mt-4 mb-1 heading">
                               Projects
                             </h1>
                             {details.projects.map((item) => (
@@ -233,7 +249,7 @@ export default function Tokyo() {
                         )}
                         {details.certifications.length != 0 && (
                           <div>
-                            <h1 className="text-lg font-bold mt-4 mb-1">
+                            <h1 className="text-lg font-bold mt-4 mb-1 heading">
                               Certifications
                             </h1>
                             {details.certifications.map((item) => (
@@ -256,7 +272,7 @@ export default function Tokyo() {
                       <div className="p-4">
                         {details.skills.length && (
                           <div>
-                            <h1 className="text-lg font-bold mt-5 mb-1">
+                            <h1 className="text-lg font-bold mt-5 mb-1 heading">
                               Skills
                             </h1>
                             {details.skills.map((item) => (
@@ -270,7 +286,7 @@ export default function Tokyo() {
                         )}
                         {details.social.length && (
                           <div>
-                            <h1 className="text-lg font-bold mt-5 mb-1">
+                            <h1 className="text-lg font-bold mt-5 mb-1 heading">
                               Social
                             </h1>
                             {details.social.map((item) => (
@@ -287,7 +303,7 @@ export default function Tokyo() {
                         )}
                         {details.awards.length != 0 && (
                           <div>
-                            <h1 className="text-lg font-bold mt-5 mb-1">
+                            <h1 className="text-lg font-bold mt-5 mb-1 heading">
                               Awards
                             </h1>
                             <div className="ml-2">
@@ -306,7 +322,7 @@ export default function Tokyo() {
                         )}
                         {details.hobbies.length && (
                           <div>
-                            <h1 className="text-lg font-bold mt-5 mb-1">
+                            <h1 className="text-lg font-bold mt-5 mb-1 heading">
                               Hobbies
                             </h1>
                             {details.hobbies.map((item) => (
@@ -320,7 +336,7 @@ export default function Tokyo() {
                         )}
                         {details.languages.length && (
                           <div>
-                            <h1 className="text-lg font-bold mt-5 mb-1">
+                            <h1 className="text-lg font-bold mt-5 mb-1 heading">
                               Languages
                             </h1>
                             {details.languages.map((item) => (
@@ -336,6 +352,11 @@ export default function Tokyo() {
                     </div>
                   </div>
                 </div>
+                <style jsx>
+                  {`.heading{
+                    color:${color.hex}
+                  }`}
+                </style>
               </div>
             </div>
           )}
@@ -354,20 +375,25 @@ export default function Tokyo() {
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
                 <div className="flex">
                   <div className="m-5 flex grow">
-                    <div className="flex mt-1">
-                      <div
-                        className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
-                        onClick={() => {
-                          setcolor("red");
-                        }}
-                      ></div>
-                      <div
-                        className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
-                        onClick={() => {
-                          setcolor("gray");
-                        }}
-                      ></div>
-                    </div>
+                  <button
+                    className="text-white border border-white p-2 rounded-md"
+                    onClick={() => {
+                      setcolorpalette(!colorpalette);
+                    }}
+                  >
+                    COLOR
+                  </button>
+                  <div className={`${colorpalette ? "block" : "hidden"} ml-[50px] absolute z-40`}>
+                    <ColorPicker
+                      width={300}
+                      height={100}
+                      color={color}
+                      onChange={setColor}
+                      hideHSV
+                      dark
+                    />
+                    ;
+                  </div>
                   </div>
                   <div className="m-5">
                     <button
@@ -425,7 +451,7 @@ export default function Tokyo() {
                         <div className="col-span-2 h-[230mm] border-r-2 p-8">
                           {details.personal.objective.length != 0 && (
                             <div>
-                              <h1 className="text-lg font-bold">Profile</h1>
+                              <h1 className="text-lg font-bold heading">Profile</h1>
                               <p className="text-sm font-semibold ml-3">
                                 {details.personal.objective}
                               </p>
@@ -433,7 +459,7 @@ export default function Tokyo() {
                           )}
                           {details.work.length != 0 && (
                             <div>
-                              <h1 className="text-lg font-bold mt-4 mb-1">
+                              <h1 className="text-lg font-bold mt-4 mb-1 heading">
                                 Employment History
                               </h1>
                               {details.work.map((item) => (
@@ -457,7 +483,7 @@ export default function Tokyo() {
                           )}
                           {details.education.length != 0 && (
                             <div>
-                              <h1 className="text-lg font-bold mt-4 mb-1">
+                              <h1 className="text-lg font-bold mt-4 mb-1 heading">
                                 Education
                               </h1>
                               {details.education.map((item) => (
@@ -484,7 +510,7 @@ export default function Tokyo() {
                           )}
                           {details.projects.length != 0 && (
                             <div>
-                              <h1 className="text-lg font-bold mt-4 mb-1">
+                              <h1 className="text-lg font-bold mt-4 mb-1 heading">
                                 Projects
                               </h1>
                               {details.projects.map((item) => (
@@ -510,7 +536,7 @@ export default function Tokyo() {
                           )}
                           {details.certifications.length != 0 && (
                             <div>
-                              <h1 className="text-lg font-bold mt-4 mb-1">
+                              <h1 className="text-lg font-bold mt-4 mb-1 heading">
                                 Certifications
                               </h1>
                               {details.certifications.map((item) => (
@@ -533,7 +559,7 @@ export default function Tokyo() {
                         <div className="p-4">
                           {details.skills.length && (
                             <div>
-                              <h1 className="text-lg font-bold mt-5 mb-1">
+                              <h1 className="text-lg font-bold mt-5 mb-1 heading">
                                 Skills
                               </h1>
                               {details.skills.map((item) => (
@@ -547,7 +573,7 @@ export default function Tokyo() {
                           )}
                           {details.social.length && (
                             <div>
-                              <h1 className="text-lg font-bold mt-5 mb-1">
+                              <h1 className="text-lg font-bold mt-5 mb-1 heading">
                                 Social
                               </h1>
                               {details.social.map((item) => (
@@ -564,7 +590,7 @@ export default function Tokyo() {
                           )}
                           {details.awards.length != 0 && (
                             <div>
-                              <h1 className="text-lg font-bold mt-5 mb-1">
+                              <h1 className="text-lg font-bold mt-5 mb-1 heading">
                                 Awards
                               </h1>
                               <div className="ml-2">
@@ -583,7 +609,7 @@ export default function Tokyo() {
                           )}
                           {details.hobbies.length && (
                             <div>
-                              <h1 className="text-lg font-bold mt-5 mb-1">
+                              <h1 className="text-lg font-bold mt-5 mb-1 heading">
                                 Hobbies
                               </h1>
                               {details.hobbies.map((item) => (
@@ -597,7 +623,7 @@ export default function Tokyo() {
                           )}
                           {details.languages.length && (
                             <div>
-                              <h1 className="text-lg font-bold mt-5 mb-1">
+                              <h1 className="text-lg font-bold mt-5 mb-1 heading">
                                 Languages
                               </h1>
                               {details.languages.map((item) => (
@@ -613,6 +639,11 @@ export default function Tokyo() {
                       </div>
                     </div>
                   </div>
+                  <style jsx>
+                    {`.heading{
+                      color:${color.hex}
+                    }`}
+                  </style>
                 </div>
               </div>
             </>
