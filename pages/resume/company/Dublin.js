@@ -9,12 +9,14 @@ import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-
+import ReactDOM from "react-dom";
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/lib/css/styles.css";
 export default function Dublin() {
   const user = useUser();
-  const { details, setdetails, setdemo, demo, color, setcolor } =
-    useContext(ResumeContext);
+  const { details, setdetails, setdemo, demo } = useContext(ResumeContext);
   const [change, setchange] = useState(false);
+  const [colorpalette, setcolorpalette] = useState(false);
 
   //to add email fname and lname
   useEffect(() => {
@@ -49,16 +51,7 @@ export default function Dublin() {
       input = document.getElementById("largeResume");
       console.log("om");
     }
-    console.log(input);
-    html2canvas(input, { useCORS: true },
-      {
-        onclone: (document) => {
-          const images = document.getElementsByTagName("img");
-          for (let i = 0; i < images.length; i++) {
-            images[i].src = images[i].src;
-          }
-        },
-      }).then((canvas) => {
+    html2canvas(input).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("p", "mm", "a4");
       var width = pdf.internal.pageSize.getWidth();
@@ -69,6 +62,12 @@ export default function Dublin() {
     });
   }
 
+  // document.getElementById("smallResume")
+
+  useEffect(() => {
+    // document.getElementById("largeResume").style.color = "red"
+  }, [0]);
+
   //responsiveness
   function toggleResume() {
     if (open == "semiopen") {
@@ -78,30 +77,53 @@ export default function Dublin() {
     }
   }
 
+  const [color, setColor] = useColor("hex", "#121212");
+  useEffect(() => {
+    console.log("color:", color);
+    // settextColor()
+  }, [color]);
+
   return (
     <>
       {details && user && (
         <div className="flex">
+          {/* <div>
+            <ColorPicker
+              width={456}
+              height={228}
+              color={color}
+              onChange={setColor}
+              hideHSV
+              dark
+            />
+            ;
+          </div> */}
           {open == "closed" && (
-            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-gray-400 to-gray-600">
+            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-slate-700 to-slate-800">
               <div className="flex border border-white">
                 <div className="m-3 flex grow">
-                  <div className="flex mt-1">
-                    <div
-                      className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
-                      onClick={() => {
-                        setcolor("red");
-                      }}
-                    ></div>
-                    <div
-                      className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
-                      onClick={() => {
-                        setcolor("gray");
-                      }}
-                    ></div>
-                  </div>
+                  <div className="flex mt-1"></div>
                 </div>
                 <div className="m-3 flex">
+                <button
+                    className="text-white border border-white p-2 rounded-md"
+                    onClick={() => {
+                      setcolorpalette(!colorpalette);
+                    }}
+                  >
+                    COLOR
+                  </button>
+                  <div className={`${colorpalette ? "block" : "hidden"} mt-[50px] ml-[-50px] lg:ml-[50px] absolute z-40`}>
+                    <ColorPicker
+                      width={300}
+                      height={100}
+                      color={color}
+                      onChange={setColor}
+                      hideHSV
+                      dark
+                    />
+                    ;
+                  </div>
                   <button
                     onClick={printDocument}
                     className="cursor-pointer text-white border border-white p-1 mx-1 rounded"
@@ -126,10 +148,11 @@ export default function Dublin() {
               <div className="flex justify-center ">
                 {/* Small Resume */}
                 <div
-                  className={`bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row`}
+                  className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-300px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row"
                   id="smallResume"
+                  // style={{ color: color.hex }}
                 >
-                  <div className="first w-[85mm] h-[297mm] bg-emerald-700">
+                   <div className="first w-[85mm] h-[297mm] bg-emerald-700">
                     <div className="photobg bg-slate-300 w-[200px] h-[200px] relative top-16 left-16"></div>
                     <div className="photo">
                       <img
@@ -178,7 +201,7 @@ export default function Dublin() {
                       </div>
                       {details.education.length != 0 && (
                         <div className="education">
-                          <h2 className="text-center text-xl font-sans font-bold text-zinc-200">
+                          <h2 className="text-center text-xl font-sans font-bold text-zinc-200 heading">
                             E D U C A T I O N
                           </h2>
                           {details.education.map((item) => (
@@ -207,7 +230,7 @@ export default function Dublin() {
                       )}
                       {details.certifications.length != 0 && (
                         <div className="certifications">
-                          <h2 className="text-center text-xl font-sans font-bold pt-3 text-zinc-200 pb-3">
+                          <h2 className="text-center text-xl font-sans font-bold pt-3 text-zinc-200 pb-3 heading">
                             C E R T I F I C A T I O N S
                           </h2>
                           {details.certifications.map((item) => (
@@ -226,7 +249,7 @@ export default function Dublin() {
                       {details.skills.length != 0 && (
                         <div className="skills">
                           <div className="pl-10">
-                            <h2 className="text-center text-xl font-sans font-bold pt-5 pb-1 text-zinc-300">
+                            <h2 className="text-center text-xl font-sans font-bold pt-5 pb-1 text-zinc-300 heading">
                               S K I L L S
                             </h2>
                             {details.skills.map((item) => (
@@ -240,7 +263,7 @@ export default function Dublin() {
                       {details.languages.length != 0 && (
                         <div className="languages">
                           <div className="pl-10">
-                            <h2 className="text-center text-xl font-sans font-bold pt-5 pb-1 text-zinc-300">
+                            <h2 className="text-center text-xl font-sans font-bold pt-5 pb-1 text-zinc-300 heading">
                               L A N G U A G E S
                             </h2>
                             {details.languages.map((item) => (
@@ -254,7 +277,7 @@ export default function Dublin() {
                       {details.hobbies.length != 0 && (
                         <div className="skills">
                           <div className="pl-10">
-                            <h2 className="text-center text-xl font-sans font-bold pt-5 pb-1 text-zinc-300">
+                            <h2 className="text-center text-xl font-sans font-bold pt-5 pb-1 text-zinc-300 heading">
                               H O B B I E S
                             </h2>
                             {details.hobbies.map((item) => (
@@ -279,7 +302,7 @@ export default function Dublin() {
                     </div>
                     {details.personal.objective.length != 0 && (
                       <div className="career-objective">
-                        <h2 className="text-center text-xl font-sans font-bold pt-3">
+                        <h2 className="text-center text-xl font-sans font-bold pt-3 heading">
                           C A R E E R O B J E C T I V E
                         </h2>
                         <p className="pl-10 pr-5 pt-2 text-xs">
@@ -289,7 +312,7 @@ export default function Dublin() {
                     )}
                     {details.work.length != 0 && (
                       <div className="experience">
-                        <h2 className="text-center text-xl font-sans font-bold pt-5">
+                        <h2 className="text-center text-xl font-sans font-bold pt-5 heading">
                           E X P E R I E N C E
                         </h2>
                         {details.work.map((item) => (
@@ -307,7 +330,7 @@ export default function Dublin() {
                     )}
                     {details.projects.length != 0 && (
                       <div className="projects">
-                        <h2 className="text-center text-xl font-sans font-bold pt-2">
+                        <h2 className="text-center text-xl font-sans font-bold pt-2 heading">
                           P R O J E C T S
                         </h2>
                         {details.projects.map((item) => (
@@ -325,7 +348,7 @@ export default function Dublin() {
                     )}
                     {details.awards.length != 0 && (
                       <div className="awards">
-                        <h2 className="text-center text-xl font-sans font-bold pt-2">
+                        <h2 className="text-center text-xl font-sans font-bold pt-2 heading">
                           A W A R D S
                         </h2>
                         {details.awards.map((item) => (
@@ -341,6 +364,12 @@ export default function Dublin() {
                     )}
                   </div>
                 </div>
+                <style jsx>
+                  {`
+                  .heading{
+                    color:${color.hex};
+                  }`}
+                </style>
               </div>
             </div>
           )}
@@ -358,21 +387,26 @@ export default function Dublin() {
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
                 <div className="flex">
-                  <div className="m-5 flex grow">
-                    <div className="flex mt-1">
-                      <div
-                        className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
-                        onClick={() => {
-                          setcolor("red");
-                        }}
-                      ></div>
-                      <div
-                        className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
-                        onClick={() => {
-                          setcolor("gray");
-                        }}
-                      ></div>
-                    </div>
+                  <div className="m-5 grow">
+                  <button
+                    className="text-white border border-white p-2 rounded-md"
+                    onClick={() => {
+                      setcolorpalette(!colorpalette);
+                    }}
+                  >
+                    COLOR
+                  </button>
+                  <div className={`${colorpalette ? "block" : "hidden"} ml-[50px] absolute z-40`}>
+                    <ColorPicker
+                      width={300}
+                      height={100}
+                      color={color}
+                      onChange={setColor}
+                      hideHSV
+                      dark
+                    />
+                    ;
+                  </div>
                   </div>
                   <div className="m-5">
                     <button
@@ -389,7 +423,9 @@ export default function Dublin() {
                       LOAD
                     </button>
                   </div>
+                  
                 </div>
+
                 <div className="flex justify-center ">
                   {/* large resume */}
 
@@ -399,7 +435,7 @@ export default function Dublin() {
                     id="largeResume"
                     // style={{ color: color.hex }}
                   >
-                  <div className="first w-[85mm] h-[297mm] bg-emerald-700">
+                   <div className="first w-[85mm] h-[297mm] bg-emerald-700">
                     <div className="photobg bg-slate-300 w-[200px] h-[200px] relative top-16 left-16"></div>
                     <div className="photo">
                       <img
@@ -448,7 +484,7 @@ export default function Dublin() {
                       </div>
                       {details.education.length != 0 && (
                         <div className="education">
-                          <h2 className="text-center text-xl font-sans font-bold text-zinc-200">
+                          <h2 className="text-center text-xl font-sans font-bold text-zinc-200 heading">
                             E D U C A T I O N
                           </h2>
                           {details.education.map((item) => (
@@ -477,7 +513,7 @@ export default function Dublin() {
                       )}
                       {details.certifications.length != 0 && (
                         <div className="certifications">
-                          <h2 className="text-center text-xl font-sans font-bold pt-3 text-zinc-200 pb-3">
+                          <h2 className="text-center text-xl font-sans font-bold pt-3 text-zinc-200 pb-3 heading">
                             C E R T I F I C A T I O N S
                           </h2>
                           {details.certifications.map((item) => (
@@ -496,7 +532,7 @@ export default function Dublin() {
                       {details.skills.length != 0 && (
                         <div className="skills">
                           <div className="pl-10">
-                            <h2 className="text-center text-xl font-sans font-bold pt-5 pb-1 text-zinc-300">
+                            <h2 className="text-center text-xl font-sans font-bold pt-5 pb-1 text-zinc-300 heading">
                               S K I L L S
                             </h2>
                             {details.skills.map((item) => (
@@ -510,7 +546,7 @@ export default function Dublin() {
                       {details.languages.length != 0 && (
                         <div className="languages">
                           <div className="pl-10">
-                            <h2 className="text-center text-xl font-sans font-bold pt-5 pb-1 text-zinc-300">
+                            <h2 className="text-center text-xl font-sans font-bold pt-5 pb-1 text-zinc-300 heading">
                               L A N G U A G E S
                             </h2>
                             {details.languages.map((item) => (
@@ -524,7 +560,7 @@ export default function Dublin() {
                       {details.hobbies.length != 0 && (
                         <div className="skills">
                           <div className="pl-10">
-                            <h2 className="text-center text-xl font-sans font-bold pt-5 pb-1 text-zinc-300">
+                            <h2 className="text-center text-xl font-sans font-bold pt-5 pb-1 text-zinc-300 heading">
                               H O B B I E S
                             </h2>
                             {details.hobbies.map((item) => (
@@ -549,7 +585,7 @@ export default function Dublin() {
                     </div>
                     {details.personal.objective.length != 0 && (
                       <div className="career-objective">
-                        <h2 className="text-center text-xl font-sans font-bold pt-3">
+                        <h2 className="text-center text-xl font-sans font-bold pt-3 heading">
                           C A R E E R O B J E C T I V E
                         </h2>
                         <p className="pl-10 pr-5 pt-2 text-xs">
@@ -559,7 +595,7 @@ export default function Dublin() {
                     )}
                     {details.work.length != 0 && (
                       <div className="experience">
-                        <h2 className="text-center text-xl font-sans font-bold pt-5">
+                        <h2 className="text-center text-xl font-sans font-bold pt-5 heading">
                           E X P E R I E N C E
                         </h2>
                         {details.work.map((item) => (
@@ -577,7 +613,7 @@ export default function Dublin() {
                     )}
                     {details.projects.length != 0 && (
                       <div className="projects">
-                        <h2 className="text-center text-xl font-sans font-bold pt-2">
+                        <h2 className="text-center text-xl font-sans font-bold pt-2 heading">
                           P R O J E C T S
                         </h2>
                         {details.projects.map((item) => (
@@ -595,7 +631,7 @@ export default function Dublin() {
                     )}
                     {details.awards.length != 0 && (
                       <div className="awards">
-                        <h2 className="text-center text-xl font-sans font-bold pt-2">
+                        <h2 className="text-center text-xl font-sans font-bold pt-2 heading">
                           A W A R D S
                         </h2>
                         {details.awards.map((item) => (
@@ -610,7 +646,14 @@ export default function Dublin() {
                       </div>
                     )}
                   </div>
-                </div>
+                    <style jsx>
+                      {
+                        `.heading{
+                          color:${color.hex};
+                        }`
+                      }
+                    </style>
+                  </div>
                 </div>
               </div>
             </>

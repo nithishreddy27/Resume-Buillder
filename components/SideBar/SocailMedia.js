@@ -72,9 +72,7 @@ export default function SocailMedia() {
 
   //to toggle the social media
 
-  function toggleSocial(index){
-   
-    
+  function toggleSocial(index){    
     setsocial(details.social[index])
     const arr=[]
     if(details.social[index].enabled == true){

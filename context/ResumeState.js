@@ -390,9 +390,7 @@ const ResumeState = (props) => {
   }, [details]);
 
   return (
-    <ResumeContext.Provider
-      value={{ details, setdetails, setdemo, demo }}
-    >
+    <ResumeContext.Provider value={{ details, setdetails, setdemo, demo }}>
       {props.children}
     </ResumeContext.Provider>
   );
