@@ -332,7 +332,6 @@ const ResumeState = (props) => {
   const [demo, setdemo] = useState(false);
 
   const [details, setdetails] = useState(pro);
-  const [color, setcolor] = useState("slate");
 
   const user = useUser();
 
@@ -381,7 +380,6 @@ const ResumeState = (props) => {
   }, [user]);
 
   useEffect(() => {
-    // console.log("details",details.personal)
     fetch("http://localhost:3000/api/Resume/updateResume", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -400,13 +398,3 @@ const ResumeState = (props) => {
 
 export default ResumeState;
 
-// useEffect(()=>{
-
-//   fetch("http://localhost:3000/api/connect")
-//   .then((res)=>{return res.json})
-//   .then((data)=>console.log(data))
-
-//   fetch("http://localhost:3000/api/createResume")
-//   .then((res)=>{return res.json})
-//   .then((data)=>console.log(data))
-// },[])

@@ -61,11 +61,11 @@ const userResume = new mongoose.Schema({
             data:{
                 type:String
             },
-            enable:{
-                type:Boolean
-            }
         },
-
+        enabled:{
+            type:Boolean
+        }
+        
     }],
     education:[{
         institution:{
@@ -90,13 +90,13 @@ const userResume = new mongoose.Schema({
             data:{
                 type:String
             },
-            enable:{
-                type:Boolean
-            }
+        },
+        enabled:{
+            type:Boolean
         }
     }],
     projects:[{
-        title:{
+        name:{
             type:String
         },
         domain:{
@@ -116,9 +116,9 @@ const userResume = new mongoose.Schema({
             data:{
                 type:String
             },
-            enable:{
-                type:Boolean
-            }
+        },
+        enabled:{
+            type:Boolean
         }
     }],
     awards:[{
@@ -135,9 +135,9 @@ const userResume = new mongoose.Schema({
             data:{
                 type:String
             },
-            enable:{
-                type:Boolean
-            }
+        },
+        enabled:{
+            type:Boolean
         }
     }],
     certifications: [{
@@ -154,9 +154,9 @@ const userResume = new mongoose.Schema({
             data:{
                 type:String
             },
-            enable:{
-                type:Boolean
-            }
+        },
+        enabled:{
+            type:Boolean
         }
     }],
     skills:[{

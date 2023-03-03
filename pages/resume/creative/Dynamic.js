@@ -12,6 +12,9 @@ import jsPDF from "jspdf";
 import ReactDOM from "react-dom";
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
+
+
+
 export default function Dynamic() {
   const user = useUser();
   const { details, setdetails, setdemo, demo } = useContext(ResumeContext);
@@ -62,11 +65,7 @@ export default function Dynamic() {
     });
   }
 
-  // document.getElementById("smallResume")
 
-  useEffect(() => {
-    // document.getElementById("largeResume").style.color = "red"
-  }, [0]);
 
   //responsiveness
   function toggleResume() {

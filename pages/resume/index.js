@@ -12,7 +12,7 @@ const Home = (props) => {
   const [type, setType] = useState("free");
   const [design, setDesign] = useState("all");
   const user = useUser();
-  // console.log("in index",router.query)
+  
 
 
 

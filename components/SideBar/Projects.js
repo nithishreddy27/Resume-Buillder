@@ -21,10 +21,12 @@ export default function Projects() {
   const { details, setdetails } = useContext(ResumeContext);
   const [projects, setprojects] = useState({
     name: "",
+    domain:"",
     website: "",
     from: "",
     to: "",
     summary: { data: "" },
+    enabled:true
   });
   function addProjects(event) {
     event.preventDefault();
@@ -38,10 +40,12 @@ export default function Projects() {
 
     setprojects({
       name: "",
+      domain:"",
       website: "",
       from: "",
       to: "",
       summary: { data: "" },
+      enabled:true
     });
   }
   function deleteProjects(index) {
@@ -53,11 +57,14 @@ export default function Projects() {
     });
     setdetails({ ...details, projects: arr });
   }
+
+  
   function updateProjects(index) {
     details.projects.map((item, i) => {
       if (i == index) {
         setprojects({
           name: item.name,
+          domain:item.domain,
           website: item.website,
           from: item.from,
           to: item.to,
@@ -159,6 +166,20 @@ export default function Projects() {
               value={projects.name}
               onChange={(e) => {
                 setprojects({ ...projects, name: e.target.value });
+              }}
+            />
+            <label htmlFor="projectTitle" className="font-semibold">
+              Domain
+            </label>
+
+            <input
+              type="text"
+              name="project"
+              id="domain"
+              className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+              value={projects.domain}
+              onChange={(e) => {
+                setprojects({ ...projects, domain: e.target.value });
               }}
             />
             <label
