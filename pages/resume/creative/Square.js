@@ -130,7 +130,7 @@ export default function Square() {
                         ></img>
                       </div>
                     </div>
-                    <div className="personal">
+                    <div className="personal ">
                       <div className="dob pl-10 pt-3">
                         <i className="bx bxs-calendar pr-4 text-lg"></i>
                         <span className="text-base relative bottom-[3px]">
@@ -170,7 +170,7 @@ export default function Square() {
                     </div>
                     {details.education.length != 0 && (
                       <div className="education">
-                        <h2 className="text-center text-xl font-serif font-medium underline">
+                        <h2 className="text-center text-xl font-serif font-medium underline heading">
                           E D U C A T I O N
                         </h2>
                         {details.education.map((item) => (
@@ -191,7 +191,7 @@ export default function Square() {
                     )}
                     {details.certifications.length != 0 && (
                       <div className="certifications">
-                        <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                        <h2 className="text-center text-xl font-serif font-medium underline pt-5 heading">
                           C E R T I F I C A T I O N S
                         </h2>
                         {details.certifications.map((item) => (
@@ -205,7 +205,7 @@ export default function Square() {
                     {details.skills.length != 0 && (
                       <div className="skills">
                         <div className="pl-10">
-                          <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5">
+                          <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5 heading">
                             S K I L L S
                           </h2>
                           {details.skills.map((item) => (
@@ -219,7 +219,7 @@ export default function Square() {
                     {details.hobbies.length != 0 && (
                       <div className="skills">
                         <div className="pl-10">
-                          <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5">
+                          <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5 heading">
                             H O B B I E S
                           </h2>
                           {details.hobbies.map((item) => (
@@ -233,7 +233,7 @@ export default function Square() {
                     {details.languages.length != 0 && (
                       <div className="skills">
                         <div className="pl-10">
-                          <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5">
+                          <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5 heading">
                             L A N G U A G E S
                           </h2>
                           {details.languages.map((item) => (
@@ -257,7 +257,7 @@ export default function Square() {
                     </div>
                     {details.personal.objective.length != 0 && (
                       <div className="career-objective">
-                        <h2 className="text-center text-xl font-serif font-medium underline pt-6">
+                        <h2 className="text-center text-xl font-serif font-medium underline pt-6 heading">
                           C A R E E R O B J E C T I V E
                         </h2>
                         <p className="pl-10 pr-5 pt-5">
@@ -267,7 +267,7 @@ export default function Square() {
                     )}
                     {details.work.length != 0 && (
                       <div className="experience">
-                        <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                        <h2 className="text-center text-xl font-serif font-medium underline pt-5 heading">
                           E X P E R I E N C E
                         </h2>
                         {details.work.map((item) => (
@@ -285,7 +285,7 @@ export default function Square() {
                     )}
                     {details.projects.length != 0 && (
                       <div className="projects">
-                        <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                        <h2 className="text-center text-xl font-serif font-medium underline pt-5 heading">
                           P R O J E C T S
                         </h2>
                         {details.projects.map((item) => (
@@ -302,7 +302,7 @@ export default function Square() {
                     )}
                     {details.certifications.length != 0 && (
                       <div className="awards">
-                        <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                        <h2 className="text-center text-xl font-serif font-medium underline pt-5 heading">
                           C E R T I F I C A T I O N S
                         </h2>
                         {details.certifications.map((item) => (
@@ -318,7 +318,7 @@ export default function Square() {
                     )}
                     {details.awards.length != 0 && (
                       <div className="awards">
-                        <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                        <h2 className="text-center text-xl font-serif font-medium underline pt-5 heading">
                           A W A R D S
                         </h2>
                         {details.awards.map((item) => (
@@ -440,7 +440,7 @@ export default function Square() {
                       </div>
                       {details.education.length != 0 && (
                         <div className="education">
-                          <h2 className="text-center text-xl font-serif font-medium underline">
+                          <h2 className="text-center text-xl font-serif font-medium underline heading">
                             E D U C A T I O N
                           </h2>
                           {details.education.map((item) => (
@@ -464,7 +464,7 @@ export default function Square() {
                       )}
                       {details.certifications.length != 0 && (
                         <div className="certifications">
-                          <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                          <h2 className="text-center text-xl font-serif font-medium underline pt-5 heading">
                             C E R T I F I C A T I O N S
                           </h2>
                           {details.certifications.map((item) => (
@@ -478,7 +478,7 @@ export default function Square() {
                       {details.skills.length != 0 && (
                         <div className="skills">
                           <div className="pl-10">
-                            <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5">
+                            <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5 heading">
                               S K I L L S
                             </h2>
                             {details.skills.map((item) => (
@@ -492,7 +492,7 @@ export default function Square() {
                       {details.hobbies.length != 0 && (
                         <div className="skills">
                           <div className="pl-10">
-                            <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5">
+                            <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5 heading">
                               H O B B I E S
                             </h2>
                             {details.hobbies.map((item) => (
@@ -506,7 +506,7 @@ export default function Square() {
                       {details.languages.length != 0 && (
                         <div className="skills">
                           <div className="pl-10">
-                            <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5">
+                            <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-5 heading">
                               L A N G U A G E S
                             </h2>
                             {details.languages.map((item) => (
@@ -530,7 +530,7 @@ export default function Square() {
                       </div>
                       {details.personal.objective.length != 0 && (
                         <div className="career-objective">
-                          <h2 className="text-center text-xl font-serif font-medium underline pt-6">
+                          <h2 className="text-center text-xl font-serif font-medium underline pt-6 heading">
                             C A R E E R O B J E C T I V E
                           </h2>
                           <p className="pl-10 pr-5 pt-5">
@@ -540,7 +540,7 @@ export default function Square() {
                       )}
                       {details.work.length != 0 && (
                         <div className="experience">
-                          <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                          <h2 className="text-center text-xl font-serif font-medium underline pt-5 heading">
                             E X P E R I E N C E
                           </h2>
                           {details.work.map((item) => (
@@ -560,7 +560,7 @@ export default function Square() {
                       )}
                       {details.projects.length != 0 && (
                         <div className="projects">
-                          <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                          <h2 className="text-center text-xl font-serif font-medium underline pt-5 heading">
                             P R O J E C T S
                           </h2>
                           {details.projects.map((item) => (
@@ -577,7 +577,7 @@ export default function Square() {
                       )}
                       {details.certifications.length != 0 && (
                         <div className="awards">
-                          <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                          <h2 className="text-center text-xl font-serif font-medium underline pt-5 heading">
                             C E R T I F I C A T I O N S
                           </h2>
                           {details.certifications.map((item) => (
@@ -593,7 +593,7 @@ export default function Square() {
                       )}
                       {details.awards.length != 0 && (
                         <div className="awards">
-                          <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                          <h2 className="text-center text-xl font-serif font-medium underline pt-5 heading">
                             A W A R D S
                           </h2>
                           {details.awards.map((item) => (

@@ -12,7 +12,6 @@ import jsPDF from "jspdf";
 import ReactDOM from "react-dom";
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
-
 export default function Dynamic() {
   const user = useUser();
   const { details, setdetails, setdemo, demo } = useContext(ResumeContext);
@@ -774,6 +773,8 @@ export default function Dynamic() {
                           </>
                         )}
 
+
+
                         {details.projects.length != 0 && (
                           <>
                             <h1 className="text-xl font-bold tracking-[1px] mt-5 heading">
@@ -812,6 +813,8 @@ export default function Dynamic() {
                             </div>
                           </>
                         )}
+
+
 
                         {details.education.length != 0 && (
                           <>

@@ -7,15 +7,16 @@ import { useFieldArray, useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
-
-
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import ReactDOM from "react-dom";
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/lib/css/styles.css";
 export default function Madrid() {
   const user = useUser();
-  const { details, setdetails , setdemo ,demo} = useContext(ResumeContext);
-  const [change, setchange] = useState(false)
-
+  const { details, setdetails, setdemo, demo } = useContext(ResumeContext);
+  const [change, setchange] = useState(false);
+  const [colorpalette, setcolorpalette] = useState(false);
 
   //to add email fname and lname
   useEffect(() => {
@@ -30,49 +31,42 @@ export default function Madrid() {
         },
       });
     }
-  }, [user , change]);
+  }, [user, change]);
 
-  
-  useEffect(()=>{
-    setchange(!change)
-  },[demo])
+  useEffect(() => {
+    setchange(!change);
+  }, [demo]);
 
-  
-  
   const [open, setopen] = useState("semiopen");
 
-
-//PDF document
+  //PDF document
 
   function printDocument() {
-    console.log("inside")
+    console.log("inside");
     // var input = document.getElementById('smallResume');
-    var input
-    if(open == "closed"){
-      input = document.getElementById('smallResume');
-      
-    }
-    else{
-      input = document.getElementById('largeResume');
+    var input;
+    if (open == "closed") {
+      input = document.getElementById("smallResume");
+    } else {
+      input = document.getElementById("largeResume");
       console.log("om");
-      
     }
-    console.log(input);
-    html2canvas(input)
-    .then((canvas) => {
-      const imgData = canvas.toDataURL('image/png');
+    html2canvas(input).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("p", "mm", "a4");
       var width = pdf.internal.pageSize.getWidth();
       var height = pdf.internal.pageSize.getHeight();
-      pdf.addImage(imgData, 'JPEG',0,0,width,height);
+      pdf.addImage(imgData, "JPEG", 0, 0, width, height);
       pdf.save("download.pdf");
       // pdf.output('dataurlnewwindow');
-    });  
-     
-    
+    });
   }
 
-  
+  // document.getElementById("smallResume")
+
+  useEffect(() => {
+    // document.getElementById("largeResume").style.color = "red"
+  }, [0]);
 
   //responsiveness
   function toggleResume() {
@@ -83,30 +77,82 @@ export default function Madrid() {
     }
   }
 
+  const [color, setColor] = useColor("hex", "#121212");
+  useEffect(() => {
+    console.log("color:", color);
+    // settextColor()
+  }, [color]);
+
   return (
     <>
       {details && user && (
         <div className="flex">
+          {/* <div>
+            <ColorPicker
+              width={456}
+              height={228}
+              color={color}
+              onChange={setColor}
+              hideHSV
+              dark
+            />
+            ;
+          </div> */}
           {open == "closed" && (
-            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-gray-400 to-gray-600">
-              <button
-                className="h-10 w-10 mx-auto block lg:hidden"
-                onClick={toggleResume}
-              >
-                DETAILS
-              </button>
-              <div className="flex justify-center ">
-
-                <div>
-                <button onClick={printDocument} className="cursor-pointer text-white mx-5">Print</button>
-
-                  <button onClick={()=>setdemo(!demo)}>LOAD</button>
+            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-slate-700 to-slate-800">
+              <div className="flex border border-white">
+                <div className="m-3 flex grow">
+                  <div className="flex mt-1"></div>
                 </div>
+                <div className="m-3 flex">
+                <button
+                    className="text-white border border-white p-2 rounded-md"
+                    onClick={() => {
+                      setcolorpalette(!colorpalette);
+                    }}
+                  >
+                    COLOR
+                  </button>
+                  <div className={`${colorpalette ? "block" : "hidden"} mt-[50px] ml-[-50px] lg:ml-[50px] absolute z-40`}>
+                    <ColorPicker
+                      width={300}
+                      height={100}
+                      color={color}
+                      onChange={setColor}
+                      hideHSV
+                      dark
+                    />
+                    ;
+                  </div>
+                  <button
+                    onClick={printDocument}
+                    className="cursor-pointer text-white border border-white p-1 mx-1 rounded"
+                  >
+                    PRINT
+                  </button>
 
+                  <button
+                    className="text-white border border-white p-1 mx-1 rounded"
+                    onClick={() => setdemo(!demo)}
+                  >
+                    LOAD
+                  </button>
+                  <button
+                    className=" block lg:hidden border border-white text-white p-1 mx-1 rounded-md"
+                    onClick={toggleResume}
+                  >
+                    DETAILS
+                  </button>
+                </div>
+              </div>
+              <div className="flex justify-center ">
                 {/* Small Resume */}
-                <div className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row" id="smallResume">
-
-<div className="container w-[100%] ">
+                <div
+                  className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-300px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row"
+                  id="smallResume"
+                  // style={{ color: color.hex }}
+                >
+                  <div className="container w-[100%] ">
 <div className=" bg-purple-200 p-1 px-1 flex h-52">
         <img className="rounded-lg w-[130px] h-36  border-4 border-black  ml-4 mt-6 mr-1 " src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpl60g6oKVerEKPde2ClN4-6ASK4Ds4KzlM0Y1N-K_bCgOCMBYZ019WUgRLOfNAqyyhnY&usqp=CAU" alt="ProfilePhoto"/>
         <div>
@@ -123,7 +169,7 @@ export default function Madrid() {
 
       {/* EDUCATION */}
       <div className="p-2 px-0">
-        <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2">EDUCATION</h1>
+        <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">EDUCATION</h1>
         {details.education.map((item) => (
           <div key={item.institution} className="p-1">
             <h1 className=" ml-6 text-sm font-medium">{item.institution}</h1>
@@ -138,7 +184,7 @@ export default function Madrid() {
       {/* INTERNSHIP */}
       {details.work.length != 0 && (
       <div>
-        <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2">INTERNSHIP</h1>
+        <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">INTERNSHIP</h1>
           {
             details.work.map(item=>(
             <div key={item.company}>
@@ -156,7 +202,7 @@ export default function Madrid() {
       {/* CERTIFICATION */}
       {details.certifications.length != 0 && (
       <div>
-        <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2">CERTIFICATION</h1>
+        <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">CERTIFICATION</h1>
         {
         details.certifications.map(item=>(
           <div key={item.title} className="mb-1">
@@ -172,7 +218,7 @@ export default function Madrid() {
     {/* AWARDS */}
     {details.awards.length != 0 && (
     <div>
-      <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2">AWARDS</h1>
+      <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">AWARDS</h1>
       {
         details.awards.map(item=>(
         <div key={item.name}>
@@ -189,9 +235,9 @@ export default function Madrid() {
   </div>
   <div className=" border-l-purple-900 col-span-4 ">
     <div className=" ">
-    <p className="pl-6 ml-3 mr-2 mt-7 font-normal tracking-widest text-lg"><span  className="font-serif font-semibold">DOB : </span> {details.personal.dob}</p>
+    <p className="pl-6 ml-3 mr-2 mt-7 font-normal tracking-widest text-lg"><span  className="font-serif font-semibold heading">DOB : </span> {details.personal.dob}</p>
       {/*  NETWORK  */}
-      <h1 className=" font-bold tracking-widest  bg-purple-50 mr-5 rounded-r-xl font-serif text-xl mt-2 ml-6  mb-0 p-2">NETWORK</h1>
+      <h1 className=" font-bold tracking-widest  bg-purple-50 mr-5 rounded-r-xl font-serif text-xl mt-2 ml-6  mb-0 p-2 heading">NETWORK</h1>
        <div className="pl-5">
        <p className="pl-6">{details.personal.phone}</p>
        <p className="pl-6 mr-2">{details.personal.email}</p> 
@@ -208,7 +254,7 @@ export default function Madrid() {
     {/* SKILLS */}
     {details.skills.length != 0 && ( 
       <div className="p-2">
-        <h1 className="font-bold tracking-widest mr-5 rounded-r-xl  bg-purple-50 font-serif text-xl ml-6 mb-0 p-2 ">SKILLS</h1>
+        <h1 className="font-bold tracking-widest mr-5 rounded-r-xl  bg-purple-50 font-serif text-xl ml-6 mb-0 p-2 heading ">SKILLS</h1>
         {details.skills.map((item) => (
           <div key={item.name}>
            <h1 className="font-normal ml-8 p-1">{item.name} - {item.level}</h1>
@@ -221,7 +267,7 @@ export default function Madrid() {
       {/* HOBBIE */}
       {details.hobbies.length != 0 && (
       <div className="p-2">
-        <h1 className="font-bold tracking-widest mr-5 rounded-r-xl  bg-purple-50 font-serif  text-xl ml-6 mb-0 p-2">HOBBIES</h1>
+        <h1 className="font-bold tracking-widest mr-5 rounded-r-xl  bg-purple-50 font-serif  text-xl ml-6 mb-0 p-2 heading">HOBBIES</h1>
         {
           details. hobbies.map((item)=>(
             <div key={item.name}>
@@ -236,7 +282,7 @@ export default function Madrid() {
       {/* LANGUAGES */}
       {details.languages.length != 0 && (
       <div className="p-2">
-        <h1 className="font-bold tracking-widest mr-5 rounded-r-xl  bg-purple-50 font-serif text-xl ml-6 mb-0 p-2">LANGUAGES</h1>
+        <h1 className="font-bold tracking-widest mr-5 rounded-r-xl  bg-purple-50 font-serif text-xl ml-6 mb-0 p-2 heading">LANGUAGES</h1>
         {
           details.languages.map((item)=>(
             <div key={item.name}>
@@ -265,15 +311,21 @@ export default function Madrid() {
   </div>
 </div>
 </div>
-</div>
+                </div>
+                <style jsx>
+                  {`
+                  .heading{
+                    color:${color.hex};
+                  }`}
+                </style>
               </div>
             </div>
           )}
 
           {open == "semiopen" && (
             <>
-              <SideBar/>
-                
+              <SideBar />
+
               <div
                 className="lg:hidden text-white border border-white rounded-lg px-2 py-1 hover:border-orange-700 hover:text-orange-700 absolute right-[10%] top-5 "
                 onClick={toggleResume}
@@ -282,27 +334,62 @@ export default function Madrid() {
               </div>
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
-                <div className="flex justify-center ">
+                <div className="flex">
+                  <div className="m-5 grow">
+                  <button
+                    className="text-white border border-white p-2 rounded-md"
+                    onClick={() => {
+                      setcolorpalette(!colorpalette);
+                    }}
+                  >
+                    COLOR
+                  </button>
+                  <div className={`${colorpalette ? "block" : "hidden"} ml-[50px] absolute z-40`}>
+                    <ColorPicker
+                      width={300}
+                      height={100}
+                      color={color}
+                      onChange={setColor}
+                      hideHSV
+                      dark
+                    />
+                    ;
+                  </div>
+                  </div>
+                  <div className="m-5">
+                    <button
+                      onClick={printDocument}
+                      className="cursor-pointer text-white mx-5 border border-white p-2 rounded"
+                    >
+                      PRINT
+                    </button>
 
-
+                    <button
+                      className="text-white border border-white p-2 rounded"
+                      onClick={() => setdemo(!demo)}
+                    >
+                      LOAD
+                    </button>
+                  </div>
                   
-                  {/* large resume */}
-                  <div>
-                <button onClick={printDocument} className="cursor-pointer text-white mx-5">Print</button>
-
-                  <button className="text-white" onClick={()=>setdemo(!demo)}>LOAD</button>
                 </div>
 
+                <div className="flex justify-center ">
+                  {/* large resume */}
 
-                  
-<div className= "bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row" id="largeResume">
-<div className="container w-[100%] ">
+                  <div
+                    className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row"
+                    
+                    id="largeResume"
+                    // style={{ color: color.hex }}
+                  >
+                    <div className="container w-[100%] ">
 <div className=" bg-purple-200 p-1 px-1 flex h-52">
         <img className="rounded-lg w-[130px] h-36  border-4 border-black  ml-4 mt-6 mr-1 " src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpl60g6oKVerEKPde2ClN4-6ASK4Ds4KzlM0Y1N-K_bCgOCMBYZ019WUgRLOfNAqyyhnY&usqp=CAU" alt="ProfilePhoto"/>
         <div>
           <div className="text-3xl font-bold p-2 mt-5 ml-4 tracking-widest">
-          <h>{details.personal.firstName} {details.personal.lastName}</h></div>
-          <h1 className="m-1 mt-0 ml-6  text-xl font-bold font-serif  tracking-widest text-indigo-900">{details.personal.role}</h1>
+          <h className="heading">{details.personal.firstName} {details.personal.lastName}</h></div>
+          <h1 className="m-1 mt-0 ml-6  text-xl font-bold font-serif  tracking-widest text-indigo-900 heading">{details.personal.role}</h1>
           <p className="text-sm p-2 pt-0 font-medium mb ">{details.personal.objective}</p>
         </div>
       </div>  
@@ -313,7 +400,7 @@ export default function Madrid() {
 
       {/* EDUCATION */}
       <div className="p-2 px-0">
-        <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2">EDUCATION</h1>
+        <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">EDUCATION</h1>
         {details.education.map((item) => (
           <div key={item.institution} className="p-1">
             <h1 className=" ml-6 text-sm font-medium">{item.institution}</h1>
@@ -328,7 +415,7 @@ export default function Madrid() {
       {/* INTERNSHIP */}
       {details.work.length != 0 && (
       <div>
-        <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2">INTERNSHIP</h1>
+        <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">INTERNSHIP</h1>
           {
             details.work.map(item=>(
             <div key={item.company}>
@@ -346,7 +433,7 @@ export default function Madrid() {
       {/* CERTIFICATION */}
       {details.certifications.length != 0 && (
       <div>
-        <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2">CERTIFICATION</h1>
+        <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">CERTIFICATION</h1>
         {
         details.certifications.map(item=>(
           <div key={item.title} className="mb-1">
@@ -362,7 +449,7 @@ export default function Madrid() {
     {/* AWARDS */}
     {details.awards.length != 0 && (
     <div>
-      <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2">AWARDS</h1>
+      <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">AWARDS</h1>
       {
         details.awards.map(item=>(
         <div key={item.name}>
@@ -379,9 +466,9 @@ export default function Madrid() {
   </div>
   <div className=" border-l-purple-900 col-span-4 ">
     <div className=" ">
-    <p className="pl-6 ml-3 mr-2 mt-7 font-normal tracking-widest text-lg"><span  className="font-serif font-semibold">DOB : </span> {details.personal.dob}</p>
+    <p className="pl-6 ml-3 mr-2 mt-7 font-normal tracking-widest text-lg"><span  className="font-serif font-semibold heading">DOB : </span> {details.personal.dob}</p>
       {/*  NETWORK  */}
-      <h1 className=" font-bold tracking-widest  bg-purple-50 mr-5 rounded-r-xl font-serif text-xl mt-2 ml-6  mb-0 p-2">NETWORK</h1>
+      <h1 className=" font-bold tracking-widest  bg-purple-50 mr-5 rounded-r-xl font-serif text-xl mt-2 ml-6  mb-0 p-2 heading">NETWORK</h1>
        <div className="pl-5">
        <p className="pl-6">{details.personal.phone}</p>
        <p className="pl-6 mr-2">{details.personal.email}</p> 
@@ -398,7 +485,7 @@ export default function Madrid() {
     {/* SKILLS */}
     {details.skills.length != 0 && ( 
       <div className="p-2">
-        <h1 className="font-bold tracking-widest mr-5 rounded-r-xl  bg-purple-50 font-serif text-xl ml-6 mb-0 p-2 ">SKILLS</h1>
+        <h1 className="font-bold tracking-widest mr-5 rounded-r-xl  bg-purple-50 font-serif text-xl ml-6 mb-0 p-2 heading">SKILLS</h1>
         {details.skills.map((item) => (
           <div key={item.name}>
            <h1 className="font-normal ml-8 p-1">{item.name} - {item.level}</h1>
@@ -411,7 +498,7 @@ export default function Madrid() {
       {/* HOBBIE */}
       {details.hobbies.length != 0 && (
       <div className="p-2">
-        <h1 className="font-bold tracking-widest mr-5 rounded-r-xl  bg-purple-50 font-serif  text-xl ml-6 mb-0 p-2">HOBBIES</h1>
+        <h1 className="font-bold tracking-widest mr-5 rounded-r-xl  bg-purple-50 font-serif  text-xl ml-6 mb-0 p-2 heading">HOBBIES</h1>
         {
           details. hobbies.map((item)=>(
             <div key={item.name}>
@@ -426,7 +513,7 @@ export default function Madrid() {
       {/* LANGUAGES */}
       {details.languages.length != 0 && (
       <div className="p-2">
-        <h1 className="font-bold tracking-widest mr-5 rounded-r-xl  bg-purple-50 font-serif text-xl ml-6 mb-0 p-2">LANGUAGES</h1>
+        <h1 className="font-bold tracking-widest mr-5 rounded-r-xl  bg-purple-50 font-serif text-xl ml-6 mb-0 p-2 heading">LANGUAGES</h1>
         {
           details.languages.map((item)=>(
             <div key={item.name}>
@@ -455,10 +542,14 @@ export default function Madrid() {
   </div>
 </div>
 </div>
-</div>
-
-
-                  
+                    <style jsx>
+                      {
+                        `.heading{
+                          color:${color.hex};
+                        }`
+                      }
+                    </style>
+                  </div>
                 </div>
               </div>
             </>

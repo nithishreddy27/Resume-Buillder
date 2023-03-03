@@ -4,7 +4,7 @@ import { GrEdit } from "react-icons/gr";
 import React, { useState } from "react";
 import Link from "next/link";
 
-const profile = () => {
+const Profile = () => {
   const [open, setOpen] = useState(false);
   const [pro, setpro] = useState("profile");
   return (
@@ -213,4 +213,4 @@ const profile = () => {
   );
 };
 
-export default profile;
+export default Profile;

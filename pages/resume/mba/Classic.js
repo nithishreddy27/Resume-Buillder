@@ -9,12 +9,16 @@ import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/lib/css/styles.css";
 
 
 export default function Classic() {
   const user = useUser();
   const { details, setdetails , setdemo ,demo} = useContext(ResumeContext);
   const [change, setchange] = useState(false)
+  const [colorpalette, setcolorpalette] = useState(false);
+
 
 
   //to add email fname and lname
@@ -31,7 +35,6 @@ export default function Classic() {
       });
     }
   }, [user , change]);
-
   
   useEffect(()=>{
     setchange(!change)
@@ -67,10 +70,13 @@ export default function Classic() {
       pdf.addImage(imgData, 'JPEG',0,0,width,height);
       pdf.save("download.pdf");
       // pdf.output('dataurlnewwindow');
-    });  
-     
+    });     
     
   }
+  useEffect(() => {
+    // document.getElementById("largeResume").style.color = "red"
+  }, [0]);
+
 
   
 
@@ -82,6 +88,11 @@ export default function Classic() {
       setopen("semiopen");
     }
   }
+  const [color, setColor] = useColor("hex", "#121212");
+  useEffect(() => {
+    console.log("color:", color);
+    // settextColor()
+  }, [color]);
 
   return (
     <>
@@ -124,7 +135,7 @@ export default function Classic() {
        <div className="flex gap-3 ">
          <div className=" min-w-[50%]">
            <div className=" m-4 ">
-              <p className="bg-gray-800 tracking-widest text-white p-1 w-[100%] rounded-md mt-3 text-center">PROFILE</p>
+              <p className="bg-gray-800 tracking-widest text-white p-1 w-[100%] rounded-md mt-3 text-center heading">PROFILE</p>
               <p className="text-sm p-1 pt-4">{details.personal.objective}</p>
            </div>
            <div>
@@ -133,7 +144,7 @@ export default function Classic() {
            {/* HOBBIES */}
            {details.hobbies.length != 0 && (
              <div className="m-3">
-              <p className="bg-gray-800 tracking-widest text-white p-1 w-[100%] rounded-md mt-3 text-center">HOBBIES</p>
+              <p className="bg-gray-800 tracking-widest text-white p-1 w-[100%] rounded-md mt-3 text-center heading">HOBBIES</p>
               {details.hobbies.map((item) => (
                  <div key={item.name} className="p-1 font-serif text-base font-bold pl-4">
                   <li>{item.name}</li>
@@ -146,7 +157,7 @@ export default function Classic() {
            {/* LANGUAGES */}
            {details.languages.length != 0 && (
            <div className="m-3">
-             <p className="bg-gray-800 tracking-widest text-white p-1 w-[100%] rounded-md mt-3 text-center">LANGUAGES</p>
+             <p className="bg-gray-800 tracking-widest text-white p-1 w-[100%] rounded-md mt-3 text-center heading">LANGUAGES</p>
              {details.languages.map((item) => (
               <div key={item.name} className="pt-2 pl-4">
                 <li className="font-bold text-base font-serif tracking-wide">{item.name} - {item.fluency}</li>
@@ -159,7 +170,7 @@ export default function Classic() {
            {/* EDUCATION */}
            {details.education.length != 0 && (
            <div className="p-2 ">
-             <p className="bg-gray-800 tracking-widest text-center rounded-md text-white p-1 m-1 ">EDUCATION</p>
+             <p className="bg-gray-800 tracking-widest text-center rounded-md text-white p-1 m-1 heading">EDUCATION</p>
 
              {details.education.map((item) => (
                <div key={item.institution} className="text-base p-2 pl-4">
@@ -181,7 +192,7 @@ export default function Classic() {
             {/* SKILLS */}
            {details.skills.length != 0 && (
            <div className="p-2 ">
-             <p className="bg-gray-800 tracking-widest rounded-md text-center text-white p-1 mx-2 my-1">SKILLS</p>
+             <p className="bg-gray-800 tracking-widest rounded-md text-center text-white p-1 mx-2 my-1 heading">SKILLS</p>
              {details.skills.map((item) => (
              <div key={item.name} className=" pl-4 font-serif">
                <li className="text-base font-semibold p-1">{item.name} - {item.level}</li>
@@ -194,11 +205,11 @@ export default function Classic() {
 
          {details.languages.length != 0 && (
          <div className="  p-3">
-           <p className="bg-gray-800 tracking-widest rounded-md text-center text-white p-1 mx-2 my-1">
+           <p className="bg-gray-800 tracking-widest rounded-md text-center text-white p-1 mx-2 my-1 heading">
              PROJECTS
            </p>
            {details.projects.map((item) => (
-             <div className="p-1 pl-5 ">
+             <div key={item.name} className="p-1 pl-5 ">
               <p className="font-bold font-serif text-base " >{item.name}</p>
                <Link href={`{item.website}$`}>
                  <p className="font-semibold text-sm tracking-wider">
@@ -219,7 +230,7 @@ export default function Classic() {
     {/* NETWORK */}
     <div className="m-4">
        <>
-         <h1 className="bg-gray-800 tracking-widest text-white mt-1 p-1 text-center rounded-md ">NETWORK</h1>
+         <h1 className="bg-gray-800 tracking-widest text-white mt-1 p-1 text-center rounded-md heading ">NETWORK</h1>
          <div className="pl-4">
            <p className=" font-semibold text-md tracking-wider">{details.personal.phone}</p>
            <p className=" font-semibold text-md tracking-wider">{details.personal.email}</p>
@@ -229,7 +240,7 @@ export default function Classic() {
       {/* INTERNSHIPS */}
        {details.work.length != 0 && (
        <>
-         <p className="bg-gray-800 tracking-widest text-white mt-1 p-1 text-center rounded-md ">INTERNSHIPS</p>
+         <p className="bg-gray-800 tracking-widest text-white mt-1 p-1 text-center rounded-md heading">INTERNSHIPS</p>
          {details.work.map((item) => (
            <div key={item.company} className="m-2">
              <Link href={`{item.website}$`}><span className="font-bold text-lg font-serif tracking-wide">{item.company}<span className=" font-bold font-sans text-xs ml-9">[{item.from}] - [{item.to}]</span> </span></Link>
@@ -245,7 +256,7 @@ export default function Classic() {
        <div>
        {details.awards.length != 0 && (
          <div className="mt-5">
-           <p className="bg-gray-800 tracking-widest rounded-md text-center  text-white p-1 m-1 ">AWARDS</p>
+           <p className="bg-gray-800 tracking-widest rounded-md text-center  text-white p-1 m-1 heading">AWARDS</p>
            {details.awards.map((item) => 
            (<div key={item.name} className=" m-2">
                <p className="font-bold font-serif text-lg tracking-wide">{item.name}</p>
@@ -261,7 +272,7 @@ export default function Classic() {
        {/* CERTIFICATIONS */}
        {details.certifications.length != 0 && (
          <div className="mt-5">
-           <p className="bg-gray-800 tracking-widest rounded-md mt-2 text-center text-white p-1 m-1 ">CERTIFICATION</p>
+           <p className="bg-gray-800 tracking-widest rounded-md mt-2 text-center text-white p-1 m-1 heading ">CERTIFICATION</p>
            {details.certifications.map((item) => (
              <div key={item.title} className="pl-2 pt-1">
                <p className="font-semibold font-serif text-lg">{item.title} </p>
@@ -383,7 +394,7 @@ export default function Classic() {
             {/* SKILLS */}
            {details.skills.length != 0 && (
            <div className="p-2 ">
-             <p className="bg-gray-800 tracking-widest rounded-md text-center text-white p-1 mx-2 my-1">SKILLS</p>
+             <p className="bg-gray-800 tracking-widest rounded-md text-center text-white p-1 mx-2 my-1 heading">SKILLS</p>
              {details.skills.map((item) => (
              <div key={item.name} className=" pl-4 font-serif">
                <li className="text-base font-semibold p-1">{item.name} - {item.level}</li>
@@ -396,11 +407,11 @@ export default function Classic() {
 
          {details.languages.length != 0 && (
          <div className="  p-3">
-           <p className="bg-gray-800 tracking-widest rounded-md text-center text-white p-1 mx-2 my-1">
+           <p className="bg-gray-800 tracking-widest rounded-md text-center text-white p-1 mx-2 my-1 heading">
              PROJECTS
            </p>
            {details.projects.map((item) => (
-             <div className="p-1 pl-5 ">
+             <div key={item.name} className="p-1 pl-5 ">
               <p className="font-bold font-serif text-base " >{item.name}</p>
                <Link href={`{item.website}$`}>
                  <p className="font-semibold text-sm tracking-wider">
@@ -421,7 +432,7 @@ export default function Classic() {
     {/* NETWORK */}
     <div className="m-4">
        <>
-         <h1 className="bg-gray-800 tracking-widest text-white mt-1 p-1 text-center rounded-md ">NETWORK</h1>
+         <h1 className="bg-gray-800 tracking-widest text-white mt-1 p-1 text-center rounded-md heading">NETWORK</h1>
          <div className="pl-4">
            <p className=" font-semibold text-md tracking-wider">{details.personal.phone}</p>
            <p className=" font-semibold text-md tracking-wider">{details.personal.email}</p>
@@ -431,7 +442,7 @@ export default function Classic() {
       {/* INTERNSHIPS */}
        {details.work.length != 0 && (
        <>
-         <p className="bg-gray-800 tracking-widest text-white mt-1 p-1 text-center rounded-md ">INTERNSHIPS</p>
+         <p className="bg-gray-800 tracking-widest text-white mt-1 p-1 text-center rounded-md heading">INTERNSHIPS</p>
          {details.work.map((item) => (
            <div key={item.company} className="m-2">
              <Link href={`{item.website}$`}><span className="font-bold text-lg font-serif tracking-wide">{item.company}<span className=" font-bold font-sans text-xs ml-9">[{item.from}] - [{item.to}]</span> </span></Link>
@@ -447,7 +458,7 @@ export default function Classic() {
        <div>
        {details.awards.length != 0 && (
          <div className="mt-5">
-           <p className="bg-gray-800 tracking-widest rounded-md text-center  text-white p-1 m-1 ">AWARDS</p>
+           <p className="bg-gray-800 tracking-widest rounded-md text-center  text-white p-1 m-1 heading">AWARDS</p>
            {details.awards.map((item) => 
            (<div key={item.name} className=" m-2">
                <p className="font-bold font-serif text-lg tracking-wide">{item.name}</p>
@@ -463,7 +474,7 @@ export default function Classic() {
        {/* CERTIFICATIONS */}
        {details.certifications.length != 0 && (
          <div className="mt-5">
-           <p className="bg-gray-800 tracking-widest rounded-md mt-2 text-center text-white p-1 m-1 ">CERTIFICATION</p>
+           <p className="bg-gray-800 tracking-widest rounded-md mt-2 text-center text-white p-1 m-1 heading">CERTIFICATION</p>
            {details.certifications.map((item) => (
              <div key={item.title} className="pl-2 pt-1">
                <p className="font-semibold font-serif text-lg">{item.title} </p>
