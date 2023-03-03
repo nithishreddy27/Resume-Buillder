@@ -104,7 +104,7 @@ export default function Dynamic() {
                   <div className="flex mt-1"></div>
                 </div>
                 <div className="m-3 flex">
-                <button
+                  <button
                     className="text-white border border-white p-2 rounded-md"
                     onClick={() => {
                       setcolorpalette(!colorpalette);
@@ -112,7 +112,11 @@ export default function Dynamic() {
                   >
                     COLOR
                   </button>
-                  <div className={`${colorpalette ? "block" : "hidden"} mt-[50px] ml-[-50px] lg:ml-[50px] absolute z-40`}>
+                  <div
+                    className={`${
+                      colorpalette ? "block" : "hidden"
+                    } mt-[50px] ml-[-50px] lg:ml-[50px] absolute z-40`}
+                  >
                     <ColorPicker
                       width={300}
                       height={100}
@@ -190,25 +194,28 @@ export default function Dynamic() {
                               {details.social.map((item) => (
                                 <>
                                   {item.enabled && (
-                                    <div className="my-3 flex" key={item.network}>
-                                    <span>
-                                      <img
-                                        src={
-                                          "https://www." +
-                                          item.network +
-                                          ".com/favicon.ico"
-                                        }
-                                        alt=""
-                                        className="w-5 grayscale-[40%]"
-                                      />
-                                    </span>
-  
-                                    <Link href={item.url}>
-                                      <span className="mx-4">
-                                        {item.username}
+                                    <div
+                                      className="my-3 flex"
+                                      key={item.network}
+                                    >
+                                      <span>
+                                        <img
+                                          src={
+                                            "https://www." +
+                                            item.network +
+                                            ".com/favicon.ico"
+                                          }
+                                          alt=""
+                                          className="w-5 grayscale-[40%]"
+                                        />
                                       </span>
-                                    </Link>
-                                  </div>
+
+                                      <Link href={item.url}>
+                                        <span className="mx-4">
+                                          {item.username}
+                                        </span>
+                                      </Link>
+                                    </div>
                                   )}
                                 </>
                               ))}
@@ -224,9 +231,13 @@ export default function Dynamic() {
                         </h1>
                         <hr className="h-[2px] bg-black my-1" />
                         {details.skills.map((item) => (
-                          <li className="mx-4" key={item.name}>
-                            {item.name}
-                          </li>
+                          <>
+                            {item.enabled == true && (
+                              <li className="mx-4" key={item.name}>
+                                {item.name}
+                              </li>
+                            )}
+                          </>
                         ))}
                       </div>
                     )}
@@ -247,9 +258,13 @@ export default function Dynamic() {
                         </h1>
                         <hr className="h-[2px] bg-black my-1" />
                         {details.languages.map((item) => (
-                          <p className="my-2" key={item.name}>
-                            {item.name}
-                          </p>
+                          <>
+                            {item.enabled == true && (
+                              <p className="my-2" key={item.name}>
+                                {item.name}
+                              </p>
+                            )}
+                          </>
                         ))}
                       </div>
                     )}
@@ -260,9 +275,13 @@ export default function Dynamic() {
                         </h1>
                         <hr className="h-[2px] bg-black my-1" />
                         {details.hobbies.map((item) => (
-                          <p className="my-2" key={item.name}>
-                            {item.name}
-                          </p>
+                          <>
+                            {item.enabled == true && (
+                              <p className="my-2" key={item.name}>
+                                {item.name}
+                              </p>
+                            )}
+                          </>
                         ))}
                       </div>
                     )}
@@ -273,15 +292,19 @@ export default function Dynamic() {
                         </h1>
                         <hr className="h-[2px] bg-black my-1" />
                         {details.awards.map((item) => (
-                          <div className="my-2" key={item.name}>
-                            <span className="font-semibold text-[15px]">
-                              {item.name} ({item.date})
-                            </span>
-                            <span className="mx-2 text-[15px]"></span>
-                            <p className="mx-4">
-                              {item.summary.data.slice(0, 38)}
-                            </p>
-                          </div>
+                          <>
+                            {item.enabled == true && (
+                              <div className="my-2" key={item.name}>
+                                <span className="font-semibold text-[15px]">
+                                  {item.name} ({item.date})
+                                </span>
+                                <span className="mx-2 text-[15px]"></span>
+                                <p className="mx-4">
+                                  {item.summary.data.slice(0, 38)}
+                                </p>
+                              </div>
+                            )}
+                          </>
                         ))}
                       </>
                     )}
@@ -319,27 +342,31 @@ export default function Dynamic() {
 
                           <div className="ml-1 mt-1">
                             {details.work.map((item) => (
-                              <div className="flex" key={item.company}>
-                                <div className="pt-1">
-                                  <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
-                                  <div className="w-1 bg-black h-24 m-1"></div>
-                                </div>
-                                <div className="ml-5 mt-1">
-                                  <p className="font-semibold">
-                                    {item.from.slice(0, 4)} -{" "}
-                                    {item.to.slice(0, 4)}
-                                  </p>
-                                  <p className="tracking-[2px] my-1">
-                                    {item.company}
-                                  </p>
-                                  <p className="font-bold">
-                                    {item.designation}
-                                  </p>
-                                  <p className="mb-4 text-sm">
-                                    {item.summary.data}
-                                  </p>
-                                </div>
-                              </div>
+                              <>
+                                {item.enabled == true && (
+                                  <div className="flex" key={item.company}>
+                                    <div className="pt-1">
+                                      <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
+                                      <div className="w-1 bg-black h-24 m-1"></div>
+                                    </div>
+                                    <div className="ml-5 mt-1">
+                                      <p className="font-semibold">
+                                        {item.from.slice(0, 4)} -{" "}
+                                        {item.to.slice(0, 4)}
+                                      </p>
+                                      <p className="tracking-[2px] my-1">
+                                        {item.company}
+                                      </p>
+                                      <p className="font-bold">
+                                        {item.designation}
+                                      </p>
+                                      <p className="mb-4 text-sm">
+                                        {item.summary.data}
+                                      </p>
+                                    </div>
+                                  </div>
+                                )}
+                              </>
                             ))}
                           </div>
                         </>
@@ -353,27 +380,31 @@ export default function Dynamic() {
 
                           <div className="ml-1 mt-1">
                             {details.projects.map((item) => (
-                              <div className="flex" key={item.name}>
-                                <div className="pt-1">
-                                  <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
-                                  <div className="w-1 bg-black h-24 m-1"></div>
-                                </div>
-                                <div className="ml-5 mt-1">
-                                  <p className="font-semibold">
-                                    {item.from} to {item.to}
-                                  </p>
-                                  <p className="tracking-[2px] my-1">
-                                    {item.name}
-                                  </p>
-                                  <p className="tracking-[2px] my-1">
-                                    {item.domain}
-                                  </p>
+                              <>
+                                {item.enabled == true && (
+                                  <div className="flex" key={item.name}>
+                                    <div className="pt-1">
+                                      <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
+                                      <div className="w-1 bg-black h-24 m-1"></div>
+                                    </div>
+                                    <div className="ml-5 mt-1">
+                                      <p className="font-semibold">
+                                        {item.from} to {item.to}
+                                      </p>
+                                      <p className="tracking-[2px] my-1">
+                                        {item.name}
+                                      </p>
+                                      <p className="tracking-[2px] my-1">
+                                        {item.domain}
+                                      </p>
 
-                                  <p className="mb-4 text-sm">
-                                    {item.summary.data}
-                                  </p>
-                                </div>
-                              </div>
+                                      <p className="mb-4 text-sm">
+                                        {item.summary.data}
+                                      </p>
+                                    </div>
+                                  </div>
+                                )}
+                              </>
                             ))}
                           </div>
                         </>
@@ -387,30 +418,34 @@ export default function Dynamic() {
                           <hr className="h-[2px] bg-black my-1" />
                           <div className="ml-1 mt-1">
                             {details.education.map((item) => (
-                              <div className="flex" key={item.institution}>
-                                <div className="flex">
-                                  <div className="pt-1">
-                                    <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
-                                    <div className="w-1 bg-black h-28 m-1"></div>
+                              <>
+                                {item.enabled == true && (
+                                  <div className="flex" key={item.institution}>
+                                    <div className="flex">
+                                      <div className="pt-1">
+                                        <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
+                                        <div className="w-1 bg-black h-28 m-1"></div>
+                                      </div>
+                                      <div className="ml-5 mt-1">
+                                        <p className="font-semibold">
+                                          {item.startDate.slice(0, 4)} -{" "}
+                                          {item.endDate.slice(0, 4)}
+                                        </p>
+                                        <p className="tracking-[2px]">
+                                          {item.institution}
+                                        </p>
+                                        <p className="font-bold">
+                                          {item.fieldOfStudy}
+                                        </p>
+                                        <p className="">{item.typeOfDegree}</p>
+                                        <p className="mb-4 font-semibold">
+                                          GPA-{item.gpa}
+                                        </p>
+                                      </div>
+                                    </div>
                                   </div>
-                                  <div className="ml-5 mt-1">
-                                    <p className="font-semibold">
-                                      {item.startDate.slice(0, 4)} -{" "}
-                                      {item.endDate.slice(0, 4)}
-                                    </p>
-                                    <p className="tracking-[2px]">
-                                      {item.institution}
-                                    </p>
-                                    <p className="font-bold">
-                                      {item.fieldOfStudy}
-                                    </p>
-                                    <p className="">{item.typeOfDegree}</p>
-                                    <p className="mb-4 font-semibold">
-                                      GPA-{item.gpa}
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
+                                )}
+                              </>
                             ))}
                           </div>
                         </>
@@ -424,26 +459,30 @@ export default function Dynamic() {
                           <hr className="h-[2px] bg-black my-1" />
                           <div className="ml-1 mt-1">
                             {details.certifications.map((item) => (
-                              <div className="flex" key={item.institution}>
-                                <div className="flex">
-                                  <div className="pt-1">
-                                    <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
-                                    <div className="w-1 bg-black h-10 m-1"></div>
+                              <>
+                                {item.enabled == true && (
+                                  <div className="flex" key={item.institution}>
+                                    <div className="flex">
+                                      <div className="pt-1">
+                                        <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
+                                        <div className="w-1 bg-black h-10 m-1"></div>
+                                      </div>
+                                      <div className="ml-5 mt-1">
+                                        <p className="tracking-[2px]">
+                                          {item.certificateTitle}
+                                        </p>
+                                        <p className="font-bold">
+                                          {item.certificateDate}
+                                        </p>
+                                        <p className="">{item.issuer}</p>
+                                        <p className="mb-4 font-semibold">
+                                          {item.summary.data}
+                                        </p>
+                                      </div>
+                                    </div>
                                   </div>
-                                  <div className="ml-5 mt-1">
-                                    <p className="tracking-[2px]">
-                                      {item.certificateTitle}
-                                    </p>
-                                    <p className="font-bold">
-                                      {item.certificateDate}
-                                    </p>
-                                    <p className="">{item.issuer}</p>
-                                    <p className="mb-4 font-semibold">
-                                      {item.summary.data}
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
+                                )}
+                              </>
                             ))}
                           </div>
                         </>
@@ -453,9 +492,10 @@ export default function Dynamic() {
                 </div>
                 <style jsx>
                   {`
-                  .heading{
-                    color:${color.hex};
-                  }`}
+                    .heading {
+                      color: ${color.hex};
+                    }
+                  `}
                 </style>
               </div>
             </div>
@@ -475,25 +515,29 @@ export default function Dynamic() {
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
                 <div className="flex">
                   <div className="m-5 grow">
-                  <button
-                    className="text-white border border-white p-2 rounded-md"
-                    onClick={() => {
-                      setcolorpalette(!colorpalette);
-                    }}
-                  >
-                    COLOR
-                  </button>
-                  <div className={`${colorpalette ? "block" : "hidden"} ml-[50px] absolute z-40`}>
-                    <ColorPicker
-                      width={300}
-                      height={100}
-                      color={color}
-                      onChange={setColor}
-                      hideHSV
-                      dark
-                    />
-                    ;
-                  </div>
+                    <button
+                      className="text-white border border-white p-2 rounded-md"
+                      onClick={() => {
+                        setcolorpalette(!colorpalette);
+                      }}
+                    >
+                      COLOR
+                    </button>
+                    <div
+                      className={`${
+                        colorpalette ? "block" : "hidden"
+                      } ml-[50px] absolute z-40`}
+                    >
+                      <ColorPicker
+                        width={300}
+                        height={100}
+                        color={color}
+                        onChange={setColor}
+                        hideHSV
+                        dark
+                      />
+                      ;
+                    </div>
                   </div>
                   <div className="m-5">
                     <button
@@ -510,7 +554,6 @@ export default function Dynamic() {
                       LOAD
                     </button>
                   </div>
-                  
                 </div>
 
                 <div className="flex justify-center ">
@@ -518,7 +561,6 @@ export default function Dynamic() {
 
                   <div
                     className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row"
-                    
                     id="largeResume"
                     // style={{ color: color.hex }}
                   >
@@ -560,27 +602,30 @@ export default function Dynamic() {
                               <>
                                 {details.social.map((item) => (
                                   <>
-                                   {item.enabled && (
-                                    <div className="my-3 flex" key={item.network}>
-                                    <span>
-                                      <img
-                                        src={
-                                          "https://www." +
-                                          item.network +
-                                          ".com/favicon.ico"
-                                        }
-                                        alt=""
-                                        className="w-5 grayscale-[40%]"
-                                      />
-                                    </span>
-  
-                                    <Link href={item.url}>
-                                      <span className="mx-4">
-                                        {item.username}
-                                      </span>
-                                    </Link>
-                                  </div>
-                                  )}
+                                    {item.enabled && (
+                                      <div
+                                        className="my-3 flex"
+                                        key={item.network}
+                                      >
+                                        <span>
+                                          <img
+                                            src={
+                                              "https://www." +
+                                              item.network +
+                                              ".com/favicon.ico"
+                                            }
+                                            alt=""
+                                            className="w-5 grayscale-[40%]"
+                                          />
+                                        </span>
+
+                                        <Link href={item.url}>
+                                          <span className="mx-4">
+                                            {item.username}
+                                          </span>
+                                        </Link>
+                                      </div>
+                                    )}
                                   </>
                                 ))}
                               </>
@@ -595,14 +640,17 @@ export default function Dynamic() {
                           </h1>
                           <hr className="h-[2px] bg-black my-1" />
                           {details.skills.map((item) => (
-                            <li className="mx-4" key={item.name}>
-                              {item.name}
-                            </li>
+                            <>
+                              {item.enabled == true && (
+                                <li className="mx-4" key={item.name}>
+                                  {item.name}
+                                </li>
+                              )}
+                            </>
                           ))}
                         </div>
                       )}
 
-                      
                       {details.languages.length != 0 && (
                         <div className="mt-4">
                           <h1 className="text-2xl font-semibold tracking-[2px] heading">
@@ -610,9 +658,13 @@ export default function Dynamic() {
                           </h1>
                           <hr className="h-[2px] bg-black my-1" />
                           {details.languages.map((item) => (
-                            <p className="my-2" key={item.name}>
-                              {item.name}
-                            </p>
+                            <>
+                              {item.enabled == true && (
+                                <p className="my-2" key={item.name}>
+                                  {item.name}
+                                </p>
+                              )}
+                            </>
                           ))}
                         </div>
                       )}
@@ -623,9 +675,13 @@ export default function Dynamic() {
                           </h1>
                           <hr className="h-[2px] bg-black my-1" />
                           {details.hobbies.map((item) => (
-                            <p className="my-2" key={item.name}>
-                              {item.name}
-                            </p>
+                            <>
+                              {item.enabled == true && (
+                                <p className="my-2" key={item.name}>
+                                  {item.name}
+                                </p>
+                              )}
+                            </>
                           ))}
                         </div>
                       )}
@@ -636,15 +692,19 @@ export default function Dynamic() {
                           </h1>
                           <hr className="h-[2px] bg-black my-1" />
                           {details.awards.map((item) => (
-                            <div className="my-2" key={item.name}>
-                              <span className="font-semibold text-[15px]">
-                                {item.name} ({item.date})
-                              </span>
-                              <span className="mx-2 text-[15px]"></span>
-                              <p className="mx-4">
-                                {item.summary.data.slice(0, 38)}
-                              </p>
-                            </div>
+                            <>
+                              {item.enabled == true && (
+                                <div className="my-2" key={item.name}>
+                                  <span className="font-semibold text-[15px]">
+                                    {item.name} ({item.date})
+                                  </span>
+                                  <span className="mx-2 text-[15px]"></span>
+                                  <p className="mx-4">
+                                    {item.summary.data.slice(0, 38)}
+                                  </p>
+                                </div>
+                              )}
+                            </>
                           ))}
                         </>
                       )}
@@ -682,27 +742,31 @@ export default function Dynamic() {
 
                             <div className="ml-1 mt-1">
                               {details.work.map((item) => (
-                                <div className="flex" key={item.company}>
-                                  <div className="pt-1">
-                                    <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
-                                    <div className="w-1 bg-black h-24 m-1"></div>
-                                  </div>
-                                  <div className="ml-5 mt-1">
-                                    <p className="font-semibold">
-                                      {item.from.slice(0, 4)} -{" "}
-                                      {item.to.slice(0, 4)}
-                                    </p>
-                                    <p className="tracking-[2px] my-1">
-                                      {item.company}
-                                    </p>
-                                    <p className="font-bold">
-                                      {item.designation}
-                                    </p>
-                                    <p className="mb-4 text-sm">
-                                      {item.summary.data}
-                                    </p>
-                                  </div>
-                                </div>
+                                <>
+                                  {item.enabled == true && (
+                                    <div className="flex" key={item.company}>
+                                      <div className="pt-1">
+                                        <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
+                                        <div className="w-1 bg-black h-24 m-1"></div>
+                                      </div>
+                                      <div className="ml-5 mt-1">
+                                        <p className="font-semibold">
+                                          {item.from.slice(0, 4)} -{" "}
+                                          {item.to.slice(0, 4)}
+                                        </p>
+                                        <p className="tracking-[2px] my-1">
+                                          {item.company}
+                                        </p>
+                                        <p className="font-bold">
+                                          {item.designation}
+                                        </p>
+                                        <p className="mb-4 text-sm">
+                                          {item.summary.data}
+                                        </p>
+                                      </div>
+                                    </div>
+                                  )}
+                                </>
                               ))}
                             </div>
                           </>
@@ -719,27 +783,31 @@ export default function Dynamic() {
 
                             <div className="ml-1 mt-1">
                               {details.projects.map((item) => (
-                                <div className="flex" key={item.name}>
-                                  <div className="pt-1">
-                                    <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
-                                    <div className="w-1 bg-black h-24 m-1"></div>
-                                  </div>
-                                  <div className="ml-5 mt-1">
-                                    <p className="font-semibold">
-                                      {item.from} to {item.to}
-                                    </p>
-                                    <p className="tracking-[2px] my-1">
-                                      {item.name}
-                                    </p>
-                                    <p className="tracking-[2px] my-1">
-                                      {item.domain}
-                                    </p>
+                                <>
+                                  {item.enabled == true && (
+                                    <div className="flex" key={item.name}>
+                                      <div className="pt-1">
+                                        <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
+                                        <div className="w-1 bg-black h-24 m-1"></div>
+                                      </div>
+                                      <div className="ml-5 mt-1">
+                                        <p className="font-semibold">
+                                          {item.from} to {item.to}
+                                        </p>
+                                        <p className="tracking-[2px] my-1">
+                                          {item.name}
+                                        </p>
+                                        <p className="tracking-[2px] my-1">
+                                          {item.domain}
+                                        </p>
 
-                                    <p className="mb-4 text-sm">
-                                      {item.summary.data}
-                                    </p>
-                                  </div>
-                                </div>
+                                        <p className="mb-4 text-sm">
+                                          {item.summary.data}
+                                        </p>
+                                      </div>
+                                    </div>
+                                  )}
+                                </>
                               ))}
                             </div>
                           </>
@@ -755,30 +823,39 @@ export default function Dynamic() {
                             <hr className="h-[2px] bg-black my-1" />
                             <div className="ml-1 mt-1">
                               {details.education.map((item) => (
-                                <div className="flex" key={item.institution}>
-                                  <div className="flex">
-                                    <div className="pt-1">
-                                      <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
-                                      <div className="w-1 bg-black h-28 m-1"></div>
+                                <>
+                                  {item.enabled == true && (
+                                    <div
+                                      className="flex"
+                                      key={item.institution}
+                                    >
+                                      <div className="flex">
+                                        <div className="pt-1">
+                                          <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
+                                          <div className="w-1 bg-black h-28 m-1"></div>
+                                        </div>
+                                        <div className="ml-5 mt-1">
+                                          <p className="font-semibold">
+                                            {item.startDate.slice(0, 4)} -{" "}
+                                            {item.endDate.slice(0, 4)}
+                                          </p>
+                                          <p className="tracking-[2px]">
+                                            {item.institution}
+                                          </p>
+                                          <p className="font-bold">
+                                            {item.fieldOfStudy}
+                                          </p>
+                                          <p className="">
+                                            {item.typeOfDegree}
+                                          </p>
+                                          <p className="mb-4 font-semibold">
+                                            GPA-{item.gpa}
+                                          </p>
+                                        </div>
+                                      </div>
                                     </div>
-                                    <div className="ml-5 mt-1">
-                                      <p className="font-semibold">
-                                        {item.startDate.slice(0, 4)} -{" "}
-                                        {item.endDate.slice(0, 4)}
-                                      </p>
-                                      <p className="tracking-[2px]">
-                                        {item.institution}
-                                      </p>
-                                      <p className="font-bold">
-                                        {item.fieldOfStudy}
-                                      </p>
-                                      <p className="">{item.typeOfDegree}</p>
-                                      <p className="mb-4 font-semibold">
-                                        GPA-{item.gpa}
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
+                                  )}
+                                </>
                               ))}
                             </div>
                           </>
@@ -792,24 +869,33 @@ export default function Dynamic() {
                             <hr className="h-[2px] bg-black my-1" />
                             <div className="ml-1 mt-1">
                               {details.certifications.map((item) => (
-                                <div className="flex" key={item.institution}>
-                                  <div className="flex">
-                                    <div className="pt-1">
-                                      <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
-                                      <div className="w-1 bg-black h-20 m-1"></div>
+                                <>
+                                  {item.enabled == true && (
+                                    <div
+                                      className="flex"
+                                      key={item.institution}
+                                    >
+                                      <div className="flex">
+                                        <div className="pt-1">
+                                          <div className="w-3 bg-black h-3 rounded-full opacity-60"></div>
+                                          <div className="w-1 bg-black h-20 m-1"></div>
+                                        </div>
+                                        <div className="ml-5 mt-1">
+                                          <p className="tracking-[2px]">
+                                            {item.title}
+                                          </p>
+                                          <p className="font-bold">
+                                            {item.date}
+                                          </p>
+                                          <p className="">{item.issuer}</p>
+                                          <p className="mb-4 font-semibold">
+                                            {item.summary.data}
+                                          </p>
+                                        </div>
+                                      </div>
                                     </div>
-                                    <div className="ml-5 mt-1">
-                                      <p className="tracking-[2px]">
-                                        {item.title}
-                                      </p>
-                                      <p className="font-bold">{item.date}</p>
-                                      <p className="">{item.issuer}</p>
-                                      <p className="mb-4 font-semibold">
-                                        {item.summary.data}
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
+                                  )}
+                                </>
                               ))}
                             </div>
                           </>
@@ -817,11 +903,11 @@ export default function Dynamic() {
                       </div>
                     </div>
                     <style jsx>
-                      {
-                        `.heading{
-                          color:${color.hex};
-                        }`
-                      }
+                      {`
+                        .heading {
+                          color: ${color.hex};
+                        }
+                      `}
                     </style>
                   </div>
                 </div>
