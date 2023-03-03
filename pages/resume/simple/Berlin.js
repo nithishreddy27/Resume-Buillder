@@ -431,12 +431,14 @@ export default function Berlin() {
                               </span>
                             </h1>
                             {details.social.map((item) => (
+                             <>{item.enabled == true && (
                               <div
-                                className="text-sm font-semibold pt-3"
-                                key={item.network}
-                              >
-                                <a href="{item.url}">{item.network}</a>
-                              </div>
+                              className="text-sm font-semibold pt-3"
+                              key={item.network}
+                            >
+                              <a href="{item.url}">{item.network}</a>
+                            </div>
+                             )}</>
                             ))}
                           </div>
                           {details.education.length != 0 && (
@@ -446,17 +448,24 @@ export default function Berlin() {
                               </h1>
                               <hr className="w-[15%] h-1 bg-black"></hr>
                               {details.education.map((item) => (
-                                <div className="my-5" key={item.institution}>
-                                  <span className="text-sm font-bold">
-                                    {item.institution}
-                                  </span>
-                                  <p className="text-xs py-1 font-semibold text-gray-700">
-                                    {item.fieldOfStudy}{" "}
-                                    <span className="text-xs font-semibold text-gray-700">
-                                      ({item.startDate} to {item.endDate})
-                                    </span>
-                                  </p>
-                                </div>
+                                <>
+                                  {item.enabled == true && (
+                                    <div
+                                      className="my-5"
+                                      key={item.institution}
+                                    >
+                                      <span className="text-sm font-bold">
+                                        {item.institution}
+                                      </span>
+                                      <p className="text-xs py-1 font-semibold text-gray-700">
+                                        {item.fieldOfStudy}{" "}
+                                        <span className="text-xs font-semibold text-gray-700">
+                                          ({item.startDate} to {item.endDate})
+                                        </span>
+                                      </p>
+                                    </div>
+                                  )}
+                                </>
                               ))}
                             </div>
                           )}
@@ -467,11 +476,15 @@ export default function Berlin() {
                               </h1>
                               <hr className="w-[15%] h-1 bg-black"></hr>
                               {details.skills.map((item) => (
-                                <div key={item.name}>
-                                  <h1 className="text-sm text-gray-800 pt-2">
-                                    {item.name}
-                                  </h1>
-                                </div>
+                                <>
+                                  {item.enabled == true && (
+                                    <div key={item.name}>
+                                      <h1 className="text-sm text-gray-800 pt-2">
+                                        {item.name}
+                                      </h1>
+                                    </div>
+                                  )}
+                                </>
                               ))}
                             </div>
                           )}
@@ -482,11 +495,15 @@ export default function Berlin() {
                               </h1>
                               <hr className="w-[15%] h-1 bg-black"></hr>
                               {details.awards.map((item) => (
-                                <div key={item.name}>
-                                  <h1 className="text-sm text-gray-800 pt-2">
-                                    {item.name}
-                                  </h1>
-                                </div>
+                                <>
+                                  {item.enabled == true && (
+                                    <div key={item.name}>
+                                      <h1 className="text-sm text-gray-800 pt-2">
+                                        {item.name}
+                                      </h1>
+                                    </div>
+                                  )}
+                                </>
                               ))}
                             </div>
                           )}
@@ -497,11 +514,15 @@ export default function Berlin() {
                               </h1>
                               <hr className="w-[15%] h-1 bg-black"></hr>
                               {details.hobbies.map((item) => (
-                                <div key={item.name}>
-                                  <h1 className="text-sm text-gray-800 pt-2">
-                                    {item.name}
-                                  </h1>
-                                </div>
+                                <>
+                                  {item.enabled == true && (
+                                    <div key={item.name}>
+                                      <h1 className="text-sm text-gray-800 pt-2">
+                                        {item.name}
+                                      </h1>
+                                    </div>
+                                  )}
+                                </>
                               ))}
                             </div>
                           )}
@@ -512,11 +533,15 @@ export default function Berlin() {
                               </h1>
                               <hr className="w-[15%] h-1 bg-black"></hr>
                               {details.languages.map((item) => (
-                                <div key={item.name}>
-                                  <h1 className="text-sm text-gray-800 pt-2">
-                                    {item.name}
-                                  </h1>
-                                </div>
+                                <>
+                                  {item.enabled == true && (
+                                    <div key={item.name}>
+                                      <h1 className="text-sm text-gray-800 pt-2">
+                                        {item.name}
+                                      </h1>
+                                    </div>
+                                  )}
+                                </>
                               ))}
                             </div>
                           )}
@@ -540,21 +565,25 @@ export default function Berlin() {
                               </h1>
                               <hr className="w-[8%] h-1 bg-black"></hr>
                               {details.work.map((item) => (
-                                <div className="my-5" key={item.company}>
-                                  <span className="text-sm font-bold mt-10">
-                                    {item.company}
-                                    {" - "}
-                                    <span className="text-sm font-bold mt-10">
-                                      {item.designation}
-                                    </span>
-                                  </span>
-                                  <p className="text-xs py-1 font-semibold text-gray-700">
-                                    ({item.from} to {item.to})
-                                  </p>
-                                  <p class="text-sm text-gray-700">
-                                    {item.summary.data}
-                                  </p>
-                                </div>
+                                <>
+                                  {item.enabled == true && (
+                                    <div className="my-5" key={item.company}>
+                                      <span className="text-sm font-bold mt-10">
+                                        {item.company}
+                                        {" - "}
+                                        <span className="text-sm font-bold mt-10">
+                                          {item.designation}
+                                        </span>
+                                      </span>
+                                      <p className="text-xs py-1 font-semibold text-gray-700">
+                                        ({item.from} to {item.to})
+                                      </p>
+                                      <p class="text-sm text-gray-700">
+                                        {item.summary.data}
+                                      </p>
+                                    </div>
+                                  )}
+                                </>
                               ))}
                             </div>
                           )}
@@ -565,17 +594,21 @@ export default function Berlin() {
                               </h1>
                               <hr className="w-[8%] h-1 bg-black"></hr>
                               {details.projects.map((item) => (
-                                <div className="my-5" key={item.name}>
-                                  <span className="text-sm font-bold mt-10">
-                                    <a href="{item.website}">{item.name}</a>
-                                  </span>
-                                  <p className="text-xs py-1 font-semibold text-gray-700">
-                                    ({item.from} to {item.to})
-                                  </p>
-                                  <p class="text-sm text-gray-700">
-                                    {item.summary.data}
-                                  </p>
-                                </div>
+                                <>
+                                  {item.enabled == true && (
+                                    <div className="my-5" key={item.name}>
+                                      <span className="text-sm font-bold mt-10">
+                                        <a href="{item.website}">{item.name}</a>
+                                      </span>
+                                      <p className="text-xs py-1 font-semibold text-gray-700">
+                                        ({item.from} to {item.to})
+                                      </p>
+                                      <p class="text-sm text-gray-700">
+                                        {item.summary.data}
+                                      </p>
+                                    </div>
+                                  )}
+                                </>
                               ))}
                             </div>
                           )}
@@ -586,21 +619,25 @@ export default function Berlin() {
                               </h1>
                               <hr className="w-[8%] h-1 bg-black"></hr>
                               {details.certifications.map((item) => (
-                                <div className="my-5" key={item.title}>
-                                  <span className="text-sm font-bold mt-10">
-                                    {item.title}
-                                    {" - "}
-                                    <span className="text-sm font-bold mt-10">
-                                      {item.issuer}
-                                    </span>
-                                  </span>
-                                  <p className="text-xs py-1 font-semibold text-gray-700">
-                                    ({item.date})
-                                  </p>
-                                  <p class="text-sm text-gray-700">
-                                    {item.summary.data}
-                                  </p>
-                                </div>
+                                <>
+                                  {item.enabled == true && (
+                                    <div className="my-5" key={item.title}>
+                                      <span className="text-sm font-bold mt-10">
+                                        {item.title}
+                                        {" - "}
+                                        <span className="text-sm font-bold mt-10">
+                                          {item.issuer}
+                                        </span>
+                                      </span>
+                                      <p className="text-xs py-1 font-semibold text-gray-700">
+                                        ({item.date})
+                                      </p>
+                                      <p class="text-sm text-gray-700">
+                                        {item.summary.data}
+                                      </p>
+                                    </div>
+                                  )}
+                                </>
                               ))}
                             </div>
                           )}
