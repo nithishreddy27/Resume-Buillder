@@ -13,8 +13,7 @@ import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
 export default function Blue() {
   const user = useUser();
-  const { details, setdetails, setdemo, demo} =
-    useContext(ResumeContext);
+  const { details, setdetails, setdemo, demo } = useContext(ResumeContext);
   const [change, setchange] = useState(false);
   const [colorpalette, setcolorpalette] = useState(false);
   //to add email fname and lname
@@ -40,26 +39,19 @@ export default function Blue() {
 
   //PDF document
 
-  function printDocument() {
-    console.log("inside");
-    // var input = document.getElementById('smallResume');
-    var input;
-    if (open == "closed") {
-      input = document.getElementById("smallResume");
-    } else {
-      input = document.getElementById("largeResume");
-      console.log("om");
-    }
-    console.log(input);
-    html2canvas(input, { useCORS: true }).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "mm", "a4");
-      var width = pdf.internal.pageSize.getWidth();
-      var height = pdf.internal.pageSize.getHeight();
-      pdf.addImage(imgData, "JPEG", 0, 0, width, height);
-      pdf.save("download.pdf");
-      // pdf.output('dataurlnewwindow');
-    });
+  function lprintDocument() {
+    const printContents = document.getElementById("largeResume").innerHTML;
+    const originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+  }
+  function sprintDocument() {
+    const printContents = document.getElementById("smallResume").innerHTML;
+    const originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
   }
   useEffect(() => {
     // document.getElementById("largeResume").style.color = "red"
@@ -86,12 +78,10 @@ export default function Blue() {
             <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-slate-700 to-slate-800">
               <div className="flex border border-white">
                 <div className="m-3 flex grow">
-                  <div className="flex mt-1">
-                    
-                  </div>
+                  <div className="flex mt-1"></div>
                 </div>
                 <div className="m-3 flex">
-                <button
+                  <button
                     className="text-white border border-white p-2 rounded-md"
                     onClick={() => {
                       setcolorpalette(!colorpalette);
@@ -99,7 +89,11 @@ export default function Blue() {
                   >
                     COLOR
                   </button>
-                  <div className={`${colorpalette ? "block" : "hidden"} mt-[50px] ml-[-50px] lg:ml-[50px] absolute z-40`}>
+                  <div
+                    className={`${
+                      colorpalette ? "block" : "hidden"
+                    } mt-[50px] ml-[-50px] lg:ml-[50px] absolute z-40`}
+                  >
                     <ColorPicker
                       width={300}
                       height={100}
@@ -111,7 +105,7 @@ export default function Blue() {
                     ;
                   </div>
                   <button
-                    onClick={printDocument}
+                    onClick={sprintDocument}
                     className="cursor-pointer text-white border border-white p-1 mx-1 rounded"
                   >
                     PRINT
@@ -366,9 +360,10 @@ export default function Blue() {
                 </div>
                 <style jsx>
                   {`
-                  .heading{
-                    color:${color.hex};
-                  }`}
+                    .heading {
+                      color: ${color.hex};
+                    }
+                  `}
                 </style>
               </div>
             </div>
@@ -388,29 +383,33 @@ export default function Blue() {
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
                 <div className="flex">
                   <div className="m-5 grow">
-                  <button
-                    className="text-white border border-white p-2 rounded-md"
-                    onClick={() => {
-                      setcolorpalette(!colorpalette);
-                    }}
-                  >
-                    COLOR
-                  </button>
-                  <div className={`${colorpalette ? "block" : "hidden"} ml-[50px] absolute z-40`}>
-                    <ColorPicker
-                      width={300}
-                      height={100}
-                      color={color}
-                      onChange={setColor}
-                      hideHSV
-                      dark
-                    />
-                    ;
-                  </div>
+                    <button
+                      className="text-white border border-white p-2 rounded-md"
+                      onClick={() => {
+                        setcolorpalette(!colorpalette);
+                      }}
+                    >
+                      COLOR
+                    </button>
+                    <div
+                      className={`${
+                        colorpalette ? "block" : "hidden"
+                      } ml-[50px] absolute z-40`}
+                    >
+                      <ColorPicker
+                        width={300}
+                        height={100}
+                        color={color}
+                        onChange={setColor}
+                        hideHSV
+                        dark
+                      />
+                      ;
+                    </div>
                   </div>
                   <div className="m-5">
                     <button
-                      onClick={printDocument}
+                      onClick={lprintDocument}
                       className="cursor-pointer text-white mx-5 border border-white p-2 rounded"
                     >
                       PRINT
@@ -571,7 +570,7 @@ export default function Blue() {
                       <h1 className="ml-[58%] my-2 tracking-widest">
                         {details.personal.role}
                       </h1>
-                      <div className="absolute mt-10  left-[330px] w-[57%] h-[100%]">
+                      <div className="absolute mt-10  left-[330px] w-[57%] h-[100%] text-black">
                         {details.personal.objective != 0 && (
                           <>
                             <h1 className="text-xl font-bold tracking-[1px] heading">
@@ -660,9 +659,10 @@ export default function Blue() {
                   </div>
                   <style jsx>
                     {`
-                    .heading{
-                      color:${color.hex};
-                    }`}
+                      .heading {
+                        color: ${color.hex};
+                      }
+                    `}
                   </style>
                 </div>
               </div>
