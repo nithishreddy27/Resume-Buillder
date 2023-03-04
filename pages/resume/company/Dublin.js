@@ -9,12 +9,14 @@ import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-
+import ReactDOM from "react-dom";
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/lib/css/styles.css";
 export default function Dublin() {
   const user = useUser();
-  const { details, setdetails, setdemo, demo, color, setcolor } =
-    useContext(ResumeContext);
+  const { details, setdetails, setdemo, demo } = useContext(ResumeContext);
   const [change, setchange] = useState(false);
+  const [colorpalette, setcolorpalette] = useState(false);
 
   //to add email fname and lname
   useEffect(() => {
@@ -54,6 +56,12 @@ export default function Dublin() {
     document.body.innerHTML = originalContents;
   }
 
+  // document.getElementById("smallResume")
+
+  useEffect(() => {
+    // document.getElementById("largeResume").style.color = "red"
+  }, [0]);
+
   //responsiveness
   function toggleResume() {
     if (open == "semiopen") {
@@ -63,30 +71,57 @@ export default function Dublin() {
     }
   }
 
+  const [color, setColor] = useColor("hex", "#121212");
+  useEffect(() => {
+    console.log("color:", color);
+    // settextColor()
+  }, [color]);
+
   return (
     <>
       {details && user && (
         <div className="flex">
+          {/* <div>
+            <ColorPicker
+              width={456}
+              height={228}
+              color={color}
+              onChange={setColor}
+              hideHSV
+              dark
+            />
+            ;
+          </div> */}
           {open == "closed" && (
-            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-gray-400 to-gray-600">
+            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-slate-700 to-slate-800">
               <div className="flex border border-white">
                 <div className="m-3 flex grow">
-                  <div className="flex mt-1">
-                    <div
-                      className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
-                      onClick={() => {
-                        setcolor("red");
-                      }}
-                    ></div>
-                    <div
-                      className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
-                      onClick={() => {
-                        setcolor("gray");
-                      }}
-                    ></div>
-                  </div>
+                  <div className="flex mt-1"></div>
                 </div>
                 <div className="m-3 flex">
+                  <button
+                    className="text-white border border-white p-2 rounded-md"
+                    onClick={() => {
+                      setcolorpalette(!colorpalette);
+                    }}
+                  >
+                    COLOR
+                  </button>
+                  <div
+                    className={`${
+                      colorpalette ? "block" : "hidden"
+                    } mt-[50px] ml-[-50px] lg:ml-[50px] absolute z-40`}
+                  >
+                    <ColorPicker
+                      width={300}
+                      height={100}
+                      color={color}
+                      onChange={setColor}
+                      hideHSV
+                      dark
+                    />
+                    ;
+                  </div>
                   <button
                     onClick={sprintDocument}
                     className="cursor-pointer text-white border border-white p-1 mx-1 rounded"
@@ -111,8 +146,9 @@ export default function Dublin() {
               <div className="flex justify-center ">
                 {/* Small Resume */}
                 <div
-                  className={`bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row`}
+                  className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-300px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row"
                   id="smallResume"
+                  // style={{ color: color.hex }}
                 >
                   <div className="flex">
                     <div className="first w-[85mm] h-[297mm] bg-emerald-700">
@@ -343,6 +379,13 @@ export default function Dublin() {
                     </div>
                   </div>
                 </div>
+                <style jsx>
+                  {`
+                    .heading {
+                      color: ${color.hex};
+                    }
+                  `}
+                </style>
               </div>
             </div>
           )}
@@ -360,20 +403,29 @@ export default function Dublin() {
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
                 <div className="flex">
-                  <div className="m-5 flex grow">
-                    <div className="flex mt-1">
-                      <div
-                        className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
-                        onClick={() => {
-                          setcolor("red");
-                        }}
-                      ></div>
-                      <div
-                        className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
-                        onClick={() => {
-                          setcolor("gray");
-                        }}
-                      ></div>
+                  <div className="m-5 grow">
+                    <button
+                      className="text-white border border-white p-2 rounded-md"
+                      onClick={() => {
+                        setcolorpalette(!colorpalette);
+                      }}
+                    >
+                      COLOR
+                    </button>
+                    <div
+                      className={`${
+                        colorpalette ? "block" : "hidden"
+                      } ml-[50px] absolute z-40`}
+                    >
+                      <ColorPicker
+                        width={300}
+                        height={100}
+                        color={color}
+                        onChange={setColor}
+                        hideHSV
+                        dark
+                      />
+                      ;
                     </div>
                   </div>
                   <div className="m-5">
@@ -392,6 +444,7 @@ export default function Dublin() {
                     </button>
                   </div>
                 </div>
+
                 <div className="flex justify-center ">
                   {/* large resume */}
 

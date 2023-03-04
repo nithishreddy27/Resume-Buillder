@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { demoResume } from "../../../lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import ResumeContext from "../../../context/ResumeContext";
