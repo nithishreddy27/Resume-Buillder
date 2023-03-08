@@ -39,26 +39,19 @@ export default function Dynamic() {
 
   //PDF document
 
-  function printDocument() {
-    console.log("inside");
-    // var input = document.getElementById('smallResume');
-    var input;
-    if (open == "closed") {
-      input = document.getElementById("smallResume");
-    } else {
-      input = document.getElementById("largeResume");
-      console.log("om");
-    }
-    console.log(input);
-    html2canvas(input).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "mm", "a4");
-      var width = pdf.internal.pageSize.getWidth();
-      var height = pdf.internal.pageSize.getHeight();
-      pdf.addImage(imgData, "JPEG", 0, 0, width, height);
-      pdf.save("download.pdf");
-      // pdf.output('dataurlnewwindow');
-    });
+  function lprintDocument() {
+    const printContents = document.getElementById("largeResume").innerHTML;
+    const originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+  }
+  function sprintDocument() {
+    const printContents = document.getElementById("smallResume").innerHTML;
+    const originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
   }
 
   //responsiveness
@@ -85,7 +78,7 @@ export default function Dynamic() {
               <div className="flex justify-center ">
                 <div>
                   <button
-                    onClick={printDocument}
+                    onClick={sprintDocument}
                     className="cursor-pointer text-white mx-5"
                   >
                     Print
@@ -346,11 +339,11 @@ export default function Dynamic() {
               </div>
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
-              <div className="flex">
-                    <div className="m-5 flex grow">
+                <div className="flex">
+                  <div className="m-5 flex grow">
                     <div className="flex mt-1">
-                        <div className="w-8 h-8 border-[3px] border-white bg-red-500 mx-1"></div>
-                        <div className="w-8 h-8 border-[3px] border-white bg-gray-500"></div>
+                      <div className="w-8 h-8 border-[3px] border-white bg-red-500 mx-1"></div>
+                      <div className="w-8 h-8 border-[3px] border-white bg-gray-500"></div>
                     </div>
                     <button
                       className="border border-white text-white
@@ -361,10 +354,10 @@ export default function Dynamic() {
                     >
                       COLOR
                     </button>
-                    </div>
-                    <div className="m-5">
+                  </div>
+                  <div className="m-5">
                     <button
-                      onClick={printDocument}
+                      onClick={lprintDocument}
                       className="cursor-pointer text-white mx-5 border border-white p-2 rounded"
                     >
                       PRINT
@@ -376,13 +369,11 @@ export default function Dynamic() {
                     >
                       LOAD
                     </button>
-                    </div>
+                  </div>
                 </div>
-                  
+
                 <div className="flex justify-center ">
                   {/* large resume */}
-                  
-                  
 
                   <div
                     className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-170px] xl:scale-[0.9] xl:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row"
