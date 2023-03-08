@@ -3,7 +3,7 @@ import { demoResume } from "../../../lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import ResumeContext from "../../../context/ResumeContext";
-import { useFieldArray, useForm } from "react-hook-form";
+import { useFieldArray, useForm } from "react-hook-form"; 
 import { useRouter } from "next/router";
 import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
