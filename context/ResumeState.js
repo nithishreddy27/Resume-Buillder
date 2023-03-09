@@ -8,6 +8,7 @@ const ResumeState = (props) => {
   const router = useRouter();
 
   var pro = {
+    id:"test",
     personal: {
       firstName: "FNAME",
       lastName: "LANME",
@@ -332,8 +333,11 @@ const ResumeState = (props) => {
   const [demo, setdemo] = useState(false);
 
   const [details, setdetails] = useState(pro);
-
-  const user = useUser();
+  const [id, setid] = useState()
+  const [change, setchange] = useState(false)
+  const [first, setFirst] = useState(false)
+  const [index, setindex] = useState()
+  const [email, setemail] = useState()
 
   useEffect(() => {
     if (demo == true) {
@@ -344,51 +348,124 @@ const ResumeState = (props) => {
     }
   }, [demo]);
 
-  useEffect(() => {
-    if (user) {
-      const e = user.email;
-      console.log("email", e);
-      console.log("demo", demo);
-      fetch("http://localhost:3000/api/Resume/getResume", {
-        method: "POST",
+  // useEffect(() => {
+  //   if (user && id) {
+  //     const e = user.email;
+  //     console.log("email", e);
+  //     console.log("demo", demo);
+  //     fetch("http://localhost:3000/api/Resume/getResume", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({ email: e ,resumeId:id}),
+  //     })
+  //       .then((data) => {
+  //         // console.log("in data", data);
+  //         return data.json();
+  //       })
+  //       .then((resume) => {
+  //         // console.log("in get data", resume.resume);
+  //         if (resume.resume) {
+  //           setdetails(resume.resume);
+  //         }
+  //       });
+
+  //     if (demo == false) {
+  //       setdetails({
+  //         ...details,
+  //         personal: {
+  //           ...details.personal,
+  //           email: user.email,
+  //           firstName: user.profile.firstName,
+  //           lastName: user.profile.lastName,
+  //         },
+  //       });
+  //     }
+  //   }
+  // }, [user,id]);
+
+
+
+  // useEffect(()=>{
+  //   if(id && first && change){
+  //     // console.log("id email",details.personal.email)
+  //     const body={
+  //       resumeId:id,
+  //       details:details
+  //     }
+  //     fetch(`http://localhost:3000/api/testResume/getResume`, {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body:JSON.stringify(body)
+  //     })
+  //     .then((data)=>{
+  //       return data.json();
+  //     })
+  //     .then((resume)=>{
+  //       console.log("in",resume)
+  //       if(resume.done){
+  //         setdetails(resume.done)
+  //       }
+  //       else{
+  //         setdetails(pro)
+  //       }
+  //     })
+  //   }
+  // },[id,first,change])
+
+
+  useEffect(()=>{
+    if(index && email){
+      console.log("index",index)
+      fetch("http://localhost:3000/api/testResume",{
+        method: "GET",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: e }),
       })
-        .then((data) => {
-          // console.log("in data", data);
-          return data.json();
-        })
-        .then((resume) => {
-          // console.log("in get data", resume.resume);
-          if (resume.resume) {
-            setdetails(resume.resume);
-          }
-        });
+      .then((data)=>{
+        return data.json()
+      })
+      .then((response)=>{
 
-      if (demo == false) {
-        setdetails({
-          ...details,
-          personal: {
-            ...details.personal,
-            email: user.email,
-            firstName: user.profile.firstName,
-            lastName: user.profile.lastName,
-          },
-        });
-      }
+        response.map((user)=>{
+          if(user.email == email){
+            // console.log(user);
+            user.resume.map((resume,ind)=>{
+                // console.log("resume",resume);
+                if(index == ind){
+                  // console.log("res",resume)
+                  setdetails(resume)
+                }
+            })  
+
+          }
+        })
+
+      })
     }
-  }, [user]);
+  },[index ,email])
+
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/Resume/updateResume", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(details),
-    });
+    setchange(true)
+    if(id){
+      // console.log("details changed",id)
+      const body={
+        resumeId:index,
+        details:details
+      }
+      fetch("http://localhost:3000/api/testResume", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      });
+    }
   }, [details]);
 
+
+
+
+
   return (
-    <ResumeContext.Provider value={{ details, setdetails, setdemo, demo }}>
+    <ResumeContext.Provider value={{ details, setdetails, setdemo, demo,id,setid,setFirst,setindex,setemail}}>
       {props.children}
     </ResumeContext.Provider>
   );

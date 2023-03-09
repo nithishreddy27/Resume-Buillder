@@ -168,7 +168,7 @@ export default function Dynamic() {
                         CONTACT
                       </h1>
                       <hr className="h-[2px] bg-black my-1" />
-                      {
+                      { 
                         <>
                           <div className="flex">
                             <span>
@@ -224,7 +224,9 @@ export default function Dynamic() {
                         </>
                       }
                     </div>
+                    
                     {details.skills.length != 0 && (
+                      <>
                       <div className="mt-4">
                         <h1 className="text-2xl font-semibold tracking-[2px] heading">
                           SKILLS
@@ -240,6 +242,7 @@ export default function Dynamic() {
                           </>
                         ))}
                       </div>
+                        </>
                     )}
 
                     {/* <div className='mt-4'>
