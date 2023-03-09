@@ -500,27 +500,21 @@ export default function Berlin() {
 
                           {details.skills.length != 0 && (
                             <div className="">
-                              {(scount = details.skills.length)}
-                              {scount != 0 && (
+                              <h1 className="text-2xl font-semibold pt-2">
+                                SKILLS
+                              </h1>
+                              <hr className="w-[15%] h-1 bg-black"></hr>
+                              {details.skills.map((item) => (
                                 <>
-                                  <h1 className="text-2xl font-semibold pt-2">
-                                    SKILLS
-                                  </h1>
-                                  <hr className="w-[15%] h-1 bg-black"></hr>
-                                  {details.skills.map((item) => (
-                                    <>
-                                      {item.enabled == true && (
-                                        <div key={item.name}>
-                                          {(scount = scount - 1)}
-                                          <h1 className="text-sm text-gray-800 pt-2">
-                                            {item.name}
-                                          </h1>
-                                        </div>
-                                      )}
-                                    </>
-                                  ))}
+                                  {item.enabled == true && (
+                                    <div key={item.name}>
+                                      <h1 className="text-sm text-gray-800 pt-2">
+                                        {item.name}
+                                      </h1>
+                                    </div>
+                                  )}
                                 </>
-                              )}
+                              ))}
                             </div>
                           )}
                           {details.awards.length != 0 && (
