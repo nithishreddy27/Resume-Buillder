@@ -16,7 +16,7 @@ function boxes() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 w-11/15 mx-auto mt-4 pt-4">
+        <div className="grid lg:grid-cols-3  md:grid-cols-2 sm:grid-cols-1 gap-4 w-11/15 mx-auto place-items-center mt-4 pt-4">
           <div className=" relative cursor-pointer  ">
             <div className="box relative my-7 mx-12 h-[90mm] w-[70mm] border-4 border-dashed border-gray-300">
               <div className="text-gray-500 text-center my-[58%] text-3xl font-semibold">
@@ -49,7 +49,6 @@ function boxes() {
 
 <div class="relative cursor-pointer">
   <div class="w-[66mm] text-white text-sm font-medium absolute text-right">
-    <span class="bg-orange-600 p-1 px-3 absolute rounded-t-lg">Public</span>
   </div>
   <div class="box relative my-7 mx-12 h-[90mm] w-[70mm] bg-black border-[4px] border-orange-500">
     <span>
@@ -63,7 +62,7 @@ function boxes() {
 
 <div class="relative cursor-pointer">
   <div class="w-[66mm] text-white text-sm font-medium absolute text-right">
-    <span class="bg-orange-600 p-1 px-3 absolute rounded-t-lg">Public</span>
+    
   </div>
   <div class="box relative my-7 mx-12 h-[90mm] w-[70mm] bg-black border-[4px] border-orange-500">
     <span>
