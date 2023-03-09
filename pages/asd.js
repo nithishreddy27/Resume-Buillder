@@ -21,7 +21,7 @@ export default function AddDetails() {
     async function checkCollege(){
       // console.log("inside college");  
       const clgid=document.getElementById("clgid").value
-      console.log(clgid)
+      // console.log(clgid)
       if(clgid==""){
         setmess("Invalid Paraphrase")
       }

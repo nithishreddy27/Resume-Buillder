@@ -62,7 +62,7 @@ export default function Internship() {
   }
 
   function deleteInternship(index) {
-    console.log("network", index);
+    // console.log("network", index);
     const arr = [];
     details.work.map((item, i) => {
       if (i != index) arr.push(item);

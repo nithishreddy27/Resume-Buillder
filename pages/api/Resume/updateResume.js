@@ -9,17 +9,26 @@ export default async function updateResume(req,res){
 
     // console.log("req.body.personal.email",req.body.personal.email)
     try{
-        const data=await UserResume.findOne({"personal.email":`${req.body.personal.email}`})
+        const data=await UserResume.findOne({"email":`${req.body.personal.email}`})
         // console.log(data)
         if(data){
             // console.log("found")
             // console.log("inside id  f");
-        var up = await UserResume.findOneAndUpdate({"personal.email":`${req.body.personal.email}`},{$set:req.body},{new:true})
+
+        const resumedata={
+            email:req.body.personal.email,
+            resume:req.body
+        }
+        var up = await UserResume.findOneAndUpdate({"email":`${req.body.personal.email}`},{$set:resumedata},{new:true})
         // console.log("after",up)
     }
     else{
         // console.log("not found")
-        await UserResume.create(req.body) 
+        const resumedata={
+            email:req.body.personal.email,
+            resume:req.body
+        }
+        await UserResume.create(resumedata) 
     }
     
     // console.log("updated",d)
