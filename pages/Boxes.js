@@ -1,5 +1,7 @@
 import React from "react";
 import { TbPlus } from "react-icons/tb";
+import {HiDotsVertical} from "react-icons/hi";
+import {FiExternalLink} from "react-icons/Fi"
 function boxes() {
   return (
     <div>
@@ -30,13 +32,15 @@ function boxes() {
   <div class="w-[66mm] text-white text-sm font-medium absolute text-right">
     <span class="bg-orange-600 p-1 px-3 absolute rounded-t-lg">Public</span>
   </div>
-  <div class="box relative my-7 mx-12 h-[90mm] w-[70mm] bg-black border-[4px] border-orange-500">
+  <div class="box relative my-7 mx-12 h-[90mm] w-[70mm] bg-black border-[4px] rounded-lg border-orange-500">
     <span>
       <img class="w-full h-full object-cover object-center opacity-60 hover:opacity-40" src="https://www.provast.io/_next/image?url=https%3A%2F%2Fwww.callcentrehelper.com%2Fimages%2Fstories%2F2022%2F01%2Fhands-holding-cvs.gif&w=2048&q=75" />
     </span>
-    <span class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-2xl font-bold whitespace-nowrap transition-all duration-500">
-      resume test
+    <span class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-3xl font-bold whitespace-nowrap transition-all duration-500">
+      RESUME TEST
     </span>
+    <span><HiDotsVertical/></span>
+    <span><FiExternalLink/></span>
   </div>
 </div>
 
@@ -50,7 +54,7 @@ function boxes() {
 <div class="relative cursor-pointer">
   <div class="w-[66mm] text-white text-sm font-medium absolute text-right">
   </div>
-  <div class="box relative my-7 mx-12 h-[90mm] w-[70mm] bg-black border-[4px] border-orange-500">
+  <div class="box relative my-7 mx-12 h-[90mm] w-[70mm] bg-black border-[4px] rounded-lg">
     <span>
       <img class="w-full h-full object-cover object-center opacity-60 hover:opacity-40" src="https://www.provast.io/_next/image?url=https%3A%2F%2Fwww.callcentrehelper.com%2Fimages%2Fstories%2F2022%2F01%2Fhands-holding-cvs.gif&w=2048&q=75" />
     </span>
@@ -64,7 +68,7 @@ function boxes() {
   <div class="w-[66mm] text-white text-sm font-medium absolute text-right">
     
   </div>
-  <div class="box relative my-7 mx-12 h-[90mm] w-[70mm] bg-black border-[4px] border-orange-500">
+  <div class="box relative my-7 mx-12 h-[90mm] w-[70mm] bg-black border-[4px] rounded-lg ">
     <span>
       <img class="w-full h-full object-cover object-center opacity-60 hover:opacity-40" src="https://www.provast.io/_next/image?url=https%3A%2F%2Fwww.callcentrehelper.com%2Fimages%2Fstories%2F2022%2F01%2Fhands-holding-cvs.gif&w=2048&q=75" />
     </span>
