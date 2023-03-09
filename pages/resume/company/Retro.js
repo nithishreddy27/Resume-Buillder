@@ -9,12 +9,14 @@ import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-
+import ReactDOM from "react-dom";
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/lib/css/styles.css";
 export default function Retro() {
   const user = useUser();
-  const { details, setdetails, setdemo, demo, color, setcolor } =
-    useContext(ResumeContext);
+  const { details, setdetails, setdemo, demo } = useContext(ResumeContext);
   const [change, setchange] = useState(false);
+  const [colorpalette, setcolorpalette] = useState(false);
 
   //to add email fname and lname
   useEffect(() => {
@@ -39,27 +41,27 @@ export default function Retro() {
 
   //PDF document
 
-  function printDocument() {
-    console.log("inside");
-    // var input = document.getElementById('smallResume');
-    var input;
-    if (open == "closed") {
-      input = document.getElementById("smallResume");
-    } else {
-      input = document.getElementById("largeResume");
-      console.log("om");
-    }
-    console.log(input);
-    html2canvas(input).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "mm", "a4");
-      var width = pdf.internal.pageSize.getWidth();
-      var height = pdf.internal.pageSize.getHeight();
-      pdf.addImage(imgData, "JPEG", 0, 0, width, height);
-      pdf.save("download.pdf");
-      // pdf.output('dataurlnewwindow');
-    });
+  
+  function lprintDocument() {
+    const printContents = document.getElementById("largeResume").innerHTML;
+    const originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
   }
+  function sprintDocument() {
+    const printContents = document.getElementById("smallResume").innerHTML;
+    const originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+  }
+
+  // document.getElementById("smallResume")
+
+  useEffect(() => {
+    // document.getElementById("largeResume").style.color = "red"
+  }, [0]);
 
   //responsiveness
   function toggleResume() {
@@ -70,32 +72,55 @@ export default function Retro() {
     }
   }
 
+  const [color, setColor] = useColor("hex", "#121212");
+  useEffect(() => {
+    console.log("color:", color);
+    // settextColor()
+  }, [color]);
+
   return (
     <>
       {details && user && (
         <div className="flex">
+          {/* <div>
+            <ColorPicker
+              width={456}
+              height={228}
+              color={color}
+              onChange={setColor}
+              hideHSV
+              dark
+            />
+            ;
+          </div> */}
           {open == "closed" && (
             <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-slate-700 to-slate-800">
               <div className="flex border border-white">
                 <div className="m-3 flex grow">
-                  <div className="flex mt-1">
-                    <div
-                      className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
-                      onClick={() => {
-                        setcolor("red");
-                      }}
-                    ></div>
-                    <div
-                      className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
-                      onClick={() => {
-                        setcolor("gray");
-                      }}
-                    ></div>
-                  </div>
+                  <div className="flex mt-1"></div>
                 </div>
                 <div className="m-3 flex">
+                <button
+                    className="text-white border border-white p-2 rounded-md"
+                    onClick={() => {
+                      setcolorpalette(!colorpalette);
+                    }}
+                  >
+                    COLOR
+                  </button>
+                  <div className={`${colorpalette ? "block" : "hidden"} mt-[50px] ml-[-50px] lg:ml-[50px] absolute z-40`}>
+                    <ColorPicker
+                      width={300}
+                      height={100}
+                      color={color}
+                      onChange={setColor}
+                      hideHSV
+                      dark
+                    />
+                    ;
+                  </div>
                   <button
-                    onClick={printDocument}
+                    onClick={sprintDocument}
                     className="cursor-pointer text-white border border-white p-1 mx-1 rounded"
                   >
                     PRINT
@@ -118,8 +143,9 @@ export default function Retro() {
               <div className="flex justify-center ">
                 {/* Small Resume */}
                 <div
-                  className={`bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-300px] max-h-[297mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row`}
+                  className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-300px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row"
                   id="smallResume"
+                  // style={{ color: color.hex }}
                 >
                    <div className=" w-[210mm] ">
                  
@@ -146,7 +172,7 @@ export default function Retro() {
     
       <div className=" m-3 mt-2 right-0 w-full    ">
         
-          <p className=" text-black font-bold text-xl p-1 pt-2 pl-4 tracking-wide  mt-3 ">PROFILE</p>
+          <p className=" text-black font-bold text-xl p-1 pt-2 pl-4 tracking-wide  mt-3 header">PROFILE</p>
           <p className="text-sm text-black p-3 pl-2 pt-2">{details.personal.objective}</p>
         
         </div>
@@ -168,7 +194,7 @@ export default function Retro() {
       <div className="font-col">
       {details.skills.length != 0 && (
         <div className="p-2 ">
-          <p className="text-black text-lg font-bold tracking-wider pb-3">
+          <p className="text-black text-lg font-bold tracking-wider pb-3 header">
             SKILLS
           </p>
           {details.skills.map((item) => (
@@ -186,7 +212,7 @@ export default function Retro() {
 
        {details.languages.length != 0 && (
          <div className="text-lg pb-2">
-          <p className="text-black font-bold tracking-wider  p-1 px-3 py-1">
+          <p className="text-black font-bold tracking-wider  p-1 px-3 py-1 header">
             LANGUAGES
           </p>
           {details.languages.map((item) => (
@@ -203,7 +229,7 @@ export default function Retro() {
 
       {details.awards.length != 0 && (
         <div className="pt-2 pb-2  ">
-          <p className="text-black font-bold tracking-wider  p-1 mx-2 ">
+          <p className="text-black font-bold tracking-wider  p-1 mx-2 header">
             AWARDS
           </p>
           {details.awards.map((item) => (
@@ -221,7 +247,7 @@ export default function Retro() {
 
        {details.hobbies.length != 0 && (
          <div className="text-lg pb-2">
-          <p className="text-black font-bold tracking-wider  p-1 px-3 py-1">
+          <p className="text-black font-bold tracking-wider  p-1 px-3 py-1 header">
             HOBBIES
           </p>
           {details.hobbies.map((item) => (
@@ -237,7 +263,7 @@ export default function Retro() {
 
       {details.projects.length != 0 && (
         <div className=" pt-1 pb-3 ">
-          <p className="text-black font-bold tracking-wider  p-1 px-2 pt-3   ">
+          <p className="text-black font-bold tracking-wider  p-1 px-2 pt-3 header  ">
           PROJECTS
           </p>
           
@@ -272,7 +298,7 @@ export default function Retro() {
       <div className="w-[70%]">
       {details.education.length != 0 && (  
         <div className="pl-2 ">
-          <p className=" text-black font-bold text-xl tracking-wide  p-3  mt-3 ">
+          <p className=" text-black font-bold text-xl tracking-wide  p-3  mt-3 header ">
             EDUCATION
           </p>
           <hr></hr>
@@ -295,7 +321,7 @@ export default function Retro() {
 
       {details.work.length != 0 && (  
         <div className="pl-2 ">
-          <p className=" text-black font-bold text-xl tracking-wide  p-3  mt-3 ">
+          <p className=" text-black font-bold text-xl tracking-wide  p-3  mt-3 header">
             INTERNSHIP
           </p>
           <hr></hr>
@@ -319,7 +345,7 @@ export default function Retro() {
 
       {details.certifications.length != 0 && (
         <div>
-          <p className=" text-black font-bold text-xl tracking-wide ml-3 p-1  mt-1 ">
+          <p className=" text-black font-bold text-xl tracking-wide ml-3 p-1  mt-1 header">
             CERTIFICATION
           </p>
           <hr className="m-2"></hr>
@@ -365,6 +391,12 @@ export default function Retro() {
     </div>
     </div>
                 </div>
+                <style jsx>
+                  {`
+                  .heading{
+                    color:${color.hex};
+                  }`}
+                </style>
               </div>
             </div>
           )}
@@ -382,25 +414,30 @@ export default function Retro() {
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
                 <div className="flex">
-                  <div className="m-5 flex grow">
-                    <div className="flex mt-1">
-                      <div
-                        className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
-                        onClick={() => {
-                          setcolor("red");
-                        }}
-                      ></div>
-                      <div
-                        className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
-                        onClick={() => {
-                          setcolor("gray");
-                        }}
-                      ></div>
-                    </div>
+                  <div className="m-5 grow">
+                  <button
+                    className="text-white border border-white p-2 rounded-md"
+                    onClick={() => {
+                      setcolorpalette(!colorpalette);
+                    }}
+                  >
+                    COLOR
+                  </button>
+                  <div className={`${colorpalette ? "block" : "hidden"} ml-[50px] absolute z-40`}>
+                    <ColorPicker
+                      width={300}
+                      height={100}
+                      color={color}
+                      onChange={setColor}
+                      hideHSV
+                      dark
+                    />
+                    ;
+                  </div>
                   </div>
                   <div className="m-5">
                     <button
-                      onClick={printDocument}
+                      onClick={lprintDocument}
                       className="cursor-pointer text-white mx-5 border border-white p-2 rounded"
                     >
                       PRINT
@@ -413,14 +450,17 @@ export default function Retro() {
                       LOAD
                     </button>
                   </div>
+                  
                 </div>
 
                 <div className="flex justify-center ">
                   {/* large resume */}
 
                   <div
-                    className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-100px] xl:scale-[0.9] xl:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[297mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row"
+                    className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row"
+                    
                     id="largeResume"
+                    // style={{ color: color.hex }}
                   >
                     <div className=" w-[100%] ">
                    <div className="flex " >
@@ -446,7 +486,7 @@ export default function Retro() {
     
       <div className=" m-3 mt-2 right-0 w-full    ">
         
-          <p className=" text-black font-bold text-xl p-1 pt-2 pl-4 tracking-wide  mt-3 ">PROFILE</p>
+          <p className=" text-black font-bold text-xl p-1 pt-2 pl-4 tracking-wide  mt-3 header">PROFILE</p>
           <p className="text-sm text-black p-3 pl-2 pt-2">{details.personal.objective}</p>
         
         </div>
@@ -467,7 +507,7 @@ export default function Retro() {
       <div className="font-col">
       {details.skills.length != 0 && (
         <div className="p-2 ">
-          <p className="text-black text-lg font-bold tracking-wider pb-3">
+          <p className="text-black text-lg font-bold tracking-wider pb-3 header">
             SKILLS
           </p>
           {details.skills.map((item) => (
@@ -485,7 +525,7 @@ export default function Retro() {
 
        {details.languages.length != 0 && (
          <div className="text-lg pb-2">
-          <p className="text-black font-bold tracking-wider  p-1 px-3 py-1">
+          <p className="text-black font-bold tracking-wider  p-1 px-3 py-1 header">
             LANGUAGES
           </p>
           {details.languages.map((item) => (
@@ -502,7 +542,7 @@ export default function Retro() {
 
       {details.awards.length != 0 && (
         <div className="pt-2 pb-2  ">
-          <p className="text-black font-bold tracking-wider  p-1 mx-2 ">
+          <p className="text-black font-bold tracking-wider  p-1 mx-2 header">
             AWARDS
           </p>
           {details.awards.map((item) => (
@@ -520,7 +560,7 @@ export default function Retro() {
 
        {details.hobbies.length != 0 && (
          <div className="text-lg pb-2">
-          <p className="text-black font-bold tracking-wider  p-1 px-3 py-1">
+          <p className="text-black font-bold tracking-wider  p-1 px-3 py-1 header">
             HOBBIES
           </p>
           {details.hobbies.map((item) => (
@@ -536,7 +576,7 @@ export default function Retro() {
 
       {details.projects.length != 0 && (
         <div className=" pt-1 pb-3 ">
-          <p className="text-black font-bold tracking-wider  p-1 px-2 pt-3   ">
+          <p className="text-black font-bold tracking-wider  p-1 px-2 pt-3 header  ">
           PROJECTS
           </p>
           
@@ -571,7 +611,7 @@ export default function Retro() {
       <div className="w-[70%]">
       {details.education.length != 0 && (  
         <div className="pl-2 ">
-          <p className=" text-black font-bold text-xl tracking-wide  p-3  mt-3 ">
+          <p className=" text-black font-bold text-xl tracking-wide  p-3  mt-3 header">
             EDUCATION
           </p>
           <hr></hr>
@@ -594,7 +634,7 @@ export default function Retro() {
 
       {details.work.length != 0 && (  
         <div className="pl-2 ">
-          <p className=" text-black font-bold text-xl tracking-wide  p-3  mt-3 ">
+          <p className=" text-black font-bold text-xl tracking-wide  p-3  mt-3 header ">
             INTERNSHIP
           </p>
           <hr></hr>
@@ -618,7 +658,7 @@ export default function Retro() {
 
       {details.certifications.length != 0 && (
         <div>
-          <p className=" text-black font-bold text-xl tracking-wide ml-3 p-1  mt-1 ">
+          <p className=" text-black font-bold text-xl tracking-wide ml-3 p-1  mt-1 header">
             CERTIFICATION
           </p>
           <hr className="m-2"></hr>
@@ -663,7 +703,13 @@ export default function Retro() {
       </div>
     </div>
     </div>
-
+                    <style jsx>
+                      {
+                        `.heading{
+                          color:${color.hex};
+                        }`
+                      }
+                    </style>
                   </div>
                 </div>
               </div>

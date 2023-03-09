@@ -25,6 +25,7 @@ export default function Projects() {
     from: "",
     to: "",
     summary: { data: "" },
+    enabled: true,
   });
   function addProjects(event) {
     event.preventDefault();
@@ -42,6 +43,7 @@ export default function Projects() {
       from: "",
       to: "",
       summary: { data: "" },
+      enabled: true,
     });
   }
   function deleteProjects(index) {
@@ -62,8 +64,42 @@ export default function Projects() {
           from: item.from,
           to: item.to,
           summary: { data: item.summary.data },
+          enabled: true,
         });
       }
+    });
+  }
+  function toggleProjects(index) {
+    setprojects(details.projects[index]);
+    const arr = [];
+    if (details.projects[index].enabled == true) {
+      details.projects.map((item, ind) => {
+        if (index == ind) {
+          item.enabled = false;
+          arr.push(item);
+        } else {
+          arr.push(item);
+        }
+      });
+      setdetails({ ...details, projects: arr });
+    } else {
+      details.projects.map((item, ind) => {
+        if (index == ind) {
+          item.enabled = true;
+          arr.push(item);
+        } else {
+          arr.push(item);
+        }
+      });
+      setdetails({ ...details, projects: arr });
+    }
+    setprojects({
+      name: "",
+      website: "",
+      from: "",
+      to: "",
+      summary: { data: "" },
+      enabled: true,
     });
   }
   return (
@@ -123,12 +159,13 @@ export default function Projects() {
                       <button onClick={() => updateProjects(index)}>
                         <FaEdit></FaEdit>
                       </button>
-                      
                     </button>
-                    <button className="text-xl mr-2" onClick={() => {
+                    <button
+                      className="text-xl mr-2"
+                      onClick={() => {
                         deleteProjects(index);
-                        
-                      }}>
+                      }}
+                    >
                       <AiFillDelete></AiFillDelete>
                     </button>
                     <div className="mt-1">
@@ -137,6 +174,11 @@ export default function Projects() {
                         type="checkbox"
                         role="switch"
                         id="flexSwitchCheckDefault"
+                        checked={item.enabled}
+                        defaultChecked
+                        onChange={() => {
+                          toggleProjects(index);
+                        }}
                       />
                     </div>
                   </div>
@@ -228,7 +270,10 @@ export default function Projects() {
               }}
             />
             {/* <button onClick={addInternship}>Submit</button> */}
-            <button type="submit" className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg">
+            <button
+              type="submit"
+              className="bg-orange-500 text-white hover:bg-orange-700 px-3 py-2 my-3 rounded-lg"
+            >
               Submit
             </button>
           </form>

@@ -39,26 +39,19 @@ export default function Dynamic() {
 
   //PDF document
 
-  function printDocument() {
-    console.log("inside");
-    // var input = document.getElementById('smallResume');
-    var input;
-    if (open == "closed") {
-      input = document.getElementById("smallResume");
-    } else {
-      input = document.getElementById("largeResume");
-      console.log("om");
-    }
-    console.log(input);
-    html2canvas(input).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "mm", "a4");
-      var width = pdf.internal.pageSize.getWidth();
-      var height = pdf.internal.pageSize.getHeight();
-      pdf.addImage(imgData, "JPEG", 0, 0, width, height);
-      pdf.save("download.pdf");
-      // pdf.output('dataurlnewwindow');
-    });
+  function lprintDocument() {
+    const printContents = document.getElementById("largeResume").innerHTML;
+    const originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+  }
+  function sprintDocument() {
+    const printContents = document.getElementById("smallResume").innerHTML;
+    const originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
   }
 
   //responsiveness
@@ -85,7 +78,7 @@ export default function Dynamic() {
               <div className="flex justify-center ">
                 <div>
                   <button
-                    onClick={printDocument}
+                    onClick={sprintDocument}
                     className="cursor-pointer text-white mx-5"
                   >
                     Print
@@ -126,7 +119,7 @@ export default function Dynamic() {
                         alt="ProfilePhoto"
                       />
                       <div className="border-b-2 border-white m-6 px-3 py-1">
-                        <h1 className="font-medium text-lg text-white ">
+                        <h1 className="font-medium text-lg text-white heading ">
                           CONTACT
                         </h1>
                         <div className="m-2">
@@ -140,7 +133,7 @@ export default function Dynamic() {
                       </div>
                       {details.skills.length && (
                         <div className="border-b-2 border-white m-6 px-3 py-1">
-                          <h1 className="font-medium text-lg text-white ">
+                          <h1 className="font-medium text-lg text-white heading ">
                             SKILLS
                           </h1>
                           {details.skills.map((item) => (
@@ -157,7 +150,7 @@ export default function Dynamic() {
                       )}
                       {details.social.length != 0 && (
                         <div className="border-b-2 border-white m-6 px-3 py-1">
-                          <h1 className="font-medium text-lg text-white ">
+                          <h1 className="font-medium text-lg text-white heading">
                             SOCIAL
                           </h1>
                           {details.social.map((item) => (
@@ -183,7 +176,7 @@ export default function Dynamic() {
                       <div>
                         {details.awards.length != 0 && (
                           <div className="border-b-2 border-white m-6 px-3 py-1">
-                            <h1 className="font-medium text-lg text-white ">
+                            <h1 className="font-medium text-lg text-white heading">
                               AWARDS
                             </h1>
                             {details.awards.map((item) => (
@@ -198,7 +191,7 @@ export default function Dynamic() {
                         )}
                         {details.hobbies.length != 0 && (
                           <div className="border-b-2 border-white m-6 px-3 py-1">
-                            <h1 className="font-medium text-lg text-white ">
+                            <h1 className="font-medium text-lg text-white heading">
                               HOBBIES
                             </h1>
                             {details.hobbies.map((item) => (
@@ -210,7 +203,7 @@ export default function Dynamic() {
                         )}
                         {details.languages.length != 0 && (
                           <div className="border-white m-6 px-3 py-1">
-                            <h1 className="font-medium text-lg text-white ">
+                            <h1 className="font-medium text-lg text-white heading">
                               LANGUAGES
                             </h1>
                             {details.languages.map((item) => (
@@ -225,7 +218,7 @@ export default function Dynamic() {
                     <div className="col-span-2">
                       <div className="pt-48">
                         <div className="border-b-4 border-black m-4 p-5">
-                          <h1 className="font-medium text-lg text-gray-600">
+                          <h1 className="font-medium text-lg text-gray-600 heading">
                             ABOUT ME
                           </h1>
                           <p className="text-sm font-medium pt-1">
@@ -235,7 +228,7 @@ export default function Dynamic() {
                       </div>
                       {details.work.length != 0 && (
                         <div className="border-b-4 border-black m-4 p-2">
-                          <h1 className="font-medium text-lg text-gray-600">
+                          <h1 className="font-medium text-lg text-gray-600 heading">
                             WORK EXPERIENCE
                           </h1>
                           {details.work.map((item) => (
@@ -255,7 +248,7 @@ export default function Dynamic() {
                       )}
                       {details.education.length != 0 && (
                         <div className="border-b-4 border-black m-4 p-2">
-                          <h1 className="font-medium text-lg text-gray-600">
+                          <h1 className="font-medium text-lg text-gray-600 heading">
                             EDUCATION
                           </h1>
                           {details.education.map((item) => (
@@ -275,7 +268,7 @@ export default function Dynamic() {
                       )}
                       {details.projects.length != 0 && (
                         <div className="border-b-4 border-black m-4 p-2">
-                          <h1 className="font-medium text-lg text-gray-600">
+                          <h1 className="font-medium text-lg text-gray-600 heading">
                             PROJECTS
                           </h1>
                           {details.projects.map((item) => (
@@ -293,7 +286,7 @@ export default function Dynamic() {
                       )}
                       {details.certifications.length != 0 && (
                         <div className="border-b-4 border-black m-4 p-2">
-                          <h1 className="font-medium text-lg text-gray-600">
+                          <h1 className="font-medium text-lg text-gray-600 heading">
                             CERTIFICATIONS
                           </h1>
                           {details.certifications.map((item) => (
@@ -311,7 +304,7 @@ export default function Dynamic() {
                       )}
                       {details.awards.length != 0 && (
                         <div className="border-black m-4 p-2">
-                          <h1 className="font-medium text-lg text-gray-600">
+                          <h1 className="font-medium text-lg text-gray-600 heading">
                             AWARDS
                           </h1>
                           {details.awards.map((item) => (
@@ -346,11 +339,11 @@ export default function Dynamic() {
               </div>
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
-              <div className="flex">
-                    <div className="m-5 flex grow">
+                <div className="flex">
+                  <div className="m-5 flex grow">
                     <div className="flex mt-1">
-                        <div className="w-8 h-8 border-[3px] border-white bg-red-500 mx-1"></div>
-                        <div className="w-8 h-8 border-[3px] border-white bg-gray-500"></div>
+                      <div className="w-8 h-8 border-[3px] border-white bg-red-500 mx-1"></div>
+                      <div className="w-8 h-8 border-[3px] border-white bg-gray-500"></div>
                     </div>
                     <button
                       className="border border-white text-white
@@ -361,10 +354,10 @@ export default function Dynamic() {
                     >
                       COLOR
                     </button>
-                    </div>
-                    <div className="m-5">
+                  </div>
+                  <div className="m-5">
                     <button
-                      onClick={printDocument}
+                      onClick={lprintDocument}
                       className="cursor-pointer text-white mx-5 border border-white p-2 rounded"
                     >
                       PRINT
@@ -376,13 +369,11 @@ export default function Dynamic() {
                     >
                       LOAD
                     </button>
-                    </div>
+                  </div>
                 </div>
-                  
+
                 <div className="flex justify-center ">
                   {/* large resume */}
-                  
-                  
 
                   <div
                     className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-170px] xl:scale-[0.9] xl:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row"
@@ -404,7 +395,7 @@ export default function Dynamic() {
                           alt="ProfilePhoto"
                         />
                         <div className="border-b-2 border-white m-6 px-3 py-1">
-                          <h1 className="font-medium text-lg text-white ">
+                          <h1 className="font-medium text-lg text-white heading">
                             CONTACT
                           </h1>
                           <div className="m-2">
@@ -418,7 +409,7 @@ export default function Dynamic() {
                         </div>
                         {details.skills.length && (
                           <div className="border-b-2 border-white m-6 px-3 py-1">
-                            <h1 className="font-medium text-lg text-white ">
+                            <h1 className="font-medium text-lg text-white heading">
                               SKILLS
                             </h1>
                             {details.skills.map((item) => (
@@ -435,7 +426,7 @@ export default function Dynamic() {
                         )}
                         {details.social.length != 0 && (
                           <div className="border-b-2 border-white m-6 px-3 py-1">
-                            <h1 className="font-medium text-lg text-white ">
+                            <h1 className="font-medium text-lg text-white heading">
                               SOCIAL
                             </h1>
                             {details.social.map((item) => (
@@ -464,7 +455,7 @@ export default function Dynamic() {
                         <div>
                           {details.awards.length != 0 && (
                             <div className="border-b-2 border-white m-6 px-3 py-1">
-                              <h1 className="font-medium text-lg text-white ">
+                              <h1 className="font-medium text-lg text-white heading">
                                 AWARDS
                               </h1>
                               {details.awards.map((item) => (
@@ -479,7 +470,7 @@ export default function Dynamic() {
                           )}
                           {details.hobbies.length != 0 && (
                             <div className="border-b-2 border-white m-6 px-3 py-1">
-                              <h1 className="font-medium text-lg text-white ">
+                              <h1 className="font-medium text-lg text-white heading">
                                 HOBBIES
                               </h1>
                               {details.hobbies.map((item) => (
@@ -491,7 +482,7 @@ export default function Dynamic() {
                           )}
                           {details.languages.length != 0 && (
                             <div className="border-white m-6 px-3 py-1">
-                              <h1 className="font-medium text-lg text-white ">
+                              <h1 className="font-medium text-lg text-white heading">
                                 LANGUAGES
                               </h1>
                               {details.languages.map((item) => (
@@ -506,7 +497,7 @@ export default function Dynamic() {
                       <div className="col-span-2">
                         <div className="pt-48">
                           <div className="border-b-4 border-black m-4 p-5">
-                            <h1 className="font-medium text-lg text-gray-600">
+                            <h1 className="font-medium text-lg text-gray-600 heading">
                               ABOUT ME
                             </h1>
                             <p className="text-sm font-medium pt-1">
@@ -516,7 +507,7 @@ export default function Dynamic() {
                         </div>
                         {details.work.length != 0 && (
                           <div className="border-b-4 border-black m-4 p-2">
-                            <h1 className="font-medium text-lg text-gray-600">
+                            <h1 className="font-medium text-lg text-gray-600 heading">
                               WORK EXPERIENCE
                             </h1>
                             {details.work.map((item) => (
@@ -536,7 +527,7 @@ export default function Dynamic() {
                         )}
                         {details.education.length != 0 && (
                           <div className="border-b-4 border-black m-4 p-2">
-                            <h1 className="font-medium text-lg text-gray-600">
+                            <h1 className="font-medium text-lg text-gray-600 heading">
                               EDUCATION
                             </h1>
                             {details.education.map((item) => (
@@ -556,7 +547,7 @@ export default function Dynamic() {
                         )}
                         {details.projects.length != 0 && (
                           <div className="border-b-4 border-black m-4 p-2">
-                            <h1 className="font-medium text-lg text-gray-600">
+                            <h1 className="font-medium text-lg text-gray-600 heading">
                               PROJECTS
                             </h1>
                             {details.projects.map((item) => (
@@ -576,7 +567,7 @@ export default function Dynamic() {
                         )}
                         {details.certifications.length != 0 && (
                           <div className="border-b-4 border-black m-4 p-2">
-                            <h1 className="font-medium text-lg text-gray-600">
+                            <h1 className="font-medium text-lg text-gray-600 heading">
                               CERTIFICATIONS
                             </h1>
                             {details.certifications.map((item) => (
@@ -596,7 +587,7 @@ export default function Dynamic() {
                         )}
                         {details.awards.length != 0 && (
                           <div className="border-black m-4 p-2">
-                            <h1 className="font-medium text-lg text-gray-600">
+                            <h1 className="font-medium text-lg text-gray-600 heading">
                               AWARDS
                             </h1>
                             {details.awards.map((item) => (

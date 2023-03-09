@@ -21,6 +21,7 @@ export default function Hobbies() {
   const { details, setdetails } = useContext(ResumeContext);
   const [hobbies, sethobbies] = useState({
     name: "",
+    enabled: true,
   });
   function addHobby(event) {
     event.preventDefault();
@@ -35,6 +36,7 @@ export default function Hobbies() {
 
     sethobbies({
       name: "",
+      enabled: true,
     });
   }
 
@@ -52,8 +54,38 @@ export default function Hobbies() {
       if (i == index) {
         sethobbies({
           name: item.name,
+          enabled: true,
         });
       }
+    });
+  }
+  function toggleHobby(index) {
+    sethobbies(details.hobbies[index]);
+    const arr = [];
+    if (details.hobbies[index].enabled == true) {
+      details.hobbies.map((item, ind) => {
+        if (index == ind) {
+          item.enabled = false;
+          arr.push(item);
+        } else {
+          arr.push(item);
+        }
+      });
+      setdetails({ ...details, hobbies: arr });
+    } else {
+      details.hobbies.map((item, ind) => {
+        if (index == ind) {
+          item.enabled = true;
+          arr.push(item);
+        } else {
+          arr.push(item);
+        }
+      });
+      setdetails({ ...details, hobbies: arr });
+    }
+    sethobbies({
+      name: "",
+      enabled: true,
     });
   }
   return (
@@ -108,17 +140,18 @@ export default function Hobbies() {
                       className="mr-2"
                       onClick={() => {
                         deleteHobby(index);
-                        setharrow(true)
+                        setharrow(true);
                       }}
                     >
                       <button onClick={() => updateHobby(index)}>
                         <FaEdit></FaEdit>
                       </button>
-                      
                     </button>
-                    <button onClick={() => {
+                    <button
+                      onClick={() => {
                         deleteHobby(index);
-                      }}>
+                      }}
+                    >
                       <AiFillDelete></AiFillDelete>
                     </button>
                     <div className=" ml-2">
@@ -127,6 +160,11 @@ export default function Hobbies() {
                         type="checkbox"
                         role="switch"
                         id="flexSwitchCheckDefault"
+                        checked={item.enabled}
+                        defaultChecked
+                        onChange={() => {
+                          toggleHobby(index);
+                        }}
                       />
                     </div>
                   </div>

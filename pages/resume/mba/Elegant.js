@@ -39,26 +39,20 @@ export default function Elegant() {
 
   //PDF document
 
-  function printDocument() {
-    console.log("inside");
-    // var input = document.getElementById('smallResume');
-    var input;
-    if (open == "closed") {
-      input = document.getElementById("smallResume");
-    } else {
-      input = document.getElementById("largeResume");
-      console.log("om");
-    }
-    console.log(input);
-    html2canvas(input, { useCORS: true }).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "mm", "a4");
-      var width = pdf.internal.pageSize.getWidth();
-      var height = pdf.internal.pageSize.getHeight();
-      pdf.addImage(imgData, "JPEG", 0, 0, width, height);
-      pdf.save("download.pdf");
-      // pdf.output('dataurlnewwindow');
-    });
+  
+  function lprintDocument() {
+    const printContents = document.getElementById("largeResume").innerHTML;
+    const originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+  }
+  function sprintDocument() {
+    const printContents = document.getElementById("smallResume").innerHTML;
+    const originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
   }
 
   //responsiveness
@@ -95,7 +89,7 @@ export default function Elegant() {
                 </div>
                 <div className="m-3 flex">
                   <button
-                    onClick={printDocument}
+                    onClick={sprintDocument}
                     className="cursor-pointer text-white border border-white p-1 mx-1 rounded"
                   >
                     PRINT
@@ -138,7 +132,7 @@ export default function Elegant() {
                     <div className="bg-cyan-800 text-white">
                       <div className="mt-64 mx-6">
                         <div>
-                          <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white">
+                          <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white heading">
                             CONTACTS
                           </h1>
                           <h1 className="text-white">
@@ -151,7 +145,7 @@ export default function Elegant() {
                         </div>
                         {details.social.length != 0 && (
                           <div>
-                            <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white">
+                            <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white heading">
                               SOCIAL
                             </h1>
                             {details.social.map((item) => (
@@ -167,7 +161,7 @@ export default function Elegant() {
                         )}
                         {details.skills.length != 0 && (
                           <div>
-                            <h1 className="border-2 border-white text-white mt-5 mb-3 flex justify-center align-middle py-2">
+                            <h1 className="border-2 border-white text-white mt-5 mb-3 flex justify-center align-middle py-2 heading">
                               SKILLS
                             </h1>
                             {details.skills.map((item) => (
@@ -185,7 +179,7 @@ export default function Elegant() {
                         )}
                         {details.awards.length != 0 && (
                           <div>
-                            <h1 className="border-2 border-white text-white mt-5 mb-3 flex justify-center align-middle py-2">
+                            <h1 className="border-2 border-white text-white mt-5 mb-3 flex justify-center align-middle py-2 heading">
                               AWARDS
                             </h1>
                             {details.awards.map((item) => (
@@ -205,7 +199,7 @@ export default function Elegant() {
                         )}
                         {details.hobbies.length != 0 && (
                           <div>
-                            <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white">
+                            <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white heading">
                               HOBBIES
                             </h1>
                             {details.hobbies.map((item) => (
@@ -217,7 +211,7 @@ export default function Elegant() {
                         )}
                         {details.languages.length != 0 && (
                           <div>
-                            <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white">
+                            <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white heading">
                               LANGUAGES
                             </h1>
                             {details.languages.map((item) => (
@@ -233,7 +227,7 @@ export default function Elegant() {
                       <div className="mt-64 mx-6">
                         {details.personal.objective.length != 0 && (
                           <div>
-                            <h1 className="text-xl border-b-2 border-black mb-3">
+                            <h1 className="text-xl border-b-2 border-black mb-3 heading">
                               PROFILE
                             </h1>
                             <p className="text-sm">
@@ -243,7 +237,7 @@ export default function Elegant() {
                         )}
                         {details.education.length != 0 && (
                           <div>
-                            <h1 className="text-xl border-b-2 border-black mb-3 mt-5">
+                            <h1 className="text-xl border-b-2 border-black mb-3 mt-5 heading">
                               EDUCATION
                             </h1>
                             {details.education.map((item) => (
@@ -262,7 +256,7 @@ export default function Elegant() {
                         )}
                         {details.work.length != 0 && (
                           <div>
-                            <h1 className="text-xl border-b-2 border-black mb-3 mt-5">
+                            <h1 className="text-xl border-b-2 border-black mb-3 mt-5 heading">
                               WORK EXPERIENCE
                             </h1>
                             {details.work.map((item) => (
@@ -281,7 +275,7 @@ export default function Elegant() {
                         )}
                         {details.projects.length != 0 && (
                           <div>
-                            <h1 className="text-xl border-b-2 border-black mb-3 mt-5">
+                            <h1 className="text-xl border-b-2 border-black mb-3 mt-5 heading">
                               PROJECTS
                             </h1>
                             {details.projects.map((item) => (
@@ -300,7 +294,7 @@ export default function Elegant() {
                         )}
                         {details.certifications.length != 0 && (
                           <div>
-                            <h1 className="text-xl border-b-2 border-black mb-3 mt-5">
+                            <h1 className="text-xl border-b-2 border-black mb-3 mt-5 heading">
                               CERTIFICATIONS
                             </h1>
                             {details.certifications.map((item) => (
@@ -356,7 +350,7 @@ export default function Elegant() {
                   </div>
                   <div className="m-5">
                     <button
-                      onClick={printDocument}
+                      onClick={lprintDocument}
                       className="cursor-pointer text-white mx-5 border border-white p-2 rounded"
                     >
                       PRINT
@@ -396,7 +390,7 @@ export default function Elegant() {
                       <div className="bg-cyan-800 text-white">
                         <div className="mt-64 mx-6">
                           <div>
-                            <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white">
+                            <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white heading">
                               CONTACTS
                             </h1>
                             <h1 className="text-white">
@@ -427,7 +421,7 @@ export default function Elegant() {
                           )}
                           {details.skills.length != 0 && (
                             <div>
-                              <h1 className="border-2 border-white text-white mt-5 mb-3 flex justify-center align-middle py-2">
+                              <h1 className="border-2 border-white text-white mt-5 mb-3 flex justify-center align-middle py-2 heading">
                                 SKILLS
                               </h1>
                               {details.skills.map((item) => (
@@ -445,7 +439,7 @@ export default function Elegant() {
                           )}
                           {details.awards.length != 0 && (
                             <div>
-                              <h1 className="border-2 border-white text-white mt-5 mb-3 flex justify-center align-middle py-2">
+                              <h1 className="border-2 border-white text-white mt-5 mb-3 flex justify-center align-middle py-2 heading">
                                 AWARDS
                               </h1>
                               {details.awards.map((item) => (
@@ -465,7 +459,7 @@ export default function Elegant() {
                           )}
                           {details.hobbies.length != 0 && (
                             <div>
-                              <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white">
+                              <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white heading">
                                 HOBBIES
                               </h1>
                               {details.hobbies.map((item) => (
@@ -477,7 +471,7 @@ export default function Elegant() {
                           )}
                           {details.languages.length != 0 && (
                             <div>
-                              <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white">
+                              <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white heading">
                                 LANGUAGES
                               </h1>
                               {details.languages.map((item) => (
@@ -493,7 +487,7 @@ export default function Elegant() {
                         <div className="mt-64 mx-6">
                           {details.personal.objective.length != 0 && (
                             <div>
-                              <h1 className="text-xl border-b-2 border-black mb-3">
+                              <h1 className="text-xl border-b-2 border-black mb-3 heading">
                                 PROFILE
                               </h1>
                               <p className="text-sm">
@@ -503,7 +497,7 @@ export default function Elegant() {
                           )}
                           {details.education.length != 0 && (
                             <div>
-                              <h1 className="text-xl border-b-2 border-black mb-3 mt-5">
+                              <h1 className="text-xl border-b-2 border-black mb-3 mt-5 heading">
                                 EDUCATION
                               </h1>
                               {details.education.map((item) => (
@@ -522,7 +516,7 @@ export default function Elegant() {
                           )}
                           {details.work.length != 0 && (
                             <div>
-                              <h1 className="text-xl border-b-2 border-black mb-3 mt-5">
+                              <h1 className="text-xl border-b-2 border-black mb-3 mt-5 heading">
                                 WORK EXPERIENCE
                               </h1>
                               {details.work.map((item) => (
@@ -541,7 +535,7 @@ export default function Elegant() {
                           )}
                           {details.projects.length != 0 && (
                             <div>
-                              <h1 className="text-xl border-b-2 border-black mb-3 mt-5">
+                              <h1 className="text-xl border-b-2 border-black mb-3 mt-5 heading">
                                 PROJECTS
                               </h1>
                               {details.projects.map((item) => (
@@ -560,7 +554,7 @@ export default function Elegant() {
                           )}
                           {details.certifications.length != 0 && (
                             <div>
-                              <h1 className="text-xl border-b-2 border-black mb-3 mt-5">
+                              <h1 className="text-xl border-b-2 border-black mb-3 mt-5 heading">
                                 CERTIFICATIONS
                               </h1>
                               {details.certifications.map((item) => (

@@ -255,9 +255,13 @@ const ResumeState = (props) => {
   }
 
   return (
+<<<<<<< HEAD
     <ResumeContext.Provider
       value={{ details, setdetails, setdemo, demo ,id,setid}}
     >
+=======
+    <ResumeContext.Provider value={{ details, setdetails, setdemo, demo }}>
+>>>>>>> 197133cd1405cd56513962e9c5611e3790578973
       {props.children}
     </ResumeContext.Provider>
   );

@@ -39,26 +39,20 @@ export default function Symetric() {
 
   //PDF document
 
-  function printDocument() {
-    console.log("inside");
-    // var input = document.getElementById('smallResume');
-    var input;
-    if (open == "closed") {
-      input = document.getElementById("smallResume");
-    } else {
-      input = document.getElementById("largeResume");
-      console.log("om");
-    }
-    console.log(input);
-    html2canvas(input).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "mm", "a4");
-      var width = pdf.internal.pageSize.getWidth();
-      var height = pdf.internal.pageSize.getHeight();
-      pdf.addImage(imgData, "JPEG", 0, 0, width, height);
-      pdf.save("download.pdf");
-      // pdf.output('dataurlnewwindow');
-    });
+  
+  function lprintDocument() {
+    const printContents = document.getElementById("largeResume").innerHTML;
+    const originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+  }
+  function sprintDocument() {
+    const printContents = document.getElementById("smallResume").innerHTML;
+    const originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
   }
 
   //responsiveness
@@ -95,7 +89,7 @@ export default function Symetric() {
                 </div>
                 <div className="m-3 flex">
                   <button
-                    onClick={printDocument}
+                    onClick={sprintDocument}
                     className="cursor-pointer text-white border border-white p-1 mx-1 rounded"
                   >
                     PRINT
@@ -187,7 +181,7 @@ export default function Symetric() {
                         {details.education.length != 0 && (
                           <div className="education border-b-2 border-r-2 border-gray-500 mx-6">
                             <div className="pb-2">
-                              <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                              <h2 className="text-center text-xl font-serif font-medium underline pt-5 heading">
                                 E D U C A T I O N
                               </h2>
                               {details.education.map((item) => (
@@ -216,7 +210,7 @@ export default function Symetric() {
                         {details.certifications.length != 0 && (
                           <div className="certifications border-r-2 border-b-2 border-gray-500 mx-6">
                             <div className="pb-2">
-                              <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-3">
+                              <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-3 heading">
                                 C E R T I F I C A T I O N S
                               </h2>
                               {details.certifications.map((item) => (
@@ -232,7 +226,7 @@ export default function Symetric() {
                         {details.skills.length != 0 && (
                           <div className="skills border-b-2 border-r-2 border-gray-500 mx-6">
                             <div className="pl-10 pb-5">
-                              <h2 className="text-center text-xl font-serif font-medium underline pt-3 pb-2">
+                              <h2 className="text-center text-xl font-serif font-medium underline pt-3 pb-2 heading">
                                 S K I L L S
                               </h2>
                               {details.skills.map((item) => (
@@ -247,7 +241,7 @@ export default function Symetric() {
                         {details.hobbies.length != 0 && (
                           <div className="skills border-b-2 border-r-2 border-gray-500 mx-6">
                             <div className="pl-10 pb-5">
-                              <h2 className="text-center text-xl font-serif font-medium underline pt-3 pb-2">
+                              <h2 className="text-center text-xl font-serif font-medium underline pt-3 pb-2 heading">
                                 H O B B I E S
                               </h2>
                               {details.hobbies.map((item) => (
@@ -262,7 +256,7 @@ export default function Symetric() {
                         {details.languages.length != 0 && (
                           <div className="border-r-2 border-gray-500 mx-6">
                             <div className="pl-10 pb-5">
-                              <h2 className="text-center text-xl font-serif font-medium underline pt-3 pb-2">
+                              <h2 className="text-center text-xl font-serif font-medium underline pt-3 pb-2 heading">
                                 L A N G U A G E S
                               </h2>
                               {details.languages.map((item) => (
@@ -277,7 +271,7 @@ export default function Symetric() {
                       <div className="side2 w-[125mm]">
                         {details.personal.objective.length != 0 && (
                           <div className="career-objective border-b-2 border-gray-500 ml-[-24px] mr-5">
-                            <h2 className="text-center text-xl font-serif font-medium underline pt-8">
+                            <h2 className="text-center text-xl font-serif font-medium underline pt-8 heading">
                               C A R E E R O B J E C T I V E
                             </h2>
                             <p className="pl-10 pr-5 pt-3 pb-3">
@@ -288,7 +282,7 @@ export default function Symetric() {
                         )}
                         {details.work.length != 0 && (
                           <div className="experience border-b-2 border-gray-500 ml-[-24px] mr-5">
-                            <h2 className="text-center text-xl font-serif font-medium underline pt-3">
+                            <h2 className="text-center text-xl font-serif font-medium underline pt-3 heading">
                               E X P E R I E N C E
                             </h2>
                             <div className="pb-5">
@@ -313,7 +307,7 @@ export default function Symetric() {
                         )}
                         {details.projects.length != 0 && (
                           <div className="projects border-b-2 border-gray-500 ml-[-24px] mr-5">
-                            <h2 className="text-center text-xl font-serif font-medium underline pt-3">
+                            <h2 className="text-center text-xl font-serif font-medium underline pt-3 heading">
                               P R O J E C T S
                             </h2>
                             <div className="pb-3">
@@ -335,7 +329,7 @@ export default function Symetric() {
                         )}
                         {details.certifications.length != 0 && (
                           <div className="border-gray-500 border-b-2 ml-[-24px] mr-5">
-                            <h2 className="text-center text-xl font-serif font-medium underline pt-3">
+                            <h2 className="text-center text-xl font-serif font-medium underline pt-3 heading">
                               C E R T I F I C A T I O N S
                             </h2>
                             {details.certifications.map((item) => (
@@ -352,7 +346,7 @@ export default function Symetric() {
                         )}
                         {details.awards.length != 0 && (
                           <div className="awards border-gray-500 ml-[-24px] mr-5">
-                            <h2 className="text-center text-xl font-serif font-medium underline pt-3">
+                            <h2 className="text-center text-xl font-serif font-medium underline pt-3 heading">
                               A W A R D S
                             </h2>
                             {details.awards.map((item) => (
@@ -404,7 +398,7 @@ export default function Symetric() {
                   </div>
                   <div className="m-5">
                     <button
-                      onClick={printDocument}
+                      onClick={lprintDocument}
                       className="cursor-pointer text-white mx-5 border border-white p-2 rounded"
                     >
                       PRINT
@@ -493,7 +487,7 @@ export default function Symetric() {
                           {details.education.length != 0 && (
                             <div className="education border-b-2 border-r-2 border-gray-500 mx-6">
                               <div className="pb-2">
-                                <h2 className="text-center text-xl font-serif font-medium underline pt-5">
+                                <h2 className="text-center text-xl font-serif font-medium underline pt-5 heading">
                                   E D U C A T I O N
                                 </h2>
                                 {details.education.map((item) => (
@@ -522,7 +516,7 @@ export default function Symetric() {
                           {details.certifications.length != 0 && (
                             <div className="certifications border-r-2 border-b-2 border-gray-500 mx-6">
                               <div className="pb-2">
-                                <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-3">
+                                <h2 className="text-center text-xl font-serif font-medium underline pt-5 pb-3 heading">
                                   C E R T I F I C A T I O N S
                                 </h2>
                                 {details.certifications.map((item) => (
@@ -541,7 +535,7 @@ export default function Symetric() {
                           {details.skills.length != 0 && (
                             <div className="skills border-b-2 border-r-2 border-gray-500 mx-6">
                               <div className="pl-10 pb-5">
-                                <h2 className="text-center text-xl font-serif font-medium underline pt-3 pb-2">
+                                <h2 className="text-center text-xl font-serif font-medium underline pt-3 pb-2 heading">
                                   S K I L L S
                                 </h2>
                                 {details.skills.map((item) => (
@@ -556,7 +550,7 @@ export default function Symetric() {
                           {details.hobbies.length != 0 && (
                             <div className="skills border-b-2 border-r-2 border-gray-500 mx-6">
                               <div className="pl-10 pb-5">
-                                <h2 className="text-center text-xl font-serif font-medium underline pt-3 pb-2">
+                                <h2 className="text-center text-xl font-serif font-medium underline pt-3 pb-2 heading">
                                   H O B B I E S
                                 </h2>
                                 {details.hobbies.map((item) => (
@@ -571,7 +565,7 @@ export default function Symetric() {
                           {details.languages.length != 0 && (
                             <div className="border-r-2 border-gray-500 mx-6">
                               <div className="pl-10 pb-5">
-                                <h2 className="text-center text-xl font-serif font-medium underline pt-3 pb-2">
+                                <h2 className="text-center text-xl font-serif font-medium underline pt-3 pb-2 heading">
                                   L A N G U A G E S
                                 </h2>
                                 {details.languages.map((item) => (
@@ -586,7 +580,7 @@ export default function Symetric() {
                         <div className="side2 w-[125mm]">
                           {details.personal.objective.length != 0 && (
                             <div className="career-objective border-b-2 border-gray-500 ml-[-24px] mr-5">
-                              <h2 className="text-center text-xl font-serif font-medium underline pt-8">
+                              <h2 className="text-center text-xl font-serif font-medium underline pt-8 heading">
                                 C A R E E R O B J E C T I V E
                               </h2>
                               <p className="pl-10 pr-5 pt-3 pb-3">
@@ -597,7 +591,7 @@ export default function Symetric() {
                           )}
                           {details.work.length != 0 && (
                             <div className="experience border-b-2 border-gray-500 ml-[-24px] mr-5">
-                              <h2 className="text-center text-xl font-serif font-medium underline pt-3">
+                              <h2 className="text-center text-xl font-serif font-medium underline pt-3 heading">
                                 E X P E R I E N C E
                               </h2>
                               <div className="pb-5">
@@ -622,7 +616,7 @@ export default function Symetric() {
                           )}
                           {details.projects.length != 0 && (
                             <div className="projects border-b-2 border-gray-500 ml-[-24px] mr-5">
-                              <h2 className="text-center text-xl font-serif font-medium underline pt-3">
+                              <h2 className="text-center text-xl font-serif font-medium underline pt-3 heading">
                                 P R O J E C T S
                               </h2>
                               <div className="pb-3">
@@ -647,7 +641,7 @@ export default function Symetric() {
                           )}
                           {details.certifications.length != 0 && (
                             <div className="border-gray-500 border-b-2 ml-[-24px] mr-5">
-                              <h2 className="text-center text-xl font-serif font-medium underline pt-3">
+                              <h2 className="text-center text-xl font-serif font-medium underline pt-3 heading">
                                 C E R T I F I C A T I O N S
                               </h2>
                               {details.certifications.map((item) => (
@@ -664,7 +658,7 @@ export default function Symetric() {
                           )}
                           {details.awards.length != 0 && (
                             <div className="awards border-gray-500 ml-[-24px] mr-5">
-                              <h2 className="text-center text-xl font-serif font-medium underline pt-3">
+                              <h2 className="text-center text-xl font-serif font-medium underline pt-3 heading">
                                 A W A R D S
                               </h2>
                               {details.awards.map((item) => (
