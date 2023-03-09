@@ -19,6 +19,8 @@ export default function Berlin() {
   const [change, setchange] = useState(false);
   const [colorpalette, setcolorpalette] = useState(false);
 
+  var acount, ccount, ecount, hcount, icount, lcount, pcount, scount;
+
   //to add email fname and lname
   useEffect(() => {
     if (user) {
@@ -495,23 +497,30 @@ export default function Berlin() {
                               ))}
                             </div>
                           )}
+
                           {details.skills.length != 0 && (
                             <div className="">
-                              <h1 className="text-2xl font-semibold pt-2">
-                                SKILLS
-                              </h1>
-                              <hr className="w-[15%] h-1 bg-black"></hr>
-                              {details.skills.map((item) => (
+                              {(scount = details.skills.length)}
+                              {scount != 0 && (
                                 <>
-                                  {item.enabled == true && (
-                                    <div key={item.name}>
-                                      <h1 className="text-sm text-gray-800 pt-2">
-                                        {item.name}
-                                      </h1>
-                                    </div>
-                                  )}
+                                  <h1 className="text-2xl font-semibold pt-2">
+                                    SKILLS
+                                  </h1>
+                                  <hr className="w-[15%] h-1 bg-black"></hr>
+                                  {details.skills.map((item) => (
+                                    <>
+                                      {item.enabled == true && (
+                                        <div key={item.name}>
+                                          {(scount = scount - 1)}
+                                          <h1 className="text-sm text-gray-800 pt-2">
+                                            {item.name}
+                                          </h1>
+                                        </div>
+                                      )}
+                                    </>
+                                  ))}
                                 </>
-                              ))}
+                              )}
                             </div>
                           )}
                           {details.awards.length != 0 && (
