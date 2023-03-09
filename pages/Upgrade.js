@@ -19,66 +19,67 @@ function Upgrade() {
             </div>
           </div>
         </div>
-        <div className="max-w-2xl mx-auto lg:bg-white py-2 sm:py-3 sm:px-6 lg:max-w-7xl lg:px-8 lg:mt-5">
+        <div className="mx-5">
+        <div className="max-w-2xl mx-auto lg:bg-white lg:px-1.5 lg:rounded-md py-2 sm:py-3  sm:px-6 lg:max-w-7xl lg:mt-5">
           {/* small */}
-          <div class="space-y-2 lg:hidden bg-white">
+          <div className="space-y-2 lg:hidden m-5 rounded-md p-4 bg-white">
             <section>
-              <div class="px-4 mb-8">
-                <h2 class="text-lg leading-6 font-medium text-gray-900">
+              <div className="px-4 mb-8">
+                <h2 className="text-lg leading-6 font-medium text-gray-900">
                   Basic
                 </h2>
                 <p>
-                  <span class="text-4xl font-extrabold text-gray-900">
+                  <span className="text-4xl font-extrabold text-gray-900">
                     ₹129
                   </span>
-                  <span class="text-base font-medium text-gray-500">/year</span>
+                  <span className="text-base font-medium text-gray-500">/year</span>
                 </p>
-                <button class="hover:to-pink-600 bg-gradient-to-r from-orange-500 to-pink-500 cursor-pointer mt-6 block w-full  border border-transparent rounded-md shadow py-2 text-sm font-semibold text-white text-center">
+                <button className="hover:to-pink-600 bg-gradient-to-r from-orange-500 to-pink-500 cursor-pointer mt-6 block w-full  border border-transparent rounded-md shadow py-2 text-sm font-semibold text-white text-center">
                   Upgrade to Basic
                 </button>
               </div>
-              <table class="w-full">
-                <caption class="bg-gray-50 border-t border-gray-200 py-3 px-4 text-sm font-medium text-gray-900 text-left">
+              <table className="w-full">
+                <caption className="bg-gray-50 border-t border-gray-200 py-3 px-4 text-sm font-medium text-gray-900 text-left">
                   Features
                 </caption>
                 <thead>
                   <tr>
-                    <th class="sr-only" scope="col">
+                    <th className="sr-only" scope="col">
                       Feature
                     </th>
-                    <th class="sr-only" scope="col">
+                    <th className="sr-only" scope="col">
                       Included
                     </th>
                   </tr>
                 </thead>
-                <tbody class="divide-y divide-gray-200">
-                  <tr class="border-t border-gray-200">
+                <tbody className="divide-y divide-gray-200">
+                  <tr className="border-t border-gray-200">
                     <th
-                      class="py-5 px-4 text-sm font-normal text-gray-500 text-left"
+                      className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
                       scope="row"
                     >
                       Templates
                     </th>
-                    <td class="py-5 pr-4">
-                      <span class="block text-sm text-gray-700 text-right">
+                    <td className="py-5 pr-4">
+                      <span className="block text-sm text-gray-700 text-right">
                         Only simple templates
                       </span>
                     </td>
                   </tr>
-                  <tr class="border-t border-gray-200">
+                  <tr className="border-t border-gray-200">
                     <th
-                      class="py-5 px-4 text-sm font-normal text-gray-500 text-left"
+                      className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
                       scope="row"
                     >
                       JPEG Download
                     </th>
-                    <td class="py-5 pr-4">
+                    <td className="py-5 pr-4">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         aria-hidden="true"
-                        class="ml-auto h-5 w-5 text-green-500"
+                        className="ml-auto h-5 w-5 text-green-500"
                       >
                         <path
                           fill-rule="evenodd"
@@ -86,23 +87,23 @@ function Upgrade() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="sr-only">Yes</span>
+                      <span className="sr-only">Yes</span>
                     </td>
                   </tr>
-                  <tr class="border-t border-gray-200">
+                  <tr className="border-t border-gray-200">
                     <th
-                      class="py-5 px-4 text-sm font-normal text-gray-500 text-left"
+                      className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
                       scope="row"
                     >
                       PNG Download
                     </th>
-                    <td class="py-5 pr-4">
+                    <td className="py-5 pr-4">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         aria-hidden="true"
-                        class="ml-auto h-5 w-5 text-green-500"
+                        className="ml-auto h-5 w-5 text-green-500"
                       >
                         <path
                           fill-rule="evenodd"
@@ -110,23 +111,23 @@ function Upgrade() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="sr-only">Yes</span>
+                      <span className="sr-only">Yes</span>
                     </td>
                   </tr>
-                  <tr class="border-t border-gray-200">
+                  <tr className="border-t border-gray-200">
                     <th
-                      class="py-5 px-4 text-sm font-normal text-gray-500 text-left"
+                      className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
                       scope="row"
                     >
                       PDF Download
                     </th>
-                    <td class="py-5 pr-4">
+                    <td className="py-5 pr-4">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         aria-hidden="true"
-                        class="ml-auto h-5 w-5 text-gray-400"
+                        className="ml-auto h-5 w-5 text-gray-400"
                       >
                         <path
                           fill-rule="evenodd"
@@ -134,23 +135,23 @@ function Upgrade() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="sr-only">No</span>
+                      <span className="sr-only">No</span>
                     </td>
                   </tr>
-                  <tr class="border-t border-gray-200">
+                  <tr className="border-t border-gray-200">
                     <th
-                      class="py-5 px-4 text-sm font-normal text-gray-500 text-left"
+                      className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
                       scope="row"
                     >
                       VAST Watermark
                     </th>
-                    <td class="py-5 pr-4">
+                    <td className="py-5 pr-4">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         aria-hidden="true"
-                        class="ml-auto h-5 w-5 text-green-500"
+                        className="ml-auto h-5 w-5 text-green-500"
                       >
                         <path
                           fill-rule="evenodd"
@@ -158,23 +159,23 @@ function Upgrade() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="sr-only">Yes</span>
+                      <span className="sr-only">Yes</span>
                     </td>
                   </tr>
-                  <tr class="border-t border-gray-200">
+                  <tr className="border-t border-gray-200">
                     <th
-                      class="py-5 px-4 text-sm font-normal text-gray-500 text-left"
+                      className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
                       scope="row"
                     >
                       Color Palette
                     </th>
-                    <td class="py-5 pr-4">
+                    <td className="py-5 pr-4">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         aria-hidden="true"
-                        class="ml-auto h-5 w-5 text-gray-400"
+                        className="ml-auto h-5 w-5 text-gray-400"
                       >
                         <path
                           fill-rule="evenodd"
@@ -182,23 +183,23 @@ function Upgrade() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="sr-only">No</span>
+                      <span className="sr-only">No</span>
                     </td>
                   </tr>
-                  <tr class="border-t border-gray-200">
+                  <tr className="border-t border-gray-200">
                     <th
-                      class="py-5 px-4 text-sm font-normal text-gray-500 text-left"
+                      className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
                       scope="row"
                     >
                       Font Picker
                     </th>
-                    <td class="py-5 pr-4">
+                    <td className="py-5 pr-4">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         aria-hidden="true"
-                        class="ml-auto h-5 w-5 text-gray-400"
+                        className="ml-auto h-5 w-5 text-gray-400"
                       >
                         <path
                           fill-rule="evenodd"
@@ -206,23 +207,23 @@ function Upgrade() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="sr-only">No</span>
+                      <span className="sr-only">No</span>
                     </td>
                   </tr>
-                  <tr class="border-t border-gray-200">
+                  <tr className="border-t border-gray-200">
                     <th
-                      class="py-5 px-4 text-sm font-normal text-gray-500 text-left"
+                      className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
                       scope="row"
                     >
                       Test Patterns
                     </th>
-                    <td class="py-5 pr-4">
+                    <td className="py-5 pr-4">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         aria-hidden="true"
-                        class="ml-auto h-5 w-5 text-gray-400"
+                        className="ml-auto h-5 w-5 text-gray-400"
                       >
                         <path
                           fill-rule="evenodd"
@@ -230,56 +231,56 @@ function Upgrade() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="sr-only">No</span>
+                      <span className="sr-only">No</span>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </section>
             <section>
-              <div class="px-4 mb-8">
-                <h2 class="text-lg leading-6 font-medium text-gray-900">
+              <div className="px-4 mb-8">
+                <h2 className="text-lg leading-6 font-medium text-gray-900">
                   Essential
                 </h2>
                 <p>
-                  <span class="text-4xl font-extrabold text-gray-900">
+                  <span className="text-4xl font-extrabold text-gray-900">
                     ₹179
                   </span>
-                  <span class="text-base font-medium text-gray-500">/year</span>
+                  <span className="text-base font-medium text-gray-500">/year</span>
                 </p>
-                <button class="hover:to-pink-600 bg-gradient-to-r from-orange-500 to-pink-500 cursor-pointer mt-6 block w-full  border border-transparent rounded-md shadow py-2 text-sm font-semibold text-white text-center">
+                <button className="hover:to-pink-600 bg-gradient-to-r from-orange-500 to-pink-500 cursor-pointer mt-6 block w-full  border border-transparent rounded-md shadow py-2 text-sm font-semibold text-white text-center">
                   Upgrade to Essential
                 </button>
               </div>
-              <table class="w-full">
-                <caption class="bg-gray-50 border-t border-gray-200 py-3 px-4 text-sm font-medium text-gray-900 text-left">
+              <table className="w-full">
+                <caption className="bg-gray-50 border-t border-gray-200 py-3 px-4 text-sm font-medium text-gray-900 text-left">
                   Features
                 </caption>
                 <thead>
                   <tr>
-                    <th class="sr-only" scope="col">
+                    <th className="sr-only" scope="col">
                       Feature
                     </th>
-                    <th class="sr-only" scope="col">
+                    <th className="sr-only" scope="col">
                       Included
                     </th>
                   </tr>
                 </thead>
-                <tbody class="divide-y divide-gray-200">
-                  <tr class="border-t border-gray-200">
+                <tbody className="divide-y divide-gray-200">
+                  <tr className="border-t border-gray-200">
                     <th
-                      class="py-5 px-4 text-sm font-normal text-gray-500 text-left"
+                      className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
                       scope="row"
                     >
                       Templates
                     </th>
-                    <td class="py-5 pr-4">
+                    <td className="py-5 pr-4">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         aria-hidden="true"
-                        class="ml-auto h-5 w-5 text-green-500"
+                        className="ml-auto h-5 w-5 text-green-500"
                       >
                         <path
                           fill-rule="evenodd"
@@ -287,23 +288,23 @@ function Upgrade() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="sr-only">Yes</span>
+                      <span className="sr-only">Yes</span>
                     </td>
                   </tr>
-                  <tr class="border-t border-gray-200">
+                  <tr className="border-t border-gray-200">
                     <th
-                      class="py-5 px-4 text-sm font-normal text-gray-500 text-left"
+                      className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
                       scope="row"
                     >
                       JPEG Download
                     </th>
-                    <td class="py-5 pr-4">
+                    <td className="py-5 pr-4">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         aria-hidden="true"
-                        class="ml-auto h-5 w-5 text-green-500"
+                        className="ml-auto h-5 w-5 text-green-500"
                       >
                         <path
                           fill-rule="evenodd"
@@ -311,23 +312,23 @@ function Upgrade() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="sr-only">Yes</span>
+                      <span className="sr-only">Yes</span>
                     </td>
                   </tr>
-                  <tr class="border-t border-gray-200">
+                  <tr className="border-t border-gray-200">
                     <th
-                      class="py-5 px-4 text-sm font-normal text-gray-500 text-left"
+                      className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
                       scope="row"
                     >
                       PNG Download
                     </th>
-                    <td class="py-5 pr-4">
+                    <td className="py-5 pr-4">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         aria-hidden="true"
-                        class="ml-auto h-5 w-5 text-green-500"
+                        className="ml-auto h-5 w-5 text-green-500"
                       >
                         <path
                           fill-rule="evenodd"
@@ -335,23 +336,23 @@ function Upgrade() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="sr-only">Yes</span>
+                      <span className="sr-only">Yes</span>
                     </td>
                   </tr>
-                  <tr class="border-t border-gray-200">
+                  <tr className="border-t border-gray-200">
                     <th
-                      class="py-5 px-4 text-sm font-normal text-gray-500 text-left"
+                      className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
                       scope="row"
                     >
                       PDF Download
                     </th>
-                    <td class="py-5 pr-4">
+                    <td className="py-5 pr-4">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         aria-hidden="true"
-                        class="ml-auto h-5 w-5 text-gray-400"
+                        className="ml-auto h-5 w-5 text-gray-400"
                       >
                         <path
                           fill-rule="evenodd"
@@ -359,23 +360,23 @@ function Upgrade() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="sr-only">No</span>
+                      <span className="sr-only">No</span>
                     </td>
                   </tr>
-                  <tr class="border-t border-gray-200">
+                  <tr className="border-t border-gray-200">
                     <th
-                      class="py-5 px-4 text-sm font-normal text-gray-500 text-left"
+                      className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
                       scope="row"
                     >
                       VAST Watermark
                     </th>
-                    <td class="py-5 pr-4">
+                    <td className="py-5 pr-4">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         aria-hidden="true"
-                        class="ml-auto h-5 w-5 text-gray-400"
+                        className="ml-auto h-5 w-5 text-gray-400"
                       >
                         <path
                           fill-rule="evenodd"
@@ -383,23 +384,23 @@ function Upgrade() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="sr-only">No</span>
+                      <span className="sr-only">No</span>
                     </td>
                   </tr>
-                  <tr class="border-t border-gray-200">
+                  <tr className="border-t border-gray-200">
                     <th
-                      class="py-5 px-4 text-sm font-normal text-gray-500 text-left"
+                      className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
                       scope="row"
                     >
                       Color Palette
                     </th>
-                    <td class="py-5 pr-4">
+                    <td className="py-5 pr-4">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         aria-hidden="true"
-                        class="ml-auto h-5 w-5 text-green-500"
+                        className="ml-auto h-5 w-5 text-green-500"
                       >
                         <path
                           fill-rule="evenodd"
@@ -407,23 +408,23 @@ function Upgrade() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="sr-only">Yes</span>
+                      <span className="sr-only">Yes</span>
                     </td>
                   </tr>
-                  <tr class="border-t border-gray-200">
+                  <tr className="border-t border-gray-200">
                     <th
-                      class="py-5 px-4 text-sm font-normal text-gray-500 text-left"
+                      className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
                       scope="row"
                     >
                       Font Picker
                     </th>
-                    <td class="py-5 pr-4">
+                    <td className="py-5 pr-4">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         aria-hidden="true"
-                        class="ml-auto h-5 w-5 text-green-500"
+                        className="ml-auto h-5 w-5 text-green-500"
                       >
                         <path
                           fill-rule="evenodd"
@@ -431,18 +432,18 @@ function Upgrade() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="sr-only">Yes</span>
+                      <span className="sr-only">Yes</span>
                     </td>
                   </tr>
-                  <tr class="border-t border-gray-200">
+                  <tr className="border-t border-gray-200">
                     <th
-                      class="py-5 px-4 text-sm font-normal text-gray-500 text-left"
+                      className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
                       scope="row"
                     >
                       Test Patterns
                     </th>
-                    <td class="py-5 pr-4">
-                      <span class="block text-sm text-gray-700 text-right">
+                    <td className="py-5 pr-4">
+                      <span className="block text-sm text-gray-700 text-right">
                         Upto 3 patterns
                       </span>
                     </td>
@@ -451,49 +452,49 @@ function Upgrade() {
               </table>
             </section>
             <section>
-              <div class="px-4 mb-8">
-                <h2 class="text-lg leading-6 font-medium text-gray-900">
+              <div className="px-4 mb-8">
+                <h2 className="text-lg leading-6 font-medium text-gray-900">
                   Premium
                 </h2>
                 <p>
-                  <span class="text-4xl font-extrabold text-gray-900">
+                  <span className="text-4xl font-extrabold text-gray-900">
                     ₹259
                   </span>
-                  <span class="text-base font-medium text-gray-500">/year</span>
+                  <span className="text-base font-medium text-gray-500">/year</span>
                 </p>
-                <button class="hover:to-pink-600 bg-gradient-to-r from-orange-500 to-pink-500 cursor-pointer mt-6 block w-full  border border-transparent rounded-md shadow py-2 text-sm font-semibold text-white text-center">
+                <button className="hover:to-pink-600 bg-gradient-to-r from-orange-500 to-pink-500 cursor-pointer mt-6 block w-full  border border-transparent rounded-md shadow py-2 text-sm font-semibold text-white text-center">
                   Upgrade to Premium
                 </button>
               </div>
-              <table class="w-full">
-                <caption class="bg-gray-50 border-t border-gray-200 py-3 px-4 text-sm font-medium text-gray-900 text-left">
+              <table className="w-full">
+                <caption className="bg-gray-50 border-t border-gray-200 py-3 px-4 text-sm font-medium text-gray-900 text-left">
                   Features
                 </caption>
                 <thead>
                   <tr>
-                    <th class="sr-only" scope="col">
+                    <th className="sr-only" scope="col">
                       Feature
                     </th>
-                    <th class="sr-only" scope="col">
+                    <th className="sr-only" scope="col">
                       Included
                     </th>
                   </tr>
                 </thead>
-                <tbody class="divide-y divide-gray-200">
-                  <tr class="border-t border-gray-200">
+                <tbody className="divide-y divide-gray-200">
+                  <tr className="border-t border-gray-200">
                     <th
-                      class="py-5 px-4 text-sm font-normal text-gray-500 text-left"
+                      className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
                       scope="row"
                     >
                       Templates
                     </th>
-                    <td class="py-5 pr-4">
+                    <td className="py-5 pr-4">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         aria-hidden="true"
-                        class="ml-auto h-5 w-5 text-green-500"
+                        className="ml-auto h-5 w-5 text-green-500"
                       >
                         <path
                           fill-rule="evenodd"
@@ -501,23 +502,23 @@ function Upgrade() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="sr-only">Yes</span>
+                      <span className="sr-only">Yes</span>
                     </td>
                   </tr>
-                  <tr class="border-t border-gray-200">
+                  <tr className="border-t border-gray-200">
                     <th
-                      class="py-5 px-4 text-sm font-normal text-gray-500 text-left"
+                      className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
                       scope="row"
                     >
                       JPEG Download
                     </th>
-                    <td class="py-5 pr-4">
+                    <td className="py-5 pr-4">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         aria-hidden="true"
-                        class="ml-auto h-5 w-5 text-green-500"
+                        className="ml-auto h-5 w-5 text-green-500"
                       >
                         <path
                           fill-rule="evenodd"
@@ -525,23 +526,23 @@ function Upgrade() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="sr-only">Yes</span>
+                      <span className="sr-only">Yes</span>
                     </td>
                   </tr>
-                  <tr class="border-t border-gray-200">
+                  <tr className="border-t border-gray-200">
                     <th
-                      class="py-5 px-4 text-sm font-normal text-gray-500 text-left"
+                      className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
                       scope="row"
                     >
                       PNG Download
                     </th>
-                    <td class="py-5 pr-4">
+                    <td className="py-5 pr-4">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         aria-hidden="true"
-                        class="ml-auto h-5 w-5 text-green-500"
+                        className="ml-auto h-5 w-5 text-green-500"
                       >
                         <path
                           fill-rule="evenodd"
@@ -549,23 +550,23 @@ function Upgrade() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="sr-only">Yes</span>
+                      <span className="sr-only">Yes</span>
                     </td>
                   </tr>
-                  <tr class="border-t border-gray-200">
+                  <tr className="border-t border-gray-200">
                     <th
-                      class="py-5 px-4 text-sm font-normal text-gray-500 text-left"
+                      className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
                       scope="row"
                     >
                       PDF Download
                     </th>
-                    <td class="py-5 pr-4">
+                    <td className="py-5 pr-4">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         aria-hidden="true"
-                        class="ml-auto h-5 w-5 text-green-500"
+                        className="ml-auto h-5 w-5 text-green-500"
                       >
                         <path
                           fill-rule="evenodd"
@@ -573,23 +574,23 @@ function Upgrade() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="sr-only">Yes</span>
+                      <span className="sr-only">Yes</span>
                     </td>
                   </tr>
-                  <tr class="border-t border-gray-200">
+                  <tr className="border-t border-gray-200">
                     <th
-                      class="py-5 px-4 text-sm font-normal text-gray-500 text-left"
+                      className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
                       scope="row"
                     >
                       VAST Watermark
                     </th>
-                    <td class="py-5 pr-4">
+                    <td className="py-5 pr-4">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         aria-hidden="true"
-                        class="ml-auto h-5 w-5 text-gray-400"
+                        className="ml-auto h-5 w-5 text-gray-400"
                       >
                         <path
                           fill-rule="evenodd"
@@ -597,23 +598,23 @@ function Upgrade() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="sr-only">No</span>
+                      <span className="sr-only">No</span>
                     </td>
                   </tr>
-                  <tr class="border-t border-gray-200">
+                  <tr className="border-t border-gray-200">
                     <th
-                      class="py-5 px-4 text-sm font-normal text-gray-500 text-left"
+                      className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
                       scope="row"
                     >
                       Color Palette
                     </th>
-                    <td class="py-5 pr-4">
+                    <td className="py-5 pr-4">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         aria-hidden="true"
-                        class="ml-auto h-5 w-5 text-green-500"
+                        className="ml-auto h-5 w-5 text-green-500"
                       >
                         <path
                           fill-rule="evenodd"
@@ -621,23 +622,23 @@ function Upgrade() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="sr-only">Yes</span>
+                      <span className="sr-only">Yes</span>
                     </td>
                   </tr>
-                  <tr class="border-t border-gray-200">
+                  <tr className="border-t border-gray-200">
                     <th
-                      class="py-5 px-4 text-sm font-normal text-gray-500 text-left"
+                      className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
                       scope="row"
                     >
                       Font Picker
                     </th>
-                    <td class="py-5 pr-4">
+                    <td className="py-5 pr-4">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         aria-hidden="true"
-                        class="ml-auto h-5 w-5 text-green-500"
+                        className="ml-auto h-5 w-5 text-green-500"
                       >
                         <path
                           fill-rule="evenodd"
@@ -645,23 +646,23 @@ function Upgrade() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="sr-only">Yes</span>
+                      <span className="sr-only">Yes</span>
                     </td>
                   </tr>
-                  <tr class="border-t border-gray-200">
+                  <tr className="border-t border-gray-200">
                     <th
-                      class="py-5 px-4 text-sm font-normal text-gray-500 text-left"
+                      className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
                       scope="row"
                     >
                       Test Patterns
                     </th>
-                    <td class="py-5 pr-4">
+                    <td className="py-5 pr-4">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         aria-hidden="true"
-                        class="ml-auto h-5 w-5 text-green-500"
+                        className="ml-auto h-5 w-5 text-green-500"
                       >
                         <path
                           fill-rule="evenodd"
@@ -669,7 +670,7 @@ function Upgrade() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="sr-only">Yes</span>
+                      <span className="sr-only">Yes</span>
                     </td>
                   </tr>
                 </tbody>
@@ -709,7 +710,7 @@ function Upgrade() {
                           </span>
                         </p>
                       </div>
-                      <button className="hover:to-pink-600 bg-gradient-to-r from-orange-500 to-pink-500 cursor-pointer mt-6 block w-full border border-transparent rounded-md shadow py-2 text-sm font-semibold text-white text-center">
+                      <button className="hover:to-yellow-500 bg-gradient-to-t from-orange-500 to-yellow-400 cursor-pointer mt-6 block w-full border border-transparent rounded-md shadow py-2 text-sm font-semibold text-white text-center">
                         Upgrade to Basic
                       </button>
                     </div>
@@ -726,7 +727,7 @@ function Upgrade() {
                           </span>
                         </p>
                       </div>
-                      <button className="hover:to-pink-600 bg-gradient-to-r from-orange-500 to-pink-500 cursor-pointer mt-6 block w-full border border-transparent rounded-md shadow py-2 text-sm font-semibold text-white text-center">
+                      <button className="hover:to-yellow-500 bg-gradient-to-t from-orange-500 to-yellow-400 cursor-pointer mt-6 block w-full border border-transparent rounded-md shadow py-2 text-sm font-semibold text-white text-center">
                         Upgrade to Essential
                       </button>
                     </div>
@@ -743,7 +744,7 @@ function Upgrade() {
                           </span>
                         </p>
                       </div>
-                      <button className="hover:to-pink-600 bg-gradient-to-r from-orange-500 to-pink-500 cursor-pointer mt-6 block w-full border border-transparent rounded-md shadow py-2 text-sm font-semibold text-white text-center">
+                      <button className="hover:to-yellow-500 bg-gradient-to-t from-orange-500 to-yellow-400 cursor-pointer mt-6 block w-full border border-transparent rounded-md shadow py-2 text-base font-semibold text-white text-center">
                         Upgrade to Premium
                       </button>
                     </div>
@@ -1178,6 +1179,8 @@ function Upgrade() {
               </tbody>
             </table>
           </div>
+        </div>
+        <div className="p-5"></div>
         </div>
       </div>
     </div>

@@ -32,6 +32,8 @@ function boxes() {
   <div class="w-[66mm] text-white text-sm font-medium absolute text-right">
     <span class="bg-orange-600 p-1 px-3 absolute rounded-t-lg">Public</span>
   </div>
+
+  
   <div class="box relative my-7 mx-12 h-[90mm] w-[70mm] bg-black border-[4px] rounded-lg border-orange-500">
     <span>
       <img class="w-full h-full object-cover object-center opacity-60 hover:opacity-40" src="https://www.provast.io/_next/image?url=https%3A%2F%2Fwww.callcentrehelper.com%2Fimages%2Fstories%2F2022%2F01%2Fhands-holding-cvs.gif&w=2048&q=75" />
