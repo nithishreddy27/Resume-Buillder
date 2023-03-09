@@ -128,7 +128,7 @@ const ResumeState = (props) => {
       phone: "999999999",
       objective: `- Organized customer information and account data for business planning and customer service purposes.\n - Created excel spreadsheets to track customer data and perform intense reconciliation process.\n - Received 97% positive customer survey results.
       - Speed on calls was 10% above team average.  
-       *Key Achievement:* Designed and executed an automatized system for following up with customers, increasing customer retention by 22%.
+       Key Achievement: Designed and executed an automatized system for following up with customers, increasing customer retention by 22%.
       `,
     },
     social: [

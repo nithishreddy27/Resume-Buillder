@@ -1,15 +1,12 @@
 import { useState } from 'react';
-
 export default function InputField() {
   const [value, setValue] = useState('');
-
   const handleChange = (event) => {
-    const inputValue = event.target.value;
-    if (inputValue <= 100) {
+  const inputValue = event.target.value;
+    if(inputValue <= 100) {
       setValue(inputValue);
     }
   };
-
   return (
     <div>
       <label htmlFor="input-field">Enter a percentage:</label>
@@ -23,7 +20,7 @@ export default function InputField() {
         onChange={handleChange}
         className="border border-gray-400 rounded-md p-2"
       />
-      <span>%</span>
+      <span>%</span>                                
     </div>
   );
 }

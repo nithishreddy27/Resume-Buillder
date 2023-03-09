@@ -53,9 +53,6 @@ export default function Amsterdam() {
     window.print();
     document.body.innerHTML = originalContents;
   }
-
-  // document.getElementById("smallResume")
-
   useEffect(() => {
     // document.getElementById("largeResume").style.color = "red"
   }, [0]);

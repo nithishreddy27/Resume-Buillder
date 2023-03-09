@@ -10,7 +10,7 @@ export default async function handler(req,res){
         // console.log('inside get',req.body)
         var data =await UserResume.findOne({"email":`${email}`})
         // console.log("data",data);
-        res.send({"resume":data})
+        res.send({"resume":data.resume})
     }
     else{
         var pro = {
