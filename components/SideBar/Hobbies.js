@@ -30,7 +30,7 @@ export default function Hobbies() {
       arr.push(item);
     });
     arr.push(hob);
-    console.log("first", hob);
+    // console.log("first", hob);
     sethobbies({ ...details, hobbies: arr });
 
     sethobbies({

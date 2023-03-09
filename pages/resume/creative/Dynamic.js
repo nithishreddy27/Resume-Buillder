@@ -84,10 +84,13 @@ export default function Dynamic() {
     // settextColor()
   }, [color]);
 
+
+  
   return (
     <>
       {details && user && (
         <div className="flex">
+          {console.log("details inside div")}
           {/* <div>
             <ColorPicker
               width={456}
@@ -102,9 +105,7 @@ export default function Dynamic() {
           {open == "closed" && (
             <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-slate-700 to-slate-800">
               <div className="flex border border-white">
-                <div className="m-3 flex grow">
-                  <div className="flex mt-1"></div>
-                </div>
+                
                 <div className="m-3 flex">
                 <button
                     className="text-white border border-white p-2 rounded-md"

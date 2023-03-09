@@ -31,7 +31,7 @@ export default function College() {
       />
     </div>
     <div className=" h-[64%] p-10">
-      {console.log("user", user)}
+      {/* {console.log("user", user)} */}
       {user&& (
         <div>
           <div className="flex justify-around">
