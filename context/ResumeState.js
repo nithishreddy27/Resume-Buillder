@@ -344,7 +344,7 @@ const ResumeState = (props) => {
       setdetails(completeResume);
     } else {
       setdetails(pro);
-      console.log("pro", pro);
+      // console.log("pro", pro);
     }
   }, [demo]);
 
