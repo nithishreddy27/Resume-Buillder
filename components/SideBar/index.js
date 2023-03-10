@@ -29,17 +29,8 @@ import Languages from "./Languages";
 import Hobbies from "./Hobbies";
 export default function SideBar() {
   const [open, setopen] = useState("semiopen");
-  const [arrow, setarrow] = useState(false);
-  const [earrow, setearrow] = useState(false);
-  const [skarrow, setskarrow] = useState(false);
-  const [larrow, setlarrow] = useState(false);
-  const [harrow, setharrow] = useState(false);
-  const [parrow, setparrow] = useState(false);
-  const [awarrow, setawarrow] = useState(false);
-  const [carrow, setcarrow] = useState(false);
-
+  
   const { details, setdetails } = useContext(ResumeContext);
-  const [editSocial, seteditSocial] = useState(false);
 
   function updateForm(event) {
     const n = event.target.name;
@@ -405,39 +396,41 @@ export default function SideBar() {
               </div>
             </form>
 
-            <SocailMedia />
+     <SocailMedia />
 
-            <Internship />
+     <Internship />
 
-            {/* Education  */}
+     {/* Education  */}
 
-            <Education />
+     <Education />
 
-            {/* Certifications  */}
+     {/* Certifications  */}
 
-            <Certifications />
+     <Certifications />
 
-            {/* Projects  */}
+     {/* Projects  */}
 
-            <Projects />
+     <Projects />
 
-            {/* awards  */}
+     {/* awards  */}
 
-            <Awards />
+     <Awards />
 
-            {/* skills */}
+     {/* skills */}
 
-            <Skills />
+     <Skills />
 
-            {/* Languages  */}
+     {/* Languages  */}
 
-            <Languages />
-            {/* hobbies  */}
+     <Languages />
+     {/* hobbies  */}
 
-            <Hobbies />
-          </div>
-        </div>
-      </div>
+     <Hobbies/>
+   </div>
+ </div>
+</div>
+    
+    
     </>
   );
 }

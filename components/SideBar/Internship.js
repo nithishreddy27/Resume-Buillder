@@ -27,6 +27,7 @@ export default function Internship() {
     from: "",
     to: "",
     summary: { data: "" },
+    enabled: true,
   });
 
   function addInternship(event) {
@@ -56,11 +57,12 @@ export default function Internship() {
       from: "",
       to: "",
       summary: { data: "" },
+      enabled: true,
     });
   }
 
   function deleteInternship(index) {
-    console.log("network", index);
+    // console.log("network", index);
     const arr = [];
     details.work.map((item, i) => {
       if (i != index) arr.push(item);
@@ -78,9 +80,44 @@ export default function Internship() {
           from: item.from,
           to: item.to,
           summary: { data: item.summary.data },
+          enabled: true,
         });
       }
     });
+  }
+  function toggleInternships(index) {
+    setinternship(details.work[index]);
+    const arr = [];
+    if (details.work[index].enabled == true) {
+      details.work.map((item, ind) => {
+        if (index == ind) {
+          item.enabled = false;
+          arr.push(item);
+        } else {
+          arr.push(item);
+        }
+      });
+      setdetails({ ...details, work: arr });
+    } else {
+      details.work.map((item, ind) => {
+        if (index == ind) {
+          item.enabled = true;
+          arr.push(item);
+        } else {
+          arr.push(item);
+        }
+      });
+      setdetails({ ...details, work: arr });
+    }
+    setinternship({
+      company: "",
+      designation: "",
+      from: "",
+      to: "",
+      summary: { data: "" },
+      enabled: true,
+    });
+    console.log("")
   }
 
   return (
@@ -134,20 +171,49 @@ export default function Internship() {
                     deleteInternship(index);
                   }}
                 >
-                  <button onClick={() => {updateInternship(index)
-                     setiarrow(true)}}>
+                  <button
+                    onClick={() => {
+                      updateInternship(index);
+                      setiarrow(true);
+                    }}
+                  >
                     <FaEdit></FaEdit>
                   </button>
-                  
                 </button>
-                <button className="mr-2 text-xl" onClick={()=>{deleteInternship(index)}}><AiFillDelete></AiFillDelete></button>
-                <div>
-                      <input
-                        class="mt-[6px] mr-5 h-3.5 w-8 appearance-none rounded-[0.4375rem] bg-gray-300 outline-none before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:bg-gray-200 after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-orange-500 checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s]"
+                <button
+                  className="mr-2 text-xl"
+                  onClick={() => {
+                    deleteInternship(index);
+                  }}
+                >
+                  <AiFillDelete></AiFillDelete>
+                </button>
+                <div className="mt-1">
+                      {item.enabled && (
+                        <input
+                        className="mt-[0.3rem] mr-2 h-3.5 w-8 appearance-none rounded-[0.4375rem] bg-gray-300 outline-none before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:bg-gray-200 after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-orange-500 checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s]"
                         type="checkbox"
                         role="switch"
                         id="flexSwitchCheckDefault"
+                        checked={item.enabled}
+                        defaultChecked
+                        onChange={() => {
+                          toggleInternships(index);
+                        }}
                       />
+                      )}
+                      {item.enabled == false && (
+                        <input
+                        className="mt-[0.3rem] mr-2 h-3.5 w-8 appearance-none rounded-[0.4375rem] bg-gray-300 outline-none before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:bg-gray-200 after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-orange-500 checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s]"
+                        type="checkbox"
+                        role="switch"
+                        id="flexSwitchCheckDefault"
+                        checked={item.enabled}
+                        onChange={() => {
+                          toggleInternships(index);
+                        }}
+                      />
+                      )  }
                     </div>
               </div>
               <div className=""></div>
@@ -155,7 +221,7 @@ export default function Internship() {
           ))}
         </div>
         <div className={`${iarrow ? "block" : "hidden"}`}>
-          <form action="">
+          <form onSubmit={addInternship}>
             {/* <div className="mt-5 text-gray-300"> */}
 
             <label htmlFor="company" className="font-semibold">

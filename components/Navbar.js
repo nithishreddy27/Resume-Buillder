@@ -10,7 +10,7 @@ const Navbar = () => {
 
 
     function runMe(){
-      console.log(user.profile.firstName)
+      // console.log(user.profile.firstName)
       if(user.notificationMethod== "student"){
         router.push('/register/addStdDetails')
     }

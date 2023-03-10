@@ -41,27 +41,20 @@ export default function Ruby() {
 
   //PDF document
 
-  function printDocument() {
-    console.log("inside");
-    // var input = document.getElementById('smallResume');
-    var input;
-    if (open == "closed") {
-      input = document.getElementById("smallResume");
-    } else {
-      input = document.getElementById("largeResume");
-      console.log("om");
-    }
-    html2canvas(input).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "mm", "a4");
-      var width = pdf.internal.pageSize.getWidth();
-      var height = pdf.internal.pageSize.getHeight();
-      pdf.addImage(imgData, "JPEG", 0, 0, width, height);
-      pdf.save("download.pdf");
-      // pdf.output('dataurlnewwindow');
-    });
+  function lprintDocument() {
+    const printContents = document.getElementById("largeResume").innerHTML;
+    const originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
   }
-
+  function sprintDocument() {
+    const printContents = document.getElementById("smallResume").innerHTML;
+    const originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+  }
   // document.getElementById("smallResume")
 
   useEffect(() => {
@@ -105,7 +98,7 @@ export default function Ruby() {
                   <div className="flex mt-1"></div>
                 </div>
                 <div className="m-3 flex">
-                <button
+                  <button
                     className="text-white border border-white p-2 rounded-md"
                     onClick={() => {
                       setcolorpalette(!colorpalette);
@@ -113,7 +106,11 @@ export default function Ruby() {
                   >
                     COLOR
                   </button>
-                  <div className={`${colorpalette ? "block" : "hidden"} mt-[50px] ml-[-50px] lg:ml-[50px] absolute z-40`}>
+                  <div
+                    className={`${
+                      colorpalette ? "block" : "hidden"
+                    } mt-[50px] ml-[-50px] lg:ml-[50px] absolute z-40`}
+                  >
                     <ColorPicker
                       width={300}
                       height={100}
@@ -125,7 +122,7 @@ export default function Ruby() {
                     ;
                   </div>
                   <button
-                    onClick={printDocument}
+                    onClick={sprintDocument}
                     className="cursor-pointer text-white border border-white p-1 mx-1 rounded"
                   >
                     PRINT
@@ -152,7 +149,7 @@ export default function Ruby() {
                   id="smallResume"
                   // style={{ color: color.hex }}
                 >
-                 <div className="flex align-middle justify-center bg-zinc-400">
+                  <div className="flex align-middle justify-center bg-zinc-400">
                     <div className="container bg-white">
                       <div className="grid grid-cols-3">
                         <div className={`bg-${color}-700 `}>
@@ -389,9 +386,10 @@ export default function Ruby() {
                 </div>
                 <style jsx>
                   {`
-                  .heading{
-                    color:${color.hex};
-                  }`}
+                    .heading {
+                      color: ${color.hex};
+                    }
+                  `}
                 </style>
               </div>
             </div>
@@ -411,29 +409,33 @@ export default function Ruby() {
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
                 <div className="flex">
                   <div className="m-5 grow">
-                  <button
-                    className="text-white border border-white p-2 rounded-md"
-                    onClick={() => {
-                      setcolorpalette(!colorpalette);
-                    }}
-                  >
-                    COLOR
-                  </button>
-                  <div className={`${colorpalette ? "block" : "hidden"} ml-[50px] absolute z-40`}>
-                    <ColorPicker
-                      width={300}
-                      height={100}
-                      color={color}
-                      onChange={setColor}
-                      hideHSV
-                      dark
-                    />
-                    ;
-                  </div>
+                    <button
+                      className="text-white border border-white p-2 rounded-md"
+                      onClick={() => {
+                        setcolorpalette(!colorpalette);
+                      }}
+                    >
+                      COLOR
+                    </button>
+                    <div
+                      className={`${
+                        colorpalette ? "block" : "hidden"
+                      } ml-[50px] absolute z-40`}
+                    >
+                      <ColorPicker
+                        width={300}
+                        height={100}
+                        color={color}
+                        onChange={setColor}
+                        hideHSV
+                        dark
+                      />
+                      ;
+                    </div>
                   </div>
                   <div className="m-5">
                     <button
-                      onClick={printDocument}
+                      onClick={lprintDocument}
                       className="cursor-pointer text-white mx-5 border border-white p-2 rounded"
                     >
                       PRINT
@@ -446,7 +448,6 @@ export default function Ruby() {
                       LOAD
                     </button>
                   </div>
-                  
                 </div>
 
                 <div className="flex justify-center ">
@@ -454,135 +455,133 @@ export default function Ruby() {
 
                   <div
                     className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row"
-                    
                     id="largeResume"
                     // style={{ color: color.hex }}
                   >
-                   <div className="flex align-middle justify-center bg-zinc-400">
+                    <div className="flex align-middle justify-center bg-zinc-400">
                       <div className="container bg-white">
-                        <div className="grid grid-cols-3">
-                          <div className={`bg-${color}-700 `}>
-                            <div className="ml-8 bg-gray-200 h-[285mm] p-4">
-                              <div className="">
-                                <img
-                                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpl60g6oKVerEKPde2ClN4-6ASK4Ds4KzlM0Y1N-K_bCgOCMBYZ019WUgRLOfNAqyyhnY&usqp=CAU"
-                                  alt="ProfilePhoto"
-                                />
-                                <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
-                                  Personal Details
-                                </h1>
-                                <div>
-                                  <i className="bx bxs-user"></i>
-                                  <span className="text-sm font-semibold heading">
-                                    {details.personal.firstName}{" "}
-                                    {details.personal.lastName}
-                                  </span>
-                                </div>
-                                <div>
-                                  <i className="bx bxs-mail"></i>
-                                  <span class="text-sm font-semibold m-0.5">
-                                    {details.personal.email}
-                                  </span>
-                                </div>
-                                <div>
-                                  <i className="bx bxs-phone"></i>
-                                  <span class="text-sm font-semibold m-0.5">
-                                    {details.personal.phone}
-                                  </span>
-                                </div>
-                                <div>
-                                  <i className="bx bxs-calendar"></i>
-                                  <span class="text-sm font-semibold m-0.5">
-                                    {details.personal.dob}
-                                  </span>
-                                </div>
-
-                                {details.social.length != 0 && (
-                                  <div>
-                                    <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
-                                      Social
-                                    </h1>
-                                    {details.social.map((item) => (
-                                      <div
-                                        className="text-sm font-semibold m-0.5"
-                                        key={item.network}
-                                      >
-                                        <a href="{item.url}">{item.network}</a>
-                                      </div>
-                                    ))}
-                                  </div>
-                                )}
+                        <div className="flex">
+                          <h1 className="back bg-red-700 h-[285mm] w-[4%] heading"></h1>
+                          <div className=" bg-gray-200 w-[31%] h-[285mm] p-4">
+                            <div className="">
+                              <img
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpl60g6oKVerEKPde2ClN4-6ASK4Ds4KzlM0Y1N-K_bCgOCMBYZ019WUgRLOfNAqyyhnY&usqp=CAU"
+                                alt="ProfilePhoto"
+                              />
+                              <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
+                                Personal Details
+                              </h1>
+                              <div>
+                                <i className="bx bxs-user"></i>
+                                <span className="text-sm font-semibold heading">
+                                  {details.personal.firstName}{" "}
+                                  {details.personal.lastName}
+                                </span>
+                              </div>
+                              <div>
+                                <i className="bx bxs-mail"></i>
+                                <span class="text-sm font-semibold m-0.5">
+                                  {details.personal.email}
+                                </span>
+                              </div>
+                              <div>
+                                <i className="bx bxs-phone"></i>
+                                <span class="text-sm font-semibold m-0.5">
+                                  {details.personal.phone}
+                                </span>
+                              </div>
+                              <div>
+                                <i className="bx bxs-calendar"></i>
+                                <span class="text-sm font-semibold m-0.5">
+                                  {details.personal.dob}
+                                </span>
                               </div>
 
-                              {details.skills.length != 0 && (
+                              {details.social.length != 0 && (
                                 <div>
                                   <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
-                                    Skills
+                                    Social
                                   </h1>
-                                  {details.skills.map((item) => (
-                                    <div key={item.name}>
-                                      <h1 className="text-sm font-semibold m-0.5">
-                                        {item.name} - {item.level}
-                                      </h1>
-                                    </div>
-                                  ))}
-                                </div>
-                              )}
-
-                              {details.awards.length != 0 && (
-                                <div>
-                                  <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
-                                    Awards
-                                  </h1>
-                                  {details.awards.map((item) => (
-                                    <div className="py-1" key={item.name}>
-                                      <h1 className="text-sm font-bold relative m-0.5">
-                                        {item.name}
-                                        <span className="right-0 text-sm text-red-700 absolute">
-                                          {item.startDate} - {item.endDate}
-                                        </span>
-                                      </h1>
-                                      <p className="text-sm font-semibold m-0.5">
-                                        {item.awarder}
-                                      </p>
-                                      <p>{item.summary.data}</p>
-                                    </div>
-                                  ))}
-                                </div>
-                              )}
-
-                              {details.hobbies.length != 0 && (
-                                <div>
-                                  <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
-                                    Hobbies
-                                  </h1>
-                                  {details.hobbies.map((item) => (
-                                    <div key={item.name}>
-                                      <h1 className="text-sm font-semibold m-0.5">
-                                        {item.name}
-                                      </h1>
-                                    </div>
-                                  ))}
-                                </div>
-                              )}
-
-                              {details.languages.length != 0 && (
-                                <div>
-                                  <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
-                                    Languages
-                                  </h1>
-                                  {details.languages.map((item) => (
-                                    <div key={item.name}>
-                                      <h1 className="text-sm font-semibold m-0.5">
-                                        {item.name} - {item.level}
-                                      </h1>
+                                  {details.social.map((item) => (
+                                    <div
+                                      className="text-sm font-semibold m-0.5"
+                                      key={item.network}
+                                    >
+                                      <a href="{item.url}">{item.network}</a>
                                     </div>
                                   ))}
                                 </div>
                               )}
                             </div>
+
+                            {details.skills.length != 0 && (
+                              <div>
+                                <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
+                                  Skills
+                                </h1>
+                                {details.skills.map((item) => (
+                                  <div key={item.name}>
+                                    <h1 className="text-sm font-semibold m-0.5">
+                                      {item.name} - {item.level}
+                                    </h1>
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+
+                            {details.awards.length != 0 && (
+                              <div>
+                                <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
+                                  Awards
+                                </h1>
+                                {details.awards.map((item) => (
+                                  <div className="py-1" key={item.name}>
+                                    <h1 className="text-sm font-bold relative m-0.5">
+                                      {item.name}
+                                      <span className="right-0 text-sm text-red-700 absolute">
+                                        {item.startDate} - {item.endDate}
+                                      </span>
+                                    </h1>
+                                    <p className="text-sm font-semibold m-0.5">
+                                      {item.awarder}
+                                    </p>
+                                    <p>{item.summary.data}</p>
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+
+                            {details.hobbies.length != 0 && (
+                              <div>
+                                <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                                  Hobbies
+                                </h1>
+                                {details.hobbies.map((item) => (
+                                  <div key={item.name}>
+                                    <h1 className="text-sm font-semibold m-0.5">
+                                      {item.name}
+                                    </h1>
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+
+                            {details.languages.length != 0 && (
+                              <div>
+                                <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                                  Languages
+                                </h1>
+                                {details.languages.map((item) => (
+                                  <div key={item.name}>
+                                    <h1 className="text-sm font-semibold m-0.5">
+                                      {item.name} - {item.level}
+                                    </h1>
+                                  </div>
+                                ))}
+                              </div>
+                            )}
                           </div>
-                          <div className="col-span-2 p-6">
+                          <div className="w-[65%] p-6">
                             <h1 className="text-red-700 text-4xl heading">
                               {details.personal.firstName}{" "}
                               {details.personal.lastName}
@@ -693,11 +692,14 @@ export default function Ruby() {
                       </div>
                     </div>
                     <style jsx>
-                      {
-                        `.heading{
-                          color:${color.hex};
-                        }`
-                      }
+                      {`
+                        .heading {
+                          color: ${color.hex};
+                        }
+                        .back {
+                          background-color: ${color.hex};
+                        }
+                      `}
                     </style>
                   </div>
                 </div>

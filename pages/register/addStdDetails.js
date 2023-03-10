@@ -53,35 +53,16 @@ export default function AddStdDetails() {
       {user && (
         <div className="mt-4 sm:mx-auto sm:w-full sm:max-w-2xl relative grid h-screen place-items-center">
           <div className="bg-white pt-1 pb-8 shadow-xl rounded-xl px-10 ">
-            <form
-              method="POST"
-              action="../api/addDetails"
-              className=" mx-auto my-10"
-            >
-              <div className="flex justify-between">
-                <div className="">
-                  <label htmlFor="username" className="text-sm font-semibold">
-                    Signed in as:
-                  </label>
-                  <input
-                    type="text"
-                    value={username}
-                    className="mx-2 border-none "
-                    id="username"
-                    name="username"
-                    onChange={() => {
-                      console.log("dont change me");
-                    }}
-                  />
-                </div>
-                <div>
-                  <Link
-                    href="/api/logout"
-                    className="text-orange-600 text-sm mx-2 font-semibold hover:text-orange-900 hover:underline"
-                  >
-                    Logout
-                  </Link>
-                </div>
+
+            
+          <form method="POST" action="../api/addDetails" className=' mx-auto my-10'>
+
+            <div className='flex justify-between'>
+              <div className=''>
+                <label htmlFor="username" className="text-sm font-semibold">Signed in as:</label>
+                <input type="text"  value={username} className="mx-2 border-none " id="username" name="username" onChange={()=>{
+                  console.log("dont change me");
+                }}/>
               </div>
               <fieldset className="mt-4">
                 <div className="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
@@ -360,6 +341,7 @@ export default function AddStdDetails() {
                   </div>
                 </div>
               )}
+              </div>
             </form>
           </div>
         </div>

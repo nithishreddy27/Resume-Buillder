@@ -1,155 +1,194 @@
-import React, { useContext, useEffect, useState } from "react";
-import Navbar from "../../components/Navbar";
-import Link from "next/link";
-import { FiMenu } from "react-icons/fi";
+import React, { useContext, useEffect } from 'react'
+import Link from "next/link"
 import { useUser } from "../../lib/hooks";
-import { useRouter } from "next/router";
+import ResumeContext from "../../context/ResumeContext";
+import { TbPlus } from "react-icons/tb";
 
-const Home = (props) => {
-  const arr = props.done;
-  const [open, setOpen] = useState(false);
-  const l = [];
-  const [type, setType] = useState("free");
-  const [design, setDesign] = useState("all");
-  const user = useUser();
-  // console.log("in index",router.query)
+export default function index(props) {
 
+    const { details, setdetails, setdemo, demo ,id,setid } = useContext(ResumeContext);
 
-
+  const data = props.done
+  // console.log("done",data)
+  const user = useUser()
+  useEffect(()=>{
+    setid(null)
+  },[0])
   return (
-    
-    <div>
+    <>
+    {user && (
+      // <div className='p-10'>
+      
+      //     Create new resume
+
+      //     <input type="text" name="resumeName" id="resumeName" className='border' required/>
+
+      //     <Link href="/resume/resumes">Submit</Link>
+
+
+          // <div>
+          //   {data.map((item)=>(
+          //     <div key={item._id}> 
+          //       {user.email == item.email && (
+          //         <div>
+          //           {item.resume.map((resume,index)=>(
+          //             <div className='m-5' key={resume._id}>
+          //             <Link  href={`/resume/${resume.id}?index=${index}`}>
+          //               {resume.id} {index}
+          //             </Link>
+          //             {/* {resume.id != "test" && (
+          //               <div>
+          //               {<Link  href={`/resume/${resume.id}?index=${index}`}>
+          //               {resume.id} 
+          //             </Link>}
+          //             </div>
+          //             )}
+          //             {resume.id == "test" && (
+          //               <div>
+          //               { <Link  href={`/resume/${resume._id}?index=${index}`}>
+          //                 test {index}
+          //                 </Link> }
+          //             </div>
+          //             )} */}
+          //             </div>
+          //           ))}
+          //         </div>
+          //       )}
+          //     </div>
+          //   ))}
+          // </div>
+      // </div>
       <div>
-        <div className="border-b border-gray-300 py-2 fixed top-[-8px] w-[100%] z-40 bg-slate-50">
-            <Navbar/>
+      <div className=" min-h-[70vh] py-4 ">
+        <div className="mt-4 mx-auto max-w-7xl px-4 sm:mt-8 sm:px-6">
+          <div className="text-center">
+            <h1 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl md:text-5xl">
+              <span className="block text-orange-600">Welcome {user.profile.firstName} BS!</span>
+            </h1>
+            <p className="mb-3 max-w-2xl mx-auto text-base text-gray-500 sm:text-md md:mt-2 md:text-lg md:max-w-3xl">
+              Create a tailored resume for each job application. Double your
+              chances of getting hired!
+            </p>
+          </div>
+        </div>
+
+        <div className="grid lg:grid-cols-3  md:grid-cols-2 sm:grid-cols-1 gap-4 w-11/15 mx-auto place-items-center mt-4 pt-4">
+          <div className=" cursor-pointer">
+            <div className="box  my-7 mx-12 h-[90mm] w-[70mm] border-4 border-dashed border-gray-300">
+              <div className="text-gray-500 text-center my-[58%] text-3xl font-semibold">
+                CREATE
+                <div className=" flex justify-center "><TbPlus/></div>
+
+
+                <input type="text" name="role" id="role" className='border' required placeholder='enter role'/>
+
+               <Link href="/resume/resumes">Submit</Link>
+              </div>
+            </div>
+          </div>
+          {/* <div>
+            {data.map((item)=>(
+              <div key={item._id}> 
+                {user.email == item.email && (
+                  <div>
+                    {item.resume.map((resume,index)=>(
+                      <div className='m-5' key={resume._id}>
+                      <Link  href={`/resume/${resume.id}?index=${index}`}>
+                        {resume.id} {index}
+                      </Link>
+                      
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div> */}
+          
+
+          <div>
+            {data.map((item)=>(
+              <div key={item._id}> 
+                {user.email == item.email && (
+                  <div className=''>
+                    {item.resume.map((resume,index)=>(
+                      <div className='box relative my-7 mx-12 h-[90mm] w-[70mm] bg-black border-[4px] border-orange-500' key={resume._id}>
+                        <span>
+                      <img className="w-full h-full object-cover object-center opacity-60 hover:opacity-40" src="https://www.provast.io/_next/image?url=https%3A%2F%2Fwww.callcentrehelper.com%2Fimages%2Fstories%2F2022%2F01%2Fhands-holding-cvs.gif&w=2048&q=75" />
+                    </span>
+                    <Link href={`/resume/${resume.id}?index=${index}`} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-2xl font-bold whitespace-nowrap transition-all duration-500">
+                      resume test {index}
+                    </Link>
+                      {/* <Link  href={`/resume/${resume.id}?index=${index}`}>
+                        {resume.id} {index}
+                      </Link> */}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* <div className="relative cursor-pointer">
+  <div className="w-[66mm] text-white text-sm font-medium absolute text-right">
+    <span className="bg-orange-600 p-1 px-3 absolute rounded-t-lg">Public</span>
+  </div>
+  <div className="box relative my-7 mx-12 h-[90mm] w-[70mm] bg-black border-[4px] border-orange-500">
+    <span>
+      <img className="w-full h-full object-cover object-center opacity-60 hover:opacity-40" src="https://www.provast.io/_next/image?url=https%3A%2F%2Fwww.callcentrehelper.com%2Fimages%2Fstories%2F2022%2F01%2Fhands-holding-cvs.gif&w=2048&q=75" />
+    </span>
+    <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-2xl font-bold whitespace-nowrap transition-all duration-500">
+      resume test
+    </span>
+  </div>
+</div> */}
+
+<style>{`
+  .box:hover span { 
+    transform: translate(-50%, -100%);
+  } `}
+</style>
+
+
+{/* <div className="relative cursor-pointer">
+  <div className="w-[66mm] text-white text-sm font-medium absolute text-right">
+  </div>
+  <div className="box relative my-7 mx-12 h-[90mm] w-[70mm] bg-black border-[4px] border-orange-500">
+    <span>
+      <img className="w-full h-full object-cover object-center opacity-60 hover:opacity-40" src="https://www.provast.io/_next/image?url=https%3A%2F%2Fwww.callcentrehelper.com%2Fimages%2Fstories%2F2022%2F01%2Fhands-holding-cvs.gif&w=2048&q=75" />
+    </span>
+    <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-2xl font-bold whitespace-nowrap transition-all duration-500">
+      resume test
+    </span>
+  </div>
+</div> */}
+{/* 
+<div className="relative cursor-pointer">
+  <div className="w-[66mm] text-white text-sm font-medium absolute text-right">
+    
+  </div>
+  <div className="box relative my-7 mx-12 h-[90mm] w-[70mm] bg-black border-[4px] border-orange-500">
+    <span>
+      <img className="w-full h-full object-cover object-center opacity-60 hover:opacity-40" src="https://www.provast.io/_next/image?url=https%3A%2F%2Fwww.callcentrehelper.com%2Fimages%2Fstories%2F2022%2F01%2Fhands-holding-cvs.gif&w=2048&q=75" />
+    </span>
+    <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-2xl font-bold whitespace-nowrap transition-all duration-500">
+      resume test
+    </span>
+  </div>
+</div> */}
         </div>
       </div>
-      
-      {user && (
-        <div className="h-screen absolute top-[80px]">
-          <h1 className="mt-10 p-2 font-bold text-gray-900 text-lg text-center sm:text-3xl md:text-4xl">
-            welcome{" "}
-            <b className="text-orange-600 tracking-wide">
-              {user.profile.firstName} !
-            </b>{" "}
-            pick your template{" "}
-          </h1>
-          <div className="mb-3 max-w-2xl mx-auto text-base text-gray-500 sm:text-md md:mt-2 md:text-lg md:max-w-3xl text-center">
-            <p>
-              Each resume template is expertly designed and follows the exact
-              "resume rules" hiring{" "}
-            </p>
-            <p>
-              managers look for.Stand out and get hired faster with field-tested
-              resume template
-            </p>
-            <select
-              id="tabs"
-              name="tabs"
-              className="mx-10 md:hidden block w-[80%] focus:ring-orange-500 focus:border-orange-500 border-gray-300 rounded-md mt-8"
-              onChange={()=>setDesign(document.getElementById("tabs").value)}
-            >
-              <option value="all">All templates</option>
-              <option value="simple">Simple</option>
-              <option value="creative">Creative</option>
-              <option value="company">Company</option>
-              <option value="mba">MBA</option>
-            </select>
-          </div>
-          <div className="hidden md:block">
-            <nav className="my-10 flex">
-              <a
-                className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:border-gray-300 active:border-gray-300 w-1/4 px-1 text-center border-b-2 font-medium text-lg cursor-pointer"
-                onClick={() => setDesign("all")}
-              >
-                all templates
-              </a>
-              <a
-                className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 w-1/4 px-1 text-center border-b-2 font-medium text-lg cursor-pointer"
-                onClick={() => setDesign("simple")}
-              >
-                Simple
-              </a>
-              <a
-                className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 w-1/4 px-1 text-center border-b-2 font-medium text-lg cursor-pointer"
-                onClick={() => setDesign("creative")}
-              >
-                Creative
-              </a>
-              <a
-                className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 w-1/4 px-1 text-center border-b-2 font-medium text-lg cursor-pointer"
-                onClick={() => setDesign("company")}
-              >
-                Company
-              </a>
-              <a
-                className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 w-1/4 px-1 text-center border-b-2 font-medium text-lg cursor-pointer"
-                onClick={() => setDesign("mba")}
-              >
-                MBA
-              </a>
-            </nav>
-          </div>
-
-          <div className="grid grid-cols-1  gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 mt-5 blur-[0.75px]">
-            {/* <div className='rounded-md bg-black h-96 w-64 m-5 cursor-pointer relative'  key={data._id}>
-        <div className=' text-4xl text-white font-semibold tracking-wider text-center '><span className='absolute z-40'>Name </span> </div>
-        <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png" alt=""  className='h-[100%] w-[100%] opacity-50'/>
-
-      </div> */}
-
-            {arr.map((data) => {
-              if (design == "all" || data.ResumeDesign == design) {
-                l.push(data);
-              }
-            })}
-            {
-              // l.map((data)=>(
-              //        <Link href={`resume/${data.ResumeDesign}/${data.ResumeName}`} className='rounded-md bg-black h-96 w-64 m-5 cursor-pointer relative' key={data._id} >
-              //        <div className=' text-4xl text-white font-semibold tracking-wider text-center '><span className='absolute z-40'>{data.ResumeName} </span> </div>
-              //        <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png" alt=""  className='h-[100%] w-[100%] opacity-50'/>
-
-              //      </Link>
-              l.map((data) => (
-                <Link href={`resume/${data.ResumeDesign}/${data.ResumeName}`} key={data._id}>
-                  <div className="rounded-md bg-gray-100 h-auto  w-63 p-5 m-5 cursor-pointer relative">
-                    <div className="opacity-80">
-                      <img src={data.ResumeImage} />
-                    </div>
-                    <div className="absolute z-10 top-[43%] right-[43%] flex items-center justify-center h-10 w-10 bg-gray-200  bg-opacity-70 rounded-full p-1">
-                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAVJJREFUWEftl+FNAzEMhb9OQDcoTECZoGwAbNANoBMAEwAbsEFhAzYANigbwAStXuVKEbqLz7lWOlXxv1MSv68vTuKOGFiMBsbDUQGdArfAJTA1p7+AD+AFWJW4X+rQHfDkCGqOwEJRAvRsznQREpDAOkcU6BpYJtm/gQdAW6XQ1un7PJlzA7x1JYoCqS4mlvwdEGBTCODKBrTm7BBA+vWflvgPUFH/tgiNrahPbPwicTHLFnEoLeScOztBnbaZfSwA1Z4bESDVxr1lfLRayQlE529zVSBvz6pDfR3SydB9oiO+j9Cd9AroUDRGbssiT0QUtvWU5oB06e0utqigN7/19s4Brb2sPccbtStQ4mp1yCux6lB1yHPAG681dPwOHfJx/WlraXJvWdqke/ZHx4vaD4kIap78OYwK/58vZ9SgKW+4QesrXrQ+0uQXCUQXDQ5oA5cjSCVYiqWCAAAAAElFTkSuQmCC" />
-                    </div>
-                    <div className=" text-2xl p-3 text-center   font-semibold">
-                      {data.ResumeName}{" "}
-                    </div>
-                  </div>
-                </Link>
-              ))
-            }
-
-            {/* <Link href={`resume/${data.ResumeDesign}/${data.ResumeName}`} className='  rounded-md bg-black h-96 w-64 m-5 cursor-pointer relative' key={data._id} >
-             <div className=' text-4xl text-white font-semibold tracking-wider text-center '>
-              hjedbfuethu4h
-              <span className='absolute z-40'>{data.ResumeName} </span> 
-             </div>
-          
-             <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png" alt=""  className='h-[100%] w-[100%] opacity-50'/>
-     
-           </Link> */}
-          </div>
-        </div>
-      )}
     </div>
-  );
-};
-
-export default Home;
+    )}
+    </>
+  )
+}
 
 export const getServerSideProps = async () => {
-  const res = await fetch("http://localhost:3000/api/Resume/searchResume");
+  const res = await fetch("http://localhost:3000/api/testResume/search");
   const data = await res.json();
-  var o = data[0];
-  // console.log("student",o.ResumeName)
+  // console.log("data in server",data);
   return {
     props: {
       done: data,

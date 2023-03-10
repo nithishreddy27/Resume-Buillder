@@ -4,12 +4,13 @@ import UserResume from "../../../model/UserResume"
 export default async function handler(req,res){
    
   const email = req.body.email
+  const resumeId = req.body.resumeId
   console.log("get res",email)
   if(email){
         // console.log('inside get',req.body)
-        var data =await UserResume.findOne({"personal.email":`${email}`})
+        var data =await UserResume.findOne({"email":`${email}`})
         // console.log("data",data);
-        res.send({"resume":data})
+        res.send({"resume":data.resume})
     }
     else{
         var pro = {

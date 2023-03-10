@@ -41,32 +41,20 @@ export default function Classic() {
 
   //PDF document
 
-  function printDocument() {
-    console.log("inside");
-    // var input = document.getElementById('smallResume');
-    var input;
-    if (open == "closed") {
-      input = document.getElementById("smallResume");
-    } else {
-      input = document.getElementById("largeResume");
-      console.log("om");
-    }
-    console.log(input);
-    html2canvas(input).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "mm", "a4");
-      var width = pdf.internal.pageSize.getWidth();
-      var height = pdf.internal.pageSize.getHeight();
-      pdf.addImage(imgData, "JPEG", 0, 0, width, height);
-      pdf.save("download.pdf");
-      // pdf.output('dataurlnewwindow');
-    });
+  function lprintDocument() {
+    const printContents = document.getElementById("largeResume").innerHTML;
+    const originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
   }
-  useEffect(() => {
-    // document.getElementById("largeResume").style.color = "red"
-  }, [0]);
-
-
+  function sprintDocument() {
+    const printContents = document.getElementById("smallResume").innerHTML;
+    const originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+  }
   useEffect(() => {
     // document.getElementById("largeResume").style.color = "red"
   }, [0]);
@@ -91,12 +79,23 @@ export default function Classic() {
       {details && user && (
         <div className="flex">
           {open == "closed" && (
-            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-slate-700 to-slate-800">
-              <div className="flex border border-white">
-                <div className="m-3 flex grow">
-                  <div className="flex mt-1">
-                    
-                  </div>
+            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-gray-400 to-gray-600">
+              <button
+                className="h-10 w-10 mx-auto block lg:hidden"
+                onClick={toggleResume}
+              >
+                DETAILS
+              </button>
+              <div className="flex justify-center ">
+                <div>
+                  <button
+                    onClick={sprintDocument}
+                    className="cursor-pointer text-white mx-5"
+                  >
+                    Print
+                  </button>
+
+                  <button onClick={() => setdemo(!demo)}>LOAD</button>
                 </div>
                 <div className="m-3 flex">
                   <button
@@ -124,23 +123,6 @@ export default function Classic() {
                   >
                     PRINT
                   </button>
-
-                  <button
-                    className="text-white border border-white p-1 mx-1 rounded"
-                    onClick={() => setdemo(!demo)}
-                  >
-                    LOAD
-                  </button>
-                  <button
-                    className=" block lg:hidden border border-white text-white p-1 mx-1 rounded-md"
-                    onClick={toggleResume}
-                  >
-                    DETAILS
-                  </button>
-                </div>
-              </div>
-              <div className="flex justify-center ">
-                
 
                 {/* Small Resume */}
 
@@ -274,7 +256,7 @@ export default function Classic() {
                                 PROJECTS
                               </p>
                               {details.projects.map((item) => (
-                                <div className="p-1 pl-5 ">
+                                <div key={item.name} className="p-1 pl-5 ">
                                   <p className="font-bold font-serif text-base ">
                                     {item.name}
                                   </p>
@@ -295,7 +277,7 @@ export default function Classic() {
                           {/* NETWORK */}
                           <div className="m-4">
                             <>
-                              <h1 className="bg-gray-800 tracking-widest text-white mt-1 p-1 text-center rounded-md heading">
+                              <h1 className="bg-gray-800 tracking-widest text-white mt-1 p-1 text-center rounded-md heading ">
                                 NETWORK
                               </h1>
                               <div className="pl-4">
@@ -367,7 +349,7 @@ export default function Classic() {
                               {/* CERTIFICATIONS */}
                               {details.certifications.length != 0 && (
                                 <div className="mt-5">
-                                  <p className="bg-gray-800 tracking-widest rounded-md mt-2 text-center text-white p-1 m-1 heading">
+                                  <p className="bg-gray-800 tracking-widest rounded-md mt-2 text-center text-white p-1 m-1 heading ">
                                     CERTIFICATION
                                   </p>
                                   {details.certifications.map((item) => (
@@ -402,6 +384,7 @@ export default function Classic() {
                 </style>
               </div>
             </div>
+            </div>
           )}
 
           {open == "semiopen" && (
@@ -416,38 +399,18 @@ export default function Classic() {
               </div>
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
-              <div className="flex">
-                  <div className="m-5 grow">
+                <div className="flex justify-center ">
+                  {/* large resume */}
+                  <div>
                     <button
-                    className="text-white border border-white p-2 rounded-md"
-                    onClick={() => {
-                      setcolorpalette(!colorpalette);
-                    }}
-                  >
-                    COLOR
-                  </button>
-                  <div className={`${colorpalette ? "block" : "hidden"} ml-[50px] absolute z-40`}>
-                    <ColorPicker
-                      width={300}
-                      height={100}
-                      color={color}
-                      onChange={setColor}
-                      hideHSV
-                      dark
-                    />
-                    ;
-                  </div>
-                  </div>
-                  <div className="m-5">
-                    <button
-                      onClick={printDocument}
-                      className="cursor-pointer text-white mx-5 border border-white p-2 rounded"
+                      onClick={lprintDocument}
+                      className="cursor-pointer text-white mx-5"
                     >
-                      PRINT
+                      Print
                     </button>
 
                     <button
-                      className="text-white border border-white p-2 rounded"
+                      className="text-white"
                       onClick={() => setdemo(!demo)}
                     >
                       LOAD
@@ -589,7 +552,7 @@ export default function Classic() {
                                   PROJECTS
                                 </p>
                                 {details.projects.map((item) => (
-                                  <div className="p-1 pl-5 ">
+                                  <div key={item.name} className="p-1 pl-5 ">
                                     <p className="font-bold font-serif text-base ">
                                       {item.name}
                                     </p>
