@@ -3,7 +3,8 @@ import React from "react";
 function Upgrade() {
   return (
     <div className="min-h-screen">
-      <div className="bg-slate-200">
+    {/* <div className="bg-slate-200"> */}
+    <div>
         <div className="bg-gradient-to-tr from-indigo-900 to-gray-800">
           <div className="max-w-2xl mx-auto py-6 px-4 sm:py-4 sm:px-6 lg:px-4 lg:max-w-7xl">
             <div className="px-0 lg:flex lg:justify-between lg:item-center">
@@ -1180,7 +1181,7 @@ function Upgrade() {
             </table>
           </div>
         </div>
-        <div className="p-5"></div>
+        {/* <div className="p-5"></div> */}
         </div>
       </div>
     </div>
