@@ -1,15 +1,10 @@
-import Head from 'next/head'
 import { useUser } from '../lib/hooks'
-import { Inter } from '@next/font/google'
 import { InferGetServerSidePropsType } from 'next'
 import Navbar from "../components/Navbar"
-import Link from 'next/link'
-import { useState } from 'react'
-import { FiMenu } from "react-icons/fi";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
+import { useState } from 'react';
 
 
-const inter = Inter({ subsets: ['latin'] })
 
 export async function getServerSideProps(context: any) {
   try {

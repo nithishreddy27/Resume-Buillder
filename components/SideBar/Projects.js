@@ -21,6 +21,7 @@ export default function Projects() {
   const { details, setdetails } = useContext(ResumeContext);
   const [projects, setprojects] = useState({
     name: "",
+    domain:"",
     website: "",
     from: "",
     to: "",
@@ -39,6 +40,7 @@ export default function Projects() {
 
     setprojects({
       name: "",
+      domain:"",
       website: "",
       from: "",
       to: "",
@@ -46,6 +48,8 @@ export default function Projects() {
       enabled: true,
     });
   }
+
+
   function deleteProjects(index) {
     const arr = [];
     details.projects.map((item, i) => {
@@ -55,11 +59,14 @@ export default function Projects() {
     });
     setdetails({ ...details, projects: arr });
   }
+
+  
   function updateProjects(index) {
     details.projects.map((item, i) => {
       if (i == index) {
         setprojects({
           name: item.name,
+          domain:item.domain,
           website: item.website,
           from: item.from,
           to: item.to,
@@ -69,6 +76,10 @@ export default function Projects() {
       }
     });
   }
+
+
+
+
   function toggleProjects(index) {
     setprojects(details.projects[index]);
     const arr = [];
@@ -95,6 +106,7 @@ export default function Projects() {
     }
     setprojects({
       name: "",
+      domain:"",
       website: "",
       from: "",
       to: "",
@@ -102,6 +114,9 @@ export default function Projects() {
       enabled: true,
     });
   }
+
+
+
   return (
     <div>
       {" "}
@@ -146,7 +161,9 @@ export default function Projects() {
           <>
             <div className="ml-1 mt-1">
               {details.projects.map((item, index) => (
+                
                 <div className="my-3 p-3 border border-white" key={item.name}>
+                  {console.log("item",item)}
                   <div className="flex">
                     <p className="grow font-semibold">{item.name}</p>
                     <button
@@ -169,8 +186,9 @@ export default function Projects() {
                       <AiFillDelete></AiFillDelete>
                     </button>
                     <div className="mt-1">
-                      <input
-                        class="mt-[0.3rem] mr-2 h-3.5 w-8 appearance-none rounded-[0.4375rem] bg-gray-300 outline-none before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:bg-gray-200 after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-orange-500 checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s]"
+                      {item.enabled && (
+                        <input
+                        className="mt-[0.3rem] mr-2 h-3.5 w-8 appearance-none rounded-[0.4375rem] bg-gray-300 outline-none before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:bg-gray-200 after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-orange-500 checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s]"
                         type="checkbox"
                         role="switch"
                         id="flexSwitchCheckDefault"
@@ -180,6 +198,19 @@ export default function Projects() {
                           toggleProjects(index);
                         }}
                       />
+                      )}
+                      {item.enabled == false && (
+                        <input
+                        className="mt-[0.3rem] mr-2 h-3.5 w-8 appearance-none rounded-[0.4375rem] bg-gray-300 outline-none before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:bg-gray-200 after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-orange-500 checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s]"
+                        type="checkbox"
+                        role="switch"
+                        id="flexSwitchCheckDefault"
+                        checked={item.enabled}
+                        onChange={() => {
+                          toggleProjects(index);
+                        }}
+                      />
+                      )  }
                     </div>
                   </div>
                 </div>
@@ -201,6 +232,20 @@ export default function Projects() {
               value={projects.name}
               onChange={(e) => {
                 setprojects({ ...projects, name: e.target.value });
+              }}
+            />
+            <label htmlFor="projectTitle" className="font-semibold">
+              Domain
+            </label>
+
+            <input
+              type="text"
+              name="project"
+              id="domain"
+              className="block shadow bg-slate-100 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+              value={projects.domain}
+              onChange={(e) => {
+                setprojects({ ...projects, domain: e.target.value });
               }}
             />
             <label

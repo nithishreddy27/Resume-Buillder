@@ -2,9 +2,16 @@ import mongoose from "mongoose";
 
 const userResume = new mongoose.Schema({
 <<<<<<< HEAD
+    resumeId: {type:String},
+    email:{type:String},
+    resume:[{
+        id:{type:String},
+=======
+<<<<<<< HEAD
     email:{type:String},
     resume:[{
         role:{type:String},
+>>>>>>> 282140afd346249b812dd83c0f293a940eaeaa84
         personal:{
             firstName:{
                 type:String
@@ -29,6 +36,49 @@ const userResume = new mongoose.Schema({
             },
             objective:{
                 type:String
+<<<<<<< HEAD
+            }
+        },
+        social:[{
+            network:{
+                type:String,
+            },
+            username:{
+                type:String
+            },
+            url:{
+                type:String
+            },
+            enabled:{
+                type:Boolean
+            },
+        }],
+        work:[{
+            company:{
+                type:String
+            },
+            from:{
+                type:String
+            },
+            to:{
+                type:String
+            },
+            designation:{
+                type:String
+            },
+            website:{
+                type:String
+            },
+            summary:{
+                data:{
+                    type:String
+                },
+            },
+            enabled:{
+                type:Boolean
+            }
+            
+=======
             }
         },
         social:[{
@@ -70,6 +120,7 @@ const userResume = new mongoose.Schema({
                 }
             },
     
+>>>>>>> 282140afd346249b812dd83c0f293a940eaeaa84
         }],
         education:[{
             institution:{
@@ -94,6 +145,15 @@ const userResume = new mongoose.Schema({
                 data:{
                     type:String
                 },
+<<<<<<< HEAD
+            },
+            enabled:{
+                type:Boolean
+            }
+        }],
+        projects:[{
+            name:{
+=======
                 enable:{
                     type:Boolean
                 }
@@ -101,6 +161,7 @@ const userResume = new mongoose.Schema({
         }],
         projects:[{
             title:{
+>>>>>>> 282140afd346249b812dd83c0f293a940eaeaa84
                 type:String
             },
             domain:{
@@ -120,9 +181,15 @@ const userResume = new mongoose.Schema({
                 data:{
                     type:String
                 },
+<<<<<<< HEAD
+            },
+            enabled:{
+                type:Boolean
+=======
                 enable:{
                     type:Boolean
                 }
+>>>>>>> 282140afd346249b812dd83c0f293a940eaeaa84
             }
         }],
         awards:[{
@@ -139,9 +206,15 @@ const userResume = new mongoose.Schema({
                 data:{
                     type:String
                 },
+<<<<<<< HEAD
+            },
+            enabled:{
+                type:Boolean
+=======
                 enable:{
                     type:Boolean
                 }
+>>>>>>> 282140afd346249b812dd83c0f293a940eaeaa84
             }
         }],
         certifications: [{
@@ -158,9 +231,15 @@ const userResume = new mongoose.Schema({
                 data:{
                     type:String
                 },
+<<<<<<< HEAD
+            },
+            enabled:{
+                type:Boolean
+=======
                 enable:{
                     type:Boolean
                 }
+>>>>>>> 282140afd346249b812dd83c0f293a940eaeaa84
             }
         }],
         skills:[{

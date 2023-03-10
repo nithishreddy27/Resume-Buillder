@@ -12,6 +12,9 @@ import jsPDF from "jspdf";
 import ReactDOM from "react-dom";
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
+
+
+
 export default function Dynamic() {
   const user = useUser();
   const { details, setdetails, setdemo, demo } = useContext(ResumeContext);
@@ -56,11 +59,7 @@ export default function Dynamic() {
     document.body.innerHTML = originalContents;
   }
 
-  // document.getElementById("smallResume")
 
-  useEffect(() => {
-    // document.getElementById("largeResume").style.color = "red"
-  }, [0]);
 
   //responsiveness
   function toggleResume() {
@@ -151,6 +150,43 @@ export default function Dynamic() {
                   id="smallResume"
                   // style={{ color: color.hex }}
                 >
+<<<<<<< HEAD
+                  <div className=" w-[35%] bg-gray-200 p-6">
+                    <div className="bg-slate-800 w-36 h-[200px] absolute top-0 left-0">
+                      <img
+                        src="https://randomuser.me/api/portraits/men/40.jpg"
+                        alt=""
+                        className="w-36 h-36 mt-7 ml-10 border-8 border-white"
+                      />
+                    </div>
+                    <div className="mt-48">
+                      <h1 className="text-2xl font-semibold tracking-[2px] heading">
+                        CONTACT
+                      </h1>
+                      <hr className="h-[2px] bg-black my-1" />
+                      { 
+                        <>
+                          <div className="flex">
+                            <span>
+                              <img
+                                src="https://www.freeiconspng.com/uploads/contact-methods-phone-icon-512x512-pixel-3.png"
+                                className="w-5 h-5"
+                              />
+                            </span>
+                            <h1 className="mx-4">{details.personal.phone}</h1>
+                          </div>
+                          <div className="flex my-1">
+                            <span>
+                              <img
+                                src="https://www.freeiconspng.com/uploads/black-mail-icon-4.png"
+                                className="w-7 h-7"
+                              />
+                            </span>
+                            <h1 className="mx-2">{details.personal.email}</h1>
+                          </div>
+
+                          {details.social.length != 0 && (
+=======
                  <div className="flex">
                       <div className=" w-[35%] bg-gray-200 p-6">
                         <div className="bg-slate-800 w-36 h-[200px] absolute top-0 left-0">
@@ -166,6 +202,7 @@ export default function Dynamic() {
                           </h1>
                           <hr className="h-[2px] bg-black my-1" />
                           {
+>>>>>>> 282140afd346249b812dd83c0f293a940eaeaa84
                             <>
                               <div className="flex">
                                 <span>
@@ -324,6 +361,32 @@ export default function Dynamic() {
                               </p>
                             </>
                           )}
+<<<<<<< HEAD
+                        </>
+                      }
+                    </div>
+                    
+                    {details.skills.length != 0 && (
+                      <>
+                      <div className="mt-4">
+                        <h1 className="text-2xl font-semibold tracking-[2px] heading">
+                          SKILLS
+                        </h1>
+                        <hr className="h-[2px] bg-black my-1" />
+                        {details.skills.map((item) => (
+                          <>
+                            {item.enabled == true && (
+                              <li className="mx-4" key={item.name}>
+                                {item.name}
+                              </li>
+                            )}
+                          </>
+                        ))}
+                      </div>
+                        </>
+                    )}
+=======
+>>>>>>> 282140afd346249b812dd83c0f293a940eaeaa84
 
                           {details.work.length != 0 && (
                             <>

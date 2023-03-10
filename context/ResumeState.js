@@ -471,4 +471,5 @@ const ResumeState = (props) => {
   );
 };
 
-export default ResumeState;
+export default ResumeState;
+
