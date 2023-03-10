@@ -242,10 +242,13 @@ const Home = (props) => {
     // },[user,id])
 
     const q = router.query
-    const newResume= q.newResume
+
+
     async function runMe(resumeId){
 
-      if(newResume == "true"){
+
+      console.log("id",resumeId)
+      
 
         const pro = {
           id:resumeId,
@@ -356,8 +359,9 @@ const Home = (props) => {
             // },
           ],
         };
+
+        
         const body={
-            resumeId : resumeId,
             email:user.email,
             resume:pro
         }
@@ -368,10 +372,8 @@ const Home = (props) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ resume : body }),
         })
-      }
-      else{
-        console.log("not new")
-      }
+        
+        router.push("/resume")
     }
 
 
