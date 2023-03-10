@@ -62,6 +62,10 @@ export default function Classic() {
       // pdf.output('dataurlnewwindow');
     });
   }
+  useEffect(() => {
+    // document.getElementById("largeResume").style.color = "red"
+  }, [0]);
+
 
   useEffect(() => {
     // document.getElementById("largeResume").style.color = "red"
@@ -75,13 +79,13 @@ export default function Classic() {
       setopen("semiopen");
     }
   }
-
   const [color, setColor] = useColor("hex", "#121212");
   useEffect(() => {
     console.log("color:", color);
     // settextColor()
   }, [color]);
 
+  
   return (
     <>
       {details && user && (

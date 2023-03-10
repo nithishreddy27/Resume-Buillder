@@ -144,7 +144,7 @@ export default function Stylish() {
     
       <div className=" m-3 mt-2 right-0 w-full    ">
         
-          <p className=" text-black font-bold text-xl p-1 pt-2 pl-4 tracking-wide  mt-3 ">PROFILE</p>
+          <p className=" text-black font-bold text-xl p-1 pt-2 pl-4 tracking-wide  mt-3 heading">PROFILE</p>
           <p className="text-sm text-black p-3 pl-2 pt-2">{details.personal.objective}</p>
         
         </div>
@@ -240,7 +240,7 @@ export default function Stylish() {
   
     <div className=" m-3 mt-2 right-0 w-full    ">
       
-        <p className=" text-black font-bold text-xl p-1 pt-2 pl-4 tracking-wide  mt-3 ">PROFILE</p>
+        <p className=" text-black font-bold text-xl p-1 pt-2 pl-4 tracking-wide  mt-3 heading ">PROFILE</p>
         <p className="text-sm text-black p-3 pl-2 pt-2">{details.personal.objective}</p>
       
       </div>
@@ -261,7 +261,7 @@ export default function Stylish() {
     <div className="font-col">
     {details.skills.length != 0 && (
       <div className="p-2 ">
-        <p className="text-black text-lg font-bold tracking-wider pb-3">
+        <p className="text-black text-lg font-bold tracking-wider pb-3 heading">
           SKILLS
         </p>
         {details.skills.map((item) => (
@@ -279,7 +279,7 @@ export default function Stylish() {
 
      {details.languages.length != 0 && (
        <div className="text-lg pb-2">
-        <p className="text-black font-bold tracking-wider  p-1 px-3 py-1">
+        <p className="text-black font-bold tracking-wider  p-1 px-3 py-1 heading">
           LANGUAGES
         </p>
         {details.languages.map((item) => (
@@ -296,7 +296,7 @@ export default function Stylish() {
 
     {details.awards.length != 0 && (
       <div className="pt-2 pb-2  ">
-        <p className="text-black font-bold tracking-wider  p-1 mx-2 ">
+        <p className="text-black font-bold tracking-wider  p-1 mx-2 heading">
           AWARDS
         </p>
         {details.awards.map((item) => (
@@ -314,7 +314,7 @@ export default function Stylish() {
 
      {details.hobbies.length != 0 && (
        <div className="text-lg pb-2">
-        <p className="text-black font-bold tracking-wider  p-1 px-3 py-1">
+        <p className="text-black font-bold tracking-wider  p-1 px-3 py-1 heading">
           HOBBIES
         </p>
         {details.hobbies.map((item) => (
@@ -330,7 +330,7 @@ export default function Stylish() {
 
     {details.projects.length != 0 && (
       <div className=" pt-1 pb-3 ">
-        <p className="text-black font-bold tracking-wider  p-1 px-2 pt-3   ">
+        <p className="text-black font-bold tracking-wider  p-1 px-2 pt-3 heading  ">
         PROJECTS
         </p>
         
@@ -365,7 +365,7 @@ export default function Stylish() {
     <div className="w-[70%]">
     {details.education.length != 0 && (  
       <div className="pl-2 ">
-        <p className=" text-black font-bold text-xl tracking-wide  p-3  mt-3 ">
+        <p className=" text-black font-bold text-xl tracking-wide  p-3  mt-3 heading">
           EDUCATION
         </p>
         <hr></hr>
@@ -388,7 +388,7 @@ export default function Stylish() {
 
     {details.work.length != 0 && (  
       <div className="pl-2 ">
-        <p className=" text-black font-bold text-xl tracking-wide  p-3  mt-3 ">
+        <p className=" text-black font-bold text-xl tracking-wide  p-3  mt-3 heading">
           INTERNSHIP
         </p>
         <hr></hr>
@@ -412,7 +412,7 @@ export default function Stylish() {
 
     {details.certifications.length != 0 && (
       <div>
-        <p className=" text-black font-bold text-xl tracking-wide ml-3 p-1  mt-1 ">
+        <p className=" text-black font-bold text-xl tracking-wide ml-3 p-1  mt-1 heading">
           CERTIFICATION
         </p>
         <hr className="m-2"></hr>

@@ -149,7 +149,7 @@ export default function Square() {
                         ></img>
                       </div>
                     </div>
-                    <div className="personal">
+                    <div className="personal ">
                       <div className="dob pl-10 pt-3">
                         <i className="bx bxs-calendar pr-4 text-lg"></i>
                         <span className="text-base relative bottom-[3px]">

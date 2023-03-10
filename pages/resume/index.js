@@ -46,13 +46,14 @@ const Home = (props) => {
             <select
               id="tabs"
               name="tabs"
-              className="md:hidden block w-full focus:ring-orange-500 focus:border-orange-500 border-gray-300 rounded-md mt-8"
+              className="mx-10 md:hidden block w-[80%] focus:ring-orange-500 focus:border-orange-500 border-gray-300 rounded-md mt-8"
+              onChange={()=>setDesign(document.getElementById("tabs").value)}
             >
-              <option>All templates</option>
-              <option>Simple</option>
-              <option>Creative</option>
-              <option>Company</option>
-              <option>MBA</option>
+              <option value="all">All templates</option>
+              <option value="simple">Simple</option>
+              <option value="creative">Creative</option>
+              <option value="company">Company</option>
+              <option value="mba">MBA</option>
             </select>
           </div>
           <div className="hidden md:block">

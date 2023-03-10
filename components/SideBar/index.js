@@ -11,6 +11,7 @@ import { MdSocialDistance, MdOutlineSpeakerNotes } from "react-icons/md";
 import { FaLanguage, FaAward } from "react-icons/fa";
 import { SiGooglescholar } from "react-icons/si";
 import { FaEdit } from "react-icons/fa";
+import { AiFillCamera } from "react-icons/ai";
 // import {GrProjects} from "react-icons/gr"
 import { GiSkills } from "react-icons/gi";
 import { RxHobbyKnife } from "react-icons/rx";
@@ -46,8 +47,6 @@ export default function SideBar() {
     setdetails({ ...details, [n]: { ...details[n], [i]: event.target.value } });
   }
 
-  
-
   function addHobby() {
     const hobby = {
       name: document.getElementById("hobbyTitle").value,
@@ -72,6 +71,55 @@ export default function SideBar() {
     // console.log('intern',intern)
     // arr.push(intern)
     setdetails({ ...details, hobbies: arr });
+  }
+  const [imageSrc, setImageSrc] = useState();
+  const [uploadData, setUploadData] = useState();
+
+  /**
+   * handleOnChange
+   * @description Triggers when the file input changes (ex: when a file is selected)
+   */
+
+  function handleOnChange(changeEvent) {
+    const reader = new FileReader();
+
+    reader.onload = function (onLoadEvent) {
+      setImageSrc(onLoadEvent.target.result);
+      setUploadData(undefined);
+    };
+
+    reader.readAsDataURL(changeEvent.target.files[0]);
+  }
+
+  /**
+   * handleOnSubmit
+   * @description Triggers when the main form is submitted
+   */
+
+  async function handleOnSubmit(event) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const fileInput = Array.from(form.elements).find(
+      ({ name }) => name === "file"
+    );
+
+    const formData = new FormData();
+
+    for (const file of fileInput.files) {
+      formData.append("file", file);
+    }
+    formData.append("upload_preset", "my-uploads");
+    const data = await fetch(
+      "https://api.cloudinary.com/v1_1/dhqhq0szn/image/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    ).then((r) => r.json());
+
+    setImageSrc(data.secure_url);
+    setUploadData(data);
+    console.log("data", data);
   }
 
   return (
@@ -206,13 +254,71 @@ export default function SideBar() {
             </div>
           </div>
           <div className=" mb-5 mx-5    sm:m-10 md:mx-20 lg:mx-16 ">
-            <form action="" className="">
+            <form
+              action=""
+              className=""
+              method="post"
+              onChange={handleOnChange}
+              onSubmit={handleOnSubmit}
+            >
               <h1
                 id="personaldetails"
                 className="font-bold text-xl border-b border-gray-300 py-1 font-sans tracking-wide mt-24 lg:mt-0"
               >
                 Personal Details:
               </h1>
+              <div className="mt-5">
+                <label
+                  htmlFor="firstName"
+                  className="font-semibold text-gray-400"
+                >
+                  Upload Image
+                </label>
+                <div className="flex gap-5">
+                  <label for="file" className="mt-5">
+                    {imageSrc && (
+                      <img
+                      src={imageSrc}
+                      
+                      width="80"
+                      height="80"
+                    />
+                    )}
+                    {
+                      !imageSrc && (
+                        <img
+                      src="https://www.provast.io/_next/image?url=http%3A%2F%2Fres.cloudinary.com%2Fdj7nomqfd%2Fimage%2Fupload%2Fv1647117869%2Fuploads%2Fbphhxvmlcyyu2pntbikm.png&w=2048&q=75"
+                      
+                      width="80"
+                      height="80"
+                    />
+                      )
+                    }
+                    
+
+                    <input type="file" id="file" name="file" hidden />
+                  </label>
+                  {imageSrc && !uploadData && (
+            <p>
+              <button>Upload Files</button>
+            </p>
+          )}
+
+          {uploadData && (
+            // <code><pre>{JSON.stringify(uploadData, null, 2)}</pre></code>
+            <div className="my-9 w-[80%]">
+            <input
+              type="text"
+              name="personal"
+              id="imgurl"
+              className="shadow appearance-none border bg-slate-100 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+              value={uploadData.url}
+            />
+          </div>
+          )}
+                 
+                </div>
+              </div>
               <div className="sm:grid sm:grid-cols-2 sm:gap-2 text-gray-400">
                 <div className="mt-5">
                   <label htmlFor="firstName" className="font-semibold">
@@ -328,7 +434,7 @@ export default function SideBar() {
             <Languages />
             {/* hobbies  */}
 
-            <Hobbies/>
+            <Hobbies />
           </div>
         </div>
       </div>

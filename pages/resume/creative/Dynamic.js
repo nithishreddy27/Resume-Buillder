@@ -12,7 +12,6 @@ import jsPDF from "jspdf";
 import ReactDOM from "react-dom";
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
-
 export default function Dynamic() {
   const user = useUser();
   const { details, setdetails, setdemo, demo } = useContext(ResumeContext);
@@ -190,25 +189,29 @@ export default function Dynamic() {
                           {details.social.length != 0 && (
                             <>
                               {details.social.map((item) => (
-                                <div className="my-3 flex" key={item.network}>
-                                  <span>
-                                    <img
-                                      src={
-                                        "https://www." +
-                                        item.network +
-                                        ".com/favicon.ico"
-                                      }
-                                      alt=""
-                                      className="w-5 grayscale-[40%]"
-                                    />
-                                  </span>
-
-                                  <Link href={item.url}>
-                                    <span className="mx-4">
-                                      {item.username}
+                                <>
+                                  {item.enabled && (
+                                    <div className="my-3 flex" key={item.network}>
+                                    <span>
+                                      <img
+                                        src={
+                                          "https://www." +
+                                          item.network +
+                                          ".com/favicon.ico"
+                                        }
+                                        alt=""
+                                        className="w-5 grayscale-[40%]"
+                                      />
                                     </span>
-                                  </Link>
-                                </div>
+  
+                                    <Link href={item.url}>
+                                      <span className="mx-4">
+                                        {item.username}
+                                      </span>
+                                    </Link>
+                                  </div>
+                                  )}
+                                </>
                               ))}
                             </>
                           )}
@@ -557,7 +560,9 @@ export default function Dynamic() {
                             {details.social.length != 0 && (
                               <>
                                 {details.social.map((item) => (
-                                  <div className="my-3 flex" key={item.network}>
+                                  <>
+                                   {item.enabled && (
+                                    <div className="my-3 flex" key={item.network}>
                                     <span>
                                       <img
                                         src={
@@ -569,13 +574,15 @@ export default function Dynamic() {
                                         className="w-5 grayscale-[40%]"
                                       />
                                     </span>
-
+  
                                     <Link href={item.url}>
                                       <span className="mx-4">
                                         {item.username}
                                       </span>
                                     </Link>
                                   </div>
+                                  )}
+                                  </>
                                 ))}
                               </>
                             )}
@@ -702,6 +709,8 @@ export default function Dynamic() {
                           </>
                         )}
 
+
+
                         {details.projects.length != 0 && (
                           <>
                             <h1 className="text-xl font-bold tracking-[1px] mt-5 heading">
@@ -736,6 +745,8 @@ export default function Dynamic() {
                             </div>
                           </>
                         )}
+
+
 
                         {details.education.length != 0 && (
                           <>

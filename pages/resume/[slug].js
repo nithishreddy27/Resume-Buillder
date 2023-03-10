@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import React from 'react'
 
-export default function slug() {
+export default function Slug() {
   const router = useRouter()
   const q = router.query
   return (

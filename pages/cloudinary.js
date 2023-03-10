@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Head from 'next/head'
 
 
-export default function cloudinary() {
+export default function Cloudinary() {
   const [imageSrc, setImageSrc] = useState();
   const [uploadData, setUploadData] = useState();
 

@@ -1,14 +1,16 @@
 import React from 'react'
+import { AiOutlineCamera } from 'react-icons/ai'
 
-export default function check() {
+const check = () => {
   return (
     <div>
-
-        <div className=' bg-gray-300 ml-[-190px] overflow-x-scroll scale-[0.4] min-[500px]:scale-50  lg:scale-100  w-[210mm] h-[285mm]'>
-
-            <h1 className='text-4xl'>Hello</h1>
-
-        </div>
+       <label for="doc">
+   <img src="https://www.provast.io/_next/image?url=http%3A%2F%2Fres.cloudinary.com%2Fdj7nomqfd%2Fimage%2Fupload%2Fv1647117869%2Fuploads%2Fbphhxvmlcyyu2pntbikm.png&w=2048&q=75" alt="upload icon" width="80" height="80" />
+   
+   <input type="file" id="doc" name="doc" hidden/>
+</label>
     </div>
   )
 }
+
+export default check
