@@ -4,17 +4,23 @@ import Image from "next/image";
 import Link from "next/link";
 import ResumeContext from "../../../context/ResumeContext";
 import { useFieldArray, useForm } from "react-hook-form";
+import { HiOutlineMail } from "react-icons/hi";
+import {FaPhoneAlt} from "react-icons/fa";
+import {BsCalendarCheckFill} from "react-icons/bs"
 import { useRouter } from "next/router";
 import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
 import html2canvas from "html2canvas";
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/lib/css/styles.css";
 import jsPDF from "jspdf";
 import ReactDOM from "react-dom";
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
 export default function Dublin() {
   const user = useUser();
-  const { details, setdetails, setdemo, demo } = useContext(ResumeContext);
+  const { details, setdetails, setdemo, demo } =
+    useContext(ResumeContext);
   const [change, setchange] = useState(false);
   const [colorpalette, setcolorpalette] = useState(false);
 
@@ -62,6 +68,8 @@ export default function Dublin() {
     // document.getElementById("largeResume").style.color = "red"
   }, [0]);
 
+ 
+
   //responsiveness
   function toggleResume() {
     if (open == "semiopen") {
@@ -70,13 +78,14 @@ export default function Dublin() {
       setopen("semiopen");
     }
   }
-
   const [color, setColor] = useColor("hex", "#121212");
   useEffect(() => {
     console.log("color:", color);
     // settextColor()
   }, [color]);
 
+
+  
   return (
     <>
       {details && user && (
@@ -96,9 +105,30 @@ export default function Dublin() {
             <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-slate-700 to-slate-800">
               <div className="flex border border-white">
                 <div className="m-3 flex grow">
-                  <div className="flex mt-1"></div>
+                  <div className="flex mt-1">
+                    
+                  </div>
                 </div>
                 <div className="m-3 flex">
+                <button
+                    className="text-white border border-white p-2 rounded-md"
+                    onClick={() => {
+                      setcolorpalette(!colorpalette);
+                    }}
+                  >
+                    COLOR
+                  </button>
+                  <div className={`${colorpalette ? "block" : "hidden"} mt-[50px] ml-[-50px] lg:ml-[50px] absolute z-40`}>
+                    <ColorPicker
+                      width={300}
+                      height={100}
+                      color={color}
+                      onChange={setColor}
+                      hideHSV
+                      dark
+                    />
+                    ;
+                  </div>
                   <button
                     className="text-white border border-white p-2 rounded-md"
                     onClick={() => {
@@ -452,6 +482,7 @@ export default function Dublin() {
                   `}
                 </style>
               </div>
+              
             </div>
           )}
 

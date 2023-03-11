@@ -73,6 +73,7 @@ export default function Classic() {
     // settextColor()
   }, [color]);
 
+  
   return (
     <>
       {details && user && (
@@ -96,6 +97,32 @@ export default function Classic() {
 
                   <button onClick={() => setdemo(!demo)}>LOAD</button>
                 </div>
+                <div className="m-3 flex">
+                  <button
+                    className="text-white border border-white p-2 rounded-md"
+                    onClick={() => {
+                      setcolorpalette(!colorpalette);
+                    }}
+                  >
+                    COLOR
+                  </button>
+                  <div className={`${colorpalette ? "block" : "hidden"} mt-[50px] ml-[-50px] lg:ml-[50px] absolute z-40`}>
+                    <ColorPicker
+                      width={300}
+                      height={100}
+                      color={color}
+                      onChange={setColor}
+                      hideHSV
+                      dark
+                    />
+                    ;
+                  </div>
+                  <button
+                    onClick={printDocument}
+                    className="cursor-pointer text-white border border-white p-1 mx-1 rounded"
+                  >
+                    PRINT
+                  </button>
 
                 {/* Small Resume */}
 
@@ -422,7 +449,13 @@ export default function Classic() {
                     </div>
                   </div>
                 </div>
+                <style jsx>
+                  {`.heading{
+                    color:${color.hex};
+                  }`}
+                </style>
               </div>
+            </div>
             </div>
           )}
 
@@ -455,6 +488,11 @@ export default function Classic() {
                       LOAD
                     </button>
                   </div>
+                </div>
+                
+                <div className="flex justify-center ">
+                  {/* large resume */}
+                  
 
                   <div
                     className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row"
@@ -786,6 +824,11 @@ export default function Classic() {
                       </div>
                     </div>
                   </div>
+                  <style jsx>
+                    {`.heading{
+                      color:${color.hex}
+                    }`}
+                  </style>
                 </div>
               </div>
             </>

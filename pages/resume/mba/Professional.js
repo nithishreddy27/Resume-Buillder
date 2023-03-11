@@ -9,13 +9,15 @@ import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/lib/css/styles.css";
 
 export default function Dynamic() {
   const user = useUser();
-  const { details, setdetails, setdemo, demo, color, setcolor } =
+  const { details, setdetails, setdemo, demo } =
     useContext(ResumeContext);
   const [change, setchange] = useState(false);
-
+  const [colorpalette, setcolorpalette] = useState(false);
   //to add email fname and lname
   useEffect(() => {
     if (user) {
@@ -54,6 +56,10 @@ export default function Dynamic() {
     document.body.innerHTML = originalContents;
   }
 
+  useEffect(() => {
+    // document.getElementById("largeResume").style.color = "red"
+  }, [0]);
+
   //responsiveness
   function toggleResume() {
     if (open == "semiopen") {
@@ -62,41 +68,70 @@ export default function Dynamic() {
       setopen("semiopen");
     }
   }
+  const [color, setColor] = useColor("hex", "#121212");
+  useEffect(() => {
+    console.log("color:", color);
+    // settextColor()
+  }, [color]);
 
   return (
     <>
       {details && user && (
         <div className="flex">
           {open == "closed" && (
-            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-gray-400 to-gray-600">
-              <button
-                className="h-10 w-10 mx-auto block lg:hidden"
-                onClick={toggleResume}
-              >
-                DETAILS
-              </button>
+            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-slate-700 to-slate-800">
+              <div className="flex border border-white">
+                <div className="m-3 flex grow">
+                  <div className="flex mt-1">
+                    
+                  </div>
+                </div>
+                <div className="m-3 flex">
+                  <button
+                    className="text-white border border-white p-2 rounded-md"
+                    onClick={() => {
+                      setcolorpalette(!colorpalette);
+                    }}
+                  >
+                    COLOR
+                  </button>
+                  <div className={`${colorpalette ? "block" : "hidden"} mt-[50px] ml-[-50px] lg:ml-[50px] absolute z-40`}>
+                    <ColorPicker
+                      width={300}
+                      height={100}
+                      color={color}
+                      onChange={setColor}
+                      hideHSV
+                      dark
+                    />
+                    ;
+                  </div>
+                  <button
+                    onClick={printDocument}
+                    className="cursor-pointer text-white border border-white p-1 mx-1 rounded"
+                  >
+                    PRINT
+                  </button>
+
+                  <button
+                    className="text-white border border-white p-1 mx-1 rounded"
+                    onClick={() => setdemo(!demo)}
+                  >
+                    LOAD
+                  </button>
+                  <button
+                    className=" block lg:hidden border border-white text-white p-1 mx-1 rounded-md"
+                    onClick={toggleResume}
+                  >
+                    DETAILS
+                  </button>
+                </div>
+              </div>
+
+
               <div className="flex justify-center ">
-                <div>
-                  <button
-                    onClick={sprintDocument}
-                    className="cursor-pointer text-white mx-5"
-                  >
-                    Print
-                  </button>
-
-                  <button onClick={() => setdemo(!demo)}>LOAD</button>
-                </div>
-
-                <div>
-                  <input type="text" name="color" id="color" />
-                  <button
-                    onClick={() =>
-                      setcolor(document.getElementById("color").value)
-                    }
-                  >
-                    color
-                  </button>
-                </div>
+                
+                
 
                 {/* Small Resume */}
                 <div
@@ -401,6 +436,11 @@ export default function Dynamic() {
                     </div>
                   </div>
                 </div>
+                <style jsx>
+                  {`.heading{
+                    color:${color.hex}
+                  }`}
+                </style>
               </div>
             </div>
           )}
@@ -764,6 +804,11 @@ export default function Dynamic() {
                       </div>
                     </div>
                   </div>
+                  <style jsx>
+                    {`.heading{
+                      color:${color.hex}
+                    }`}
+                  </style>
                 </div>
               </div>
             </>
