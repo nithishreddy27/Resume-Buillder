@@ -181,121 +181,159 @@ export default function Dublin() {
                           </div>
                           <div className="social px-14 grid grid-cols-6 pb-4">
                             {details.social.map((item) => (
-                              <div className="pr-2 pt-1" key={item.network}>
-                                <h1>
-                                  <Link href={`${item.url}`}>
-                                    <img
-                                      src={
-                                        "https://www." +
-                                        item.network +
-                                        ".com/favicon.ico"
-                                      }
-                                      className="w-5 grayscale-[40%]"
-                                    ></img>
-                                  </Link>
-                                </h1>
-                              </div>
+                              <>
+                                {item.enabled && (
+                                  <div className="pr-2 pt-1" key={item.network}>
+                                    <h1>
+                                      <Link href={`${item.url}`}>
+                                        <img
+                                          src={
+                                            "https://www." +
+                                            item.network +
+                                            ".com/favicon.ico"
+                                          }
+                                          className="w-5 grayscale-[40%]"
+                                        ></img>
+                                      </Link>
+                                    </h1>
+                                  </div>
+                                )}
+                              </>
                             ))}
                           </div>
                         </div>
-                        {details.education.length != 0 && (
-                          <div className="education">
-                            <h2 className="text-center text-xl font-sans font-bold text-zinc-200">
-                              E D U C A T I O N
-                            </h2>
-                            {details.education.map((item) => (
-                              <p
-                                className="pl-10 pr-5 pt-5"
-                                key={item.institution}
-                              >
-                                <span className="font-medium text-white">
-                                  {item.institution}
-                                </span>
-                                <span className="text-white"> in </span>
-                                <span className="font-medium text-white">
-                                  {item.fieldOfStudy}
-                                  <br />({item.startDate} to {item.endDate})
-                                </span>
-                                <br />
-                                <i className="bx bxs-graduation text-white"></i>
-                                <span className="text-white">
-                                  {" "}
-                                  {item.typeOfDegree} in {item.fieldOfStudy} (
-                                  {item.gpa})
-                                </span>
-                              </p>
-                            ))}
-                          </div>
-                        )}
-                        {details.certifications.length != 0 && (
-                          <div className="certifications">
-                            <h2 className="text-center text-xl font-sans font-bold pt-3 text-zinc-200 pb-3">
-                              C E R T I F I C A T I O N S
-                            </h2>
-                            {details.certifications.map((item) => (
-                              <p
-                                className="pl-10 pr-5 pt-1 text-white"
-                                key={item.title}
-                              >
-                                <i className="bx bxs-square text-xs pr-3 text-white"></i>
-                                <span className="text-white">
-                                  {item.title} from {item.issuer}
-                                </span>
-                              </p>
-                            ))}
-                          </div>
-                        )}
-                        {details.skills.length != 0 && (
-                          <div className="skills">
-                            <div className="pl-10">
-                              <h2 className="text-center text-xl font-sans font-bold pt-5 pb-1 text-zinc-300">
-                                S K I L L S
+                        {details.education.length != 0 &&
+                          details.education.filter(
+                            (education) => education.enabled
+                          ).length > 0 && (
+                            <div className="education">
+                              <h2 className="text-center text-xl font-sans font-bold text-zinc-200">
+                                E D U C A T I O N
                               </h2>
-                              {details.skills.map((item) => (
-                                <span
-                                  className="pr-2 text-white"
-                                  key={item.name}
-                                >
-                                  {item.name}{" "}
-                                </span>
+                              {details.education.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <p
+                                      className="pl-10 pr-5 pt-5"
+                                      key={item.institution}
+                                    >
+                                      <span className="font-medium text-white">
+                                        {item.institution}
+                                      </span>
+                                      <span className="text-white"> in </span>
+                                      <span className="font-medium text-white">
+                                        {item.fieldOfStudy}
+                                        <br />({item.startDate} to{" "}
+                                        {item.endDate})
+                                      </span>
+                                      <br />
+                                      <i className="bx bxs-graduation text-white"></i>
+                                      <span className="text-white">
+                                        {" "}
+                                        {item.typeOfDegree} in{" "}
+                                        {item.fieldOfStudy} ({item.gpa})
+                                      </span>
+                                    </p>
+                                  )}
+                                </>
                               ))}
                             </div>
-                          </div>
-                        )}
-                        {details.languages.length != 0 && (
-                          <div className="languages">
-                            <div className="pl-10">
-                              <h2 className="text-center text-xl font-sans font-bold pt-5 pb-1 text-zinc-300">
-                                L A N G U A G E S
+                          )}
+                        {details.certifications.length != 0 &&
+                          details.certifications.filter(
+                            (certifications) => certifications.enabled
+                          ).length > 0 && (
+                            <div className="certifications">
+                              <h2 className="text-center text-xl font-sans font-bold pt-3 text-zinc-200 pb-3">
+                                C E R T I F I C A T I O N S
                               </h2>
-                              {details.languages.map((item) => (
-                                <span
-                                  className="pr-2 text-white"
-                                  key={item.name}
-                                >
-                                  {item.name}{" "}
-                                </span>
+                              {details.certifications.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <p
+                                      className="pl-10 pr-5 pt-1 text-white"
+                                      key={item.title}
+                                    >
+                                      <i className="bx bxs-square text-xs pr-3 text-white"></i>
+                                      <span className="text-white">
+                                        {item.title} from {item.issuer}
+                                      </span>
+                                    </p>
+                                  )}
+                                </>
                               ))}
                             </div>
-                          </div>
-                        )}
-                        {details.hobbies.length != 0 && (
-                          <div className="skills">
-                            <div className="pl-10">
-                              <h2 className="text-center text-xl font-sans font-bold pt-5 pb-1 text-zinc-300">
-                                H O B B I E S
-                              </h2>
-                              {details.hobbies.map((item) => (
-                                <span
-                                  className="pr-2 text-white"
-                                  key={item.name}
-                                >
-                                  {item.name}{" "}
-                                </span>
-                              ))}
+                          )}
+                        {details.skills.length != 0 &&
+                          details.skills.filter((skills) => skills.enabled)
+                            .length > 0 && (
+                            <div className="skills">
+                              <div className="pl-10">
+                                <h2 className="text-center text-xl font-sans font-bold pt-5 pb-1 text-zinc-300">
+                                  S K I L L S
+                                </h2>
+                                {details.skills.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <span
+                                        className="pr-2 text-white"
+                                        key={item.name}
+                                      >
+                                        {item.name}{" "}
+                                      </span>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
                             </div>
-                          </div>
-                        )}
+                          )}
+                        {details.languages.length != 0 &&
+                          details.languages.filter(
+                            (languages) => languages.enabled
+                          ).length > 0 && (
+                            <div className="languages">
+                              <div className="pl-10">
+                                <h2 className="text-center text-xl font-sans font-bold pt-5 pb-1 text-zinc-300">
+                                  L A N G U A G E S
+                                </h2>
+                                {details.languages.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <span
+                                        className="pr-2 text-white"
+                                        key={item.name}
+                                      >
+                                        {item.name}{" "}
+                                      </span>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        {details.hobbies.length != 0 &&
+                          details.hobbies.filter((hobbies) => hobbies.enabled)
+                            .length > 0 && (
+                            <div className="skills">
+                              <div className="pl-10">
+                                <h2 className="text-center text-xl font-sans font-bold pt-5 pb-1 text-zinc-300">
+                                  H O B B I E S
+                                </h2>
+                                {details.hobbies.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <span
+                                        className="pr-2 text-white"
+                                        key={item.name}
+                                      >
+                                        {item.name}{" "}
+                                      </span>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            </div>
+                          )}
                       </div>
                     </div>
                     <div className="second bg-emerald-100 w-[125mm] h-[297mm]">
@@ -318,64 +356,91 @@ export default function Dublin() {
                           </p>
                         </div>
                       )}
-                      {details.work.length != 0 && (
-                        <div className="experience">
-                          <h2 className="text-center text-xl font-sans font-bold pt-5">
-                            E X P E R I E N C E
-                          </h2>
-                          {details.work.map((item) => (
-                            <p className="pl-10 pr-5 pt-2" key={item.company}>
-                              <span className="font-medium text-lg pr-3">
-                                {item.designation} in {item.company}
-                              </span>
-                              <br></br>({item.from} to {item.to})<br />
-                              <Link href={`${item.website}`}>
-                                {item.website}
-                              </Link>
-                              <br></br>
-                              <span className="text-sm">
-                                {item.summary.data}
-                              </span>
-                            </p>
-                          ))}
-                        </div>
-                      )}
-                      {details.projects.length != 0 && (
-                        <div className="projects">
-                          <h2 className="text-center text-xl font-sans font-bold pt-2">
-                            P R O J E C T S
-                          </h2>
-                          {details.projects.map((item) => (
-                            <p className="pl-10 pr-5 pt-1" key={item.name}>
-                              <span className="font-medium text-lg pr-3">
-                                {item.name}
-                              </span>{" "}
-                              ({item.from} to {item.to})<br />
-                              <a href={item.website}>{item.website}</a>
-                              <br></br>
-                              <span className="text-sm">
-                                {item.summary.data}
-                              </span>
-                            </p>
-                          ))}
-                        </div>
-                      )}
-                      {details.awards.length != 0 && (
-                        <div className="awards">
-                          <h2 className="text-center text-xl font-sans font-bold pt-2">
-                            A W A R D S
-                          </h2>
-                          {details.awards.map((item) => (
-                            <p className="pl-10 pr-5 pt-1" key={item.name}>
-                              <i className="bx bxs-award pr-1"></i>
-                              <span className="font-medium">
-                                {item.name}
-                              </span>{" "}
-                              from {item.awarder}
-                            </p>
-                          ))}
-                        </div>
-                      )}
+                      {details.work.length != 0 &&
+                        details.work.filter((work) => work.enabled).length >
+                          0 && (
+                          <div className="experience">
+                            <h2 className="text-center text-xl font-sans font-bold pt-5">
+                              E X P E R I E N C E
+                            </h2>
+                            {details.work.map((item) => (
+                              <>
+                                {item.enabled && (
+                                  <p
+                                    className="pl-10 pr-5 pt-2"
+                                    key={item.company}
+                                  >
+                                    <span className="font-medium text-lg pr-3">
+                                      {item.designation} in {item.company}
+                                    </span>
+                                    <br></br>({item.from} to {item.to})<br />
+                                    <Link href={`${item.website}`}>
+                                      {item.website}
+                                    </Link>
+                                    <br></br>
+                                    <span className="text-sm">
+                                      {item.summary.data}
+                                    </span>
+                                  </p>
+                                )}
+                              </>
+                            ))}
+                          </div>
+                        )}
+                      {details.projects.length != 0 &&
+                        details.projects.filter((projects) => projects.enabled)
+                          .length > 0 && (
+                          <div className="projects">
+                            <h2 className="text-center text-xl font-sans font-bold pt-2">
+                              P R O J E C T S
+                            </h2>
+                            {details.projects.map((item) => (
+                              <>
+                                {item.enabled && (
+                                  <p
+                                    className="pl-10 pr-5 pt-1"
+                                    key={item.name}
+                                  >
+                                    <span className="font-medium text-lg pr-3">
+                                      {item.name}
+                                    </span>{" "}
+                                    ({item.from} to {item.to})<br />
+                                    <a href={item.website}>{item.website}</a>
+                                    <br></br>
+                                    <span className="text-sm">
+                                      {item.summary.data}
+                                    </span>
+                                  </p>
+                                )}
+                              </>
+                            ))}
+                          </div>
+                        )}
+                      {details.awards.length != 0 &&
+                        details.awards.filter((awards) => awards.enabled)
+                          .length > 0 && (
+                          <div className="awards">
+                            <h2 className="text-center text-xl font-sans font-bold pt-2">
+                              A W A R D S
+                            </h2>
+                            {details.awards.map((item) => (
+                              <>
+                                {item.enabled && (
+                                  <p
+                                    className="pl-10 pr-5 pt-1"
+                                    key={item.name}
+                                  >
+                                    <i className="bx bxs-award pr-1"></i>
+                                    <span className="font-medium">
+                                      {item.name}
+                                    </span>{" "}
+                                    from {item.awarder}
+                                  </p>
+                                )}
+                              </>
+                            ))}
+                          </div>
+                        )}
                     </div>
                   </div>
                 </div>
@@ -484,121 +549,162 @@ export default function Dublin() {
                             </div>
                             <div className="social px-14 grid grid-cols-6 pb-4">
                               {details.social.map((item) => (
-                                <div className="pr-2 pt-1" key={item.network}>
-                                  <h1>
-                                    <Link href={`${item.url}`}>
-                                      <img
-                                        src={
-                                          "https://www." +
-                                          item.network +
-                                          ".com/favicon.ico"
-                                        }
-                                        className="w-5 grayscale-[40%]"
-                                      ></img>
-                                    </Link>
-                                  </h1>
-                                </div>
+                                <>
+                                  {item.enabled && (
+                                    <div
+                                      className="pr-2 pt-1"
+                                      key={item.network}
+                                    >
+                                      <h1>
+                                        <Link href={`${item.url}`}>
+                                          <img
+                                            src={
+                                              "https://www." +
+                                              item.network +
+                                              ".com/favicon.ico"
+                                            }
+                                            className="w-5 grayscale-[40%]"
+                                          ></img>
+                                        </Link>
+                                      </h1>
+                                    </div>
+                                  )}
+                                </>
                               ))}
                             </div>
                           </div>
-                          {details.education.length != 0 && (
-                            <div className="education">
-                              <h2 className="text-center text-xl font-sans font-bold text-zinc-200">
-                                E D U C A T I O N
-                              </h2>
-                              {details.education.map((item) => (
-                                <p
-                                  className="pl-10 pr-5 pt-5"
-                                  key={item.institution}
-                                >
-                                  <span className="font-medium text-white">
-                                    {item.institution}
-                                  </span>
-                                  <span className="text-white"> in </span>
-                                  <span className="font-medium text-white">
-                                    {item.fieldOfStudy}
-                                    <br />({item.startDate} to {item.endDate})
-                                  </span>
-                                  <br />
-                                  <i className="bx bxs-graduation text-white"></i>
-                                  <span className="text-white">
-                                    {" "}
-                                    {item.typeOfDegree} in {item.fieldOfStudy} (
-                                    {item.gpa})
-                                  </span>
-                                </p>
-                              ))}
-                            </div>
-                          )}
-                          {details.certifications.length != 0 && (
-                            <div className="certifications">
-                              <h2 className="text-center text-xl font-sans font-bold pt-3 text-zinc-200 pb-3">
-                                C E R T I F I C A T I O N S
-                              </h2>
-                              {details.certifications.map((item) => (
-                                <p
-                                  className="pl-10 pr-5 pt-1 text-white"
-                                  key={item.title}
-                                >
-                                  <i className="bx bxs-square text-xs pr-3 text-white"></i>
-                                  <span className="text-white">
-                                    {item.title} from {item.issuer}
-                                  </span>
-                                </p>
-                              ))}
-                            </div>
-                          )}
-                          {details.skills.length != 0 && (
-                            <div className="skills">
-                              <div className="pl-10">
-                                <h2 className="text-center text-xl font-sans font-bold pt-5 pb-1 text-zinc-300">
-                                  S K I L L S
+                          {details.education.length != 0 &&
+                            details.education.filter(
+                              (education) => education.enabled
+                            ).length > 0 && (
+                              <div className="education">
+                                <h2 className="text-center text-xl font-sans font-bold text-zinc-200">
+                                  E D U C A T I O N
                                 </h2>
-                                {details.skills.map((item) => (
-                                  <span
-                                    className="pr-2 text-white"
-                                    key={item.name}
-                                  >
-                                    {item.name}{" "}
-                                  </span>
+                                {details.education.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <p
+                                        className="pl-10 pr-5 pt-5"
+                                        key={item.institution}
+                                      >
+                                        <span className="font-medium text-white">
+                                          {item.institution}
+                                        </span>
+                                        <span className="text-white"> in </span>
+                                        <span className="font-medium text-white">
+                                          {item.fieldOfStudy}
+                                          <br />({item.startDate} to{" "}
+                                          {item.endDate})
+                                        </span>
+                                        <br />
+                                        <i className="bx bxs-graduation text-white"></i>
+                                        <span className="text-white">
+                                          {" "}
+                                          {item.typeOfDegree} in{" "}
+                                          {item.fieldOfStudy} ({item.gpa})
+                                        </span>
+                                      </p>
+                                    )}
+                                  </>
                                 ))}
                               </div>
-                            </div>
-                          )}
-                          {details.languages.length != 0 && (
-                            <div className="languages">
-                              <div className="pl-10">
-                                <h2 className="text-center text-xl font-sans font-bold pt-5 pb-1 text-zinc-300">
-                                  L A N G U A G E S
+                            )}
+                          {details.certifications.length != 0 &&
+                            details.certifications.filter(
+                              (certifications) => certifications.enabled
+                            ).length > 0 && (
+                              <div className="certifications">
+                                <h2 className="text-center text-xl font-sans font-bold pt-3 text-zinc-200 pb-3">
+                                  C E R T I F I C A T I O N S
                                 </h2>
-                                {details.languages.map((item) => (
-                                  <span
-                                    className="pr-2 text-white"
-                                    key={item.name}
-                                  >
-                                    {item.name}{" "}
-                                  </span>
+                                {details.certifications.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <p
+                                        className="pl-10 pr-5 pt-1 text-white"
+                                        key={item.title}
+                                      >
+                                        <i className="bx bxs-square text-xs pr-3 text-white"></i>
+                                        <span className="text-white">
+                                          {item.title} from {item.issuer}
+                                        </span>
+                                      </p>
+                                    )}
+                                  </>
                                 ))}
                               </div>
-                            </div>
-                          )}
-                          {details.hobbies.length != 0 && (
-                            <div className="skills">
-                              <div className="pl-10">
-                                <h2 className="text-center text-xl font-sans font-bold pt-5 pb-1 text-zinc-300">
-                                  H O B B I E S
-                                </h2>
-                                {details.hobbies.map((item) => (
-                                  <span
-                                    className="pr-2 text-white"
-                                    key={item.name}
-                                  >
-                                    {item.name}{" "}
-                                  </span>
-                                ))}
+                            )}
+                          {details.skills.length != 0 &&
+                            details.skills.filter((skills) => skills.enabled)
+                              .length > 0 && (
+                              <div className="skills">
+                                <div className="pl-10">
+                                  <h2 className="text-center text-xl font-sans font-bold pt-5 pb-1 text-zinc-300">
+                                    S K I L L S
+                                  </h2>
+                                  {details.skills.map((item) => (
+                                    <>
+                                      {item.enabled && (
+                                        <span
+                                          className="pr-2 text-white"
+                                          key={item.name}
+                                        >
+                                          {item.name}{" "}
+                                        </span>
+                                      )}
+                                    </>
+                                  ))}
+                                </div>
                               </div>
-                            </div>
-                          )}
+                            )}
+                          {details.languages.length != 0 &&
+                            details.languages.filter(
+                              (languages) => languages.enabled
+                            ).length > 0 && (
+                              <div className="languages">
+                                <div className="pl-10">
+                                  <h2 className="text-center text-xl font-sans font-bold pt-5 pb-1 text-zinc-300">
+                                    L A N G U A G E S
+                                  </h2>
+                                  {details.languages.map((item) => (
+                                    <>
+                                      {item.enabled && (
+                                        <span
+                                          className="pr-2 text-white"
+                                          key={item.name}
+                                        >
+                                          {item.name}{" "}
+                                        </span>
+                                      )}
+                                    </>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          {details.hobbies.length != 0 &&
+                            details.hobbies.filter((hobbies) => hobbies.enabled)
+                              .length > 0 && (
+                              <div className="skills">
+                                <div className="pl-10">
+                                  <h2 className="text-center text-xl font-sans font-bold pt-5 pb-1 text-zinc-300">
+                                    H O B B I E S
+                                  </h2>
+                                  {details.hobbies.map((item) => (
+                                    <>
+                                      {item.enabled && (
+                                        <span
+                                          className="pr-2 text-white"
+                                          key={item.name}
+                                        >
+                                          {item.name}{" "}
+                                        </span>
+                                      )}
+                                    </>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
                         </div>
                       </div>
                       <div className="second bg-emerald-100 w-[125mm] h-[297mm]">
@@ -621,64 +727,92 @@ export default function Dublin() {
                             </p>
                           </div>
                         )}
-                        {details.work.length != 0 && (
-                          <div className="experience">
-                            <h2 className="text-center text-xl font-sans font-bold pt-5">
-                              E X P E R I E N C E
-                            </h2>
-                            {details.work.map((item) => (
-                              <p className="pl-10 pr-5 pt-2" key={item.company}>
-                                <span className="font-medium text-lg pr-3">
-                                  {item.designation} in {item.company}
-                                </span>
-                                <br></br>({item.from} to {item.to})<br />
-                                <Link href={`${item.website}`}>
-                                  {item.website}
-                                </Link>
-                                <br></br>
-                                <span className="text-sm">
-                                  {item.summary.data}
-                                </span>
-                              </p>
-                            ))}
-                          </div>
-                        )}
-                        {details.projects.length != 0 && (
-                          <div className="projects">
-                            <h2 className="text-center text-xl font-sans font-bold pt-2">
-                              P R O J E C T S
-                            </h2>
-                            {details.projects.map((item) => (
-                              <p className="pl-10 pr-5 pt-1" key={item.name}>
-                                <span className="font-medium text-lg pr-3">
-                                  {item.name}
-                                </span>{" "}
-                                ({item.from} to {item.to})<br />
-                                <a href={item.website}>{item.website}</a>
-                                <br></br>
-                                <span className="text-sm">
-                                  {item.summary.data}
-                                </span>
-                              </p>
-                            ))}
-                          </div>
-                        )}
-                        {details.awards.length != 0 && (
-                          <div className="awards">
-                            <h2 className="text-center text-xl font-sans font-bold pt-2">
-                              A W A R D S
-                            </h2>
-                            {details.awards.map((item) => (
-                              <p className="pl-10 pr-5 pt-1" key={item.name}>
-                                <i className="bx bxs-award pr-1"></i>
-                                <span className="font-medium">
-                                  {item.name}
-                                </span>{" "}
-                                from {item.awarder}
-                              </p>
-                            ))}
-                          </div>
-                        )}
+                        {details.work.length != 0 &&
+                          details.work.filter((work) => work.enabled).length >
+                            0 && (
+                            <div className="experience">
+                              <h2 className="text-center text-xl font-sans font-bold pt-5">
+                                E X P E R I E N C E
+                              </h2>
+                              {details.work.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <p
+                                      className="pl-10 pr-5 pt-2"
+                                      key={item.company}
+                                    >
+                                      <span className="font-medium text-lg pr-3">
+                                        {item.designation} in {item.company}
+                                      </span>
+                                      <br></br>({item.from} to {item.to})<br />
+                                      <Link href={`${item.website}`}>
+                                        {item.website}
+                                      </Link>
+                                      <br></br>
+                                      <span className="text-sm">
+                                        {item.summary.data}
+                                      </span>
+                                    </p>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
+                        {details.projects.length != 0 &&
+                          details.projects.filter(
+                            (projects) => projects.enabled
+                          ).length > 0 && (
+                            <div className="projects">
+                              <h2 className="text-center text-xl font-sans font-bold pt-2">
+                                P R O J E C T S
+                              </h2>
+                              {details.projects.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <p
+                                      className="pl-10 pr-5 pt-1"
+                                      key={item.name}
+                                    >
+                                      <span className="font-medium text-lg pr-3">
+                                        {item.name}
+                                      </span>{" "}
+                                      ({item.from} to {item.to})<br />
+                                      <a href={item.website}>{item.website}</a>
+                                      <br></br>
+                                      <span className="text-sm">
+                                        {item.summary.data}
+                                      </span>
+                                    </p>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
+                        {details.awards.length != 0 &&
+                          details.awards.filter((awards) => awards.enabled)
+                            .length > 0 && (
+                            <div className="awards">
+                              <h2 className="text-center text-xl font-sans font-bold pt-2">
+                                A W A R D S
+                              </h2>
+                              {details.awards.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <p
+                                      className="pl-10 pr-5 pt-1"
+                                      key={item.name}
+                                    >
+                                      <i className="bx bxs-award pr-1"></i>
+                                      <span className="font-medium">
+                                        {item.name}
+                                      </span>{" "}
+                                      from {item.awarder}
+                                    </p>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
                       </div>
                     </div>
                   </div>
