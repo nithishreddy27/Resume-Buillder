@@ -8,7 +8,7 @@ export default async function handler(req,res){
     try{
         var data=await addEducation(req.body)
         // removeTokenCookie(res)
-        res.writeHead(302, { Location: '/dashboard' })
+        res.writeHead(302, { Location: '/profile' })
         res.end()
     } 
   catch (error) {

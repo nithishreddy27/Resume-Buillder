@@ -23,7 +23,7 @@ export default function AddStdDetails() {
 
       console.log("inside college");  
       const clgid=document.getElementById("clgid").value
-      console.log(clgid)
+      // console.log(clgid)
       if(clgid==""){
         setmess("Invalid Paraphrase")
       }
@@ -115,7 +115,7 @@ export default function AddStdDetails() {
                       <div className="flex items-center">
                         <input
                           type="text"
-                          name="clgid"
+                          name="paraphrase"
                           id="clgid"
                           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
                           fdprocessedid="a94bca" required

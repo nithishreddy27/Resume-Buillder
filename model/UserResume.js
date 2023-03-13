@@ -4,7 +4,7 @@ const userResume = new mongoose.Schema({
     email:{type:String},
     resume:[{
         id:{type:String},
-        role:{type:String},
+        publicResume:{type:Boolean},
         personal:{
             firstName:{
                 type:String

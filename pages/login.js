@@ -5,7 +5,7 @@ import Form from '../components/loginForm'
 import Image from 'next/image'
 
 const Login = () => {
-  useUser({ redirectTo: '/dashboard', redirectIfFound: true })
+  useUser({ redirectTo: '/profile', redirectIfFound: true })
 
   const [errorMsg, setErrorMsg] = useState('')
 
@@ -27,7 +27,7 @@ const Login = () => {
       })
       if (res.status === 200) {
         console.log("status true")
-        Router.push('/dashboard')
+        Router.push('/profile')
       } else {
         throw new Error(await res.text())
       }
