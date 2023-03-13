@@ -254,7 +254,7 @@ export default function SideBar() {
             >
               <h1
                 id="personaldetails"
-                className="font-bold text-xl border-b border-gray-300 py-1 font-sans tracking-wide mt-24 lg:mt-0"
+                className="font-bold text-xl border-b border-gray-300 py-1 font-sans tracking-wide mt-[130px] lg:mt-0"
               >
                 Personal Details:
               </h1>

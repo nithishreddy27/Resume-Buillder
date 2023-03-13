@@ -96,7 +96,20 @@ export default function Dynamic() {
           </div> */}
           {open == "closed" && (
             <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-slate-700 to-slate-800">
-              <div className="flex border border-white">
+              <div className="border-b border-r border-gray-300 py-2 top-[-5px] fixed lg:sticky w-[100%] lg:w-[100%] z-40 bg-slate-700">
+            <div className="flex items-center justify-between xl:max-w-7xl xl:mx-auto max-w-full px-[8%] flex-wrap w-full">
+              {/* <h1>Provast</h1> */}
+              <img
+                src="https://www.provast.io/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdj7nomqfd%2Fimage%2Fupload%2Fv1652909540%2Fpvast_W_uoqbkv.png&w=1920&q=75"
+                width={220}
+                height={55}
+              />
+              {/* <div>
+                      <button>Preview</button>
+                    </div> */}
+            </div>
+          </div>
+              <div className="flex border border-white mt-[80px]">
                 
                 <div className="m-3 flex">
                   <button
@@ -507,7 +520,7 @@ export default function Dynamic() {
               <SideBar />
 
               <div
-                className="lg:hidden text-white border border-white rounded-lg px-2 py-1 hover:border-orange-700 hover:text-orange-700 absolute right-[10%] top-5 "
+                className="lg:hidden text-white border border-white rounded-lg p-2 hover:border-orange-700 hover:text-orange-700 absolute left-[10%] top-[92px] "
                 onClick={toggleResume}
               >
                 PREVIEW
@@ -561,7 +574,7 @@ export default function Dynamic() {
                   {/* large resume */}
 
                   <div
-                    className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row"
+                    className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.6] xl:mt-[-200px] sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row"
                     id="largeResume"
                     // style={{ color: color.hex }}
                   >
@@ -913,6 +926,7 @@ export default function Dynamic() {
                       `}
                     </style>
                   </div>
+                  
                 </div>
               </div>
             </>
