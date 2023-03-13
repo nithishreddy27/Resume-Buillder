@@ -7,9 +7,9 @@ import Link from "next/link"
 import Script from "next/script"
 import dynamic from 'next/dynamic'
 
-var DynamicHeader=dynamic(() => import('./demo'), {
-  loading: () => <p>Loading...</p>,
-})
+// var DynamicHeader=dynamic(() => import('./demo'), {
+//   loading: () => <p>Loading...</p>,
+// })
 
 
 
@@ -80,7 +80,7 @@ export default function Slug(props) {
     else if(queryId== "63eddc85ee9b8719a9a401ff"){
       resumeName="Vertical"
     }
-    DynamicHeader = dynamic(() => import(`./resumes/${resumeName}`), {
+    var DynamicHeader = dynamic(() => import(`./resumes/${resumeName}`), {
       loading: () => <p>Loading...</p>,
     })
   }

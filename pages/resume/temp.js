@@ -4,7 +4,7 @@ import { useUser } from "../../lib/hooks";
 import ResumeContext from "../../context/ResumeContext";
 import { TbPlus } from "react-icons/tb";
 
-export default function index(props) {
+export default function Index(props) {
   const { details, setdetails, setdemo, demo, id, setid } =
     useContext(ResumeContext);
 
