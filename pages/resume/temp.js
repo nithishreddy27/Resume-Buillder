@@ -4,7 +4,7 @@ import { useUser } from "../../lib/hooks";
 import ResumeContext from "../../context/ResumeContext";
 import { TbPlus } from "react-icons/tb";
 
-export default function index(props) {
+export default function Index(props) {
   const { details, setdetails, setdemo, demo, id, setid } =
     useContext(ResumeContext);
 
@@ -72,15 +72,7 @@ export default function index(props) {
                 </p>
               </div>
             </div>
-
-            <div>
-            <div className=" gap-4 w-11/15 mx-auto  mt-4 pt-4 ">
-              <div className="flex flex-wrap" >
-                {data.map((item) => (
-                  <div key={item._id}>
-                    {user.email == item.email && (
-                      <div className="flex flex-wrap justify-center ">
-                        <div className="relative cursor-pointer">
+            <div className="relative cursor-pointer">
                 <div className="box my-7 mx-12 h-[90mm] w-[70mm] border-4 border-dashed border-gray-300">
                   <div className="text-gray-500 text-center my-[58%] text-3xl font-semibold">
                     CREATE
@@ -99,6 +91,16 @@ export default function index(props) {
                   </div>
                 </div>
               </div>
+
+            <div>
+            <div className=" gap-4 w-11/15 mx-auto  mt-4 pt-4 ">
+              <div className="flex flex-wrap" >
+
+                {data.map((item) => (
+                  <div key={item._id}>
+                    {user.email == item.email && (
+                      <div className="flex flex-wrap justify-center ">
+                        
                         {item.resume.map((resume, index) => (
                           
                           <div

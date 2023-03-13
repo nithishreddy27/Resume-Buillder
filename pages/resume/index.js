@@ -4,7 +4,7 @@ import { useUser } from "../../lib/hooks";
 import ResumeContext from "../../context/ResumeContext";
 import { TbPlus } from "react-icons/tb";
 
-export default function index(props) {
+export default function Index(props) {
   const { details, setdetails, setdemo, demo, id, setid } =
     useContext(ResumeContext);
 
@@ -77,8 +77,9 @@ export default function index(props) {
               </p>
             </div>
           </div>
-          <div className="container flex flex-nowrap mx-auto ">
-            <div className=" relative cursor-pointer">
+         
+          <div className="container flex sm:flex-col">
+            <div className=" bg-green-100 cursor-pointer">
               <div className="box my-7 mx-12 h-[90mm] w-[70mm] border-4 border-dashed border-gray-300">
                 <div className="text-gray-500 text-center my-[55%] text-3xl font-semibold">
                   CREATE
@@ -103,11 +104,11 @@ export default function index(props) {
             </div>
 
             <div className="">
-              <div className="">
+              <div className="bg-yellow-100">
                 {data.map((item) => (
                   <div key={item._id}>
                     {user.email == item.email && (
-                      <div className=" grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 mx-auto justify-center  gap-4  ">
+                      <div className=" grid md:grid-cols-3 sm:grid-cols-1 mx-auto justify-center  gap-4  ">
                         {/* <div className="relative cursor-pointer">
             <div className="box my-7 mx-12 h-[90mm] w-[70mm] border-4 border-dashed border-gray-300">
               <div className="text-gray-500 text-center my-[55%] text-3xl font-semibold">
@@ -164,6 +165,7 @@ transform: translate(-50%, -100%);
 } `}
               </style>
             </div>
+          
           </div>
         </div>
       )}
