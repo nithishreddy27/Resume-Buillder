@@ -7,11 +7,11 @@ import Link from "next/link"
 import Script from "next/script"
 import dynamic from 'next/dynamic'
 
-// var ResumeDesign =dynamic(() => import('./demo'), {
-//   loading: () => <p>Loading...</p>,
-// })
+var DynamicHeader=dynamic(() => import('./demo'), {
+  loading: () => <p>Loading...</p>,
+})
 
-var ResumeDesign
+
 
 export default function Slug(props) {
   const router = useRouter()
@@ -80,7 +80,7 @@ export default function Slug(props) {
     else if(queryId== "63eddc85ee9b8719a9a401ff"){
       resumeName="Vertical"
     }
-    ResumeDesign = dynamic(() => import(`./resumes/${resumeName}`), {
+    DynamicHeader = dynamic(() => import(`./resumes/${resumeName}`), {
       loading: () => <p>Loading...</p>,
     })
   }
@@ -138,12 +138,12 @@ export default function Slug(props) {
         <div className='flex w-[100%]'>
             <div className='w-[80%]'>
 
-            <ResumeDesign />
+            <DynamicHeader />
             </div>
 
             <div className='p-5'>
               {arr.map((resume)=>(
-                <div>
+                <div key={resume._id}>
                   {/* {console.log(resume)} */}
                     {
                     
