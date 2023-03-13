@@ -100,6 +100,7 @@ export default function index(props) {
                 </div>
               </div>
                         {item.resume.map((resume, index) => (
+                          
                           <div
                             className="box relative my-7 mx-12 h-[90mm] w-[70mm] bg-black border-[4px] border-orange-500"
                             key={resume._id}
