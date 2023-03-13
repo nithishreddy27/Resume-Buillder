@@ -15,8 +15,7 @@ import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
 import jsPDF from "jspdf";
 import ReactDOM from "react-dom";
-import { ColorPicker, useColor } from "react-color-palette";
-import "react-color-palette/lib/css/styles.css";
+
 export default function Dublin() {
   const user = useUser();
   const { details, setdetails, setdemo, demo } =

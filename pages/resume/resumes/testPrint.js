@@ -9,7 +9,6 @@ import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import ReactToPrint from "react-to-print";
 
 export default function TestPrint() {
   function pdoc() {
