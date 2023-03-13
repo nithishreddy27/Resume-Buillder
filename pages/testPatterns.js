@@ -6,7 +6,7 @@ function testPatterns() {
      <div className='bg-gray-50 min-h-screen px-4 sm:px-6 8 py-4 mt-[12vh] mx-auto lg:max-w-7xl lg:px-8 max-w-2xl  '>
       <div >
         <div className='text-center text-4xl pb-4 lg:mb-3  pt-5 tracking-wide font-bold sm:space-y-3'>TEST PATTERNS</div>
-        <div className='  gap-y-10 gap-x-6 xl:gap-x-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 '>
+        <div className='  gap-y-10 gap-x-6 sm:px-6 xl:gap-x-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 '>
 
             <div className='shadow py-4 justify-between group relative w-full rounded-lg'>
               <div className='aspect-w-1 aspect-h-1 group-hover:opacity-75'>

@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 const userResume = new mongoose.Schema({
     email:{type:String},
     resume:[{
