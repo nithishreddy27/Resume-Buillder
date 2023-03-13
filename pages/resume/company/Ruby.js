@@ -149,83 +149,97 @@ export default function Ruby() {
                   id="smallResume"
                   // style={{ color: color.hex }}
                 >
-                  <div className="flex align-middle justify-center bg-zinc-400">
-                    <div className="container bg-white">
-                      <div className="grid grid-cols-3">
-                        <div className={`bg-${color}-700 `}>
-                          <div className="ml-8 bg-gray-200 h-[285mm] p-4">
-                            <div className="">
-                              <img
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpl60g6oKVerEKPde2ClN4-6ASK4Ds4KzlM0Y1N-K_bCgOCMBYZ019WUgRLOfNAqyyhnY&usqp=CAU"
-                                alt="ProfilePhoto"
-                              />
-                              <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
-                                Personal Details
-                              </h1>
-                              <div>
-                                <i className="bx bxs-user"></i>
-                                <span class="text-sm font-semibold heading">
-                                  {details.personal.firstName}{" "}
-                                  {details.personal.lastName}
-                                </span>
-                              </div>
-                              <div>
-                                <i className="bx bxs-mail"></i>
-                                <span class="text-sm font-semibold m-0.5">
-                                  {details.personal.email}
-                                </span>
-                              </div>
-                              <div>
-                                <i className="bx bxs-phone"></i>
-                                <span class="text-sm font-semibold m-0.5">
-                                  {details.personal.phone}
-                                </span>
-                              </div>
-                              <div>
-                                <i className="bx bxs-calendar"></i>
-                                <span class="text-sm font-semibold m-0.5">
-                                  {details.personal.dob}
-                                </span>
-                              </div>
+                  <div className="flex w-[100%]">
+                    <h1 className="back bg-red-700 h-[285mm] w-[4%] heading"></h1>
+                    <div className=" bg-gray-200 w-[31%] h-[285mm] p-4">
+                      <div className="">
+                        <img
+                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpl60g6oKVerEKPde2ClN4-6ASK4Ds4KzlM0Y1N-K_bCgOCMBYZ019WUgRLOfNAqyyhnY&usqp=CAU"
+                          alt="ProfilePhoto"
+                        />
+                        <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
+                          Personal Details
+                        </h1>
+                        <div>
+                          <i className="bx bxs-user"></i>
+                          <span className="text-sm font-semibold heading">
+                            {details.personal.firstName}{" "}
+                            {details.personal.lastName}
+                          </span>
+                        </div>
+                        <div>
+                          <i className="bx bxs-mail"></i>
+                          <span class="text-sm font-semibold m-0.5">
+                            {details.personal.email}
+                          </span>
+                        </div>
+                        <div>
+                          <i className="bx bxs-phone"></i>
+                          <span class="text-sm font-semibold m-0.5">
+                            {details.personal.phone}
+                          </span>
+                        </div>
+                        <div>
+                          <i className="bx bxs-calendar"></i>
+                          <span class="text-sm font-semibold m-0.5">
+                            {details.personal.dob}
+                          </span>
+                        </div>
 
-                              {details.social.length != 0 && (
-                                <div>
-                                  <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
-                                    Social
-                                  </h1>
-                                  {details.social.map((item) => (
+                        {details.social.length != 0 &&
+                          details.social.filter((social) => social.enabled)
+                            .length > 0 && (
+                            <div>
+                              <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
+                                Social
+                              </h1>
+                              {details.social.map((item) => (
+                                <>
+                                  {item.enabled && (
                                     <div
                                       className="text-sm font-semibold m-0.5"
                                       key={item.network}
                                     >
                                       <a href="{item.url}">{item.network}</a>
                                     </div>
-                                  ))}
-                                </div>
-                              )}
+                                  )}
+                                </>
+                              ))}
                             </div>
+                          )}
+                      </div>
 
-                            {details.skills.length != 0 && (
-                              <div>
-                                <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
-                                  Skills
-                                </h1>
-                                {details.skills.map((item) => (
+                      {details.skills.length != 0 &&
+                        details.skills.filter((skills) => skills.enabled)
+                          .length > 0 && (
+                          <div>
+                            <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
+                              Skills
+                            </h1>
+                            {details.skills.map((item) => (
+                              <>
+                                {item.enabled && (
                                   <div key={item.name}>
                                     <h1 className="text-sm font-semibold m-0.5">
                                       {item.name} - {item.level}
                                     </h1>
                                   </div>
-                                ))}
-                              </div>
-                            )}
+                                )}
+                              </>
+                            ))}
+                          </div>
+                        )}
 
-                            {details.awards.length != 0 && (
-                              <div>
-                                <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
-                                  Awards
-                                </h1>
-                                {details.awards.map((item) => (
+                      {details.awards.length != 0 &&
+                        details.awards.filter((awards) => awards.enabled)
+                          .length > 0 && (
+                          <div>
+                            <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
+                              Awards
+                            </h1>
+                            {details.awards.map((item) => (
+                              <>
+                                {item.enabled && (
                                   <div className="py-1" key={item.name}>
                                     <h1 className="text-sm font-bold relative m-0.5">
                                       {item.name}
@@ -238,149 +252,186 @@ export default function Ruby() {
                                     </p>
                                     <p>{item.summary.data}</p>
                                   </div>
-                                ))}
-                              </div>
-                            )}
+                                )}
+                              </>
+                            ))}
+                          </div>
+                        )}
 
-                            {details.hobbies.length != 0 && (
-                              <div>
-                                <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 ">
-                                  Hobbies
-                                </h1>
-                                {details.hobbies.map((item) => (
+                      {details.hobbies.length != 0 &&
+                        details.hobbies.filter((hobbies) => hobbies.enabled)
+                          .length > 0 && (
+                          <div>
+                            <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                              Hobbies
+                            </h1>
+                            {details.hobbies.map((item) => (
+                              <>
+                                {item.enabled && (
                                   <div key={item.name}>
                                     <h1 className="text-sm font-semibold m-0.5">
                                       {item.name}
                                     </h1>
                                   </div>
-                                ))}
-                              </div>
-                            )}
+                                )}
+                              </>
+                            ))}
+                          </div>
+                        )}
 
-                            {details.languages.length != 0 && (
-                              <div>
-                                <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
-                                  Languages
-                                </h1>
-                                {details.languages.map((item) => (
+                      {details.languages.length != 0 &&
+                        details.languages.filter(
+                          (languages) => languages.enabled
+                        ).length > 0 && (
+                          <div>
+                            <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                              Languages
+                            </h1>
+                            {details.languages.map((item) => (
+                              <>
+                                {item.enabled && (
                                   <div key={item.name}>
                                     <h1 className="text-sm font-semibold m-0.5">
                                       {item.name} - {item.level}
                                     </h1>
                                   </div>
-                                ))}
-                              </div>
-                            )}
+                                )}
+                              </>
+                            ))}
                           </div>
-                        </div>
-                        <div className="col-span-2 p-6">
-                          <h1 className="text-red-700 text-4xl heading ">
-                            {details.personal.firstName}{" "}
-                            {details.personal.lastName}
+                        )}
+                    </div>
+                    <div className="w-[65%] p-6">
+                      <h1 className="text-red-700 text-4xl heading">
+                        {details.personal.firstName} {details.personal.lastName}
+                      </h1>
+
+                      {details.personal.objective.length != 0 && (
+                        <div>
+                          <h1 className="text-red-700 text-xl font-semibold mt-4 heading">
+                            Profile
                           </h1>
-
-                          {details.personal.objective.length != 0 && (
-                            <div>
-                              <h1 className="text-red-700 text-xl font-semibold mt-4 heading">
-                                Profile
-                              </h1>
-                              <p className="text-sm">
-                                {details.personal.objective}
-                              </p>
-                            </div>
-                          )}
-
-                          {details.work.length != 0 && (
-                            <div>
-                              <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
-                                Work
-                              </h1>
-                              {details.work.map((item) => (
-                                <div key={item.company} className="py-1">
-                                  <h1 className="text-sm font-bold relative">
-                                    {item.company}
-                                    <span className="text-sm text-red-700 absolute right-0 heading">
-                                      {item.from} - {item.to}
-                                    </span>
-                                  </h1>
-                                  <p className="text-sm font-semibold">
-                                    {item.designation}
-                                  </p>
-                                  <p class="text-sm">{item.summary.data}</p>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-
-                          {details.education.length != 0 && (
-                            <div>
-                              <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
-                                Education
-                              </h1>
-                              {details.education.map((item) => (
-                                <div className="py-1" key={item.institution}>
-                                  <h1 className="text-sm font-bold relative">
-                                    {item.institution}
-                                    <span className="text-sm text-red-700 absolute right-0 heading">
-                                      {item.startDate} - {item.endDate}
-                                    </span>
-                                  </h1>
-                                  <p className="text-sm font-semibold">
-                                    {} {item.fieldOfStudy} - [ {item.gpa} ]
-                                  </p>
-                                  <p class="text-sm">{item.summary.data}</p>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-
-                          {details.projects.length != 0 && (
-                            <div>
-                              <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
-                                Projects
-                              </h1>
-                              {details.projects.map((item) => (
-                                <div className="py-1" key={item}>
-                                  <h1 className="text-sm font-bold relative">
-                                    {item.name}
-                                    <span className="text-sm text-red-700 absolute right-0 heading">
-                                      {item.from} - {item.to}
-                                    </span>
-                                  </h1>
-                                  <p className="text-sm font-semibold">
-                                    {item.website}
-                                  </p>
-                                  <p class="text-sm">{item.summary.data}</p>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-
-                          {details.certifications.length != 0 && (
-                            <div>
-                              <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
-                                Certifications
-                              </h1>
-                              {details.certifications.map((item) => (
-                                <div className="py-1" key={item.title}>
-                                  <h1 className="text-sm font-bold relative">
-                                    {item.title}
-                                    <span className="text-sm text-red-700 absolute right-0 heading">
-                                      {item.date}
-                                    </span>
-                                  </h1>
-                                  <p className="text-sm font-semibold">
-                                    {item.issuer}
-                                  </p>
-                                  <p className="text-sm ">
-                                    {item.summary.data}
-                                  </p>
-                                </div>
-                              ))}
-                            </div>
-                          )}
+                          <p className="text-sm">
+                            {details.personal.objective}
+                          </p>
                         </div>
-                      </div>
+                      )}
+
+                      {details.work.length != 0 &&
+                        details.work.filter((work) => work.enabled).length >
+                          0 && (
+                          <div>
+                            <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                              Work
+                            </h1>
+                            {details.work.map((item) => (
+                              <>
+                                {item.enabled && (
+                                  <div key={item.company} className="py-1">
+                                    <h1 className="text-sm font-bold relative">
+                                      {item.company}
+                                      <span className="text-sm text-red-700 absolute right-0 heading">
+                                        {item.from} - {item.to}
+                                      </span>
+                                    </h1>
+                                    <p className="text-sm font-semibold">
+                                      {item.designation}
+                                    </p>
+                                    <p class="text-sm">{item.summary.data}</p>
+                                  </div>
+                                )}
+                              </>
+                            ))}
+                          </div>
+                        )}
+
+                      {details.education.length != 0 &&
+                        details.education.filter(
+                          (education) => education.enabled
+                        ).length > 0 && (
+                          <div>
+                            <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                              Education
+                            </h1>
+                            {details.education.map((item) => (
+                              <>
+                                {item.enabled && (
+                                  <div className="py-1" key={item.institution}>
+                                    <h1 className="text-sm font-bold relative">
+                                      {item.institution}
+                                      <span className="text-sm text-red-700 absolute right-0 heading">
+                                        {item.startDate} - {item.endDate}
+                                      </span>
+                                    </h1>
+                                    <p className="text-sm font-semibold">
+                                      {} {item.fieldOfStudy} - [ {item.gpa} ]
+                                    </p>
+                                    <p class="text-sm">{item.summary.data}</p>
+                                  </div>
+                                )}
+                              </>
+                            ))}
+                          </div>
+                        )}
+
+                      {details.projects.length != 0 &&
+                        details.projects.filter((projects) => projects.enabled)
+                          .length > 0 && (
+                          <div>
+                            <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                              Projects
+                            </h1>
+                            {details.projects.map((item) => (
+                              <>
+                                {item.enabled && (
+                                  <div className="py-1" key={item}>
+                                    <h1 className="text-sm font-bold relative">
+                                      {item.name}
+                                      <span className="text-sm text-red-700 absolute right-0 heading">
+                                        {item.from} - {item.to}
+                                      </span>
+                                    </h1>
+                                    <p className="text-sm font-semibold">
+                                      {item.website}
+                                    </p>
+                                    <p class="text-sm">{item.summary.data}</p>
+                                  </div>
+                                )}
+                              </>
+                            ))}
+                          </div>
+                        )}
+
+                      {details.certifications.length != 0 &&
+                        details.certifications.filter(
+                          (certifications) => certifications.enabled
+                        ).length > 0 && (
+                          <div>
+                            <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                              Certifications
+                            </h1>
+                            {details.certifications.map((item) => (
+                              <>
+                                {item.enabled && (
+                                  <div className="py-1" key={item.title}>
+                                    <h1 className="text-sm font-bold relative">
+                                      {item.title}
+                                      <span className="text-sm text-red-700 absolute right-0 heading">
+                                        {item.date}
+                                      </span>
+                                    </h1>
+                                    <p className="text-sm font-semibold">
+                                      {item.issuer}
+                                    </p>
+                                    <p className="text-sm ">
+                                      {item.summary.data}
+                                    </p>
+                                  </div>
+                                )}
+                              </>
+                            ))}
+                          </div>
+                        )}
                     </div>
                   </div>
                 </div>
@@ -458,239 +509,297 @@ export default function Ruby() {
                     id="largeResume"
                     // style={{ color: color.hex }}
                   >
-                    <div className="flex align-middle justify-center bg-zinc-400">
-                      <div className="container bg-white">
-                        <div className="flex">
-                          <h1 className="back bg-red-700 h-[285mm] w-[4%] heading"></h1>
-                          <div className=" bg-gray-200 w-[31%] h-[285mm] p-4">
-                            <div className="">
-                              <img
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpl60g6oKVerEKPde2ClN4-6ASK4Ds4KzlM0Y1N-K_bCgOCMBYZ019WUgRLOfNAqyyhnY&usqp=CAU"
-                                alt="ProfilePhoto"
-                              />
-                              <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
-                                Personal Details
-                              </h1>
-                              <div>
-                                <i className="bx bxs-user"></i>
-                                <span className="text-sm font-semibold heading">
-                                  {details.personal.firstName}{" "}
-                                  {details.personal.lastName}
-                                </span>
-                              </div>
-                              <div>
-                                <i className="bx bxs-mail"></i>
-                                <span class="text-sm font-semibold m-0.5">
-                                  {details.personal.email}
-                                </span>
-                              </div>
-                              <div>
-                                <i className="bx bxs-phone"></i>
-                                <span class="text-sm font-semibold m-0.5">
-                                  {details.personal.phone}
-                                </span>
-                              </div>
-                              <div>
-                                <i className="bx bxs-calendar"></i>
-                                <span class="text-sm font-semibold m-0.5">
-                                  {details.personal.dob}
-                                </span>
-                              </div>
-
-                              {details.social.length != 0 && (
-                                <div>
-                                  <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
-                                    Social
-                                  </h1>
-                                  {details.social.map((item) => (
-                                    <div
-                                      className="text-sm font-semibold m-0.5"
-                                      key={item.network}
-                                    >
-                                      <a href="{item.url}">{item.network}</a>
-                                    </div>
-                                  ))}
-                                </div>
-                              )}
-                            </div>
-
-                            {details.skills.length != 0 && (
-                              <div>
-                                <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
-                                  Skills
-                                </h1>
-                                {details.skills.map((item) => (
-                                  <div key={item.name}>
-                                    <h1 className="text-sm font-semibold m-0.5">
-                                      {item.name} - {item.level}
-                                    </h1>
-                                  </div>
-                                ))}
-                              </div>
-                            )}
-
-                            {details.awards.length != 0 && (
-                              <div>
-                                <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
-                                  Awards
-                                </h1>
-                                {details.awards.map((item) => (
-                                  <div className="py-1" key={item.name}>
-                                    <h1 className="text-sm font-bold relative m-0.5">
-                                      {item.name}
-                                      <span className="right-0 text-sm text-red-700 absolute">
-                                        {item.startDate} - {item.endDate}
-                                      </span>
-                                    </h1>
-                                    <p className="text-sm font-semibold m-0.5">
-                                      {item.awarder}
-                                    </p>
-                                    <p>{item.summary.data}</p>
-                                  </div>
-                                ))}
-                              </div>
-                            )}
-
-                            {details.hobbies.length != 0 && (
-                              <div>
-                                <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
-                                  Hobbies
-                                </h1>
-                                {details.hobbies.map((item) => (
-                                  <div key={item.name}>
-                                    <h1 className="text-sm font-semibold m-0.5">
-                                      {item.name}
-                                    </h1>
-                                  </div>
-                                ))}
-                              </div>
-                            )}
-
-                            {details.languages.length != 0 && (
-                              <div>
-                                <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
-                                  Languages
-                                </h1>
-                                {details.languages.map((item) => (
-                                  <div key={item.name}>
-                                    <h1 className="text-sm font-semibold m-0.5">
-                                      {item.name} - {item.level}
-                                    </h1>
-                                  </div>
-                                ))}
-                              </div>
-                            )}
-                          </div>
-                          <div className="w-[65%] p-6">
-                            <h1 className="text-red-700 text-4xl heading">
+                    <div className="flex w-[100%]">
+                      <h1 className="back bg-red-700 h-[285mm] w-[4%] heading"></h1>
+                      <div className=" bg-gray-200 w-[31%] h-[285mm] p-4">
+                        <div className="">
+                          <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpl60g6oKVerEKPde2ClN4-6ASK4Ds4KzlM0Y1N-K_bCgOCMBYZ019WUgRLOfNAqyyhnY&usqp=CAU"
+                            alt="ProfilePhoto"
+                          />
+                          <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
+                            Personal Details
+                          </h1>
+                          <div>
+                            <i className="bx bxs-user"></i>
+                            <span className="text-sm font-semibold heading">
                               {details.personal.firstName}{" "}
                               {details.personal.lastName}
-                            </h1>
-
-                            {details.personal.objective.length != 0 && (
-                              <div>
-                                <h1 className="text-red-700 text-xl font-semibold mt-4 heading">
-                                  Profile
-                                </h1>
-                                <p className="text-sm">
-                                  {details.personal.objective}
-                                </p>
-                              </div>
-                            )}
-
-                            {details.work.length != 0 && (
-                              <div>
-                                <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
-                                  Work
-                                </h1>
-                                {details.work.map((item) => (
-                                  <div key={item.company} className="py-1">
-                                    <h1 className="text-sm font-bold relative">
-                                      {item.company}
-                                      <span className="text-sm text-red-700 absolute right-0 heading">
-                                        {item.from} - {item.to}
-                                      </span>
-                                    </h1>
-                                    <p className="text-sm font-semibold">
-                                      {item.designation}
-                                    </p>
-                                    <p class="text-sm">{item.summary.data}</p>
-                                  </div>
-                                ))}
-                              </div>
-                            )}
-
-                            {details.education.length != 0 && (
-                              <div>
-                                <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
-                                  Education
-                                </h1>
-                                {details.education.map((item) => (
-                                  <div className="py-1" key={item.institution}>
-                                    <h1 className="text-sm font-bold relative">
-                                      {item.institution}
-                                      <span className="text-sm text-red-700 absolute right-0 heading">
-                                        {item.startDate} - {item.endDate}
-                                      </span>
-                                    </h1>
-                                    <p className="text-sm font-semibold">
-                                      {} {item.fieldOfStudy} - [ {item.gpa} ]
-                                    </p>
-                                    <p class="text-sm">{item.summary.data}</p>
-                                  </div>
-                                ))}
-                              </div>
-                            )}
-
-                            {details.projects.length != 0 && (
-                              <div>
-                                <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
-                                  Projects
-                                </h1>
-                                {details.projects.map((item) => (
-                                  <div className="py-1" key={item}>
-                                    <h1 className="text-sm font-bold relative">
-                                      {item.name}
-                                      <span className="text-sm text-red-700 absolute right-0 heading">
-                                        {item.from} - {item.to}
-                                      </span>
-                                    </h1>
-                                    <p className="text-sm font-semibold">
-                                      {item.website}
-                                    </p>
-                                    <p class="text-sm">{item.summary.data}</p>
-                                  </div>
-                                ))}
-                              </div>
-                            )}
-
-                            {details.certifications.length != 0 && (
-                              <div>
-                                <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
-                                  Certifications
-                                </h1>
-                                {details.certifications.map((item) => (
-                                  <div className="py-1" key={item.title}>
-                                    <h1 className="text-sm font-bold relative">
-                                      {item.title}
-                                      <span className="text-sm text-red-700 absolute right-0 heading">
-                                        {item.date}
-                                      </span>
-                                    </h1>
-                                    <p className="text-sm font-semibold">
-                                      {item.issuer}
-                                    </p>
-                                    <p className="text-sm ">
-                                      {item.summary.data}
-                                    </p>
-                                  </div>
-                                ))}
-                              </div>
-                            )}
+                            </span>
                           </div>
+                          <div>
+                            <i className="bx bxs-mail"></i>
+                            <span class="text-sm font-semibold m-0.5">
+                              {details.personal.email}
+                            </span>
+                          </div>
+                          <div>
+                            <i className="bx bxs-phone"></i>
+                            <span class="text-sm font-semibold m-0.5">
+                              {details.personal.phone}
+                            </span>
+                          </div>
+                          <div>
+                            <i className="bx bxs-calendar"></i>
+                            <span class="text-sm font-semibold m-0.5">
+                              {details.personal.dob}
+                            </span>
+                          </div>
+
+                          {details.social.length != 0 &&
+                            details.social.filter((social) => social.enabled)
+                              .length > 0 && (
+                              <div>
+                                <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
+                                  Social
+                                </h1>
+                                {details.social.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <div
+                                        className="text-sm font-semibold m-0.5"
+                                        key={item.network}
+                                      >
+                                        <a href="{item.url}">{item.network}</a>
+                                      </div>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            )}
                         </div>
+
+                        {details.skills.length != 0 &&
+                          details.skills.filter((skills) => skills.enabled)
+                            .length > 0 && (
+                            <div>
+                              <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
+                                Skills
+                              </h1>
+                              {details.skills.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <div key={item.name}>
+                                      <h1 className="text-sm font-semibold m-0.5">
+                                        {item.name} - {item.level}
+                                      </h1>
+                                    </div>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
+
+                        {details.awards.length != 0 &&
+                          details.awards.filter((awards) => awards.enabled)
+                            .length > 0 && (
+                            <div>
+                              <h1 className="text-red-700 text-xl font-semibold mt-4 mb-1 heading">
+                                Awards
+                              </h1>
+                              {details.awards.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <div className="py-1" key={item.name}>
+                                      <h1 className="text-sm font-bold relative m-0.5">
+                                        {item.name}
+                                        <span className="right-0 text-sm text-red-700 absolute">
+                                          {item.startDate} - {item.endDate}
+                                        </span>
+                                      </h1>
+                                      <p className="text-sm font-semibold m-0.5">
+                                        {item.awarder}
+                                      </p>
+                                      <p>{item.summary.data}</p>
+                                    </div>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
+
+                        {details.hobbies.length != 0 &&
+                          details.hobbies.filter((hobbies) => hobbies.enabled)
+                            .length > 0 && (
+                            <div>
+                              <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                                Hobbies
+                              </h1>
+                              {details.hobbies.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <div key={item.name}>
+                                      <h1 className="text-sm font-semibold m-0.5">
+                                        {item.name}
+                                      </h1>
+                                    </div>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
+
+                        {details.languages.length != 0 &&
+                          details.languages.filter(
+                            (languages) => languages.enabled
+                          ).length > 0 && (
+                            <div>
+                              <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                                Languages
+                              </h1>
+                              {details.languages.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <div key={item.name}>
+                                      <h1 className="text-sm font-semibold m-0.5">
+                                        {item.name} - {item.level}
+                                      </h1>
+                                    </div>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
+                      </div>
+                      <div className="w-[65%] p-6">
+                        <h1 className="text-red-700 text-4xl heading">
+                          {details.personal.firstName}{" "}
+                          {details.personal.lastName}
+                        </h1>
+
+                        {details.personal.objective.length != 0 && (
+                          <div>
+                            <h1 className="text-red-700 text-xl font-semibold mt-4 heading">
+                              Profile
+                            </h1>
+                            <p className="text-sm">
+                              {details.personal.objective}
+                            </p>
+                          </div>
+                        )}
+
+                        {details.work.length != 0 &&
+                          details.work.filter((work) => work.enabled).length >
+                            0 && (
+                            <div>
+                              <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                                Work
+                              </h1>
+                              {details.work.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <div key={item.company} className="py-1">
+                                      <h1 className="text-sm font-bold relative">
+                                        {item.company}
+                                        <span className="text-sm text-red-700 absolute right-0 heading">
+                                          {item.from} - {item.to}
+                                        </span>
+                                      </h1>
+                                      <p className="text-sm font-semibold">
+                                        {item.designation}
+                                      </p>
+                                      <p class="text-sm">{item.summary.data}</p>
+                                    </div>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
+
+                        {details.education.length != 0 &&
+                          details.education.filter(
+                            (education) => education.enabled
+                          ).length > 0 && (
+                            <div>
+                              <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                                Education
+                              </h1>
+                              {details.education.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <div
+                                      className="py-1"
+                                      key={item.institution}
+                                    >
+                                      <h1 className="text-sm font-bold relative">
+                                        {item.institution}
+                                        <span className="text-sm text-red-700 absolute right-0 heading">
+                                          {item.startDate} - {item.endDate}
+                                        </span>
+                                      </h1>
+                                      <p className="text-sm font-semibold">
+                                        {} {item.fieldOfStudy} - [ {item.gpa} ]
+                                      </p>
+                                      <p class="text-sm">{item.summary.data}</p>
+                                    </div>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
+
+                        {details.projects.length != 0 &&
+                          details.projects.filter(
+                            (projects) => projects.enabled
+                          ).length > 0 && (
+                            <div>
+                              <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                                Projects
+                              </h1>
+                              {details.projects.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <div className="py-1" key={item}>
+                                      <h1 className="text-sm font-bold relative">
+                                        {item.name}
+                                        <span className="text-sm text-red-700 absolute right-0 heading">
+                                          {item.from} - {item.to}
+                                        </span>
+                                      </h1>
+                                      <p className="text-sm font-semibold">
+                                        {item.website}
+                                      </p>
+                                      <p class="text-sm">{item.summary.data}</p>
+                                    </div>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
+
+                        {details.certifications.length != 0 &&
+                          details.certifications.filter(
+                            (certifications) => certifications.enabled
+                          ).length > 0 && (
+                            <div>
+                              <h1 className="text-red-700 text-xl font-semibold mt-3 mb-1 heading">
+                                Certifications
+                              </h1>
+                              {details.certifications.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <div className="py-1" key={item.title}>
+                                      <h1 className="text-sm font-bold relative">
+                                        {item.title}
+                                        <span className="text-sm text-red-700 absolute right-0 heading">
+                                          {item.date}
+                                        </span>
+                                      </h1>
+                                      <p className="text-sm font-semibold">
+                                        {item.issuer}
+                                      </p>
+                                      <p className="text-sm ">
+                                        {item.summary.data}
+                                      </p>
+                                    </div>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
                       </div>
                     </div>
+
                     <style jsx>
                       {`
                         .heading {
