@@ -85,9 +85,12 @@ export default function Student() {
       />
     </div> */}
       <div>
-        <form className="mt-5"
-              method="post" onChange={handleOnChange} onSubmit={handleOnSubmit}>
-        
+        <form
+          className="mt-5"
+          method="post"
+          onChange={handleOnChange}
+          onSubmit={handleOnSubmit}
+        >
           <div className="flex gap-5 relative top-[-80px]">
             <label for="file" className="mt-5">
               {imageSrc && <img src={imageSrc} width="150" height="150" />}
@@ -133,7 +136,11 @@ export default function Student() {
               <button className="py-2 px-4 bg-gray-200 rounded-lg border">
                 <Link href="./editProfile">Edit profile</Link>
               </button>
+              <button className="py-2 px-4 bg-gray-200 rounded-lg border">
+                <Link href="../pricing">Upgrade Account</Link>
+              </button>
             </div>
+
             <div className="flex space-x-10 mt-8 pl-14 border-b border-gray-300">
               <h1
                 className="focus:border-b-orange-400 text-gray-500 hover:text-gray-700 hover:border-gray-300 py-2 px-1 border-b-2 font-medium text-md cursor-pointer"
