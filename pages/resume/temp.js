@@ -17,47 +17,7 @@ export default function Index(props) {
   return (
     <>
       {user && (
-        // <div className='p-10'>
-
-        //     Create new resume
-
-        //     <input type="text" name="resumeName" id="resumeName" className='border' required/>
-
-        //     <Link href="/resume/resumes">Submit</Link>
-
-        // <div>
-        //   {data.map((item)=>(
-        //     <div key={item._id}>
-        //       {user.email == item.email && (
-        //         <div>
-        //           {item.resume.map((resume,index)=>(
-        //             <div className='m-5' key={resume._id}>
-        //             <Link  href={`/resume/${resume.id}?index=${index}`}>
-        //               {resume.id} {index}
-        //             </Link>
-        //             {/* {resume.id != "test" && (
-        //               <div>
-        //               {<Link  href={`/resume/${resume.id}?index=${index}`}>
-        //               {resume.id}
-        //             </Link>}
-        //             </div>
-        //             )}
-        //             {resume.id == "test" && (
-        //               <div>
-        //               { <Link  href={`/resume/${resume._id}?index=${index}`}>
-        //                 test {index}
-        //                 </Link> }
-        //             </div>
-        //             )} */}
-        //             </div>
-        //           ))}
-        //         </div>
-        //       )}
-        //     </div>
-        //   ))}
-        // </div>
-        // </div>
-       
+        
           <div className=" min-h-[70vh] py-4 ">
             <div className="mt-4 mx-auto max-w-7xl px-4 sm:mt-8 sm:px-6">
               <div className="text-center">

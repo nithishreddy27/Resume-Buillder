@@ -14,60 +14,33 @@ export default function Index(props) {
   useEffect(() => {
     setid(null);
   }, [0]);
+
+  async function changePublic(index) {
+    console.log("in public", index);
+
+    const body = {
+      email: user.email,
+      index: index,
+    };
+    // console.log("in run",body)
+
+    await fetch("/api/changePublic", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ body: body }),
+    });
+  }
+
   return (
     <>
       {user && (
-        // <div className='p-10'>
-
-        //     Create new resume
-
-        //     <input type="text" name="resumeName" id="resumeName" className='border' required/>
-
-        //     <Link href="/resume/resumes">Submit</Link>
-
-        // <div>
-        //   {data.map((item)=>(
-        //     <div key={item._id}>
-        //       {user.email == item.email && (
-        //         <div>
-        //           {item.resume.map((resume,index)=>(
-        //             <div className='m-5' key={resume._id}>
-        //             <Link  href={`/resume/${resume.id}?index=${index}`}>
-        //               {resume.id} {index}
-        //             </Link>
-        //             {/* {resume.id != "test" && (
-        //               <div>
-        //               {<Link  href={`/resume/${resume.id}?index=${index}`}>
-        //               {resume.id}
-        //             </Link>}
-        //             </div>
-        //             )}
-        //             {resume.id == "test" && (
-        //               <div>
-        //               { <Link  href={`/resume/${resume._id}?index=${index}`}>
-        //                 test {index}
-        //                 </Link> }
-        //             </div>
-        //             )} */}
-        //             </div>
-        //           ))}
-        //         </div>
-        //       )}
-        //     </div>
-        //   ))}
-        // </div>
-        // </div>
-
-        <div className=" min-h-[70vh] py-4 ">
+        <div className=" min-h-[70vh] py-4  ">
           <div className="mt-4 mx-auto max-w-7xl px-4 sm:mt-8 sm:px-6">
             <div className="text-center">
-              <h1 className="text-2xl tracking-tight font-extrabold text-gray-900 sm:text-4xl md:text-5xl">
-                <span className="block text-black">
-                  Welcome
-                  <span className="text-orange-600">
-                    {" "}
-                    {user.profile.firstName}
-                  </span>{" "}
+              <h1 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl md:text-5xl">
+                <span className="block text-orange-600">
+                  Welcome{" "}
+                  <span className="text-black"> {user.profile.firstName}</span>{" "}
                   !
                 </span>
               </h1>
@@ -77,60 +50,29 @@ export default function Index(props) {
               </p>
             </div>
           </div>
-         
-          <div className="container flex sm:flex-col">
-            <div className=" bg-green-100 cursor-pointer">
-              <div className="box my-7 mx-12 h-[90mm] w-[70mm] border-4 border-dashed border-gray-300">
-                <div className="text-gray-500 text-center my-[55%] text-3xl font-semibold">
-                  CREATE
-                  <div className=" flex justify-center hidden  ">
-                    <TbPlus />
-                  </div>
-                  <div className="">
-                    <input
-                      type="text"
-                      name="role"
-                      id="role"
-                      className="border text-center w-52 text-base h-9 bg-slate-200 "
-                      required
-                      placeholder="enter role"
-                    />
-                  </div>
-                  <Link href="/resume/resumes" className="text-base">
-                    Submit
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            <div className="">
-              <div className="bg-yellow-100">
-                {data.map((item) => (
-                  <div key={item._id}>
-                    {user.email == item.email && (
-                      <div className=" grid md:grid-cols-3 sm:grid-cols-1 mx-auto justify-center  gap-4  ">
-                        {/* <div className="relative cursor-pointer">
-            <div className="box my-7 mx-12 h-[90mm] w-[70mm] border-4 border-dashed border-gray-300">
-              <div className="text-gray-500 text-center my-[55%] text-3xl font-semibold">
-                CREATE
-                <div className=" flex justify-center hidden  ">
+          <div>
+          <div className="sm:grid relative md:inline-flex m-5 ">
+            <div className="md:bg-orange-100 sm:bg-white">
+            <div className="box pt-2  my-7 mx-12 h-[90mm] w-[70mm] border-4 border-dashed border-gray-700">
+              <div className="text-gray-500 text-center my-[58%]  text-3xl font-semibold">
+                {/* CREATE */}
+                <Link href="/resume/resumes">CREATE</Link>
+                <div className=" flex justify-center ">
                   <TbPlus />
                 </div>
-                <div className="">
-                <input
-                  type="text"
-                  name="role"
-                  id="role"
-                  className="border text-center w-52 text-base h-9 bg-slate-200 "
-                  required
-                  placeholder="enter role"
-                />
-                </div>
-                <Link href="/resume/resumes" className="text-base">Submit</Link>
+</div>
+                {/* <input type="text" name="role" id="role" className='border' required placeholder='enter role'/> */}
               </div>
             </div>
-          </div> */}
-                        {item.resume.map((resume, index) => (
+            
+
+            {data.map((item) => (
+              <div key={item._id}>
+                {user.email == item.email && (
+                  <div className="inline-flex flex-wrap ">
+                    {item.resume.map((resume, index) => (
+                      <>
+                        {resume.publicResume == false && (
                           <div
                             className="box relative my-7 mx-12 h-[90mm] w-[70mm] bg-black border-[4px] border-orange-500"
                             key={resume._id}
@@ -143,29 +85,53 @@ export default function Index(props) {
                             </span>
                             <Link
                               href={`/resume/${resume.id}?index=${index}`}
-                              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white md:text-3xl sm:text-xl font-bold whitespace-nowrap transition-all duration-500"
+                              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-2xl font-bold whitespace-nowrap transition-all duration-500"
                             >
-                              RESUME TEST {index}
+                              {resume.personal.role.toUpperCase()}
                             </Link>
-                            {/* <Link  href={`/resume/${resume.id}?index=${index}`}>
-                    {resume.id} {index}
-                  </Link> */}
+                            <button
+                              onClick={() => {
+                                changePublic(index);
+                              }}
+                            >
+                              Make public
+                            </button>
                           </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
+                        )}
 
-              <style>
-                {`
-.box:hover span { 
-transform: translate(-50%, -100%);
-} `}
-              </style>
-            </div>
-          
+                        {resume.publicResume == true && (
+                          <div
+                            className="box relative my-7 mx-12 h-[90mm] w-[70mm] bg-black border-[4px] border-orange-500"
+                            key={resume._id}
+                          >
+                            <h1>Public</h1>
+                            <span>
+                              <img
+                                className="w-full h-full object-cover object-center opacity-60 hover:opacity-40"
+                                src="https://www.provast.io/_next/image?url=https%3A%2F%2Fwww.callcentrehelper.com%2Fimages%2Fstories%2F2022%2F01%2Fhands-holding-cvs.gif&w=2048&q=75"
+                              />
+                            </span>
+                            <Link
+                              href={`/resume/${resume.id}?index=${index}`}
+                              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-2xl font-bold whitespace-nowrap transition-all duration-500"
+                            >
+                              {resume.personal.role}
+                            </Link>
+                          </div>
+                        )}
+                      </>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+            <style>
+              {`
+          .box:hover span { 
+          transform: translate(-50%, -100%);
+          } `}
+            </style>
+          </div>
           </div>
         </div>
       )}

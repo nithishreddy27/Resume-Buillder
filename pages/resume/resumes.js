@@ -5,6 +5,7 @@ import { FiMenu } from "react-icons/fi";
 import { useUser } from "../../lib/hooks";
 import { useRouter } from "next/router";
 import ResumeContext from "../../context/ResumeContext";
+import { TbPlus } from "react-icons/tb";
 
 const Home = (props) => {
     const { details, setdetails, setdemo, demo ,id,setid } = useContext(ResumeContext);
@@ -13,250 +14,32 @@ const Home = (props) => {
     const l = [];
     const [type, setType] = useState("free");
     const [design, setDesign] = useState("all");
+    const [role, setRole] = useState()
+    
+    
     const user = useUser();
-
+    
+    
     const router = useRouter()
-    // var  pro = {
-    //   id:id,
-    //   personal: {
-    //     firstName: "FName",
-    //     lastName:"Lname",
-    //     email: "check",
-    //     role: "WEB DEVELPOER",
-    //     image: "",
-    //     dob: "1985-11-01",
-    //     phone: "9",
-    //     objective: "",
-    //   },
-    //   social: [
-    //     // {
-    //     //   network: "Instagram",
-    //     //   username: "tim_j",
-    //     //   url: "https://www.instagram.com/tim_j/",
-    //     //   enabled: true,
-    //     // },
-    //   ],
-    //   work: [
-    //     // {
-    //     //   company: "Kell Tech",
-    //     //   from: "2022-03-12",
-    //     //   to: "2024-08-10",
-    //     //   designation: "Senior Development Engineer",
-    //     //   website: "http://www.kelltech.com",
-    //     //   summary: {
-    //     //     data: "- Utilized Cloud Foundry for efficient building on top of Kubernetes.\n- Supported testing and engineering processes.",
-    //     //     enabled: true,
-    //     //   },
-    //     //   enabled: true,
-    //     // },
-    //   ],
-    //   education: [
-    //     // {
-    //     //   institution: "University of Pennsylvania",
-    //     //   fieldOfStudy: "Computer Science",
-    //     //   typeOfDegree: "Master of Science",
-    //     //   startDate: "2015-04-10",
-    //     //   endDate: "2018-06-10",
-    //     //   gpa: "7.5",
-    //     //   summary: {
-    //     //     data: "Completed MS in the field of Computer Science",
-    //     //     enabled: true,
-    //     //   },
-    //     //   enabled: true,
-    //     // },
-    //   ],
-    //   awards: [
-    //     // {
-    //     //   name: "Best performer Award",
-    //     //   awarder: "Kell Tech",
-    //     //   date: "2021-09-21",
-    //     //   summary: {
-    //     //     data: "Recieved an award for best performance for the term.",
-    //     //     enabled: true,
-    //     //   },
-    //     //   enabled: true,
-    //     // },
-    //   ],
-    //   skills: [
-    //     // {
-    //     //   name: "ReactJS",
-    //     //   level: "Beginner",
-    //     //   enabled: true,
-    //     // },
-    //   ],
-    //   languages: [
-    //     // {
-    //     //   name: "English",
-    //     //   fluency: "Professional",
-    //     //   enabled: true,
-    //     // },
-    //   ],
-    //   hobbies: [
-    //     // {
-    //     //   name: "Solving puzzles",
-    //     //   enabled: true,
-    //     // },
-    //     // {
-    //     //   name: "Travelling",
-    //     //   enabled: true,
-    //     // },
-    //   ],
-    //   certifications: [
-    //     // title: "Oracle Java Certifications Associate Professional",
-    //     // date: "2014-09-18",
-    //     // issuer: "Udemy",
-    //     // summary: {
-    //     //   data: "Completed a course on Java and built a project at the end of the course",
-    //     //   enabled: true,
-    //     // },
-    //     // enabled: true,
-    //   ],
-    //   projects: [
-    //     // {
-    //     //   name: "Gaming AI",
-    //     //   from: "2017-08-03",
-    //     //   to: "2018-11-15",
-    //     //   website: "http://github.com/gameai",
-    //     //   summary: {
-    //     //     data: "Worked with IT team to create an AI based gaming application for the modern gamers",
-    //     //     enabled: true,
-    //     //   },
-    //     //   enabled: true,
-    //     // },
-    //   ],
-    // };
 
-
-    // useEffect(()=>{
-    //   if(user && id){
-    //     pro = {
-    //       id:id,
-    //       personal: {
-    //         firstName: user.profile.firstName,
-    //         lastName: user.profile.lastName,
-    //         email: user.email,
-    //         role: "WEB DEVELPOER",
-    //         image: "",
-    //         dob: "1985-11-01",
-    //         phone: user.profile.phoneNumber,
-    //         objective: "",
-    //       },
-    //       social: [
-    //         // {
-    //         //   network: "Instagram",
-    //         //   username: "tim_j",
-    //         //   url: "https://www.instagram.com/tim_j/",
-    //         //   enabled: true,
-    //         // },
-    //       ],
-    //       work: [
-    //         // {
-    //         //   company: "Kell Tech",
-    //         //   from: "2022-03-12",
-    //         //   to: "2024-08-10",
-    //         //   designation: "Senior Development Engineer",
-    //         //   website: "http://www.kelltech.com",
-    //         //   summary: {
-    //         //     data: "- Utilized Cloud Foundry for efficient building on top of Kubernetes.\n- Supported testing and engineering processes.",
-    //         //     enabled: true,
-    //         //   },
-    //         //   enabled: true,
-    //         // },
-    //       ],
-    //       education: [
-    //         // {
-    //         //   institution: "University of Pennsylvania",
-    //         //   fieldOfStudy: "Computer Science",
-    //         //   typeOfDegree: "Master of Science",
-    //         //   startDate: "2015-04-10",
-    //         //   endDate: "2018-06-10",
-    //         //   gpa: "7.5",
-    //         //   summary: {
-    //         //     data: "Completed MS in the field of Computer Science",
-    //         //     enabled: true,
-    //         //   },
-    //         //   enabled: true,
-    //         // },
-    //       ],
-    //       awards: [
-    //         // {
-    //         //   name: "Best performer Award",
-    //         //   awarder: "Kell Tech",
-    //         //   date: "2021-09-21",
-    //         //   summary: {
-    //         //     data: "Recieved an award for best performance for the term.",
-    //         //     enabled: true,
-    //         //   },
-    //         //   enabled: true,
-    //         // },
-    //       ],
-    //       skills: [
-    //         // {
-    //         //   name: "ReactJS",
-    //         //   level: "Beginner",
-    //         //   enabled: true,
-    //         // },
-    //       ],
-    //       languages: [
-    //         // {
-    //         //   name: "English",
-    //         //   fluency: "Professional",
-    //         //   enabled: true,
-    //         // },
-    //       ],
-    //       hobbies: [
-    //         // {
-    //         //   name: "Solving puzzles",
-    //         //   enabled: true,
-    //         // },
-    //         // {
-    //         //   name: "Travelling",
-    //         //   enabled: true,
-    //         // },
-    //       ],
-    //       certifications: [
-    //         // title: "Oracle Java Certifications Associate Professional",
-    //         // date: "2014-09-18",
-    //         // issuer: "Udemy",
-    //         // summary: {
-    //         //   data: "Completed a course on Java and built a project at the end of the course",
-    //         //   enabled: true,
-    //         // },
-    //         // enabled: true,
-    //       ],
-    //       projects: [
-    //         // {
-    //         //   name: "Gaming AI",
-    //         //   from: "2017-08-03",
-    //         //   to: "2018-11-15",
-    //         //   website: "http://github.com/gameai",
-    //         //   summary: {
-    //         //     data: "Worked with IT team to create an AI based gaming application for the modern gamers",
-    //         //     enabled: true,
-    //         //   },
-    //         //   enabled: true,
-    //         // },
-    //       ],
-    //     };
-    //   }
-    // },[user,id])
 
     const q = router.query
 
 
-    async function runMe(resumeId){
+    async function createResume(resumeId){
 
 
-      console.log("id",resumeId)
+      // console.log("id",resumeId,"role",role)
       
 
         const pro = {
           id:resumeId,
+          publicResume:false,
           personal: {
             firstName: user.profile.firstName,
             lastName: user.profile.lastName,
             email: user.email,
-            role: "WEB DEVELPOER",
+            role: role,
             image: "",
             dob: "1985-11-01",
             phone: user.profile.phoneNumber,
@@ -452,11 +235,11 @@ const Home = (props) => {
           </div>
 
           <div className="grid grid-cols-1  gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 mt-5 blur-[0.75px]">
-            {/* <div className='rounded-md bg-black h-96 w-64 m-5 cursor-pointer relative'  key={data._id}>
-        <div className=' text-4xl text-white font-semibold tracking-wider text-center '><span className='absolute z-40'>Name </span> </div>
-        <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png" alt=""  className='h-[100%] w-[100%] opacity-50'/>
+                {/* <div className='rounded-md bg-black h-96 w-64 m-5 cursor-pointer relative'  key={data._id}>
+            <div className=' text-4xl text-white font-semibold tracking-wider text-center '><span className='absolute z-40'>Name </span> </div>
+            <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png" alt=""  className='h-[100%] w-[100%] opacity-50'/>
 
-      </div> */}
+          </div> */}
 
             {arr.map((data) => {
               if (design == "all" || data.ResumeDesign == design) {
@@ -473,7 +256,7 @@ const Home = (props) => {
               l.map((data) => (
                 <div key={data._id} onClick={()=>{
                   setid(data._id)
-                  runMe(data._id) 
+                  // runMe(data._id) 
                   }}>
                   <div className="rounded-md bg-gray-100 h-auto  w-63 p-5 m-5 cursor-pointer relative">
                     <div className="opacity-80">
@@ -500,7 +283,18 @@ const Home = (props) => {
      
            </Link> */}
           </div>
+          <div className="text-gray-500 text-center my-[58%] text-3xl font-semibold">
+                CREATE
+                <div className=" flex justify-center "><TbPlus/></div>
+                <input type="text" name="role" id="role" className='border' required placeholder='enter role' onChange={(event)=>{setRole(event.target.value)}}/>
+
+               {/* <Link href="/resume/resumes">Submit</Link> */}
+               <button className="mx-2" onClick={()=>{createResume(id)}}>Submit</button>
+              </div>
         </div>
+
+
+
       )}
     </div>
   );

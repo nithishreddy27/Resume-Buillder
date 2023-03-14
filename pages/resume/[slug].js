@@ -145,9 +145,13 @@ export default function Slug(props) {
               {arr.map((resume)=>(
                 <div>
                   {/* {console.log(resume)} */}
-                  {/* <Link href={`/resume/${resume._id}?index=${q.index}`}>{resume.ResumeName}</Link> */}
-                    { <button onClick={()=>{
+                    {
+                    
+                    <>
+                    <button onClick={()=>{
+                      // <Link href={`/resume/${resume._id}?index=${q.index}`}>{resume.ResumeName}</Link>
                                         router.push({pathname:`/resume/${resume._id}`,query:{index:q.index}})
+                                        
                                         setresumeId(resume._id)
                                         // router.reload()
                                         // changeResume(resume._id)
@@ -159,7 +163,10 @@ export default function Slug(props) {
                                         // }, 
                                         // )
                                         // router.reload(window.location.pathname)
-                                        }}  className="m-2">{resume.ResumeName}</button>                       
+                                        }}  className="m-2">{resume.ResumeName}</button> 
+                                <img src={`${resume.ResumeImage}`} alt="" width={50} height={50}/>     
+                                {/* <Image></Image> */}
+                      </>
                     }
 
 
