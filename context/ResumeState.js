@@ -9,7 +9,7 @@ const ResumeState = (props) => {
 
   var pro = {
     id:"test",
-    publicResume:false,
+    publicResume:"false",
     role:"Web",
     personal: {
       firstName: "FNAME",
@@ -34,7 +34,7 @@ const ResumeState = (props) => {
 
   var completeResume = {
     id:"test",
-    publicResume:false,
+    publicResume:"false",
     personal: {
       firstName: "FNAME",
       lastName: "LANME",

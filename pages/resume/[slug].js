@@ -137,16 +137,7 @@ export default function Slug(props) {
                                         router.push({pathname:`/resume/${resume._id}`,query:{index:q.index}})
                                         
                                         setresumeId(resume._id)
-                                        // router.reload()
-                                        // changeResume(resume._id)
-                                        // console.log("inside click")
-                                        // router.replace(`/resume/${resume._id}?index=${q.index}`)
-                                        // router.replace({
-                                        //   pathname: `/resume/${resume._id}`,
-                                        //   query: { index:q.index }
-                                        // }, 
-                                        // )
-                                        // router.reload(window.location.pathname)
+                                        
                                         }} >
                     <button  className="m-2 text-white flex justify-center">{resume.ResumeName}</button> 
                                 <img src={`${resume.ResumeImage}`} alt="" width={150} height={200} 

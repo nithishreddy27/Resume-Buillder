@@ -27,7 +27,7 @@ export default async function handler(req,res){
 
             const email = req.body.details.personal.email
             var data = await UserResume.findOne({"email":email })
-            console.log("data",data)
+            // console.log("data",data)
             const arr =[]
 
             data.resume.map((resume,index)=>{
