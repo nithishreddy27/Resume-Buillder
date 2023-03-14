@@ -1,11 +1,14 @@
-import UserResume from "../../../model/UserResume"
+import Resume from "../../../model/Resume"
 
 export default async function handler(req,res){
 
     switch(req.method){
         case("POST"):
             console.log('b',req.body.resumeId);
-            res.send({"done":null})
+
+            const data = await Resume.findById(req.body.resumeId)
+            console.log("data",data)
+            res.send({"resumeName":data.ResumeName})
             break
 
     }

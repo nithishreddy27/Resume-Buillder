@@ -42,7 +42,7 @@ const Home = (props) => {
             role: role,
             image: "",
             dob: "1985-11-01",
-            phone: user.profile.phoneNumber,
+            phone: user.phone.value,
             objective: "",
           },
           social: [
@@ -258,7 +258,7 @@ const Home = (props) => {
                   setid(data._id)
                   // runMe(data._id) 
                   }}>
-                  <a href="#role" className="rounded-md bg-gray-100 h-auto  w-63 p-5 m-5 cursor-pointer relative">
+                  <div  className="rounded-md bg-gray-100 h-auto  w-63 p-5 m-5 cursor-pointer relative">
                     <div className="opacity-80">
                       <img src={data.ResumeImage}/>
                     </div>
@@ -268,7 +268,7 @@ const Home = (props) => {
                     <div className=" text-2xl p-3 text-center   font-semibold">
                       {data.ResumeName}{" "}
                     </div>
-                  </a>
+                  </div>
                 </div>
               ))
             }
