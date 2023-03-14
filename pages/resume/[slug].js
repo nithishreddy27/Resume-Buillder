@@ -1,20 +1,19 @@
-import { useRouter } from 'next/router'
-import React, { useContext, useEffect, useState } from 'react'
-import { useUser } from '../../lib/hooks'
+import { useRouter } from "next/router";
+import React, { useContext, useEffect, useState } from "react";
+import { useUser } from "../../lib/hooks";
 import ResumeContext from "../../context/ResumeContext";
 import SideBar from "../../components/SideBar";
-import Link from "next/link"
-import Script from "next/script"
-import dynamic from 'next/dynamic'
+import Link from "next/link";
+import Script from "next/script";
+import dynamic from "next/dynamic";
 
-var DynamicHeader=dynamic(() => import('./demo'), {
+
+var DynamicHeader = dynamic(() => import("./demo"), {
   loading: () => <p>Loading...</p>,
-})
-
-
+});
 
 export default function Slug(props) {
-  const router = useRouter()
+  const router = useRouter();
   const arr = props.done;
   const q = router.query
   const user = useUser()
@@ -45,15 +44,14 @@ export default function Slug(props) {
     
     DynamicHeader = dynamic(() => import(`./resumes/${resumeName}`), {
       loading: () => <p>Loading...</p>,
-    })
+    });
   }
 
-
-  useEffect(()=>{
-    if(resumeId){
-      runMe(resumeId)
+  useEffect(() => {
+    if (resumeId) {
+      runMe(resumeId);
     }
-  },[resumeId])
+  }, [resumeId]);
 
 
 
@@ -62,16 +60,16 @@ export default function Slug(props) {
     runMe(q.slug)
   },[0])
 
-  useEffect(()=>{
-    setChange(true)
-  },[details])
+  useEffect(() => {
+    setChange(true);
+  }, [details]);
 
-  useEffect(()=>{
-    if(q){
-      console.log("query is ",q.index)
-      setindex(q.index)
+  useEffect(() => {
+    if (q) {
+      console.log("query is ", q.index);
+      setindex(q.index);
     }
-  },[q])
+  }, [q]);
 
 
   useEffect(()=>{
@@ -91,60 +89,83 @@ export default function Slug(props) {
         },
       });
     }
+  }, [user, change, q]);
 
-  },[user,change,q])
- 
-
-
+  const [res, setres] = useState(false);
   return (
     <div>
-
       {user && details && (
-        <div className='flex w-[100%]'>
-            <div className='w-[80%]'>
-
-            <DynamicHeader />
+        <div className="flex w-[100%]">
+          <div className="w-full">
+            {res==false && (
+            
+            <button className="border lg:absolute absolute bg-slate-700 border-white rounded-md p-2 z-20 lg:right-[300px] right-5 top-[92px] lg:top-5  mb-5 text-white"
+            onClick={()=>{setres(!res)}}>
+              CHANGE
+            </button>
+            )}
+            <div className="relative">
+              <DynamicHeader />
             </div>
+          </div>
+          {res == true && (
+          <div className="h-screen fixed lg:static top-[100px] w-full overflow-auto bg-gradient-to-b from-slate-700 to-slate-800 border border-white lg:w-[30%]">
+            <div className="py-5 px-6 text-xl flex gap-[100px]  w-[100%] fixed bg-slate-700 border border-red-100 text-white">
+              
+              <div>All Templates</div>
+              <button onClick={()=>{
+                setres(false)
+              }}>
+                  close
+              </button>
+              </div>
+             
+              
+                   
 
-            <div className='p-5'>
+            <div className='justify-center px-10 py-5 mt-[60px] grid grid-cols-2 gap-5 '>
               {arr.map((resume)=>(
                 <div key={resume._id}>
                   {/* {console.log(resume)} */}
                     {
                     
                     <>
-                    <button onClick={()=>{
+                    <div
+                      className="cursor-pointer"
+                    onClick={()=>{
+                      // <Link href={`/resume/${resume._id}?index=${q.index}`}>{resume.ResumeName}</Link>
                                         router.push({pathname:`/resume/${resume._id}`,query:{index:q.index}})
                                         
                                         setresumeId(resume._id)
-                                     
-                                        }}  className="m-2">{resume.ResumeName}</button> 
-                                <img src={`${resume.ResumeImage}`}  alt="" width={50} height={50} className="cursor-pointer"
-                                
-                                      onClick={()=>{
-                                        router.push({pathname:`/resume/${resume._id}`,query:{index:q.index}})
-                                        
-                                        setresumeId(resume._id)
-                                     
-                                        }}/>     
+                                        // router.reload()
+                                        // changeResume(resume._id)
+                                        // console.log("inside click")
+                                        // router.replace(`/resume/${resume._id}?index=${q.index}`)
+                                        // router.replace({
+                                        //   pathname: `/resume/${resume._id}`,
+                                        //   query: { index:q.index }
+                                        // }, 
+                                        // )
+                                        // router.reload(window.location.pathname)
+                                        }} >
+                    <button  className="m-2 text-white flex justify-center">{resume.ResumeName}</button> 
+                                <img src={`${resume.ResumeImage}`} alt="" width={150} height={200} 
+                                className=""/>     
                                 {/* <Image></Image> */}
+                                </div>
                       </>
                     }
-
-
-                    
-                </div> 
-              ))}
-            </div>
-        </div> 
-      
+                  </div>
+                ))}
+              </div>
+            
+          </div>
+          )}
+        </div>
       )}
-
     </div>
-  )
+  );
 }
-
-
 
 export const getServerSideProps = async () => {
   const res = await fetch("http://localhost:3000/api/Resume/searchResume");
@@ -156,4 +177,3 @@ export const getServerSideProps = async () => {
     },
   };
 };
-
