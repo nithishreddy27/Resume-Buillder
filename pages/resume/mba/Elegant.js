@@ -41,7 +41,6 @@ export default function Elegant() {
 
   //PDF document
 
-  
   function lprintDocument() {
     const printContents = document.getElementById("largeResume").innerHTML;
     const originalContents = document.body.innerHTML;
@@ -143,7 +142,7 @@ export default function Elegant() {
                       <h1>{details.personal.role}</h1>
                     </div>
                   </div>
-                  <div className="grid grid-cols-3 z-0 h-[297mm]">
+                  <div className="grid grid-cols-3 w-[100%] z-0 h-[297mm]">
                     <div className="bg-cyan-800 text-white">
                       <div className="mt-64 mx-6">
                         <div>
@@ -158,84 +157,124 @@ export default function Elegant() {
                           </h1>
                           <h1 className="text-white">{details.personal.dob}</h1>
                         </div>
-                        {details.social.length != 0 && (
-                          <div>
-                            <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white heading">
-                              SOCIAL
-                            </h1>
-                            {details.social.map((item) => (
-                              <div className="pr-2 pt-1" key={item.network}>
-                                <h1>
-                                  <Link href={`${item.url}`}>
-                                    {item.network}
-                                  </Link>
-                                </h1>
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                        {details.skills.length != 0 && (
-                          <div>
-                            <h1 className="border-2 border-white text-white mt-5 mb-3 flex justify-center align-middle py-2 heading">
-                              SKILLS
-                            </h1>
-                            {details.skills.map((item) => (
-                              <div
-                                className="flex justify-between"
-                                key={item.name}
-                              >
-                                <h1 className="text-white">{item.name}</h1>
-                                <h1 className="text-xs py-1 text-white">
-                                  {item.level}
-                                </h1>
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                        {details.awards.length != 0 && (
-                          <div>
-                            <h1 className="border-2 border-white text-white mt-5 mb-3 flex justify-center align-middle py-2 heading">
-                              AWARDS
-                            </h1>
-                            {details.awards.map((item) => (
-                              <div
-                                className="flex justify-between"
-                                key={item.name}
-                              >
-                                <h1 className="text-white">
-                                  {item.name} from {item.awarder}
-                                </h1>
-                                <h1 className="text-xs py-1 text-white">
-                                  {item.level}
-                                </h1>
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                        {details.hobbies.length != 0 && (
-                          <div>
-                            <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white heading">
-                              HOBBIES
-                            </h1>
-                            {details.hobbies.map((item) => (
-                              <div key={item.name}>
-                                <h1 className="text-white">{item.name}</h1>
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                        {details.languages.length != 0 && (
-                          <div>
-                            <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white heading">
-                              LANGUAGES
-                            </h1>
-                            {details.languages.map((item) => (
-                              <div key={item.name}>
-                                <h1 className="text-white">{item.name}</h1>
-                              </div>
-                            ))}
-                          </div>
-                        )}
+                        {details.social.length != 0 &&
+                          details.social.filter((social) => social.enabled)
+                            .length > 0 && (
+                            <div>
+                              <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white">
+                                SOCIAL
+                              </h1>
+                              {details.social.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <div
+                                      className="pr-2 pt-1"
+                                      key={item.network}
+                                    >
+                                      <h1>
+                                        <Link href={`${item.url}`}>
+                                          {item.network}
+                                        </Link>
+                                      </h1>
+                                    </div>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
+                        {details.skills.length != 0 &&
+                          details.skills.filter((skills) => skills.enabled)
+                            .length > 0 && (
+                            <div>
+                              <h1 className="border-2 border-white text-white mt-5 mb-3 flex justify-center align-middle py-2 heading">
+                                SKILLS
+                              </h1>
+                              {details.skills.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <div
+                                      className="flex justify-between"
+                                      key={item.name}
+                                    >
+                                      <h1 className="text-white">
+                                        {item.name}
+                                      </h1>
+                                      <h1 className="text-xs py-1 text-white">
+                                        {item.level}
+                                      </h1>
+                                    </div>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
+                        {details.awards.length != 0 &&
+                          details.awards.filter((awards) => awards.enabled)
+                            .length > 0 && (
+                            <div>
+                              <h1 className="border-2 border-white text-white mt-5 mb-3 flex justify-center align-middle py-2 heading">
+                                AWARDS
+                              </h1>
+                              {details.awards.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <div
+                                      className="flex justify-between"
+                                      key={item.name}
+                                    >
+                                      <h1 className="text-white">
+                                        {item.name} from {item.awarder}
+                                      </h1>
+                                      <h1 className="text-xs py-1 text-white">
+                                        {item.level}
+                                      </h1>
+                                    </div>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
+                        {details.hobbies.length != 0 &&
+                          details.hobbies.filter((hobbies) => hobbies.enabled)
+                            .length > 0 && (
+                            <div>
+                              <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white heading">
+                                HOBBIES
+                              </h1>
+                              {details.hobbies.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <div key={item.name}>
+                                      <h1 className="text-white">
+                                        {item.name}
+                                      </h1>
+                                    </div>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
+                        {details.languages.length != 0 &&
+                          details.languages.filter(
+                            (languages) => languages.enabled
+                          ).length && (
+                            <div>
+                              <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white heading">
+                                LANGUAGES
+                              </h1>
+                              {details.languages.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <div key={item.name}>
+                                      <h1 className="text-white">
+                                        {item.name}
+                                      </h1>
+                                    </div>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
                       </div>
                     </div>
                     <div className="col-span-2 text-black">
@@ -250,82 +289,120 @@ export default function Elegant() {
                             </p>
                           </div>
                         )}
-                        {details.education.length != 0 && (
-                          <div>
-                            <h1 className="text-xl border-b-2 border-black mb-3 mt-5 heading">
-                              EDUCATION
-                            </h1>
-                            {details.education.map((item) => (
-                              <div className="py-1" key={item.institution}>
-                                <h1 className="font-semibold relative">
-                                  {item.institution}
-                                  <span className="absolute right-0 text-xs">
-                                    {item.startDate} - {item.endDate}
-                                  </span>
-                                </h1>
-                                <p className="text-sm">{item.fieldOfStudy}</p>
-                                <p class="">{item.summary.data}</p>
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                        {details.work.length != 0 && (
-                          <div>
-                            <h1 className="text-xl border-b-2 border-black mb-3 mt-5 heading">
-                              WORK EXPERIENCE
-                            </h1>
-                            {details.work.map((item) => (
-                              <div className="py-1" key={item.company}>
-                                <h1 className="font-semibold relative">
-                                  {item.company}
-                                  <span className="absolute right-0 text-xs">
-                                    {item.from} - {item.to}
-                                  </span>
-                                </h1>
-                                <p className="text-sm">{item.designation}</p>
-                                <p class="">{item.summary.data}</p>
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                        {details.projects.length != 0 && (
-                          <div>
-                            <h1 className="text-xl border-b-2 border-black mb-3 mt-5 heading">
-                              PROJECTS
-                            </h1>
-                            {details.projects.map((item) => (
-                              <div className="py-1" key={item.name}>
-                                <h1 className="font-semibold relative">
-                                  {item.name}
-                                  <span className="absolute right-0 text-xs">
-                                    {item.from} - {item.to}
-                                  </span>
-                                </h1>
-                                <p className="text-sm">{item.website}</p>
-                                <p className="mr-5">{item.summary.data}</p>
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                        {details.certifications.length != 0 && (
-                          <div>
-                            <h1 className="text-xl border-b-2 border-black mb-3 mt-5 heading">
-                              CERTIFICATIONS
-                            </h1>
-                            {details.certifications.map((item) => (
-                              <div className="py-1" key={item.title}>
-                                <h1 className="font-semibold relative">
-                                  {item.issuer}
-                                  <span className="absolute right-0 text-xs">
-                                    {item.date}
-                                  </span>
-                                </h1>
-                                <p className="text-sm">{item.designation}</p>
-                                {/* <p class="">{item.summary.data}</p> */}
-                              </div>
-                            ))}
-                          </div>
-                        )}
+                        {details.education.length != 0 &&
+                          details.education.filter(
+                            (education) => education.enabled
+                          ).length > 0 && (
+                            <div>
+                              <h1 className="text-xl border-b-2 border-black mb-3 mt-5 heading">
+                                EDUCATION
+                              </h1>
+                              {details.education.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <div
+                                      className="py-1"
+                                      key={item.institution}
+                                    >
+                                      <h1 className="font-semibold relative">
+                                        {item.institution}
+                                        <span className="absolute right-0 text-xs">
+                                          {item.startDate} - {item.endDate}
+                                        </span>
+                                      </h1>
+                                      <p className="text-sm">
+                                        {item.fieldOfStudy}
+                                      </p>
+                                      <p class="">{item.summary.data}</p>
+                                    </div>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
+                        {details.work.length != 0 &&
+                          details.work.filter((work) => work.enabled).length >
+                            0 && (
+                            <div>
+                              <h1 className="text-xl border-b-2 border-black mb-3 mt-5 heading">
+                                WORK EXPERIENCE
+                              </h1>
+                              {details.work.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <div className="py-1" key={item.company}>
+                                      <h1 className="font-semibold relative">
+                                        {item.company}
+                                        <span className="absolute right-0 text-xs">
+                                          {item.from} - {item.to}
+                                        </span>
+                                      </h1>
+                                      <p className="text-sm">
+                                        {item.designation}
+                                      </p>
+                                      <p class="">{item.summary.data}</p>
+                                    </div>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
+                        {details.projects.length != 0 &&
+                          details.projects.filter(
+                            (projects) => projects.enabled
+                          ).length > 0 && (
+                            <div>
+                              <h1 className="text-xl border-b-2 border-black mb-3 mt-5 heading">
+                                PROJECTS
+                              </h1>
+                              {details.projects.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <div className="py-1" key={item.name}>
+                                      <h1 className="font-semibold relative">
+                                        {item.name}
+                                        <span className="absolute right-0 text-xs">
+                                          {item.from} - {item.to}
+                                        </span>
+                                      </h1>
+                                      <p className="text-sm">{item.website}</p>
+                                      <p className="mr-5">
+                                        {item.summary.data}
+                                      </p>
+                                    </div>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
+                        {details.certifications.length != 0 &&
+                          details.certifications.filter(
+                            (certifications) => certifications.enabled
+                          ).length > 0 && (
+                            <div>
+                              <h1 className="text-xl border-b-2 border-black mb-3 mt-5 heading">
+                                CERTIFICATIONS
+                              </h1>
+                              {details.certifications.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <div className="py-1" key={item.title}>
+                                      <h1 className="font-semibold relative">
+                                        {item.issuer}
+                                        <span className="absolute right-0 text-xs">
+                                          {item.date}
+                                        </span>
+                                      </h1>
+                                      <p className="text-sm">
+                                        {item.designation}
+                                      </p>
+                                      {/* <p class="">{item.summary.data}</p> */}
+                                    </div>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
                       </div>
                     </div>
                   </div>
@@ -352,27 +429,22 @@ export default function Elegant() {
               </div>
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
-              <div className="flex">
-                  <div className="m-5  grow">
-                  <button
-                    className="text-white border border-white p-2 rounded-md"
-                    onClick={() => {
-                      setcolorpalette(!colorpalette);
-                    }}
-                  >
-                    COLOR
-                  </button>
-                  <div className={`${colorpalette ? "block" : "hidden"} ml-[50px] absolute z-40`}>
-                    <ColorPicker
-                      width={300}
-                      height={100}
-                      color={color}
-                      onChange={setColor}
-                      hideHSV
-                      dark
-                    />
-                    ;
-                  </div>
+                <div className="flex">
+                  <div className="m-5 flex grow">
+                    <div className="flex mt-1">
+                      <div
+                        className="w-8 h-8 border-[2px] border-white bg-red-500 mx-1 rounded-full"
+                        onClick={() => {
+                          setcolor("red");
+                        }}
+                      ></div>
+                      <div
+                        className="w-8 h-8 border-[2px] border-white bg-gray-500 rounded-full"
+                        onClick={() => {
+                          setcolor("gray");
+                        }}
+                      ></div>
+                    </div>
                   </div>
                   <div className="m-5">
                     <button
@@ -412,7 +484,7 @@ export default function Elegant() {
                         <h1>{details.personal.role}</h1>
                       </div>
                     </div>
-                    <div className="grid grid-cols-3 z-0 h-[297mm]">
+                    <div className="grid grid-cols-3 w-[100%] z-0 h-[297mm]">
                       <div className="bg-cyan-800 text-white">
                         <div className="mt-64 mx-6">
                           <div>
@@ -429,84 +501,124 @@ export default function Elegant() {
                               {details.personal.dob}
                             </h1>
                           </div>
-                          {details.social.length != 0 && (
-                            <div>
-                              <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white heading">
-                                SOCIAL
-                              </h1>
-                              {details.social.map((item) => (
-                                <div className="pr-2 pt-1" key={item.network}>
-                                  <h1>
-                                    <Link href={`${item.url}`}>
-                                      {item.network}
-                                    </Link>
-                                  </h1>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                          {details.skills.length != 0 && (
-                            <div>
-                              <h1 className="border-2 border-white text-white mt-5 mb-3 flex justify-center align-middle py-2 heading">
-                                SKILLS
-                              </h1>
-                              {details.skills.map((item) => (
-                                <div
-                                  className="flex justify-between"
-                                  key={item.name}
-                                >
-                                  <h1 className="text-white">{item.name}</h1>
-                                  <h1 className="text-xs py-1 text-white">
-                                    {item.level}
-                                  </h1>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                          {details.awards.length != 0 && (
-                            <div>
-                              <h1 className="border-2 border-white text-white mt-5 mb-3 flex justify-center align-middle py-2 heading">
-                                AWARDS
-                              </h1>
-                              {details.awards.map((item) => (
-                                <div
-                                  className="flex justify-between"
-                                  key={item.name}
-                                >
-                                  <h1 className="text-white">
-                                    {item.name} from {item.awarder}
-                                  </h1>
-                                  <h1 className="text-xs py-1 text-white">
-                                    {item.level}
-                                  </h1>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                          {details.hobbies.length != 0 && (
-                            <div>
-                              <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white heading">
-                                HOBBIES
-                              </h1>
-                              {details.hobbies.map((item) => (
-                                <div key={item.name}>
-                                  <h1 className="text-white">{item.name}</h1>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                          {details.languages.length != 0 && (
-                            <div>
-                              <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white heading">
-                                LANGUAGES
-                              </h1>
-                              {details.languages.map((item) => (
-                                <div key={item.name}>
-                                  <h1 className="text-white">{item.name}</h1>
-                                </div>
-                              ))}
-                            </div>
-                          )}
+                          {details.social.length != 0 &&
+                            details.social.filter((social) => social.enabled)
+                              .length > 0 && (
+                              <div>
+                                <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white">
+                                  SOCIAL
+                                </h1>
+                                {details.social.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <div
+                                        className="pr-2 pt-1"
+                                        key={item.network}
+                                      >
+                                        <h1>
+                                          <Link href={`${item.url}`}>
+                                            {item.network}
+                                          </Link>
+                                        </h1>
+                                      </div>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            )}
+                          {details.skills.length != 0 &&
+                            details.skills.filter((skills) => skills.enabled)
+                              .length > 0 && (
+                              <div>
+                                <h1 className="border-2 border-white text-white mt-5 mb-3 flex justify-center align-middle py-2 heading">
+                                  SKILLS
+                                </h1>
+                                {details.skills.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <div
+                                        className="flex justify-between"
+                                        key={item.name}
+                                      >
+                                        <h1 className="text-white">
+                                          {item.name}
+                                        </h1>
+                                        <h1 className="text-xs py-1 text-white">
+                                          {item.level}
+                                        </h1>
+                                      </div>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            )}
+                          {details.awards.length != 0 &&
+                            details.awards.filter((awards) => awards.enabled)
+                              .length > 0 && (
+                              <div>
+                                <h1 className="border-2 border-white text-white mt-5 mb-3 flex justify-center align-middle py-2 heading">
+                                  AWARDS
+                                </h1>
+                                {details.awards.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <div
+                                        className="flex justify-between"
+                                        key={item.name}
+                                      >
+                                        <h1 className="text-white">
+                                          {item.name} from {item.awarder}
+                                        </h1>
+                                        <h1 className="text-xs py-1 text-white">
+                                          {item.level}
+                                        </h1>
+                                      </div>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            )}
+                          {details.hobbies.length != 0 &&
+                            details.hobbies.filter((hobbies) => hobbies.enabled)
+                              .length > 0 && (
+                              <div>
+                                <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white heading">
+                                  HOBBIES
+                                </h1>
+                                {details.hobbies.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <div key={item.name}>
+                                        <h1 className="text-white">
+                                          {item.name}
+                                        </h1>
+                                      </div>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            )}
+                          {details.languages.length != 0 &&
+                            details.languages.filter(
+                              (languages) => languages.enabled
+                            ).length && (
+                              <div>
+                                <h1 className="border-2 border-white  mt-5 mb-3 flex justify-center align-middle py-2 text-white heading">
+                                  LANGUAGES
+                                </h1>
+                                {details.languages.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <div key={item.name}>
+                                        <h1 className="text-white">
+                                          {item.name}
+                                        </h1>
+                                      </div>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            )}
                         </div>
                       </div>
                       <div className="col-span-2 text-black">
@@ -521,82 +633,122 @@ export default function Elegant() {
                               </p>
                             </div>
                           )}
-                          {details.education.length != 0 && (
-                            <div>
-                              <h1 className="text-xl border-b-2 border-black mb-3 mt-5 heading">
-                                EDUCATION
-                              </h1>
-                              {details.education.map((item) => (
-                                <div className="py-1" key={item.institution}>
-                                  <h1 className="font-semibold relative">
-                                    {item.institution}
-                                    <span className="absolute right-0 text-xs">
-                                      {item.startDate} - {item.endDate}
-                                    </span>
-                                  </h1>
-                                  <p className="text-sm">{item.fieldOfStudy}</p>
-                                  <p class="">{item.summary.data}</p>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                          {details.work.length != 0 && (
-                            <div>
-                              <h1 className="text-xl border-b-2 border-black mb-3 mt-5 heading">
-                                WORK EXPERIENCE
-                              </h1>
-                              {details.work.map((item) => (
-                                <div className="py-1" key={item.company}>
-                                  <h1 className="font-semibold relative">
-                                    {item.company}
-                                    <span className="absolute right-0 text-xs">
-                                      {item.from} - {item.to}
-                                    </span>
-                                  </h1>
-                                  <p className="text-sm">{item.designation}</p>
-                                  <p class="">{item.summary.data}</p>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                          {details.projects.length != 0 && (
-                            <div>
-                              <h1 className="text-xl border-b-2 border-black mb-3 mt-5 heading">
-                                PROJECTS
-                              </h1>
-                              {details.projects.map((item) => (
-                                <div className="py-1" key={item.name}>
-                                  <h1 className="font-semibold relative">
-                                    {item.name}
-                                    <span className="absolute right-0 text-xs">
-                                      {item.from} - {item.to}
-                                    </span>
-                                  </h1>
-                                  <p className="text-sm">{item.website}</p>
-                                  <p className="mr-5">{item.summary.data}</p>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                          {details.certifications.length != 0 && (
-                            <div>
-                              <h1 className="text-xl border-b-2 border-black mb-3 mt-5 heading">
-                                CERTIFICATIONS
-                              </h1>
-                              {details.certifications.map((item) => (
-                                <div className="py-1" key={item.title}>
-                                  <h1 className="font-semibold relative">
-                                    {item.issuer}
-                                    <span className="absolute right-0 text-xs">
-                                      {item.date}
-                                    </span>
-                                  </h1>
-                                  <p className="text-sm">{item.designation}</p>
-                                  {/* <p class="">{item.summary.data}</p> */}
-                                </div>
-                              ))}
-                            </div>
-                          )}
+                          {details.education.length != 0 &&
+                            details.education.filter(
+                              (education) => education.enabled
+                            ).length > 0 && (
+                              <div>
+                                <h1 className="text-xl border-b-2 border-black mb-3 mt-5 heading">
+                                  EDUCATION
+                                </h1>
+                                {details.education.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <div
+                                        className="py-1"
+                                        key={item.institution}
+                                      >
+                                        <h1 className="font-semibold relative">
+                                          {item.institution}
+                                          <span className="absolute right-0 text-xs">
+                                            {item.startDate} - {item.endDate}
+                                          </span>
+                                        </h1>
+                                        <p className="text-sm">
+                                          {item.fieldOfStudy}
+                                        </p>
+                                        <p class="">{item.summary.data}</p>
+                                      </div>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            )}
+                          {details.work.length != 0 &&
+                            details.work.filter((work) => work.enabled).length >
+                              0 && (
+                              <div>
+                                <h1 className="text-xl border-b-2 border-black mb-3 mt-5 heading">
+                                  WORK EXPERIENCE
+                                </h1>
+                                {details.work.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <div className="py-1" key={item.company}>
+                                        <h1 className="font-semibold relative">
+                                          {item.company}
+                                          <span className="absolute right-0 text-xs">
+                                            {item.from} - {item.to}
+                                          </span>
+                                        </h1>
+                                        <p className="text-sm">
+                                          {item.designation}
+                                        </p>
+                                        <p class="">{item.summary.data}</p>
+                                      </div>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            )}
+                          {details.projects.length != 0 &&
+                            details.projects.filter(
+                              (projects) => projects.enabled
+                            ).length > 0 && (
+                              <div>
+                                <h1 className="text-xl border-b-2 border-black mb-3 mt-5 heading">
+                                  PROJECTS
+                                </h1>
+                                {details.projects.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <div className="py-1" key={item.name}>
+                                        <h1 className="font-semibold relative">
+                                          {item.name}
+                                          <span className="absolute right-0 text-xs">
+                                            {item.from} - {item.to}
+                                          </span>
+                                        </h1>
+                                        <p className="text-sm">
+                                          {item.website}
+                                        </p>
+                                        <p className="mr-5">
+                                          {item.summary.data}
+                                        </p>
+                                      </div>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            )}
+                          {details.certifications.length != 0 &&
+                            details.certifications.filter(
+                              (certifications) => certifications.enabled
+                            ).length > 0 && (
+                              <div>
+                                <h1 className="text-xl border-b-2 border-black mb-3 mt-5 heading">
+                                  CERTIFICATIONS
+                                </h1>
+                                {details.certifications.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <div className="py-1" key={item.title}>
+                                        <h1 className="font-semibold relative">
+                                          {item.issuer}
+                                          <span className="absolute right-0 text-xs">
+                                            {item.date}
+                                          </span>
+                                        </h1>
+                                        <p className="text-sm">
+                                          {item.designation}
+                                        </p>
+                                        {/* <p class="">{item.summary.data}</p> */}
+                                      </div>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            )}
                         </div>
                       </div>
                     </div>

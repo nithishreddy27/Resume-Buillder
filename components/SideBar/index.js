@@ -249,8 +249,7 @@ export default function SideBar() {
               action=""
               className=""
               method="post"
-              onChange={handleOnChange}
-              onSubmit={handleOnSubmit}
+              
             >
               <h1
                 id="personaldetails"
@@ -291,7 +290,9 @@ export default function SideBar() {
                   </label>
                   {imageSrc && !uploadData && (
             <p>
-              <button>Upload Files</button>
+              <button
+              onChange={handleOnChange}
+              onSubmit={handleOnSubmit}>Upload Files</button>
             </p>
           )}
 

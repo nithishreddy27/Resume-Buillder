@@ -7,6 +7,7 @@ import Link from "next/link";
 import Script from "next/script";
 import dynamic from "next/dynamic";
 
+
 var DynamicHeader = dynamic(() => import("./demo"), {
   loading: () => <p>Loading...</p>,
 });
@@ -155,36 +156,41 @@ export default function Slug(props) {
                   close
               </button>
               </div>
-              <div className="w-full h-[50px]">
-                </div>
-              <div className="p-5">
-                {arr.map((resume) => (
-                  <div>
+             
+              
+                   
+
+            <div className='justify-center px-10 py-5 mt-[60px] grid grid-cols-2 gap-5 '>
+              {arr.map((resume)=>(
+                <div>
+                  {/* {console.log(resume)} */}
                     {
-                      <button
-                        
-                        onClick={() => {
-                          router.push({
-                            pathname: `/resume/${resume._id}`,
-                            query: { index: q.index },
-                          });
-                          setresumeId(resume._id);
-                          // router.reload()
-                          // changeResume(resume._id)
-                          // console.log("inside click")
-                          // router.replace(`/resume/${resume._id}?index=${q.index}`)
-                          // router.replace({
-                          //   pathname: `/resume/${resume._id}`,
-                          //   query: { index:q.index }
-                          // },
-                          // )
-                          // router.reload(window.location.pathname)
-                          setres(false)
-                        }}
-                        className="m-2 text-white"
-                      >
-                        {resume.ResumeName}
-                      </button>
+                    
+                    <>
+                    <div
+                      className="cursor-pointer"
+                    onClick={()=>{
+                      // <Link href={`/resume/${resume._id}?index=${q.index}`}>{resume.ResumeName}</Link>
+                                        router.push({pathname:`/resume/${resume._id}`,query:{index:q.index}})
+                                        
+                                        setresumeId(resume._id)
+                                        // router.reload()
+                                        // changeResume(resume._id)
+                                        // console.log("inside click")
+                                        // router.replace(`/resume/${resume._id}?index=${q.index}`)
+                                        // router.replace({
+                                        //   pathname: `/resume/${resume._id}`,
+                                        //   query: { index:q.index }
+                                        // }, 
+                                        // )
+                                        // router.reload(window.location.pathname)
+                                        }} >
+                    <button  className="m-2 text-white flex justify-center">{resume.ResumeName}</button> 
+                                <img src={`${resume.ResumeImage}`} alt="" width={150} height={200} 
+                                className=""/>     
+                                {/* <Image></Image> */}
+                                </div>
+                      </>
                     }
                   </div>
                 ))}

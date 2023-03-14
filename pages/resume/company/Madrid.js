@@ -158,12 +158,12 @@ export default function Madrid() {
                       />
                       <div>
                         <div className="text-3xl font-bold p-2 mt-5 ml-4 tracking-widest">
-                          <h>
+                          <h className="heading">
                             {details.personal.firstName}{" "}
                             {details.personal.lastName}
                           </h>
                         </div>
-                        <h1 className="m-1 mt-0 ml-6  text-xl font-bold font-serif  tracking-widest text-indigo-900">
+                        <h1 className="m-1 mt-0 ml-6  text-xl font-bold font-serif  tracking-widest text-indigo-900 heading">
                           {details.personal.role}
                         </h1>
                         <p className="text-sm p-2 pt-0 font-medium mb ">
@@ -175,94 +175,122 @@ export default function Madrid() {
                     <div className="grid bg-white grid-cols-11 mb-6">
                       <div className="col-span-7">
                         {/* EDUCATION */}
-                        <div className="p-2 px-0">
-                          <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">
-                            EDUCATION
-                          </h1>
-                          {details.education.map((item) => (
-                            <div key={item.institution} className="p-1">
-                              <h1 className=" ml-6 text-sm font-medium">
-                                {item.institution}
+                        {details.education.length != 0 &&
+                          details.education.filter(
+                            (education) => education.enabled
+                          ).length > 0 && (
+                            <div className="p-2 px-0">
+                              <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">
+                                EDUCATION
                               </h1>
-                              <h6 className="text-xs ml-6 font-medium text-gray-500">
-                                {item.startDate} - {item.endDate}
-                              </h6>
-                              <li className="ml-10 text-normal font-medium">
-                                {item.fieldOfStudy} {item.gpa}
-                              </li>
+                              {details.education.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <div key={item.institution} className="p-1">
+                                      <h1 className=" ml-6 text-sm font-medium">
+                                        {item.institution}
+                                      </h1>
+                                      <h6 className="text-xs ml-6 font-medium text-gray-500">
+                                        {item.startDate} - {item.endDate}
+                                      </h6>
+                                      <li className="ml-10 text-normal font-medium">
+                                        {item.fieldOfStudy} {item.gpa}
+                                      </li>
+                                    </div>
+                                  )}
+                                </>
+                              ))}
                             </div>
-                          ))}
-                        </div>
+                          )}
 
                         {/* INTERNSHIP */}
-                        {details.work.length != 0 && (
-                          <div>
-                            <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">
-                              INTERNSHIP
-                            </h1>
-                            {details.work.map((item) => (
-                              <div key={item.company}>
-                                <h1 className="font-medium  text-lg ml-16 ">
-                                  {item.company}
-                                </h1>
-                                <h2 className="font-medium ml-16 text-sm text-gray-800">
-                                  [{item.from}] - [{item.to}]
-                                </h2>
-                                <li className="ml-28 text-lg list-disc">
-                                  {item.designation}
-                                </li>
-                                <li className="ml-28  list-disc ">
-                                  {item.summary.data}
-                                </li>
-                                {/* <p class="text-sm font-medium ml-14">{item.summary.data}</p> */}
-                              </div>
-                            ))}
-                          </div>
-                        )}
+                        {details.work.length != 0 &&
+                          details.work.filter((work) => work.enabled).length >
+                            0 && (
+                            <div>
+                              <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">
+                                INTERNSHIP
+                              </h1>
+                              {details.work.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <div key={item.company}>
+                                      <h1 className="font-medium  text-lg ml-16 ">
+                                        {item.company}
+                                      </h1>
+                                      <h2 className="font-medium ml-16 text-sm text-gray-800">
+                                        [{item.from}] - [{item.to}]
+                                      </h2>
+                                      <li className="ml-28 text-lg list-disc">
+                                        {item.designation}
+                                      </li>
+                                      <li className="ml-28  list-disc ">
+                                        {item.summary.data}
+                                      </li>
+                                      {/* <p class="text-sm font-medium ml-14">{item.summary.data}</p> */}
+                                    </div>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
 
                         {/* CERTIFICATION */}
-                        {details.certifications.length != 0 && (
-                          <div>
-                            <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">
-                              CERTIFICATION
-                            </h1>
-                            {details.certifications.map((item) => (
-                              <div key={item.title} className="mb-1">
-                                <h1 className="text-sm ml-16 font-medium">
-                                  {item.title}
-                                </h1>
-                                <h4 className="text-xs ml-16 font-medium  text-gray-800">
-                                  {item.issuer} {item.date}
-                                </h4>
-                                <h6 className="text-sm  font-medium ml-16">
-                                  {item.summary.data}
-                                </h6>
-                              </div>
-                            ))}
-                          </div>
-                        )}
+                        {details.certifications.length != 0 &&
+                          details.certifications.filter(
+                            (certifications) => certifications.enabled
+                          ).length > 0 && (
+                            <div>
+                              <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">
+                                CERTIFICATION
+                              </h1>
+                              {details.certifications.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <div key={item.title} className="mb-1">
+                                      <h1 className="text-sm ml-16 font-medium">
+                                        {item.title}
+                                      </h1>
+                                      <h4 className="text-xs ml-16 font-medium  text-gray-800">
+                                        {item.issuer} {item.date}
+                                      </h4>
+                                      <h6 className="text-sm  font-medium ml-16">
+                                        {item.summary.data}
+                                      </h6>
+                                    </div>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
 
                         {/* AWARDS */}
-                        {details.awards.length != 0 && (
-                          <div>
-                            <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">
-                              AWARDS
-                            </h1>
-                            {details.awards.map((item) => (
-                              <div key={item.name}>
-                                <h1 className="font-medium ml-16">
-                                  {item.name}
-                                </h1>
-                                <h6 className="text-xs ml-16 font-medium text-gray-800">
-                                  [{item.date}]
-                                </h6>
-                                <li className="ml-28 font-medium text-sm">
-                                  {item.summary.data}
-                                </li>
-                              </div>
-                            ))}
-                          </div>
-                        )}
+                        {details.awards.length != 0 &&
+                          details.awards.filter((awards) => awards.enabled)
+                            .length > 0 && (
+                            <div>
+                              <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">
+                                AWARDS
+                              </h1>
+                              {details.awards.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <div key={item.name}>
+                                      <h1 className="font-medium ml-16">
+                                        {item.name}
+                                      </h1>
+                                      <h6 className="text-xs ml-16 font-medium text-gray-800">
+                                        [{item.date}]
+                                      </h6>
+                                      <li className="ml-28 font-medium text-sm">
+                                        {item.summary.data}
+                                      </li>
+                                    </div>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
                       </div>
                       <div className=" border-l-purple-900 col-span-4 ">
                         <div className=" ">
@@ -273,15 +301,23 @@ export default function Madrid() {
                             {details.personal.dob}
                           </p>
                           {/*  NETWORK  */}
-                          <h1 className=" font-bold tracking-widest  bg-purple-50 mr-5 rounded-r-xl font-serif text-xl mt-2 ml-6  mb-0 p-2 heading">
-                            NETWORK
-                          </h1>
-                          <div className="pl-5">
-                            <p className="pl-6">{details.personal.phone}</p>
-                            <p className="pl-6 mr-2">
-                              {details.personal.email}
-                            </p>
-                          </div>
+                          {details.social.length != 0 &&
+                            details.social.filter((social) => social.enabled)
+                              .length > 0 && (
+                              <>
+                                <h1 className=" font-bold tracking-widest  bg-purple-50 mr-5 rounded-r-xl font-serif text-xl mt-2 ml-6  mb-0 p-2 heading">
+                                  NETWORK
+                                </h1>
+                                <div className="pl-5">
+                                  <p className="pl-6">
+                                    {details.personal.phone}
+                                  </p>
+                                  <p className="pl-6 mr-2">
+                                    {details.personal.email}
+                                  </p>
+                                </div>
+                              </>
+                            )}
                           {/* {details.social.map((item) => (
         <div key={item.network} className="ml-16 my-4 flex">
           <img src={"https://www." + item.network + ".com/favicon.ico"} alt="" className="w-8 h-8 border-4 ml-0 mr-0 rounded-full "/>
@@ -291,52 +327,71 @@ export default function Madrid() {
                         </div>
 
                         {/* SKILLS */}
-                        {details.skills.length != 0 && (
-                          <div className="p-2">
-                            <h1 className="font-bold tracking-widest mr-5 rounded-r-xl  bg-purple-50 font-serif text-xl ml-6 mb-0 p-2 heading ">
-                              SKILLS
-                            </h1>
-                            {details.skills.map((item) => (
-                              <div key={item.name}>
-                                <h1 className="font-normal ml-8 p-1">
-                                  {item.name} - {item.level}
-                                </h1>
-                              </div>
-                            ))}
-                          </div>
-                        )}
+                        {details.skills.length != 0 &&
+                          details.skills.filter((skills) => skills.enabled)
+                            .length > 0 && (
+                            <div className="p-2">
+                              <h1 className="font-bold tracking-widest mr-5 rounded-r-xl  bg-purple-50 font-serif text-xl ml-6 mb-0 p-2 heading">
+                                SKILLS
+                              </h1>
+                              {details.skills.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <div key={item.name}>
+                                      <h1 className="font-normal ml-8 p-1">
+                                        {item.name} - {item.level}
+                                      </h1>
+                                    </div>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
 
                         {/* HOBBIE */}
-                        {details.hobbies.length != 0 && (
-                          <div className="p-2">
-                            <h1 className="font-bold tracking-widest mr-5 rounded-r-xl  bg-purple-50 font-serif  text-xl ml-6 mb-0 p-2 heading">
-                              HOBBIES
-                            </h1>
-                            {details.hobbies.map((item) => (
-                              <div key={item.name}>
-                                <li className="font-normal ml-10 text">
-                                  {item.name}
-                                </li>
-                              </div>
-                            ))}
-                          </div>
-                        )}
+                        {details.hobbies.length != 0 &&
+                          details.hobbies.filter((hobbies) => hobbies.enabled)
+                            .length > 0 && (
+                            <div className="p-2">
+                              <h1 className="font-bold tracking-widest mr-5 rounded-r-xl  bg-purple-50 font-serif  text-xl ml-6 mb-0 p-2 heading">
+                                HOBBIES
+                              </h1>
+                              {details.hobbies.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <div key={item.name}>
+                                      <li className="font-normal ml-10 text">
+                                        {item.name}
+                                      </li>
+                                    </div>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
 
                         {/* LANGUAGES */}
-                        {details.languages.length != 0 && (
-                          <div className="p-2">
-                            <h1 className="font-bold tracking-widest mr-5 rounded-r-xl  bg-purple-50 font-serif text-xl ml-6 mb-0 p-2 heading">
-                              LANGUAGES
-                            </h1>
-                            {details.languages.map((item) => (
-                              <div key={item.name}>
-                                <li className="font-normal ml-10 tex-sm">
-                                  {item.name} - {item.level}
-                                </li>
-                              </div>
-                            ))}
-                          </div>
-                        )}
+                        {details.languages.length != 0 &&
+                          details.languages.filter(
+                            (languages) => languages.enabled
+                          ).length > 0 && (
+                            <div className="p-2">
+                              <h1 className="font-bold tracking-widest mr-5 rounded-r-xl  bg-purple-50 font-serif text-xl ml-6 mb-0 p-2 heading">
+                                LANGUAGES
+                              </h1>
+                              {details.languages.map((item) => (
+                                <>
+                                  {item.enabled && (
+                                    <div key={item.name}>
+                                      <li className="font-normal ml-10 tex-sm">
+                                        {item.name} - {item.level}
+                                      </li>
+                                    </div>
+                                  )}
+                                </>
+                              ))}
+                            </div>
+                          )}
                         {/* <div className="p-2">
         <h1 className=" text-lg font-bold mr-5 rounded-r-xl bg-purple-50 ml-6 ">Projects</h1>
         {
@@ -455,94 +510,125 @@ export default function Madrid() {
                       <div className="grid bg-white grid-cols-11 mb-6">
                         <div className="col-span-7">
                           {/* EDUCATION */}
-                          <div className="p-2 px-0">
-                            <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">
-                              EDUCATION
-                            </h1>
-                            {details.education.map((item) => (
-                              <div key={item.institution} className="p-1">
-                                <h1 className=" ml-6 text-sm font-medium">
-                                  {item.institution}
+                          {details.education.length != 0 &&
+                            details.education.filter(
+                              (education) => education.enabled
+                            ).length > 0 && (
+                              <div className="p-2 px-0">
+                                <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">
+                                  EDUCATION
                                 </h1>
-                                <h6 className="text-xs ml-6 font-medium text-gray-500">
-                                  {item.startDate} - {item.endDate}
-                                </h6>
-                                <li className="ml-10 text-normal font-medium">
-                                  {item.fieldOfStudy} {item.gpa}
-                                </li>
+                                {details.education.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <div
+                                        key={item.institution}
+                                        className="p-1"
+                                      >
+                                        <h1 className=" ml-6 text-sm font-medium">
+                                          {item.institution}
+                                        </h1>
+                                        <h6 className="text-xs ml-6 font-medium text-gray-500">
+                                          {item.startDate} - {item.endDate}
+                                        </h6>
+                                        <li className="ml-10 text-normal font-medium">
+                                          {item.fieldOfStudy} {item.gpa}
+                                        </li>
+                                      </div>
+                                    )}
+                                  </>
+                                ))}
                               </div>
-                            ))}
-                          </div>
+                            )}
 
                           {/* INTERNSHIP */}
-                          {details.work.length != 0 && (
-                            <div>
-                              <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">
-                                INTERNSHIP
-                              </h1>
-                              {details.work.map((item) => (
-                                <div key={item.company}>
-                                  <h1 className="font-medium  text-lg ml-16 ">
-                                    {item.company}
-                                  </h1>
-                                  <h2 className="font-medium ml-16 text-sm text-gray-800">
-                                    [{item.from}] - [{item.to}]
-                                  </h2>
-                                  <li className="ml-28 text-lg list-disc">
-                                    {item.designation}
-                                  </li>
-                                  <li className="ml-28  list-disc ">
-                                    {item.summary.data}
-                                  </li>
-                                  {/* <p class="text-sm font-medium ml-14">{item.summary.data}</p> */}
-                                </div>
-                              ))}
-                            </div>
-                          )}
+                          {details.work.length != 0 &&
+                            details.work.filter((work) => work.enabled).length >
+                              0 && (
+                              <div>
+                                <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">
+                                  INTERNSHIP
+                                </h1>
+                                {details.work.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <div key={item.company}>
+                                        <h1 className="font-medium  text-lg ml-16 ">
+                                          {item.company}
+                                        </h1>
+                                        <h2 className="font-medium ml-16 text-sm text-gray-800">
+                                          [{item.from}] - [{item.to}]
+                                        </h2>
+                                        <li className="ml-28 text-lg list-disc">
+                                          {item.designation}
+                                        </li>
+                                        <li className="ml-28  list-disc ">
+                                          {item.summary.data}
+                                        </li>
+                                        {/* <p class="text-sm font-medium ml-14">{item.summary.data}</p> */}
+                                      </div>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            )}
 
                           {/* CERTIFICATION */}
-                          {details.certifications.length != 0 && (
-                            <div>
-                              <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">
-                                CERTIFICATION
-                              </h1>
-                              {details.certifications.map((item) => (
-                                <div key={item.title} className="mb-1">
-                                  <h1 className="text-sm ml-16 font-medium">
-                                    {item.title}
-                                  </h1>
-                                  <h4 className="text-xs ml-16 font-medium  text-gray-800">
-                                    {item.issuer} {item.date}
-                                  </h4>
-                                  <h6 className="text-sm  font-medium ml-16">
-                                    {item.summary.data}
-                                  </h6>
-                                </div>
-                              ))}
-                            </div>
-                          )}
+                          {details.certifications.length != 0 &&
+                            details.certifications.filter(
+                              (certifications) => certifications.enabled
+                            ).length > 0 && (
+                              <div>
+                                <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">
+                                  CERTIFICATION
+                                </h1>
+                                {details.certifications.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <div key={item.title} className="mb-1">
+                                        <h1 className="text-sm ml-16 font-medium">
+                                          {item.title}
+                                        </h1>
+                                        <h4 className="text-xs ml-16 font-medium  text-gray-800">
+                                          {item.issuer} {item.date}
+                                        </h4>
+                                        <h6 className="text-sm  font-medium ml-16">
+                                          {item.summary.data}
+                                        </h6>
+                                      </div>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            )}
 
                           {/* AWARDS */}
-                          {details.awards.length != 0 && (
-                            <div>
-                              <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">
-                                AWARDS
-                              </h1>
-                              {details.awards.map((item) => (
-                                <div key={item.name}>
-                                  <h1 className="font-medium ml-16">
-                                    {item.name}
-                                  </h1>
-                                  <h6 className="text-xs ml-16 font-medium text-gray-800">
-                                    [{item.date}]
-                                  </h6>
-                                  <li className="ml-28 font-medium text-sm">
-                                    {item.summary.data}
-                                  </li>
-                                </div>
-                              ))}
-                            </div>
-                          )}
+                          {details.awards.length != 0 &&
+                            details.awards.filter((awards) => awards.enabled)
+                              .length > 0 && (
+                              <div>
+                                <h1 className="font-bold tracking-widest mt-3 bg-purple-50 mr-60 font-serif text-xl rounded-r-2xl  ml-5 pt-4 mb-1 p-2 heading">
+                                  AWARDS
+                                </h1>
+                                {details.awards.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <div key={item.name}>
+                                        <h1 className="font-medium ml-16">
+                                          {item.name}
+                                        </h1>
+                                        <h6 className="text-xs ml-16 font-medium text-gray-800">
+                                          [{item.date}]
+                                        </h6>
+                                        <li className="ml-28 font-medium text-sm">
+                                          {item.summary.data}
+                                        </li>
+                                      </div>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            )}
                         </div>
                         <div className=" border-l-purple-900 col-span-4 ">
                           <div className=" ">
@@ -553,15 +639,23 @@ export default function Madrid() {
                               {details.personal.dob}
                             </p>
                             {/*  NETWORK  */}
-                            <h1 className=" font-bold tracking-widest  bg-purple-50 mr-5 rounded-r-xl font-serif text-xl mt-2 ml-6  mb-0 p-2 heading">
-                              NETWORK
-                            </h1>
-                            <div className="pl-5">
-                              <p className="pl-6">{details.personal.phone}</p>
-                              <p className="pl-6 mr-2">
-                                {details.personal.email}
-                              </p>
-                            </div>
+                            {details.social.length != 0 &&
+                              details.social.filter((social) => social.enabled)
+                                .length > 0 && (
+                                <>
+                                  <h1 className=" font-bold tracking-widest  bg-purple-50 mr-5 rounded-r-xl font-serif text-xl mt-2 ml-6  mb-0 p-2 heading">
+                                    NETWORK
+                                  </h1>
+                                  <div className="pl-5">
+                                    <p className="pl-6">
+                                      {details.personal.phone}
+                                    </p>
+                                    <p className="pl-6 mr-2">
+                                      {details.personal.email}
+                                    </p>
+                                  </div>
+                                </>
+                              )}
                             {/* {details.social.map((item) => (
         <div key={item.network} className="ml-16 my-4 flex">
           <img src={"https://www." + item.network + ".com/favicon.ico"} alt="" className="w-8 h-8 border-4 ml-0 mr-0 rounded-full "/>
@@ -571,52 +665,71 @@ export default function Madrid() {
                           </div>
 
                           {/* SKILLS */}
-                          {details.skills.length != 0 && (
-                            <div className="p-2">
-                              <h1 className="font-bold tracking-widest mr-5 rounded-r-xl  bg-purple-50 font-serif text-xl ml-6 mb-0 p-2 heading">
-                                SKILLS
-                              </h1>
-                              {details.skills.map((item) => (
-                                <div key={item.name}>
-                                  <h1 className="font-normal ml-8 p-1">
-                                    {item.name} - {item.level}
-                                  </h1>
-                                </div>
-                              ))}
-                            </div>
-                          )}
+                          {details.skills.length != 0 &&
+                            details.skills.filter((skills) => skills.enabled)
+                              .length > 0 && (
+                              <div className="p-2">
+                                <h1 className="font-bold tracking-widest mr-5 rounded-r-xl  bg-purple-50 font-serif text-xl ml-6 mb-0 p-2 heading">
+                                  SKILLS
+                                </h1>
+                                {details.skills.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <div key={item.name}>
+                                        <h1 className="font-normal ml-8 p-1">
+                                          {item.name} - {item.level}
+                                        </h1>
+                                      </div>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            )}
 
                           {/* HOBBIE */}
-                          {details.hobbies.length != 0 && (
-                            <div className="p-2">
-                              <h1 className="font-bold tracking-widest mr-5 rounded-r-xl  bg-purple-50 font-serif  text-xl ml-6 mb-0 p-2 heading">
-                                HOBBIES
-                              </h1>
-                              {details.hobbies.map((item) => (
-                                <div key={item.name}>
-                                  <li className="font-normal ml-10 text">
-                                    {item.name}
-                                  </li>
-                                </div>
-                              ))}
-                            </div>
-                          )}
+                          {details.hobbies.length != 0 &&
+                            details.hobbies.filter((hobbies) => hobbies.enabled)
+                              .length > 0 && (
+                              <div className="p-2">
+                                <h1 className="font-bold tracking-widest mr-5 rounded-r-xl  bg-purple-50 font-serif  text-xl ml-6 mb-0 p-2 heading">
+                                  HOBBIES
+                                </h1>
+                                {details.hobbies.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <div key={item.name}>
+                                        <li className="font-normal ml-10 text">
+                                          {item.name}
+                                        </li>
+                                      </div>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            )}
 
                           {/* LANGUAGES */}
-                          {details.languages.length != 0 && (
-                            <div className="p-2">
-                              <h1 className="font-bold tracking-widest mr-5 rounded-r-xl  bg-purple-50 font-serif text-xl ml-6 mb-0 p-2 heading">
-                                LANGUAGES
-                              </h1>
-                              {details.languages.map((item) => (
-                                <div key={item.name}>
-                                  <li className="font-normal ml-10 tex-sm">
-                                    {item.name} - {item.level}
-                                  </li>
-                                </div>
-                              ))}
-                            </div>
-                          )}
+                          {details.languages.length != 0 &&
+                            details.languages.filter(
+                              (languages) => languages.enabled
+                            ).length > 0 && (
+                              <div className="p-2">
+                                <h1 className="font-bold tracking-widest mr-5 rounded-r-xl  bg-purple-50 font-serif text-xl ml-6 mb-0 p-2 heading">
+                                  LANGUAGES
+                                </h1>
+                                {details.languages.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <div key={item.name}>
+                                        <li className="font-normal ml-10 tex-sm">
+                                          {item.name} - {item.level}
+                                        </li>
+                                      </div>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            )}
                           {/* <div className="p-2">
         <h1 className=" text-lg font-bold mr-5 rounded-r-xl bg-purple-50 ml-6 ">Projects</h1>
         {

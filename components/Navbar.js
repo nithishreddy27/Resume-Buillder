@@ -51,7 +51,7 @@ const Navbar = () => {
             <ul className="text-base text-gray-600 lg:flex lg:justify-between">
               <li>
                 <Link
-                  href="#"
+                  href="/dashboard"
                   className="lg:pl-8 py-3 block hover:text-orange-700 font-semibold"
                 >
                   Dashboard
@@ -64,7 +64,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  href="/dashboard"
+                  href="/profile"
                   className="lg:pl-8 py-3 block hover:text-orange-700 font-semibold"
                 >
                   Profile

@@ -3,7 +3,8 @@ import React from "react";
 function Upgrade() {
   return (
     <div className="min-h-screen">
-      <div className="bg-slate-200">
+    {/* <div className="bg-slate-200"> */}
+    <div>
         <div className="bg-gradient-to-tr from-indigo-900 to-gray-800">
           <div className="max-w-2xl mx-auto py-6 px-4 sm:py-4 sm:px-6 lg:px-4 lg:max-w-7xl">
             <div className="px-0 lg:flex lg:justify-between lg:item-center">
@@ -22,11 +23,11 @@ function Upgrade() {
         <div className="mx-5">
         <div className="max-w-2xl mx-auto lg:bg-white lg:px-1.5 lg:rounded-md py-2 sm:py-3  sm:px-6 lg:max-w-7xl lg:mt-5">
           {/* small */}
-          <div className="space-y-2 lg:hidden m-5 rounded-md p-4 bg-white">
+          <div className="space-y-2 lg:hidden m-5 rounded-md p-2 bg-white">
             <section>
-              <div className="px-4 mb-8">
-                <h2 className="text-lg leading-6 font-medium text-gray-900">
-                  Basic
+              <div className="px-6  rounded-lg mb-8 bg-gray-200 p-4">
+                <h2 className="text-LG leading-6 font-bold text-blue-900">
+                  BASIC
                 </h2>
                 <p>
                   <span className="text-4xl font-extrabold text-gray-900">
@@ -34,12 +35,12 @@ function Upgrade() {
                   </span>
                   <span className="text-base font-medium text-gray-500">/year</span>
                 </p>
-                <button className="hover:to-pink-600 bg-gradient-to-r from-orange-500 to-pink-500 cursor-pointer mt-6 block w-full  border border-transparent rounded-md shadow py-2 text-sm font-semibold text-white text-center">
+                <button className="hover:to-yellow-500 bg-gradient-to-t from-orange-500 to-yellow-400 cursor-pointer mt-6 block w-full  border border-transparent rounded-md shadow py-2 text-sm font-semibold text-white text-center">
                   Upgrade to Basic
                 </button>
               </div>
               <table className="w-full">
-                <caption className="bg-gray-50 border-t border-gray-200 py-3 px-4 text-sm font-medium text-gray-900 text-left">
+                <caption className="bg-gray-50 border-t  border-gray-200 py-3 px-4 text-sm font-medium text-gray-900 text-left">
                   Features
                 </caption>
                 <thead>
@@ -238,9 +239,10 @@ function Upgrade() {
               </table>
             </section>
             <section>
-              <div className="px-4 mb-8">
-                <h2 className="text-lg leading-6 font-medium text-gray-900">
-                  Essential
+              
+              <div className="px-6 rounded-lg mb-8 bg-gray-200 p-4">
+                <h2 className="ext-LG leading-6 font-bold text-blue-900">
+                 ESSENTIAL
                 </h2>
                 <p>
                   <span className="text-4xl font-extrabold text-gray-900">
@@ -248,7 +250,7 @@ function Upgrade() {
                   </span>
                   <span className="text-base font-medium text-gray-500">/year</span>
                 </p>
-                <button className="hover:to-pink-600 bg-gradient-to-r from-orange-500 to-pink-500 cursor-pointer mt-6 block w-full  border border-transparent rounded-md shadow py-2 text-sm font-semibold text-white text-center">
+                <button className="hover:to-yellow-500 bg-gradient-to-t from-orange-500 to-yellow-400  cursor-pointer mt-6 block w-full  border border-transparent rounded-md shadow py-2 text-sm font-semibold text-white text-center">
                   Upgrade to Essential
                 </button>
               </div>
@@ -452,9 +454,9 @@ function Upgrade() {
               </table>
             </section>
             <section>
-              <div className="px-4 mb-8">
-                <h2 className="text-lg leading-6 font-medium text-gray-900">
-                  Premium
+              <div className="px-6 rounded-lg mb-8 bg-gray-200 p-4">
+                <h2 className="text-lg leading-6 font-bold text-blue-900">
+                  PREMIUM
                 </h2>
                 <p>
                   <span className="text-4xl font-extrabold text-gray-900">
@@ -462,12 +464,12 @@ function Upgrade() {
                   </span>
                   <span className="text-base font-medium text-gray-500">/year</span>
                 </p>
-                <button className="hover:to-pink-600 bg-gradient-to-r from-orange-500 to-pink-500 cursor-pointer mt-6 block w-full  border border-transparent rounded-md shadow py-2 text-sm font-semibold text-white text-center">
+                <button className="hover:to-yellow-500 bg-gradient-to-t from-orange-500 to-yellow-400 cursor-pointer mt-6 block w-full  border border-transparent rounded-md shadow py-2 text-sm font-semibold text-white text-center">
                   Upgrade to Premium
                 </button>
               </div>
               <table className="w-full">
-                <caption className="bg-gray-50 border-t border-gray-200 py-3 px-4 text-sm font-medium text-gray-900 text-left">
+                <caption className="bg-gray-50 border-t bg border-gray-200 py-3 px-4 text-sm font-medium text-gray-900 text-left">
                   Features
                 </caption>
                 <thead>
@@ -1180,7 +1182,7 @@ function Upgrade() {
             </table>
           </div>
         </div>
-        <div className="p-5"></div>
+        {/* <div className="p-5"></div> */}
         </div>
       </div>
     </div>
