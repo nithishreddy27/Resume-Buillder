@@ -16,6 +16,9 @@ const userSchema = new mongoose.Schema(
     academicsAvailable: {
       type: Boolean,
     },
+    paraphrase: {
+      type: String,
+    },
     profile: {
       firstName: {
         type: String,

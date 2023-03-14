@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from 'react'
 import ResumeContext from "../../../context/ResumeContext";
 import { useUser } from '../../../lib/hooks';
 import Sidebar from  "../../../components/SideBar"
-export default function demo() {
+export default function Demo() {
   const { details, setdetails} = useContext(ResumeContext);
   // console.log("details inside demo",details)
   const router = useRouter()
