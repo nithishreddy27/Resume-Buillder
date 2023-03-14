@@ -1,5 +1,6 @@
-import React from "react";
-export const editProfile = () => {
+import React from 'react'
+
+export default function editProfile() {
   return (
     <div className="min-h-screen">
       <div class="bg-white min-h-screen flex flex-col justify-center items-center">
@@ -736,5 +737,4 @@ export const editProfile = () => {
       </div>
     </div>
   );
-};
-export default editProfile;
+}

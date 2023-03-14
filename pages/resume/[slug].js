@@ -84,7 +84,7 @@ export default function Slug(props) {
     } else if (queryId == "63eddc85ee9b8719a9a401ff") {
       resumeName = "Vertical";
     }
-    DynamicHeader = dynamic(() => import(`./creative/${resumeName}`), {
+    DynamicHeader = dynamic(() => import(`./resumes/${resumeName}`), {
       loading: () => <p>Loading...</p>,
     });
   }
@@ -162,7 +162,7 @@ export default function Slug(props) {
 
             <div className='justify-center px-10 py-5 mt-[60px] grid grid-cols-2 gap-5 '>
               {arr.map((resume)=>(
-                <div>
+                <div key={resume._id}>
                   {/* {console.log(resume)} */}
                     {
                     
