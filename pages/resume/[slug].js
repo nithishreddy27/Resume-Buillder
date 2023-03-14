@@ -143,7 +143,7 @@ export default function Slug(props) {
 
             <div className='p-5'>
               {arr.map((resume)=>(
-                <div>
+                <div key={resume._id}>
                   {/* {console.log(resume)} */}
                   {/* <Link href={`/resume/${resume._id}?index=${q.index}`}>{resume.ResumeName}</Link> */}
                     { <button onClick={()=>{
