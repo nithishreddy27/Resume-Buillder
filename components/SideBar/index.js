@@ -249,8 +249,8 @@ export default function SideBar() {
               action=""
               className=""
               method="post"
-              onChange={handleOnChange}
-              onSubmit={handleOnSubmit}
+              // onChange={handleOnChange}
+              // onSubmit={handleOnSubmit}
             >
               <h1
                 id="personaldetails"

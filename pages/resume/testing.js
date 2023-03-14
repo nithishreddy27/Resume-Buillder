@@ -4,7 +4,7 @@ import ResumeContext from "../../context/ResumeContext";
 import Link from  "next/link"
 import { useRouter } from 'next/router';
 
-export default function testing(props) {
+export default function Testing(props) {
 
     const { details, setdetails } = useContext(ResumeContext);
     const user = useUser()

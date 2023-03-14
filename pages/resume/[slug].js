@@ -80,7 +80,7 @@ export default function Slug(props) {
     else if(queryId== "63eddc85ee9b8719a9a401ff"){
       resumeName="Vertical"
     }
-    DynamicHeader = dynamic(() => import(`./creative/${resumeName}`), {
+    DynamicHeader = dynamic(() => import(`./resumes/${resumeName}`), {
       loading: () => <p>Loading...</p>,
     })
   }
@@ -143,28 +143,25 @@ export default function Slug(props) {
 
             <div className='p-5'>
               {arr.map((resume)=>(
-                <div>
+                <div key={resume._id}>
                   {/* {console.log(resume)} */}
                     {
                     
                     <>
                     <button onClick={()=>{
-                      // <Link href={`/resume/${resume._id}?index=${q.index}`}>{resume.ResumeName}</Link>
                                         router.push({pathname:`/resume/${resume._id}`,query:{index:q.index}})
                                         
                                         setresumeId(resume._id)
-                                        // router.reload()
-                                        // changeResume(resume._id)
-                                        // console.log("inside click")
-                                        // router.replace(`/resume/${resume._id}?index=${q.index}`)
-                                        // router.replace({
-                                        //   pathname: `/resume/${resume._id}`,
-                                        //   query: { index:q.index }
-                                        // }, 
-                                        // )
-                                        // router.reload(window.location.pathname)
+                                     
                                         }}  className="m-2">{resume.ResumeName}</button> 
-                                <img src={`${resume.ResumeImage}`} alt="" width={50} height={50}/>     
+                                <img src={`${resume.ResumeImage}`}  alt="" width={50} height={50} className="cursor-pointer"
+                                
+                                      onClick={()=>{
+                                        router.push({pathname:`/resume/${resume._id}`,query:{index:q.index}})
+                                        
+                                        setresumeId(resume._id)
+                                     
+                                        }}/>     
                                 {/* <Image></Image> */}
                       </>
                     }

@@ -258,7 +258,7 @@ const Home = (props) => {
                   setid(data._id)
                   // runMe(data._id) 
                   }}>
-                  <div className="rounded-md bg-gray-100 h-auto  w-63 p-5 m-5 cursor-pointer relative">
+                  <a href="#role" className="rounded-md bg-gray-100 h-auto  w-63 p-5 m-5 cursor-pointer relative">
                     <div className="opacity-80">
                       <img src={data.ResumeImage}/>
                     </div>
@@ -268,7 +268,7 @@ const Home = (props) => {
                     <div className=" text-2xl p-3 text-center   font-semibold">
                       {data.ResumeName}{" "}
                     </div>
-                  </div>
+                  </a>
                 </div>
               ))
             }
