@@ -101,9 +101,9 @@ export default function Index(props) {
                               </span>
                               <Link
                                 href={`/resume/${resume.id}?index=${index}`}
-                                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-2xl font-bold whitespace-nowrap transition-all duration-500"
+                                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-3xl font-bold whitespace-nowrap transition-all duration-500"
                               >
-                                {resume.personal.role}
+                                {resume.personal.role.toUpperCase()}
                               </Link>
                               <button
                                 onClick={() => {
