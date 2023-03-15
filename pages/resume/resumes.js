@@ -15,7 +15,7 @@ const Home = (props) => {
     const [type, setType] = useState("free");
     const [design, setDesign] = useState("all");
     const [role, setRole] = useState()
-    
+    const [checked, setchecked] = useState(false)
     
     const user = useUser();
     
@@ -28,11 +28,18 @@ const Home = (props) => {
 
     async function createResume(resumeId){
 
+      var pro
 
-      // console.log("id",resumeId,"role",role)
-      
 
-        const pro = {
+      if(checked){
+          var data = await fetch("/api/changePublic",{
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email : user.email }),
+        })
+      }
+      else{
+          pro = {
           id:resumeId,
           publicResume:false,
           personal: {
@@ -42,7 +49,7 @@ const Home = (props) => {
             role: role,
             image: "",
             dob: "1985-11-01",
-            phone: user.profile.phoneNumber,
+            phone: user.phone.value,
             objective: "",
           },
           social: [
@@ -142,14 +149,17 @@ const Home = (props) => {
             // },
           ],
         };
-
+      }
         
         const body={
             email:user.email,
             resume:pro
         }
-        console.log("in run",body)
+        console.log("in run",document.getElementById("publicResume").value)
         
+
+        
+
         var data = await fetch("/api/testResume",{
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -158,7 +168,10 @@ const Home = (props) => {
         
         router.push("/resume")
     }
-
+   
+    useEffect(()=>{
+      console.log('cj',checked)
+    },[checked])
 
   return (
     
@@ -258,7 +271,7 @@ const Home = (props) => {
                   setid(data._id)
                   // runMe(data._id) 
                   }}>
-                  <a href="#role" className="rounded-md bg-gray-100 h-auto  w-63 p-5 m-5 cursor-pointer relative">
+                  <div  className="rounded-md bg-gray-100 h-auto  w-63 p-5 m-5 cursor-pointer relative">
                     <div className="opacity-80">
                       <img src={data.ResumeImage}/>
                     </div>
@@ -268,7 +281,7 @@ const Home = (props) => {
                     <div className=" text-2xl p-3 text-center   font-semibold">
                       {data.ResumeName}{" "}
                     </div>
-                  </a>
+                  </div>
                 </div>
               ))
             }
@@ -289,6 +302,8 @@ const Home = (props) => {
                 <input type="text" name="role" id="role" className='border' required placeholder='enter role' onChange={(event)=>{setRole(event.target.value)}}/>
 
                {/* <Link href="/resume/resumes">Submit</Link> */}
+               <input type="checkbox" name="publicResume" id="publicResume" onChange={()=>{setchecked(!checked)
+                }}/>
                <button className="mx-2" onClick={()=>{createResume(id)}}>Submit</button>
               </div>
         </div>
