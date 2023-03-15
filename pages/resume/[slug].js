@@ -6,7 +6,8 @@ import SideBar from "../../components/SideBar";
 import Link from "next/link";
 import Script from "next/script";
 import dynamic from "next/dynamic";
-
+import {GrClose} from "react-icons/gr"
+import {AiOutlineCloseCircle} from "react-icons/ai"
 
 var DynamicHeader = dynamic(() => import("./demo"), {
   loading: () => <p>Loading...</p>,
@@ -109,14 +110,17 @@ export default function Slug(props) {
             </div>
           </div>
           {res == true && (
-          <div className="h-screen fixed lg:static top-[100px] w-full overflow-auto bg-gradient-to-b from-slate-700 to-slate-800 border border-white lg:w-[30%]">
-            <div className="py-5 px-6 text-xl flex gap-[100px]  w-[100%] fixed bg-slate-700 border border-red-100 text-white">
+          <div className="h-screen fixed lg:static top-[100px] w-full overflow-auto bg-gradient-to-b from-slate-700 to-slate-800 border-l border-white lg:w-[30%]">
+            <div className="py-5 px-6 text-xl flex gap-[100px]  w-[100%] fixed bg-slate-700  border-b border-red-100 text-white">
               
               <div>All Templates</div>
-              <button onClick={()=>{
+              <button
+              className="relative right-8"
+              onClick={()=>{
                 setres(false)
               }}>
-                  close
+                  <AiOutlineCloseCircle className="text-white text-2xl"></AiOutlineCloseCircle>
+                  
               </button>
               </div>
              
