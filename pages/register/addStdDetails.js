@@ -57,7 +57,7 @@ export default function AddStdDetails() {
             
           <form method="POST" action="../api/addDetails" className=' mx-auto my-10'>
 
-            <div className='flex justify-between'>
+            <div className='flex flex-col justify-between'>
               <div className=''>
                 <label htmlFor="username" className="text-sm font-semibold">Signed in as:</label>
                 <input type="text"  value={username} className="mx-2 border-none " id="username" name="username" onChange={()=>{
