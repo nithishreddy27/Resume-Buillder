@@ -31,23 +31,18 @@ export default function SideBar() {
   const [open, setopen] = useState("semiopen");
 
   const { details, setdetails } = useContext(ResumeContext);
-  const [count, setcount] = useState(0)
-
+  const [count, setcount] = useState(0);
 
   function updateForm(event) {
     const n = event.target.name;
     const i = event.target.id;
-    if(i == "objective" ){
-      setcount(event.target.value.length)
-
+    if (i == "objective") {
+      setcount(event.target.value.length);
     }
-    console.log("i",i)
+    console.log("i", i);
 
     setdetails({ ...details, [n]: { ...details[n], [i]: event.target.value } });
   }
-
-
-
 
   const [imageSrc, setImageSrc] = useState();
   const [uploadData, setUploadData] = useState();
@@ -269,21 +264,21 @@ export default function SideBar() {
                     </p>
                   )}
 
-          {uploadData && (
-            // <code><pre>{JSON.stringify(uploadData, null, 2)}</pre></code>
-            <div className="my-9 w-[80%]">
-            <input
-              type="text"
-              name="personal"
-              id="imgurl"
-              className="shadow appearance-none border bg-slate-100 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
-              value={uploadData.url}
-            />
-          </div>
-          )}
-          </div>
+                  {uploadData && (
+                    // <code><pre>{JSON.stringify(uploadData, null, 2)}</pre></code>
+                    <div className="my-9 w-[80%]">
+                      <input
+                        type="text"
+                        name="personal"
+                        id="imgurl"
+                        className="shadow appearance-none border bg-slate-100 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
+                        value={uploadData.url}
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
-        <div className="sm:grid sm:grid-cols-2 sm:gap-2 text-gray-400">
+              <div className="sm:grid sm:grid-cols-2 sm:gap-2 text-gray-400">
                 <div className="mt-5">
                   <label htmlFor="firstName" className="font-semibold">
                     First Name
@@ -359,54 +354,52 @@ export default function SideBar() {
                 </label>
                 <div className="my-2">
                   <textarea
+                    maxLength={250}
                     name="personal"
                     id="objective"
                     className="shadow appearance-none border bg-slate-100 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
                     value={details.personal.objective}
-                    
                     onChange={updateForm}
                   />
                 </div>
               </div>
             </form>
 
-    <div className="h-[700px] overflow-y-scroll">
-    <SocailMedia />
+            <div className="h-[700px] overflow-y-scroll">
+              <SocailMedia />
 
-<Internship />
+              <Internship />
 
-{/* Education  */}
+              {/* Education  */}
 
-<Education />
+              <Education />
 
-{/* Certifications  */}
+              {/* Certifications  */}
 
-<Certifications />
+              <Certifications />
 
-{/* Projects  */}
+              {/* Projects  */}
 
-<Projects />
+              <Projects />
 
-{/* awards  */}
+              {/* awards  */}
 
-<Awards />
+              <Awards />
 
-{/* skills */}
+              {/* skills */}
 
-<Skills />
+              <Skills />
 
-{/* Languages  */}
+              {/* Languages  */}
 
-<Languages />
-{/* hobbies  */}
+              <Languages />
+              {/* hobbies  */}
 
-<Hobbies/>
-    </div>
-   </div>
- </div>
-</div>
-    
-    
+              <Hobbies />
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
