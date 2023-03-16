@@ -167,9 +167,9 @@ export default function AddStdDetails() {
                         >
                           Middle Name
                         </label>
-                        <span className="ml-1 text-red-600 font-semibold">
+                        {/* <span className="ml-1 text-red-600 font-semibold">
                           *
-                        </span>
+                        </span> */}
                       </div>
                       <input
                         type="text"

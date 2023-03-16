@@ -19,8 +19,6 @@ const Home = (props) => {
     const [checked, setchecked] = useState(false)
     
     const user = useUser();
-    
-    
     const router = useRouter()
 
 
@@ -30,137 +28,53 @@ const Home = (props) => {
     async function createResume(resumeId){
 
       var pro
-
-
       if(checked){
+          console.log("inside checked")
           var data = await fetch("/api/changePublic",{
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email : user.email }),
         })
+        const resume = await data.json()
+        resume.resume.publicResume = "false"
+        resume.resume.id = resumeId
+        console.log("resume after pro",resume)
+        
+        if(resume){ 
+          pro = resume
+        } 
       }
       else{
-          pro = {
-          id:resumeId,
-          publicResume:false,
-          personal: {
-            firstName: user.profile.firstName,
-            lastName: user.profile.lastName,
-            email: user.email,
-            role: role,
-            image: "",
-            dob: "1985-11-01",
-            phone: user.phone.value,
-            objective: "",
-          },
-          social: [
-            // {
-            //   network: "Instagram",
-            //   username: "tim_j",
-            //   url: "https://www.instagram.com/tim_j/",
-            //   enabled: true,
-            // },
-          ],
-          work: [
-            // {
-            //   company: "Kell Tech",
-            //   from: "2022-03-12",
-            //   to: "2024-08-10",
-            //   designation: "Senior Development Engineer",
-            //   website: "http://www.kelltech.com",
-            //   summary: {
-            //     data: "- Utilized Cloud Foundry for efficient building on top of Kubernetes.\n- Supported testing and engineering processes.",
-            //     enabled: true,
-            //   },
-            //   enabled: true,
-            // },
-          ],
-          education: [
-            // {
-            //   institution: "University of Pennsylvania",
-            //   fieldOfStudy: "Computer Science",
-            //   typeOfDegree: "Master of Science",
-            //   startDate: "2015-04-10",
-            //   endDate: "2018-06-10",
-            //   gpa: "7.5",
-            //   summary: {
-            //     data: "Completed MS in the field of Computer Science",
-            //     enabled: true,
-            //   },
-            //   enabled: true,
-            // },
-          ],
-          awards: [
-            // {
-            //   name: "Best performer Award",
-            //   awarder: "Kell Tech",
-            //   date: "2021-09-21",
-            //   summary: {
-            //     data: "Recieved an award for best performance for the term.",
-            //     enabled: true,
-            //   },
-            //   enabled: true,
-            // },
-          ],
-          skills: [
-            // {
-            //   name: "ReactJS",
-            //   level: "Beginner",
-            //   enabled: true,
-            // },
-          ],
-          languages: [
-            // {
-            //   name: "English",
-            //   fluency: "Professional",
-            //   enabled: true,
-            // },
-          ],
-          hobbies: [
-            // {
-            //   name: "Solving puzzles",
-            //   enabled: true,
-            // },
-            // {
-            //   name: "Travelling",
-            //   enabled: true,
-            // },
-          ],
-          certifications: [
-            // title: "Oracle Java Certifications Associate Professional",
-            // date: "2014-09-18",
-            // issuer: "Udemy",
-            // summary: {
-            //   data: "Completed a course on Java and built a project at the end of the course",
-            //   enabled: true,
-            // },
-            // enabled: true,
-          ],
-          projects: [
-            // {
-            //   name: "Gaming AI",
-            //   from: "2017-08-03",
-            //   to: "2018-11-15",
-            //   website: "http://github.com/gameai",
-            //   summary: {
-            //     data: "Worked with IT team to create an AI based gaming application for the modern gamers",
-            //     enabled: true,
-            //   },
-            //   enabled: true,
-            // },
-          ],
-        };
+          console.log("inside unchecked")
+            pro = {
+            id:resumeId,
+            publicResume:false,
+            personal: {
+              firstName: user.profile.firstName,
+              lastName: user.profile.lastName,
+              email: user.email,
+              role: role,
+              image: "",
+              dob: "1985-11-01",
+              phone: user.phone.value,
+              objective: "",
+            },
+            social: [],
+            work: [ ],
+            education: [],
+            awards: [],
+            skills: [],
+            languages: [],
+            hobbies: [],
+            certifications: [ ],
+            projects: [],
+          };
       }
-        
         const body={
             email:user.email,
             resume:pro
         }
-        console.log("in run",document.getElementById("publicResume").value)
-        
-
-        
-
+        console.log("body",body)
         var data = await fetch("/api/testResume",{
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -177,6 +91,7 @@ const Home = (props) => {
   return (
     
     <div>
+      
       <div>
         <div className="border-b border-gray-300 py-2 fixed top-[-8px] w-[100%] z-40 bg-slate-50">
             <Navbar/>
@@ -213,6 +128,7 @@ const Home = (props) => {
               <option>MBA</option>
             </select>
           </div>
+          
           <div className="hidden md:block">
             <nav className="my-10 flex">
               <a
@@ -267,6 +183,7 @@ const Home = (props) => {
               //        <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png" alt=""  className='h-[100%] w-[100%] opacity-50'/>
 
               //      </Link>
+             
               l.map((data) => (
                 <div key={data._id} onClick={()=>{
                   setid(data._id)
@@ -277,8 +194,8 @@ const Home = (props) => {
                     <div className="opacity-80">
                       <img src={data.ResumeImage}/>
                     </div>
-                    <div className="absolute z-10 top-[43%] right-[43%] flex items-center justify-center h-10 w-10 bg-gray-200  bg-opacity-70 rounded-full p-1">
-                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAVJJREFUWEftl+FNAzEMhb9OQDcoTECZoGwAbNANoBMAEwAbsEFhAzYANigbwAStXuVKEbqLz7lWOlXxv1MSv68vTuKOGFiMBsbDUQGdArfAJTA1p7+AD+AFWJW4X+rQHfDkCGqOwEJRAvRsznQREpDAOkcU6BpYJtm/gQdAW6XQ1un7PJlzA7x1JYoCqS4mlvwdEGBTCODKBrTm7BBA+vWflvgPUFH/tgiNrahPbPwicTHLFnEoLeScOztBnbaZfSwA1Z4bESDVxr1lfLRayQlE529zVSBvz6pDfR3SydB9oiO+j9Cd9AroUDRGbssiT0QUtvWU5oB06e0utqigN7/19s4Brb2sPccbtStQ4mp1yCux6lB1yHPAG681dPwOHfJx/WlraXJvWdqke/ZHx4vaD4kIap78OYwK/58vZ9SgKW+4QesrXrQ+0uQXCUQXDQ5oA5cjSCVYiqWCAAAAAElFTkSuQmCC" />
+                    <div className="absolute z-10 top-[43%] right-[43%] flex items-center justify-center h-10 w-10 bg-gray-200  bg-opacity-70 rounded-full p-1 ">
+                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAVJJREFUWEftl+FNAzEMhb9OQDcoTECZoGwAbNANoBMAEwAbsEFhAzYANigbwAStXuVKEbqLz7lWOlXxv1MSv68vTuKOGFiMBsbDUQGdArfAJTA1p7+AD+AFWJW4X+rQHfDkCGqOwEJRAvRsznQREpDAOkcU6BpYJtm/gQdAW6XQ1un7PJlzA7x1JYoCqS4mlvwdEGBTCODKBrTm7BBA+vWflvgPUFH/tgiNrahPbPwicTHLFnEoLeScOztBnbaZfSwA1Z4bESDVxr1lfLRayQlE529zVSBvz6pDfR3SydB9oiO+j9Cd9AroUDRGbssiT0QUtvWU5oB06e0utqigN7/19s4Brb2sPccbtStQ4mp1yCux6lB1yHPAG681dPwOHfJx/WlraXJvWdqke/ZHx4vaD4kIap78OYwK/58vZ9SgKW+4QesrXrQ+0uQXCUQXDQ5oA5cjSCVYiqWCAAAAAElFTkSuQmCC" className="onClick={toggleText}" />
                     </div>
                     <div className=" text-2xl p-3 text-center   font-semibold">
                       {data.ResumeName}{" "}
@@ -297,6 +214,8 @@ const Home = (props) => {
              <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png" alt=""  className='h-[100%] w-[100%] opacity-50'/>
      
            </Link> */}
+          
+
           </div>
           {rolepop==true && (
           <div className="fixed top-[35%] sm:max-w-xl sm:left-[10%] sm:right-[10%] md:left-[15%] md:right-[15%] xl:left-[30%] xl:right-[30%] lg:left-[25%] lg:right-[25%]  px-5 content-center inline-block overflow-hidden text-left align-middle transition-all transform rounded-md opacity-100 scale-100 w-full max-w-2xl z-30">
