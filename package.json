@@ -33,6 +33,7 @@
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "prop-types": "^15.8.1",
+    "razorpay": "^2.8.6",
     "react": "18.2.0",
     "react-color-palette": "^6.2.0",
     "react-datepicker": "^4.10.0",
@@ -41,6 +42,7 @@
     "react-icons": "^4.7.1",
     "react-pdf": "^6.2.2",
     "sass": "^1.43.4",
+    "shortid": "^2.2.16",
     "swiper": "^9.0.4",
     "swr": "^2.0.1",
     "uuid": "^9.0.0"
