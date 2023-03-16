@@ -6,6 +6,7 @@ import { useUser } from "../../lib/hooks";
 import { useRouter } from "next/router";
 import ResumeContext from "../../context/ResumeContext";
 import { TbPlus } from "react-icons/tb";
+import { AiFillCloseSquare } from "react-icons/ai"
 
 const Home = (props) => {
     const { details, setdetails, setdemo, demo ,id,setid } = useContext(ResumeContext);
@@ -172,7 +173,7 @@ const Home = (props) => {
     useEffect(()=>{
       console.log('cj',checked)
     },[checked])
-
+    const [rolepop,setrolepop]=useState(false);
   return (
     
     <div>
@@ -271,7 +272,8 @@ const Home = (props) => {
                   setid(data._id)
                   // runMe(data._id) 
                   }}>
-                  <div  className="rounded-md bg-gray-100 h-auto  w-63 p-5 m-5 cursor-pointer relative">
+                  <div  className="rounded-md bg-gray-100 h-auto  w-63 p-5 m-5 cursor-pointer relative"
+                  onClick={()=>{setrolepop(true)}}>
                     <div className="opacity-80">
                       <img src={data.ResumeImage}/>
                     </div>
@@ -296,16 +298,34 @@ const Home = (props) => {
      
            </Link> */}
           </div>
-          <div className="text-gray-500 text-center my-[58%] text-3xl font-semibold">
-                CREATE
-                <div className=" flex justify-center "><TbPlus/></div>
-                <input type="text" name="role" id="role" className='border' required placeholder='enter role' onChange={(event)=>{setRole(event.target.value)}}/>
-
+          {rolepop==true && (
+          <div className="fixed top-[40%] left-[25%] right-[30%] w-full max-w-2xl">
+          <div className=" bg-slate-700 rounded-md ">
+                <div className="flex">
+                <h1 className="text-2xl text-white font-medium px-5 py-5 grow">Create Resume</h1>
+                <div className="px-5 pt-5 cursor-pointer" onClick={()=>{setrolepop(false)}}>
+                <AiFillCloseSquare className="text-3xl text-white "></AiFillCloseSquare>
+                </div>
+                </div>
+                {/* <div className=" flex justify-center "><TbPlus/></div> */}
+                <label className="px-5 text-[10px] text-gray-400">NAME</label>
+                <div className="mx-5 my-2">
+                <input type="text" name="role" id="role" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500" required placeholder='Ex:- Full Stack Developer' onChange={(event)=>{setRole(event.target.value)}}/>
+                </div>
                {/* <Link href="/resume/resumes">Submit</Link> */}
+               <div className="flex">
+               <div className="pl-5 pt-1">
                <input type="checkbox" name="publicResume" id="publicResume" onChange={()=>{setchecked(!checked)
                 }}/>
-               <button className="mx-2" onClick={()=>{createResume(id)}}>Submit</button>
+                </div>
+                <div className="text-xs pt-2 pl-1 text-white">Import resume data from your public resume</div>
+                </div>
+                <div className="flex justify-end gap-3 pr-5 pb-8">
+                  <button className="px-3 py-2 rounded-md bg-white text-gray-700 border border-gray-300" onClick={()=>{setrolepop(false)}}>Cancel</button>
+               <button className="bg-orange-500 text-white px-3 py-2 rounded-md" onClick={()=>{createResume(id)}}>Save</button>
+                </div>
               </div>
+              </div>)}
         </div>
 
 
