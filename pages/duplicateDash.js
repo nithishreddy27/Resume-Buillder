@@ -11,7 +11,7 @@ import { CgWorkAlt } from "react-icons/cg";
 
 
 
-export default function Dash() {
+export default function Dupdash() {
   return (
     <div className=" bg-gray-200 h-screen overflow-auto ">
       <div className="m-5">
