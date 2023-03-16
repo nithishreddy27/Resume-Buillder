@@ -126,12 +126,12 @@ export default function Index(props) {
 
                           {resume.publicResume == "true" && (
                             <>
-                              <h1 className="text-center">Public</h1>
 
                               <div
                                 className="box relative my-7 mx-12  lg:h-[90mm] lg:w-[70mm] p-4 mr-5 bg-black border-[4px] border-orange-500"
                                 key={resume._id}
                               >
+                              <h1 className="text-center text-white">Public</h1>
                                 <span>
                                   <img
                                     className="w-full h-full object-cover object-center opacity-60 hover:opacity-40"
