@@ -235,10 +235,6 @@ const Home = (props) => {
                 <input type="text" name="role" id="role" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500" required placeholder='Ex:- Full Stack Developer' onChange={(event)=>{setRole(event.target.value)}}/>
                 </div>
                {/* <Link href="/resume/resumes">Submit</Link> */}
-<<<<<<< HEAD
-               <input type="checkbox" name="publicResume" id="publicResume" onChange={()=>{setchecked(!checked)}}/>
-               <button className="mx-2" onClick={()=>{createResume(id)}}>Submit</button>
-=======
                <div className="flex">
                <div className="pl-5 pt-1">
                <input type="checkbox" name="publicResume" id="publicResume" onChange={()=>{setchecked(!checked)
@@ -250,7 +246,6 @@ const Home = (props) => {
                   <button className="px-3 py-2 rounded-md bg-white text-gray-700 border border-gray-300" onClick={()=>{setrolepop(false)}}>Cancel</button>
                <button className="bg-orange-500 text-white px-3 py-2 rounded-md" onClick={()=>{createResume(id)}}>Save</button>
                 </div>
->>>>>>> 55b472bbed8963cdf5f95c36c907efe60c747ba6
               </div>
               </div>)}
         </div>
