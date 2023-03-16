@@ -100,7 +100,7 @@ export default function Slug(props) {
           <div className="w-full">
             {res==false && (
             
-            <button className="border lg:absolute absolute bg-slate-700 border-white rounded-md p-2 z-20 lg:right-[300px] right-5 top-[92px] lg:top-5  mb-5 text-white"
+            <button className="border lg:absolute absolute bg-slate-700 border-white rounded-md p-2 z-20 lg:left-[40%] top-[92px] lg:top-5  mb-5 text-white"
             onClick={()=>{setres(!res)}}>
               CHANGE
             </button>

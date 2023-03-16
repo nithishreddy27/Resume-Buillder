@@ -545,8 +545,8 @@ export default function Dynamic() {
               </div>
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
-                <div className="flex h-[80px] shadow-lg justify-center">
-                  <div className="m-5 flex grow-[0.8] gap-3">
+                <div className="flex h-[80px] shadow-lg justify-end ">
+                  <div className="m-5 flex gap-3">
                     <div className="group flex items-center relative">
                       <button
                         className="text-white p-1  rounded-md"
@@ -578,7 +578,28 @@ export default function Dynamic() {
                         fit to width
                       </span>
                     </div>
-
+                    <div className="group flex items-center relative justify-center">
+                      <button
+                        onClick={lprintDocument}
+                        className="flex-shrink-0 inline-flex items-center justify-center text-gray-200 hover:text-gray-500  mx-2"
+                      >
+                        <AiFillPrinter className="text-2xl"></AiFillPrinter>
+                        <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                          print
+                        </span>
+                      </button>
+                    </div>
+                    <div className="group flex items-center relative justify-center">
+                      <button
+                        onClick={() => setdemo(!demo)}
+                        className=" flex-shrink-0 inline-flex items-center justify-center text-gray-200 hover:text-gray-500"
+                      >
+                        <AiFillDatabase className="text-2xl"></AiFillDatabase>
+                        <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                          set demo data
+                        </span>
+                      </button>
+                    </div>
                     <div
                       className={`${
                         colorpalette ? "block" : "hidden"
@@ -604,7 +625,7 @@ export default function Dynamic() {
                       ;
                     </div>
                   </div>
-                  <div className="m-5 flex justify-center grow-[0.5]">
+                  <div className="m-5 flex justify-center">
                     {/* <button
                       onClick={lprintDocument}
                       className="cursor-pointer text-white mx-5 border border-white p-2 rounded"
@@ -613,17 +634,7 @@ export default function Dynamic() {
                      
                     </button> */}
 
-                    <div className="group flex items-center relative justify-center">
-                      <button
-                        onClick={lprintDocument}
-                        className="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-200 hover:text-gray-500  mx-2"
-                      >
-                        <AiFillPrinter className="text-2xl"></AiFillPrinter>
-                        <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
-                          print
-                        </span>
-                      </button>
-                    </div>
+                    
 
                     {/* <button
                       className="text-white border border-white p-2 rounded"
@@ -631,17 +642,7 @@ export default function Dynamic() {
                     >
                       <AiFillDatabase></AiFillDatabase>
                     </button> */}
-                    <div className="group flex items-center relative justify-center">
-                      <button
-                        onClick={() => setdemo(!demo)}
-                        className="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-200 hover:text-gray-500 mx-2"
-                      >
-                        <AiFillDatabase className="text-2xl"></AiFillDatabase>
-                        <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
-                          set demo data
-                        </span>
-                      </button>
-                    </div>
+                    
                   </div>
                 </div>
 
