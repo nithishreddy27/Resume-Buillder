@@ -37,32 +37,6 @@ export default function SideBar() {
     const i = event.target.id;
     setdetails({ ...details, [n]: { ...details[n], [i]: event.target.value } });
   }
-
-  function addHobby() {
-    const hobby = {
-      name: document.getElementById("hobbyTitle").value,
-    };
-    const arr = [];
-    details.hobbies.map((item) => {
-      arr.push(item);
-    });
-    // console.log('hobby',hobby)
-    arr.push(hobby);
-    setdetails({ ...details, hobbies: arr });
-
-    document.getElementById("hobbyTitle").value = "";
-  }
-
-  function deleteHobby(index) {
-    console.log("network", index);
-    const arr = [];
-    details.hobbies.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, hobbies: arr });
-  }
   const [imageSrc, setImageSrc] = useState();
   const [uploadData, setUploadData] = useState();
 
@@ -373,6 +347,7 @@ export default function SideBar() {
                 </label>
                 <div className="my-2">
                   <textarea
+                    maxLength={250}
                     name="personal"
                     id="objective"
                     className="shadow appearance-none border bg-slate-100 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
