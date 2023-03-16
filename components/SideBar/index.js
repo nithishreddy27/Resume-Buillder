@@ -31,38 +31,24 @@ export default function SideBar() {
   const [open, setopen] = useState("semiopen");
   
   const { details, setdetails } = useContext(ResumeContext);
+  const [count, setcount] = useState(0)
+
 
   function updateForm(event) {
     const n = event.target.name;
     const i = event.target.id;
+    if(i == "objective" ){
+      setcount(event.target.value.length)
+
+    }
+    console.log("i",i)
+
     setdetails({ ...details, [n]: { ...details[n], [i]: event.target.value } });
   }
 
-  function addHobby() {
-    const hobby = {
-      name: document.getElementById("hobbyTitle").value,
-    };
-    const arr = [];
-    details.hobbies.map((item) => {
-      arr.push(item);
-    });
-    // console.log('hobby',hobby)
-    arr.push(hobby);
-    setdetails({ ...details, hobbies: arr });
 
-    document.getElementById("hobbyTitle").value = "";
-  }
 
-  function deleteHobby(index) {
-    console.log("network", index);
-    const arr = [];
-    details.hobbies.map((item, i) => {
-      if (i != index) arr.push(item);
-    });
-    // console.log('intern',intern)
-    // arr.push(intern)
-    setdetails({ ...details, hobbies: arr });
-  }
+
   const [imageSrc, setImageSrc] = useState();
   const [uploadData, setUploadData] = useState();
 
@@ -308,10 +294,9 @@ export default function SideBar() {
             />
           </div>
           )}
-                 
-                </div>
+          </div>
               </div>
-              <div className="sm:grid sm:grid-cols-2 sm:gap-2 text-gray-400">
+        <div className="sm:grid sm:grid-cols-2 sm:gap-2 text-gray-400">
                 <div className="mt-5">
                   <label htmlFor="firstName" className="font-semibold">
                     First Name
@@ -383,7 +368,7 @@ export default function SideBar() {
                   htmlFor="objective"
                   className="font-semibold text-gray-400"
                 >
-                  Objective
+                  Objective max - <span>{count} letters</span>
                 </label>
                 <div className="my-2">
                   <textarea
@@ -391,42 +376,45 @@ export default function SideBar() {
                     id="objective"
                     className="shadow appearance-none border bg-slate-100 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-orange-500 "
                     value={details.personal.objective}
+                    
                     onChange={updateForm}
                   />
                 </div>
               </div>
             </form>
 
-     <SocailMedia />
+    <div className="h-[700px] overflow-y-scroll">
+    <SocailMedia />
 
-     <Internship />
+<Internship />
 
-     {/* Education  */}
+{/* Education  */}
 
-     <Education />
+<Education />
 
-     {/* Certifications  */}
+{/* Certifications  */}
 
-     <Certifications />
+<Certifications />
 
-     {/* Projects  */}
+{/* Projects  */}
 
-     <Projects />
+<Projects />
 
-     {/* awards  */}
+{/* awards  */}
 
-     <Awards />
+<Awards />
 
-     {/* skills */}
+{/* skills */}
 
-     <Skills />
+<Skills />
 
-     {/* Languages  */}
+{/* Languages  */}
 
-     <Languages />
-     {/* hobbies  */}
+<Languages />
+{/* hobbies  */}
 
-     <Hobbies/>
+<Hobbies/>
+    </div>
    </div>
  </div>
 </div>

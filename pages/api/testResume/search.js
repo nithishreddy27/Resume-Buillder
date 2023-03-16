@@ -8,7 +8,7 @@ import UserResume from "../../../model/UserResume"
 export default async function handler(req,res){
     switch(req.method){   
         case("GET"):
-            console.log("in see")
+            // console.log("in see")
             var resumeData = await UserResume.find({})
             res.json(resumeData)
             break
