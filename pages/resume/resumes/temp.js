@@ -11,21 +11,12 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import ReactDOM from "react-dom";
 import { ColorPicker, useColor } from "react-color-palette";
-import { AiFillPrinter, AiFillDatabase } from "react-icons/ai";
-import { TbListDetails } from "react-icons/tb";
-import { MdOutlineColorLens, MdOutlineDocumentScanner } from "react-icons/md";
-import { TbArrowAutofitWidth } from "react-icons/tb"
-
-import { RxHobbyKnife } from "react-icons/rx";
-
 import "react-color-palette/lib/css/styles.css";
 
 export default function Assymetric() {
   const user = useUser();
   const { details, setdetails, setdemo, demo } = useContext(ResumeContext);
   const [change, setchange] = useState(false);
-  const [colorpalette, setcolorpalette] = useState(false);
-  const [ftw,setftw]=useState(true);
 
   //to add email fname and lname
   useEffect(() => {
@@ -65,6 +56,12 @@ export default function Assymetric() {
     document.body.innerHTML = originalContents;
   }
 
+  // document.getElementById("smallResume")
+
+  useEffect(() => {
+    // document.getElementById("largeResume").style.color = "red"
+  }, [0]);
+
   //responsiveness
   function toggleResume() {
     if (open == "semiopen") {
@@ -75,7 +72,6 @@ export default function Assymetric() {
   }
 
   const [color, setColor] = useColor("hex", "#121212");
-
   useEffect(() => {
     console.log("color:", color);
     // settextColor()
@@ -84,9 +80,8 @@ export default function Assymetric() {
   return (
     <>
       {details && user && (
-        <div className="flex">
-          {console.log("details inside div")}
-          {/* <div>
+        <div className="flex p-10">
+          <div>
             <ColorPicker
               width={456}
               height={228}
@@ -96,65 +91,32 @@ export default function Assymetric() {
               dark
             />
             ;
-          </div> */}
+          </div>
           {open == "closed" && (
-            <div className="mx-auto w-full bg-cover lg:w-3/4 xl:w-3/5 bg-gradient-to-b from-slate-700 to-slate-800">
-              <div className="border-b border-r border-gray-300 py-2 top-[-5px] fixed lg:sticky w-[100%] lg:w-[100%] z-40 bg-slate-700">
-                <div className="flex items-center justify-between xl:max-w-7xl xl:mx-auto max-w-full px-[8%] flex-wrap w-full">
-                  {/* <h1>Provast</h1> */}
-                  <img
-                    src="https://www.provast.io/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdj7nomqfd%2Fimage%2Fupload%2Fv1652909540%2Fpvast_W_uoqbkv.png&w=1920&q=75"
-                    width={220}
-                    height={55}
-                  />
-                  {/* <div>
-                      <button>Preview</button>
-                    </div> */}
+            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-slate-700 to-slate-800">
+              <div className="flex border border-white">
+                <div className="m-3 flex grow">
+                  <div className="flex mt-1"></div>
                 </div>
-              </div>
-              <div className="flex border border-white mt-[80px] w-[150%]">
                 <div className="m-3 flex">
                   <button
-                    className="text-white border border-white p-2 rounded-md"
-                    onClick={() => {
-                      setcolorpalette(!colorpalette);
-                    }}
-                  >
-                    COLOR
-                  </button>
-                  <div
-                    className={`${
-                      colorpalette ? "block" : "hidden"
-                    } mt-[50px] ml-[-50px] lg:ml-[50px] absolute z-40`}
-                  >
-                    <ColorPicker
-                      width={300}
-                      height={100}
-                      color={color}
-                      onChange={setColor}
-                      hideHSV
-                      dark
-                    />
-                    ;
-                  </div>
-                  <button
                     onClick={sprintDocument}
-                    className="cursor-pointer text-white p-1 mx-1 rounded"
+                    className="cursor-pointer text-white border border-white p-1 mx-1 rounded"
                   >
-                    <AiFillPrinter className="text-2xl"></AiFillPrinter>
+                    PRINT
                   </button>
 
                   <button
-                    className="text-white  p-1 mx-1 rounded"
+                    className="text-white border border-white p-1 mx-1 rounded"
                     onClick={() => setdemo(!demo)}
                   >
-                    <AiFillDatabase className="text-2xl text-gray-400"></AiFillDatabase>
+                    LOAD
                   </button>
                   <button
-                    className=" block lg:hidden  text-white p-1 mx-1 rounded-md"
+                    className=" block lg:hidden border border-white text-white p-1 mx-1 rounded-md"
                     onClick={toggleResume}
                   >
-                    <TbListDetails className="text-2xl text-gray-400"></TbListDetails>
+                    DETAILS
                   </button>
                 </div>
               </div>
@@ -358,13 +320,6 @@ export default function Assymetric() {
                     </div>
                   </div>
                 </div>
-                <style jsx>
-                  {`
-                    .heading {
-                      color: ${color.hex};
-                    }
-                  `}
-                </style>
               </div>
             </div>
           )}
@@ -374,110 +329,29 @@ export default function Assymetric() {
               <SideBar />
 
               <div
-                className="lg:hidden text-white border border-white rounded-lg p-2 hover:border-orange-700 hover:text-orange-700 absolute left-[10%] top-[92px] "
+                className="lg:hidden text-white border border-white rounded-lg px-2 py-1 hover:border-orange-700 hover:text-orange-700 absolute right-[10%] top-5 "
                 onClick={toggleResume}
               >
                 PREVIEW
               </div>
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
-                <div className="flex h-[80px] shadow-lg justify-center">
-                  <div className="m-5 flex grow-[0.8] gap-3">
-                    <div className="group flex items-center relative">
-                      <button
-                        className="text-white p-1  rounded-md"
-                        onClick={() => {
-                          setcolorpalette(!colorpalette);
-                        }}
-                      >
-                        <MdOutlineColorLens className="text-3xl text-gray-200"></MdOutlineColorLens>
-                      </button>
-                      <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
-                        set color
-                      </span>
-                    </div>
-                    <div className="group flex items-center relative">
-                      <button className="text-white p-1  rounded-md"
-                        onClick={()=>{setftw(false)}}>
-                        <MdOutlineDocumentScanner className="text-2xl text-gray-200"></MdOutlineDocumentScanner>
-                      </button>
-                      <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
-                        fit to screen
-                      </span>
-                    </div>
-                    <div className="group flex items-center relative">
-                      <button className="text-white p-1  rounded-md"
-                      onClick={()=>{setftw(true)}}>
-                        <TbArrowAutofitWidth className="text-2xl text-gray-200"></TbArrowAutofitWidth>
-                      </button>
-                      <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
-                        fit to width
-                      </span>
-                    </div>
-
-                    <div
-                      className={`${
-                        colorpalette ? "block" : "hidden"
-                      } ml-[50px] absolute z-40`}
-                    >
-                      {/* <button className="w-5 h-5" style={{backgroundColor:"#9b2121"}}
-                      onClick={()=>{
-                        // setColor("hex","#9b2121")
-                        console.log("clicked",color)
-                        // setColor( )  
-                      }}
-                      >
-
-                      </button> */}
-                      <ColorPicker
-                        width={300}
-                        height={100}
-                        color={color}
-                        onChange={setColor}
-                        hideHSV
-                        dark
-                      />
-                      ;
-                    </div>
-                  </div>
-                  <div className="m-5 flex justify-center grow-[0.5]">
-                    {/* <button
+                <div className="flex">
+                  <div className="m-5 flex grow"></div>
+                  <div className="m-5">
+                    <button
                       onClick={lprintDocument}
                       className="cursor-pointer text-white mx-5 border border-white p-2 rounded"
                     >
-                      <AiFillPrinter></AiFillPrinter>
-                     
-                    </button> */}
+                      PRINT
+                    </button>
 
-                    <div className="group flex items-center relative justify-center">
-                      <button
-                        onClick={lprintDocument}
-                        className="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-200 hover:text-gray-500  mx-2"
-                      >
-                        <AiFillPrinter className="text-2xl"></AiFillPrinter>
-                        <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
-                          print
-                        </span>
-                      </button>
-                    </div>
-
-                    {/* <button
+                    <button
                       className="text-white border border-white p-2 rounded"
                       onClick={() => setdemo(!demo)}
                     >
-                      <AiFillDatabase></AiFillDatabase>
-                    </button> */}
-                    <div className="group flex items-center relative justify-center">
-                      <button
-                        onClick={() => setdemo(!demo)}
-                        className="mb-2  flex-shrink-0 inline-flex items-center justify-center text-gray-200 hover:text-gray-500 mx-2"
-                      >
-                        <AiFillDatabase className="text-2xl"></AiFillDatabase>
-                        <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
-                          set demo data
-                        </span>
-                      </button>
-                    </div>
+                      LOAD
+                    </button>
                   </div>
                 </div>
 
