@@ -19,15 +19,6 @@ export default function Berlin() {
   const [change, setchange] = useState(false);
   const [colorpalette, setcolorpalette] = useState(false);
 
-  var acount,
-    ccount,
-    ecount,
-    hcount,
-    icount,
-    lcount,
-    pcount,
-    scount = 0;
-
   //to add email fname and lname
   useEffect(() => {
     if (user) {

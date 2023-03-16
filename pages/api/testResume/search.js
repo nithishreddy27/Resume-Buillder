@@ -1,7 +1,4 @@
-import UserResume from "../../../model/UserResume"
-
-
-
+import UserResume from "../../../model/UserResume";
 
 //It is used to search all the resumes of the user
 

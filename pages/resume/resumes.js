@@ -6,6 +6,7 @@ import { useUser } from "../../lib/hooks";
 import { useRouter } from "next/router";
 import ResumeContext from "../../context/ResumeContext";
 import { TbPlus } from "react-icons/tb";
+import { AiFillCloseSquare } from "react-icons/ai"
 
 const Home = (props) => {
     const { details, setdetails, setdemo, demo ,id,setid } = useContext(ResumeContext);
@@ -86,10 +87,11 @@ const Home = (props) => {
     useEffect(()=>{
       console.log('cj',checked)
     },[checked])
-
+    const [rolepop,setrolepop]=useState(false);
   return (
     
     <div>
+      
       <div>
         <div className="border-b border-gray-300 py-2 fixed top-[-8px] w-[100%] z-40 bg-slate-50">
             <Navbar/>
@@ -126,6 +128,7 @@ const Home = (props) => {
               <option>MBA</option>
             </select>
           </div>
+          
           <div className="hidden md:block">
             <nav className="my-10 flex">
               <a
@@ -160,8 +163,11 @@ const Home = (props) => {
               </a>
             </nav>
           </div>
-
-          <div className="grid grid-cols-1  gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 mt-5 blur-[0.75px]">
+          {/* function toggleText() {
+                const text = document.querySelector('.hidden');
+              text.classList.toggle('hidden');
+              } */}
+          <div className="grid grid-cols-1  gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 mt-5">
                 {/* <div className='rounded-md bg-black h-96 w-64 m-5 cursor-pointer relative'  key={data._id}>
             <div className=' text-4xl text-white font-semibold tracking-wider text-center '><span className='absolute z-40'>Name </span> </div>
             <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png" alt=""  className='h-[100%] w-[100%] opacity-50'/>
@@ -180,17 +186,19 @@ const Home = (props) => {
               //        <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png" alt=""  className='h-[100%] w-[100%] opacity-50'/>
 
               //      </Link>
+             
               l.map((data) => (
                 <div key={data._id} onClick={()=>{
                   setid(data._id)
                   // runMe(data._id) 
                   }}>
-                  <div  className="rounded-md bg-gray-100 h-auto  w-63 p-5 m-5 cursor-pointer relative">
+                  <div  className="rounded-md bg-gray-100 h-auto  w-63 p-5 m-5 cursor-pointer relative"
+                  onClick={()=>{setrolepop(true)}}>
                     <div className="opacity-80">
                       <img src={data.ResumeImage}/>
                     </div>
-                    <div className="absolute z-10 top-[43%] right-[43%] flex items-center justify-center h-10 w-10 bg-gray-200  bg-opacity-70 rounded-full p-1">
-                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAVJJREFUWEftl+FNAzEMhb9OQDcoTECZoGwAbNANoBMAEwAbsEFhAzYANigbwAStXuVKEbqLz7lWOlXxv1MSv68vTuKOGFiMBsbDUQGdArfAJTA1p7+AD+AFWJW4X+rQHfDkCGqOwEJRAvRsznQREpDAOkcU6BpYJtm/gQdAW6XQ1un7PJlzA7x1JYoCqS4mlvwdEGBTCODKBrTm7BBA+vWflvgPUFH/tgiNrahPbPwicTHLFnEoLeScOztBnbaZfSwA1Z4bESDVxr1lfLRayQlE529zVSBvz6pDfR3SydB9oiO+j9Cd9AroUDRGbssiT0QUtvWU5oB06e0utqigN7/19s4Brb2sPccbtStQ4mp1yCux6lB1yHPAG681dPwOHfJx/WlraXJvWdqke/ZHx4vaD4kIap78OYwK/58vZ9SgKW+4QesrXrQ+0uQXCUQXDQ5oA5cjSCVYiqWCAAAAAElFTkSuQmCC" />
+                    <div className="absolute z-10 top-[43%] right-[43%] flex items-center justify-center h-10 w-10 bg-gray-200  bg-opacity-70 rounded-full p-1 ">
+                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAVJJREFUWEftl+FNAzEMhb9OQDcoTECZoGwAbNANoBMAEwAbsEFhAzYANigbwAStXuVKEbqLz7lWOlXxv1MSv68vTuKOGFiMBsbDUQGdArfAJTA1p7+AD+AFWJW4X+rQHfDkCGqOwEJRAvRsznQREpDAOkcU6BpYJtm/gQdAW6XQ1un7PJlzA7x1JYoCqS4mlvwdEGBTCODKBrTm7BBA+vWflvgPUFH/tgiNrahPbPwicTHLFnEoLeScOztBnbaZfSwA1Z4bESDVxr1lfLRayQlE529zVSBvz6pDfR3SydB9oiO+j9Cd9AroUDRGbssiT0QUtvWU5oB06e0utqigN7/19s4Brb2sPccbtStQ4mp1yCux6lB1yHPAG681dPwOHfJx/WlraXJvWdqke/ZHx4vaD4kIap78OYwK/58vZ9SgKW+4QesrXrQ+0uQXCUQXDQ5oA5cjSCVYiqWCAAAAAElFTkSuQmCC" className="onClick={toggleText}" />
                     </div>
                     <div className=" text-2xl p-3 text-center   font-semibold">
                       {data.ResumeName}{" "}
@@ -209,16 +217,42 @@ const Home = (props) => {
              <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png" alt=""  className='h-[100%] w-[100%] opacity-50'/>
      
            </Link> */}
-          </div>
-          <div className="text-gray-500 text-center my-[58%] text-3xl font-semibold">
-                CREATE
-                <div className=" flex justify-center "><TbPlus/></div>
-                <input type="text" name="role" id="role" className='border' required placeholder='enter role' onChange={(event)=>{setRole(event.target.value)}}/>
+          
 
+          </div>
+          {rolepop==true && (
+          <div className="fixed top-[40%] left-[25%] right-[30%] w-full max-w-2xl">
+          <div className=" bg-slate-700 rounded-md ">
+                <div className="flex">
+                <h1 className="text-2xl text-white font-medium px-5 py-5 grow">Create Resume</h1>
+                <div className="px-5 pt-5 cursor-pointer" onClick={()=>{setrolepop(false)}}>
+                <AiFillCloseSquare className="text-3xl text-white "></AiFillCloseSquare>
+                </div>
+                </div>
+                {/* <div className=" flex justify-center "><TbPlus/></div> */}
+                <label className="px-5 text-[10px] text-gray-400">NAME</label>
+                <div className="mx-5 my-2">
+                <input type="text" name="role" id="role" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500" required placeholder='Ex:- Full Stack Developer' onChange={(event)=>{setRole(event.target.value)}}/>
+                </div>
                {/* <Link href="/resume/resumes">Submit</Link> */}
+<<<<<<< HEAD
                <input type="checkbox" name="publicResume" id="publicResume" onChange={()=>{setchecked(!checked)}}/>
                <button className="mx-2" onClick={()=>{createResume(id)}}>Submit</button>
+=======
+               <div className="flex">
+               <div className="pl-5 pt-1">
+               <input type="checkbox" name="publicResume" id="publicResume" onChange={()=>{setchecked(!checked)
+                }}/>
+                </div>
+                <div className="text-xs pt-2 pl-1 text-white">Import resume data from your public resume</div>
+                </div>
+                <div className="flex justify-end gap-3 pr-5 pb-8">
+                  <button className="px-3 py-2 rounded-md bg-white text-gray-700 border border-gray-300" onClick={()=>{setrolepop(false)}}>Cancel</button>
+               <button className="bg-orange-500 text-white px-3 py-2 rounded-md" onClick={()=>{createResume(id)}}>Save</button>
+                </div>
+>>>>>>> 55b472bbed8963cdf5f95c36c907efe60c747ba6
               </div>
+              </div>)}
         </div>
 
 

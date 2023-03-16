@@ -29,7 +29,7 @@ import Languages from "./Languages";
 import Hobbies from "./Hobbies";
 export default function SideBar() {
   const [open, setopen] = useState("semiopen");
-  
+
   const { details, setdetails } = useContext(ResumeContext);
   const [count, setcount] = useState(0)
 
@@ -103,7 +103,7 @@ export default function SideBar() {
     <>
       {/* sidebar */}
 
-      <div className="h-screen bg-fixed relative w-[250%] lg:w-[60%] text-white border-r border-gray-300 bg-gradient-to-b from-slate-800 to-slate-700 z-0 transition-all overflow-y-scroll  scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100 ">
+      <div className="h-screen bg-fixed relative w-[250%] lg:w-[60%] text-white border-r border-gray-300 bg-gradient-to-b from-slate-800 to-slate-700 z-0 transition-all overflow-y-scroll scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100 ">
         <div>
           <div className="border-b border-r border-gray-300 py-2 top-[-5px] fixed lg:sticky w-[100%] lg:w-[100%] z-40 bg-slate-800">
             <div className="flex items-center justify-between xl:max-w-7xl xl:mx-auto max-w-full px-[8%] flex-wrap w-full">
@@ -119,7 +119,7 @@ export default function SideBar() {
             </div>
           </div>
         </div>
-        <div className="block lg:flex">
+        <div className="block lg:flex overflow-y-auto">
           <div className=" fixed lg:flex flex-col hidden   min-h-screen ml-3 mt-[80px] z-0">
             <div className="group  flex items-center relative justify-center">
               <a
@@ -230,13 +230,8 @@ export default function SideBar() {
               </a>
             </div>
           </div>
-          <div className=" mb-5 mx-5    sm:m-10 md:mx-20 lg:mx-16 ">
-            <form
-              action=""
-              className=""
-              method="post"
-              
-            >
+          <div className=" mb-5 mx-5 sm:m-10 md:mx-20 lg:mx-16 ">
+            <form action="" className="" method="post">
               <h1
                 id="personaldetails"
                 className="font-bold text-xl border-b border-gray-300 py-1 font-sans tracking-wide mt-[130px] lg:mt-0"
@@ -252,35 +247,27 @@ export default function SideBar() {
                 </label>
                 <div className="flex gap-5">
                   <label for="file" className="mt-5">
-                    {imageSrc && (
+                    {imageSrc && <img src={imageSrc} width="80" height="80" />}
+                    {!imageSrc && (
                       <img
-                      src={imageSrc}
-                      
-                      width="80"
-                      height="80"
-                    />
+                        src="https://www.provast.io/_next/image?url=http%3A%2F%2Fres.cloudinary.com%2Fdj7nomqfd%2Fimage%2Fupload%2Fv1647117869%2Fuploads%2Fbphhxvmlcyyu2pntbikm.png&w=2048&q=75"
+                        width="80"
+                        height="80"
+                      />
                     )}
-                    {
-                      !imageSrc && (
-                        <img
-                      src="https://www.provast.io/_next/image?url=http%3A%2F%2Fres.cloudinary.com%2Fdj7nomqfd%2Fimage%2Fupload%2Fv1647117869%2Fuploads%2Fbphhxvmlcyyu2pntbikm.png&w=2048&q=75"
-                      
-                      width="80"
-                      height="80"
-                    />
-                      )
-                    }
-                    
 
                     <input type="file" id="file" name="file" hidden />
                   </label>
                   {imageSrc && !uploadData && (
-            <p>
-              <button
-              onChange={handleOnChange}
-              onSubmit={handleOnSubmit}>Upload Files</button>
-            </p>
-          )}
+                    <p>
+                      <button
+                        onChange={handleOnChange}
+                        onSubmit={handleOnSubmit}
+                      >
+                        Upload Files
+                      </button>
+                    </p>
+                  )}
 
           {uploadData && (
             // <code><pre>{JSON.stringify(uploadData, null, 2)}</pre></code>
