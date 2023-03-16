@@ -365,7 +365,7 @@ export default function SideBar() {
               </div>
             </form>
 
-            <div className="h-[700px] overflow-y-scroll">
+            <div className=" overflow-y-scroll">
               <SocailMedia />
 
               <Internship />
