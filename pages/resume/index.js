@@ -44,14 +44,10 @@ export default function Index(props) {
                 {/* CREATE */}
                <Link href="/resume/resumes">Create</Link>
                 <div className=" flex justify-center "><TbPlus/></div>
-
-
                 {/* <input type="text" name="role" id="role" className='border' required placeholder='enter role'/> */}
 
               </div>
             </div>
-
-
             {data.map((item)=>(
               <div key={item._id}> 
                 {user.email == item.email && (

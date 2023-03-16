@@ -158,11 +158,12 @@ const Home = (props) => {
         
         router.push("/resume")
     }
-
+    
 
   return (
     
     <div>
+      
       <div>
         <div className="border-b border-gray-300 py-2 fixed top-[-8px] w-[100%] z-40 bg-slate-50">
             <Navbar/>
@@ -199,6 +200,7 @@ const Home = (props) => {
               <option>MBA</option>
             </select>
           </div>
+          
           <div className="hidden md:block">
             <nav className="my-10 flex">
               <a
@@ -233,8 +235,11 @@ const Home = (props) => {
               </a>
             </nav>
           </div>
-
-          <div className="grid grid-cols-1  gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 mt-5 blur-[0.75px]">
+          {/* function toggleText() {
+                const text = document.querySelector('.hidden');
+              text.classList.toggle('hidden');
+              } */}
+          <div className="grid grid-cols-1  gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 mt-5">
                 {/* <div className='rounded-md bg-black h-96 w-64 m-5 cursor-pointer relative'  key={data._id}>
             <div className=' text-4xl text-white font-semibold tracking-wider text-center '><span className='absolute z-40'>Name </span> </div>
             <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png" alt=""  className='h-[100%] w-[100%] opacity-50'/>
@@ -253,22 +258,23 @@ const Home = (props) => {
               //        <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png" alt=""  className='h-[100%] w-[100%] opacity-50'/>
 
               //      </Link>
+             
               l.map((data) => (
                 <div key={data._id} onClick={()=>{
                   setid(data._id)
                   // runMe(data._id) 
                   }}>
-                  <a href="#role" className="rounded-md bg-gray-100 h-auto  w-63 p-5 m-5 cursor-pointer relative">
+                  <div className="rounded-md bg-gray-100 h-auto  w-63 p-5 m-5 cursor-pointer relative">
                     <div className="opacity-80">
                       <img src={data.ResumeImage}/>
                     </div>
-                    <div className="absolute z-10 top-[43%] right-[43%] flex items-center justify-center h-10 w-10 bg-gray-200  bg-opacity-70 rounded-full p-1">
-                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAVJJREFUWEftl+FNAzEMhb9OQDcoTECZoGwAbNANoBMAEwAbsEFhAzYANigbwAStXuVKEbqLz7lWOlXxv1MSv68vTuKOGFiMBsbDUQGdArfAJTA1p7+AD+AFWJW4X+rQHfDkCGqOwEJRAvRsznQREpDAOkcU6BpYJtm/gQdAW6XQ1un7PJlzA7x1JYoCqS4mlvwdEGBTCODKBrTm7BBA+vWflvgPUFH/tgiNrahPbPwicTHLFnEoLeScOztBnbaZfSwA1Z4bESDVxr1lfLRayQlE529zVSBvz6pDfR3SydB9oiO+j9Cd9AroUDRGbssiT0QUtvWU5oB06e0utqigN7/19s4Brb2sPccbtStQ4mp1yCux6lB1yHPAG681dPwOHfJx/WlraXJvWdqke/ZHx4vaD4kIap78OYwK/58vZ9SgKW+4QesrXrQ+0uQXCUQXDQ5oA5cjSCVYiqWCAAAAAElFTkSuQmCC" />
+                    <div className="absolute z-10 top-[43%] right-[43%] flex items-center justify-center h-10 w-10 bg-gray-200  bg-opacity-70 rounded-full p-1 ">
+                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAVJJREFUWEftl+FNAzEMhb9OQDcoTECZoGwAbNANoBMAEwAbsEFhAzYANigbwAStXuVKEbqLz7lWOlXxv1MSv68vTuKOGFiMBsbDUQGdArfAJTA1p7+AD+AFWJW4X+rQHfDkCGqOwEJRAvRsznQREpDAOkcU6BpYJtm/gQdAW6XQ1un7PJlzA7x1JYoCqS4mlvwdEGBTCODKBrTm7BBA+vWflvgPUFH/tgiNrahPbPwicTHLFnEoLeScOztBnbaZfSwA1Z4bESDVxr1lfLRayQlE529zVSBvz6pDfR3SydB9oiO+j9Cd9AroUDRGbssiT0QUtvWU5oB06e0utqigN7/19s4Brb2sPccbtStQ4mp1yCux6lB1yHPAG681dPwOHfJx/WlraXJvWdqke/ZHx4vaD4kIap78OYwK/58vZ9SgKW+4QesrXrQ+0uQXCUQXDQ5oA5cjSCVYiqWCAAAAAElFTkSuQmCC" className="onClick={toggleText}" />
                     </div>
                     <div className=" text-2xl p-3 text-center   font-semibold">
                       {data.ResumeName}{" "}
                     </div>
-                  </a>
+                  </div>
                 </div>
               ))
             }
@@ -282,8 +288,10 @@ const Home = (props) => {
              <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png" alt=""  className='h-[100%] w-[100%] opacity-50'/>
      
            </Link> */}
+          
+
           </div>
-          <div className="text-gray-500 text-center my-[58%] text-3xl font-semibold">
+          <div className="text-gray-500 text-center my-[58%] text-3xl font-semibold hidden">
                 CREATE
                 <div className=" flex justify-center "><TbPlus/></div>
                 <input type="text" name="role" id="role" className='border' required placeholder='enter role' onChange={(event)=>{setRole(event.target.value)}}/>
