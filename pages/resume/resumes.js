@@ -19,8 +19,6 @@ const Home = (props) => {
     const [checked, setchecked] = useState(false)
     
     const user = useUser();
-    
-    
     const router = useRouter()
 
 
@@ -30,137 +28,53 @@ const Home = (props) => {
     async function createResume(resumeId){
 
       var pro
-
-
       if(checked){
+          console.log("inside checked")
           var data = await fetch("/api/changePublic",{
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email : user.email }),
         })
+        const resume = await data.json()
+        resume.resume.publicResume = "false"
+        resume.resume.id = resumeId
+        console.log("resume after pro",resume)
+        
+        if(resume){ 
+          pro = resume
+        } 
       }
       else{
-          pro = {
-          id:resumeId,
-          publicResume:false,
-          personal: {
-            firstName: user.profile.firstName,
-            lastName: user.profile.lastName,
-            email: user.email,
-            role: role,
-            image: "",
-            dob: "1985-11-01",
-            phone: user.phone.value,
-            objective: "",
-          },
-          social: [
-            // {
-            //   network: "Instagram",
-            //   username: "tim_j",
-            //   url: "https://www.instagram.com/tim_j/",
-            //   enabled: true,
-            // },
-          ],
-          work: [
-            // {
-            //   company: "Kell Tech",
-            //   from: "2022-03-12",
-            //   to: "2024-08-10",
-            //   designation: "Senior Development Engineer",
-            //   website: "http://www.kelltech.com",
-            //   summary: {
-            //     data: "- Utilized Cloud Foundry for efficient building on top of Kubernetes.\n- Supported testing and engineering processes.",
-            //     enabled: true,
-            //   },
-            //   enabled: true,
-            // },
-          ],
-          education: [
-            // {
-            //   institution: "University of Pennsylvania",
-            //   fieldOfStudy: "Computer Science",
-            //   typeOfDegree: "Master of Science",
-            //   startDate: "2015-04-10",
-            //   endDate: "2018-06-10",
-            //   gpa: "7.5",
-            //   summary: {
-            //     data: "Completed MS in the field of Computer Science",
-            //     enabled: true,
-            //   },
-            //   enabled: true,
-            // },
-          ],
-          awards: [
-            // {
-            //   name: "Best performer Award",
-            //   awarder: "Kell Tech",
-            //   date: "2021-09-21",
-            //   summary: {
-            //     data: "Recieved an award for best performance for the term.",
-            //     enabled: true,
-            //   },
-            //   enabled: true,
-            // },
-          ],
-          skills: [
-            // {
-            //   name: "ReactJS",
-            //   level: "Beginner",
-            //   enabled: true,
-            // },
-          ],
-          languages: [
-            // {
-            //   name: "English",
-            //   fluency: "Professional",
-            //   enabled: true,
-            // },
-          ],
-          hobbies: [
-            // {
-            //   name: "Solving puzzles",
-            //   enabled: true,
-            // },
-            // {
-            //   name: "Travelling",
-            //   enabled: true,
-            // },
-          ],
-          certifications: [
-            // title: "Oracle Java Certifications Associate Professional",
-            // date: "2014-09-18",
-            // issuer: "Udemy",
-            // summary: {
-            //   data: "Completed a course on Java and built a project at the end of the course",
-            //   enabled: true,
-            // },
-            // enabled: true,
-          ],
-          projects: [
-            // {
-            //   name: "Gaming AI",
-            //   from: "2017-08-03",
-            //   to: "2018-11-15",
-            //   website: "http://github.com/gameai",
-            //   summary: {
-            //     data: "Worked with IT team to create an AI based gaming application for the modern gamers",
-            //     enabled: true,
-            //   },
-            //   enabled: true,
-            // },
-          ],
-        };
+          console.log("inside unchecked")
+            pro = {
+            id:resumeId,
+            publicResume:false,
+            personal: {
+              firstName: user.profile.firstName,
+              lastName: user.profile.lastName,
+              email: user.email,
+              role: role,
+              image: "",
+              dob: "1985-11-01",
+              phone: user.phone.value,
+              objective: "",
+            },
+            social: [],
+            work: [ ],
+            education: [],
+            awards: [],
+            skills: [],
+            languages: [],
+            hobbies: [],
+            certifications: [ ],
+            projects: [],
+          };
       }
-        
         const body={
             email:user.email,
             resume:pro
         }
-        console.log("in run",document.getElementById("publicResume").value)
-        
-
-        
-
+        console.log("body",body)
         var data = await fetch("/api/testResume",{
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -177,6 +91,7 @@ const Home = (props) => {
   return (
     
     <div>
+      
       <div>
         <div className="border-b border-gray-300 py-2 fixed top-[-8px] w-[100%] z-40 bg-slate-50">
             <Navbar/>
@@ -213,6 +128,7 @@ const Home = (props) => {
               <option>MBA</option>
             </select>
           </div>
+          
           <div className="hidden md:block">
             <nav className="my-10 flex">
               <a
@@ -247,8 +163,11 @@ const Home = (props) => {
               </a>
             </nav>
           </div>
-
-          <div className="grid grid-cols-1  gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 mt-5 blur-[0.75px]">
+          {/* function toggleText() {
+                const text = document.querySelector('.hidden');
+              text.classList.toggle('hidden');
+              } */}
+          <div className="grid grid-cols-1  gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 mt-5">
                 {/* <div className='rounded-md bg-black h-96 w-64 m-5 cursor-pointer relative'  key={data._id}>
             <div className=' text-4xl text-white font-semibold tracking-wider text-center '><span className='absolute z-40'>Name </span> </div>
             <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png" alt=""  className='h-[100%] w-[100%] opacity-50'/>
@@ -267,6 +186,7 @@ const Home = (props) => {
               //        <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png" alt=""  className='h-[100%] w-[100%] opacity-50'/>
 
               //      </Link>
+             
               l.map((data) => (
                 <div key={data._id} onClick={()=>{
                   setid(data._id)
@@ -277,8 +197,8 @@ const Home = (props) => {
                     <div className="opacity-80">
                       <img src={data.ResumeImage}/>
                     </div>
-                    <div className="absolute z-10 top-[43%] right-[43%] flex items-center justify-center h-10 w-10 bg-gray-200  bg-opacity-70 rounded-full p-1">
-                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAVJJREFUWEftl+FNAzEMhb9OQDcoTECZoGwAbNANoBMAEwAbsEFhAzYANigbwAStXuVKEbqLz7lWOlXxv1MSv68vTuKOGFiMBsbDUQGdArfAJTA1p7+AD+AFWJW4X+rQHfDkCGqOwEJRAvRsznQREpDAOkcU6BpYJtm/gQdAW6XQ1un7PJlzA7x1JYoCqS4mlvwdEGBTCODKBrTm7BBA+vWflvgPUFH/tgiNrahPbPwicTHLFnEoLeScOztBnbaZfSwA1Z4bESDVxr1lfLRayQlE529zVSBvz6pDfR3SydB9oiO+j9Cd9AroUDRGbssiT0QUtvWU5oB06e0utqigN7/19s4Brb2sPccbtStQ4mp1yCux6lB1yHPAG681dPwOHfJx/WlraXJvWdqke/ZHx4vaD4kIap78OYwK/58vZ9SgKW+4QesrXrQ+0uQXCUQXDQ5oA5cjSCVYiqWCAAAAAElFTkSuQmCC" />
+                    <div className="absolute z-10 top-[43%] right-[43%] flex items-center justify-center h-10 w-10 bg-gray-200  bg-opacity-70 rounded-full p-1 ">
+                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAVJJREFUWEftl+FNAzEMhb9OQDcoTECZoGwAbNANoBMAEwAbsEFhAzYANigbwAStXuVKEbqLz7lWOlXxv1MSv68vTuKOGFiMBsbDUQGdArfAJTA1p7+AD+AFWJW4X+rQHfDkCGqOwEJRAvRsznQREpDAOkcU6BpYJtm/gQdAW6XQ1un7PJlzA7x1JYoCqS4mlvwdEGBTCODKBrTm7BBA+vWflvgPUFH/tgiNrahPbPwicTHLFnEoLeScOztBnbaZfSwA1Z4bESDVxr1lfLRayQlE529zVSBvz6pDfR3SydB9oiO+j9Cd9AroUDRGbssiT0QUtvWU5oB06e0utqigN7/19s4Brb2sPccbtStQ4mp1yCux6lB1yHPAG681dPwOHfJx/WlraXJvWdqke/ZHx4vaD4kIap78OYwK/58vZ9SgKW+4QesrXrQ+0uQXCUQXDQ5oA5cjSCVYiqWCAAAAAElFTkSuQmCC" className="onClick={toggleText}" />
                     </div>
                     <div className=" text-2xl p-3 text-center   font-semibold">
                       {data.ResumeName}{" "}
@@ -297,6 +217,8 @@ const Home = (props) => {
              <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png" alt=""  className='h-[100%] w-[100%] opacity-50'/>
      
            </Link> */}
+          
+
           </div>
           {rolepop==true && (
           <div className="fixed top-[40%] left-[25%] right-[30%] w-full max-w-2xl">
@@ -313,6 +235,10 @@ const Home = (props) => {
                 <input type="text" name="role" id="role" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500" required placeholder='Ex:- Full Stack Developer' onChange={(event)=>{setRole(event.target.value)}}/>
                 </div>
                {/* <Link href="/resume/resumes">Submit</Link> */}
+<<<<<<< HEAD
+               <input type="checkbox" name="publicResume" id="publicResume" onChange={()=>{setchecked(!checked)}}/>
+               <button className="mx-2" onClick={()=>{createResume(id)}}>Submit</button>
+=======
                <div className="flex">
                <div className="pl-5 pt-1">
                <input type="checkbox" name="publicResume" id="publicResume" onChange={()=>{setchecked(!checked)
@@ -324,6 +250,7 @@ const Home = (props) => {
                   <button className="px-3 py-2 rounded-md bg-white text-gray-700 border border-gray-300" onClick={()=>{setrolepop(false)}}>Cancel</button>
                <button className="bg-orange-500 text-white px-3 py-2 rounded-md" onClick={()=>{createResume(id)}}>Save</button>
                 </div>
+>>>>>>> 55b472bbed8963cdf5f95c36c907efe60c747ba6
               </div>
               </div>)}
         </div>

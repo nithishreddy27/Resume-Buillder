@@ -5,11 +5,29 @@ export default async function handler(req,res){
 
     switch(req.method){
         case("POST"):
+        const resume = req.body.resume.resume
+        console.log("req body",resume)
+            // var resumeData = await UserResume.updateOne({"email":req.body.resume.email},{ $push: { resume: resume } })
             var resumeData = await UserResume.findOne({"email":req.body.resume.email})
             if(resumeData){
+                const arr=[]
+                resumeData.resume.map((item)=>{
+                    arr.push(item)
+                })
+                if(resume.resume){
+                    arr.push(resume.resume)
+                }
+                else{
+
+                    arr.push(resume)
+                }
+                console.log("res",resume)
+                console.log("item",arr)
+                await UserResume.updateOne({"email":req.body.resume.email},{$set:{"resume":arr}})
+                // await resumeData.resume.push(resume)
+                // console.log("in",resumeData.resume)
                 
-                resumeData.resume.push(req.body.resume.resume)
-                await resumeData.save()
+                // await resumeData.save()
             }
             else{
                 var data = await UserResume.create(req.body.resume)

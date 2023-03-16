@@ -31,12 +31,19 @@ export default function SideBar() {
   const [open, setopen] = useState("semiopen");
 
   const { details, setdetails } = useContext(ResumeContext);
+  const [count, setcount] = useState(0);
 
   function updateForm(event) {
     const n = event.target.name;
     const i = event.target.id;
+    if (i == "objective") {
+      setcount(event.target.value.length);
+    }
+    console.log("i", i);
+
     setdetails({ ...details, [n]: { ...details[n], [i]: event.target.value } });
   }
+
   const [imageSrc, setImageSrc] = useState();
   const [uploadData, setUploadData] = useState();
 
@@ -343,7 +350,7 @@ export default function SideBar() {
                   htmlFor="objective"
                   className="font-semibold text-gray-400"
                 >
-                  Objective
+                  Objective max - <span>{count} letters</span>
                 </label>
                 <div className="my-2">
                   <textarea
@@ -358,36 +365,38 @@ export default function SideBar() {
               </div>
             </form>
 
-            <SocailMedia />
+            <div className="h-[700px] overflow-y-scroll">
+              <SocailMedia />
 
-            <Internship />
+              <Internship />
 
-            {/* Education  */}
+              {/* Education  */}
 
-            <Education />
+              <Education />
 
-            {/* Certifications  */}
+              {/* Certifications  */}
 
-            <Certifications />
+              <Certifications />
 
-            {/* Projects  */}
+              {/* Projects  */}
 
-            <Projects />
+              <Projects />
 
-            {/* awards  */}
+              {/* awards  */}
 
-            <Awards />
+              <Awards />
 
-            {/* skills */}
+              {/* skills */}
 
-            <Skills />
+              <Skills />
 
-            {/* Languages  */}
+              {/* Languages  */}
 
-            <Languages />
-            {/* hobbies  */}
+              <Languages />
+              {/* hobbies  */}
 
-            <Hobbies />
+              <Hobbies />
+            </div>
           </div>
         </div>
       </div>

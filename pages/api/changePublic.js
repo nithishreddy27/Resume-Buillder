@@ -1,17 +1,26 @@
 import { serializeWithBufferAndIndex } from "bson"
+import { TURBO_TRACE_DEFAULT_MEMORY_LIMIT } from "next/dist/shared/lib/constants"
 import UserResume from "../../model/UserResume"
 
 export default async function handler(req,res){
     
     var email
     switch(req.method){
-        case("POST"):
-            console.log("inside post")
+        case("POST"): 
             email = req.body.email
-            var data = await UserResume.findOne({"email":email ,resume:{$eleMatch:{"publicResume":"false"}}})
-            console.log("data",data)
+            console.log("inside post",email)
+                // var data = await UserResume.findOne({"email":email ,resume:{$eleMatch:{"publicResume":"false"}}})
+            var data = await UserResume.findOne({"email":email})
+            data.resume.map((resume)=>{
+                if(resume.publicResume){
+                    res.send({"resume":resume})
+                }
+            })
+            console.log("out");
+            res.send({"no":true})
             break
         case("PUT"):
+            console.log("inside put")
             email = req.body.body.email
             const resumeId = req.body.body.resumeId
             var data = await UserResume.updateOne(
