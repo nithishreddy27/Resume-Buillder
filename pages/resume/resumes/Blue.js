@@ -159,26 +159,28 @@ export default function Blue() {
                         <h1 className="mx-2">{details.personal.email}</h1>
                       </div>
                       {details.social.map((item) => (
-                        <>{item.enabled==true && (
-                          <div className="my-3 flex" key={item.network}>
-                          <span>
-                            <img
-                              src={
-                                "https://www." +
-                                item.network +
-                                ".com/favicon.ico"
-                              }
-                              alt=""
-                              srcset=""
-                              className="w-5 grayscale-[40%]"
-                            />
-                          </span>
+                        <>
+                          {item.enabled == true && (
+                            <div className="my-3 flex" key={item.network}>
+                              <span>
+                                <img
+                                  src={
+                                    "https://www." +
+                                    item.network +
+                                    ".com/favicon.ico"
+                                  }
+                                  alt=""
+                                  srcset=""
+                                  className="w-5 grayscale-[40%]"
+                                />
+                              </span>
 
-                          <Link href={item.url}>
-                            <span className="mx-4">{item.username}</span>
-                          </Link>
-                        </div>
-                        )}</>
+                              <Link href={item.url}>
+                                <span className="mx-4">{item.username}</span>
+                              </Link>
+                            </div>
+                          )}
+                        </>
                       ))}
                     </>
                     {details.skills.length != 0 && (
@@ -270,7 +272,6 @@ export default function Blue() {
                                     <div className="flex" key={item.name}>
                                       <span className=" text-[15px] my-1">
                                         {item.name}{" "}
-                                        <span className="">({item.date})</span>
                                       </span>
                                     </div>
                                   )}
@@ -345,13 +346,13 @@ export default function Blue() {
                                       className="mt-4"
                                       key={item.institution}
                                     >
-                                      <h1 className="font-semibold">
-                                        {item.institution}{" "}
-                                        <span className="font-medium">
-                                          ({item.startDate.slice(0, 4)}-
-                                          {item.endDate.slice(0, 4)})
-                                        </span>{" "}
-                                      </h1>
+                                       <h1 className="font-semibold relative">
+                                          {item.institution}
+                                          <span className="font-medium absolute right-0">
+                                            [{item.startDate.slice(0, 4)}-
+                                            {item.endDate.slice(0, 4)}]
+                                          </span>
+                                        </h1>
                                       <p className="ml-5">
                                         {item.typeOfDegree}
                                       </p>
@@ -374,15 +375,15 @@ export default function Blue() {
                             0 && (
                             <>
                               <h1 className="text-xl font-bold tracking-[1px] mt-4 heading">
-                                WORK
+                                INTERNSHIP
                               </h1>
                               {details.work.map((item) => (
                                 <>
                                   {item.enabled == true && (
                                     <div className="mt-4" key={item.company}>
-                                      <h1 className="font-semibold">
+                                      <h1 className="font-semibold relative">
                                         {item.company}{" "}
-                                        <span className="font-medium">
+                                        <span className="font-medium absolute right-0">
                                           ({item.from.slice(0, 4)}-
                                           {item.to.slice(0, 4)})
                                         </span>{" "}
@@ -416,9 +417,9 @@ export default function Blue() {
                                   {item.enabled == true && (
                                     <div className="mt-4" key={item.name}>
                                       <Link href={item.website}>
-                                        <h1 className="font-semibold">
+                                        <h1 className="font-semibold relative">
                                           {item.name}{" "}
-                                          <span className="font-medium">
+                                          <span className="font-medium absolute right-0">
                                             ({item.from.slice(0, 4)}-
                                             {item.to.slice(0, 4)})
                                           </span>{" "}
@@ -655,9 +656,6 @@ export default function Blue() {
                                       <div className="flex" key={item.name}>
                                         <span className=" text-[15px] my-1">
                                           {item.name}{" "}
-                                          <span className="">
-                                            ({item.date})
-                                          </span>
                                         </span>
                                       </div>
                                     )}
@@ -732,12 +730,12 @@ export default function Blue() {
                                         className="mt-4"
                                         key={item.institution}
                                       >
-                                        <h1 className="font-semibold">
-                                          {item.institution}{" "}
-                                          <span className="font-medium">
-                                            ({item.startDate.slice(0, 4)}-
-                                            {item.endDate.slice(0, 4)})
-                                          </span>{" "}
+                                        <h1 className="font-semibold relative">
+                                          {item.institution}
+                                          <span className="font-medium absolute right-0">
+                                            [{item.startDate.slice(0, 4)}-
+                                            {item.endDate.slice(0, 4)}]
+                                          </span>
                                         </h1>
                                         <p className="ml-5">
                                           {item.typeOfDegree}
@@ -761,15 +759,15 @@ export default function Blue() {
                               .length > 0 && (
                               <>
                                 <h1 className="text-xl font-bold tracking-[1px] mt-4 heading">
-                                  WORK
+                                  INTERNSHIP
                                 </h1>
                                 {details.work.map((item) => (
                                   <>
                                     {item.enabled == true && (
                                       <div className="mt-4" key={item.company}>
-                                        <h1 className="font-semibold">
+                                        <h1 className="font-semibold relative">
                                           {item.company}{" "}
-                                          <span className="font-medium">
+                                          <span className="font-medium absolute right-0">
                                             ({item.from.slice(0, 4)}-
                                             {item.to.slice(0, 4)})
                                           </span>{" "}
@@ -803,9 +801,9 @@ export default function Blue() {
                                     {item.enabled == true && (
                                       <div className="mt-4" key={item.name}>
                                         <Link href={item.website}>
-                                          <h1 className="font-semibold">
+                                          <h1 className="font-semibold relative">
                                             {item.name}{" "}
-                                            <span className="font-medium">
+                                            <span className="font-medium absolute right-0">
                                               ({item.from.slice(0, 4)}-
                                               {item.to.slice(0, 4)})
                                             </span>{" "}
