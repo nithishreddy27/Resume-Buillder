@@ -345,13 +345,18 @@ export default function SideBar() {
                 </div>
               </div>
               <div className="mt-2">
-                <label
-                  id="obj"
-                  htmlFor="objective"
-                  className="font-semibold text-gray-400"
-                >
-                  Objective max - <span>{count} letters</span>
-                </label>
+                <div className="flex justify-between">
+                  <label
+                    id="obj"
+                    htmlFor="objective"
+                    className="font-semibold text-gray-400"
+                  >
+                    Objective
+                  </label>
+                  <p className="font-normal text-gray-400">
+                    {count}/250 characters
+                  </p>
+                </div>
                 <div className="my-2">
                   <textarea
                     maxLength={250}
