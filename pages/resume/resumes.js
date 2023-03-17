@@ -158,12 +158,9 @@ const Home = (props) => {
               </a>
             </nav>
           </div>
-          {/* function toggleText() {
-                const text = document.querySelector('.hidden');
-              text.classList.toggle('hidden');
-              } */}
-          <div className="grid grid-cols-1  gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 mt-5">
-            {/* <div className='rounded-md bg-black h-96 w-64 m-5 cursor-pointer relative'  key={data._id}>
+
+          <div className="grid grid-cols-1  gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 mt-5 blur-[0.1] z-0">
+                {/* <div className='rounded-md bg-black h-96 w-64 m-5 cursor-pointer relative'  key={data._id}>
             <div className=' text-4xl text-white font-semibold tracking-wider text-center '><span className='absolute z-40'>Name </span> </div>
             <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png" alt=""  className='h-[100%] w-[100%] opacity-50'/>
 
@@ -223,9 +220,9 @@ const Home = (props) => {
      
            </Link> */}
           </div>
-          {rolepop == true && (
-            <div className="fixed top-[40%] left-[25%] right-[30%] w-full max-w-2xl">
-              <div className=" bg-slate-700 rounded-md ">
+          {rolepop==true && (
+          <div className="fixed top-[35%] sm:max-w-xl sm:left-[10%] sm:right-[10%] md:left-[15%] md:right-[15%] xl:left-[30%] xl:right-[30%] lg:left-[25%] lg:right-[25%]  px-5 content-center inline-block overflow-hidden text-left align-middle transition-all transform rounded-md opacity-100 scale-100 w-full max-w-2xl z-30">
+          <div className=" bg-slate-700 rounded-md ">
                 <div className="flex">
                   <h1 className="text-2xl text-white font-medium px-5 py-5 grow">
                     Create Resume
@@ -254,39 +251,17 @@ const Home = (props) => {
                     }}
                   />
                 </div>
-                {/* <Link href="/resume/resumes">Submit</Link> */}
-                <div className="flex">
-                  <div className="pl-5 pt-1">
-                    <input
-                      type="checkbox"
-                      name="publicResume"
-                      id="publicResume"
-                      onChange={() => {
-                        setchecked(!checked);
-                      }}
-                    />
-                  </div>
-                  <div className="text-xs pt-2 pl-1 text-white">
-                    Import resume data from your public resume
-                  </div>
+               {/* <Link href="/resume/resumes">Submit</Link> */}
+               <div className="flex">
+               <div className="pl-5 pt-1">
+               <input type="checkbox" name="publicResume" id="publicResume" onChange={()=>{setchecked(!checked)
+                }}/>
                 </div>
-                <div className="flex justify-end gap-3 pr-5 pb-8">
-                  <button
-                    className="px-3 py-2 rounded-md bg-white text-gray-700 border border-gray-300"
-                    onClick={() => {
-                      setrolepop(false);
-                    }}
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    className="bg-orange-500 text-white px-3 py-2 rounded-md"
-                    onClick={() => {
-                      createResume(id);
-                    }}
-                  >
-                    Save
-                  </button>
+                <div className="text-xs pt-2 pl-1 text-white">Import resume data from your public resume</div>
+                </div>
+                <div className="flex justify-end gap-3 pr-5 pb-8 pt-5">
+                  <button className="px-3 py-2 rounded-md bg-white text-gray-700 border border-gray-300" onClick={()=>{setrolepop(false)}}>Cancel</button>
+               <button className="bg-orange-500 text-white px-3 py-2 rounded-md" onClick={()=>{createResume(id)}}>Save</button>
                 </div>
               </div>
             </div>

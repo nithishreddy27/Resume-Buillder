@@ -105,7 +105,7 @@ export default function SideBar() {
               {/* <h1>Provast</h1> */}
               <img
                 src="https://www.provast.io/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdj7nomqfd%2Fimage%2Fupload%2Fv1652909540%2Fpvast_W_uoqbkv.png&w=1920&q=75"
-                width={220}
+                width={180}
                 height={55}
               />
               {/* <div>
@@ -229,7 +229,7 @@ export default function SideBar() {
             <form action="" className="" method="post">
               <h1
                 id="personaldetails"
-                className="font-bold text-xl border-b border-gray-300 py-1 font-sans tracking-wide mt-[130px] lg:mt-0"
+                className="font-bold text-xl border-b border-gray-300 py-1 font-sans tracking-wide mt-[80px] lg:mt-0"
               >
                 Personal Details:
               </h1>
@@ -370,7 +370,7 @@ export default function SideBar() {
               </div>
             </form>
 
-            <div className="h-[700px] overflow-y-scroll">
+            <div className=" overflow-y-scroll">
               <SocailMedia />
 
               <Internship />

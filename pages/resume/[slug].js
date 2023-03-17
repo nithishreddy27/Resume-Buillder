@@ -8,6 +8,7 @@ import Script from "next/script";
 import dynamic from "next/dynamic";
 import {GrClose} from "react-icons/gr"
 import {AiOutlineCloseCircle} from "react-icons/ai"
+import { TbReplace } from "react-icons/tb"
 
 var DynamicHeader = dynamic(() => import("./demo"), {
   loading: () => <p>Loading...</p>,
@@ -100,9 +101,9 @@ export default function Slug(props) {
           <div className="w-full">
             {res==false && (
             
-            <button className="border lg:absolute absolute bg-slate-700 border-white rounded-md p-2 z-20 lg:right-[300px] right-5 top-[92px] lg:top-5  mb-5 text-white"
+            <button className="border lg:absolute fixed bg-slate-700 z-40 border-white rounded-md p-2  lg:left-[40%] right-[10%] lg:right-[57.4%] top-4 lg:top-5  mb-5 text-white"
             onClick={()=>{setres(!res)}}>
-              CHANGE
+              <TbReplace></TbReplace>
             </button>
             )}
             <div className="relative">
@@ -110,8 +111,8 @@ export default function Slug(props) {
             </div>
           </div>
           {res == true && (
-          <div className="h-screen fixed lg:static top-[100px] w-full overflow-auto bg-gradient-to-b from-slate-700 to-slate-800 border-l border-white lg:w-[30%]">
-            <div className="py-5 px-6 text-xl flex gap-[100px]  w-[100%] fixed bg-slate-700  border-b border-red-100 text-white">
+          <div className="h-screen fixed lg:static top-[200px] w-full overflow-auto bg-gradient-to-b from-slate-700 to-slate-800 border-l border-white lg:w-[30%]">
+            <div className="py-5 px-6 text-xl flex gap-[100px]  w-[100%] fixed bg-slate-700 border border-white lg:border-b lg:border-red-100 text-white">
               
               <div>All Templates</div>
               <button

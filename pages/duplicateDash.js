@@ -1,5 +1,4 @@
 import React from "react";
-import styles from '/styles/About.module.css';
 import { BsSearch } from "react-icons/bs";
 import { CiLocationOn } from "react-icons/ci";
 import { BsCalendarDate } from "react-icons/bs";
@@ -8,6 +7,7 @@ import { BsArrowDownShort } from "react-icons/bs";
 import { FaUsers } from "react-icons/fa";
 import { ImNewspaper } from "react-icons/im";
 import { CgWorkAlt } from "react-icons/cg";
+
 
 
 
