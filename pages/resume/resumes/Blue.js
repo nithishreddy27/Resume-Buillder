@@ -308,7 +308,6 @@ export default function Dynamic() {
                                     <div className="flex" key={item.name}>
                                       <span className=" text-[15px] my-1">
                                         {item.name}{" "}
-                                        <span className="">({item.date})</span>
                                       </span>
                                     </div>
                                   )}
@@ -383,13 +382,13 @@ export default function Dynamic() {
                                       className="mt-4"
                                       key={item.institution}
                                     >
-                                      <h1 className="font-semibold">
-                                        {item.institution}{" "}
-                                        <span className="font-medium">
-                                          ({item.startDate.slice(0, 4)}-
-                                          {item.endDate.slice(0, 4)})
-                                        </span>{" "}
-                                      </h1>
+                                       <h1 className="font-semibold relative">
+                                          {item.institution}
+                                          <span className="font-medium absolute right-0">
+                                            [{item.startDate.slice(0, 4)}-
+                                            {item.endDate.slice(0, 4)}]
+                                          </span>
+                                        </h1>
                                       <p className="ml-5">
                                         {item.typeOfDegree}
                                       </p>
@@ -412,15 +411,15 @@ export default function Dynamic() {
                             0 && (
                             <>
                               <h1 className="text-xl font-bold tracking-[1px] mt-4 heading">
-                                WORK
+                                INTERNSHIP
                               </h1>
                               {details.work.map((item) => (
                                 <>
                                   {item.enabled == true && (
                                     <div className="mt-4" key={item.company}>
-                                      <h1 className="font-semibold">
+                                      <h1 className="font-semibold relative">
                                         {item.company}{" "}
-                                        <span className="font-medium">
+                                        <span className="font-medium absolute right-0">
                                           ({item.from.slice(0, 4)}-
                                           {item.to.slice(0, 4)})
                                         </span>{" "}
@@ -454,9 +453,9 @@ export default function Dynamic() {
                                   {item.enabled == true && (
                                     <div className="mt-4" key={item.name}>
                                       <Link href={item.website}>
-                                        <h1 className="font-semibold">
+                                        <h1 className="font-semibold relative">
                                           {item.name}{" "}
-                                          <span className="font-medium">
+                                          <span className="font-medium absolute right-0">
                                             ({item.from.slice(0, 4)}-
                                             {item.to.slice(0, 4)})
                                           </span>{" "}
@@ -762,9 +761,6 @@ export default function Dynamic() {
                                       <div className="flex" key={item.name}>
                                         <span className=" text-[15px] my-1">
                                           {item.name}{" "}
-                                          <span className="">
-                                            ({item.date})
-                                          </span>
                                         </span>
                                       </div>
                                     )}
@@ -839,12 +835,12 @@ export default function Dynamic() {
                                         className="mt-4"
                                         key={item.institution}
                                       >
-                                        <h1 className="font-semibold">
-                                          {item.institution}{" "}
-                                          <span className="font-medium">
-                                            ({item.startDate.slice(0, 4)}-
-                                            {item.endDate.slice(0, 4)})
-                                          </span>{" "}
+                                        <h1 className="font-semibold relative">
+                                          {item.institution}
+                                          <span className="font-medium absolute right-0">
+                                            [{item.startDate.slice(0, 4)}-
+                                            {item.endDate.slice(0, 4)}]
+                                          </span>
                                         </h1>
                                         <p className="ml-5">
                                           {item.typeOfDegree}
@@ -868,15 +864,15 @@ export default function Dynamic() {
                               .length > 0 && (
                               <>
                                 <h1 className="text-xl font-bold tracking-[1px] mt-4 heading">
-                                  WORK
+                                  INTERNSHIP
                                 </h1>
                                 {details.work.map((item) => (
                                   <>
                                     {item.enabled == true && (
                                       <div className="mt-4" key={item.company}>
-                                        <h1 className="font-semibold">
+                                        <h1 className="font-semibold relative">
                                           {item.company}{" "}
-                                          <span className="font-medium">
+                                          <span className="font-medium absolute right-0">
                                             ({item.from.slice(0, 4)}-
                                             {item.to.slice(0, 4)})
                                           </span>{" "}
@@ -910,9 +906,9 @@ export default function Dynamic() {
                                     {item.enabled == true && (
                                       <div className="mt-4" key={item.name}>
                                         <Link href={item.website}>
-                                          <h1 className="font-semibold">
+                                          <h1 className="font-semibold relative">
                                             {item.name}{" "}
-                                            <span className="font-medium">
+                                            <span className="font-medium absolute right-0">
                                               ({item.from.slice(0, 4)}-
                                               {item.to.slice(0, 4)})
                                             </span>{" "}
