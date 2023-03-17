@@ -177,36 +177,36 @@ export default function Amsterdam() {
                           </p>
                         </div>
                         {details.education.length != 0 && (
-                            <>
-                              <h4 className="font-bold tracking-[4px] mt-2 heading">
-                                EDUCATION
-                              </h4>
-                              <hr className="w-[100%] h-1 bg-black my-2" />
+                          <>
+                            <h4 className="font-bold tracking-[4px] mt-4 heading">
+                              EDUCATION
+                            </h4>
+                            <hr className="w-[100%] h-1 bg-black my-2" />
 
-                              {details.education.map((item) => (
-                                <div
-                                  className="flex flex-col"
-                                  key={item.institution}
-                                >
-                                  <h1 className="text-black font-semibold mt-1">
-                                    {item.institution}
-                                  </h1>
-                                  <h1 className="mb-2 font-semibold text-sm">
-                                    [{item.startDate}] - [{item.endDate}]
-                                  </h1>
+                            {details.education.map((item) => (
+                              <div
+                                className="flex flex-col"
+                                key={item.institution}
+                              >
+                                <span className="text-black font-semibold mt-4">
+                                  {item.institution}
+                                </span>
+                                <span className="mb-2 font-semibold">
+                                  ({item.startDate} {item.endDate})
+                                </span>
 
-                                  <span className="font-semibold">
-                                    {item.typeOfDegree}
-                                  </span>
-                                  <span className="">{item.fieldOfStudy}</span>
+                                <span className="font-semibold">
+                                  {item.typeOfDegree}
+                                </span>
+                                <span className="">{item.fieldOfStudy}</span>
 
-                                  <span className="mb-4">
-                                    <b>GPA - </b> {item.gpa}
-                                  </span>
-                                </div>
-                              ))}
-                            </>
-                          )}
+                                <span className="mb-4">
+                                  <b>GPA - </b> {item.gpa}
+                                </span>
+                              </div>
+                            ))}
+                          </>
+                        )}
                       </div>
                       <div className="mx-10 flex flex-col mt-4">
                         {details.skills.length != 0 && (
@@ -234,27 +234,25 @@ export default function Amsterdam() {
                         )}
                       </div>
                       <div className="mx-10 flex flex-col mt-4">
-                      {details.awards.length != 0 && (
-                            <>
-                              <h4 className="font-bold tracking-[4px] heading">
-                                AWARDS
-                              </h4>
-                              <hr className="w-[100%] h-1 bg-black my-2" />
-                              {details.awards.map((item) => (
-                                <>
-                                  <h1
-                                    className="font-semibold mt-1"
-                                    key={item.name}
-                                  >
-                                    {item.name}</h1>
-                                    <h1>
-                                    [{item.date}]
-                                  </h1>
-                                  <span className="mb-3">{item.awarder}</span>
-                                </>
-                              ))}
-                            </>
-                          )}
+                        {details.awards.length != 0 && (
+                          <>
+                            <h4 className="font-bold tracking-[4px] heading">
+                              AWARDS
+                            </h4>
+                            <hr className="w-[100%] h-1 bg-black my-2" />
+                            {details.awards.map((item) => (
+                              <>
+                                <span
+                                  className="font-semibold mt-1"
+                                  key={item.name}
+                                >
+                                  {item.name}({item.date})
+                                </span>
+                                <span className="mb-3">{item.awarder}</span>
+                              </>
+                            ))}
+                          </>
+                        )}
                       </div>
                       <div className="mx-10 flex flex-col mt-4">
                         {details.hobbies.length != 0 && (
@@ -304,36 +302,31 @@ export default function Amsterdam() {
                           <p className="my-4">{details.personal.objective}</p>
                         </>
                       )}
-                      {details.projects.length != 0 && (
-                          <>
-                            <h2 className="font-bold tracking-[4px] heading">
-                              PROJECTS
-                            </h2>
-                            <hr className="w-[100%] h-1 bg-black my-1" />
-                            {details.projects.map((item) => (
-                              <>
-                                <div className="my-4">
-                                  <h1 className="text-black font-bold mt-3 relative">
-                                    {item.name}{" "}
-                                    <span className="text-black font-semibold text-xs absolute right-0">
-                                      [{item.from} - {item.to}]
-                                    </span>{" "}
-                                  </h1>
 
-                                  <p className="ml-4 mt-2">
-                                    {item.summary.data}
-                                  </p>
-                                </div>
-                              </>
-                            ))}
-                          </>
-                        )}
-                      {details.work.length != 0 && (
-                          <>
-                            <h2 className="font-bold tracking-[4px] heading">
-                              INTERNSHIP
-                            </h2>
-                            <hr className="w-[100%] h-1 bg-black my-1" />
+                      {details.projects.length != 0 && (
+                        <>
+                          <h2 className="font-bold tracking-[4px] heading">
+                            PROJECTS
+                          </h2>
+                          <hr className="w-[100%] h-1 bg-black my-1" />
+
+                          {details.projects.map((item) => (
+                            <>
+                              <div className="my-4">
+                                <h1 className="text-black font-bold mt-3 relative">
+                                  {item.name}{" "}
+                                  <span className="text-black font-semibold text-xs absolute right-0">
+                                    [{item.from} - {item.to}]
+                                  </span>{" "}
+                                </h1>
+
+                                <p className="ml-4 mt-2">{item.summary.data}</p>
+                              </div>
+                            </>
+                          ))}
+                        </>
+                      )}
+
                       {details.work.map((item) => (
                         <>
                           <div className="flex flex-col" key={item.company}>
@@ -352,36 +345,33 @@ export default function Amsterdam() {
                           </div>
                         </>
                       ))}
-                      </>
-                      )}
-
                       {details.certifications.length != 0 && (
-                        <>
-                          <h2 className="font-bold tracking-[4px] heading">
-                            CERTIFICATIONS
-                          </h2>
-                          <hr className="w-[100%] h-1 bg-black my-1" />
-                          {details.certifications.map((item) => (
-                            <>
-                              <div className="flex flex-col" key={item.title}>
-                                {/* <span className="text-black font-bold mt-3" >{item.name}</span> */}
+                          <>
+                            <h2 className="font-bold tracking-[4px] heading">
+                              CERTIFICATIONS
+                            </h2>
+                            <hr className="w-[100%] h-1 bg-black my-1" />
+                            {details.certifications.map((item) => (
+                              <>
+                                <div className="flex flex-col" key={item.title}>
+                                  {/* <span className="text-black font-bold mt-3" >{item.name}</span> */}
 
-                                <span className="text-black font-bold mt-3">
-                                  {item.title}
-                                </span>
-
-                                <h1 className="text-black font-semibold mx-4 relative">
-                                  {item.issuer}
-                                  <span className="font-semibold text-sm absolute right-0">
-                                    [{item.date}]
-                                  </span>
-                                </h1>
-                                {/* <p className="ml-4">{item.summary.data}</p> */}
-                              </div>
-                            </>
-                          ))}
-                        </>
-                      )}
+                                  <span className="text-black font-bold mt-3">
+                                    {item.title}</span> 
+                                    
+                                  
+                                  <h1 className="text-black font-semibold mx-4 relative">
+                                    {item.issuer}
+                                    <span className="font-semibold text-sm absolute right-0">
+                                      [{item.date}]
+                                    </span>
+                                  </h1>
+                                  {/* <p className="ml-4">{item.summary.data}</p> */}
+                                </div>
+                              </>
+                            ))}
+                          </>
+                        )}
                     </div>
                   </div>
                 </div>
@@ -504,7 +494,7 @@ export default function Amsterdam() {
                           </div>
                           {details.education.length != 0 && (
                             <>
-                              <h4 className="font-bold tracking-[4px] mt-2 heading">
+                              <h4 className="font-bold tracking-[4px] mt-4 heading">
                                 EDUCATION
                               </h4>
                               <hr className="w-[100%] h-1 bg-black my-2" />
@@ -514,12 +504,12 @@ export default function Amsterdam() {
                                   className="flex flex-col"
                                   key={item.institution}
                                 >
-                                  <h1 className="text-black font-semibold mt-1">
+                                  <span className="text-black font-semibold mt-4">
                                     {item.institution}
-                                  </h1>
-                                  <h1 className="mb-2 font-semibold text-sm">
-                                    [{item.startDate}] - [{item.endDate}]
-                                  </h1>
+                                  </span>
+                                  <span className="mb-2 font-semibold">
+                                    ({item.startDate} {item.endDate})
+                                  </span>
 
                                   <span className="font-semibold">
                                     {item.typeOfDegree}
@@ -568,15 +558,12 @@ export default function Amsterdam() {
                               <hr className="w-[100%] h-1 bg-black my-2" />
                               {details.awards.map((item) => (
                                 <>
-                                  <h1
+                                  <span
                                     className="font-semibold mt-1"
                                     key={item.name}
                                   >
-                                    {item.name}
-                                    </h1>
-                                    <h1>
-                                    [{item.date}]
-                                    </h1>
+                                    {item.name}({item.date})
+                                  </span>
                                   <span className="mb-3">{item.awarder}</span>
                                 </>
                               ))}
@@ -631,30 +618,21 @@ export default function Amsterdam() {
                             <p className="my-4">{details.personal.objective}</p>
                           </>
                         )}
-                        {details.projects.length != 0 && (
-                          <>
-                            <h2 className="font-bold tracking-[4px] heading">
-                              PROJECTS
-                            </h2>
-                            <hr className="w-[100%] h-1 bg-black my-1" />
-                            {details.projects.map((item) => (
-                              <>
-                                <div className="my-4">
-                                  <h1 className="text-black font-bold mt-3 relative">
-                                    {item.name}{" "}
-                                    <span className="text-black font-semibold text-xs absolute right-0">
-                                      [{item.from} - {item.to}]
-                                    </span>{" "}
-                                  </h1>
 
-                                  <p className="ml-4 mt-2">
-                                    {item.summary.data}
-                                  </p>
-                                </div>
-                              </>
-                            ))}
+                        {details.projects.map((item) => (
+                          <>
+                            <div className="my-4">
+                              <h1 className="text-black font-bold mt-3 relative">
+                                {item.name}{" "}
+                                <span className="text-black font-semibold text-xs absolute right-0">
+                                  [{item.from} - {item.to}]
+                                </span>{" "}
+                              </h1>
+
+                              <p className="ml-4 mt-2">{item.summary.data}</p>
+                            </div>
                           </>
-                        )}
+                        ))}
 
                         {details.work.length != 0 && (
                           <>
@@ -697,9 +675,9 @@ export default function Amsterdam() {
                                   {/* <span className="text-black font-bold mt-3" >{item.name}</span> */}
 
                                   <span className="text-black font-bold mt-3">
-                                    {item.title}
-                                  </span>
-
+                                    {item.title}</span> 
+                                    
+                                  
                                   <h1 className="text-black font-semibold mx-4 relative">
                                     {item.issuer}
                                     <span className="font-semibold text-sm absolute right-0">
