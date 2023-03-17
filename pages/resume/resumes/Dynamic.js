@@ -15,6 +15,7 @@ import { AiFillPrinter, AiFillDatabase } from "react-icons/ai";
 import { TbListDetails } from "react-icons/tb";
 import { MdOutlineColorLens, MdOutlineDocumentScanner } from "react-icons/md";
 import { TbArrowAutofitWidth } from "react-icons/tb"
+import { HiOutlineDocumentSearch } from "react-icons/hi"
 
 import { RxHobbyKnife } from "react-icons/rx";
 
@@ -98,29 +99,37 @@ export default function Dynamic() {
             ;
           </div> */}
           {open == "closed" && (
-            <div className="mx-auto w-full bg-cover lg:w-3/4 xl:w-3/5 bg-gradient-to-b from-slate-700 to-slate-800">
-              <div className="border-b border-r border-gray-300 py-2 top-[-5px] fixed lg:sticky w-[100%] lg:w-[100%] z-40 bg-slate-700">
+            <div className="mx-auto w-full bg-cover lg:w-3/4 xl:w-3/5 bg-gradient-to-b from-slate-700 to-slate-800 ">
+              <div className="border-b border-r border-gray-300 py-2 top-[-5px] fixed lg:sticky w-[100%] lg:w-[100%] z-30  bg-slate-700">
                 <div className="flex items-center justify-between xl:max-w-7xl xl:mx-auto max-w-full px-[8%] flex-wrap w-full">
                   {/* <h1>Provast</h1> */}
                   <img
                     src="https://www.provast.io/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdj7nomqfd%2Fimage%2Fupload%2Fv1652909540%2Fpvast_W_uoqbkv.png&w=1920&q=75"
-                    width={220}
+                    width={180}
                     height={55}
                   />
+                  <button
+                    className=" block lg:hidden  text-white p-1 mr-[20%] md:mr-[10%] mt-1 border border-white rounded-md"
+                    onClick={toggleResume}
+                  >
+                    <TbListDetails className="text-2xl text-gray-400"></TbListDetails>
+                  </button>
+                  
+                  
                   {/* <div>
                       <button>Preview</button>
                     </div> */}
                 </div>
               </div>
-              <div className="flex border border-white mt-[80px] w-[150%]">
+              <div className="flex justify-center  shadow-lg  mt-[75px] mx-2 w-[97%] rounded-md fixed bg-slate-700 z-30">
                 <div className="m-3 flex">
                   <button
-                    className="text-white border border-white p-2 rounded-md"
+                    className="text-white p-2 rounded-md"
                     onClick={() => {
                       setcolorpalette(!colorpalette);
                     }}
                   >
-                    COLOR
+                    <MdOutlineColorLens className="text-2xl text-gray-200"></MdOutlineColorLens>
                   </button>
                   <div
                     className={`${
@@ -150,18 +159,13 @@ export default function Dynamic() {
                   >
                     <AiFillDatabase className="text-2xl text-gray-400"></AiFillDatabase>
                   </button>
-                  <button
-                    className=" block lg:hidden  text-white p-1 mx-1 rounded-md"
-                    onClick={toggleResume}
-                  >
-                    <TbListDetails className="text-2xl text-gray-400"></TbListDetails>
-                  </button>
+                  
                 </div>
               </div>
-              <div className="flex justify-center ">
+              <div className="flex justify-center z-0">
                 {/* Small Resume */}
                 <div
-                  className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-300px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row"
+                  className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[100px] sm:mt-[-100px] mx-[-210px] mt-[-150px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover z-0 overflow-hidden drop-shadow-2xl flex flex-row"
                   id="smallResume"
                   // style={{ color: color.hex }}
                 >
@@ -536,12 +540,12 @@ export default function Dynamic() {
           {open == "semiopen" && (
             <>
               <SideBar />
-
+              {/* PREVIEW */}
               <div
-                className="lg:hidden text-white border border-white rounded-lg p-2 hover:border-orange-700 hover:text-orange-700 absolute left-[10%] top-[92px] "
+                className="lg:hidden text-white border border-white rounded-lg p-2 hover:border-orange-700 hover:text-orange-700 fixed right-[25%] md:right-[16%] top-4 "
                 onClick={toggleResume}
               >
-                PREVIEW
+                <HiOutlineDocumentSearch></HiOutlineDocumentSearch>
               </div>
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
