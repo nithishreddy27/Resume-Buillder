@@ -49,7 +49,6 @@ export default function Index(props) {
     <>
       {user && (
         <div className=" min-h-[70vh] py-4  ">
-          
           <div className="mt-4 mx-auto max-w-7xl px-4 sm:mt-8 sm:px-6">
             <div className="text-center">
               <h1 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl md:text-5xl">
@@ -75,20 +74,20 @@ export default function Index(props) {
                   <div className=" flex justify-center ">
                     <TbPlus />
                   </div>
-                  </div>
-                  {/* <input type="text" name="role" id="role" className='border' required placeholder='enter role'/> */}
                 </div>
+                {/* <input type="text" name="role" id="role" className='border' required placeholder='enter role'/> */}
               </div>
+            </div>
 
-              {data.map((item) => (
-                <div key={item._id}>
-                  {user.email == item.email && (
-                    // flex gap-x-1 flex-wrap justify-self-center
-                    <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                      {item.resume.map((resume, index) => (
-                        <>
-                          {resume.publicResume == "false" && (
-                            <div className="mx-auto my-auto">
+            {data.map((item) => (
+              <div key={item._id}>
+                {user.email == item.email && (
+                  // flex gap-x-1 flex-wrap justify-self-center
+                  <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {item.resume.map((resume, index) => (
+                      <>
+                        {resume.publicResume == "false" && (
+                          <div className="mx-auto my-auto">
                             <div
                               className="box relative my-7 mx-10 h-[90mm] w-[70mm]  bg-black border-[4px] border-orange-500"
                               key={resume._id}
@@ -121,17 +120,19 @@ export default function Index(props) {
                                 Delete Resume
                               </button>
                             </div>
-                            </div>
-                          )}
+                          </div>
+                        )}
 
-                          {resume.publicResume == "true" && (
-                            <>
-
+                        {resume.publicResume == "true" && (
+                          <>
+                            {/* <h1 className="text-center">Public</h1> */}
+                            <div>
                               <div
-                                className="box relative my-7 mx-12  lg:h-[90mm] lg:w-[70mm] p-4 mr-5 bg-black border-[4px] border-orange-500"
+                                className="box relative my-7 mx-10 h-[90mm] w-[70mm]  bg-black border-[4px] border-orange-500"
                                 key={resume._id}
                               >
-                              <h1 className="text-center text-white">Public</h1>
+                                <div className=" absolute z-20 -top-7 rounded-t-md right-0 bg-orange-600 px-4 font-semibold text-white">public</div>
+
                                 <span>
                                   <img
                                     className="w-full h-full object-cover object-center opacity-60 hover:opacity-40"
@@ -140,7 +141,7 @@ export default function Index(props) {
                                 </span>
                                 <Link
                                   href={`/resume/${resume.id}?index=${index}`}
-                                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-2xl font-bold whitespace-nowrap transition-all duration-500"
+                                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-2xl font-bold whitespace transition-all duration-500"
                                 >
                                   {resume.personal.role}
                                 </Link>
@@ -152,23 +153,22 @@ export default function Index(props) {
                                   Delete Resume
                                 </button>
                               </div>
-                            </>
-                          )}
-                        </>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-              <style>
-                {`
+                            </div>
+                          </>
+                        )}
+                      </>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+            <style>
+              {`
           .box:hover span { 
           transform: translate(-50%, -100%);
           } `}
-              </style>
-            
+            </style>
           </div>
-          
         </div>
       )}
     </>
