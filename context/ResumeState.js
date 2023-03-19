@@ -337,7 +337,7 @@ const ResumeState = (props) => {
       //   method: "GET",
       //   headers: { "Content-Type": "application/json" },
       // })
-      fetch("https://complete-pbk9zkqmh-nithishreddy27.vercel.app/api/testResume",{
+      fetch("https://complete-psi.vercel.app/api/testResume",{
         method: "GET",
         headers: { "Content-Type": "application/json" },
       })

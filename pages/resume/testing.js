@@ -110,7 +110,7 @@ export default function Testing(props) {
 }
 
 export const getServerSideProps = async () => {
-    const res = await fetch("https://complete-pbk9zkqmh-nithishreddy27.vercel.app/api/test/getResume");
+    const res = await fetch("https://complete-psi.vercel.app/api/test/getResume");
     const data = await res.json();
     
       return {

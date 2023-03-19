@@ -158,7 +158,7 @@ export default function Dashboard(props) {
 
 export const getServerSideProps = async ()=>{
 
-  const res = await fetch(`https://complete-pbk9zkqmh-nithishreddy27.vercel.app/api/collegeStudents`);
+  const res = await fetch(`https://complete-psi.vercel.app/api/collegeStudents`);
     const data = await res.json();
     // var o = data[0];
     console.log("banda",data)
