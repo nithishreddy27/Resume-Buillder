@@ -333,7 +333,11 @@ const ResumeState = (props) => {
   useEffect(()=>{
     if(index && email){
       console.log("index",index)
-      fetch("http://localhost:3000/api/testResume",{
+      // fetch("http://localhost:3000/api/testResume",{
+      //   method: "GET",
+      //   headers: { "Content-Type": "application/json" },
+      // })
+      fetch("https://complete-pbk9zkqmh-nithishreddy27.vercel.app/api/testResume",{
         method: "GET",
         headers: { "Content-Type": "application/json" },
       })
@@ -369,11 +373,16 @@ const ResumeState = (props) => {
         resumeId:index,
         details:details
       }
-      fetch("http://localhost:3000/api/testResume", {
+      fetch("https://complete-pbk9zkqmh-nithishreddy27.vercel.app/api/testResume", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
       });
+      // fetch("http://localhost:3000/api/testResume", {
+      //   method: "PUT",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify(body)
+      // });
     }
   }, [details]);
 

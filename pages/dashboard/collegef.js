@@ -57,7 +57,7 @@ export default function College(props) {
 export const getServerSideProps = async () => {
   // const {name} =await context
   // console.log("coin",name);
-    const res = await fetch(`http://localhost:3000/api/getUsers`);
+    const res = await fetch(`https://complete-pbk9zkqmh-nithishreddy27.vercel.app/api/getUsers`);
     const data = await res.json();
     var o = data[0];
     // console.log("student",o.ResumeName)
@@ -67,4 +67,18 @@ export const getServerSideProps = async () => {
       },
     }; 
   };
+  
+// export const getServerSideProps = async () => {
+//   // const {name} =await context
+//   // console.log("coin",name);
+//     const res = await fetch(`http://localhost:3000/api/getUsers`);
+//     const data = await res.json();
+//     var o = data[0];
+//     // console.log("student",o.ResumeName)
+//     return {
+//       props: {
+//         done: data,
+//       },
+//     }; 
+//   };
   

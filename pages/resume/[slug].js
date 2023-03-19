@@ -163,8 +163,21 @@ export default function Slug(props) {
   );
 }
 
+// export const getServerSideProps = async () => {
+//   const res = await fetch("http://localhost:3000/api/Resume/searchResume");
+//   // console.log("resume",res)
+//   const data = await res.json();
+//   return {
+//     props: {
+//       done: data,
+//     },
+//   };
+// };
+
+
+
 export const getServerSideProps = async () => {
-  const res = await fetch("http://localhost:3000/api/Resume/searchResume");
+  const res = await fetch("https://complete-pbk9zkqmh-nithishreddy27.vercel.app/api/Resume/searchResume");
   // console.log("resume",res)
   const data = await res.json();
   return {
