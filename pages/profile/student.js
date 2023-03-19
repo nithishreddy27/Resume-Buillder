@@ -99,7 +99,7 @@ export default function Student() {
           onSubmit={handleOnSubmit}
         >
           <div className="flex gap-5 relative top-[-80px]">
-            <label for="file" className="mt-5">
+            <label htmlFor="file" className="mt-5">
               {imageSrc && <img src={imageSrc} width="150" height="150" />}
               {!imageSrc && (
                 <img
