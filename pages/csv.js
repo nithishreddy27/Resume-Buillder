@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Papa from 'papaparse'
 
-export default function csv() {
+export default function Csv() {
 
     const [details, setdetails] = useState()
     
