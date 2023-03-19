@@ -9,7 +9,16 @@ import { useUser } from "../../../lib/hooks";
 import SideBar from "../../../components/SideBar";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import ReactDOM from "react-dom";
 import { ColorPicker, useColor } from "react-color-palette";
+import { AiFillPrinter, AiFillDatabase } from "react-icons/ai";
+import { TbListDetails } from "react-icons/tb";
+import { MdOutlineColorLens, MdOutlineDocumentScanner } from "react-icons/md";
+import { TbArrowAutofitWidth } from "react-icons/tb"
+import { HiOutlineDocumentSearch } from "react-icons/hi"
+
+import { RxHobbyKnife } from "react-icons/rx";
+
 import "react-color-palette/lib/css/styles.css";
 
 export default function Classic() {
@@ -17,6 +26,7 @@ export default function Classic() {
   const { details, setdetails, setdemo, demo } = useContext(ResumeContext);
   const [change, setchange] = useState(false);
   const [colorpalette, setcolorpalette] = useState(false);
+  const [ftw,setftw]=useState(true);
 
   //to add email fname and lname
   useEffect(() => {
@@ -55,9 +65,6 @@ export default function Classic() {
     window.print();
     document.body.innerHTML = originalContents;
   }
-  useEffect(() => {
-    // document.getElementById("largeResume").style.color = "red"
-  }, [0]);
 
   //responsiveness
   function toggleResume() {
@@ -67,46 +74,68 @@ export default function Classic() {
       setopen("semiopen");
     }
   }
+
   const [color, setColor] = useColor("hex", "#121212");
+
   useEffect(() => {
     console.log("color:", color);
     // settextColor()
   }, [color]);
 
-  
   return (
     <>
       {details && user && (
         <div className="flex">
+          {console.log("details inside div")}
+          {/* <div>
+            <ColorPicker
+              width={456}
+              height={228}
+              color={color}
+              onChange={setColor}
+              hideHSV
+              dark
+            />
+            ;
+          </div> */}
           {open == "closed" && (
-            <div className="mx-auto w-full lg:w-3/4 xl:w-3/5 max-w-3xl bg-gradient-to-b from-gray-400 to-gray-600">
-              <button
-                className="h-10 w-10 mx-auto block lg:hidden"
-                onClick={toggleResume}
-              >
-                DETAILS
-              </button>
-              <div className="flex justify-center ">
-                <div>
+            <div className="mx-auto w-full bg-cover lg:w-3/4 xl:w-3/5 bg-gradient-to-b from-slate-700 to-slate-800 ">
+              <div className="border-b border-r border-gray-300 py-2 top-[-5px] fixed lg:sticky w-[100%] lg:w-[100%] z-30  bg-slate-700">
+                <div className="flex items-center justify-between xl:max-w-7xl xl:mx-auto max-w-full px-[8%] flex-wrap w-full">
+                  {/* <h1>Provast</h1> */}
+                  <img
+                    src="https://www.provast.io/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdj7nomqfd%2Fimage%2Fupload%2Fv1652909540%2Fpvast_W_uoqbkv.png&w=1920&q=75"
+                    width={180}
+                    height={55}
+                  />
                   <button
-                    onClick={sprintDocument}
-                    className="cursor-pointer text-white mx-5"
+                    className=" block lg:hidden  text-white p-1 mr-[20%] md:mr-[10%] mt-1 border border-white rounded-md"
+                    onClick={toggleResume}
                   >
-                    Print
+                    <TbListDetails className="text-2xl text-gray-400"></TbListDetails>
                   </button>
-
-                  <button onClick={() => setdemo(!demo)}>LOAD</button>
+                  
+                  
+                  {/* <div>
+                      <button>Preview</button>
+                    </div> */}
                 </div>
+              </div>
+              <div className="flex justify-center  shadow-lg  mt-[75px] mx-2 w-[97%] rounded-md fixed bg-slate-700 z-30">
                 <div className="m-3 flex">
                   <button
-                    className="text-white border border-white p-2 rounded-md"
+                    className="text-white p-2 rounded-md"
                     onClick={() => {
                       setcolorpalette(!colorpalette);
                     }}
                   >
-                    COLOR
+                    <MdOutlineColorLens className="text-2xl text-gray-200"></MdOutlineColorLens>
                   </button>
-                  <div className={`${colorpalette ? "block" : "hidden"} mt-[50px] ml-[-50px] lg:ml-[50px] absolute z-40`}>
+                  <div
+                    className={`${
+                      colorpalette ? "block" : "hidden"
+                    } mt-[50px] ml-[-50px] lg:ml-[50px] absolute z-40`}
+                  >
                     <ColorPicker
                       width={300}
                       height={100}
@@ -118,14 +147,23 @@ export default function Classic() {
                     ;
                   </div>
                   <button
-                    onClick={printDocument}
-                    className="cursor-pointer text-white border border-white p-1 mx-1 rounded"
+                    onClick={sprintDocument}
+                    className="cursor-pointer text-white p-1 mx-1 rounded"
                   >
-                    PRINT
+                    <AiFillPrinter className="text-2xl"></AiFillPrinter>
                   </button>
 
+                  <button
+                    className="text-white  p-1 mx-1 rounded"
+                    onClick={() => setdemo(!demo)}
+                  >
+                    <AiFillDatabase className="text-2xl text-gray-400"></AiFillDatabase>
+                  </button>
+                  
+                </div>
+              </div>
+              <div className="flex justify-center z-0">
                 {/* Small Resume */}
-
                 <div
                   className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row"
                   id="smallResume"
@@ -343,7 +381,7 @@ export default function Classic() {
                                 .length > 0 && (
                                 <>
                                   <p className="bg-gray-800 tracking-widest text-white mt-1 p-1 text-center rounded-md heading">
-                                    INTERNSHIPS
+                                    INTERNSHIPs
                                   </p>
                                   {details.work.map((item) => (
                                     <>
@@ -380,7 +418,7 @@ export default function Classic() {
                                   (awards) => awards.enabled
                                 ).length > 0 && (
                                   <div className="mt-5">
-                                    <p className="bg-gray-800 tracking-widest rounded-md text-center  text-white p-1 m-1 heading">
+                                    <p className="bg-gray-800 text-white tracking-widest rounded-md text-center  p-1 m-1 heading">
                                       AWARDS
                                     </p>
                                     {details.awards.map((item) => (
@@ -450,51 +488,132 @@ export default function Classic() {
                   </div>
                 </div>
                 <style jsx>
-                  {`.heading{
-                    color:${color.hex};
-                  }`}
+                  {`
+                    .heading {
+                      color: ${color.hex};
+                    }
+                  `}
                 </style>
               </div>
-            </div>
             </div>
           )}
 
           {open == "semiopen" && (
             <>
               <SideBar />
-
+              {/* PREVIEW */}
               <div
-                className="lg:hidden text-white border border-white rounded-lg px-2 py-1 hover:border-orange-700 hover:text-orange-700 absolute right-[10%] top-5 "
+                className="lg:hidden text-white border border-white rounded-lg p-2 hover:border-orange-700 hover:text-orange-700 fixed right-[25%] md:right-[16%] top-4 "
                 onClick={toggleResume}
               >
-                PREVIEW
+                <HiOutlineDocumentSearch></HiOutlineDocumentSearch>
               </div>
 
               <div className="hidden lg:block h-screen bg-gradient-to-b from-slate-700 to-slate-800  w-[100%] overflow-y-scroll scrollbar scrollbar-thumb-orange-800">
-                <div className="flex justify-center ">
-                  {/* large resume */}
-                  <div>
-                    <button
-                      onClick={lprintDocument}
-                      className="cursor-pointer text-white mx-5"
+                <div className="flex h-[80px] shadow-lg justify-end ">
+                  <div className="m-5 flex gap-3">
+                    <div className="group flex items-center relative">
+                      <button
+                        className="text-white p-1  rounded-md"
+                        onClick={() => {
+                          setcolorpalette(!colorpalette);
+                        }}
+                      >
+                        <MdOutlineColorLens className="text-3xl text-gray-200"></MdOutlineColorLens>
+                      </button>
+                      <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                        set color
+                      </span>
+                    </div>
+                    <div className="group flex items-center relative">
+                      <button className="text-white p-1  rounded-md"
+                        onClick={()=>{setftw(false)}}>
+                        <MdOutlineDocumentScanner className="text-2xl text-gray-200"></MdOutlineDocumentScanner>
+                      </button>
+                      <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                        fit to screen
+                      </span>
+                    </div>
+                    <div className="group flex items-center relative">
+                      <button className="text-white p-1  rounded-md"
+                      onClick={()=>{setftw(true)}}>
+                        <TbArrowAutofitWidth className="text-2xl text-gray-200"></TbArrowAutofitWidth>
+                      </button>
+                      <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                        fit to width
+                      </span>
+                    </div>
+                    <div className="group flex items-center relative justify-center">
+                      <button
+                        onClick={lprintDocument}
+                        className="flex-shrink-0 inline-flex items-center justify-center text-gray-200 hover:text-gray-500  mx-2"
+                      >
+                        <AiFillPrinter className="text-2xl"></AiFillPrinter>
+                        <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                          print
+                        </span>
+                      </button>
+                    </div>
+                    <div className="group flex items-center relative justify-center">
+                      <button
+                        onClick={() => setdemo(!demo)}
+                        className=" flex-shrink-0 inline-flex items-center justify-center text-gray-200 hover:text-gray-500"
+                      >
+                        <AiFillDatabase className="text-2xl"></AiFillDatabase>
+                        <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
+                          set demo data
+                        </span>
+                      </button>
+                    </div>
+                    <div
+                      className={`${
+                        colorpalette ? "block" : "hidden"
+                      } ml-[50px] absolute z-40`}
                     >
-                      Print
-                    </button>
+                      {/* <button className="w-5 h-5" style={{backgroundColor:"#9b2121"}}
+                      onClick={()=>{
+                        // setColor("hex","#9b2121")
+                        console.log("clicked",color)
+                        // setColor( )  
+                      }}
+                      >
 
-                    <button
-                      className="text-white"
+                      </button> */}
+                      <ColorPicker
+                        width={300}
+                        height={100}
+                        color={color}
+                        onChange={setColor}
+                        hideHSV
+                        dark
+                      />
+                      ;
+                    </div>
+                  </div>
+                  <div className="m-5 flex justify-center">
+                    {/* <button
+                      onClick={lprintDocument}
+                      className="cursor-pointer text-white mx-5 border border-white p-2 rounded"
+                    >
+                      <AiFillPrinter></AiFillPrinter>
+                     
+                    </button> */}
+
+                    
+
+                    {/* <button
+                      className="text-white border border-white p-2 rounded"
                       onClick={() => setdemo(!demo)}
                     >
-                      LOAD
-                    </button>
+                      <AiFillDatabase></AiFillDatabase>
+                    </button> */}
+                    
                   </div>
                 </div>
-                
+
                 <div className="flex justify-center ">
                   {/* large resume */}
-                  
-
-                  <div
+ <div
                     className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row"
                     id="largeResume"
                   >
@@ -722,12 +841,12 @@ export default function Classic() {
                                             className="m-2"
                                           >
                                             <Link href={`{item.website}$`}>
-                                              <span className="font-bold text-lg font-serif tracking-wide">
+                                              <p className="font-bold text-lg font-serif tracking-wide relative">
                                                 {item.company}
-                                                <span className=" font-bold font-sans text-xs ml-9">
+                                                <span className="font-sans text-xs absolute text-gray-700 right-0">
                                                   [{item.from}] - [{item.to}]
                                                 </span>{" "}
-                                              </span>
+                                              </p>
                                             </Link>
                                             <p className=" font-medium">
                                               {item.designation}
@@ -802,9 +921,9 @@ export default function Classic() {
                                               <p className="font-semibold font-serif text-lg">
                                                 {item.title}{" "}
                                               </p>
-                                              <p className="font-bold text-gray-600 font">
+                                              <p className="font-bold text-gray-600 font relative">
                                                 {item.issuer}{" "}
-                                                <span className=" font-bold font-sans text-xs absolute right-6">
+                                                <span className=" font-bold font-sans text-xs absolute right-1 ">
                                                   [{item.date}]
                                                 </span>{" "}
                                               </p>
@@ -824,11 +943,6 @@ export default function Classic() {
                       </div>
                     </div>
                   </div>
-                  <style jsx>
-                    {`.heading{
-                      color:${color.hex}
-                    }`}
-                  </style>
                 </div>
               </div>
             </>
