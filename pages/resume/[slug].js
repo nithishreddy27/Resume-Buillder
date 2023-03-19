@@ -35,11 +35,16 @@ export default function Slug(props) {
     console.log("query ",queryId)
     var resumeName
     const body = {resumeId:queryId}
-    const data = await fetch("http://localhost:3000/api/testResume/getResume", {
+    const data = await fetch("https://complete-pbk9zkqmh-nithishreddy27.vercel.app/api/testResume/getResume", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
       });
+    // const data = await fetch("http://localhost:3000/api/testResume/getResume", {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify(body)
+    //   });
       const rname = await data.json()
       resumeName = rname.resumeName
       console.log("resname",resumeName);
