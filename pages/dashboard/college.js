@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Papa from 'papaparse'
-
+import Navbar from "../../components/Navbar"
 export default function Dashboard(props) {
 
   const [students, setstudents] = useState()
@@ -60,7 +60,8 @@ export default function Dashboard(props) {
 
   return (
     // {https://aufaitux.com/wp-content/uploads/2022/11/pasted-image-2.png}
-    <div className=" bg-gray-300 h-screen overflow-auto ">
+  <div className=" bg-gray-300 h-screen overflow-auto ">
+    <Navbar/>
       <div className="p-8">
         <div className="bg-white rounded-md">
           <h1 className="text-2xl font-semibold py-4 text-center">Overview</h1>

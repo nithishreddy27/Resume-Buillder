@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState,useRef } from "react";
 import { useUser } from "../../lib/hooks";
 import ResumeContext from "../../context/ResumeContext";
 import SideBar from "../../components/SideBar";
@@ -22,7 +22,7 @@ export default function Slug(props) {
   const { details, setdetails, setdemo, demo ,id,setid,setFirst,setindex,setemail } = useContext(ResumeContext);
   const [change, setChange] = useState(false)
   const [resumeId, setresumeId] = useState()
-
+  const divRef = useRef(null);
   // function changeResume(resumeId){
   //   console.log("inside",router.asPath);
   //   // const router = useRouter()
@@ -98,6 +98,9 @@ export default function Slug(props) {
     }
   }, [user, change, q]);
 
+
+
+
   const [res, setres] = useState(false);
   return (
     <div>
@@ -111,7 +114,7 @@ export default function Slug(props) {
               <TbReplace></TbReplace>
             </button>
             )}
-            <div className="relative">
+            <div className="relative" >
               <DynamicHeader />
             </div>
           </div>
