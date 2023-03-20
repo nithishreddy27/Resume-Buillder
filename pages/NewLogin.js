@@ -5,20 +5,16 @@ export default function NewLogin({ isLogin, errorMessage, onSubmit }) {
   return (
     <div>
       <div>
-        <img
-          className="hidden md:visible h-screen w-screen"
-          src="/l.png"
-          alt=""
-        />
+        {/* <img className="bg-auto" src="/l.png" alt="" /> */}
       </div>
 
-      <div className="bg-gradient-to-br from-orange-500 to-orange-300 w-screen flex flex-col sm:flex-row p-10 items-center">
+      <div className="w-screen flex flex-col sm:flex-col md:flex-col lg:flex-row p-10 items-center absolute top-0">
         <img className="w-full" src="/lir.png" alt="" />
         <form
           onSubmit={onSubmit}
           className="bg-transparent rounded-lg w-screen px-12 pt-12 pb-12 z-50"
         >
-          <h1 className="text-center text-white font-bold text-2xl">
+          <h1 className="text-center text-black font-bold text-2xl">
             Log in to your account
           </h1>
           <div className="mb-4 mt-10">
