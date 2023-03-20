@@ -6,8 +6,14 @@ export default function Dashboard(props) {
   const [students, setstudents] = useState()
   // const [stu, setstu] = useState(second)
   const [sort, setsort] = useState(1)
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState(null);
+
+
   var data = props.data.done
-  console.log("data nanfa",data)
+  // console.log("data nanfa",data)
   const changeHandler = (event) => {
     Papa.parse(event.target.files[0], {
         header: true,
@@ -49,6 +55,9 @@ export default function Dashboard(props) {
       )
     }
 
+
+
+
   return (
     // {https://aufaitux.com/wp-content/uploads/2022/11/pasted-image-2.png}
     <div className=" bg-gray-300 h-screen overflow-auto ">
@@ -84,6 +93,7 @@ export default function Dashboard(props) {
       style={{ display: "block", margin: "10px auto" }}
     />
         <button onClick={uploadStudents}>Upload</button>
+        
         <table className="bg-white rounded-lg border w-full">
           <thead className="">
             <tr className="border">
@@ -126,6 +136,8 @@ export default function Dashboard(props) {
             </tr> */}
            {students && (
             <>
+            {/* <a href="mailto:nithishreddy0627@gmail.com?subject='Hello from Abstract!'&body='Just popped in to say hello'">Click to Send an Email</a> */}
+            
              {students.map((item)=>(
               <> 
                   <h1>{console.log(item)}</h1>

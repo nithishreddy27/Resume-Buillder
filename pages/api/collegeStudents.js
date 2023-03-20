@@ -1,4 +1,4 @@
-import Iris from "../../model/Iris";
+import Register from "../../model/Register";
 // UserSche
 
 export default async function handler(req,res){
@@ -29,7 +29,7 @@ export default async function handler(req,res){
             break
 
         case("GET"):
-            var data = await Iris.find({})
+            var data = await Register.find({})
             console.log("in find",data);
             res.send({"done":data})
     }
