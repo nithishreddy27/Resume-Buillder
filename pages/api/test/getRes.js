@@ -13,7 +13,7 @@ export default async function handler(req,res){
             // console.log("data",data.resume)
             data.resume.map((item)=>{
                 if(item._id == req.body.id){
-                    console.log("item",item)
+                    // console.log("item",item)
                     res.send({"resume":item})
                 }
             })

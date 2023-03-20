@@ -6,7 +6,7 @@ export default async function handler(req,res){
     switch(req.method){
         case("POST"):
         const resume = req.body.resume.resume
-        console.log("req body",resume)
+        // console.log("req body",resume)
             // var resumeData = await UserResume.updateOne({"email":req.body.resume.email},{ $push: { resume: resume } })
             var resumeData = await UserResume.findOne({"email":req.body.resume.email})
             if(resumeData){
@@ -21,8 +21,8 @@ export default async function handler(req,res){
 
                     arr.push(resume)
                 }
-                console.log("res",resume)
-                console.log("item",arr)
+                // console.log("res",resume)
+                // console.log("item",arr)
                 await UserResume.updateOne({"email":req.body.resume.email},{$set:{"resume":arr}})
                 // await resumeData.resume.push(resume)
                 // console.log("in",resumeData.resume)

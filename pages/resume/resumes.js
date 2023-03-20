@@ -274,6 +274,20 @@ const Home = (props) => {
 
 export default Home;
 
+// export const getServerSideProps = async () => {
+//   const res = await fetch("https://complete-psi.vercel.app/api/Resume/searchResume");
+//   const data = await res.json();
+//   var o = data[0];
+//   // console.log("student",o.ResumeName)
+//   return {
+//     props: {
+//       done: data,
+//     },
+//   };
+// };
+
+
+
 export const getServerSideProps = async () => {
   const res = await fetch("http://localhost:3000/api/Resume/searchResume");
   const data = await res.json();
