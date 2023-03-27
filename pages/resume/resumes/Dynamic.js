@@ -14,8 +14,8 @@ import { ColorPicker, useColor } from "react-color-palette";
 import { AiFillPrinter, AiFillDatabase } from "react-icons/ai";
 import { TbListDetails } from "react-icons/tb";
 import { MdOutlineColorLens, MdOutlineDocumentScanner } from "react-icons/md";
-import { TbArrowAutofitWidth } from "react-icons/tb"
-import { HiOutlineDocumentSearch } from "react-icons/hi"
+import { TbArrowAutofitWidth } from "react-icons/tb";
+import { HiOutlineDocumentSearch } from "react-icons/hi";
 
 import { RxHobbyKnife } from "react-icons/rx";
 
@@ -26,7 +26,7 @@ export default function Dynamic() {
   const { details, setdetails, setdemo, demo } = useContext(ResumeContext);
   const [change, setchange] = useState(false);
   const [colorpalette, setcolorpalette] = useState(false);
-  const [ftw,setftw]=useState(true);
+  const [ftw, setftw] = useState(true);
 
   //to add email fname and lname
   useEffect(() => {
@@ -114,8 +114,7 @@ export default function Dynamic() {
                   >
                     <TbListDetails className="text-2xl text-gray-400"></TbListDetails>
                   </button>
-                  
-                  
+
                   {/* <div>
                       <button>Preview</button>
                     </div> */}
@@ -159,12 +158,11 @@ export default function Dynamic() {
                   >
                     <AiFillDatabase className="text-2xl text-gray-400"></AiFillDatabase>
                   </button>
-                  
                 </div>
               </div>
               <div className="flex justify-center z-0">
-                {/* Small Resume */}
-                <div
+               {/* Small Resume */}
+               <div
                   className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[100px] sm:mt-[10px] mx-[-210px] mt-[-150px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover z-0 overflow-hidden drop-shadow-2xl flex flex-row"
                   id="smallResume"
                   // style={{ color: color.hex }}
@@ -526,6 +524,7 @@ export default function Dynamic() {
                     </div>
                   </div>
                 </div>
+
                 <style jsx>
                   {`
                     .heading {
@@ -565,8 +564,12 @@ export default function Dynamic() {
                       </span>
                     </div>
                     <div className="group flex items-center relative">
-                      <button className="text-white p-1  rounded-md"
-                        onClick={()=>{setftw(false)}}>
+                      <button
+                        className="text-white p-1  rounded-md"
+                        onClick={() => {
+                          setftw(false);
+                        }}
+                      >
                         <MdOutlineDocumentScanner className="text-2xl text-gray-200"></MdOutlineDocumentScanner>
                       </button>
                       <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
@@ -574,8 +577,12 @@ export default function Dynamic() {
                       </span>
                     </div>
                     <div className="group flex items-center relative">
-                      <button className="text-white p-1  rounded-md"
-                      onClick={()=>{setftw(true)}}>
+                      <button
+                        className="text-white p-1  rounded-md"
+                        onClick={() => {
+                          setftw(true);
+                        }}
+                      >
                         <TbArrowAutofitWidth className="text-2xl text-gray-200"></TbArrowAutofitWidth>
                       </button>
                       <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
@@ -607,7 +614,7 @@ export default function Dynamic() {
                     <div
                       className={`${
                         colorpalette ? "block" : "hidden"
-                      } ml-[50px] absolute z-40`}
+                      } mt-[50px] absolute z-40`}
                     >
                       {/* <button className="w-5 h-5" style={{backgroundColor:"#9b2121"}}
                       onClick={()=>{
@@ -619,7 +626,7 @@ export default function Dynamic() {
 
                       </button> */}
                       <ColorPicker
-                        width={300}
+                        width={250}
                         height={100}
                         color={color}
                         onChange={setColor}
@@ -638,15 +645,12 @@ export default function Dynamic() {
                      
                     </button> */}
 
-                    
-
                     {/* <button
                       className="text-white border border-white p-2 rounded"
                       onClick={() => setdemo(!demo)}
                     >
                       <AiFillDatabase></AiFillDatabase>
                     </button> */}
-                    
                   </div>
                 </div>
 
