@@ -95,7 +95,7 @@ export default function Index(props) {
                               <span>
                                 <img
                                   className="w-full h-full object-cover object-center opacity-60 hover:opacity-40"
-                                  src="https://www.provast.io/_next/image?url=https%3A%2F%2Fwww.callcentrehelper.com%2Fimages%2Fstories%2F2022%2F01%2Fhands-holding-cvs.gif&w=2048&q=75"
+                                  src="https://www.provast.in/_next/image?url=https%3A%2F%2Fwww.callcentrehelper.com%2Fimages%2Fstories%2F2022%2F01%2Fhands-holding-cvs.gif&w=750&q=75"
                                 />
                               </span>
                               <Link
