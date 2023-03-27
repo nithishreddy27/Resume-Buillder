@@ -167,286 +167,295 @@ export default function Tokyo() {
                   id="smallResume"
                   // style={{ color: color.hex }}
                 >
-                  <div>
-                    <div className="flex bg-red-700 w-[210mm]">
-                      <img
-                        className="rounded-full p-10 w-48"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpl60g6oKVerEKPde2ClN4-6ASK4Ds4KzlM0Y1N-K_bCgOCMBYZ019WUgRLOfNAqyyhnY&usqp=CAU"
-                        alt="ProfilePhoto"
-                      />
-                      <div className="text-white m-1 py-12">
-                        <h1 className="text-3xl text-white font-semibold m-1">
-                          {details.personal.firstName}{" "}
-                          {details.personal.lastName}
-                        </h1>
-                        <h1 className="text-sm m-1">{details.personal.role}</h1>
+                    <div>
+                      <div className="flex bg-red-700 w-[210mm]">
+                        <img
+                          className="rounded-full p-10 w-48"
+                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpl60g6oKVerEKPde2ClN4-6ASK4Ds4KzlM0Y1N-K_bCgOCMBYZ019WUgRLOfNAqyyhnY&usqp=CAU"
+                          alt="ProfilePhoto"
+                        />
+                        <div className="text-white m-1 py-12">
+                          <h1 className="text-3xl text-white font-semibold m-1">
+                            {details.personal.firstName}{" "}
+                            {details.personal.lastName}
+                          </h1>
+                          <h1 className="text-sm m-1">
+                            {details.personal.role}
+                          </h1>
+                        </div>
                       </div>
-                    </div>
-                    <div className="flex justify-around p-3 border-b-2">
-                      <div className="font-semibold">
-                        {details.personal.email}
+                      <div className="flex justify-around p-3 border-b-2">
+                        <div className="font-semibold">
+                          {details.personal.email}
+                        </div>
+                        <div className="font-semibold">
+                          {details.personal.phone}
+                        </div>
+                        <div className="font-semibold">
+                          {details.personal.dob}
+                        </div>
                       </div>
-                      <div className="font-semibold">
-                        {details.personal.phone}
-                      </div>
-                      <div className="font-semibold">
-                        {details.personal.dob}
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-3">
-                      <div className="col-span-2 h-[230mm] border-r-2 px-8 py-4">
-                        {details.personal.objective.length != 0 && (
-                          <div>
-                            <h1 className="text-lg font-bold heading">
-                              Profile
-                            </h1>
-                            <p className="text-sm font-semibold ml-3">
-                              {details.personal.objective}
-                            </p>
-                          </div>
-                        )}
-                        {details.work.length != 0 &&
-                          details.work.filter((work) => work.enabled).length >
-                            0 && (
+                      <div className="grid grid-cols-3">
+                        <div className="col-span-2 h-[230mm] border-r-2 px-8 py-4">
+                          {details.personal.objective.length != 0 && (
                             <div>
-                              <h1 className="text-lg font-bold mt-4 mb-1">
-                                Employment History
+                              <h1 className="text-lg font-bold heading">
+                                Profile
                               </h1>
-                              {details.work.map((item) => (
-                                <>
-                                  {item.enabled && (
-                                    <div
-                                      className="my-1 ml-3"
-                                      key={item.company}
-                                    >
-                                      <span className="text-sm font-bold">
-                                        ● {item.company}
-                                        {" - "}
-                                        <span className="text-sm font-semibold mt-10">
-                                          {item.designation}
-                                        </span>
-                                      </span>
-                                      <p className="text-xs py-1 font-semibold text-gray-500">
-                                        ({item.from} to {item.to})
-                                      </p>
-                                      <p class="text-sm font-semibold">
-                                        {item.summary.data}
-                                      </p>
-                                    </div>
-                                  )}
-                                </>
-                              ))}
+                              <p className="text-sm font-semibold ml-3">
+                                {details.personal.objective}
+                              </p>
                             </div>
                           )}
-                        {details.education.length != 0 &&
-                          details.education.filter(
-                            (education) => education.enabled
-                          ).length > 0 && (
-                            <div>
-                              <h1 className="text-lg font-bold mt-4 mb-1">
-                                Education
-                              </h1>
-                              {details.education.map((item) => (
-                                <>
-                                  {item.enabled && (
-                                    <div
-                                      className="my-1 ml-3"
-                                      key={item.institution}
-                                    >
-                                      <span className="text-sm font-bold">
-                                        ● {item.institution}
-                                        {" - "}
-                                        <span className="text-sm font-semibold mt-10">
-                                          {item.fieldOfStudy}
-                                        </span>
-                                      </span>
-                                      <p className="text-xs py-1 font-semibold text-gray-500">
-                                        ({item.startDate} to {item.endDate})
-                                      </p>
-                                      <p class="text-sm font-semibold">
-                                        {item.summary.data}
-                                      </p>
-                                    </div>
-                                  )}
-                                </>
-                              ))}
-                            </div>
-                          )}
-                        {details.projects.length != 0 &&
-                          details.projects.filter(
-                            (projects) => projects.enabled
-                          ).length > 0 && (
-                            <div>
-                              <h1 className="text-lg font-bold mt-4 mb-1">
-                                Projects
-                              </h1>
-                              {details.projects.map((item) => (
-                                <>
-                                  {item.enabled && (
-                                    <div className="my-1 ml-3" key={item.name}>
-                                      <h1 className="text-sm font-bold">
-                                        ● {item.name}
-                                      </h1>
-                                      <p className="text-xs py-1 font-semibold text-gray-500">
-                                        ({item.from} to {item.to})
-                                      </p>
-                                      <a
-                                        href="{`${item.website}`}"
-                                        class="text-sm font-semibold"
-                                      >
-                                        {item.website}
-                                      </a>
-                                      <p class="text-sm font-semibold">
-                                        {item.summary.data}
-                                      </p>
-                                    </div>
-                                  )}
-                                </>
-                              ))}
-                            </div>
-                          )}
-                        {details.certifications.length != 0 &&
-                          details.certifications.filter(
-                            (certifications) => certifications.enabled
-                          ).length > 0 && (
-                            <div>
-                              <h1 className="text-lg font-bold mt-4 mb-1">
-                                Certifications
-                              </h1>
-                              {details.certifications.map((item) => (
-                                <>
-                                  {item.enabled && (
-                                    <div className="my-1 ml-3" key={item.title}>
-                                      <span className="text-sm font-semibold">
-                                        ● {item.title}
-                                        {" - "}
-                                        <span className="text-sm font-semibold mt-10">
-                                          {item.issuer}
-                                        </span>
-                                      </span>
-                                      <p className="text-xs py-1 font-semibold text-gray-500">
-                                        ({item.date})
-                                      </p>
-                                    </div>
-                                  )}
-                                </>
-                              ))}
-                            </div>
-                          )}
-                      </div>
-                      <div className="px-4">
-                        {details.skills.length &&
-                          details.skills.filter((skills) => skills.enabled)
-                            .length > 0 && (
-                            <div>
-                              <h1 className="text-lg font-bold mt-5 mb-1">
-                                Skills
-                              </h1>
-                              {details.skills.map((item) => (
-                                <>
-                                  {item.enabled && (
-                                    <div className="ml-2" key={item.name}>
-                                      <h1 className="text-sm font-semibold m-1">
-                                        ● {item.name}
-                                      </h1>
-                                    </div>
-                                  )}
-                                </>
-                              ))}
-                            </div>
-                          )}
-                        {details.social.length &&
-                          details.social.filter((social) => social.enabled)
-                            .length > 0 && (
-                            <div>
-                              <h1 className="text-lg font-bold mt-5 mb-1">
-                                Social
-                              </h1>
-                              {details.social.map((item) => (
-                                <>
-                                  {item.enabled && (
-                                    <div className="ml-2" key={item.network}>
-                                      <a
-                                        href="{`${item.url}`}"
-                                        className="text-sm font-semibold m-1"
-                                      >
-                                        ● {item.url}
-                                      </a>
-                                    </div>
-                                  )}
-                                </>
-                              ))}
-                            </div>
-                          )}
-                        {details.awards.length != 0 &&
-                          details.awards.filter((awards) => awards.enabled)
-                            .length > 0 && (
-                            <div>
-                              <h1 className="text-lg font-bold mt-5 mb-1">
-                                Awards
-                              </h1>
-                              <div className="ml-2">
-                                {details.awards.map((item) => (
+                          {details.work.length != 0 &&
+                            details.work.filter((work) => work.enabled).length >
+                              0 && (
+                              <div>
+                                <h1 className="text-lg font-bold mt-4 mb-1 heading">
+                                  Employment History
+                                </h1>
+                                {details.work.map((item) => (
                                   <>
                                     {item.enabled && (
-                                      <div className="py-1" key={item.name}>
-                                        <h1 className="text-sm font-bold relative m-1">
-                                          ● {item.name}
-                                        </h1>
-                                        <p className="text-sm font-semibold m-1">
-                                          {item.awarder}
+                                      <div
+                                        className="my-1 ml-3"
+                                        key={item.company}
+                                      >
+                                        <span className="text-sm font-bold">
+                                          ● {item.company}
+                                          {" - "}
+                                          <span className="text-sm font-semibold mt-10">
+                                            {item.designation}
+                                          </span>
+                                        </span>
+                                        <p className="text-xs py-1 font-semibold text-gray-500">
+                                          ({item.from} to {item.to})
+                                        </p>
+                                        <p class="text-sm font-semibold">
+                                          {item.summary.data}
                                         </p>
                                       </div>
                                     )}
                                   </>
                                 ))}
                               </div>
-                            </div>
-                          )}
-                        {details.hobbies.length &&
-                          details.hobbies.filter((hobbies) => hobbies.enabled)
-                            .length > 0 && (
-                            <div>
-                              <h1 className="text-lg font-bold mt-5 mb-1">
-                                Hobbies
-                              </h1>
-                              {details.hobbies.map((item) => (
-                                <>
-                                  {item.enabled && (
-                                    <div className="ml-2" key={item.name}>
-                                      <h1 className="text-sm font-semibold relative m-1">
-                                        ● {item.name}
-                                      </h1>
-                                    </div>
-                                  )}
-                                </>
-                              ))}
-                            </div>
-                          )}
-                        {details.languages.length &&
-                          details.languages.filter(
-                            (languages) => languages.enabled
-                          ).length > 0 && (
-                            <div>
-                              <h1 className="text-lg font-bold mt-5 mb-1">
-                                Languages
-                              </h1>
-                              {details.languages.map((item) => (
-                                <>
-                                  {item.enabled && (
-                                    <div className="ml-2" key={item.name}>
-                                      <h1 className="text-sm font-semibold relative m-1">
-                                        ● {item.name}
-                                      </h1>
-                                    </div>
-                                  )}
-                                </>
-                              ))}
-                            </div>
-                          )}
+                            )}
+                          {details.education.length != 0 &&
+                            details.education.filter(
+                              (education) => education.enabled
+                            ).length > 0 && (
+                              <div>
+                                <h1 className="text-lg font-bold mt-4 mb-1 heading">
+                                  Education
+                                </h1>
+                                {details.education.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <div
+                                        className="my-1 ml-3"
+                                        key={item.institution}
+                                      >
+                                        <span className="text-sm font-bold">
+                                          ● {item.institution}
+                                          {" - "}
+                                          <span className="text-sm font-semibold mt-10">
+                                            {item.fieldOfStudy}
+                                          </span>
+                                        </span>
+                                        <p className="text-xs py-1 font-semibold text-gray-500">
+                                          ({item.startDate} to {item.endDate})
+                                        </p>
+                                        <p class="text-sm font-semibold">
+                                          {item.summary.data}
+                                        </p>
+                                      </div>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            )}
+                          {details.projects.length != 0 &&
+                            details.projects.filter(
+                              (projects) => projects.enabled
+                            ).length > 0 && (
+                              <div>
+                                <h1 className="text-lg font-bold mt-4 mb-1 heading">
+                                  Projects
+                                </h1>
+                                {details.projects.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <div
+                                        className="my-1 ml-3"
+                                        key={item.name}
+                                      >
+                                        <h1 className="text-sm font-bold">
+                                          ● {item.name}
+                                        </h1>
+                                        <p className="text-xs py-1 font-semibold text-gray-500">
+                                          ({item.from} to {item.to})
+                                        </p>
+                                        <a
+                                          href="{`${item.website}`}"
+                                          class="text-sm font-semibold"
+                                        >
+                                          {item.website}
+                                        </a>
+                                        <p class="text-sm font-semibold">
+                                          {item.summary.data}
+                                        </p>
+                                      </div>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            )}
+                          {details.certifications.length != 0 &&
+                            details.certifications.filter(
+                              (certifications) => certifications.enabled
+                            ).length > 0 && (
+                              <div>
+                                <h1 className="text-lg font-bold mt-4 mb-1 heading">
+                                  Certifications
+                                </h1>
+                                {details.certifications.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <div
+                                        className="my-1 ml-3"
+                                        key={item.title}
+                                      >
+                                        <span className="text-sm font-semibold">
+                                          ● {item.title}
+                                          {" - "}
+                                          <span className="text-sm font-semibold mt-10">
+                                            {item.issuer}
+                                          </span>
+                                        </span>
+                                        <p className="text-xs py-1 font-semibold text-gray-500">
+                                          ({item.date})
+                                        </p>
+                                      </div>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            )}
+                        </div>
+                        <div className="px-4">
+                          {details.skills.length &&
+                            details.skills.filter((skills) => skills.enabled)
+                              .length > 0 && (
+                              <div>
+                                <h1 className="text-lg font-bold mt-5 mb-1 heading">
+                                  Skills
+                                </h1>
+                                {details.skills.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <div className="ml-2" key={item.name}>
+                                        <h1 className="text-sm font-semibold m-1">
+                                          ● {item.name}
+                                        </h1>
+                                      </div>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            )}
+                          {details.social.length &&
+                            details.social.filter((social) => social.enabled)
+                              .length > 0 && (
+                              <div>
+                                <h1 className="text-lg font-bold mt-5 mb-1 heading">
+                                  Social
+                                </h1>
+                                {details.social.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <div className="ml-2" key={item.network}>
+                                        <a
+                                          href="{`${item.url}`}"
+                                          className="text-sm font-semibold m-1"
+                                        >
+                                          ● {item.url}
+                                        </a>
+                                      </div>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            )}
+                          {details.awards.length != 0 &&
+                            details.awards.filter((awards) => awards.enabled)
+                              .length > 0 && (
+                              <div>
+                                <h1 className="text-lg font-bold mt-5 mb-1 heading">
+                                  Awards
+                                </h1>
+                                <div className="ml-2">
+                                  {details.awards.map((item) => (
+                                    <>
+                                      {item.enabled && (
+                                        <div className="py-1" key={item.name}>
+                                          <h1 className="text-sm font-bold relative m-1">
+                                            ● {item.name}
+                                          </h1>
+                                          <p className="text-sm font-semibold m-1">
+                                            {item.awarder}
+                                          </p>
+                                        </div>
+                                      )}
+                                    </>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          {details.hobbies.length &&
+                            details.hobbies.filter((hobbies) => hobbies.enabled)
+                              .length > 0 && (
+                              <div>
+                                <h1 className="text-lg font-bold mt-5 mb-1 heading">
+                                  Hobbies
+                                </h1>
+                                {details.hobbies.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <div className="ml-2" key={item.name}>
+                                        <h1 className="text-sm font-semibold relative m-1">
+                                          ● {item.name}
+                                        </h1>
+                                      </div>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            )}
+                          {details.languages.length &&
+                            details.languages.filter(
+                              (languages) => languages.enabled
+                            ).length > 0 && (
+                              <div>
+                                <h1 className="text-lg font-bold mt-5 mb-1 heading">
+                                  Languages
+                                </h1>
+                                {details.languages.map((item) => (
+                                  <>
+                                    {item.enabled && (
+                                      <div className="ml-2" key={item.name}>
+                                        <h1 className="text-sm font-semibold relative m-1">
+                                          ● {item.name}
+                                        </h1>
+                                      </div>
+                                    )}
+                                  </>
+                                ))}
+                              </div>
+                            )}
+                        </div>
+                        
                       </div>
                     </div>
-                  </div>
                 </div>
                 <style jsx>
                   {`
@@ -634,7 +643,7 @@ export default function Tokyo() {
                             details.work.filter((work) => work.enabled).length >
                               0 && (
                               <div>
-                                <h1 className="text-lg font-bold mt-4 mb-1">
+                                <h1 className="text-lg font-bold mt-4 mb-1 heading">
                                   Employment History
                                 </h1>
                                 {details.work.map((item) => (
@@ -668,7 +677,7 @@ export default function Tokyo() {
                               (education) => education.enabled
                             ).length > 0 && (
                               <div>
-                                <h1 className="text-lg font-bold mt-4 mb-1">
+                                <h1 className="text-lg font-bold mt-4 mb-1 heading">
                                   Education
                                 </h1>
                                 {details.education.map((item) => (
@@ -702,7 +711,7 @@ export default function Tokyo() {
                               (projects) => projects.enabled
                             ).length > 0 && (
                               <div>
-                                <h1 className="text-lg font-bold mt-4 mb-1">
+                                <h1 className="text-lg font-bold mt-4 mb-1 heading">
                                   Projects
                                 </h1>
                                 {details.projects.map((item) => (
@@ -738,7 +747,7 @@ export default function Tokyo() {
                               (certifications) => certifications.enabled
                             ).length > 0 && (
                               <div>
-                                <h1 className="text-lg font-bold mt-4 mb-1">
+                                <h1 className="text-lg font-bold mt-4 mb-1 heading">
                                   Certifications
                                 </h1>
                                 {details.certifications.map((item) => (
@@ -770,7 +779,7 @@ export default function Tokyo() {
                             details.skills.filter((skills) => skills.enabled)
                               .length > 0 && (
                               <div>
-                                <h1 className="text-lg font-bold mt-5 mb-1">
+                                <h1 className="text-lg font-bold mt-5 mb-1 heading">
                                   Skills
                                 </h1>
                                 {details.skills.map((item) => (
@@ -790,7 +799,7 @@ export default function Tokyo() {
                             details.social.filter((social) => social.enabled)
                               .length > 0 && (
                               <div>
-                                <h1 className="text-lg font-bold mt-5 mb-1">
+                                <h1 className="text-lg font-bold mt-5 mb-1 heading">
                                   Social
                                 </h1>
                                 {details.social.map((item) => (
@@ -813,7 +822,7 @@ export default function Tokyo() {
                             details.awards.filter((awards) => awards.enabled)
                               .length > 0 && (
                               <div>
-                                <h1 className="text-lg font-bold mt-5 mb-1">
+                                <h1 className="text-lg font-bold mt-5 mb-1 heading">
                                   Awards
                                 </h1>
                                 <div className="ml-2">
@@ -838,7 +847,7 @@ export default function Tokyo() {
                             details.hobbies.filter((hobbies) => hobbies.enabled)
                               .length > 0 && (
                               <div>
-                                <h1 className="text-lg font-bold mt-5 mb-1">
+                                <h1 className="text-lg font-bold mt-5 mb-1 heading">
                                   Hobbies
                                 </h1>
                                 {details.hobbies.map((item) => (
@@ -859,7 +868,7 @@ export default function Tokyo() {
                               (languages) => languages.enabled
                             ).length > 0 && (
                               <div>
-                                <h1 className="text-lg font-bold mt-5 mb-1">
+                                <h1 className="text-lg font-bold mt-5 mb-1 heading">
                                   Languages
                                 </h1>
                                 {details.languages.map((item) => (
