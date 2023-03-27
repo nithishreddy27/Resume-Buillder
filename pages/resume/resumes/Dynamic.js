@@ -654,7 +654,7 @@ export default function Dynamic() {
                   {/* large resume */}
 
                   <div
-                    className={`bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.6] lg:mt-[-180px] ${ ftw ? "xl:scale-[0.9] xl:mt-[-30px]" : "xl:scale-[0.6] xl:mt-[-150px]"}  sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row`}
+                    className={`bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.6] lg:mt-[-180px] ${ ftw ? "xl:scale-[0.9] xl:mt-[-30px]" : "xl:scale-[0.6] xl:mt-[-180px]"} sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row`}
                     id="largeResume"
                     // style={{ color: color.hex }}
                   >
