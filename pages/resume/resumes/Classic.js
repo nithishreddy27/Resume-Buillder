@@ -14,8 +14,8 @@ import { ColorPicker, useColor } from "react-color-palette";
 import { AiFillPrinter, AiFillDatabase } from "react-icons/ai";
 import { TbListDetails } from "react-icons/tb";
 import { MdOutlineColorLens, MdOutlineDocumentScanner } from "react-icons/md";
-import { TbArrowAutofitWidth } from "react-icons/tb"
-import { HiOutlineDocumentSearch } from "react-icons/hi"
+import { TbArrowAutofitWidth } from "react-icons/tb";
+import { HiOutlineDocumentSearch } from "react-icons/hi";
 
 import { RxHobbyKnife } from "react-icons/rx";
 
@@ -26,7 +26,7 @@ export default function Classic() {
   const { details, setdetails, setdemo, demo } = useContext(ResumeContext);
   const [change, setchange] = useState(false);
   const [colorpalette, setcolorpalette] = useState(false);
-  const [ftw,setftw]=useState(true);
+  const [ftw, setftw] = useState(true);
 
   //to add email fname and lname
   useEffect(() => {
@@ -114,8 +114,7 @@ export default function Classic() {
                   >
                     <TbListDetails className="text-2xl text-gray-400"></TbListDetails>
                   </button>
-                  
-                  
+
                   {/* <div>
                       <button>Preview</button>
                     </div> */}
@@ -159,13 +158,12 @@ export default function Classic() {
                   >
                     <AiFillDatabase className="text-2xl text-gray-400"></AiFillDatabase>
                   </button>
-                  
                 </div>
               </div>
               <div className="flex justify-center z-0">
-                {/* Small Resume */}
-                <div
-                  className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row"
+               {/* Small Resume */}
+               <div
+                  className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[100px] sm:mt-[10px] mx-[-210px] mt-[-150px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover z-0 overflow-hidden drop-shadow-2xl flex flex-row"
                   id="smallResume"
                 >
                   <div className="bg-gray-200 w-[100%]  ">
@@ -193,7 +191,7 @@ export default function Classic() {
                           <div className=" m-4 ">
                             {details.personal.objective != 0 && (
                               <>
-                                <p className="bg-gray-800 tracking-widest text-white p-1 w-[100%] rounded-md mt-3 text-center">
+                                <p className="bg-gray-800 tracking-widest text-white p-1 w-[100%] rounded-md mt-3 text-center heading">
                                   PROFILE
                                 </p>
                                 <p className="text-sm p-1 pt-4">
@@ -211,7 +209,7 @@ export default function Classic() {
                                 (hobbies) => hobbies.enabled
                               ).length > 0 && (
                                 <div className="m-3">
-                                  <p className="bg-gray-800 tracking-widest text-white p-1 w-[100%] rounded-md mt-3 text-center">
+                                  <p className="bg-gray-800 tracking-widest text-white p-1 w-[100%] rounded-md mt-3 text-center heading">
                                     HOBBIES
                                   </p>
                                   {details.hobbies.map((item) => (
@@ -236,7 +234,7 @@ export default function Classic() {
                                 (languages) => languages.enabled
                               ).length > 0 && (
                                 <div className="m-3">
-                                  <p className="bg-gray-800 tracking-widest text-white p-1 w-[100%] rounded-md mt-3 text-center">
+                                  <p className="bg-gray-800 tracking-widest text-white p-1 w-[100%] rounded-md mt-3 text-center heading">
                                     LANGUAGES
                                   </p>
                                   {details.languages.map((item) => (
@@ -263,7 +261,7 @@ export default function Classic() {
                                 (education) => education.enabled
                               ).length > 0 && (
                                 <div className="p-2 ">
-                                  <p className="bg-gray-800 tracking-widest text-center rounded-md text-white p-1 m-1 ">
+                                  <p className="bg-gray-800 tracking-widest text-center rounded-md text-white p-1 m-1 heading">
                                     EDUCATION
                                   </p>
 
@@ -301,7 +299,7 @@ export default function Classic() {
                               details.skills.filter((skills) => skills.enabled)
                                 .length > 0 && (
                                 <div className="p-2 ">
-                                  <p className="bg-gray-800 tracking-widest rounded-md text-center text-white p-1 mx-2 my-1 heading">
+                                  <p className="bg-gray-800 tracking-widest rounded-md text-center text-white p-1 mx-2 my-1 heading heading">
                                     SKILLS
                                   </p>
                                   {details.skills.map((item) => (
@@ -487,6 +485,8 @@ export default function Classic() {
                     </div>
                   </div>
                 </div>
+
+
                 <style jsx>
                   {`
                     .heading {
@@ -526,8 +526,12 @@ export default function Classic() {
                       </span>
                     </div>
                     <div className="group flex items-center relative">
-                      <button className="text-white p-1  rounded-md"
-                        onClick={()=>{setftw(false)}}>
+                      <button
+                        className="text-white p-1  rounded-md"
+                        onClick={() => {
+                          setftw(false);
+                        }}
+                      >
                         <MdOutlineDocumentScanner className="text-2xl text-gray-200"></MdOutlineDocumentScanner>
                       </button>
                       <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
@@ -535,8 +539,12 @@ export default function Classic() {
                       </span>
                     </div>
                     <div className="group flex items-center relative">
-                      <button className="text-white p-1  rounded-md"
-                      onClick={()=>{setftw(true)}}>
+                      <button
+                        className="text-white p-1  rounded-md"
+                        onClick={() => {
+                          setftw(true);
+                        }}
+                      >
                         <TbArrowAutofitWidth className="text-2xl text-gray-200"></TbArrowAutofitWidth>
                       </button>
                       <span className="absolute top-10 left-8 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100">
@@ -568,7 +576,7 @@ export default function Classic() {
                     <div
                       className={`${
                         colorpalette ? "block" : "hidden"
-                      } ml-[50px] absolute z-40`}
+                      } mt-[50px] absolute z-40`}
                     >
                       {/* <button className="w-5 h-5" style={{backgroundColor:"#9b2121"}}
                       onClick={()=>{
@@ -580,7 +588,7 @@ export default function Classic() {
 
                       </button> */}
                       <ColorPicker
-                        width={300}
+                        width={250}
                         height={100}
                         color={color}
                         onChange={setColor}
@@ -599,22 +607,23 @@ export default function Classic() {
                      
                     </button> */}
 
-                    
-
                     {/* <button
                       className="text-white border border-white p-2 rounded"
                       onClick={() => setdemo(!demo)}
                     >
                       <AiFillDatabase></AiFillDatabase>
                     </button> */}
-                    
                   </div>
                 </div>
 
                 <div className="flex justify-center ">
                   {/* large resume */}
  <div
-                    className="bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] lg:scale-[0.8] lg:mt-[-80px] xl:scale-[0.9] xl:mt-[-10px] sm:mt-[-100px] mx-[-210px] mt-[-250px] min-h-[285mm] min-w-[210mm] object-cover overflow-auto drop-shadow-2xl flex flex-row"
+                    className={`bg-slate-50 w-[210mm] scale-[0.4] sm:scale-[0.7] md:scale-[0.9] md:mt-[-50px] sm:mt-[10px] lg:scale-[0.6] lg:mt-[-180px] ${
+                      ftw
+                        ? "xl:scale-[0.9] xl:mt-[-30px]"
+                        : "xl:scale-[0.6] xl:mt-[-180px]"
+                    }  sm:mt-[-100px] mx-[-210px] mt-[-250px] h-[285mm] max-h-[285mm] min-w-[210mm] object-cover overflow-hidden drop-shadow-2xl flex flex-row`}
                     id="largeResume"
                   >
                     <div className="bg-gray-200 w-[100%]  ">
@@ -642,7 +651,7 @@ export default function Classic() {
                             <div className=" m-4 ">
                               {details.personal.objective != 0 && (
                                 <>
-                                  <p className="bg-gray-800 tracking-widest text-white p-1 w-[100%] rounded-md mt-3 text-center">
+                                  <p className="bg-gray-800 tracking-widest text-white p-1 w-[100%] rounded-md mt-3 text-center heading">
                                     PROFILE
                                   </p>
                                   <p className="text-sm p-1 pt-4">
@@ -660,7 +669,7 @@ export default function Classic() {
                                   (hobbies) => hobbies.enabled
                                 ).length > 0 && (
                                   <div className="m-3">
-                                    <p className="bg-gray-800 tracking-widest text-white p-1 w-[100%] rounded-md mt-3 text-center">
+                                    <p className="bg-gray-800 tracking-widest text-white p-1 w-[100%] rounded-md mt-3 text-center heading">
                                       HOBBIES
                                     </p>
                                     {details.hobbies.map((item) => (
@@ -685,7 +694,7 @@ export default function Classic() {
                                   (languages) => languages.enabled
                                 ).length > 0 && (
                                   <div className="m-3">
-                                    <p className="bg-gray-800 tracking-widest text-white p-1 w-[100%] rounded-md mt-3 text-center">
+                                    <p className="bg-gray-800 tracking-widest text-white p-1 w-[100%] rounded-md mt-3 text-center heading">
                                       LANGUAGES
                                     </p>
                                     {details.languages.map((item) => (
@@ -712,7 +721,7 @@ export default function Classic() {
                                   (education) => education.enabled
                                 ).length > 0 && (
                                   <div className="p-2 ">
-                                    <p className="bg-gray-800 tracking-widest text-center rounded-md text-white p-1 m-1 ">
+                                    <p className="bg-gray-800 tracking-widest text-center rounded-md text-white p-1 m-1 heading">
                                       EDUCATION
                                     </p>
 
@@ -943,6 +952,12 @@ export default function Classic() {
                       </div>
                     </div>
                   </div>
+                  <style jsx>
+                    {`
+                    .heading{
+                      color:${color.hex}
+                    }`}
+                  </style>
                 </div>
               </div>
             </>

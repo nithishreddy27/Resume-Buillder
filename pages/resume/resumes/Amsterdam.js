@@ -21,7 +21,7 @@ import { RxHobbyKnife } from "react-icons/rx";
 
 import "react-color-palette/lib/css/styles.css";
 
-export default function Dynamic() {
+export default function Amsterdam() {
   const user = useUser();
   const { details, setdetails, setdemo, demo } = useContext(ResumeContext);
   const [change, setchange] = useState(false);
