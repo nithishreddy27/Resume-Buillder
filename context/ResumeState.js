@@ -44,8 +44,7 @@ const ResumeState = (props) => {
       dob: "1985-11-01",
       phone: "999999999",
       objective: `- Organized customer information and account data for business planning and customer service purposes.\n - Created excel spreadsheets to track customer data and perform intense reconciliation process.\n - Received 97% positive customer survey results.
-      - Speed on calls was 10% above team average.  
-       Key Achievement: Designed and executed an automatized system for following up with customers, increasing customer retention by 22%.
+    
       `,
     },
     social: [
@@ -61,12 +60,7 @@ const ResumeState = (props) => {
         url: "https://www.linkedin.com/in/tim-janseen-68b0a2253",
         enabled: true,
       },
-      {
-        network: "Facebook",
-        username: "Tim.J",
-        url: "https://www.facebook.com/Tim-J-5465463",
-        enabled: true,
-      },
+      
     ],
 
     work: [
@@ -82,18 +76,7 @@ const ResumeState = (props) => {
         },
         enabled: true,
       },
-      {
-        company: "CirroStratus",
-        from: "2020-07-09",
-        to: "2021-10-12",
-        designation: "Software Engineer",
-        website: "http://www.cirrostart.com",
-        summary: {
-          data: "- Identified and dealt with a significant process bottleneck that boosted coding efficiency by 35% when resolved.\n- Carried out continuous identification, measurement, and improvement of processes.",
-          enabled: true,
-        },
-        enabled: true,
-      },
+      
     ],
     education: [
       {
@@ -168,16 +151,7 @@ const ResumeState = (props) => {
         },
         enabled: true,
       },
-      {
-        name: "The Famous Leadership Award",
-        awarder: "Cherryville University",
-        date: "2012-08-03",
-        summary: {
-          data: "Recieved an award for best performance for the term.",
-          enabled: true,
-        },
-        enabled: true,
-      },
+      
     ],
     certifications: [
       {
@@ -200,16 +174,7 @@ const ResumeState = (props) => {
         },
         enabled: true,
       },
-      {
-        title: "Modernizing Data Lakes and Data Warehouses with GCP",
-        date: "2013-04-22",
-        issuer: "Qwiklabs",
-        summary: {
-          data: "Completed a course on Data Warehouses using Google Cloud Platform",
-          enabled: true,
-        },
-        enabled: true,
-      },
+      
     ],
     skills: [
       {
@@ -217,11 +182,7 @@ const ResumeState = (props) => {
         level: "Beginner",
         enabled: true,
       },
-      {
-        name: "Cloud Management",
-        level: "Intermediate",
-        enabled: true,
-      },
+      
       {
         name: "Web Development",
         level: "Expert",
@@ -337,6 +298,10 @@ const ResumeState = (props) => {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       })
+      // fetch("https://complete-psi.vercel.app/api/testResume",{
+      //   method: "GET",
+      //   headers: { "Content-Type": "application/json" },
+      // })
       .then((data)=>{
         return data.json()
       })
@@ -369,6 +334,11 @@ const ResumeState = (props) => {
         resumeId:index,
         details:details
       }
+      // fetch("https://complete-pbk9zkqmh-nithishreddy27.vercel.app/api/testResume", {
+      //   method: "PUT",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify(body)
+      // });
       fetch("http://localhost:3000/api/testResume", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },

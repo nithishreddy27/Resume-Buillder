@@ -1,23 +1,25 @@
 import React from "react";
 import Link from "next/link";
 
-export default function NewLogin() {
+export default function NewLogin({ isLogin, errorMessage, onSubmit }) {
   return (
     <div>
-      <img
-        className="h-screen"
-        //src="https://media.istockphoto.com/id/475706356/photo/background.jpg?b=1&s=170667a&w=0&k=20&c=BS-MrL17EupEsAQwWsQ5mulzvGlf0FE4LZIwhK991Wg="
-        src="https://img.freepik.com/free-vector/abstract-low-poly-orange-yellow-background_1017-32111.jpg"
-        alt=""
-      />
-      <div className="">
-        <form className="bg-transparent shadow-md rounded-lg px-12 pt-20 pb-12 mb-4 mt-32 absolute top-0">
-          <h1 className="text-center font-bold text-2xl">
+      <div>
+        {/* <img className="bg-auto" src="/l.png" alt="" /> */}
+      </div>
+
+      <div className="w-screen flex flex-col sm:flex-col md:flex-col lg:flex-row p-10 items-center absolute top-0">
+        <img className="w-full" src="/lir.png" alt="" />
+        <form
+          onSubmit={onSubmit}
+          className="bg-transparent rounded-lg w-screen px-12 pt-12 pb-12 z-50"
+        >
+          <h1 className="text-center text-black font-bold text-2xl">
             Log in to your account
           </h1>
           <div className="mb-4 mt-10">
             <label
-              className="block text-gray-700 text-sm mb-2 font-semibold"
+              className="block  text-sm mb-2 font-semibold"
               htmlFor="username"
             >
               Email address
@@ -32,7 +34,7 @@ export default function NewLogin() {
           </div>
           <div className="">
             <label
-              className="block text-gray-700 text-sm font-semibold mb-2"
+              className="block text-sm font-semibold mb-2"
               htmlFor="password"
             >
               Password
@@ -46,7 +48,7 @@ export default function NewLogin() {
             />
           </div>
 
-          <div className="flex flex-col gap-2 sm:gap-16">
+          <div className="flex gap-5 sm:gap-16">
             <p>
               {" "}
               <Link href="/accounts" className="hover:underline">
@@ -70,6 +72,8 @@ export default function NewLogin() {
               className="bg-orange-600 font-semibold cursor-pointer block w-[100%] text-white h-10 rounded-md hover:bg-orange-700 required"
             />
           </div>
+
+          {errorMessage && <p className="error">{errorMessage}</p>}
         </form>
       </div>
     </div>

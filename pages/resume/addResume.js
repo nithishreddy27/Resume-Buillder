@@ -29,6 +29,9 @@ export default function AddResume() {
             <input type="submit"  value="submit" className=" mx-10 cursor-pointer"/>
 
         </form>
+
+
+       
     </div>
   );
 }

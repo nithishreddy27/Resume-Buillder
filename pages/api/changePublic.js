@@ -29,7 +29,6 @@ export default async function handler(req,res){
                 { arrayFilters: [ { "elem._id": resumeId } ] }
              )
                 
-
             var d = await UserResume.updateOne(
                 {"email":email },
                 { $set: { "resume.$[elem].publicResume": "false" } },

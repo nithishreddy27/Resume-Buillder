@@ -163,7 +163,7 @@ export default function Projects() {
               {details.projects.map((item, index) => (
                 
                 <div className="my-3 p-3 border border-white" key={item.name}>
-                  {console.log("item",item)}
+                  {/* {console.log("item",item)} */}
                   <div className="flex">
                     <p className="grow font-semibold">{item.name}</p>
                     <button

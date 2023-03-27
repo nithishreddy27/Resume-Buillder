@@ -85,7 +85,7 @@ export default function Index(props) {
                   // flex gap-x-1 flex-wrap justify-self-center
                   <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {item.resume.map((resume, index) => (
-                      <>
+                      <div key={index}>
                         {resume.publicResume == "false" && (
                           <div className="mx-auto my-auto">
                             <div
@@ -156,7 +156,7 @@ export default function Index(props) {
                             </div>
                           </>
                         )}
-                      </>
+                      </div>
                     ))}
                   </div>
                 )}
@@ -175,6 +175,16 @@ export default function Index(props) {
   );
 }
 
+// export const getServerSideProps = async () => {
+//   const res = await fetch("http://localhost:3000/api/testResume/search");
+//   const data = await res.json();
+//   // console.log("data in server",data);
+//   return {
+//     props: {
+//       done: data,
+//     },
+//   };
+// };
 export const getServerSideProps = async () => {
   const res = await fetch("http://localhost:3000/api/testResume/search");
   const data = await res.json();

@@ -6,98 +6,93 @@ import { useUser } from "../../lib/hooks";
 import { useRouter } from "next/router";
 import ResumeContext from "../../context/ResumeContext";
 import { TbPlus } from "react-icons/tb";
-import { AiFillCloseSquare } from "react-icons/ai"
+import { AiFillCloseSquare } from "react-icons/ai";
 
 const Home = (props) => {
-    const { details, setdetails, setdemo, demo ,id,setid } = useContext(ResumeContext);
-    const arr = props.done;
-    const [open, setOpen] = useState(false);
-    const l = [];
-    const [type, setType] = useState("free");
-    const [design, setDesign] = useState("all");
-    const [role, setRole] = useState()
-    const [checked, setchecked] = useState(false)
-    
-    const user = useUser();
-    const router = useRouter()
+  const { details, setdetails, setdemo, demo, id, setid } =
+    useContext(ResumeContext);
+  const arr = props.done;
+  const [open, setOpen] = useState(false);
+  const l = [];
+  const [type, setType] = useState("free");
+  const [design, setDesign] = useState("all");
+  const [role, setRole] = useState();
+  const [checked, setchecked] = useState(false);
 
+  const user = useUser();
+  const router = useRouter();
 
-    const q = router.query
+  const q = router.query;
 
+  async function createResume(resumeId) {
+    var pro;
+    if (checked) {
+      console.log("inside checked");
+      var data = await fetch("/api/changePublic", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: user.email }),
+      });
+      const resume = await data.json();
+      resume.resume.publicResume = "false";
+      resume.resume.id = resumeId;
+      console.log("resume after pro", resume);
 
-    async function createResume(resumeId){
-
-      var pro
-      if(checked){
-          console.log("inside checked")
-          var data = await fetch("/api/changePublic",{
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email : user.email }),
-        })
-        const resume = await data.json()
-        resume.resume.publicResume = "false"
-        resume.resume.id = resumeId
-        console.log("resume after pro",resume)
-        
-        if(resume){ 
-          pro = resume
-        } 
+      if (resume) {
+        pro = resume;
       }
-      else{
-          console.log("inside unchecked")
-            pro = {
-            id:resumeId,
-            publicResume:false,
-            personal: {
-              firstName: user.profile.firstName,
-              lastName: user.profile.lastName,
-              email: user.email,
-              role: role,
-              image: "",
-              dob: "1985-11-01",
-              phone: user.phone.value,
-              objective: "",
-            },
-            social: [],
-            work: [ ],
-            education: [],
-            awards: [],
-            skills: [],
-            languages: [],
-            hobbies: [],
-            certifications: [ ],
-            projects: [],
-          };
-      }
-        const body={
-            email:user.email,
-            resume:pro
-        }
-        console.log("body",body)
-        var data = await fetch("/api/testResume",{
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ resume : body }),
-        })
-        
-        router.push("/resume")
+    } else {
+      console.log("inside unchecked");
+      pro = {
+        id: resumeId,
+        publicResume: false,
+        personal: {
+          firstName: user.profile.firstName,
+          lastName: user.profile.lastName,
+          email: user.email,
+          role: role,
+          image: "",
+          dob: "1985-11-01",
+          phone: user.phone.value,
+          objective: "",
+        },
+        social: [],
+        work: [],
+        education: [],
+        awards: [],
+        skills: [],
+        languages: [],
+        hobbies: [],
+        certifications: [],
+        projects: [],
+      };
     }
-   
-    useEffect(()=>{
-      console.log('cj',checked)
-    },[checked])
-    const [rolepop,setrolepop]=useState(false);
+    const body = {
+      email: user.email,
+      resume: pro,
+    };
+    console.log("body", body);
+    var data = await fetch("/api/testResume", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ resume: body }),
+    });
+
+    router.push("/resume");
+  }
+
+  useEffect(() => {
+    console.log("cj", checked);
+  }, [checked]);
+  const [rolepop, setrolepop] = useState(false);
   return (
-    
     <div>
-      
       <div>
         <div className="border-b border-gray-300 py-2 fixed top-[-8px] w-[100%] z-40 bg-slate-50">
-            <Navbar/>
+          <Navbar />
         </div>
       </div>
-      
+
       {user && (
         <div className="h-screen absolute top-[80px]">
           <h1 className="mt-10 p-2 font-bold text-gray-900 text-lg text-center sm:text-3xl md:text-4xl">
@@ -128,7 +123,7 @@ const Home = (props) => {
               <option>MBA</option>
             </select>
           </div>
-          
+
           <div className="hidden md:block">
             <nav className="my-10 flex">
               <a
@@ -183,19 +178,29 @@ const Home = (props) => {
               //        <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png" alt=""  className='h-[100%] w-[100%] opacity-50'/>
 
               //      </Link>
-             
+
               l.map((data) => (
-                <div key={data._id} onClick={()=>{
-                  setid(data._id)
-                  // runMe(data._id) 
-                  }}>
-                  <div  className="rounded-md bg-gray-100 h-auto  w-63 p-5 m-5 cursor-pointer relative"
-                  onClick={()=>{setrolepop(true)}}>
+                <div
+                  key={data._id}
+                  onClick={() => {
+                    setid(data._id);
+                    // runMe(data._id)
+                  }}
+                >
+                  <div
+                    className="rounded-md bg-gray-100 h-auto  w-63 p-5 m-5 cursor-pointer relative"
+                    onClick={() => {
+                      setrolepop(true);
+                    }}
+                  >
                     <div className="opacity-80">
-                      <img src={data.ResumeImage}/>
+                      <img src={data.ResumeImage} />
                     </div>
                     <div className="absolute z-10 top-[43%] right-[43%] flex items-center justify-center h-10 w-10 bg-gray-200  bg-opacity-70 rounded-full p-1 ">
-                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAVJJREFUWEftl+FNAzEMhb9OQDcoTECZoGwAbNANoBMAEwAbsEFhAzYANigbwAStXuVKEbqLz7lWOlXxv1MSv68vTuKOGFiMBsbDUQGdArfAJTA1p7+AD+AFWJW4X+rQHfDkCGqOwEJRAvRsznQREpDAOkcU6BpYJtm/gQdAW6XQ1un7PJlzA7x1JYoCqS4mlvwdEGBTCODKBrTm7BBA+vWflvgPUFH/tgiNrahPbPwicTHLFnEoLeScOztBnbaZfSwA1Z4bESDVxr1lfLRayQlE529zVSBvz6pDfR3SydB9oiO+j9Cd9AroUDRGbssiT0QUtvWU5oB06e0utqigN7/19s4Brb2sPccbtStQ4mp1yCux6lB1yHPAG681dPwOHfJx/WlraXJvWdqke/ZHx4vaD4kIap78OYwK/58vZ9SgKW+4QesrXrQ+0uQXCUQXDQ5oA5cjSCVYiqWCAAAAAElFTkSuQmCC" className="onClick={toggleText}" />
+                      <img
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAVJJREFUWEftl+FNAzEMhb9OQDcoTECZoGwAbNANoBMAEwAbsEFhAzYANigbwAStXuVKEbqLz7lWOlXxv1MSv68vTuKOGFiMBsbDUQGdArfAJTA1p7+AD+AFWJW4X+rQHfDkCGqOwEJRAvRsznQREpDAOkcU6BpYJtm/gQdAW6XQ1un7PJlzA7x1JYoCqS4mlvwdEGBTCODKBrTm7BBA+vWflvgPUFH/tgiNrahPbPwicTHLFnEoLeScOztBnbaZfSwA1Z4bESDVxr1lfLRayQlE529zVSBvz6pDfR3SydB9oiO+j9Cd9AroUDRGbssiT0QUtvWU5oB06e0utqigN7/19s4Brb2sPccbtStQ4mp1yCux6lB1yHPAG681dPwOHfJx/WlraXJvWdqke/ZHx4vaD4kIap78OYwK/58vZ9SgKW+4QesrXrQ+0uQXCUQXDQ5oA5cjSCVYiqWCAAAAAElFTkSuQmCC"
+                        className="onClick={toggleText}"
+                      />
                     </div>
                     <div className=" text-2xl p-3 text-center   font-semibold">
                       {data.ResumeName}{" "}
@@ -214,22 +219,37 @@ const Home = (props) => {
              <img src="https://binaries.templates.cdn.office.net/support/templates/en-us/lt16402487_quantized.png" alt=""  className='h-[100%] w-[100%] opacity-50'/>
      
            </Link> */}
-          
-
           </div>
           {rolepop==true && (
           <div className="fixed top-[35%] sm:max-w-xl sm:left-[10%] sm:right-[10%] md:left-[15%] md:right-[15%] xl:left-[30%] xl:right-[30%] lg:left-[25%] lg:right-[25%]  px-5 content-center inline-block overflow-hidden text-left align-middle transition-all transform rounded-md opacity-100 scale-100 w-full max-w-2xl z-30">
           <div className=" bg-slate-700 rounded-md ">
                 <div className="flex">
-                <h1 className="text-2xl text-white font-medium px-5 py-5 grow">Create Resume</h1>
-                <div className="px-5 pt-5 cursor-pointer" onClick={()=>{setrolepop(false)}}>
-                <AiFillCloseSquare className="text-3xl text-white "></AiFillCloseSquare>
-                </div>
+                  <h1 className="text-2xl text-white font-medium px-5 py-5 grow">
+                    Create Resume
+                  </h1>
+                  <div
+                    className="px-5 pt-5 cursor-pointer"
+                    onClick={() => {
+                      setrolepop(false);
+                    }}
+                  >
+                    <AiFillCloseSquare className="text-3xl text-white "></AiFillCloseSquare>
+                  </div>
                 </div>
                 {/* <div className=" flex justify-center "><TbPlus/></div> */}
                 <label className="px-5 text-[10px] text-gray-400">NAME</label>
                 <div className="mx-5 my-2">
-                <input type="text" name="role" id="role" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500" required placeholder='Ex:- Full Stack Developer' onChange={(event)=>{setRole(event.target.value)}}/>
+                  <input
+                    type="text"
+                    name="role"
+                    id="role"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
+                    required
+                    placeholder="Ex:- Full Stack Developer"
+                    onChange={(event) => {
+                      setRole(event.target.value);
+                    }}
+                  />
                 </div>
                {/* <Link href="/resume/resumes">Submit</Link> */}
                <div className="flex">
@@ -244,17 +264,29 @@ const Home = (props) => {
                <button className="bg-orange-500 text-white px-3 py-2 rounded-md" onClick={()=>{createResume(id)}}>Save</button>
                 </div>
               </div>
-              </div>)}
+            </div>
+          )}
         </div>
-
-
-
       )}
     </div>
   );
 };
 
 export default Home;
+
+// export const getServerSideProps = async () => {
+//   const res = await fetch("https://complete-psi.vercel.app/api/Resume/searchResume");
+//   const data = await res.json();
+//   var o = data[0];
+//   // console.log("student",o.ResumeName)
+//   return {
+//     props: {
+//       done: data,
+//     },
+//   };
+// };
+
+
 
 export const getServerSideProps = async () => {
   const res = await fetch("http://localhost:3000/api/Resume/searchResume");
