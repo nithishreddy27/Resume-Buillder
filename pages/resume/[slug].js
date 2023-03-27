@@ -128,7 +128,7 @@ export default function Slug(props) {
               
                    
 
-            <div className='justify-center px-10 py-5 mt-[60px] grid grid-cols-2 gap-5 '>
+            <div className='justify-center px-10 py-5 mt-[60px] grid grid-cols-2 sm:grid sm:grid-cols-3 gap-5 sm:gap-2 lg:grid lg:grid-cols-2 lg:gap-5  '>
               {arr.map((resume)=>(
                 <div key={resume._id}>
                   {/* {console.log(resume)} */}
