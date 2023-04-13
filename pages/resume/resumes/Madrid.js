@@ -120,7 +120,7 @@ export default function Madrid() {
                     </div> */}
                 </div>
               </div>
-              <div className="flex justify-center  shadow-lg  mt-[75px] mx-2 w-[97%] rounded-md fixed bg-slate-700 z-30">
+              <div className="flex justify-center  shadow-sm  mt-[75px] mx-2 w-[98%] rounded-md fixed bg-slate-700 z-30">
                 <div className="m-3 flex">
                   <button
                     className="text-white p-2 rounded-md"
