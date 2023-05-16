@@ -12,6 +12,7 @@ const Home = (props) => {
   const { details, setdetails, setdemo, demo, id, setid } =
     useContext(ResumeContext);
   const arr = props.done;
+  console.log("arr",arr)
   const [open, setOpen] = useState(false);
   const l = [];
   const [type, setType] = useState("free");
@@ -42,7 +43,6 @@ const Home = (props) => {
         pro = resume;
       }
     } else {
-      console.log("inside unchecked");
       pro = {
         id: resumeId,
         publicResume: false,

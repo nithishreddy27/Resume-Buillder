@@ -15,7 +15,7 @@ const Accounts = () => {
         </div>
         <div className='sm:mx-[100px] md:my-[50px] lg:[200px] xl:mx-[300px] absolute top-[70px] md:top-[50px]'>
         <div className=' mx-3 bg-white md:grid grid-cols-2 gap-2'>
-            {/* <div className='border rounded-lg m-5 shadow-lg hover:m-[18px]'>
+            <div className='border rounded-lg m-5 shadow-lg hover:m-[18px]'>
                 <h1 className='font-semibold text-gray-700 text-3xl text-center pt-5'>For <span className='font-bold text-orange-600 text-3xl'>Students</span></h1>
                 <div className='p-5'>
                 Join over 21 million developers, practice coding skills, prepare for interviews, and get hired.
@@ -25,7 +25,7 @@ const Accounts = () => {
                 </div>
                 <div className='text-center'>Don't have an account?</div>
                 <Link className=' text-orange-500 hover:underline hover:text-orange-800 mb-3 ' href={{pathname:"/register",query:{type:"student"}}}>Sign up.</Link>
-            </div> */}
+            </div>
             <div className='border shadow-lg rounded-lg m-5 hover:m-[18px]'>
                 <h1 className='font-semibold text-gray-700 text-3xl text-center pt-5'>For <span className='font-bold text-orange-600 text-3xl'>Individuals</span></h1>
                 <div className='p-5'>
